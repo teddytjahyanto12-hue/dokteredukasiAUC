@@ -3,11 +3,11 @@
 File ini adalah sumber kebenaran tunggal untuk status, keputusan, dan serah terima Codex / Claude Code. Dokumen lain menyimpan detail, bukan salinan status.
 
 ## Status terkini
-- Pembaruan terakhir: 2026-09-28 (Asia/Jakarta), rencana eksekusi dari framework pengguna oleh Claude Code.
-- Tahap: audit Auctus tahap pertama selesai; framework milik pengguna diterima dan rencana eksekusi (USUL) disusun; menunggu keputusan Langkah 0.
+- Pembaruan terakhir: 2026-09-28 (Asia/Jakarta), fondasi website + backend di apps/web oleh Claude Code.
+- Tahap: fondasi aplikasi (frontend + backend + panel admin) sudah dibangun dan diuji lokal; belum di-deploy; harga/keterangan paket menunggu pengguna.
 - Pekerjaan terakhir oleh: Claude Code (PC 1).
-- Pelaksana aktif: Claude Code (PC 1) — push awal ke GitHub lalu membangun fondasi frontend + backend di apps/web. Jangan mengedit berkas proyek sampai penanda ini dilepas.
-- Auctus Academy telah dipelajari pada 22 halaman publik dan sebagian area akun setelah login manual. Aplikasi proyek belum dibangun.
+- Pelaksana aktif: tidak ada; fondasi apps/web sudah di-push ke GitHub (main).
+- Auctus Academy telah dipelajari pada 22 halaman publik dan sebagian area akun setelah login manual. Aplikasi proyek: apps/web (lihat bagian "Fondasi aplikasi").
 
 ## Tujuan dan kebutuhan yang sudah dinyatakan
 - Mempelajari platform referensi secara menyeluruh sesuai akses yang diberikan.
@@ -28,7 +28,9 @@ File ini adalah sumber kebenaran tunggal untuk status, keputusan, dan serah teri
 - Hasil perencanaan harus memetakan fitur referensi, manfaat untuk murid/tutor, penyesuaian yang diusulkan, kebutuhan data/backend, kompleksitas/dependensi, dan prioritas rilis. Semua prioritas masih usulan sampai dibahas dengan pengguna.
 - Gunakan PROJECT_MEMORY.md sebagai satu-satunya pusat status dan serah terima.
 - AGENTS.md dan CLAUDE.md hanya berisi aturan kerja yang merujuk pada memori ini.
-- Belum memilih framework, database, penyimpanan video, layanan hosting, maupun pembayaran.
+- Arahan pengguna 2026-09-28: push ke GitHub, bangun frontend + backend yang bisa diedit dahulu sesuai framework; nama paket disusun dari framework, harga & keterangan menyusul.
+- Stack yang dipakai: Next.js 15 + TypeScript + Tailwind v4, Prisma 6, SQLite untuk lokal (PostgreSQL saat deploy), sesi cookie JWT (jose) + bcrypt. Video: tautan embed (YouTube/Vimeo/Drive/Bunny) — layanan streaming belum dipilih. Hosting dan pembayaran online (Duitku kandidat) belum dipilih.
+- Sinkronisasi kode: GitHub teddytjahyanto12-hue/dokteredukasiAUC (main) adalah sumber kode. Folder PC 2 hanya salinan (tanpa node_modules/database/.git). Codex sebaiknya clone repo di PC 2 dan bekerja via git pull → commit → push.
 - Struktur folder awal bersifat persiapan; sesuaikan arsitektur setelah analisis referensi.
 - Gunakan implementasi dan konten milik proyek. Untuk aset, video, merek, atau teks referensi yang ingin dipakai, catat sumber dan izin penggunaannya.
 - Ketentuan platform referensi dicatat sebagai bukti dan bahan kebutuhan, bukan otomatis dianggap sebagai kebijakan proyek baru.
@@ -41,9 +43,9 @@ File ini adalah sumber kebenaran tunggal untuk status, keputusan, dan serah teri
 | P03 | Mendapatkan URL dan cakupan akses | Sebagian | https://auctus.academy/; pengguna meminta publik dahulu, login manual menyusul |
 | P04 | Audit halaman, peran, fitur, dan ketentuan | Sebagian | research/PLATFORM_AUDIT.md: 22 halaman publik + dashboard/course/UKNPDPD/EKG/admin coaching; tutor non-admin/backend belum terverifikasi |
 | P05 | Menetapkan kebutuhan dan batas versi pertama | Draf diperluas | docs/REQUIREMENTS.md dan implikasi audit: course, video, quiz, planner, flashcard, coaching; scope final belum dipilih |
-| P06 | Menentukan arsitektur dan model data | Belum dimulai | Setelah audit |
-| P07 | Implementasi frontend, backend, dan video | Belum dimulai | Setelah kebutuhan cukup jelas |
-| P08 | Pengujian peran, akses, video, dan deployment | Belum dimulai | Setelah implementasi |
+| P06 | Menentukan arsitektur dan model data | Selesai (fondasi) | apps/web/prisma/schema.prisma; docs/RENCANA_EKSEKUSI_DOKTER_EDUKASI.md |
+| P07 | Implementasi frontend, backend, dan video | Fondasi selesai | apps/web: publik, murid, tutor, admin; video via tautan embed; Duitku/email/AI belum |
+| P08 | Pengujian peran, akses, video, dan deployment | Sebagian | Uji manual alur lengkap di browser lokal 2026-09-28; belum ada tes otomatis; belum deploy |
 
 ## Masukan yang masih dibutuhkan
 1. URL sudah diterima: https://auctus.academy/. Login manual telah dilakukan untuk audit akun pada 23 September; audit lanjutan mengikuti sesi dan izin yang tersedia.
@@ -52,6 +54,7 @@ File ini adalah sumber kebenaran tunggal untuk status, keputusan, dan serah teri
 4. Ketentuan operasional milik proyek, sumber video, skala awal, serta anggaran hosting jika sudah tersedia.
 
 ## Langkah berikutnya
+0. (Terbaru, didahulukan) Pengguna mengisi harga/keterangan paket dan konten di panel admin; pilih hosting + PostgreSQL + object storage untuk deploy; integrasi Duitku sandbox; email transaksional; tes otomatis untuk aturan akses & order.
 1. Audit lanjutan: tutor non-admin, admin penuh, checkout sebatas baca, dan player/progres dengan pengujian terkontrol.
 2. Bahas pilihan fitur hasil bagian implikasi perencanaan dengan pengguna; tandai adopsi, penyesuaian, atau penundaan.
 3. Selesaikan konflik informasi publik D01–D09 sebelum merumuskan aturan proyek baru; jangan menganggap harga/ketentuan referensi otomatis menjadi keputusan proyek.
@@ -60,11 +63,12 @@ File ini adalah sumber kebenaran tunggal untuk status, keputusan, dan serah teri
 - 22 halaman publik didata beserta URL dan metode audit; browser JavaScript memverifikasi paket dinamis, formulir akun, FAQ EKG, menu, gerbang pembelian coaching/stase, serta jadwal bootcamp.
 - Setelah login manual, dashboard, course SR-MA Complete, EKG, UKNPDPD, dan admin coaching diperiksa secara read-only; detail dirangkum di research/PLATFORM_AUDIT.md.
 - Tidak ada akun, invoice, pembayaran, pesan, atau aktivasi layanan yang dibuat pada situs referensi.
-- Tidak ada kode aplikasi; build/tes aplikasi belum relevan. Berkas audit dan kebutuhan diperiksa keberadaan serta strukturnya.
+- 2026-09-28 (Claude Code): apps/web lolos `tsc --noEmit`, `eslint`, dan `next build` (34 route). Uji manual di browser lokal: daftar murid → pesan paket bimbingan → admin tandai lunas → hak akses + bimbingan otomatis → admin assign tutor → tutor jadwalkan sesi (jam WIB benar), unggah bukti PDF, catat progres, chat → murid lain ditolak (404 bimbingan, 403 berkas) → admin tambah slide PDF, tautan, quiz → murid mengerjakan quiz (nilai & pembahasan benar) → admin verifikasi sesi (fee dari rate) → payroll dibuat & ditandai dibayar dengan bukti transfer. Bug yang ditemukan & diperbaiki: status bimbingan tidak berubah saat tutor dipilih; header cache berkas diubah ke no-store.
 - Konfirmasi Claude AUC-SHARED-001 dibaca dan sesuai tujuan serta protokol memori bersama; ini pemeriksaan catatan file, bukan percakapan Claude langsung.
 ## Hambatan / pekerjaan berjalan
 - Tutor non-admin, admin penuh, isi video/player lanjutan, backend, dan checkout aktual belum terverifikasi. Seluruh route coaching yang terlihat (klien, detail assignment, chat, grup, lifecycle/admission, lifecycle/commitments, lifecycle/start-adjustment, inbox, payroll) sudah dibaca secara read-only.
 - Tidak ada proses aplikasi yang berjalan dari sesi ini.
+- Database lokal PC 1 (apps/web/prisma/dev.db, tidak di-commit) masih berisi data uji (akun murid.uji@dokteredukasi.test, 1 order, 1 bimbingan, 1 payroll, materi uji di topik Systematic Review). Berkas unggahan uji sudah terhapus sehingga tautan berkas pada data uji tersebut 404. Reset database (`npm run db:reset` lalu `npm run db:seed`) menunggu persetujuan pengguna.
 
 ## Riwayat serah terima
 | Tanggal | Alat | Perubahan | Kelanjutan |
@@ -72,6 +76,7 @@ File ini adalah sumber kebenaran tunggal untuk status, keputusan, dan serah teri
 | 2026-09-23 | Codex | Membuat struktur, memori, panduan kerja, dan pesan Claude | Terima URL lalu mulai audit |
 
 | 2026-09-23 | Codex | Memperbarui prompt AUC-SHARED-001 dan menyiapkan kolom konfirmasi Claude | Pengguna menyampaikan prompt; Codex memeriksa catatan setelah Claude selesai |
+| 2026-09-28 | Claude Code (PC 1) | Push dokumen ke GitHub; membangun apps/web (frontend + backend + panel admin) dan menguji alur lengkap secara lokal | Pengguna isi harga/konten; pilih hosting; Duitku sandbox |
 | 2026-09-28 | Claude Code (PC 1) | Menyimpan diagram framework, menulis docs/RENCANA_EKSEKUSI_DOKTER_EDUKASI.md, memperbarui memori | Pengguna memutuskan Langkah 0 |
 | 2026-09-23 12:23 WIB | Claude Code | Membaca dokumen proyek dan mengisi konfirmasi penerimaan AUC-SHARED-001; hanya PROJECT_MEMORY.md yang diubah | Codex memeriksa konfirmasi; pengguna memberikan URL referensi untuk memulai audit |
 
@@ -88,6 +93,15 @@ File ini adalah sumber kebenaran tunggal untuk status, keputusan, dan serah teri
 - Keputusan yang ditunggu: paket/harga/masa akses, akses otomatis setelah bayar vs manual, kanal notifikasi order, dasar payroll, pemilik merchant Duitku, stack teknologi, dan konten yang siap.
 - Sinkronisasi: folder PC 1 (C:\Users\User\Desktop\Project  Framework Auc) disalin dari PC 2, sudah `git init` dan terhubung ke origin/main GitHub, tetapi belum ada commit/push (menunggu persetujuan pengguna). Folder PC 2 belum repo Git.
 - Langkah berikutnya: pengguna memutuskan Langkah 0, lalu Langkah 1 (sitemap, alur, wireframe).
+
+## Fondasi aplikasi — 28 September 2026 (Claude Code)
+- Lokasi: apps/web (README di sana berisi cara menjalankan, peran, halaman, dan struktur kode). Konfigurasi preview: .claude/launch.json.
+- Publik: beranda, 3 jalur (Pre-Clinical, Clinical Practice, Medical Research) dengan kategori & topik sesuai framework, katalog 10 paket (harga kosong = "Harga segera diumumkan"), halaman alur seleksi tutor (tautan Google Form dari pengaturan).
+- Murid: daftar/masuk, pesan paket (order PENDING, admin dinotifikasi), dashboard paket & progres, penampil slide/PDF (iframe), video embed, tautan sumber, quiz per topik + pembahasan, riwayat pembelian, bimbingan + chat, notifikasi, akun.
+- Tutor: klien saya, progres, sesi Zoom + bukti, chat, materi sesuai jalur yang diberikan admin, pendapatan & payroll.
+- Admin Master: ringkasan, order (tandai lunas → hak akses otomatis + bimbingan), pengguna (buat akun, peran, profil/rate/rekening tutor, beri/cabut akses), konten (jalur/kategori/topik/materi + unggah PDF + quiz), paket, bimbingan (assign tutor, verifikasi sesi), payroll (bukti transfer, paid/unpaid), pengaturan teks situs.
+- Belum: pembayaran otomatis Duitku, email sungguhan (sekarang log server), lupa sandi mandiri, rate limit login, AI cheatsheet, tes otomatis, deploy.
+- Akun lokal: admin dari SEED_ADMIN_* di apps/web/.env (tidak di-commit); demo tutor@/murid@dokteredukasi.test memakai SEED_DEMO_PASSWORD.
 
 ## Protokol pembaruan
 - Awal sesi: baca seluruh file ini, periksa berkas aktual dan perubahan lokal, lalu catat pelaksana serta fokus aktif.

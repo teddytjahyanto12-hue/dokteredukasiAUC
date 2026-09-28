@@ -18,10 +18,10 @@ Memori bersama berupa file proyek; riwayat chat kedua produk tidak tersinkron ot
 - research/: inventaris platform, bukti audit, dan referensi.
 - docs/: kebutuhan, arsitektur, model data, dan kebijakan proyek.
 - design/: alur pengguna dan rancangan antarmuka.
-- apps/: kode aplikasi setelah arsitektur ditetapkan.
+- apps/web/: website + backend (Next.js). Cara menjalankan: apps/web/README.md.
 - backend/: kode backend jika arsitektur memerlukan direktori terpisah.
 - assets/: aset milik proyek atau yang telah diizinkan.
 - tests/: pengujian yang relevan.
 - handoffs/: pesan untuk melanjutkan pekerjaan.
 
-Belum ada aplikasi yang bisa dijalankan. Teknologi dipilih setelah kebutuhan dan platform referensi dipelajari.
+Aplikasi utama ada di apps/web (lihat README di sana).

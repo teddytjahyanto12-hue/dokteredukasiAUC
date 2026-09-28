@@ -1,0 +1,276 @@
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { db } from "@/lib/db";
+import { rupiah, tanggal } from "@/lib/format";
+import { FIELD_LABEL, MENTORING_FIELDS, MENTORING_STATUS_LABEL, ORDER_STATUS_LABEL, ROLE_LABEL, ROLES, type MentoringField } from "@/lib/constants";
+import {
+  createMentoringAction,
+  grantEntitlementAction,
+  resetPasswordAction,
+  revokeEntitlementAction,
+  saveTutorProfileAction,
+  updateUserAction,
+} from "@/app/actions/admin";
+import { ConfirmButton } from "@/components/confirm-button";
+import { Field, Flash, PageHeader } from "@/components/ui";
+import { readFlash, type SearchParams } from "@/lib/flash";
+
+export default async function AdminUserDetail({ params, searchParams }: { params: Promise<{ id: string }>; searchParams: SearchParams }) {
+  const { id } = await params;
+  const { pesan, tipe } = await readFlash(searchParams);
+  const user = await db.user.findUnique({
+    where: { id },
+    include: {
+      tutorProfile: { include: { trackAccess: true } },
+      entitlements: { orderBy: { startsAt: "desc" }, include: { package: true, order: { select: { code: true } } } },
+      orders: { orderBy: { createdAt: "desc" }, include: { package: true } },
+      mentoringsAsStudent: { include: { tutor: { select: { name: true } } } },
+      mentoringsAsTutor: { include: { student: { select: { name: true } } } },
+    },
+  });
+  if (!user) notFound();
+  const [tracks, packages] = await Promise.all([
+    db.track.findMany({ orderBy: { order: "asc" } }),
+    db.package.findMany({ orderBy: { order: "asc" } }),
+  ]);
+  const now = new Date();
+  const access = new Set(user.tutorProfile?.trackAccess.map((a) => a.trackId));
+
+  return (
+    <>
+      <PageHeader title={user.name} subtitle={`${user.email} · ${ROLE_LABEL[user.role as keyof typeof ROLE_LABEL]}`} back={{ href: "/admin/pengguna", label: "Semua pengguna" }} />
+      <Flash pesan={pesan} tipe={tipe} />
+
+      <div className="grid gap-6 xl:grid-cols-2">
+        <form action={updateUserAction} className="card space-y-3">
+          <input type="hidden" name="userId" value={user.id} />
+          <h2 className="h2">Data akun</h2>
+          <Field label="Nama">
+            <input className="input" name="name" defaultValue={user.name} required />
+          </Field>
+          <Field label="No. WhatsApp">
+            <input className="input" name="phone" defaultValue={user.phone ?? ""} />
+          </Field>
+          <Field label="Instansi">
+            <input className="input" name="institution" defaultValue={user.institution ?? ""} />
+          </Field>
+          <Field label="Peran">
+            <select className="input" name="role" defaultValue={user.role}>
+              {ROLES.map((r) => (
+                <option key={r} value={r}>
+                  {ROLE_LABEL[r]}
+                </option>
+              ))}
+            </select>
+          </Field>
+          <label className="flex items-center gap-2 text-sm">
+            <input type="checkbox" name="active" defaultChecked={user.active} /> Akun aktif (bisa login)
+          </label>
+          <button className="btn" type="submit">
+            Simpan
+          </button>
+        </form>
+
+        <form action={resetPasswordAction} className="card space-y-3 self-start">
+          <input type="hidden" name="userId" value={user.id} />
+          <h2 className="h2">Atur ulang kata sandi</h2>
+          <Field label="Kata sandi baru" hint="Minimal 8 karakter.">
+            <input className="input" name="password" minLength={8} required autoComplete="new-password" />
+          </Field>
+          <button className="btn-secondary" type="submit">
+            Ganti kata sandi
+          </button>
+        </form>
+
+        {user.role === "TUTOR" && (
+          <form action={saveTutorProfileAction} className="card space-y-3 xl:col-span-2">
+            <input type="hidden" name="userId" value={user.id} />
+            <h2 className="h2">Profil tutor</h2>
+            <div className="grid gap-3 sm:grid-cols-2">
+              <Field label="Bidang">
+                <select className="input" name="field" defaultValue={user.tutorProfile?.field ?? "CLINICAL"}>
+                  {MENTORING_FIELDS.map((f) => (
+                    <option key={f} value={f}>
+                      {FIELD_LABEL[f]}
+                    </option>
+                  ))}
+                </select>
+              </Field>
+              <Field label="Spesialisasi / keahlian">
+                <input className="input" name="specialty" defaultValue={user.tutorProfile?.specialty ?? ""} />
+              </Field>
+              <Field label="Rate per sesi (Rp)" hint="Dipakai sebagai fee default saat admin memverifikasi sesi.">
+                <input className="input" name="rate" inputMode="numeric" defaultValue={user.tutorProfile?.rate ?? ""} />
+              </Field>
+              <Field label="Keterangan rate">
+                <input className="input" name="rateNote" defaultValue={user.tutorProfile?.rateNote ?? ""} />
+              </Field>
+              <Field label="Bank">
+                <input className="input" name="bankName" defaultValue={user.tutorProfile?.bankName ?? ""} />
+              </Field>
+              <Field label="No. rekening">
+                <input className="input" name="bankAccount" defaultValue={user.tutorProfile?.bankAccount ?? ""} />
+              </Field>
+              <Field label="Atas nama">
+                <input className="input" name="bankHolder" defaultValue={user.tutorProfile?.bankHolder ?? ""} />
+              </Field>
+              <Field label="Catatan seleksi (interview, offering letter)">
+                <input className="input" name="notes" defaultValue={user.tutorProfile?.notes ?? ""} />
+              </Field>
+            </div>
+            <fieldset>
+              <legend className="label">Akses materi</legend>
+              <div className="flex flex-wrap gap-4">
+                {tracks.map((t) => (
+                  <label key={t.id} className="flex items-center gap-2 text-sm">
+                    <input type="checkbox" name="trackIds" value={t.id} defaultChecked={access.has(t.id)} /> {t.title}
+                  </label>
+                ))}
+              </div>
+            </fieldset>
+            <label className="flex items-center gap-2 text-sm">
+              <input type="checkbox" name="acceptingClients" defaultChecked={user.tutorProfile?.acceptingClients ?? true} /> Menerima klien baru
+            </label>
+            <button className="btn" type="submit">
+              Simpan profil tutor
+            </button>
+            {user.mentoringsAsTutor.length > 0 && (
+              <div className="pt-3">
+                <p className="label">Klien</p>
+                <ul className="text-sm">
+                  {user.mentoringsAsTutor.map((m) => (
+                    <li key={m.id}>
+                      <Link href={`/bimbingan/${m.id}`} className="link">
+                        {m.student.name}
+                      </Link>{" "}
+                      · {MENTORING_STATUS_LABEL[m.status]}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </form>
+        )}
+
+        {user.role === "STUDENT" && (
+          <>
+            <section className="card xl:col-span-2">
+              <h2 className="h2 mb-3">Akses paket</h2>
+              {user.entitlements.length === 0 ? (
+                <p className="muted">Belum ada akses.</p>
+              ) : (
+                <table className="table">
+                  <thead>
+                    <tr>
+                      <th>Paket</th>
+                      <th>Asal</th>
+                      <th>Berlaku</th>
+                      <th>Status</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {user.entitlements.map((e) => {
+                      const active = !e.revokedAt && (!e.expiresAt || e.expiresAt > now);
+                      return (
+                        <tr key={e.id}>
+                          <td>{e.package.name}</td>
+                          <td className="text-xs">{e.order ? `Order ${e.order.code}` : e.note ?? "Manual"}</td>
+                          <td className="text-xs">
+                            {tanggal(e.startsAt)} – {e.expiresAt ? tanggal(e.expiresAt) : "tanpa batas"}
+                          </td>
+                          <td>{e.revokedAt ? <span className="badge">Dicabut</span> : active ? <span className="badge-brand">Aktif</span> : <span className="badge">Berakhir</span>}</td>
+                          <td>
+                            {!e.revokedAt && (
+                              <form action={revokeEntitlementAction}>
+                                <input type="hidden" name="entitlementId" value={e.id} />
+                                <ConfirmButton message="Cabut akses paket ini?" className="btn-danger btn-sm">
+                                  Cabut
+                                </ConfirmButton>
+                              </form>
+                            )}
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              )}
+              <form action={grantEntitlementAction} className="mt-4 grid gap-3 border-t border-slate-100 pt-4 sm:grid-cols-4 sm:items-end">
+                <input type="hidden" name="userId" value={user.id} />
+                <Field label="Beri akses manual">
+                  <select className="input" name="packageId" required defaultValue="">
+                    <option value="" disabled>
+                      Pilih paket
+                    </option>
+                    {packages.map((p) => (
+                      <option key={p.id} value={p.id}>
+                        {p.name}
+                      </option>
+                    ))}
+                  </select>
+                </Field>
+                <Field label="Durasi (hari)" hint="Kosong = ikut paket">
+                  <input className="input" name="days" inputMode="numeric" />
+                </Field>
+                <label className="flex items-center gap-2 text-sm">
+                  <input type="checkbox" name="createMentoring" defaultChecked /> Buat bimbingan jika paket termasuk bimbingan
+                </label>
+                <button className="btn" type="submit">
+                  Beri akses
+                </button>
+              </form>
+            </section>
+
+            <section className="card">
+              <h2 className="h2 mb-3">Order</h2>
+              {user.orders.length === 0 ? (
+                <p className="muted">Belum ada order.</p>
+              ) : (
+                <ul className="space-y-1 text-sm">
+                  {user.orders.map((o) => (
+                    <li key={o.id}>
+                      <Link href={`/admin/order/${o.id}`} className="link">
+                        {o.code}
+                      </Link>{" "}
+                      · {o.package.name} · {rupiah(o.amount)} · {ORDER_STATUS_LABEL[o.status]}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </section>
+
+            <section className="card">
+              <h2 className="h2 mb-3">Bimbingan</h2>
+              <ul className="space-y-1 text-sm">
+                {user.mentoringsAsStudent.map((m) => (
+                  <li key={m.id}>
+                    <Link href={`/bimbingan/${m.id}`} className="link">
+                      {FIELD_LABEL[m.field as MentoringField]}
+                    </Link>{" "}
+                    · {m.tutor?.name ?? "belum ada tutor"} · {MENTORING_STATUS_LABEL[m.status]}
+                  </li>
+                ))}
+              </ul>
+              <form action={createMentoringAction} className="mt-4 grid gap-2 border-t border-slate-100 pt-4">
+                <input type="hidden" name="userId" value={user.id} />
+                <p className="label">Buat bimbingan manual</p>
+                <select className="input" name="field">
+                  {MENTORING_FIELDS.map((f) => (
+                    <option key={f} value={f}>
+                      {FIELD_LABEL[f]}
+                    </option>
+                  ))}
+                </select>
+                <input className="input" name="title" placeholder="Judul / topik (opsional)" />
+                <button className="btn-secondary" type="submit">
+                  Buat bimbingan
+                </button>
+              </form>
+            </section>
+          </>
+        )}
+      </div>
+    </>
+  );
+}

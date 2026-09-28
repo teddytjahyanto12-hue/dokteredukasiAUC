@@ -1,0 +1,380 @@
+// Skema database Dokter Edukasi Learning.
+// Lokal memakai SQLite. Saat deploy, ganti provider menjadi "postgresql" dan DATABASE_URL.
+// Nilai status/peran disimpan sebagai String agar portabel; daftar nilainya ada di src/lib/constants.ts.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// ---------- Pengguna ----------
+
+model User {
+  id           String   @id @default(cuid())
+  name         String
+  email        String   @unique
+  phone        String?
+  institution  String?
+  passwordHash String
+  role         String   @default("STUDENT") // ADMIN | TUTOR | STUDENT
+  active       Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  tutorProfile       TutorProfile?
+  orders             Order[]
+  entitlements       Entitlement[]        @relation("EntitlementUser")
+  grantedEntitlements Entitlement[]       @relation("EntitlementGrantedBy")
+  mentoringsAsStudent Mentoring[]         @relation("MentoringStudent")
+  mentoringsAsTutor   Mentoring[]         @relation("MentoringTutor")
+  messages           Message[]
+  quizAttempts       QuizAttempt[]
+  itemProgress       ItemProgress[]
+  notifications      Notification[]
+  payrolls           Payroll[]
+  uploads            FileAsset[]
+}
+
+model TutorProfile {
+  id          String  @id @default(cuid())
+  userId      String  @unique
+  user        User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  field       String  // CLINICAL | PRECLINICAL | RESEARCH_REVIEW | RESEARCH_ORIGINAL
+  specialty   String?
+  rate        Int?    // rupiah per sesi bimbingan; null = belum ditetapkan
+  rateNote    String?
+  bankName    String?
+  bankAccount String?
+  bankHolder  String?
+  acceptingClients Boolean @default(true)
+  notes       String?
+  trackAccess TutorTrackAccess[]
+}
+
+// Materi yang boleh dibuka tutor (framework: tutor mendapat akses materi bidangnya).
+model TutorTrackAccess {
+  id             String       @id @default(cuid())
+  tutorProfileId String
+  tutorProfile   TutorProfile @relation(fields: [tutorProfileId], references: [id], onDelete: Cascade)
+  trackId        String
+  track          Track        @relation(fields: [trackId], references: [id], onDelete: Cascade)
+
+  @@unique([tutorProfileId, trackId])
+}
+
+// ---------- Konten: Track → Category → Topic → Item ----------
+
+model Track {
+  id           String   @id @default(cuid())
+  slug         String   @unique
+  title        String
+  description  String?
+  hasMentoring Boolean  @default(false)
+  order        Int      @default(0)
+  published    Boolean  @default(true)
+  categories   Category[]
+  tutorAccess  TutorTrackAccess[]
+}
+
+model Category {
+  id          String  @id @default(cuid())
+  trackId     String
+  track       Track   @relation(fields: [trackId], references: [id], onDelete: Cascade)
+  slug        String
+  title       String
+  description String?
+  displayType String  @default("MATERIAL") // SLIDES | PDF | LINKS | MATERIAL_QUIZ | CHEATSHEET | MATERIAL
+  order       Int     @default(0)
+  published   Boolean @default(true)
+  topics      Topic[]
+  packages    PackageCategory[]
+
+  @@unique([trackId, slug])
+}
+
+model Topic {
+  id          String  @id @default(cuid())
+  categoryId  String
+  category    Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  title       String
+  description String?
+  order       Int     @default(0)
+  published   Boolean @default(true)
+  items       Item[]
+  quiz        Quiz?
+}
+
+model Item {
+  id          String   @id @default(cuid())
+  topicId     String
+  topic       Topic    @relation(fields: [topicId], references: [id], onDelete: Cascade)
+  type        String   // SLIDES | PDF | VIDEO | LINK | TEXT
+  title       String
+  description String?
+  url         String?  // tautan sumber / video / Google Drive
+  body        String?  // teks materi
+  fileId      String?
+  file        FileAsset? @relation(fields: [fileId], references: [id], onDelete: SetNull)
+  sourceNote  String?  // sumber & izin penggunaan
+  isFree      Boolean  @default(false)
+  order       Int      @default(0)
+  published   Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  progress    ItemProgress[]
+}
+
+model ItemProgress {
+  id          String   @id @default(cuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  itemId      String
+  item        Item     @relation(fields: [itemId], references: [id], onDelete: Cascade)
+  completedAt DateTime @default(now())
+
+  @@unique([userId, itemId])
+}
+
+model FileAsset {
+  id           String   @id @default(cuid())
+  storagePath  String   // relatif terhadap folder storage/
+  originalName String
+  mimeType     String
+  size         Int
+  uploadedById String?
+  uploadedBy   User?    @relation(fields: [uploadedById], references: [id], onDelete: SetNull)
+  createdAt    DateTime @default(now())
+  items        Item[]
+  sessionProofs MentoringSession[]
+  payrollProofs Payroll[]
+}
+
+// ---------- Quiz ----------
+
+model Quiz {
+  id           String  @id @default(cuid())
+  topicId      String  @unique
+  topic        Topic   @relation(fields: [topicId], references: [id], onDelete: Cascade)
+  title        String
+  passingScore Int     @default(70)
+  published    Boolean @default(true)
+  questions    Question[]
+  attempts     QuizAttempt[]
+}
+
+model Question {
+  id          String   @id @default(cuid())
+  quizId      String
+  quiz        Quiz     @relation(fields: [quizId], references: [id], onDelete: Cascade)
+  text        String
+  explanation String?
+  order       Int      @default(0)
+  options     QuestionOption[]
+  answers     QuizAnswer[]
+}
+
+model QuestionOption {
+  id         String   @id @default(cuid())
+  questionId String
+  question   Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  text       String
+  isCorrect  Boolean  @default(false)
+  order      Int      @default(0)
+  answers    QuizAnswer[]
+}
+
+model QuizAttempt {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  quizId    String
+  quiz      Quiz     @relation(fields: [quizId], references: [id], onDelete: Cascade)
+  score     Int      // persen 0–100
+  correct   Int
+  total     Int
+  createdAt DateTime @default(now())
+  answers   QuizAnswer[]
+}
+
+model QuizAnswer {
+  id         String          @id @default(cuid())
+  attemptId  String
+  attempt    QuizAttempt     @relation(fields: [attemptId], references: [id], onDelete: Cascade)
+  questionId String
+  question   Question        @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  optionId   String?
+  option     QuestionOption? @relation(fields: [optionId], references: [id], onDelete: SetNull)
+  isCorrect  Boolean
+}
+
+// ---------- Paket & penjualan ----------
+
+model Package {
+  id                String   @id @default(cuid())
+  slug              String   @unique
+  name              String
+  trackSlug         String?  // jalur utama untuk pengelompokan katalog
+  summary           String?
+  description       String?
+  price             Int?     // rupiah; null = harga belum ditetapkan
+  accessDays        Int?     // null = tanpa batas waktu
+  includesMentoring Boolean  @default(false)
+  mentoringField    String?  // CLINICAL | PRECLINICAL | RESEARCH_REVIEW | RESEARCH_ORIGINAL
+  active            Boolean  @default(true)
+  order             Int      @default(0)
+  createdAt         DateTime @default(now())
+  categories        PackageCategory[]
+  orders            Order[]
+  entitlements      Entitlement[]
+  mentorings        Mentoring[]
+}
+
+model PackageCategory {
+  id         String   @id @default(cuid())
+  packageId  String
+  package    Package  @relation(fields: [packageId], references: [id], onDelete: Cascade)
+  categoryId String
+  category   Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+
+  @@unique([packageId, categoryId])
+}
+
+model Order {
+  id            String    @id @default(cuid())
+  code          String    @unique
+  userId        String
+  user          User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  packageId     String
+  package       Package   @relation(fields: [packageId], references: [id])
+  amount        Int?
+  status        String    @default("PENDING") // PENDING | PAID | CANCELLED
+  paymentMethod String    @default("MANUAL")  // MANUAL | DUITKU
+  paymentRef    String?
+  note          String?
+  paidAt        DateTime?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  entitlements  Entitlement[]
+  mentorings    Mentoring[]
+}
+
+// Hak akses murid ke paket. Satu order bisa menghasilkan satu hak akses;
+// mencabut satu hak akses tidak menghapus hak dari order lain.
+model Entitlement {
+  id          String    @id @default(cuid())
+  userId      String
+  user        User      @relation("EntitlementUser", fields: [userId], references: [id], onDelete: Cascade)
+  packageId   String
+  package     Package   @relation(fields: [packageId], references: [id], onDelete: Cascade)
+  orderId     String?
+  order       Order?    @relation(fields: [orderId], references: [id], onDelete: SetNull)
+  grantedById String?
+  grantedBy   User?     @relation("EntitlementGrantedBy", fields: [grantedById], references: [id], onDelete: SetNull)
+  startsAt    DateTime  @default(now())
+  expiresAt   DateTime?
+  revokedAt   DateTime?
+  note        String?
+
+  @@unique([orderId])
+}
+
+// ---------- Bimbingan ----------
+
+model Mentoring {
+  id        String   @id @default(cuid())
+  studentId String
+  student   User     @relation("MentoringStudent", fields: [studentId], references: [id], onDelete: Cascade)
+  tutorId   String?
+  tutor     User?    @relation("MentoringTutor", fields: [tutorId], references: [id], onDelete: SetNull)
+  packageId String?
+  package   Package? @relation(fields: [packageId], references: [id], onDelete: SetNull)
+  orderId   String?
+  order     Order?   @relation(fields: [orderId], references: [id], onDelete: SetNull)
+  field     String   // CLINICAL | PRECLINICAL | RESEARCH_REVIEW | RESEARCH_ORIGINAL
+  title     String?  // topik / judul riset
+  status    String   @default("WAITING_ASSIGNMENT") // WAITING_ASSIGNMENT | ACTIVE | COMPLETED | CANCELLED
+  progress  Int      @default(0) // persen 0–100
+  notes     String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  sessions  MentoringSession[]
+  messages  Message[]
+  updates   ProgressUpdate[]
+}
+
+model MentoringSession {
+  id          String     @id @default(cuid())
+  mentoringId String
+  mentoring   Mentoring  @relation(fields: [mentoringId], references: [id], onDelete: Cascade)
+  scheduledAt DateTime
+  zoomLink    String?
+  summary     String?
+  proofUrl    String?
+  proofFileId String?
+  proofFile   FileAsset? @relation(fields: [proofFileId], references: [id], onDelete: SetNull)
+  status      String     @default("SCHEDULED") // SCHEDULED | DONE | CANCELLED
+  verifiedAt  DateTime?  // diverifikasi admin → masuk hitungan payroll
+  fee         Int?       // fee tutor untuk sesi ini (diambil dari rate saat verifikasi)
+  payrollId   String?
+  payroll     Payroll?   @relation(fields: [payrollId], references: [id], onDelete: SetNull)
+  createdAt   DateTime   @default(now())
+}
+
+model ProgressUpdate {
+  id          String    @id @default(cuid())
+  mentoringId String
+  mentoring   Mentoring @relation(fields: [mentoringId], references: [id], onDelete: Cascade)
+  authorName  String
+  text        String
+  progress    Int?
+  createdAt   DateTime  @default(now())
+}
+
+model Message {
+  id          String    @id @default(cuid())
+  mentoringId String
+  mentoring   Mentoring @relation(fields: [mentoringId], references: [id], onDelete: Cascade)
+  senderId    String
+  sender      User      @relation(fields: [senderId], references: [id], onDelete: Cascade)
+  body        String
+  createdAt   DateTime  @default(now())
+}
+
+// ---------- Payroll tutor ----------
+
+model Payroll {
+  id          String     @id @default(cuid())
+  tutorId     String
+  tutor       User       @relation(fields: [tutorId], references: [id], onDelete: Cascade)
+  periodLabel String
+  amount      Int
+  status      String     @default("UNPAID") // UNPAID | PAID
+  proofFileId String?
+  proofFile   FileAsset? @relation(fields: [proofFileId], references: [id], onDelete: SetNull)
+  paidAt      DateTime?
+  notes       String?
+  createdAt   DateTime   @default(now())
+  sessions    MentoringSession[]
+}
+
+// ---------- Operasional ----------
+
+model Notification {
+  id        String    @id @default(cuid())
+  userId    String
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title     String
+  body      String?
+  link      String?
+  readAt    DateTime?
+  createdAt DateTime  @default(now())
+}
+
+// Teks dan pengaturan situs yang dapat diubah admin tanpa mengubah kode.
+model Setting {
+  key   String @id
+  value String
+}

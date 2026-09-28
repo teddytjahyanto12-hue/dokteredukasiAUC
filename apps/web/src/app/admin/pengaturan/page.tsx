@@ -1,0 +1,34 @@
+import { getSettings } from "@/lib/settings";
+import { SETTING_DEFAULTS, SETTING_LABEL, type SettingKey } from "@/lib/constants";
+import { saveSettingsAction } from "@/app/actions/admin";
+import { Field, Flash, PageHeader } from "@/components/ui";
+import { readFlash, type SearchParams } from "@/lib/flash";
+
+export const metadata = { title: "Pengaturan" };
+
+const LONG: SettingKey[] = ["heroSubtitle", "paymentInstructions"];
+
+export default async function AdminSettings({ searchParams }: { searchParams: SearchParams }) {
+  const { pesan, tipe } = await readFlash(searchParams);
+  const s = await getSettings();
+  return (
+    <>
+      <PageHeader title="Pengaturan situs" subtitle="Teks dan kontak yang tampil di website. Perubahan langsung berlaku." />
+      <Flash pesan={pesan} tipe={tipe} />
+      <form action={saveSettingsAction} className="card space-y-4">
+        {(Object.keys(SETTING_DEFAULTS) as SettingKey[]).map((key) => (
+          <Field key={key} label={SETTING_LABEL[key]}>
+            {LONG.includes(key) ? (
+              <textarea className="input" name={key} rows={3} defaultValue={s[key]} />
+            ) : (
+              <input className="input" name={key} defaultValue={s[key]} />
+            )}
+          </Field>
+        ))}
+        <button className="btn" type="submit">
+          Simpan pengaturan
+        </button>
+      </form>
+    </>
+  );
+}
