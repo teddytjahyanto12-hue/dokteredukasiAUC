@@ -30,9 +30,9 @@ export const DISPLAY_TYPE_LABEL: Record<(typeof DISPLAY_TYPES)[number], string> 
 export const ITEM_TYPES = ["SLIDES", "PDF", "VIDEO", "LINK", "TEXT"] as const;
 export type ItemType = (typeof ITEM_TYPES)[number];
 export const ITEM_TYPE_LABEL: Record<ItemType, string> = {
-  SLIDES: "Slide (PDF hasil ekspor PPTX)",
+  SLIDES: "Slide (PPTX / PDF / Google Slides)",
   PDF: "PDF / e-book",
-  VIDEO: "Video",
+  VIDEO: "Video (YouTube / Google Drive)",
   LINK: "Tautan sumber",
   TEXT: "Teks",
 };

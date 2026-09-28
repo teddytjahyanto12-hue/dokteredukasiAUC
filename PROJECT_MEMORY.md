@@ -76,6 +76,7 @@ File ini adalah sumber kebenaran tunggal untuk status, keputusan, dan serah teri
 | 2026-09-23 | Codex | Membuat struktur, memori, panduan kerja, dan pesan Claude | Terima URL lalu mulai audit |
 
 | 2026-09-23 | Codex | Memperbarui prompt AUC-SHARED-001 dan menyiapkan kolom konfirmasi Claude | Pengguna menyampaikan prompt; Codex memeriksa catatan setelah Claude selesai |
+| 2026-09-28 | Claude Code (PC 1) | Fitur video (YouTube/Drive embed) & slide PPTX/PDF per materi, pratinjau admin | Pengguna putuskan pemasangan LibreOffice; uji dengan link Drive asli |
 | 2026-09-28 | Claude Code (PC 1) | Push dokumen ke GitHub; membangun apps/web (frontend + backend + panel admin) dan menguji alur lengkap secara lokal | Pengguna isi harga/konten; pilih hosting; Duitku sandbox |
 | 2026-09-28 | Claude Code (PC 1) | Menyimpan diagram framework, menulis docs/RENCANA_EKSEKUSI_DOKTER_EDUKASI.md, memperbarui memori | Pengguna memutuskan Langkah 0 |
 | 2026-09-23 12:23 WIB | Claude Code | Membaca dokumen proyek dan mengisi konfirmasi penerimaan AUC-SHARED-001; hanya PROJECT_MEMORY.md yang diubah | Codex memeriksa konfirmasi; pengguna memberikan URL referensi untuk memulai audit |
@@ -102,6 +103,13 @@ File ini adalah sumber kebenaran tunggal untuk status, keputusan, dan serah teri
 - Admin Master: ringkasan, order (tandai lunas → hak akses otomatis + bimbingan), pengguna (buat akun, peran, profil/rate/rekening tutor, beri/cabut akses), konten (jalur/kategori/topik/materi + unggah PDF + quiz), paket, bimbingan (assign tutor, verifikasi sesi), payroll (bukti transfer, paid/unpaid), pengaturan teks situs.
 - Belum: pembayaran otomatis Duitku, email sungguhan (sekarang log server), lupa sandi mandiri, rate limit login, AI cheatsheet, tes otomatis, deploy.
 - Akun lokal: admin dari SEED_ADMIN_* di apps/web/.env (tidak di-commit); demo tutor@/murid@dokteredukasi.test memakai SEED_DEMO_PASSWORD.
+
+## Video & slide materi — 28 September 2026 (Claude Code)
+- Permintaan pengguna: tiap bagian materi bisa berisi video (link YouTube/Drive, diputar tanpa redirect) dan admin bisa menampilkan PPTX serta PDF.
+- Dibuat: src/lib/embed.ts (YouTube via youtube-nocookie, Google Drive preview, Google Slides embed, Vimeo, Bunny, OneDrive, .mp4), src/components/material-viewer.tsx (penampil bersama murid + pratinjau admin), src/lib/convert.ts (PPTX→PDF via LibreOffice headless), kolom Item.originalFileId (migrasi item_original_file). Form admin per tipe: + Video, + Slide PPTX/PDF, + PDF, + Tautan, + Teks.
+- Diverifikasi di browser lokal: link YouTube tersimpan dan diputar di dalam halaman materi (URL halaman tetap); link tidak dikenal ditolak dengan pesan jelas; unggah PPTX tanpa LibreOffice menampilkan pesan panduan dan tidak meninggalkan berkas sisa; bug deteksi PPTX (browser mengirim application/octet-stream) diperbaiki. Unit cek parser link: 11 format benar.
+- Belum diverifikasi: video/slide Google Drive dengan file sungguhan, konversi PPTX sungguhan (LibreOffice belum terpasang di PC 1 — menunggu keputusan pengguna untuk memasang).
+- Rekomendasi: video YouTube Unlisted (paling ringan & lancar); Drive bisa tetapi lebih lambat, ada batas kuota tayang, dan tombol pop-out ke Drive; untuk video yang benar-benar terlindungi kelak pakai Bunny Stream.
 
 ## Protokol pembaruan
 - Awal sesi: baca seluruh file ini, periksa berkas aktual dan perubahan lokal, lalu catat pelaksana serta fokus aktif.

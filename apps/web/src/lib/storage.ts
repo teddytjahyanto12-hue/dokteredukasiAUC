@@ -9,35 +9,63 @@ import { db } from "./db";
 // Saat deploy, ganti implementasi ini ke object storage (Supabase Storage / R2 / S3).
 
 const ROOT = path.join(process.cwd(), "storage");
-const ALLOWED = new Set([
-  "application/pdf",
-  "image/png",
-  "image/jpeg",
-  "image/webp",
-]);
+
+const PPTX = "application/vnd.openxmlformats-officedocument.presentationml.presentation";
+const PPT = "application/vnd.ms-powerpoint";
+const BY_EXT: Record<string, string> = {
+  ".pdf": "application/pdf",
+  ".png": "image/png",
+  ".jpg": "image/jpeg",
+  ".jpeg": "image/jpeg",
+  ".webp": "image/webp",
+  ".pptx": PPTX,
+  ".ppt": PPT,
+};
+const DOCUMENT_TYPES = new Set(["application/pdf", "image/png", "image/jpeg", "image/webp"]);
 
 export class UploadError extends Error {}
 
-export async function saveUpload(file: File | null, uploadedById: string) {
-  if (!file || file.size === 0) return null;
-  const maxMb = Number(process.env.MAX_UPLOAD_MB || 50);
-  if (file.size > maxMb * 1024 * 1024) throw new UploadError(`Ukuran berkas melebihi ${maxMb} MB.`);
-  if (!ALLOWED.has(file.type)) throw new UploadError("Format berkas harus PDF atau gambar (PNG/JPG/WEBP).");
+// Browser kadang mengirim PPTX sebagai type kosong atau application/octet-stream;
+// dalam kasus itu tentukan dari ekstensi.
+export function detectMime(file: File) {
+  const byExt = BY_EXT[path.extname(file.name).toLowerCase()] ?? "";
+  if (!file.type || file.type === "application/octet-stream") return byExt;
+  return file.type;
+}
 
-  const safeName = file.name.replace(/[^a-zA-Z0-9._-]+/g, "_").slice(-80);
+export function isPresentation(file: File) {
+  const mime = detectMime(file);
+  return mime === PPTX || mime === PPT;
+}
+
+function checkSize(size: number) {
+  const maxMb = Number(process.env.MAX_UPLOAD_MB || 50);
+  if (size > maxMb * 1024 * 1024) throw new UploadError(`Ukuran berkas melebihi ${maxMb} MB.`);
+}
+
+export async function saveBuffer(data: Buffer, originalName: string, mimeType: string, uploadedById: string) {
+  checkSize(data.length);
+  const safeName = originalName.replace(/[^a-zA-Z0-9._-]+/g, "_").slice(-80);
   const rel = path.join("uploads", `${randomUUID()}-${safeName}`);
   await mkdir(path.join(ROOT, "uploads"), { recursive: true });
-  await writeFile(path.join(ROOT, rel), Buffer.from(await file.arrayBuffer()));
-
+  await writeFile(path.join(ROOT, rel), data);
   return db.fileAsset.create({
-    data: {
-      storagePath: rel.replaceAll("\\", "/"),
-      originalName: file.name,
-      mimeType: file.type,
-      size: file.size,
-      uploadedById,
-    },
+    data: { storagePath: rel.replaceAll("\\", "/"), originalName, mimeType, size: data.length, uploadedById },
   });
+}
+
+// Unggahan dokumen umum: PDF atau gambar (bukti Zoom, bukti transfer, materi PDF).
+export async function saveUpload(file: File | null, uploadedById: string, opts: { allowPresentation?: boolean } = {}) {
+  if (!file || file.size === 0) return null;
+  checkSize(file.size);
+  const mime = detectMime(file);
+  const ok = DOCUMENT_TYPES.has(mime) || (opts.allowPresentation && (mime === PPTX || mime === PPT));
+  if (!ok) {
+    throw new UploadError(
+      opts.allowPresentation ? "Format berkas harus PDF, PPTX/PPT, atau gambar (PNG/JPG/WEBP)." : "Format berkas harus PDF atau gambar (PNG/JPG/WEBP).",
+    );
+  }
+  return saveBuffer(Buffer.from(await file.arrayBuffer()), file.name, mime, uploadedById);
 }
 
 export async function readStoredFile(storagePath: string) {

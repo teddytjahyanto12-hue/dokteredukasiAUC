@@ -32,22 +32,3 @@ export function toWibInput(value: Date) {
   const wib = new Date(value.getTime() + 7 * 60 * 60 * 1000);
   return wib.toISOString().slice(0, 16);
 }
-
-// Tautan video YouTube/Vimeo diubah ke URL embed; tautan lain dipakai apa adanya.
-export function videoEmbedUrl(url: string) {
-  try {
-    const u = new URL(url);
-    if (u.hostname.includes("youtube.com")) {
-      const id = u.searchParams.get("v");
-      if (id) return `https://www.youtube.com/embed/${id}`;
-    }
-    if (u.hostname === "youtu.be") return `https://www.youtube.com/embed${u.pathname}`;
-    if (u.hostname.includes("vimeo.com") && !u.hostname.startsWith("player.")) {
-      return `https://player.vimeo.com/video${u.pathname}`;
-    }
-    if (u.hostname.includes("drive.google.com")) return url.replace(/\/view.*$/, "/preview");
-    return url;
-  } catch {
-    return url;
-  }
-}

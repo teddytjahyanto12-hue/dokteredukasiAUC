@@ -29,6 +29,7 @@ Masuk sebagai admin memakai `SEED_ADMIN_EMAIL` / `SEED_ADMIN_PASSWORD` dari `.en
 ## Yang bisa diubah tanpa coding (panel admin)
 
 - **Konten materi** (`/admin/konten`): jalur → kategori → topik → materi (slide PDF, PDF, video, tautan, teks) + quiz per topik.
+- **Video & slide per topik** (`/admin/konten/topik/[id]`): tombol + Video / + Slide PPTX/PDF / + PDF / + Tautan / + Teks. Video memakai link YouTube (disarankan: Unlisted), Google Drive, Vimeo, atau Bunny Stream dan diputar di dalam halaman (`src/lib/embed.ts`). Slide bisa berupa PDF, link Google Slides/Drive/OneDrive, atau file PPTX yang otomatis dikonversi ke PDF bila LibreOffice terpasang (`src/lib/convert.ts`, atur lokasi lewat `SOFFICE_PATH`). Setiap materi punya pratinjau di panel admin.
 - **Paket** (`/admin/paket`): nama, harga, masa akses, isi kategori, bimbingan. Harga kosong tampil “Harga segera diumumkan”.
 - **Pengaturan situs** (`/admin/pengaturan`): nama situs, teks beranda, WhatsApp admin, Google Form tutor, instruksi pembayaran, footer.
 - **Warna tema**: variabel `--brand` di `src/app/globals.css`.

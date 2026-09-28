@@ -117,8 +117,10 @@ model Item {
   description String?
   url         String?  // tautan sumber / video / Google Drive
   body        String?  // teks materi
-  fileId      String?
-  file        FileAsset? @relation(fields: [fileId], references: [id], onDelete: SetNull)
+  fileId      String?  // berkas yang ditampilkan (PDF / gambar)
+  file        FileAsset? @relation("ItemFile", fields: [fileId], references: [id], onDelete: SetNull)
+  originalFileId String? // PPTX asli bila slide diunggah sebagai PowerPoint (dikonversi ke PDF)
+  originalFile   FileAsset? @relation("ItemOriginalFile", fields: [originalFileId], references: [id], onDelete: SetNull)
   sourceNote  String?  // sumber & izin penggunaan
   isFree      Boolean  @default(false)
   order       Int      @default(0)
@@ -147,7 +149,8 @@ model FileAsset {
   uploadedById String?
   uploadedBy   User?    @relation(fields: [uploadedById], references: [id], onDelete: SetNull)
   createdAt    DateTime @default(now())
-  items        Item[]
+  items        Item[] @relation("ItemFile")
+  originalOf   Item[] @relation("ItemOriginalFile")
   sessionProofs MentoringSession[]
   payrollProofs Payroll[]
 }

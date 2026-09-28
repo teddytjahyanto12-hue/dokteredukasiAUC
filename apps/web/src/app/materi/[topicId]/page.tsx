@@ -4,7 +4,7 @@ import { db } from "@/lib/db";
 import { requireUser } from "@/lib/auth";
 import { accessibleCategoryIds, canOpen } from "@/lib/access";
 import { ITEM_TYPE_LABEL, type ItemType } from "@/lib/constants";
-import { videoEmbedUrl } from "@/lib/format";
+import { MaterialViewer } from "@/components/material-viewer";
 import { toggleItemDoneAction } from "@/app/actions/student";
 import { Empty } from "@/components/ui";
 import type { SearchParams } from "@/lib/flash";
@@ -120,7 +120,7 @@ export default async function TopicPage({ params, searchParams }: { params: Prom
                 </form>
               </div>
               {selected.description && <p className="mb-4 text-sm text-slate-600">{selected.description}</p>}
-              <ItemViewer item={selected} />
+              <MaterialViewer item={selected} />
               {selected.sourceNote && <p className="mt-3 text-xs text-slate-500">Sumber: {selected.sourceNote}</p>}
             </article>
           )}
@@ -149,42 +149,4 @@ export default async function TopicPage({ params, searchParams }: { params: Prom
       </div>
     </div>
   );
-}
-
-function ItemViewer({ item }: { item: { type: string; url: string | null; body: string | null; fileId: string | null; file: { mimeType: string } | null; title: string } }) {
-  if (item.fileId && item.file) {
-    const src = `/api/berkas/${item.fileId}`;
-    if (item.file.mimeType.startsWith("image/")) {
-      // eslint-disable-next-line @next/next/no-img-element
-      return <img src={src} alt={item.title} className="w-full rounded-lg border border-slate-200" />;
-    }
-    return (
-      <div>
-        <iframe src={`${src}#view=FitH`} title={item.title} className="h-[75vh] w-full rounded-lg border border-slate-200 bg-slate-100" />
-        <a href={src} target="_blank" rel="noopener noreferrer" className="mt-2 inline-block text-sm text-slate-500 hover:text-brand">
-          Buka di tab baru ↗
-        </a>
-      </div>
-    );
-  }
-  if (item.url && (item.type === "VIDEO" || item.type === "SLIDES" || item.type === "PDF")) {
-    return (
-      <div>
-        <div className={item.type === "VIDEO" ? "aspect-video" : "h-[75vh]"}>
-          <iframe
-            src={videoEmbedUrl(item.url)}
-            title={item.title}
-            className="h-full w-full rounded-lg border border-slate-200 bg-slate-100"
-            allow="accelerometer; autoplay; encrypted-media; picture-in-picture; fullscreen"
-            allowFullScreen
-          />
-        </div>
-        <a href={item.url} target="_blank" rel="noopener noreferrer" className="mt-2 inline-block text-sm text-slate-500 hover:text-brand">
-          Buka sumber asli ↗
-        </a>
-      </div>
-    );
-  }
-  if (item.body) return <div className="whitespace-pre-line leading-relaxed text-slate-700">{item.body}</div>;
-  return <Empty>Konten item ini belum diisi.</Empty>;
 }

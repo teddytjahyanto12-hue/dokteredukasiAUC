@@ -1,7 +1,9 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { db } from "@/lib/db";
-import { ITEM_TYPE_LABEL, ITEM_TYPES, type ItemType } from "@/lib/constants";
+import { ITEM_TYPE_LABEL, type ItemType } from "@/lib/constants";
+import { findSoffice } from "@/lib/convert";
+import { MaterialViewer } from "@/components/material-viewer";
 import {
   deleteItemAction,
   deleteQuestionAction,
@@ -27,7 +29,9 @@ type ItemRow = {
   isFree: boolean;
   published: boolean;
   order: number;
-  file: { id: string; originalName: string } | null;
+  fileId: string | null;
+  file: { id: string; originalName: string; mimeType: string } | null;
+  originalFile: { id: string; originalName: string } | null;
 };
 
 export default async function AdminTopic({ params, searchParams }: { params: Promise<{ id: string }>; searchParams: SearchParams }) {
@@ -37,12 +41,18 @@ export default async function AdminTopic({ params, searchParams }: { params: Pro
     where: { id },
     include: {
       category: { include: { track: true } },
-      items: { orderBy: { order: "asc" }, include: { file: { select: { id: true, originalName: true } } } },
+      items: {
+        orderBy: { order: "asc" },
+        include: {
+          file: { select: { id: true, originalName: true, mimeType: true } },
+          originalFile: { select: { id: true, originalName: true } },
+        },
+      },
       quiz: { include: { questions: { orderBy: { order: "asc" }, include: { options: { orderBy: { order: "asc" } } } } } },
     },
   });
   if (!topic) notFound();
-  const defaultType = topic.category.displayType === "LINKS" ? "LINK" : topic.category.displayType === "SLIDES" ? "SLIDES" : "PDF";
+  const soffice = !!findSoffice();
 
   return (
     <>
@@ -75,26 +85,40 @@ export default async function AdminTopic({ params, searchParams }: { params: Pro
                     {item.isFree && <span className="badge-brand">Gratis</span>}
                     {!item.published && <span className="badge">Disembunyikan</span>}
                   </summary>
-                  <div className="border-t border-slate-100 p-4">
-                    <ItemForm topicId={topic.id} item={item} />
-                    <form action={deleteItemAction} className="mt-3">
-                      <input type="hidden" name="id" value={item.id} />
-                      <ConfirmButton message="Hapus materi ini?" className="btn-danger btn-sm">
-                        Hapus materi
-                      </ConfirmButton>
-                    </form>
+                  <div className="grid gap-6 border-t border-slate-100 p-4 xl:grid-cols-2">
+                    <div>
+                      <p className="label">Pratinjau (tampilan murid)</p>
+                      <MaterialViewer item={item} showOriginalDownload />
+                    </div>
+                    <div>
+                      <ItemForm topicId={topic.id} type={item.type as ItemType} item={item} soffice={soffice} />
+                      <form action={deleteItemAction} className="mt-3">
+                        <input type="hidden" name="id" value={item.id} />
+                        <ConfirmButton message="Hapus materi ini?" className="btn-danger btn-sm">
+                          Hapus materi
+                        </ConfirmButton>
+                      </form>
+                    </div>
                   </div>
                 </details>
               </li>
             ))}
           </ul>
         )}
-        <details className="mt-4 rounded-lg border border-dashed border-brand/50 p-4" open={topic.items.length === 0}>
-          <summary className="cursor-pointer font-semibold text-brand">+ Tambah materi</summary>
-          <div className="mt-3">
-            <ItemForm topicId={topic.id} defaultType={defaultType} nextOrder={topic.items.length} />
-          </div>
-        </details>
+
+        <p className="label mt-6">Tambah materi ke topik ini</p>
+        <div className="space-y-2">
+          {ADD_TYPES.map((t) => (
+            <details key={t.type} className="rounded-lg border border-dashed border-brand/50">
+              <summary className="cursor-pointer px-4 py-2 font-semibold text-brand">
+                + {t.label} <span className="text-xs font-normal text-slate-500">— {t.hint}</span>
+              </summary>
+              <div className="border-t border-dashed border-brand/30 p-4">
+                <ItemForm topicId={topic.id} type={t.type} nextOrder={topic.items.length} soffice={soffice} />
+              </div>
+            </details>
+          ))}
+        </div>
       </section>
 
       <section className="card mb-6">
@@ -191,48 +215,106 @@ export default async function AdminTopic({ params, searchParams }: { params: Pro
   );
 }
 
-function ItemForm({ topicId, item, defaultType = "PDF", nextOrder = 0 }: { topicId: string; item?: ItemRow; defaultType?: string; nextOrder?: number }) {
+const ADD_TYPES: { type: ItemType; label: string; hint: string }[] = [
+  { type: "VIDEO", label: "Video", hint: "tempel link YouTube (disarankan) atau Google Drive" },
+  { type: "SLIDES", label: "Slide PPTX / PDF", hint: "unggah file PowerPoint atau PDF, atau link Google Slides" },
+  { type: "PDF", label: "PDF / e-book", hint: "unggah PDF atau link Google Drive" },
+  { type: "LINK", label: "Tautan sumber", hint: "daftar pustaka / guideline" },
+  { type: "TEXT", label: "Teks", hint: "ringkasan atau catatan" },
+];
+
+function ItemForm({
+  topicId,
+  type,
+  item,
+  nextOrder = 0,
+  soffice,
+}: {
+  topicId: string;
+  type: ItemType;
+  item?: ItemRow;
+  nextOrder?: number;
+  soffice: boolean;
+}) {
+  const needsFile = type === "SLIDES" || type === "PDF";
   return (
     <form action={saveItemAction} className="grid gap-3 sm:grid-cols-2">
       <input type="hidden" name="topicId" value={topicId} />
+      <input type="hidden" name="type" value={type} />
       {item && <input type="hidden" name="id" value={item.id} />}
-      <Field label="Judul materi">
-        <input className="input" name="title" defaultValue={item?.title} required />
-      </Field>
-      <Field label="Tipe">
-        <select className="input" name="type" defaultValue={item?.type ?? defaultType}>
-          {ITEM_TYPES.map((t) => (
-            <option key={t} value={t}>
-              {ITEM_TYPE_LABEL[t]}
-            </option>
-          ))}
-        </select>
-      </Field>
-      <Field label="Unggah berkas (PDF/gambar)" hint="Slide: ekspor PPTX ke PDF dulu (File → Save As → PDF).">
-        <input className="input" type="file" name="file" accept="application/pdf,image/*" />
-      </Field>
-      <Field label="Tautan (video / Google Drive / sumber)" hint="Wajib untuk tipe Video & Tautan. Untuk PDF: cadangan bila tidak mengunggah.">
-        <input className="input" name="url" defaultValue={item?.url ?? ""} placeholder="https://" />
-      </Field>
-      {item?.file && (
-        <div className="text-sm sm:col-span-2">
-          Berkas saat ini:{" "}
-          <a href={`/api/berkas/${item.file.id}`} target="_blank" rel="noopener noreferrer" className="link">
-            {item.file.originalName}
-          </a>
-          <label className="ml-4 inline-flex items-center gap-2">
-            <input type="checkbox" name="removeFile" /> Hapus berkas
-          </label>
+      <div className="sm:col-span-2">
+        <Field label="Judul">
+          <input className="input" name="title" defaultValue={item?.title} required />
+        </Field>
+      </div>
+
+      {type === "VIDEO" && (
+        <div className="sm:col-span-2">
+          <Field
+            label="Link video"
+            hint="YouTube: unggah sebagai Unlisted lalu salin link Share. Google Drive: bagikan 'Siapa saja yang memiliki link', lalu salin link. Video diputar langsung di halaman materi."
+          >
+            <input className="input" name="url" defaultValue={item?.url ?? ""} placeholder="https://youtu.be/... atau https://drive.google.com/file/d/..." required />
+          </Field>
         </div>
       )}
+
+      {needsFile && (
+        <>
+          <Field
+            label={type === "SLIDES" ? "Unggah PPTX atau PDF" : "Unggah PDF"}
+            hint={
+              type === "SLIDES"
+                ? soffice
+                  ? "PPTX otomatis diubah menjadi tampilan slide."
+                  : "PPTX butuh LibreOffice di server (belum terpasang). Sementara unggah PDF, atau pakai link Google Slides/Drive."
+                : "PDF ditampilkan langsung di halaman materi."
+            }
+          >
+            <input
+              className="input"
+              type="file"
+              name="file"
+              accept={
+                type === "SLIDES"
+                  ? ".pptx,.ppt,.pdf,application/pdf,application/vnd.openxmlformats-officedocument.presentationml.presentation,application/vnd.ms-powerpoint"
+                  : ".pdf,application/pdf,image/*"
+              }
+            />
+          </Field>
+          <Field label="...atau link Google Slides / Google Drive / OneDrive" hint="Dipakai bila tidak mengunggah file.">
+            <input className="input" name="url" defaultValue={item?.url ?? ""} placeholder="https://docs.google.com/presentation/d/..." />
+          </Field>
+          {item?.file && (
+            <div className="text-sm sm:col-span-2">
+              Berkas saat ini:{" "}
+              <a href={`/api/berkas/${item.file.id}`} target="_blank" rel="noopener noreferrer" className="link">
+                {item.originalFile?.originalName ?? item.file.originalName}
+              </a>
+              <label className="ml-4 inline-flex items-center gap-2">
+                <input type="checkbox" name="removeFile" /> Hapus berkas
+              </label>
+            </div>
+          )}
+        </>
+      )}
+
+      {type === "LINK" && (
+        <div className="sm:col-span-2">
+          <Field label="URL sumber">
+            <input className="input" name="url" defaultValue={item?.url ?? ""} placeholder="https://" required />
+          </Field>
+        </div>
+      )}
+
       <div className="sm:col-span-2">
-        <Field label="Deskripsi singkat">
+        <Field label="Deskripsi singkat (opsional)">
           <input className="input" name="description" defaultValue={item?.description ?? ""} />
         </Field>
       </div>
       <div className="sm:col-span-2">
-        <Field label="Teks materi (untuk tipe Teks)">
-          <textarea className="input" name="body" rows={4} defaultValue={item?.body ?? ""} />
+        <Field label={type === "TEXT" ? "Isi teks" : "Catatan di bawah materi (opsional)"}>
+          <textarea className="input" name="body" rows={type === "TEXT" ? 6 : 2} defaultValue={item?.body ?? ""} required={type === "TEXT"} />
         </Field>
       </div>
       <Field label="Sumber & izin penggunaan" hint="Mis. milik sendiri / izin penerbit / tautan resmi.">
@@ -242,7 +324,7 @@ function ItemForm({ topicId, item, defaultType = "PDF", nextOrder = 0 }: { topic
         <input className="input" name="order" inputMode="numeric" defaultValue={item?.order ?? nextOrder} />
       </Field>
       <label className="flex items-center gap-2 text-sm">
-        <input type="checkbox" name="isFree" defaultChecked={item?.isFree ?? false} /> Gratis (bisa dibuka tanpa paket, tetap wajib login)
+        <input type="checkbox" name="isFree" defaultChecked={item?.isFree ?? false} /> Gratis (tanpa paket, tetap wajib login)
       </label>
       <label className="flex items-center gap-2 text-sm">
         <input type="checkbox" name="published" defaultChecked={item?.published ?? true} /> Tampilkan

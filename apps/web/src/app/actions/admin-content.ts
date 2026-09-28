@@ -4,7 +4,9 @@ import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { db } from "@/lib/db";
 import { requireUser } from "@/lib/auth";
-import { deleteStoredFile, saveUpload, UploadError } from "@/lib/storage";
+import { deleteStoredFile, isPresentation, readStoredFile, saveBuffer, saveUpload, UploadError } from "@/lib/storage";
+import { convertToPdf } from "@/lib/convert";
+import { isSlideEmbeddable, isVideoEmbeddable } from "@/lib/embed";
 import { back, bool, optInt, optStr, str } from "@/lib/flash";
 import { DISPLAY_TYPES, ITEM_TYPES } from "@/lib/constants";
 import { slugify } from "@/lib/format";
@@ -16,7 +18,7 @@ function refresh() {
 }
 
 async function removeFileIfUnused(file: { id: string; storagePath: string }) {
-  if (await db.item.count({ where: { fileId: file.id } })) return;
+  if (await db.item.count({ where: { OR: [{ fileId: file.id }, { originalFileId: file.id }] } })) return;
   await db.fileAsset.delete({ where: { id: file.id } });
   await deleteStoredFile(file.storagePath);
 }
@@ -105,10 +107,13 @@ export async function saveTopicAction(form: FormData) {
 export async function deleteTopicAction(form: FormData) {
   await admin();
   const id = str(form, "id");
-  const topic = await db.topic.findUnique({ where: { id }, include: { items: { include: { file: true } } } });
+  const topic = await db.topic.findUnique({ where: { id }, include: { items: { include: { file: true, originalFile: true } } } });
   if (!topic) back("/admin/konten", "Topik tidak ditemukan.", "error");
   await db.topic.delete({ where: { id } });
-  for (const item of topic.items) if (item.file) await removeFileIfUnused(item.file);
+  for (const item of topic.items) {
+    if (item.file) await removeFileIfUnused(item.file);
+    if (item.originalFile) await removeFileIfUnused(item.originalFile);
+  }
   refresh();
   back(`/admin/konten/kategori/${topic.categoryId}`, "Topik dan seluruh materinya dihapus.");
 }
@@ -127,20 +132,57 @@ export async function saveItemAction(form: FormData) {
   const url = optStr(form, "url");
   if (url && !/^https?:\/\//.test(url)) back(path, "Tautan harus diawali http(s)://", "error");
 
-  const existing = id ? await db.item.findUnique({ where: { id }, include: { file: true } }) : null;
+  const existing = id ? await db.item.findUnique({ where: { id }, include: { file: true, originalFile: true } }) : null;
   const incoming = form.get("file");
-  const hasUpload = incoming instanceof File && incoming.size > 0;
+  const upload = incoming instanceof File && incoming.size > 0 ? incoming : null;
   const keepsOldFile = !!existing?.fileId && !bool(form, "removeFile");
 
   if (type === "LINK" && !url) back(path, "Materi bertipe tautan wajib diisi URL-nya.", "error");
-  if ((type === "SLIDES" || type === "PDF") && !hasUpload && !keepsOldFile && !url) back(path, "Unggah PDF atau isi tautan (mis. Google Drive).", "error");
-  if (type === "VIDEO" && !url) back(path, "Isi tautan video (YouTube/Vimeo/Bunny/Drive).", "error");
+  if (type === "VIDEO") {
+    if (!url) back(path, "Isi tautan video (YouTube, Google Drive, Vimeo, atau Bunny Stream).", "error");
+    if (!isVideoEmbeddable(url)) {
+      back(path, "Tautan video tidak dikenali. Pakai tautan YouTube, Google Drive (file/d/…), Vimeo, Bunny Stream, atau file .mp4.", "error");
+    }
+  }
+  if ((type === "SLIDES" || type === "PDF") && !upload && !keepsOldFile && !url) {
+    back(path, "Unggah PPTX/PDF atau isi tautan Google Slides / Google Drive.", "error");
+  }
+  if ((type === "SLIDES" || type === "PDF") && url && !upload && !keepsOldFile && !isSlideEmbeddable(url)) {
+    back(path, "Tautan belum bisa ditampilkan di website. Pakai tautan Google Slides, Google Drive (file/d/…), OneDrive, atau file .pdf.", "error");
+  }
   if (type === "TEXT" && !optStr(form, "body")) back(path, "Isi teks materi.", "error");
+  if (upload && isPresentation(upload) && type !== "SLIDES" && type !== "PDF") {
+    back(path, "File PowerPoint hanya untuk tipe Slide atau PDF.", "error");
+  }
 
   let fileId = keepsOldFile ? existing!.fileId : null;
+  let originalFileId = keepsOldFile ? existing!.originalFileId : null;
   try {
-    const upload = hasUpload ? await saveUpload(incoming, me.id) : null;
-    if (upload) fileId = upload.id;
+    if (upload && isPresentation(upload)) {
+      // PPTX disimpan apa adanya, lalu dikonversi ke PDF agar tampil di browser.
+      const original = await saveUpload(upload, me.id, { allowPresentation: true });
+      let pdf: Buffer;
+      try {
+        pdf = await convertToPdf(await readStoredFile(original!.storagePath), upload.name);
+      } catch (e) {
+        await removeFileIfUnused(original!);
+        const missing = e instanceof Error && e.message === "LIBREOFFICE_MISSING";
+        back(
+          path,
+          missing
+            ? "Server belum bisa mengubah PPTX ke tampilan slide (LibreOffice belum terpasang). Sementara unggah PDF (PowerPoint → Save As → PDF) atau tempel tautan Google Slides/Drive."
+            : "Gagal mengonversi PPTX. Coba simpan ulang file di PowerPoint atau unggah versi PDF.",
+          "error",
+        );
+      }
+      const converted = await saveBuffer(pdf, upload.name.replace(/\.pptx?$/i, "") + ".pdf", "application/pdf", me.id);
+      fileId = converted.id;
+      originalFileId = original!.id;
+    } else if (upload) {
+      const saved = await saveUpload(upload, me.id);
+      fileId = saved!.id;
+      originalFileId = null;
+    }
   } catch (e) {
     if (e instanceof UploadError) back(path, e.message, "error");
     throw e;
@@ -152,6 +194,7 @@ export async function saveItemAction(form: FormData) {
     title,
     url,
     fileId,
+    originalFileId,
     description: optStr(form, "description"),
     body: optStr(form, "body"),
     sourceNote: optStr(form, "sourceNote"),
@@ -162,6 +205,7 @@ export async function saveItemAction(form: FormData) {
   if (existing) await db.item.update({ where: { id: existing.id }, data });
   else await db.item.create({ data });
   if (existing?.file && existing.file.id !== fileId) await removeFileIfUnused(existing.file);
+  if (existing?.originalFile && existing.originalFile.id !== originalFileId) await removeFileIfUnused(existing.originalFile);
   refresh();
   back(path, existing ? "Materi diperbarui." : "Materi ditambahkan.");
 }
@@ -169,10 +213,11 @@ export async function saveItemAction(form: FormData) {
 export async function deleteItemAction(form: FormData) {
   await admin();
   const id = str(form, "id");
-  const item = await db.item.findUnique({ where: { id }, include: { file: true } });
+  const item = await db.item.findUnique({ where: { id }, include: { file: true, originalFile: true } });
   if (!item) back("/admin/konten", "Materi tidak ditemukan.", "error");
   await db.item.delete({ where: { id } });
   if (item.file) await removeFileIfUnused(item.file);
+  if (item.originalFile) await removeFileIfUnused(item.originalFile);
   refresh();
   back(`/admin/konten/topik/${item.topicId}`, "Materi dihapus.");
 }
