@@ -76,6 +76,7 @@ File ini adalah sumber kebenaran tunggal untuk status, keputusan, dan serah teri
 | 2026-09-23 | Codex | Membuat struktur, memori, panduan kerja, dan pesan Claude | Terima URL lalu mulai audit |
 
 | 2026-09-23 | Codex | Memperbarui prompt AUC-SHARED-001 dan menyiapkan kolom konfirmasi Claude | Pengguna menyampaikan prompt; Codex memeriksa catatan setelah Claude selesai |
+| 2026-09-29 | Claude Code (PC 1) | Menganalisis Blueprint v3 → docs/ANALISIS_BLUEPRINT_V3.md | Pengguna menjawab keputusan; mulai Fase A (fondasi kontrol) |
 | 2026-09-28 | Claude Code (PC 1) | Fitur video (YouTube/Drive embed) & slide PPTX/PDF per materi, pratinjau admin | Pengguna putuskan pemasangan LibreOffice; uji dengan link Drive asli |
 | 2026-09-28 | Claude Code (PC 1) | Push dokumen ke GitHub; membangun apps/web (frontend + backend + panel admin) dan menguji alur lengkap secara lokal | Pengguna isi harga/konten; pilih hosting; Duitku sandbox |
 | 2026-09-28 | Claude Code (PC 1) | Menyimpan diagram framework, menulis docs/RENCANA_EKSEKUSI_DOKTER_EDUKASI.md, memperbarui memori | Pengguna memutuskan Langkah 0 |
@@ -113,6 +114,10 @@ File ini adalah sumber kebenaran tunggal untuk status, keputusan, dan serah teri
 
 ## Menjalankan website lokal — 29 September 2026
 - Server yang dijalankan dari sesi agen ikut mati saat sesi berakhir. Pengguna kini menjalankan website sendiri dengan klik dua kali "Jalankan Website.bat" di akar proyek (jendela harus tetap terbuka); diverifikasi: beranda dan /masuk merespons 200.
+
+## Blueprint v3 (Controlled) — 29 September 2026
+- Pengguna memberikan Dokter_Edukasi_Web_Blueprint_v3_Controlled.xlsx (disalin ke design/blueprint/): aplikasi internal Owner/Admin–Tutor — penjualan, proyek, task/sesi, validasi admin, fee tutor Projected/Payable/Paid/No Fee, kelayakan tutor × layanan, pemetaan fee, audit log, dashboard HPP/laba.
+- Analisis & pemetaan ke kode: docs/ANALISIS_BLUEPRINT_V3.md (ADA/SEBAGIAN/BELUM, celah kontrol, usulan fase A–D). Belum ada implementasi; menunggu pengguna menjawab 6 keputusan di bagian 5 dokumen tersebut.
 
 ## Protokol pembaruan
 - Awal sesi: baca seluruh file ini, periksa berkas aktual dan perubahan lokal, lalu catat pelaksana serta fokus aktif.
