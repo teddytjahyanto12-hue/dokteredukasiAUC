@@ -111,6 +111,9 @@ File ini adalah sumber kebenaran tunggal untuk status, keputusan, dan serah teri
 - Belum diverifikasi: video/slide Google Drive dengan file sungguhan, konversi PPTX sungguhan (LibreOffice belum terpasang di PC 1 — menunggu keputusan pengguna untuk memasang).
 - Rekomendasi: video YouTube Unlisted (paling ringan & lancar); Drive bisa tetapi lebih lambat, ada batas kuota tayang, dan tombol pop-out ke Drive; untuk video yang benar-benar terlindungi kelak pakai Bunny Stream.
 
+## Menjalankan website lokal — 29 September 2026
+- Server yang dijalankan dari sesi agen ikut mati saat sesi berakhir. Pengguna kini menjalankan website sendiri dengan klik dua kali "Jalankan Website.bat" di akar proyek (jendela harus tetap terbuka); diverifikasi: beranda dan /masuk merespons 200.
+
 ## Protokol pembaruan
 - Awal sesi: baca seluruh file ini, periksa berkas aktual dan perubahan lokal, lalu catat pelaksana serta fokus aktif.
 - Akhir tahap / sesi: perbarui status, keputusan, berkas berubah, hasil verifikasi, hambatan, dan langkah berikutnya secara konkret.
