@@ -18,7 +18,7 @@ Memori bersama berupa file proyek; riwayat chat kedua produk tidak tersinkron ot
 - research/: inventaris platform, bukti audit, dan referensi.
 - docs/: kebutuhan, arsitektur, model data, dan kebijakan proyek.
 - design/: alur pengguna dan rancangan antarmuka.
-- apps/web/: website + backend (Next.js). Cara menjalankan: apps/web/README.md.
+- apps/web/: website + backend (Next.js). Cara menjalankan: klik dua kali "Jalankan Website.bat" di folder ini, atau lihat apps/web/README.md.
 - backend/: kode backend jika arsitektur memerlukan direktori terpisah.
 - assets/: aset milik proyek atau yang telah diizinkan.
 - tests/: pengujian yang relevan.
