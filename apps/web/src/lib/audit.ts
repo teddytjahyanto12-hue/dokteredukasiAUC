@@ -31,6 +31,7 @@ export const AUDIT_ACTION_LABEL: Record<string, string> = {
   ORDER_PAID: "Order ditandai lunas",
   ORDER_CANCELLED: "Order dibatalkan",
   SALE_CREATED: "Penjualan diinput admin",
+  RECEIPT_SENT: "Kwitansi dikirim ulang",
   INSTALLMENT_PAID: "Cicilan dikonfirmasi lunas",
   TASK_MARKED_DONE: "Tutor menandai task selesai",
   TASK_VALIDATED: "Task divalidasi",

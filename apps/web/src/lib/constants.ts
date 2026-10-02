@@ -102,6 +102,23 @@ export const SETTING_DEFAULTS = {
   paymentInstructions:
     "Pembayaran online sedang disiapkan. Setelah memesan, admin akan menghubungi Anda melalui WhatsApp untuk konfirmasi pembayaran dan aktivasi akses.",
   footerNote: "© Dokter Edukasi Learning",
+  sendReceiptEmail: "ya",
+  waConfirmTemplate: [
+    "Halo Admin {situs}, saya ingin konfirmasi pembayaran.",
+    "",
+    "Nama: {nama}",
+    "Email: {email}",
+    "WhatsApp: {whatsapp}",
+    "Kode order: {kode_order}",
+    "Layanan: {layanan}",
+    "Masa belajar: {masa_belajar}",
+    "Add-on: {addon}",
+    "Cara bayar: {cara_bayar}",
+    "Total: {total}",
+    "Pembayaran ini: {tagihan}",
+    "",
+    "Bukti transfer saya lampirkan. Terima kasih.",
+  ].join("\n") as string,
 } as const;
 export type SettingKey = keyof typeof SETTING_DEFAULTS;
 export const SETTING_LABEL: Record<SettingKey, string> = {
@@ -109,8 +126,11 @@ export const SETTING_LABEL: Record<SettingKey, string> = {
   heroTitle: "Judul utama beranda",
   heroSubtitle: "Subjudul beranda",
   adminWhatsapp: "Nomor WhatsApp admin untuk tombol Chat Admin (mis. 0812xxxx atau 62812xxxx)",
-  adminEmail: "Email admin untuk notifikasi",
+  adminEmail: "Email tambahan penerima notifikasi pelanggan & order baru (pisahkan dengan koma; owner & admin sudah otomatis)",
   tutorFormUrl: "Tautan Google Form pendaftaran tutor",
   paymentInstructions: "Instruksi pembayaran (tampil setelah pesan paket)",
   footerNote: "Teks footer",
+  sendReceiptEmail: "Kirim kwitansi otomatis ke email pelanggan setiap pembayaran/cicilan lunas",
+  waConfirmTemplate:
+    "Template pesan WhatsApp konfirmasi pembayaran. Kode yang bisa dipakai: {situs} {nama} {email} {whatsapp} {kode_order} {layanan} {masa_belajar} {addon} {cara_bayar} {total} {tagihan}",
 };

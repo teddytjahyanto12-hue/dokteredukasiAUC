@@ -6,7 +6,7 @@ import { rupiah, tanggal } from "@/lib/format";
 import { ORDER_STATUS_LABEL } from "@/lib/constants";
 import { LEAD_SOURCE_LABEL } from "@/lib/installments";
 import { getSettings, whatsappLink } from "@/lib/settings";
-import { cancelOrderAction, markInstallmentPaidAction, markOrderPaidAction } from "@/app/actions/admin";
+import { cancelOrderAction, markInstallmentPaidAction, markOrderPaidAction, resendReceiptAction } from "@/app/actions/admin";
 import { ConfirmButton } from "@/components/confirm-button";
 import { Field, Flash, PageHeader } from "@/components/ui";
 import { readFlash, type SearchParams } from "@/lib/flash";
@@ -34,6 +34,7 @@ export default async function AdminOrderDetail({ params, searchParams }: { param
     },
   });
   if (!order) notFound();
+  const emails = await db.emailLog.findMany({ where: { orderId: order.id }, orderBy: { createdAt: "desc" }, take: 10 });
   const createdBy = order.createdById ? await db.user.findUnique({ where: { id: order.createdById }, select: { name: true } }) : null;
   const s = await getSettings();
   const next = order.installments.find((i) => i.status !== "PAID");
@@ -158,6 +159,35 @@ export default async function AdminOrderDetail({ params, searchParams }: { param
                 Tandai lunas & aktifkan akses
               </button>
             </form>
+          )}
+
+          {(order.status === "PAID" || order.status === "PARTIAL") && (
+            <section className="card space-y-3">
+              <h2 className="h2">Kwitansi</h2>
+              <div className="flex flex-wrap gap-2">
+                <Link href={`/pembelian/${order.id}/kwitansi`} className="btn-secondary btn-sm">
+                  Lihat / cetak kwitansi
+                </Link>
+                <form action={resendReceiptAction}>
+                  <input type="hidden" name="orderId" value={order.id} />
+                  <button className="btn btn-sm" type="submit">
+                    Kirim ulang kwitansi ke email
+                  </button>
+                </form>
+              </div>
+              {emails.length > 0 && (
+                <ul className="text-xs text-slate-600">
+                  {emails.map((e) => (
+                    <li key={e.id}>
+                      {tanggal(e.createdAt, true)} · {e.subject} ·{" "}
+                      <span className={e.status === "SENT" ? "text-emerald-700" : "text-amber-700"}>
+                        {e.status === "SENT" ? "terkirim" : e.status === "SKIPPED" ? "tidak dikirim (SMTP belum diatur)" : `gagal: ${e.error}`}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </section>
           )}
 
           {order.status === "PENDING" && (

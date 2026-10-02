@@ -7,7 +7,8 @@ import { db } from "@/lib/db";
 import { hashPassword, requirePermission, requireUser, type CurrentUser } from "@/lib/auth";
 import { createOrder, markInstallmentPaid, markOrderPaid } from "@/lib/orders";
 import { QuoteError } from "@/lib/services";
-import { notifyUser } from "@/lib/notify";
+import { notifyStaff, notifyUser } from "@/lib/notify";
+import { sendReceipt } from "@/lib/receipts";
 import { logAudit } from "@/lib/audit";
 import { saveUpload, UploadError } from "@/lib/storage";
 import { back, bool, optInt, optStr, str } from "@/lib/flash";
@@ -87,6 +88,17 @@ export async function createSaleAction(form: FormData) {
       data: { name: parsed.data.name, email: parsed.data.email, role: "STUDENT", phone: optStr(form, "phone"), passwordHash: await hashPassword(parsed.data.password) },
     });
     await logAudit(actor(me), "ACCOUNT_CREATED", "User", u.id, `Akun pelanggan dibuat saat input penjualan: ${u.name}`);
+    await notifyStaff(["admin.students", "admin.orders"], {
+      title: "Pelanggan baru",
+      body: `${u.name} ditambahkan oleh ${me.name} saat input penjualan.`,
+      rows: [
+        ["Nama", u.name],
+        ["Email", u.email],
+        ["WhatsApp", u.phone ?? "-"],
+      ],
+      link: `/admin/pengguna/${u.id}`,
+      kind: "NEW_CUSTOMER",
+    });
     userId = u.id;
   } else {
     const u = await db.user.findFirst({ where: { id: userId, role: "STUDENT" } });
@@ -114,6 +126,16 @@ export async function createSaleAction(form: FormData) {
     throw e;
   }
   redirect(`/admin/order/${orderId}?pesan=${encodeURIComponent("Penjualan dibuat. Konfirmasi pembayaran di bawah bila sudah dibayar.")}`);
+}
+
+export async function resendReceiptAction(form: FormData) {
+  const me = await requirePermission("admin.orders");
+  const id = str(form, "orderId");
+  const order = await db.order.findUnique({ where: { id }, include: { installments: { where: { status: "PAID" }, orderBy: { seq: "desc" }, take: 1 } } });
+  if (!order || (order.status !== "PAID" && order.status !== "PARTIAL")) back(`/admin/order/${id}`, "Kwitansi hanya untuk order yang sudah dibayar.", "error");
+  const ok = await sendReceipt(id, { seq: order.installments[0]?.seq, force: true });
+  await logAudit(actor(me), "RECEIPT_SENT", "Order", id, `Kwitansi ${order.code} dikirim ulang (${ok ? "terkirim" : "gagal/SMTP belum diatur"})`);
+  back(`/admin/order/${id}`, ok ? "Kwitansi dikirim ke email pelanggan." : "Kwitansi belum terkirim: periksa pengaturan SMTP di menu Email.", ok ? "ok" : "error");
 }
 
 export async function cancelOrderAction(form: FormData) {

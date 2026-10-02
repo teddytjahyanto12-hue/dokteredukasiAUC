@@ -5,6 +5,7 @@ import { requireUser } from "@/lib/auth";
 import { rupiah, tanggal } from "@/lib/format";
 import { ORDER_STATUS_LABEL } from "@/lib/constants";
 import { getSettings, whatsappLink } from "@/lib/settings";
+import { fillWaTemplate, loadOrderForReceipt } from "@/lib/receipts";
 import { PageHeader } from "@/components/ui";
 import type { SearchParams } from "@/lib/flash";
 
@@ -16,12 +17,9 @@ export default async function OrderDetail({ params, searchParams }: { params: Pr
   if (!order) notFound();
   const s = await getSettings();
   const next = order.installments.find((i) => i.status !== "PAID");
-  const wa = whatsappLink(
-    s.adminWhatsapp,
-    `Halo admin, saya ${user.name} ingin konfirmasi pembayaran pesanan ${order.code} (${order.package.name})${
-      next ? ` untuk ${next.label} sebesar ${rupiah(next.amount)}` : ""
-    }.`,
-  );
+  const full = await loadOrderForReceipt(order.id);
+  // Pesan konfirmasi dari template di Pengaturan situs: identitas pelanggan + layanan + tagihan.
+  const wa = full ? whatsappLink(s.adminWhatsapp, fillWaTemplate(s.waConfirmTemplate, s.siteName, full)) : null;
   const awaiting = order.status === "PENDING" || order.status === "PARTIAL";
 
   return (
@@ -69,12 +67,20 @@ export default async function OrderDetail({ params, searchParams }: { params: Pr
         <div className="card mt-6">
           <h2 className="h2">Langkah pembayaran{next ? ` — ${next.label} (${rupiah(next.amount)})` : ""}</h2>
           <p className="mt-2 whitespace-pre-line text-sm text-slate-600">{s.paymentInstructions}</p>
-          {wa && (
-            <a href={wa} target="_blank" rel="noopener noreferrer" className="btn mt-4">
-              Konfirmasi via WhatsApp
+          {wa ? (
+            <a href={wa} target="_blank" rel="noopener noreferrer" className="btn mt-4 bg-[#25D366] hover:bg-[#1ebe5b]">
+              Konfirmasi pembayaran ke admin via WhatsApp
             </a>
+          ) : (
+            <p className="mt-4 text-sm text-slate-500">Nomor WhatsApp admin belum diatur. Hubungi admin melalui kontak yang tersedia.</p>
           )}
+          <p className="mt-2 text-xs text-slate-500">Pesan berisi identitas Anda, kode order, layanan, dan nominal tagihan. Lampirkan bukti transfer di WhatsApp.</p>
         </div>
+      )}
+      {(order.status === "PAID" || order.status === "PARTIAL") && (
+        <Link href={`/pembelian/${order.id}/kwitansi`} className="btn-secondary mt-6 mr-2">
+          Lihat kwitansi
+        </Link>
       )}
       {(order.status === "PAID" || order.status === "PARTIAL") && (
         <Link href="/belajar" className="btn mt-6">

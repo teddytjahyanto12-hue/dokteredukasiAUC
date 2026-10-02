@@ -364,6 +364,7 @@ model Order {
   basePrice      Int?
   addons         OrderAddon[]
   discount       Int?      // potongan harga dari admin
+  hpp            Int?      // salinan HPP saat order dibuat (layanan/masa + add-on), untuk laporan laba
   paymentPlan    String    @default("FULL") // FULL | INSTALLMENT
   installments   OrderInstallment[]
   leadSource     String?   // INSTAGRAM | FACEBOOK | LINKEDIN | WHATSAPP | REFERRAL | TUTOR | ADS | REPEAT | OTHER
@@ -570,6 +571,20 @@ model AuditLog {
   after     String?  // JSON ringkas nilai baru
 
   @@index([entity, entityId])
+  @@index([createdAt])
+}
+
+// Riwayat email yang dikirim website (kwitansi, notifikasi). Status SKIPPED = SMTP belum diatur.
+model EmailLog {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  to        String
+  subject   String
+  kind      String   // RECEIPT | NEW_CUSTOMER | NEW_ORDER | NOTIFICATION
+  status    String   // SENT | FAILED | SKIPPED
+  error     String?
+  orderId   String?
+
   @@index([createdAt])
 }
 

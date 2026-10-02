@@ -1,8 +1,8 @@
 // Perhitungan harga layanan. Harga selalu dihitung ulang di server dari data
 // layanan, bukan dari angka yang dikirim browser.
 
-type Duration = { id: string; label: string; months: number; price: number | null; active: boolean };
-type Addon = { id: string; name: string; price: number | null; active: boolean };
+type Duration = { id: string; label: string; months: number; price: number | null; hpp?: number | null; active: boolean };
+type Addon = { id: string; name: string; price: number | null; hpp?: number | null; active: boolean };
 type Service = { price: number | null; durations: Duration[]; addons: Addon[] };
 
 export function activeDurations<T extends { active: boolean }>(list: T[]) {

@@ -5,6 +5,7 @@ import { z } from "zod";
 import { db } from "@/lib/db";
 import { createSession, destroySession, hashPassword, homeFor, requireUser, verifyPassword } from "@/lib/auth";
 import { parsePermissions } from "@/lib/permissions";
+import { notifyStaff } from "@/lib/notify";
 import { back, safeNext, str } from "@/lib/flash";
 
 const registerSchema = z
@@ -39,6 +40,18 @@ export async function registerAction(form: FormData) {
     data: { name, email, phone, institution, passwordHash: await hashPassword(password), role: "STUDENT" },
   });
   await createSession(user.id);
+  await notifyStaff(["admin.students", "admin.orders"], {
+    title: "Pelanggan baru mendaftar",
+    body: `${name} baru saja membuat akun di website.`,
+    rows: [
+      ["Nama", name],
+      ["Email", email],
+      ["WhatsApp", phone],
+      ["Instansi", institution ?? "-"],
+    ],
+    link: `/admin/pengguna/${user.id}`,
+    kind: "NEW_CUSTOMER",
+  });
   redirect(next ?? "/belajar");
 }
 

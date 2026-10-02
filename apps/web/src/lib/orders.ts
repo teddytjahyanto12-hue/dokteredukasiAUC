@@ -5,6 +5,7 @@ import { db } from "./db";
 import { notifyStaff, notifyUser } from "./notify";
 import { addMonths, quote, QuoteError } from "./services";
 import { LEAD_SOURCES, rulesValid, splitInstallments } from "./installments";
+import { sendReceipt } from "./receipts";
 
 export function newOrderCode() {
   const date = new Date().toISOString().slice(2, 10).replaceAll("-", "");
@@ -44,6 +45,9 @@ export async function createOrder(userId: string, packageId: string, choice: Ord
     schedule = splitInstallments(total, pkg.installmentRules);
   }
   const leadSource = choice.leadSource && (LEAD_SOURCES as readonly string[]).includes(choice.leadSource) ? choice.leadSource : null;
+  // Salinan HPP saat ini (masa belajar/layanan + add-on) untuk laporan laba; null bila belum diisi sama sekali.
+  const hppParts = [q.duration ? q.duration.hpp ?? pkg.hpp : pkg.hpp, ...q.addons.map((a) => a.hpp)];
+  const hpp = hppParts.every((h) => h === null) ? null : hppParts.reduce<number>((s, h) => s + (h ?? 0), 0);
 
   const order = await db.order.create({
     data: {
@@ -54,6 +58,7 @@ export async function createOrder(userId: string, packageId: string, choice: Ord
       durationMonths: q.duration?.months ?? null,
       basePrice: q.basePrice,
       discount,
+      hpp,
       amount: total,
       paymentPlan: plan,
       leadSource,
@@ -66,13 +71,23 @@ export async function createOrder(userId: string, packageId: string, choice: Ord
     },
     include: { user: true },
   });
-  if (!choice.createdById) {
-    await notifyStaff("admin.orders", {
-      title: `Order baru ${order.code}`,
-      body: `${order.user.name} memesan ${pkg.name}${plan === "INSTALLMENT" ? " (cicilan)" : ""}.`,
-      link: `/admin/order/${order.id}`,
-    });
-  }
+  await notifyStaff("admin.orders", {
+    title: `Order baru ${order.code}`,
+    body: `${order.user.name} memesan ${pkg.name}${choice.createdById ? " (diinput admin)" : " di website"}.`,
+    rows: [
+      ["Pelanggan", order.user.name],
+      ["Email", order.user.email],
+      ["WhatsApp", order.user.phone ?? "-"],
+      ["Layanan", pkg.name],
+      ["Masa belajar", q.duration?.label ?? "-"],
+      ["Add-on", q.addons.map((a) => a.name).join(", ") || "-"],
+      ["Total", total === null ? "Harga menyusul" : `Rp${total.toLocaleString("id-ID")}`],
+      ["Cara bayar", plan === "INSTALLMENT" ? `Cicilan ${schedule.length}x` : "Bayar penuh"],
+    ],
+    link: `/admin/order/${order.id}`,
+    kind: "NEW_ORDER",
+    orderId: order.id,
+  });
   return order;
 }
 
@@ -134,7 +149,6 @@ async function notifyActivated(order: OrderWithPackage, partial: boolean) {
       order.package.includesMentoring ? " Admin akan menjadwalkan bimbingan dan memilih tutor sesuai bidang." : ""
     }`,
     link: "/belajar",
-    email: true,
   });
 }
 
@@ -156,7 +170,10 @@ export async function markOrderPaid(orderId: string, opts: { grantedById?: strin
     await activateOrder(tx, paid, opts.grantedById);
     return { order: paid, alreadyPaid: false };
   });
-  if (!result.alreadyPaid) await notifyActivated(result.order, false);
+  if (!result.alreadyPaid) {
+    await notifyActivated(result.order, false);
+    await sendReceipt(result.order.id);
+  }
   return result;
 }
 
@@ -192,6 +209,7 @@ export async function markInstallmentPaid(orderId: string, seq: number, opts: { 
     return { order: updated, installment: next, isFirst, isLast };
   });
 
+  await sendReceipt(result.order.id, { seq: result.installment.seq });
   if (result.isFirst) await notifyActivated(result.order, !result.isLast);
   else {
     await notifyUser(result.order.userId, {

@@ -14,7 +14,7 @@ export async function WhatsAppButton() {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-5 right-5 z-40 flex items-center gap-2 rounded-full bg-[#25D366] px-4 py-3 text-sm font-semibold text-white shadow-lg transition hover:scale-105 hover:bg-[#1ebe5b]"
+      className="fixed bottom-5 right-5 z-40 flex print:hidden items-center gap-2 rounded-full bg-[#25D366] px-4 py-3 text-sm font-semibold text-white shadow-lg transition hover:scale-105 hover:bg-[#1ebe5b]"
       aria-label="Chat admin lewat WhatsApp"
     >
       <svg viewBox="0 0 32 32" className="h-5 w-5 fill-current" aria-hidden>
