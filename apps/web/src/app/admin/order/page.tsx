@@ -27,7 +27,15 @@ export default async function AdminOrders({ searchParams }: { searchParams: Sear
 
   return (
     <>
-      <PageHeader title="Order" subtitle="Konfirmasi pembayaran untuk mengaktifkan akses murid." />
+      <PageHeader
+        title="Order"
+        subtitle="Konfirmasi pembayaran untuk mengaktifkan akses pelanggan."
+        actions={
+          <Link href="/admin/order/baru" className="btn btn-sm">
+            + Input penjualan
+          </Link>
+        }
+      />
       <Flash pesan={pesan} tipe={tipe} />
       <form className="mb-4 flex flex-wrap gap-2">
         <input className="input max-w-xs" name="q" defaultValue={q} placeholder="Cari kode, nama, email" />
@@ -74,7 +82,10 @@ export default async function AdminOrders({ searchParams }: { searchParams: Sear
                   {finance && <td>{rupiah(o.amount)}</td>}
                   <td>{tanggal(o.createdAt, true)}</td>
                   <td>
-                    <span className={o.status === "PAID" ? "badge-brand" : o.status === "PENDING" ? "badge-warn" : "badge"}>{ORDER_STATUS_LABEL[o.status]}</span>
+                    <span className={o.status === "PAID" ? "badge-brand" : o.status === "PENDING" || o.status === "PARTIAL" ? "badge-warn" : "badge"}>
+                      {ORDER_STATUS_LABEL[o.status]}
+                    </span>
+                    {o.paymentPlan === "INSTALLMENT" && <p className="text-xs text-slate-500">Cicilan</p>}
                   </td>
                 </tr>
               ))}

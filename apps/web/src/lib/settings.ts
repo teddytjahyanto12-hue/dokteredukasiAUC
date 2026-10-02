@@ -15,7 +15,9 @@ export const getSettings = cache(async (): Promise<Settings> => {
 });
 
 export function whatsappLink(number: string, text?: string) {
-  const digits = number.replace(/\D/g, "");
+  let digits = number.replace(/\D/g, "");
   if (!digits) return null;
+  // Nomor lokal 08xx diubah ke format internasional 628xx.
+  if (digits.startsWith("0")) digits = `62${digits.slice(1)}`;
   return `https://wa.me/${digits}${text ? `?text=${encodeURIComponent(text)}` : ""}`;
 }

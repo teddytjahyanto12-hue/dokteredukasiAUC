@@ -11,6 +11,8 @@ import { saveUpload, UploadError } from "@/lib/storage";
 import { back, optInt, optStr, str } from "@/lib/flash";
 import { parseWibDateTime, tanggal } from "@/lib/format";
 import { CLOSE_REASONS, CLOSE_REASON_LABEL } from "@/lib/constants";
+import { isStageLocked, lockedFromStage } from "@/lib/installments";
+import { copyServiceTasks } from "@/lib/orders";
 
 async function load(form: FormData) {
   const user = await requireUser();
@@ -244,13 +246,16 @@ export async function closeProjectAction(form: FormData) {
   assertOpen(m, path);
   const reason = str(form, "reason");
   if (!(CLOSE_REASONS as readonly string[]).includes(reason)) back(path, "Pilih alasan penutupan.", "error");
-  const pending = await db.mentoringSession.count({ where: { mentoringId: m.id, status: "DONE", verifiedAt: null } });
-  if (pending > 0) back(path, `Masih ada ${pending} sesi menunggu validasi. Validasi atau minta revisi dulu sebelum menutup.`, "error");
+  const pending =
+    (await db.mentoringSession.count({ where: { mentoringId: m.id, status: "DONE", verifiedAt: null } })) +
+    (await db.projectTask.count({ where: { mentoringId: m.id, status: "DONE", validatedAt: null } }));
+  if (pending > 0) back(path, `Masih ada ${pending} sesi/task menunggu validasi. Validasi atau minta revisi dulu sebelum menutup.`, "error");
 
   const note = optStr(form, "note");
   await db.$transaction([
     // Sesi yang belum selesai menjadi batal (tanpa fee). Sesi tervalidasi tetap payable.
     db.mentoringSession.updateMany({ where: { mentoringId: m.id, verifiedAt: null, status: { in: ["SCHEDULED", "REVISION"] } }, data: { status: "CANCELLED" } }),
+    db.projectTask.updateMany({ where: { mentoringId: m.id, validatedAt: null, status: { in: ["TODO", "REVISION"] } }, data: { status: "CANCELLED" } }),
     db.mentoring.update({
       where: { id: m.id },
       data: { status: "CLOSED", closeReason: reason, closeNote: note, closedAt: new Date(), closedById: user.id },
@@ -277,4 +282,128 @@ export async function reopenProjectAction(form: FormData) {
   });
   await logAudit(actor(user), "PROJECT_REOPENED", "Mentoring", m.id, "Proyek dibuka kembali");
   back(path, "Proyek dibuka kembali.");
+}
+
+// ---------- Checklist task proyek ----------
+
+async function lockedFromFor(mentoringId: string) {
+  const m = await db.mentoring.findUnique({
+    where: { id: mentoringId },
+    select: { order: { select: { installments: { select: { status: true, unlocksStage: true } } } } },
+  });
+  return lockedFromStage(m?.order?.installments ?? []);
+}
+
+async function loadTask(form: FormData, mentoringId: string, path: string) {
+  const task = await db.projectTask.findFirst({ where: { id: str(form, "taskId"), mentoringId } });
+  if (!task) back(path, "Task tidak ditemukan.", "error");
+  return task;
+}
+
+// Tutor menandai task selesai → menunggu validasi admin. Tahap yang terkunci cicilan tidak bisa dikerjakan.
+export async function markTaskDoneAction(form: FormData) {
+  const { user, m, path } = await load(form);
+  if (!canManage(user, m)) back(path, "Tidak diizinkan.", "error");
+  assertOpen(m, path);
+  const task = await loadTask(form, m.id, path);
+  if (task.validatedAt) back(path, "Task sudah divalidasi.", "error");
+  if (!["TODO", "REVISION"].includes(task.status)) back(path, "Task sudah ditandai selesai dan menunggu validasi.", "error");
+  if (isStageLocked(task.stageNumber, await lockedFromFor(m.id))) {
+    back(path, `Tahap ${task.stageNumber} masih terkunci menunggu pembayaran cicilan pelanggan.`, "error");
+  }
+  const note = str(form, "note");
+  if (!note) back(path, "Isi catatan hasil pekerjaan sebelum menandai selesai.", "error");
+  const evidenceUrl = optStr(form, "evidenceUrl");
+  if (evidenceUrl && !/^https?:\/\//.test(evidenceUrl)) back(path, "Link bukti harus diawali http(s)://", "error");
+
+  await db.projectTask.update({ where: { id: task.id }, data: { status: "DONE", note, evidenceUrl, doneAt: new Date(), revisionNote: null } });
+  await logAudit(actor(user), "TASK_MARKED_DONE", "ProjectTask", task.id, `${user.name} menandai selesai: ${task.title}`, {
+    before: { status: task.status },
+    after: { status: "DONE" },
+  });
+  await notifyStaff("admin.validation", { title: "Task menunggu validasi", body: `${task.title} — ${user.name}`, link: "/admin/validasi" });
+  back(path, "Task ditandai selesai dan masuk antrean validasi admin.");
+}
+
+export async function validateTaskAction(form: FormData) {
+  const { user, m, path } = await load(form);
+  if (!hasPermission(user, "admin.validation")) back(path, "Tidak memiliki akses validasi.", "error");
+  const task = await loadTask(form, m.id, path);
+  const decision = str(form, "decision");
+
+  if (decision === "UNVALIDATE") {
+    if (!task.validatedAt) back(path, "Task belum divalidasi.", "error");
+    await db.projectTask.update({ where: { id: task.id }, data: { validatedAt: null, validatedById: null } });
+    await logAudit(actor(user), "TASK_REVISION", "ProjectTask", task.id, `Validasi task dibatalkan: ${task.title}`);
+    back(path, "Validasi task dibatalkan.");
+  }
+  if (task.validatedAt) back(path, "Task sudah divalidasi.", "error");
+  if (task.status !== "DONE") back(path, "Hanya task yang ditandai selesai tutor yang dapat divalidasi.", "error");
+
+  if (decision === "REVISION") {
+    const note = str(form, "note");
+    if (!note) back(path, "Tulis alasan revisi untuk tutor.", "error");
+    await db.projectTask.update({ where: { id: task.id }, data: { status: "REVISION", revisionNote: note } });
+    await logAudit(actor(user), "TASK_REVISION", "ProjectTask", task.id, `Revisi task "${task.title}": ${note}`);
+    const mm = await db.mentoring.findUnique({ where: { id: m.id }, select: { tutorId: true } });
+    if (mm?.tutorId) await notifyUser(mm.tutorId, { title: "Task perlu revisi", body: `${task.title}: ${note}`.slice(0, 140), link: `/bimbingan/${m.id}` });
+    back(path, "Task dikembalikan untuk revisi.");
+  }
+  if (decision !== "APPROVE") back(path, "Keputusan tidak valid.", "error");
+  const res = await db.projectTask.updateMany({ where: { id: task.id, validatedAt: null, status: "DONE" }, data: { validatedAt: new Date(), validatedById: user.id } });
+  if (res.count === 0) back(path, "Task sudah divalidasi admin lain.", "error");
+  await logAudit(actor(user), "TASK_VALIDATED", "ProjectTask", task.id, `Task divalidasi: ${task.title}`);
+
+  // Progres proyek mengikuti persentase task tervalidasi.
+  const [total, done] = await Promise.all([
+    db.projectTask.count({ where: { mentoringId: m.id, status: { not: "CANCELLED" } } }),
+    db.projectTask.count({ where: { mentoringId: m.id, validatedAt: { not: null } } }),
+  ]);
+  if (total) await db.mentoring.update({ where: { id: m.id }, data: { progress: Math.round((done / total) * 100) } });
+  await notifyUser(m.studentId, { title: "Progres bimbingan bertambah", body: task.title, link: `/bimbingan/${m.id}` });
+  back(path, "Task divalidasi.");
+}
+
+export async function addProjectTaskAction(form: FormData) {
+  const { user, m, path } = await load(form);
+  if (!hasPermission(user, "admin.mentoring")) back(path, "Tidak memiliki akses bimbingan.", "error");
+  assertOpen(m, path);
+  const title = str(form, "title");
+  if (title.length < 2) back(path, "Nama task minimal 2 karakter.", "error");
+  const stageNumber = optInt(form, "stageNumber") ?? 1;
+  const sameStage = await db.projectTask.findFirst({ where: { mentoringId: m.id, stageNumber }, select: { stageTitle: true } });
+  const t = await db.projectTask.create({
+    data: {
+      mentoringId: m.id,
+      stageNumber,
+      stageTitle: sameStage?.stageTitle ?? (str(form, "stageTitle") || `Tahap ${stageNumber}`),
+      title,
+      order: await db.projectTask.count({ where: { mentoringId: m.id, stageNumber } }),
+    },
+  });
+  await logAudit(actor(user), "TASK_CHANGED", "ProjectTask", t.id, `Task ditambahkan: ${title} (tahap ${stageNumber})`);
+  back(path, "Task ditambahkan.");
+}
+
+export async function cancelProjectTaskAction(form: FormData) {
+  const { user, m, path } = await load(form);
+  if (!hasPermission(user, "admin.mentoring")) back(path, "Tidak memiliki akses bimbingan.", "error");
+  const task = await loadTask(form, m.id, path);
+  if (task.validatedAt) back(path, "Task yang sudah divalidasi tidak dapat dibatalkan.", "error");
+  await db.projectTask.update({ where: { id: task.id }, data: { status: "CANCELLED" } });
+  await logAudit(actor(user), "TASK_CHANGED", "ProjectTask", task.id, `Task dibatalkan: ${task.title}`);
+  back(path, "Task dibatalkan.");
+}
+
+// Untuk proyek lama yang dibuat sebelum layanan punya checklist.
+export async function applyServiceTemplateAction(form: FormData) {
+  const { user, m, path } = await load(form);
+  if (!hasPermission(user, "admin.mentoring")) back(path, "Tidak memiliki akses bimbingan.", "error");
+  const full = await db.mentoring.findUnique({ where: { id: m.id }, select: { packageId: true, _count: { select: { tasks: true } } } });
+  if (!full?.packageId) back(path, "Proyek ini tidak terhubung ke layanan.", "error");
+  if (full._count.tasks > 0) back(path, "Proyek sudah memiliki checklist.", "error");
+  const n = await db.$transaction((tx) => copyServiceTasks(tx, m.id, full.packageId!));
+  if (!n) back(path, "Layanan belum punya tahap & checklist. Atur di halaman layanan.", "error");
+  await logAudit(actor(user), "TASK_CHANGED", "Mentoring", m.id, `Checklist layanan diterapkan (${n} task)`);
+  back(path, `${n} task dari layanan ditambahkan.`);
 }

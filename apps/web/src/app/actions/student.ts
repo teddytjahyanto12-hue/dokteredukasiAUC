@@ -26,6 +26,8 @@ export async function orderPackageAction(form: FormData) {
     const order = await createOrder(user.id, packageId, {
       durationId: str(form, "durationId") || null,
       addonIds: form.getAll("addonIds").map(String),
+      plan: str(form, "plan") === "INSTALLMENT" ? "INSTALLMENT" : "FULL",
+      leadSource: str(form, "leadSource") || null,
     });
     orderId = order.id;
   } catch (e) {

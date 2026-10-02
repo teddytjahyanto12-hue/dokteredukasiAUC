@@ -19,6 +19,13 @@ import {
   updateAddonAction,
   updateBenefitAction,
   updateDurationAction,
+  addStageAction,
+  updateStageAction,
+  deleteStageAction,
+  addTaskTemplateAction,
+  updateTaskTemplateAction,
+  deleteTaskTemplateAction,
+  saveInstallmentRulesAction,
 } from "@/app/actions/services";
 import { ConfirmButton } from "@/components/confirm-button";
 import { Empty, Field, Flash, PageHeader } from "@/components/ui";
@@ -41,6 +48,8 @@ export default async function AdminServiceEdit({ params, searchParams }: { param
           durations: { orderBy: [{ order: "asc" }, { months: "asc" }] },
           addons: { orderBy: { order: "asc" } },
           eligibilities: true,
+          stages: { orderBy: { number: "asc" }, include: { tasks: { orderBy: { order: "asc" } } } },
+          installmentRules: { orderBy: { seq: "asc" } },
           _count: { select: { orders: true } },
         },
       });
@@ -53,6 +62,13 @@ export default async function AdminServiceEdit({ params, searchParams }: { param
   ]);
   const selected = new Set(pkg?.categories.map((c) => c.categoryId));
   const elig = new Map(pkg?.eligibilities.map((e) => [e.tutorId, e]));
+  const ruleCount = pkg && pkg.installmentRules.length === 3 ? 3 : 2;
+  const defaultRules = [
+    { seq: 1, label: "Cicilan 1", percent: ruleCount === 3 ? 40 : 50, unlocksStage: 1 },
+    { seq: 2, label: "Cicilan 2", percent: ruleCount === 3 ? 30 : 50, unlocksStage: 2 },
+    { seq: 3, label: "Cicilan 3", percent: 30, unlocksStage: 3 },
+  ];
+  const ruleAt = (seq: number) => pkg?.installmentRules.find((r) => r.seq === seq) ?? defaultRules[seq - 1];
 
   return (
     <>
@@ -371,11 +387,169 @@ export default async function AdminServiceEdit({ params, searchParams }: { param
             </form>
           </section>
 
+          {/* ---------- Tahap & checklist ---------- */}
+          <section className="card mt-6">
+            <h2 className="h2">6. Tahap & checklist pekerjaan</h2>
+            <p className="muted mb-3">
+              Saat layanan dibeli, checklist ini otomatis disalin ke proyek. Tutor menandai task selesai, admin memvalidasi. Tahap bisa dikunci oleh cicilan (bagian 7).
+            </p>
+            {pkg.stages.length === 0 ? (
+              <Empty>Belum ada tahap.</Empty>
+            ) : (
+              <div className="space-y-4">
+                {pkg.stages.map((st) => (
+                  <div key={st.id} className="rounded-lg border border-slate-200 p-4">
+                    <div className="flex flex-wrap items-end gap-2">
+                      <form action={updateStageAction} className="flex flex-1 flex-wrap items-end gap-2">
+                        <input type="hidden" name="packageId" value={pkg.id} />
+                        <input type="hidden" name="id" value={st.id} />
+                        <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-brand text-sm font-bold text-white">{st.number}</span>
+                        <Field label="Nama tahap">
+                          <input className="input w-64" name="title" defaultValue={st.title} required />
+                        </Field>
+                        <Field label="Keterangan">
+                          <input className="input w-64" name="description" defaultValue={st.description ?? ""} />
+                        </Field>
+                        <button className="btn-secondary btn-sm mb-1" type="submit">
+                          Simpan
+                        </button>
+                      </form>
+                      {st.number === pkg.stages[pkg.stages.length - 1].number && (
+                        <form action={deleteStageAction}>
+                          <input type="hidden" name="packageId" value={pkg.id} />
+                          <input type="hidden" name="id" value={st.id} />
+                          <ConfirmButton message={`Hapus tahap ${st.number} beserta checklist-nya?`} className="btn-danger btn-sm mb-1">
+                            Hapus tahap
+                          </ConfirmButton>
+                        </form>
+                      )}
+                    </div>
+                    <ul className="mt-3 space-y-2 border-l-2 border-brand/30 pl-4">
+                      {st.tasks.map((t) => (
+                        <li key={t.id} className="flex flex-wrap items-center gap-2">
+                          <form action={updateTaskTemplateAction} className="flex flex-1 flex-wrap items-center gap-2">
+                            <input type="hidden" name="packageId" value={pkg.id} />
+                            <input type="hidden" name="id" value={t.id} />
+                            <input className="input w-16" name="order" inputMode="numeric" defaultValue={t.order} aria-label="Urutan" />
+                            <input className="input min-w-48 flex-1" name="title" defaultValue={t.title} required />
+                            <button className="btn-secondary btn-sm" type="submit">
+                              Simpan
+                            </button>
+                          </form>
+                          <form action={deleteTaskTemplateAction}>
+                            <input type="hidden" name="packageId" value={pkg.id} />
+                            <input type="hidden" name="id" value={t.id} />
+                            <button className="btn-danger btn-sm" type="submit">
+                              Hapus
+                            </button>
+                          </form>
+                        </li>
+                      ))}
+                      {st.tasks.length === 0 && <li className="muted">Belum ada task di tahap ini.</li>}
+                    </ul>
+                    <form action={addTaskTemplateAction} className="mt-3 flex flex-wrap items-end gap-2 pl-4">
+                      <input type="hidden" name="packageId" value={pkg.id} />
+                      <input type="hidden" name="stageId" value={st.id} />
+                      <Field label="Tambah task (satu per baris)">
+                        <textarea className="input w-80" name="title" rows={2} placeholder="Mis. Judul disetujui" />
+                      </Field>
+                      <button className="btn btn-sm mb-1" type="submit">
+                        + Task
+                      </button>
+                    </form>
+                  </div>
+                ))}
+              </div>
+            )}
+            <form action={addStageAction} className="mt-4 grid gap-2 border-t border-slate-100 pt-4 sm:grid-cols-2">
+              <input type="hidden" name="packageId" value={pkg.id} />
+              <p className="font-semibold sm:col-span-2">Tambah tahap {pkg.stages.length + 1}</p>
+              <Field label="Nama tahap">
+                <input className="input" name="title" required placeholder="Mis. Judul & protokol" />
+              </Field>
+              <Field label="Keterangan (opsional)">
+                <input className="input" name="description" />
+              </Field>
+              <div className="sm:col-span-2">
+                <Field label="Checklist task (satu per baris, opsional)">
+                  <textarea className="input" name="tasks" rows={3} placeholder={"Konsultasi awal\nJudul fix\nProtokol PROSPERO"} />
+                </Field>
+              </div>
+              <div>
+                <button className="btn btn-sm" type="submit">
+                  + Tambah tahap
+                </button>
+              </div>
+            </form>
+          </section>
+
+          {/* ---------- Cicilan ---------- */}
+          <form action={saveInstallmentRulesAction} className="card mt-6 space-y-4">
+            <input type="hidden" name="packageId" value={pkg.id} />
+            <h2 className="h2">7. Cicilan</h2>
+            <p className="muted">
+              Customer bisa memilih bayar penuh atau dicicil 2–3 kali. Cicilan pertama membuka layanan & tahap 1; tahap yang dibuka cicilan berikutnya tetap terkunci
+              sampai cicilan itu dibayar. Total persentase harus 100%.
+            </p>
+            <label className="flex items-center gap-2 text-sm">
+              <input type="checkbox" name="allowInstallment" defaultChecked={pkg.allowInstallment} /> Layanan ini boleh dicicil
+            </label>
+            <Field label="Jumlah cicilan">
+              <select className="input w-40" name="count" defaultValue={ruleCount}>
+                <option value={2}>2 kali</option>
+                <option value={3}>3 kali</option>
+              </select>
+            </Field>
+            <div className="grid gap-3 md:grid-cols-3">
+              {[1, 2, 3].map((seq) => {
+                const r = ruleAt(seq);
+                return (
+                  <div key={seq} className="rounded-lg border border-slate-200 p-3">
+                    <p className="mb-2 text-sm font-semibold">Cicilan {seq}{seq === 3 && " (dipakai bila 3 kali)"}</p>
+                    <div className="space-y-2">
+                      <Field label="Label">
+                        <input className="input" name={`label_${seq}`} defaultValue={r.label} />
+                      </Field>
+                      <Field label="Persen dari total (%)">
+                        <input className="input" name={`percent_${seq}`} inputMode="numeric" defaultValue={r.percent} />
+                      </Field>
+                      <Field label="Membuka tahap ke-">
+                        {seq === 1 ? (
+                          <>
+                            <input type="hidden" name="stage_1" value={1} />
+                            <p className="text-sm text-slate-600">Tahap 1 (awal layanan)</p>
+                          </>
+                        ) : (
+                          <select className="input" name={`stage_${seq}`} defaultValue={r.unlocksStage}>
+                            {pkg.stages.filter((st) => st.number > 1).map((st) => (
+                              <option key={st.id} value={st.number}>
+                                Tahap {st.number} — {st.title}
+                              </option>
+                            ))}
+                            {pkg.stages.filter((st) => st.number > 1).length === 0 && <option value={0}>Buat tahap 2 dulu</option>}
+                          </select>
+                        )}
+                      </Field>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+            {pkg.allowInstallment && pkg.installmentRules.length > 0 && (
+              <p className="text-sm text-slate-600">
+                Aktif: {pkg.installmentRules.map((r) => `${r.label} ${r.percent}% → tahap ${r.unlocksStage}`).join(" · ")}
+              </p>
+            )}
+            <button className="btn" type="submit">
+              Simpan aturan cicilan
+            </button>
+          </form>
+
           {/* ---------- Kelayakan tutor ---------- */}
           {canTutors && (
             <form action={saveEligibilityAction} className="card mt-6">
               <input type="hidden" name="packageId" value={pkg.id} />
-              <h2 className="h2">5. Tutor yang berwenang & fee per layanan</h2>
+              <h2 className="h2">8. Tutor yang berwenang & fee per layanan</h2>
               <p className="muted mb-3">
                 Hanya tutor Primary/Backup yang muncul saat menugaskan bimbingan layanan ini. Fee di sini dipakai saat sesi divalidasi (kosong = rate umum tutor).
               </p>

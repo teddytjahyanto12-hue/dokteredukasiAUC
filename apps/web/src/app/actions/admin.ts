@@ -5,7 +5,8 @@ import { revalidatePath } from "next/cache";
 import { z } from "zod";
 import { db } from "@/lib/db";
 import { hashPassword, requirePermission, requireUser, type CurrentUser } from "@/lib/auth";
-import { markOrderPaid } from "@/lib/orders";
+import { createOrder, markInstallmentPaid, markOrderPaid } from "@/lib/orders";
+import { QuoteError } from "@/lib/services";
 import { notifyUser } from "@/lib/notify";
 import { logAudit } from "@/lib/audit";
 import { saveUpload, UploadError } from "@/lib/storage";
@@ -43,11 +44,83 @@ export async function markOrderPaidAction(form: FormData) {
   back(path, "Order ditandai lunas. Akses murid aktif.");
 }
 
+export async function markInstallmentPaidAction(form: FormData) {
+  const me = await requirePermission("admin.orders");
+  const id = str(form, "orderId");
+  const path = `/admin/order/${id}`;
+  const seq = optInt(form, "seq");
+  if (!seq) back(path, "Cicilan tidak valid.", "error");
+  let result: Awaited<ReturnType<typeof markInstallmentPaid>>;
+  try {
+    result = await markInstallmentPaid(id, seq, { grantedById: me.id, paymentRef: optStr(form, "paymentRef") });
+  } catch (e) {
+    back(path, e instanceof Error ? e.message : "Gagal mengonfirmasi cicilan.", "error");
+  }
+  await logAudit(actor(me), "INSTALLMENT_PAID", "Order", id, `${result.installment.label} order ${result.order.code} lunas (${rupiah(result.installment.amount)})`, {
+    after: { seq, orderStatus: result.order.status },
+  });
+  back(
+    path,
+    result.isFirst
+      ? "Cicilan pertama lunas. Akses murid aktif; tahap berikutnya terbuka setelah cicilan selanjutnya."
+      : result.isLast
+        ? "Cicilan terakhir lunas. Order lunas penuh."
+        : `${result.installment.label} lunas. Tahap ${result.installment.unlocksStage} terbuka.`,
+  );
+}
+
+// Penjualan yang diinput admin (mis. pelanggan dari WhatsApp/Instagram).
+export async function createSaleAction(form: FormData) {
+  const me = await requirePermission("admin.orders");
+  const fail = "/admin/order/baru";
+  let userId = str(form, "studentId");
+  if (!userId) {
+    const parsed = userSchema.safeParse({
+      name: str(form, "name"),
+      email: str(form, "email").toLowerCase(),
+      role: "STUDENT",
+      password: String(form.get("password") ?? ""),
+    });
+    if (!parsed.success) back(fail, `Data pelanggan baru: ${parsed.error.issues[0].message}`, "error");
+    if (await db.user.findUnique({ where: { email: parsed.data.email } })) back(fail, "Email pelanggan sudah terdaftar; pilih dari daftar pelanggan.", "error");
+    const u = await db.user.create({
+      data: { name: parsed.data.name, email: parsed.data.email, role: "STUDENT", phone: optStr(form, "phone"), passwordHash: await hashPassword(parsed.data.password) },
+    });
+    await logAudit(actor(me), "ACCOUNT_CREATED", "User", u.id, `Akun pelanggan dibuat saat input penjualan: ${u.name}`);
+    userId = u.id;
+  } else {
+    const u = await db.user.findFirst({ where: { id: userId, role: "STUDENT" } });
+    if (!u) back(fail, "Pelanggan tidak ditemukan.", "error");
+  }
+
+  const discount = hasPermission(me, "admin.finance") ? optInt(form, "discount") : null;
+  let orderId: string;
+  try {
+    const order = await createOrder(userId, str(form, "packageId"), {
+      durationId: str(form, "durationId") || null,
+      addonIds: form.getAll("addonIds").map(String),
+      plan: str(form, "plan") === "INSTALLMENT" ? "INSTALLMENT" : "FULL",
+      discount,
+      leadSource: str(form, "leadSource") || null,
+      note: optStr(form, "note"),
+      createdById: me.id,
+    });
+    orderId = order.id;
+    await logAudit(actor(me), "SALE_CREATED", "Order", order.id, `Penjualan ${order.code} diinput admin (${rupiah(order.amount)})`, {
+      after: { amount: order.amount, discount, plan: order.paymentPlan, leadSource: order.leadSource },
+    });
+  } catch (e) {
+    if (e instanceof QuoteError) back(fail, e.message, "error");
+    throw e;
+  }
+  redirect(`/admin/order/${orderId}?pesan=${encodeURIComponent("Penjualan dibuat. Konfirmasi pembayaran di bawah bila sudah dibayar.")}`);
+}
+
 export async function cancelOrderAction(form: FormData) {
   const me = await requirePermission("admin.orders");
   const id = str(form, "orderId");
   const order = await db.order.findUnique({ where: { id } });
-  if (!order || order.status !== "PENDING") back(`/admin/order/${id}`, "Hanya order yang menunggu pembayaran yang bisa dibatalkan.", "error");
+  if (!order || order.status !== "PENDING") back(`/admin/order/${id}`, "Hanya order yang belum ada pembayaran sama sekali yang bisa dibatalkan.", "error");
   const note = optStr(form, "note");
   await db.order.update({ where: { id }, data: { status: "CANCELLED", note: note ?? order.note } });
   await logAudit(actor(me), "ORDER_CANCELLED", "Order", id, `Order ${order.code} dibatalkan${note ? `: ${note}` : ""}`);

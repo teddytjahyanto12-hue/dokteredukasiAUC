@@ -40,6 +40,7 @@ export const ITEM_TYPE_LABEL: Record<ItemType, string> = {
 
 export const ORDER_STATUS_LABEL: Record<string, string> = {
   PENDING: "Menunggu pembayaran",
+  PARTIAL: "Cicilan berjalan",
   PAID: "Lunas",
   CANCELLED: "Dibatalkan",
 };
@@ -107,7 +108,7 @@ export const SETTING_LABEL: Record<SettingKey, string> = {
   siteName: "Nama situs",
   heroTitle: "Judul utama beranda",
   heroSubtitle: "Subjudul beranda",
-  adminWhatsapp: "Nomor WhatsApp admin (format 62812xxxx)",
+  adminWhatsapp: "Nomor WhatsApp admin untuk tombol Chat Admin (mis. 0812xxxx atau 62812xxxx)",
   adminEmail: "Email admin untuk notifikasi",
   tutorFormUrl: "Tautan Google Form pendaftaran tutor",
   paymentInstructions: "Instruksi pembayaran (tampil setelah pesan paket)",

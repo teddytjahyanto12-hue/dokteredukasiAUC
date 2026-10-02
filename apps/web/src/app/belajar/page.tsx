@@ -32,7 +32,10 @@ export default async function StudentDashboard() {
       },
     }),
     db.mentoring.findMany({ where: { studentId: user.id }, orderBy: { createdAt: "desc" }, include: { tutor: { select: { name: true } } } }),
-    db.order.findMany({ where: { userId: user.id, status: "PENDING" }, include: { package: { select: { name: true } } } }),
+    db.order.findMany({
+      where: { userId: user.id, status: { in: ["PENDING", "PARTIAL"] } },
+      include: { package: { select: { name: true } }, installments: { where: { status: "PENDING" }, orderBy: { seq: "asc" }, take: 1 } },
+    }),
     db.itemProgress.findMany({ where: { userId: user.id }, select: { itemId: true } }),
   ]);
   const done = new Set(doneIds.map((d) => d.itemId));
@@ -60,12 +63,12 @@ export default async function StudentDashboard() {
 
       {pendingOrders.length > 0 && (
         <div className="mb-6 rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900">
-          Pesanan menunggu pembayaran:{" "}
+          Tagihan menunggu pembayaran:{" "}
           {pendingOrders.map((o, i) => (
             <span key={o.id}>
               {i > 0 && ", "}
               <Link href={`/pembelian/${o.id}`} className="font-semibold underline">
-                {o.package.name} ({o.code})
+                {o.package.name} ({o.code}){o.installments[0] ? ` — ${o.installments[0].label}` : ""}
               </Link>
             </span>
           ))}

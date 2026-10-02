@@ -24,7 +24,13 @@ import {
   sendMessageAction,
   updateSessionAction,
   validateSessionAction,
+  markTaskDoneAction,
+  validateTaskAction,
+  addProjectTaskAction,
+  cancelProjectTaskAction,
+  applyServiceTemplateAction,
 } from "@/app/actions/mentoring";
+import { isStageLocked, lockedFromStage, TASK_STATUS_LABEL } from "@/lib/installments";
 import { ConfirmButton } from "@/components/confirm-button";
 import { Empty, Field, Flash, PageHeader, ProgressBar } from "@/components/ui";
 import { readFlash, type SearchParams } from "@/lib/flash";
@@ -43,7 +49,8 @@ export default async function MentoringDetail({ params, searchParams }: { params
       student: { select: { name: true, email: true, phone: true, institution: true } },
       tutor: { select: { id: true, name: true } },
       package: { select: { id: true, name: true, sopUrl: true, sopNote: true, eligibilities: { select: { tutorId: true, level: true } } } },
-      order: { select: { code: true, status: true } },
+      order: { select: { code: true, status: true, paymentPlan: true, installments: { orderBy: { seq: "asc" } } } },
+      tasks: { orderBy: [{ stageNumber: "asc" }, { order: "asc" }] },
       sessions: {
         orderBy: { scheduledAt: "asc" },
         include: { proofFile: { select: { id: true, originalName: true } }, payroll: { select: { status: true } } },
@@ -59,6 +66,16 @@ export default async function MentoringDetail({ params, searchParams }: { params
   const isStudent = user.role === "STUDENT";
   const showFee = hasPermission(user, "admin.finance") || isTutor;
   const closed = m.status === "CLOSED";
+  const lockedFrom = lockedFromStage(m.order?.installments ?? []);
+  const stages = [...new Set(m.tasks.map((t) => t.stageNumber))].map((n) => ({
+    number: n,
+    title: m.tasks.find((t) => t.stageNumber === n)?.stageTitle ?? `Tahap ${n}`,
+    tasks: m.tasks.filter((t) => t.stageNumber === n),
+    locked: isStageLocked(n, lockedFrom),
+    unlockBy: m.order?.installments.find((i) => i.status !== "PAID" && i.unlocksStage <= n),
+  }));
+  const activeTasks = m.tasks.filter((t) => t.status !== "CANCELLED");
+  const validatedTasks = activeTasks.filter((t) => t.validatedAt).length;
   // Bimbingan dari layanan: hanya tutor Primary/Backup layanan itu. Bimbingan manual: semua tutor aktif.
   const eligibleLevel = new Map(m.package?.eligibilities.map((e) => [e.tutorId, e.level]));
   const tutors = isStaffMentoring
@@ -118,7 +135,14 @@ export default async function MentoringDetail({ params, searchParams }: { params
                 <div>
                   <dt className="text-slate-500">Status pembayaran pelanggan</dt>
                   <dd>
-                    <span className={m.order.status === "PAID" ? "badge-brand" : "badge-warn"}>{m.order.status === "PAID" ? "Paid" : "Unpaid"}</span>
+                    <span className={m.order.status === "PAID" ? "badge-brand" : "badge-warn"}>
+                      {m.order.status === "PAID" ? "Paid" : m.order.status === "PARTIAL" ? "Cicilan berjalan" : "Unpaid"}
+                    </span>
+                    {m.order.paymentPlan === "INSTALLMENT" && (
+                      <span className="ml-2 text-xs text-slate-500">
+                        {m.order.installments.filter((i) => i.status === "PAID").length}/{m.order.installments.length} cicilan lunas
+                      </span>
+                    )}
                   </dd>
                 </div>
               )}
@@ -136,6 +160,137 @@ export default async function MentoringDetail({ params, searchParams }: { params
               )}
             </section>
           )}
+
+          <section className="card">
+            <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
+              <h2 className="h2">Checklist pekerjaan</h2>
+              {activeTasks.length > 0 && (
+                <span className="text-sm text-slate-500">
+                  {validatedTasks}/{activeTasks.length} task tervalidasi
+                </span>
+              )}
+            </div>
+            {stages.length === 0 ? (
+              <div className="space-y-3">
+                <Empty>Belum ada checklist untuk proyek ini.</Empty>
+                {isStaffMentoring && m.package && !closed && (
+                  <form action={applyServiceTemplateAction}>
+                    <input type="hidden" name="mentoringId" value={m.id} />
+                    <button className="btn-secondary btn-sm" type="submit">
+                      Terapkan checklist dari layanan {m.package.name}
+                    </button>
+                  </form>
+                )}
+              </div>
+            ) : (
+              <div className="space-y-5">
+                {stages.map((st) => (
+                  <div key={st.number}>
+                    <div className="flex flex-wrap items-center gap-2">
+                      <span className={`grid h-7 w-7 place-items-center rounded-full text-sm font-bold ${st.locked ? "bg-slate-200 text-slate-500" : "bg-brand text-white"}`}>
+                        {st.locked ? "🔒" : st.number}
+                      </span>
+                      <p className="font-semibold">
+                        Tahap {st.number}: {st.title}
+                      </p>
+                      {st.locked && (
+                        <span className="badge-warn">Terkunci — menunggu {st.unlockBy?.label ?? "pembayaran"}</span>
+                      )}
+                    </div>
+                    <ul className="mt-2 space-y-2 border-l-2 border-slate-100 pl-5">
+                      {st.tasks.map((t) => {
+                        const canWork = manage && !closed && !st.locked && !t.validatedAt && (t.status === "TODO" || t.status === "REVISION");
+                        return (
+                          <li key={t.id} className={`rounded-lg border p-3 text-sm ${t.status === "CANCELLED" ? "border-slate-100 opacity-50" : "border-slate-200"}`}>
+                            <div className="flex flex-wrap items-center justify-between gap-2">
+                              <span className="font-medium">
+                                {t.validatedAt ? "✅ " : t.status === "DONE" ? "⏳ " : ""}
+                                {t.title}
+                              </span>
+                              <span className={t.validatedAt ? "badge-brand" : t.status === "DONE" || t.status === "REVISION" ? "badge-warn" : "badge"}>
+                                {t.validatedAt ? "Tervalidasi" : TASK_STATUS_LABEL[t.status]}
+                              </span>
+                            </div>
+                            {t.revisionNote && t.status === "REVISION" && (
+                              <p className="mt-2 rounded bg-amber-50 p-2 text-amber-900">Catatan revisi admin: {t.revisionNote}</p>
+                            )}
+                            {t.note && !isStudent && (
+                              <p className="mt-1 text-slate-600">
+                                Catatan tutor: {t.note}
+                                {t.evidenceUrl && (
+                                  <>
+                                    {" · "}
+                                    <a href={t.evidenceUrl} target="_blank" rel="noopener noreferrer" className="link">
+                                      bukti ↗
+                                    </a>
+                                  </>
+                                )}
+                              </p>
+                            )}
+                            {canWork && (
+                              <form action={markTaskDoneAction} className="mt-2 flex flex-wrap items-end gap-2">
+                                <input type="hidden" name="mentoringId" value={m.id} />
+                                <input type="hidden" name="taskId" value={t.id} />
+                                <input className="input min-w-48 flex-1" name="note" placeholder="Catatan hasil (wajib)" required />
+                                <input className="input w-56" name="evidenceUrl" placeholder="Link bukti (opsional)" />
+                                <button className="btn btn-sm" type="submit">
+                                  Tandai selesai
+                                </button>
+                              </form>
+                            )}
+                            {canValidate && t.status === "DONE" && !t.validatedAt && (
+                              <div className="mt-2 flex flex-wrap gap-2">
+                                <form action={validateTaskAction}>
+                                  <input type="hidden" name="mentoringId" value={m.id} />
+                                  <input type="hidden" name="taskId" value={t.id} />
+                                  <input type="hidden" name="decision" value="APPROVE" />
+                                  <button className="btn btn-sm" type="submit">
+                                    Validasi
+                                  </button>
+                                </form>
+                                <form action={validateTaskAction} className="flex gap-2">
+                                  <input type="hidden" name="mentoringId" value={m.id} />
+                                  <input type="hidden" name="taskId" value={t.id} />
+                                  <input type="hidden" name="decision" value="REVISION" />
+                                  <input className="input w-48" name="note" placeholder="Alasan revisi" />
+                                  <button className="btn-secondary btn-sm" type="submit">
+                                    Minta revisi
+                                  </button>
+                                </form>
+                              </div>
+                            )}
+                            {isStaffMentoring && !closed && !t.validatedAt && t.status !== "CANCELLED" && (
+                              <form action={cancelProjectTaskAction} className="mt-2">
+                                <input type="hidden" name="mentoringId" value={m.id} />
+                                <input type="hidden" name="taskId" value={t.id} />
+                                <ConfirmButton message="Batalkan task ini?" className="text-xs text-slate-400 hover:text-red-600">
+                                  Batalkan task
+                                </ConfirmButton>
+                              </form>
+                            )}
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            )}
+            {isStaffMentoring && !closed && (
+              <form action={addProjectTaskAction} className="mt-5 flex flex-wrap items-end gap-2 border-t border-slate-100 pt-4">
+                <input type="hidden" name="mentoringId" value={m.id} />
+                <Field label="Tambah task khusus proyek ini">
+                  <input className="input w-64" name="title" required />
+                </Field>
+                <Field label="Tahap ke-">
+                  <input className="input w-20" name="stageNumber" inputMode="numeric" defaultValue={stages[stages.length - 1]?.number ?? 1} />
+                </Field>
+                <button className="btn-secondary btn-sm mb-1" type="submit">
+                  + Task
+                </button>
+              </form>
+            )}
+          </section>
 
           <section className="card">
             <h2 className="h2 mb-1">Sesi bimbingan (Zoom)</h2>

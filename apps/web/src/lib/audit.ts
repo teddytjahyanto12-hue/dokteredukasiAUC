@@ -30,6 +30,12 @@ export async function logAudit(
 export const AUDIT_ACTION_LABEL: Record<string, string> = {
   ORDER_PAID: "Order ditandai lunas",
   ORDER_CANCELLED: "Order dibatalkan",
+  SALE_CREATED: "Penjualan diinput admin",
+  INSTALLMENT_PAID: "Cicilan dikonfirmasi lunas",
+  TASK_MARKED_DONE: "Tutor menandai task selesai",
+  TASK_VALIDATED: "Task divalidasi",
+  TASK_REVISION: "Task dikembalikan untuk revisi",
+  TASK_CHANGED: "Checklist task diubah",
   ENTITLEMENT_GRANTED: "Akses paket diberikan",
   ENTITLEMENT_REVOKED: "Akses paket dicabut",
   ACCOUNT_CREATED: "Akun dibuat",

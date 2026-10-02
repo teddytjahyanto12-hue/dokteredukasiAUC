@@ -12,13 +12,17 @@ export default async function OrderDetail({ params, searchParams }: { params: Pr
   const user = await requireUser();
   const { id } = await params;
   const sp = await searchParams;
-  const order = await db.order.findFirst({ where: { id, userId: user.id }, include: { package: true, addons: true } });
+  const order = await db.order.findFirst({ where: { id, userId: user.id }, include: { package: true, addons: true, installments: { orderBy: { seq: "asc" } } } });
   if (!order) notFound();
   const s = await getSettings();
+  const next = order.installments.find((i) => i.status !== "PAID");
   const wa = whatsappLink(
     s.adminWhatsapp,
-    `Halo admin, saya ${user.name} ingin konfirmasi pembayaran pesanan ${order.code} (${order.package.name}).`,
+    `Halo admin, saya ${user.name} ingin konfirmasi pembayaran pesanan ${order.code} (${order.package.name})${
+      next ? ` untuk ${next.label} sebesar ${rupiah(next.amount)}` : ""
+    }.`,
   );
+  const awaiting = order.status === "PENDING" || order.status === "PARTIAL";
 
   return (
     <div className="container-page max-w-2xl py-10">
@@ -34,15 +38,36 @@ export default async function OrderDetail({ params, searchParams }: { params: Pr
         {order.addons.map((a) => (
           <Row key={a.id} label={`Add-on: ${a.name}`} value={rupiah(a.price)} />
         ))}
+        {order.discount !== null && <Row label="Diskon" value={`− ${rupiah(order.discount)}`} />}
         <Row label="Total" value={rupiah(order.amount)} />
         <Row label="Tanggal" value={tanggal(order.createdAt, true)} />
         <Row label="Status" value={ORDER_STATUS_LABEL[order.status]} />
         {order.paidAt && <Row label="Dibayar" value={tanggal(order.paidAt, true)} />}
       </div>
 
-      {order.status === "PENDING" && (
+      {order.installments.length > 0 && (
         <div className="card mt-6">
-          <h2 className="h2">Langkah pembayaran</h2>
+          <h2 className="h2 mb-3">Jadwal cicilan</h2>
+          <ol className="space-y-2 text-sm">
+            {order.installments.map((i) => (
+              <li key={i.id} className="flex items-center justify-between gap-3 rounded-lg border border-slate-200 px-3 py-2">
+                <span>
+                  {i.label} ({i.percent}%)
+                  <span className="block text-xs text-slate-500">{i.seq === 1 ? "Membuka layanan & tahap 1" : `Membuka tahap ${i.unlocksStage}`}</span>
+                </span>
+                <span className="text-right">
+                  <span className="block font-semibold">{rupiah(i.amount)}</span>
+                  <span className={i.status === "PAID" ? "badge-brand" : "badge-warn"}>{i.status === "PAID" ? "Lunas" : "Belum dibayar"}</span>
+                </span>
+              </li>
+            ))}
+          </ol>
+        </div>
+      )}
+
+      {awaiting && (
+        <div className="card mt-6">
+          <h2 className="h2">Langkah pembayaran{next ? ` — ${next.label} (${rupiah(next.amount)})` : ""}</h2>
           <p className="mt-2 whitespace-pre-line text-sm text-slate-600">{s.paymentInstructions}</p>
           {wa && (
             <a href={wa} target="_blank" rel="noopener noreferrer" className="btn mt-4">
@@ -51,7 +76,7 @@ export default async function OrderDetail({ params, searchParams }: { params: Pr
           )}
         </div>
       )}
-      {order.status === "PAID" && (
+      {(order.status === "PAID" || order.status === "PARTIAL") && (
         <Link href="/belajar" className="btn mt-6">
           Mulai belajar
         </Link>

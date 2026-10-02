@@ -11,11 +11,11 @@ export const metadata = { title: "Admin" };
 export default async function AdminHome() {
   const me = await requirePermission("admin.dashboard");
   const [pendingOrders, waitingMentoring, students, tutors, unverified, notifications, settings] = await Promise.all([
-    db.order.findMany({ where: { status: "PENDING" }, orderBy: { createdAt: "desc" }, take: 8, include: { user: true, package: true } }),
+    db.order.findMany({ where: { status: { in: ["PENDING", "PARTIAL"] } }, orderBy: { createdAt: "desc" }, take: 8, include: { user: true, package: true } }),
     db.mentoring.count({ where: { status: "WAITING_ASSIGNMENT" } }),
     db.user.count({ where: { role: "STUDENT" } }),
     db.user.count({ where: { role: "TUTOR", active: true } }),
-    db.mentoringSession.count({ where: { status: "DONE", verifiedAt: null } }),
+    db.mentoringSession.count({ where: { status: "DONE", verifiedAt: null } }).then(async (n) => n + (await db.projectTask.count({ where: { status: "DONE", validatedAt: null } }))),
     db.notification.findMany({ where: { userId: me.id, readAt: null }, orderBy: { createdAt: "desc" }, take: 5 }),
     getSettings(),
   ]);
@@ -45,7 +45,7 @@ export default async function AdminHome() {
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-5">
         <Stat label="Order menunggu" value={pendingOrders.length} href="/admin/order?status=PENDING" />
         <Stat label="Bimbingan perlu tutor" value={waitingMentoring} href="/admin/bimbingan?status=WAITING_ASSIGNMENT" />
-        <Stat label="Sesi menunggu validasi" value={unverified} href="/admin/validasi" />
+        <Stat label="Task/sesi menunggu validasi" value={unverified} href="/admin/validasi" />
         <Stat label="Murid" value={students} href="/admin/pengguna" />
         <Stat label="Tutor aktif" value={tutors} href="/admin/tim" />
       </div>
@@ -60,7 +60,7 @@ export default async function AdminHome() {
 
       <div className="mt-8 grid gap-6 xl:grid-cols-2">
         <section>
-          <h2 className="h2 mb-3">Order menunggu pembayaran</h2>
+          <h2 className="h2 mb-3">Order menunggu pembayaran / cicilan</h2>
           {pendingOrders.length === 0 ? (
             <Empty>Tidak ada order menunggu.</Empty>
           ) : (

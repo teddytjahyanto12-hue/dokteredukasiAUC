@@ -8,6 +8,7 @@ import { ServiceOrderForm } from "@/components/service-order-form";
 import { Flash } from "@/components/ui";
 import { readFlash, type SearchParams } from "@/lib/flash";
 import { activeEntitlementWhere } from "@/lib/access";
+import { LEAD_SOURCES, LEAD_SOURCE_LABEL } from "@/lib/installments";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -24,6 +25,8 @@ export default async function ServiceDetail({ params, searchParams }: { params: 
       benefits: { orderBy: { order: "asc" } },
       durations: { where: { active: true }, orderBy: [{ order: "asc" }, { months: "asc" }] },
       addons: { where: { active: true }, orderBy: { order: "asc" } },
+      installmentRules: { orderBy: { seq: "asc" } },
+      stages: { orderBy: { number: "asc" }, select: { number: true, title: true } },
       categories: {
         include: {
           category: {
@@ -103,6 +106,20 @@ export default async function ServiceDetail({ params, searchParams }: { params: 
           </section>
         )}
 
+        {pkg.stages.length > 0 && (
+          <section className="mt-8">
+            <h2 className="h2">Tahapan layanan</h2>
+            <ol className="mt-3 space-y-2">
+              {pkg.stages.map((st) => (
+                <li key={st.number} className="flex items-center gap-3 text-slate-700">
+                  <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-brand-soft text-sm font-bold text-brand-dark">{st.number}</span>
+                  {st.title}
+                </li>
+              ))}
+            </ol>
+          </section>
+        )}
+
         {pkg.categories.length > 0 && (
           <section className="mt-8">
             <h2 className="h2">Materi yang terbuka</h2>
@@ -138,6 +155,12 @@ export default async function ServiceDetail({ params, searchParams }: { params: 
             durations={pkg.durations.map((d) => ({ id: d.id, label: d.label, price: d.price }))}
             addons={pkg.addons.map((a) => ({ id: a.id, label: a.name, price: a.price, description: a.description }))}
             canOrder={!disabledReason}
+            installmentRules={
+              pkg.allowInstallment
+                ? pkg.installmentRules.map((r) => ({ ...r, stageTitle: pkg.stages.find((st) => st.number === r.unlocksStage)?.title }))
+                : []
+            }
+            leadSources={LEAD_SOURCES.filter((l) => l !== "REPEAT" && l !== "TUTOR").map((l) => ({ value: l, label: LEAD_SOURCE_LABEL[l] }))}
             disabledReason={disabledReason}
           />
           {!pkg.durations.length && (

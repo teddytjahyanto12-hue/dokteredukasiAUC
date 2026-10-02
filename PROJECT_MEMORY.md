@@ -6,7 +6,7 @@ File ini adalah sumber kebenaran tunggal untuk status, keputusan, dan serah teri
 - Pembaruan terakhir: 2026-09-28 (Asia/Jakarta), fondasi website + backend di apps/web oleh Claude Code.
 - Tahap: fondasi aplikasi (frontend + backend + panel admin) sudah dibangun dan diuji lokal; belum di-deploy; harga/keterangan paket menunggu pengguna.
 - Pekerjaan terakhir oleh: Claude Code (PC 1).
-- Pelaksana aktif: Claude Code (PC 1) — Fase C: cicilan 2–3x yang mengunci tahap, tahap & checklist task per layanan, input penjualan admin, tombol WhatsApp admin. Jangan mengedit apps/web sampai penanda ini dilepas.
+- Pelaksana aktif: tidak ada; Fase C selesai dan di-push.
 - Auctus Academy telah dipelajari pada 22 halaman publik dan sebagian area akun setelah login manual. Aplikasi proyek: apps/web (lihat bagian "Fondasi aplikasi").
 
 ## Tujuan dan kebutuhan yang sudah dinyatakan
@@ -76,6 +76,7 @@ File ini adalah sumber kebenaran tunggal untuk status, keputusan, dan serah teri
 | 2026-09-23 | Codex | Membuat struktur, memori, panduan kerja, dan pesan Claude | Terima URL lalu mulai audit |
 
 | 2026-09-23 | Codex | Memperbarui prompt AUC-SHARED-001 dan menyiapkan kolom konfirmasi Claude | Pengguna menyampaikan prompt; Codex memeriksa catatan setelah Claude selesai |
+| 2026-10-02 | Claude Code (PC 1) | Fase C: cicilan 2–3x pengunci tahap, tahap & checklist task, validasi task, input penjualan admin, tombol Chat Admin WhatsApp | Isi nomor WA admin; Fase D dashboard |
 | 2026-10-02 | Claude Code (PC 1) | Fase B: layanan input manual (poster, deskripsi, benefit, masa belajar, add-on, HPP, SOP), pemesanan dengan total, kelayakan & fee tutor per layanan | Fase C: cicilan & penjualan admin |
 | 2026-10-02 | Claude Code (PC 1) | Peran Owner + checklist hak akses; Fase A (validasi, status fee, penutupan, payroll void, activity log, halaman Pencapaian/Payroll tutor) | Fase B: katalog layanan, paket berisi pilihan layanan, kelayakan tutor |
 | 2026-09-29 | Claude Code (PC 1) | Menganalisis Blueprint v3 → docs/ANALISIS_BLUEPRINT_V3.md | Pengguna menjawab keputusan; mulai Fase A (fondasi kontrol) |
@@ -149,6 +150,17 @@ File ini adalah sumber kebenaran tunggal untuk status, keputusan, dan serah teri
 - Diverifikasi di browser lokal: owner mengisi poster, deskripsi, 4 benefit lalu hapus 1, harga 3/6 bulan, add-on, tambah lalu hapus opsi 12 bulan; poster terbuka tanpa login (200 image/png); katalog & halaman layanan menampilkan semuanya; total langsung 6 bulan + add-on = Rp2.800.000; opsi palsu ditolak; order tersimpan Rp2.800.000 dengan rincian; owner tandai lunas → akses sampai 2 Apr 2027 (6 bulan), bimbingan dibuat, pilihan tutor hanya tutor Primary, SOP tampil. tsc, eslint, next build lolos.
 - Data uji lokal: layanan "Bimbingan Medical Research — Review" berisi poster/benefit/harga uji; order DE-261002-0097B7 (murid demo) lunas. Harga uji bisa diganti owner.
 - Berikutnya Fase C: cicilan 2–3x per layanan yang mengunci tahap berikutnya, input penjualan oleh admin, checklist task per layanan. Fase D: dashboard HPP/laba/performa.
+
+## Fase C selesai — 2 Oktober 2026 (Claude Code)
+- Layanan: tahap bernomor + checklist task (ServiceStage, ServiceTaskTemplate) dan aturan cicilan 2–3x (InstallmentRule: persen, tahap yang dibuka; cicilan 1 selalu membuka tahap 1; total 100%). Package.allowInstallment.
+- Order: paymentPlan FULL/INSTALLMENT, OrderInstallment (salinan jadwal), discount, leadSource, createdById, status baru PARTIAL. Cicilan dikonfirmasi berurutan oleh admin; cicilan 1 mengaktifkan akses + proyek + checklist; cicilan terakhir → PAID. Bayar penuh tetap memakai markOrderPaid.
+- Proyek: ProjectTask (TODO → DONE oleh tutor dengan catatan wajib & link bukti opsional → divalidasi admin / REVISION). Tahap terkunci bila ada cicilan belum lunas yang membuka tahap ≤ N (UI & server). Progres proyek = persen task tervalidasi. Antrean /admin/validasi kini berisi task + sesi. Tutup proyek memblokir bila ada task/sesi menunggu validasi; task belum selesai dibatalkan. Tombol "Terapkan checklist dari layanan" untuk proyek lama.
+- Input penjualan admin /admin/order/baru (pelanggan terdaftar/baru, layanan, masa, add-on, diskon bila akses keuangan, bayar penuh/cicil, sumber pelanggan, catatan). Form pelanggan di website: pilihan Bayar penuh / Cicil Nx dengan jadwal, dan "Tahu layanan ini dari".
+- Tombol mengambang "Chat Admin" WhatsApp (src/components/whatsapp-button.tsx) untuk pengunjung/pelanggan/tutor; nomor dari Pengaturan situs; 08xx otomatis jadi 628xx. Nomor admin BELUM diisi (pengguna perlu mengisinya).
+- Migrasi: installments_stages_tasks. Cadangan DB lokal sebelum migrasi di scratchpad sesi.
+- Diverifikasi di browser lokal: owner membuat 3 tahap × 2 task pada layanan Review; aturan cicilan salah (110%) ditolak, aturan DP 50% → tahap 1, Pelunasan 50% → tahap 3 tersimpan; admin input penjualan pelanggan baru via WhatsApp, 6 bulan, diskon Rp100.000, cicil 2x → total Rp2.400.000 = 2 × Rp1.200.000; konfirmasi DP → status Cicilan berjalan, proyek + 6 task, tahap 3 terkunci; tutor menyelesaikan task tahap 1, percobaan memalsukan task tahap 3 ditolak server; owner validasi task → progres 17%; konfirmasi pelunasan → Lunas & tahap 3 terbuka; halaman layanan menampilkan Cicil 2x (Rp750.000 × 2) dan tombol Chat Admin (tidak tampil untuk owner), nomor 0812… → wa.me/62812…; nomor uji dikosongkan lagi. tsc, eslint, next build lolos.
+- Data uji lokal: layanan Review berisi tahap/cicilan uji; akun cicil.uji@dokteredukasi.test (sandi = SEED_DEMO_PASSWORD) dengan order DE-261002-18C1F1 lunas.
+- Berikutnya Fase D: dashboard HPP/laba/margin, performa layanan/kategori/tutor, alert (overdue, akan kedaluwarsa, fee payable), laporan & ekspor. Juga: pembayaran online Duitku, email sungguhan, deploy.
 
 ## Protokol pembaruan
 - Awal sesi: baca seluruh file ini, periksa berkas aktual dan perubahan lokal, lalu catat pelaksana serta fokus aktif.

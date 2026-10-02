@@ -10,6 +10,7 @@ import { back, bool, optInt, optStr, str } from "@/lib/flash";
 import { FEE_BASIS } from "@/lib/constants";
 import { slugify } from "@/lib/format";
 import { ELIGIBILITY_LEVELS } from "@/lib/services";
+import { rulesValid } from "@/lib/installments";
 
 // Semua isi layanan diinput manual oleh owner/admin dengan akses "Paket & harga".
 
@@ -286,4 +287,115 @@ export async function saveEligibilityAction(form: FormData) {
     await logAudit(actor(me), "TUTOR_PROFILE_UPDATED", "Package", pkg.id, `Kelayakan & fee tutor untuk ${pkg.name} diubah`, { after: changes });
   }
   back(pathOf(pkg.id), "Kelayakan tutor disimpan.");
+}
+
+// ---------- Tahap & checklist pekerjaan ----------
+
+export async function addStageAction(form: FormData) {
+  const me = await requirePermission("admin.packages");
+  const pkg = await ownedService(form);
+  const title = str(form, "title");
+  if (title.length < 2) back(pathOf(pkg.id), "Nama tahap minimal 2 karakter.", "error");
+  const last = await db.serviceStage.findFirst({ where: { packageId: pkg.id }, orderBy: { number: "desc" } });
+  const number = (last?.number ?? 0) + 1;
+  const tasks = str(form, "tasks")
+    .split("\n")
+    .map((l) => l.replace(/^[-•*]\s*/, "").trim())
+    .filter(Boolean);
+  await db.serviceStage.create({
+    data: { packageId: pkg.id, number, title, description: optStr(form, "description"), tasks: { create: tasks.map((t, i) => ({ title: t, order: i })) } },
+  });
+  await logAudit(actor(me), "TASK_CHANGED", "Package", pkg.id, `Tahap ${number} "${title}" ditambahkan ke ${pkg.name} (${tasks.length} task)`);
+  back(pathOf(pkg.id), `Tahap ${number} ditambahkan.`);
+}
+
+export async function updateStageAction(form: FormData) {
+  await requirePermission("admin.packages");
+  const pkg = await ownedService(form);
+  const title = str(form, "title");
+  if (title.length < 2) back(pathOf(pkg.id), "Nama tahap minimal 2 karakter.", "error");
+  await db.serviceStage.updateMany({ where: { id: str(form, "id"), packageId: pkg.id }, data: { title, description: optStr(form, "description") } });
+  back(pathOf(pkg.id), "Tahap disimpan.");
+}
+
+// Menghapus tahap terakhir saja agar nomor tahap & aturan cicilan tetap konsisten.
+export async function deleteStageAction(form: FormData) {
+  const me = await requirePermission("admin.packages");
+  const pkg = await ownedService(form);
+  const stage = await db.serviceStage.findFirst({ where: { id: str(form, "id"), packageId: pkg.id } });
+  if (!stage) back(pathOf(pkg.id), "Tahap tidak ditemukan.", "error");
+  const last = await db.serviceStage.findFirst({ where: { packageId: pkg.id }, orderBy: { number: "desc" } });
+  if (last?.id !== stage.id) back(pathOf(pkg.id), "Hapus dari tahap terakhir agar nomor tahap tetap berurutan.", "error");
+  const usedByRule = await db.installmentRule.count({ where: { packageId: pkg.id, unlocksStage: stage.number } });
+  if (usedByRule) back(pathOf(pkg.id), "Tahap ini dipakai aturan cicilan. Ubah aturan cicilan dulu.", "error");
+  await db.serviceStage.delete({ where: { id: stage.id } });
+  await logAudit(actor(me), "TASK_CHANGED", "Package", pkg.id, `Tahap ${stage.number} "${stage.title}" dihapus dari ${pkg.name}`);
+  back(pathOf(pkg.id), "Tahap dihapus. Proyek yang sudah berjalan tidak berubah.");
+}
+
+export async function addTaskTemplateAction(form: FormData) {
+  await requirePermission("admin.packages");
+  const pkg = await ownedService(form);
+  const stage = await db.serviceStage.findFirst({ where: { id: str(form, "stageId"), packageId: pkg.id } });
+  if (!stage) back(pathOf(pkg.id), "Tahap tidak ditemukan.", "error");
+  const lines = str(form, "title")
+    .split("\n")
+    .map((l) => l.replace(/^[-•*]\s*/, "").trim())
+    .filter(Boolean);
+  if (!lines.length) back(pathOf(pkg.id), "Tulis nama task.", "error");
+  const count = await db.serviceTaskTemplate.count({ where: { stageId: stage.id } });
+  await db.serviceTaskTemplate.createMany({ data: lines.map((t, i) => ({ stageId: stage.id, title: t, order: count + i })) });
+  back(pathOf(pkg.id), `${lines.length} task ditambahkan ke tahap ${stage.number}.`);
+}
+
+export async function updateTaskTemplateAction(form: FormData) {
+  await requirePermission("admin.packages");
+  const pkg = await ownedService(form);
+  const title = str(form, "title");
+  if (!title) back(pathOf(pkg.id), "Nama task tidak boleh kosong.", "error");
+  await db.serviceTaskTemplate.updateMany({
+    where: { id: str(form, "id"), stage: { packageId: pkg.id } },
+    data: { title, order: optInt(form, "order") ?? 0 },
+  });
+  back(pathOf(pkg.id), "Task disimpan.");
+}
+
+export async function deleteTaskTemplateAction(form: FormData) {
+  await requirePermission("admin.packages");
+  const pkg = await ownedService(form);
+  await db.serviceTaskTemplate.deleteMany({ where: { id: str(form, "id"), stage: { packageId: pkg.id } } });
+  back(pathOf(pkg.id), "Task dihapus dari template. Proyek yang sudah berjalan tidak berubah.");
+}
+
+// ---------- Cicilan ----------
+
+export async function saveInstallmentRulesAction(form: FormData) {
+  const me = await requirePermission("admin.packages");
+  const pkg = await ownedService(form);
+  const allow = bool(form, "allowInstallment");
+  const count = optInt(form, "count") === 3 ? 3 : 2;
+  const rules = Array.from({ length: count }, (_, i) => ({
+    seq: i + 1,
+    label: str(form, `label_${i + 1}`) || `Cicilan ${i + 1}`,
+    percent: optInt(form, `percent_${i + 1}`) ?? 0,
+    unlocksStage: optInt(form, `stage_${i + 1}`) ?? (i === 0 ? 1 : 0),
+  }));
+  const stages = await db.serviceStage.findMany({ where: { packageId: pkg.id }, select: { number: true } });
+  const numbers = new Set(stages.map((s) => s.number));
+
+  if (allow) {
+    const err = rulesValid(rules);
+    if (err) back(pathOf(pkg.id), err, "error");
+    if (rules.some((r) => r.unlocksStage !== 1 && !numbers.has(r.unlocksStage))) {
+      back(pathOf(pkg.id), "Tahap yang dipilih belum ada. Buat tahapnya di bagian Tahap & checklist.", "error");
+    }
+  }
+  await db.$transaction([
+    db.installmentRule.deleteMany({ where: { packageId: pkg.id } }),
+    ...(allow ? rules.map((r) => db.installmentRule.create({ data: { ...r, packageId: pkg.id } })) : []),
+    db.package.update({ where: { id: pkg.id }, data: { allowInstallment: allow } }),
+  ]);
+  await logAudit(actor(me), "PACKAGE_SAVED", "Package", pkg.id, `Aturan cicilan ${pkg.name} ${allow ? "diubah" : "dimatikan"}`, { after: allow ? rules : { allowInstallment: false } });
+  refresh(pkg.slug);
+  back(pathOf(pkg.id), allow ? "Aturan cicilan disimpan." : "Cicilan dimatikan untuk layanan ini.");
 }
