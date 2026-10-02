@@ -3,7 +3,7 @@
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { db } from "@/lib/db";
-import { requireUser } from "@/lib/auth";
+import { requirePermission } from "@/lib/auth";
 import { deleteStoredFile, isPresentation, readStoredFile, saveBuffer, saveUpload, UploadError } from "@/lib/storage";
 import { convertToPdf } from "@/lib/convert";
 import { isSlideEmbeddable, isVideoEmbeddable } from "@/lib/embed";
@@ -11,7 +11,7 @@ import { back, bool, optInt, optStr, str } from "@/lib/flash";
 import { DISPLAY_TYPES, ITEM_TYPES } from "@/lib/constants";
 import { slugify } from "@/lib/format";
 
-const admin = () => requireUser(["ADMIN"]);
+const admin = () => requirePermission("admin.content");
 
 function refresh() {
   revalidatePath("/", "layout");

@@ -222,21 +222,28 @@ async function seedPackages(categoryIds: Map<string, string>) {
   }
 }
 
-async function upsertUser(email: string, name: string, role: string, password: string) {
+async function upsertUser(email: string, name: string, role: string, password: string, permissions: string[] = []) {
   const existing = await db.user.findUnique({ where: { email } });
   if (existing) return existing;
-  return db.user.create({ data: { email, name, role, passwordHash: await bcrypt.hash(password, 10) } });
+  return db.user.create({
+    data: { email, name, role, passwordHash: await bcrypt.hash(password, 10), permissions: JSON.stringify(permissions) },
+  });
 }
 
 async function seedUsers() {
   const adminEmail = process.env.SEED_ADMIN_EMAIL;
   const adminPassword = process.env.SEED_ADMIN_PASSWORD;
   if (!adminEmail || !adminPassword) throw new Error("Isi SEED_ADMIN_EMAIL dan SEED_ADMIN_PASSWORD di .env");
-  await upsertUser(adminEmail, "Admin Master", "ADMIN", adminPassword);
+  // Akun pertama adalah Owner: semua akses, membuat akun admin & tutor.
+  await upsertUser(adminEmail, "Owner", "OWNER", adminPassword);
 
   if (process.env.SEED_DEMO !== "true") return;
   const demoPassword = process.env.SEED_DEMO_PASSWORD || adminPassword;
-  const tutor = await upsertUser("tutor@dokteredukasi.test", "Tutor Demo (Research Review)", "TUTOR", demoPassword);
+  const tutor = await upsertUser("tutor@dokteredukasi.test", "Tutor Demo (Research Review)", "TUTOR", demoPassword, [
+    "tutor.clients",
+    "tutor.payroll",
+    "tutor.achievements",
+  ]);
   await upsertUser("murid@dokteredukasi.test", "Murid Demo", "STUDENT", demoPassword);
 
   const profile = await db.tutorProfile.upsert({

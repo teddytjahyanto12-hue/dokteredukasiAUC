@@ -3,8 +3,8 @@
 import { redirect } from "next/navigation";
 import { z } from "zod";
 import { db } from "@/lib/db";
-import { createSession, destroySession, hashPassword, homeForRole, requireUser, verifyPassword } from "@/lib/auth";
-import type { Role } from "@/lib/constants";
+import { createSession, destroySession, hashPassword, homeFor, requireUser, verifyPassword } from "@/lib/auth";
+import { parsePermissions } from "@/lib/permissions";
 import { back, safeNext, str } from "@/lib/flash";
 
 const registerSchema = z
@@ -54,7 +54,7 @@ export async function loginAction(form: FormData) {
   }
   if (!user.active) back(`/masuk${nextQs}`, "Akun dinonaktifkan. Hubungi admin.", "error");
   await createSession(user.id);
-  redirect(next ?? homeForRole(user.role as Role));
+  redirect(next ?? homeFor({ role: user.role, permissions: parsePermissions(user.permissions) }));
 }
 
 export async function logoutAction() {

@@ -1,3 +1,4 @@
+import { requirePermission } from "@/lib/auth";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { db } from "@/lib/db";
@@ -35,6 +36,7 @@ type ItemRow = {
 };
 
 export default async function AdminTopic({ params, searchParams }: { params: Promise<{ id: string }>; searchParams: SearchParams }) {
+  await requirePermission("admin.content");
   const { id } = await params;
   const { pesan, tipe } = await readFlash(searchParams);
   const topic = await db.topic.findUnique({

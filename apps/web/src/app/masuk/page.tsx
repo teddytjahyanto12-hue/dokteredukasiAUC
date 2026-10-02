@@ -2,7 +2,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { loginAction } from "@/app/actions/auth";
 import { Field, Flash } from "@/components/ui";
-import { getCurrentUser, homeForRole } from "@/lib/auth";
+import { getCurrentUser, homeFor } from "@/lib/auth";
 import { readFlash, safeNext, type SearchParams } from "@/lib/flash";
 
 export const metadata = { title: "Masuk" };
@@ -11,7 +11,7 @@ export default async function LoginPage({ searchParams }: { searchParams: Search
   const { pesan, tipe, pick } = await readFlash(searchParams);
   const next = safeNext(pick("next"));
   const user = await getCurrentUser();
-  if (user) redirect(next ?? homeForRole(user.role));
+  if (user) redirect(next ?? homeFor(user));
 
   return (
     <div className="container-page grid min-h-[70vh] place-items-center py-10">

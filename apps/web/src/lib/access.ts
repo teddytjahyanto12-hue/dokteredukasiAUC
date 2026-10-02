@@ -1,9 +1,10 @@
 import "server-only";
 import { db } from "./db";
 import type { CurrentUser } from "./auth";
+import { hasPermission } from "./permissions";
 
 // Aturan akses materi (diperiksa di server untuk setiap halaman/berkas):
-// - Admin: semua materi.
+// - Owner & admin: semua materi.
 // - Tutor: materi pada jalur (Track) yang diberikan di profil tutornya.
 // - Murid: item gratis, atau kategori yang termasuk paket dengan hak akses aktif.
 
@@ -20,7 +21,7 @@ export function activeEntitlementWhere(userId: string) {
 // Kumpulan categoryId yang terbuka untuk pengguna (null = semua terbuka).
 export async function accessibleCategoryIds(user: CurrentUser | null): Promise<Set<string> | null> {
   if (!user) return new Set();
-  if (user.role === "ADMIN") return null;
+  if (user.role === "OWNER" || user.role === "ADMIN") return null;
   if (user.role === "TUTOR") {
     const profile = await db.tutorProfile.findUnique({
       where: { userId: user.id },
@@ -47,7 +48,7 @@ export async function canAccessCategory(user: CurrentUser | null, categoryId: st
 // Akses berkas unggahan: dipakai oleh /api/berkas/[id].
 export async function canAccessFile(user: CurrentUser | null, fileId: string) {
   if (!user) return false; // semua berkas wajib login, termasuk materi gratis
-  if (user.role === "ADMIN") return true;
+  if (user.role === "OWNER") return true;
   const file = await db.fileAsset.findUnique({
     where: { id: fileId },
     select: {
@@ -57,6 +58,11 @@ export async function canAccessFile(user: CurrentUser | null, fileId: string) {
     },
   });
   if (!file) return false;
+  if (user.role === "ADMIN") {
+    // Bukti transfer payroll berisi data rekening tutor: hanya admin dengan akses payroll.
+    if (file.payrollProofs.length && !file.items.length && !file.sessionProofs.length) return hasPermission(user, "admin.payroll");
+    return true;
+  }
   if (file.sessionProofs.some((s) => s.mentoring.studentId === user.id || s.mentoring.tutorId === user.id)) return true;
   if (file.payrollProofs.some((p) => p.tutorId === user.id)) return true;
   if (file.items.length) {

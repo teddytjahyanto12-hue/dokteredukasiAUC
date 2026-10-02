@@ -1,3 +1,5 @@
+import { requirePermission } from "@/lib/auth";
+import { hasPermission } from "@/lib/permissions";
 import Link from "next/link";
 import { db } from "@/lib/db";
 import { rupiah, tanggal } from "@/lib/format";
@@ -8,6 +10,8 @@ import { readFlash, type SearchParams } from "@/lib/flash";
 export const metadata = { title: "Order" };
 
 export default async function AdminOrders({ searchParams }: { searchParams: SearchParams }) {
+  const me = await requirePermission("admin.orders");
+  const finance = hasPermission(me, "admin.finance");
   const { pesan, tipe, pick } = await readFlash(searchParams);
   const status = pick("status");
   const q = pick("q")?.trim();
@@ -49,7 +53,7 @@ export default async function AdminOrders({ searchParams }: { searchParams: Sear
                 <th>Kode</th>
                 <th>Murid</th>
                 <th>Paket</th>
-                <th>Jumlah</th>
+                {finance && <th>Jumlah</th>}
                 <th>Tanggal</th>
                 <th>Status</th>
               </tr>
@@ -67,7 +71,7 @@ export default async function AdminOrders({ searchParams }: { searchParams: Sear
                     <p className="text-xs text-slate-500">{o.user.phone}</p>
                   </td>
                   <td>{o.package.name}</td>
-                  <td>{rupiah(o.amount)}</td>
+                  {finance && <td>{rupiah(o.amount)}</td>}
                   <td>{tanggal(o.createdAt, true)}</td>
                   <td>
                     <span className={o.status === "PAID" ? "badge-brand" : o.status === "PENDING" ? "badge-warn" : "badge"}>{ORDER_STATUS_LABEL[o.status]}</span>

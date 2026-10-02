@@ -1,3 +1,4 @@
+import { requirePermission } from "@/lib/auth";
 import Link from "next/link";
 import { db } from "@/lib/db";
 import { tanggal } from "@/lib/format";
@@ -8,6 +9,7 @@ import { readFlash, type SearchParams } from "@/lib/flash";
 export const metadata = { title: "Bimbingan" };
 
 export default async function AdminMentoring({ searchParams }: { searchParams: SearchParams }) {
+  await requirePermission("admin.mentoring");
   const { pick } = await readFlash(searchParams);
   const status = pick("status");
   const list = await db.mentoring.findMany({

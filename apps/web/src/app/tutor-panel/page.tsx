@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { db } from "@/lib/db";
-import { requireUser } from "@/lib/auth";
+import { requirePermission } from "@/lib/auth";
 import { tanggal } from "@/lib/format";
 import { FIELD_LABEL, MENTORING_STATUS_LABEL, type MentoringField } from "@/lib/constants";
 import { toggleAcceptingAction } from "@/app/actions/tutor";
@@ -9,7 +9,7 @@ import { Empty, PageHeader, ProgressBar, Stat } from "@/components/ui";
 export const metadata = { title: "Panel Tutor" };
 
 export default async function TutorHome() {
-  const user = await requireUser(["TUTOR"]);
+  const user = await requirePermission("tutor.clients");
   const [profile, clients, upcoming] = await Promise.all([
     db.tutorProfile.findUnique({
       where: { userId: user.id },

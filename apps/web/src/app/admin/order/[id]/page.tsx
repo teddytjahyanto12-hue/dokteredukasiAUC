@@ -1,3 +1,4 @@
+import { requirePermission } from "@/lib/auth";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { db } from "@/lib/db";
@@ -10,6 +11,7 @@ import { Field, Flash, PageHeader } from "@/components/ui";
 import { readFlash, type SearchParams } from "@/lib/flash";
 
 export default async function AdminOrderDetail({ params, searchParams }: { params: Promise<{ id: string }>; searchParams: SearchParams }) {
+  await requirePermission("admin.orders");
   const { id } = await params;
   const { pesan, tipe } = await readFlash(searchParams);
   const order = await db.order.findUnique({

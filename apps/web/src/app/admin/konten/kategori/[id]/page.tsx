@@ -1,3 +1,4 @@
+import { requirePermission } from "@/lib/auth";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { db } from "@/lib/db";
@@ -8,6 +9,7 @@ import { Empty, Field, Flash, PageHeader } from "@/components/ui";
 import { readFlash, type SearchParams } from "@/lib/flash";
 
 export default async function AdminCategory({ params, searchParams }: { params: Promise<{ id: string }>; searchParams: SearchParams }) {
+  await requirePermission("admin.content");
   const { id } = await params;
   const { pesan, tipe } = await readFlash(searchParams);
   const category = await db.category.findUnique({

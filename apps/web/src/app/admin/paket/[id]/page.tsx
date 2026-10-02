@@ -1,3 +1,4 @@
+import { requirePermission } from "@/lib/auth";
 import { notFound } from "next/navigation";
 import { db } from "@/lib/db";
 import { FIELD_LABEL, MENTORING_FIELDS } from "@/lib/constants";
@@ -7,6 +8,7 @@ import { Field, Flash, PageHeader } from "@/components/ui";
 import { readFlash, type SearchParams } from "@/lib/flash";
 
 export default async function AdminPackageEdit({ params, searchParams }: { params: Promise<{ id: string }>; searchParams: SearchParams }) {
+  await requirePermission("admin.packages");
   const { id } = await params;
   const { pesan, tipe } = await readFlash(searchParams);
   const isNew = id === "baru";

@@ -6,7 +6,7 @@ File ini adalah sumber kebenaran tunggal untuk status, keputusan, dan serah teri
 - Pembaruan terakhir: 2026-09-28 (Asia/Jakarta), fondasi website + backend di apps/web oleh Claude Code.
 - Tahap: fondasi aplikasi (frontend + backend + panel admin) sudah dibangun dan diuji lokal; belum di-deploy; harga/keterangan paket menunggu pengguna.
 - Pekerjaan terakhir oleh: Claude Code (PC 1).
-- Pelaksana aktif: Claude Code (PC 1) — peran Owner + checklist hak akses admin/tutor, Fase A blueprint (validasi, status fee, penutupan proyek, activity log). Jangan mengedit apps/web sampai penanda ini dilepas.
+- Pelaksana aktif: tidak ada; Fase A blueprint + hak akses Owner selesai dan di-push.
 - Auctus Academy telah dipelajari pada 22 halaman publik dan sebagian area akun setelah login manual. Aplikasi proyek: apps/web (lihat bagian "Fondasi aplikasi").
 
 ## Tujuan dan kebutuhan yang sudah dinyatakan
@@ -76,6 +76,7 @@ File ini adalah sumber kebenaran tunggal untuk status, keputusan, dan serah teri
 | 2026-09-23 | Codex | Membuat struktur, memori, panduan kerja, dan pesan Claude | Terima URL lalu mulai audit |
 
 | 2026-09-23 | Codex | Memperbarui prompt AUC-SHARED-001 dan menyiapkan kolom konfirmasi Claude | Pengguna menyampaikan prompt; Codex memeriksa catatan setelah Claude selesai |
+| 2026-10-02 | Claude Code (PC 1) | Peran Owner + checklist hak akses; Fase A (validasi, status fee, penutupan, payroll void, activity log, halaman Pencapaian/Payroll tutor) | Fase B: katalog layanan, paket berisi pilihan layanan, kelayakan tutor |
 | 2026-09-29 | Claude Code (PC 1) | Menganalisis Blueprint v3 → docs/ANALISIS_BLUEPRINT_V3.md | Pengguna menjawab keputusan; mulai Fase A (fondasi kontrol) |
 | 2026-09-28 | Claude Code (PC 1) | Fitur video (YouTube/Drive embed) & slide PPTX/PDF per materi, pratinjau admin | Pengguna putuskan pemasangan LibreOffice; uji dengan link Drive asli |
 | 2026-09-28 | Claude Code (PC 1) | Push dokumen ke GitHub; membangun apps/web (frontend + backend + panel admin) dan menguji alur lengkap secara lokal | Pengguna isi harga/konten; pilih hosting; Duitku sandbox |
@@ -127,6 +128,14 @@ File ini adalah sumber kebenaran tunggal untuk status, keputusan, dan serah teri
 5. Jenis fee diinformasikan ke tutor di halaman Pencapaian.
 6. Pembayaran bisa dicicil 2–3 kali; owner mengatur per layanan cicilan mana untuk tahap apa; tahap berikutnya terkunci sampai cicilan terkait dibayar — dikerjakan di fase penjualan.
 7. Penutupan proyek hanya dengan dua alasan: pelanggan tidak aktif dalam waktu tertentu, atau masa waktu habis. Hanya owner dan admin yang menutup. (Alasan "tutor gagal"/"dibatalkan pelanggan" tidak dipakai.)
+
+## Fase A blueprint + hak akses Owner — 2 Oktober 2026 (Claude Code)
+- Peran: OWNER (semua akses; akun admin awal dimigrasikan jadi Owner), ADMIN, TUTOR, STUDENT. Owner membuat akun admin/tutor dan mencentang hak akses di /admin/tim (src/lib/permissions.ts: 12 izin admin, 3 izin tutor). Menu dan setiap halaman/aksi memeriksa izin di server.
+- Fase A: status sesi SCHEDULED → DONE (tutor, wajib catatan + bukti) → divalidasi admin / REVISION (dengan catatan); antrean /admin/validasi; status fee Projected/Menunggu validasi/Payable/Paid/No fee (src/lib/fees.ts); penutupan proyek dengan 2 alasan (sesi belum selesai → batal tanpa fee, chat read-only, bisa dibuka kembali); payroll wajib referensi transfer, void menggantikan hapus; AuditLog di /admin/audit; halaman tutor Payroll dan Pencapaian (jenis fee, nominal, status fee per sesi). Jenis fee (feeBasis) diatur di profil tutor.
+- Migrasi: owner_permissions_validation_audit (+ data: ADMIN→OWNER, COMPLETED/CANCELLED→CLOSED) dan default_tutor_permissions.
+- Diverifikasi di browser lokal: owner melihat semua menu + angka keuangan; owner membuat "Admin Uji" dan mencentang Bimbingan+Validasi → admin hanya melihat 3 menu, tanpa angka keuangan, halaman lain dialihkan; tutor hanya 3 menu, /admin dialihkan; tandai selesai tanpa catatan/bukti ditolak; revisi → tutor melihat catatan → kirim ulang → owner validasi (fee Rp150.000 payable); tutup proyek → status Paid/Payable/No fee benar, chat read-only; activity log mencatat semua langkah; mencabut izin Payroll tutor langsung menyembunyikan menu & mengalihkan URL (lalu dipulihkan). tsc, eslint, next build lolos.
+- Data uji lokal tambahan: akun admin.uji@dokteredukasi.test (Admin; sandi sama dengan SEED_DEMO_PASSWORD), proyek bimbingan murid.uji ditutup (uji penutupan). Nama tampilan Owner masih "Admin Master" (bisa diubah di menu Akun).
+- Belum: Fase B (katalog layanan + HPP, paket berisi pilihan layanan, matriks kelayakan tutor × layanan, fee per layanan), Fase C (input penjualan admin, cicilan 2–3x yang mengunci tahap berikutnya, checklist task), Fase D (dashboard HPP/laba/performa). PC 2 sedang offline saat sesi ini; salin ulang ke folder PC 2 setelah online (atau Codex git pull).
 
 ## Protokol pembaruan
 - Awal sesi: baca seluruh file ini, periksa berkas aktual dan perubahan lokal, lalu catat pelaksana serta fokus aktif.

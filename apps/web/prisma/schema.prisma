@@ -20,7 +20,9 @@ model User {
   phone        String?
   institution  String?
   passwordHash String
-  role         String   @default("STUDENT") // ADMIN | TUTOR | STUDENT
+  role         String   @default("STUDENT") // OWNER | ADMIN | TUTOR | STUDENT
+  // Hak akses yang dicentang owner untuk admin/tutor (JSON array kunci izin, lihat src/lib/permissions.ts).
+  permissions  String   @default("[]")
   active       Boolean  @default(true)
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
@@ -37,6 +39,7 @@ model User {
   notifications      Notification[]
   payrolls           Payroll[]
   uploads            FileAsset[]
+  auditLogs          AuditLog[]
 }
 
 model TutorProfile {
@@ -47,6 +50,7 @@ model TutorProfile {
   specialty   String?
   rate        Int?    // rupiah per sesi bimbingan; null = belum ditetapkan
   rateNote    String?
+  feeBasis    String? // PER_SESSION | PER_PROJECT | PER_MILESTONE | PER_EVENT | ROYALTY — ditampilkan di halaman Pencapaian tutor
   bankName    String?
   bankAccount String?
   bankHolder  String?
@@ -298,9 +302,14 @@ model Mentoring {
   order     Order?   @relation(fields: [orderId], references: [id], onDelete: SetNull)
   field     String   // CLINICAL | PRECLINICAL | RESEARCH_REVIEW | RESEARCH_ORIGINAL
   title     String?  // topik / judul riset
-  status    String   @default("WAITING_ASSIGNMENT") // WAITING_ASSIGNMENT | ACTIVE | COMPLETED | CANCELLED
+  status    String   @default("WAITING_ASSIGNMENT") // WAITING_ASSIGNMENT | ACTIVE | CLOSED
   progress  Int      @default(0) // persen 0–100
   notes     String?
+  // Penutupan hanya oleh owner/admin dengan alasan: INACTIVE_CUSTOMER | PERIOD_ENDED
+  closeReason String?
+  closeNote   String?
+  closedAt    DateTime?
+  closedById  String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   sessions  MentoringSession[]
@@ -318,9 +327,15 @@ model MentoringSession {
   proofUrl    String?
   proofFileId String?
   proofFile   FileAsset? @relation(fields: [proofFileId], references: [id], onDelete: SetNull)
-  status      String     @default("SCHEDULED") // SCHEDULED | DONE | CANCELLED
-  verifiedAt  DateTime?  // diverifikasi admin → masuk hitungan payroll
-  fee         Int?       // fee tutor untuk sesi ini (diambil dari rate saat verifikasi)
+  recordingUrl String?
+  // SCHEDULED → DONE (tutor klaim selesai = menunggu validasi) → divalidasi admin (verifiedAt)
+  // atau REVISION (dikembalikan ke tutor). CANCELLED = tanpa fee.
+  status      String     @default("SCHEDULED") // SCHEDULED | DONE | REVISION | CANCELLED
+  doneAt      DateTime?  // waktu tutor menandai selesai
+  revisionNote String?   // catatan admin saat meminta revisi
+  verifiedAt  DateTime?  // divalidasi admin → fee menjadi Payable
+  verifiedById String?
+  fee         Int?       // fee tutor untuk sesi ini (dikunci saat validasi)
   payrollId   String?
   payroll     Payroll?   @relation(fields: [payrollId], references: [id], onDelete: SetNull)
   createdAt   DateTime   @default(now())
@@ -354,11 +369,13 @@ model Payroll {
   tutor       User       @relation(fields: [tutorId], references: [id], onDelete: Cascade)
   periodLabel String
   amount      Int
-  status      String     @default("UNPAID") // UNPAID | PAID
+  status      String     @default("UNPAID") // UNPAID | PAID | VOID (dibatalkan, sesi kembali ke Payable)
   proofFileId String?
   proofFile   FileAsset? @relation(fields: [proofFileId], references: [id], onDelete: SetNull)
   paidAt      DateTime?
+  paymentRef  String?    // referensi transfer, wajib saat ditandai dibayar
   notes       String?
+  voidReason  String?
   createdAt   DateTime   @default(now())
   sessions    MentoringSession[]
 }
@@ -374,6 +391,24 @@ model Notification {
   link      String?
   readAt    DateTime?
   createdAt DateTime  @default(now())
+}
+
+// Jejak aktivitas: siapa mengubah apa dan kapan. Tidak pernah dihapus dari aplikasi.
+model AuditLog {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  actorId   String?
+  actor     User?    @relation(fields: [actorId], references: [id], onDelete: SetNull)
+  actorName String
+  action    String   // mis. ORDER_PAID, SESSION_VALIDATED, PERMISSIONS_CHANGED
+  entity    String   // mis. Order, MentoringSession, User
+  entityId  String?
+  summary   String
+  before    String?  // JSON ringkas nilai lama
+  after     String?  // JSON ringkas nilai baru
+
+  @@index([entity, entityId])
+  @@index([createdAt])
 }
 
 // Teks dan pengaturan situs yang dapat diubah admin tanpa mengubah kode.

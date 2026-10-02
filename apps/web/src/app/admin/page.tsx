@@ -1,6 +1,7 @@
+import { requirePermission } from "@/lib/auth";
+import { hasPermission } from "@/lib/permissions";
 import Link from "next/link";
 import { db } from "@/lib/db";
-import { requireUser } from "@/lib/auth";
 import { rupiah, tanggal } from "@/lib/format";
 import { getSettings } from "@/lib/settings";
 import { Empty, PageHeader, Stat } from "@/components/ui";
@@ -8,7 +9,7 @@ import { Empty, PageHeader, Stat } from "@/components/ui";
 export const metadata = { title: "Admin" };
 
 export default async function AdminHome() {
-  const me = await requireUser(["ADMIN"]);
+  const me = await requirePermission("admin.dashboard");
   const [pendingOrders, waitingMentoring, students, tutors, unverified, notifications, settings] = await Promise.all([
     db.order.findMany({ where: { status: "PENDING" }, orderBy: { createdAt: "desc" }, take: 8, include: { user: true, package: true } }),
     db.mentoring.count({ where: { status: "WAITING_ASSIGNMENT" } }),
@@ -18,6 +19,15 @@ export default async function AdminHome() {
     db.notification.findMany({ where: { userId: me.id, readAt: null }, orderBy: { createdAt: "desc" }, take: 5 }),
     getSettings(),
   ]);
+  const finance = hasPermission(me, "admin.finance");
+  const money = finance
+    ? await Promise.all([
+        db.order.aggregate({ where: { status: "PAID" }, _sum: { amount: true }, _count: true }),
+        db.mentoringSession.aggregate({ where: { verifiedAt: { not: null }, OR: [{ payrollId: null }, { payroll: { status: "UNPAID" } }] }, _sum: { fee: true } }),
+        db.mentoringSession.aggregate({ where: { verifiedAt: { not: null }, payroll: { status: "PAID" } }, _sum: { fee: true } }),
+        db.mentoringSession.count({ where: { verifiedAt: null, status: { in: ["SCHEDULED", "DONE", "REVISION"] }, mentoring: { status: { not: "CLOSED" } } } }),
+      ])
+    : null;
   const setupMissing = [!settings.adminWhatsapp && "nomor WhatsApp admin", !settings.tutorFormUrl && "tautan Google Form tutor"].filter(Boolean);
 
   return (
@@ -35,10 +45,18 @@ export default async function AdminHome() {
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-5">
         <Stat label="Order menunggu" value={pendingOrders.length} href="/admin/order?status=PENDING" />
         <Stat label="Bimbingan perlu tutor" value={waitingMentoring} href="/admin/bimbingan?status=WAITING_ASSIGNMENT" />
-        <Stat label="Sesi perlu verifikasi" value={unverified} href="/admin/bimbingan" />
-        <Stat label="Murid" value={students} href="/admin/pengguna?role=STUDENT" />
-        <Stat label="Tutor aktif" value={tutors} href="/admin/pengguna?role=TUTOR" />
+        <Stat label="Sesi menunggu validasi" value={unverified} href="/admin/validasi" />
+        <Stat label="Murid" value={students} href="/admin/pengguna" />
+        <Stat label="Tutor aktif" value={tutors} href="/admin/tim" />
       </div>
+      {money && (
+        <div className="mt-4 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+          <Stat label={`Penjualan lunas (${money[0]._count} order)`} value={rupiah(money[0]._sum.amount ?? 0)} href="/admin/order?status=PAID" />
+          <Stat label="Fee tutor payable (belum dibayar)" value={rupiah(money[1]._sum.fee ?? 0)} href="/admin/payroll" />
+          <Stat label="Fee tutor sudah dibayar" value={rupiah(money[2]._sum.fee ?? 0)} href="/admin/payroll" />
+          <Stat label="Sesi projected (belum tervalidasi)" value={money[3]} />
+        </div>
+      )}
 
       <div className="mt-8 grid gap-6 xl:grid-cols-2">
         <section>
@@ -57,7 +75,7 @@ export default async function AdminHome() {
                       </p>
                     </div>
                     <div className="text-right text-sm">
-                      <p>{rupiah(o.amount)}</p>
+                      {finance && <p>{rupiah(o.amount)}</p>}
                       <p className="text-xs text-slate-500">{tanggal(o.createdAt, true)}</p>
                     </div>
                   </Link>

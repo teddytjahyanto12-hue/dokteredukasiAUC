@@ -17,14 +17,16 @@ npm run dev                 # buka http://localhost:3000
 
 Masuk sebagai admin memakai `SEED_ADMIN_EMAIL` / `SEED_ADMIN_PASSWORD` dari `.env`. Akun demo (bila `SEED_DEMO=true`): `tutor@dokteredukasi.test` dan `murid@dokteredukasi.test` dengan `SEED_DEMO_PASSWORD`.
 
-## Peran dan halaman
+## Peran dan hak akses
 
-| Peran | Halaman utama | Isi |
-|---|---|---|
-| Publik | `/`, `/program/[jalur]`, `/paket`, `/gabung-tutor` | Beranda, tiga jalur, katalog paket, alur seleksi tutor |
-| Murid | `/belajar`, `/materi/[topik]`, `/quiz/[topik]`, `/pembelian`, `/bimbingan/[id]` | Paket aktif, slide/PDF/video/tautan, quiz per topik, riwayat pembelian, bimbingan + chat |
-| Tutor | `/tutor-panel`, `/tutor-panel/pendapatan` | Klien saya, progres, sesi Zoom + bukti, chat, pendapatan & payroll |
-| Admin Master | `/admin/...` | Order, bimbingan (assign tutor, verifikasi sesi), pengguna & tutor, konten, paket, payroll, pengaturan situs |
+| Peran | Akses |
+|---|---|
+| Owner | Semua fitur. Satu-satunya yang membuat akun admin & tutor dan mencentang hak aksesnya di `/admin/tim`. |
+| Admin | Hanya fitur yang dicentang owner (lihat `src/lib/permissions.ts`): Ringkasan, Angka keuangan, Order, Bimbingan/proyek, Validasi, Akun murid, Data tutor, Konten, Paket, Payroll, Pengaturan, Activity log. |
+| Tutor | Hanya fitur yang dicentang owner: Dashboard klien, Payroll, Pencapaian. Hanya melihat data miliknya. |
+| Murid | Mendaftar sendiri; materi, quiz, pembelian, bimbingan. |
+
+Kontrol pekerjaan & fee (Blueprint v3): tutor menandai sesi selesai + bukti → antrean `/admin/validasi` → admin setujui (fee Payable) atau minta revisi. Status fee per sesi selalu tepat satu: Projected / Menunggu validasi / Payable / Paid / No fee (`src/lib/fees.ts`). Proyek ditutup hanya oleh owner/admin dengan alasan "pelanggan tidak aktif" atau "masa waktu habis"; sesi yang belum selesai otomatis tanpa fee. Payroll tidak dihapus, hanya di-void dengan alasan. Semua perubahan penting tercatat di `/admin/audit`.
 
 ## Yang bisa diubah tanpa coding (panel admin)
 

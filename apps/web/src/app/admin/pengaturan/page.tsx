@@ -1,3 +1,4 @@
+import { requirePermission } from "@/lib/auth";
 import { getSettings } from "@/lib/settings";
 import { SETTING_DEFAULTS, SETTING_LABEL, type SettingKey } from "@/lib/constants";
 import { saveSettingsAction } from "@/app/actions/admin";
@@ -9,6 +10,7 @@ export const metadata = { title: "Pengaturan" };
 const LONG: SettingKey[] = ["heroSubtitle", "paymentInstructions"];
 
 export default async function AdminSettings({ searchParams }: { searchParams: SearchParams }) {
+  await requirePermission("admin.settings");
   const { pesan, tipe } = await readFlash(searchParams);
   const s = await getSettings();
   return (

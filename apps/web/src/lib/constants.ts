@@ -1,9 +1,10 @@
 // Daftar nilai yang dipakai di database (disimpan sebagai String) beserta labelnya.
 
-export const ROLES = ["ADMIN", "TUTOR", "STUDENT"] as const;
+export const ROLES = ["OWNER", "ADMIN", "TUTOR", "STUDENT"] as const;
 export type Role = (typeof ROLES)[number];
 export const ROLE_LABEL: Record<Role, string> = {
-  ADMIN: "Admin Master",
+  OWNER: "Owner",
+  ADMIN: "Admin",
   TUTOR: "Tutor",
   STUDENT: "Murid",
 };
@@ -43,23 +44,49 @@ export const ORDER_STATUS_LABEL: Record<string, string> = {
   CANCELLED: "Dibatalkan",
 };
 
-export const MENTORING_STATUS = ["WAITING_ASSIGNMENT", "ACTIVE", "COMPLETED", "CANCELLED"] as const;
+export const MENTORING_STATUS = ["WAITING_ASSIGNMENT", "ACTIVE", "CLOSED"] as const;
 export const MENTORING_STATUS_LABEL: Record<string, string> = {
   WAITING_ASSIGNMENT: "Menunggu penjadwalan & tutor",
   ACTIVE: "Berjalan",
-  COMPLETED: "Selesai",
-  CANCELLED: "Dibatalkan",
+  CLOSED: "Ditutup",
+};
+
+// Penutupan proyek hanya oleh owner/admin, dengan salah satu alasan ini.
+export const CLOSE_REASONS = ["INACTIVE_CUSTOMER", "PERIOD_ENDED"] as const;
+export const CLOSE_REASON_LABEL: Record<string, string> = {
+  INACTIVE_CUSTOMER: "Pelanggan tidak aktif dalam waktu tertentu",
+  PERIOD_ENDED: "Masa waktu layanan habis",
+};
+
+export const FEE_BASIS = ["PER_SESSION", "PER_PROJECT", "PER_MILESTONE", "PER_EVENT", "ROYALTY"] as const;
+export const FEE_BASIS_LABEL: Record<string, string> = {
+  PER_SESSION: "Per sesi bimbingan tervalidasi",
+  PER_PROJECT: "Per proyek",
+  PER_MILESTONE: "Per milestone tervalidasi",
+  PER_EVENT: "Per sesi / event (webinar)",
+  ROYALTY: "Royalti per produk terjual",
+};
+
+// Status fee per sesi (saling eksklusif, lihat src/lib/fees.ts).
+export const FEE_STATUS_LABEL: Record<string, string> = {
+  PROJECTED: "Projected (belum tervalidasi)",
+  PENDING_VALIDATION: "Menunggu validasi admin",
+  PAYABLE: "Payable (terutang, belum dibayar)",
+  PAID: "Paid (sudah dibayar)",
+  NO_FEE: "No fee",
 };
 
 export const SESSION_STATUS_LABEL: Record<string, string> = {
   SCHEDULED: "Terjadwal",
-  DONE: "Selesai",
+  DONE: "Ditandai selesai tutor",
+  REVISION: "Perlu revisi",
   CANCELLED: "Dibatalkan",
 };
 
 export const PAYROLL_STATUS_LABEL: Record<string, string> = {
   UNPAID: "Belum dibayar",
   PAID: "Sudah dibayar",
+  VOID: "Dibatalkan (void)",
 };
 
 // Pengaturan situs yang bisa diubah admin di /admin/pengaturan.

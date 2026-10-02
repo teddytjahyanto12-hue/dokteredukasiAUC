@@ -1,8 +1,9 @@
+import { requirePermission } from "@/lib/auth";
 import Link from "next/link";
 import { db } from "@/lib/db";
 import { rupiah, tanggal } from "@/lib/format";
 import { PAYROLL_STATUS_LABEL } from "@/lib/constants";
-import { createPayrollAction, deletePayrollAction, markPayrollPaidAction } from "@/app/actions/admin";
+import { createPayrollAction, markPayrollPaidAction, voidPayrollAction } from "@/app/actions/admin";
 import { ConfirmButton } from "@/components/confirm-button";
 import { Empty, Field, Flash, PageHeader } from "@/components/ui";
 import { readFlash, type SearchParams } from "@/lib/flash";
@@ -10,6 +11,7 @@ import { readFlash, type SearchParams } from "@/lib/flash";
 export const metadata = { title: "Payroll" };
 
 export default async function AdminPayroll({ searchParams }: { searchParams: SearchParams }) {
+  await requirePermission("admin.payroll");
   const { pesan, tipe } = await readFlash(searchParams);
   const [tutors, payrolls] = await Promise.all([
     db.user.findMany({
@@ -101,23 +103,31 @@ export default async function AdminPayroll({ searchParams }: { searchParams: Sea
                       {p.paidAt && ` · dibayar ${tanggal(p.paidAt)}`}
                     </p>
                   </div>
-                  <span className={p.status === "PAID" ? "badge-brand" : "badge-warn"}>{PAYROLL_STATUS_LABEL[p.status]}</span>
+                  <span className={p.status === "PAID" ? "badge-brand" : p.status === "VOID" ? "badge" : "badge-warn"}>{PAYROLL_STATUS_LABEL[p.status]}</span>
                 </div>
-                <form action={markPayrollPaidAction} className="mt-3 grid gap-3 sm:grid-cols-[1fr_180px_auto] sm:items-end">
-                  <input type="hidden" name="payrollId" value={p.id} />
-                  <Field label={p.proofFile ? "Ganti bukti transfer" : "Unggah bukti transfer"}>
-                    <input className="input" type="file" name="proofFile" accept="image/*,application/pdf" />
-                  </Field>
-                  <Field label="Status">
-                    <select className="input" name="status" defaultValue={p.status}>
-                      <option value="UNPAID">Belum dibayar</option>
-                      <option value="PAID">Sudah dibayar</option>
-                    </select>
-                  </Field>
-                  <button className="btn" type="submit">
-                    Simpan
-                  </button>
-                </form>
+                {p.paymentRef && <p className="mt-1 text-xs text-slate-500">Ref. transfer: {p.paymentRef}</p>}
+                {p.status === "VOID" ? (
+                  <p className="mt-2 text-sm text-slate-500">Alasan pembatalan: {p.voidReason}</p>
+                ) : (
+                  <form action={markPayrollPaidAction} className="mt-3 grid gap-3 sm:grid-cols-[1fr_1fr_160px_auto] sm:items-end">
+                    <input type="hidden" name="payrollId" value={p.id} />
+                    <Field label={p.proofFile ? "Ganti bukti transfer" : "Unggah bukti transfer"}>
+                      <input className="input" type="file" name="proofFile" accept="image/*,application/pdf" />
+                    </Field>
+                    <Field label="Referensi transfer" hint="Wajib saat ditandai dibayar">
+                      <input className="input" name="paymentRef" defaultValue={p.paymentRef ?? ""} placeholder="No. referensi / tanggal & bank" />
+                    </Field>
+                    <Field label="Status">
+                      <select className="input" name="status" defaultValue={p.status}>
+                        <option value="UNPAID">Belum dibayar</option>
+                        <option value="PAID">Sudah dibayar</option>
+                      </select>
+                    </Field>
+                    <button className="btn" type="submit">
+                      Simpan
+                    </button>
+                  </form>
+                )}
                 <div className="mt-2 flex flex-wrap items-center gap-4 text-sm">
                   {p.proofFile && (
                     <a href={`/api/berkas/${p.proofFile.id}`} target="_blank" rel="noopener noreferrer" className="link">
@@ -125,10 +135,11 @@ export default async function AdminPayroll({ searchParams }: { searchParams: Sea
                     </a>
                   )}
                   {p.status === "UNPAID" && (
-                    <form action={deletePayrollAction}>
+                    <form action={voidPayrollAction} className="flex flex-wrap items-center gap-2">
                       <input type="hidden" name="payrollId" value={p.id} />
-                      <ConfirmButton message="Hapus payroll ini? Sesi akan kembali ke daftar siap dibayar." className="btn-danger btn-sm">
-                        Hapus payroll
+                      <input className="input w-56" name="reason" placeholder="Alasan pembatalan" required />
+                      <ConfirmButton message="Batalkan (void) payroll ini? Sesi kembali ke daftar payable." className="btn-danger btn-sm">
+                        Batalkan payroll
                       </ConfirmButton>
                     </form>
                   )}

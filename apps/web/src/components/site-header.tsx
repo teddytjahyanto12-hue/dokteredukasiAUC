@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { getCurrentUser, homeForRole } from "@/lib/auth";
+import { getCurrentUser, homeFor } from "@/lib/auth";
 import { getSettings } from "@/lib/settings";
 import { db } from "@/lib/db";
 import { logoutAction } from "@/app/actions/auth";
@@ -45,7 +45,7 @@ export async function SiteHeader() {
                   </span>
                 )}
               </Link>
-              <Link href={homeForRole(user.role)} className="btn btn-sm">
+              <Link href={homeFor(user)} className="btn btn-sm">
                 Dashboard
               </Link>
               <form action={logoutAction}>

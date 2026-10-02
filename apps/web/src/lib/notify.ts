@@ -1,5 +1,6 @@
 import "server-only";
 import { db } from "./db";
+import { hasPermission, parsePermissions, type AdminPermission } from "./permissions";
 
 type Payload = { title: string; body?: string; link?: string; email?: boolean };
 
@@ -16,11 +17,16 @@ export async function notifyUser(userId: string, p: Payload) {
   if (p.email) await sendEmailStub(user.email, p.title, p.body);
 }
 
-export async function notifyAdmins(p: Payload) {
-  const admins = await db.user.findMany({ where: { role: "ADMIN", active: true }, select: { id: true, email: true } });
-  if (!admins.length) return;
-  await db.notification.createMany({
-    data: admins.map((a) => ({ userId: a.id, title: p.title, body: p.body, link: p.link })),
+// Kirim ke owner dan admin yang memiliki hak akses terkait.
+export async function notifyStaff(permission: AdminPermission, p: Payload) {
+  const staff = await db.user.findMany({
+    where: { role: { in: ["OWNER", "ADMIN"] }, active: true },
+    select: { id: true, email: true, role: true, permissions: true },
   });
-  for (const a of admins) await sendEmailStub(a.email, p.title, p.body);
+  const targets = staff.filter((u) => hasPermission({ role: u.role, permissions: parsePermissions(u.permissions) }, permission));
+  if (!targets.length) return;
+  await db.notification.createMany({
+    data: targets.map((a) => ({ userId: a.id, title: p.title, body: p.body, link: p.link })),
+  });
+  for (const a of targets) await sendEmailStub(a.email, p.title, p.body);
 }

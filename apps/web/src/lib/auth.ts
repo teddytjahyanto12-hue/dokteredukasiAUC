@@ -6,6 +6,7 @@ import bcrypt from "bcryptjs";
 import { cache } from "react";
 import { db } from "./db";
 import type { Role } from "./constants";
+import { ADMIN_PAGES, TUTOR_PAGES, hasPermission, parsePermissions, type Permission } from "./permissions";
 
 export const SESSION_COOKIE = "de_session";
 const SESSION_DAYS = 30;
@@ -57,10 +58,10 @@ export const getCurrentUser = cache(async () => {
     if (!payload.sub) return null;
     const user = await db.user.findUnique({
       where: { id: payload.sub },
-      select: { id: true, name: true, email: true, role: true, active: true, phone: true, institution: true },
+      select: { id: true, name: true, email: true, role: true, active: true, phone: true, institution: true, permissions: true },
     });
     if (!user || !user.active) return null;
-    return { ...user, role: user.role as Role };
+    return { ...user, role: user.role as Role, permissions: parsePermissions(user.permissions) };
   } catch {
     return null;
   }
@@ -77,8 +78,21 @@ export async function requireUser(roles?: Role[]) {
   return user;
 }
 
-export function homeForRole(role: Role) {
-  if (role === "ADMIN") return "/admin";
-  if (role === "TUTOR") return "/tutor-panel";
+// Wajib memiliki hak akses tertentu (owner selalu lolos).
+export async function requirePermission(key: Permission) {
+  const user = await requireUser(["OWNER", "ADMIN", "TUTOR"]);
+  if (!hasPermission(user, key)) redirect("/dashboard?ditolak=1");
+  return user;
+}
+
+export async function requireOwner() {
+  return requireUser(["OWNER"]);
+}
+
+// Halaman awal sesuai peran dan hak akses yang dicentang owner.
+export function homeFor(user: { role: string; permissions: string[] }) {
+  if (user.role === "OWNER") return "/admin";
+  if (user.role === "ADMIN") return ADMIN_PAGES.find((p) => hasPermission(user, p.key))?.href ?? "/akun";
+  if (user.role === "TUTOR") return TUTOR_PAGES.find((p) => hasPermission(user, p.key))?.href ?? "/akun";
   return "/belajar";
 }

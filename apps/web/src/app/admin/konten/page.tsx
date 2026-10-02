@@ -1,3 +1,4 @@
+import { requirePermission } from "@/lib/auth";
 import Link from "next/link";
 import { db } from "@/lib/db";
 import { DISPLAY_TYPE_LABEL, DISPLAY_TYPES } from "@/lib/constants";
@@ -8,6 +9,7 @@ import { readFlash, type SearchParams } from "@/lib/flash";
 export const metadata = { title: "Konten" };
 
 export default async function AdminContent({ searchParams }: { searchParams: SearchParams }) {
+  await requirePermission("admin.content");
   const { pesan, tipe } = await readFlash(searchParams);
   const tracks = await db.track.findMany({
     orderBy: { order: "asc" },

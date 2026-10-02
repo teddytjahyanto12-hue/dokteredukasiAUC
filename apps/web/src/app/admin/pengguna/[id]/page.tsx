@@ -1,14 +1,15 @@
+import { requirePermission } from "@/lib/auth";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
+import { hasPermission } from "@/lib/permissions";
 import { db } from "@/lib/db";
 import { rupiah, tanggal } from "@/lib/format";
-import { FIELD_LABEL, MENTORING_FIELDS, MENTORING_STATUS_LABEL, ORDER_STATUS_LABEL, ROLE_LABEL, ROLES, type MentoringField } from "@/lib/constants";
+import { FIELD_LABEL, MENTORING_FIELDS, MENTORING_STATUS_LABEL, ORDER_STATUS_LABEL, ROLE_LABEL, type MentoringField } from "@/lib/constants";
 import {
   createMentoringAction,
   grantEntitlementAction,
   resetPasswordAction,
   revokeEntitlementAction,
-  saveTutorProfileAction,
   updateUserAction,
 } from "@/app/actions/admin";
 import { ConfirmButton } from "@/components/confirm-button";
@@ -16,29 +17,28 @@ import { Field, Flash, PageHeader } from "@/components/ui";
 import { readFlash, type SearchParams } from "@/lib/flash";
 
 export default async function AdminUserDetail({ params, searchParams }: { params: Promise<{ id: string }>; searchParams: SearchParams }) {
+  const me = await requirePermission("admin.students");
+  const finance = hasPermission(me, "admin.finance");
+  const canMentor = hasPermission(me, "admin.mentoring");
   const { id } = await params;
   const { pesan, tipe } = await readFlash(searchParams);
   const user = await db.user.findUnique({
     where: { id },
     include: {
-      tutorProfile: { include: { trackAccess: true } },
       entitlements: { orderBy: { startsAt: "desc" }, include: { package: true, order: { select: { code: true } } } },
       orders: { orderBy: { createdAt: "desc" }, include: { package: true } },
       mentoringsAsStudent: { include: { tutor: { select: { name: true } } } },
-      mentoringsAsTutor: { include: { student: { select: { name: true } } } },
     },
   });
   if (!user) notFound();
-  const [tracks, packages] = await Promise.all([
-    db.track.findMany({ orderBy: { order: "asc" } }),
-    db.package.findMany({ orderBy: { order: "asc" } }),
-  ]);
+  // Akun admin/tutor dikelola di halaman Tim.
+  if (user.role !== "STUDENT") redirect(`/admin/tim/${user.id}`);
+  const packages = await db.package.findMany({ orderBy: { order: "asc" } });
   const now = new Date();
-  const access = new Set(user.tutorProfile?.trackAccess.map((a) => a.trackId));
 
   return (
     <>
-      <PageHeader title={user.name} subtitle={`${user.email} · ${ROLE_LABEL[user.role as keyof typeof ROLE_LABEL]}`} back={{ href: "/admin/pengguna", label: "Semua pengguna" }} />
+      <PageHeader title={user.name} subtitle={`${user.email} · ${ROLE_LABEL[user.role as keyof typeof ROLE_LABEL]}`} back={{ href: "/admin/pengguna", label: "Semua murid" }} />
       <Flash pesan={pesan} tipe={tipe} />
 
       <div className="grid gap-6 xl:grid-cols-2">
@@ -53,15 +53,6 @@ export default async function AdminUserDetail({ params, searchParams }: { params
           </Field>
           <Field label="Instansi">
             <input className="input" name="institution" defaultValue={user.institution ?? ""} />
-          </Field>
-          <Field label="Peran">
-            <select className="input" name="role" defaultValue={user.role}>
-              {ROLES.map((r) => (
-                <option key={r} value={r}>
-                  {ROLE_LABEL[r]}
-                </option>
-              ))}
-            </select>
           </Field>
           <label className="flex items-center gap-2 text-sm">
             <input type="checkbox" name="active" defaultChecked={user.active} /> Akun aktif (bisa login)
@@ -81,76 +72,6 @@ export default async function AdminUserDetail({ params, searchParams }: { params
             Ganti kata sandi
           </button>
         </form>
-
-        {user.role === "TUTOR" && (
-          <form action={saveTutorProfileAction} className="card space-y-3 xl:col-span-2">
-            <input type="hidden" name="userId" value={user.id} />
-            <h2 className="h2">Profil tutor</h2>
-            <div className="grid gap-3 sm:grid-cols-2">
-              <Field label="Bidang">
-                <select className="input" name="field" defaultValue={user.tutorProfile?.field ?? "CLINICAL"}>
-                  {MENTORING_FIELDS.map((f) => (
-                    <option key={f} value={f}>
-                      {FIELD_LABEL[f]}
-                    </option>
-                  ))}
-                </select>
-              </Field>
-              <Field label="Spesialisasi / keahlian">
-                <input className="input" name="specialty" defaultValue={user.tutorProfile?.specialty ?? ""} />
-              </Field>
-              <Field label="Rate per sesi (Rp)" hint="Dipakai sebagai fee default saat admin memverifikasi sesi.">
-                <input className="input" name="rate" inputMode="numeric" defaultValue={user.tutorProfile?.rate ?? ""} />
-              </Field>
-              <Field label="Keterangan rate">
-                <input className="input" name="rateNote" defaultValue={user.tutorProfile?.rateNote ?? ""} />
-              </Field>
-              <Field label="Bank">
-                <input className="input" name="bankName" defaultValue={user.tutorProfile?.bankName ?? ""} />
-              </Field>
-              <Field label="No. rekening">
-                <input className="input" name="bankAccount" defaultValue={user.tutorProfile?.bankAccount ?? ""} />
-              </Field>
-              <Field label="Atas nama">
-                <input className="input" name="bankHolder" defaultValue={user.tutorProfile?.bankHolder ?? ""} />
-              </Field>
-              <Field label="Catatan seleksi (interview, offering letter)">
-                <input className="input" name="notes" defaultValue={user.tutorProfile?.notes ?? ""} />
-              </Field>
-            </div>
-            <fieldset>
-              <legend className="label">Akses materi</legend>
-              <div className="flex flex-wrap gap-4">
-                {tracks.map((t) => (
-                  <label key={t.id} className="flex items-center gap-2 text-sm">
-                    <input type="checkbox" name="trackIds" value={t.id} defaultChecked={access.has(t.id)} /> {t.title}
-                  </label>
-                ))}
-              </div>
-            </fieldset>
-            <label className="flex items-center gap-2 text-sm">
-              <input type="checkbox" name="acceptingClients" defaultChecked={user.tutorProfile?.acceptingClients ?? true} /> Menerima klien baru
-            </label>
-            <button className="btn" type="submit">
-              Simpan profil tutor
-            </button>
-            {user.mentoringsAsTutor.length > 0 && (
-              <div className="pt-3">
-                <p className="label">Klien</p>
-                <ul className="text-sm">
-                  {user.mentoringsAsTutor.map((m) => (
-                    <li key={m.id}>
-                      <Link href={`/bimbingan/${m.id}`} className="link">
-                        {m.student.name}
-                      </Link>{" "}
-                      · {MENTORING_STATUS_LABEL[m.status]}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-          </form>
-        )}
 
         {user.role === "STUDENT" && (
           <>
@@ -233,7 +154,8 @@ export default async function AdminUserDetail({ params, searchParams }: { params
                       <Link href={`/admin/order/${o.id}`} className="link">
                         {o.code}
                       </Link>{" "}
-                      · {o.package.name} · {rupiah(o.amount)} · {ORDER_STATUS_LABEL[o.status]}
+                      · {o.package.name}
+                      {finance && ` · ${rupiah(o.amount)}`} · {ORDER_STATUS_LABEL[o.status]}
                     </li>
                   ))}
                 </ul>
@@ -252,6 +174,7 @@ export default async function AdminUserDetail({ params, searchParams }: { params
                   </li>
                 ))}
               </ul>
+              {canMentor && (
               <form action={createMentoringAction} className="mt-4 grid gap-2 border-t border-slate-100 pt-4">
                 <input type="hidden" name="userId" value={user.id} />
                 <p className="label">Buat bimbingan manual</p>
@@ -267,6 +190,7 @@ export default async function AdminUserDetail({ params, searchParams }: { params
                   Buat bimbingan
                 </button>
               </form>
+              )}
             </section>
           </>
         )}

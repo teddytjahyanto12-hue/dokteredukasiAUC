@@ -1,3 +1,4 @@
+import { requirePermission } from "@/lib/auth";
 import Link from "next/link";
 import { db } from "@/lib/db";
 import { rupiah } from "@/lib/format";
@@ -7,6 +8,7 @@ import { readFlash, type SearchParams } from "@/lib/flash";
 export const metadata = { title: "Paket" };
 
 export default async function AdminPackages({ searchParams }: { searchParams: SearchParams }) {
+  await requirePermission("admin.packages");
   const { pesan, tipe } = await readFlash(searchParams);
   const packages = await db.package.findMany({
     orderBy: [{ trackSlug: "asc" }, { order: "asc" }],

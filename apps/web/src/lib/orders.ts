@@ -1,7 +1,7 @@
 import "server-only";
 import { randomBytes } from "node:crypto";
 import { db } from "./db";
-import { notifyAdmins, notifyUser } from "./notify";
+import { notifyStaff, notifyUser } from "./notify";
 
 export function newOrderCode() {
   const date = new Date().toISOString().slice(2, 10).replaceAll("-", "");
@@ -16,7 +16,7 @@ export async function createOrder(userId: string, packageId: string) {
     data: { code: newOrderCode(), userId, packageId, amount: pkg.price },
     include: { user: true },
   });
-  await notifyAdmins({
+  await notifyStaff("admin.orders", {
     title: `Order baru ${order.code}`,
     body: `${order.user.name} memesan ${pkg.name}.`,
     link: `/admin/order/${order.id}`,
