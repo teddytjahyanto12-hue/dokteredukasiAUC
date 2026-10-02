@@ -36,6 +36,9 @@ Kontrol pekerjaan & fee (Blueprint v3): tutor menandai sesi selesai + bukti → 
 - **Tahap, checklist & cicilan per layanan** (`/admin/paket/[id]` bagian 6–7): tahap bernomor berisi checklist task (disalin ke proyek saat layanan aktif); cicilan 2–3x dengan persen dan tahap yang dibuka. Tahap yang dibuka cicilan berikutnya terkunci sampai cicilan itu dikonfirmasi (dicek di server, `src/lib/installments.ts`).
 - **Input penjualan** (`/admin/order/baru`): pelanggan terdaftar atau baru, layanan, masa belajar, add-on, diskon (akses Angka keuangan), bayar penuh/cicil, sumber pelanggan. Konfirmasi pembayaran per cicilan di halaman order.
 - **Tombol Chat Admin WhatsApp**: muncul di semua halaman untuk pengunjung, pelanggan, dan tutor bila nomor diisi di Pengaturan situs (format 08xx atau 628xx).
+- **Kwitansi & email** : kwitansi otomatis ke email pelanggan setiap pembayaran/cicilan lunas (Pengaturan → bisa dimatikan; kirim ulang di halaman order), halaman kwitansi cetak `/pembelian/[id]/kwitansi`, email ke owner/admin untuk pelanggan & order baru. Email butuh SMTP di `.env` (lihat `.env.example`); status & riwayat di `/admin/email`.
+- **Template konfirmasi WhatsApp** (Pengaturan situs): pesan otomatis berisi identitas pelanggan, layanan, dan tagihan untuk tombol konfirmasi di halaman pesanan.
+- **Laporan & performa** (`/admin/laporan`): pendapatan diterima, HPP, laba kotor & margin, fee tutor (validated/payable/paid/projected), penjualan, operasional, peringatan, terlaris, performa layanan/kategori/tutor, sumber pelanggan, filter periode, ekspor CSV untuk Excel.
 - **Pengaturan situs** (`/admin/pengaturan`): nama situs, teks beranda, WhatsApp admin, Google Form tutor, instruksi pembayaran, footer.
 - **Warna tema**: variabel `--brand` di `src/app/globals.css`.
 

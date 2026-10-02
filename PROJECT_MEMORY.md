@@ -6,7 +6,7 @@ File ini adalah sumber kebenaran tunggal untuk status, keputusan, dan serah teri
 - Pembaruan terakhir: 2026-09-28 (Asia/Jakarta), fondasi website + backend di apps/web oleh Claude Code.
 - Tahap: fondasi aplikasi (frontend + backend + panel admin) sudah dibangun dan diuji lokal; belum di-deploy; harga/keterangan paket menunggu pengguna.
 - Pekerjaan terakhir oleh: Claude Code (PC 1).
-- Pelaksana aktif: Claude Code (PC 1) — email kwitansi & notifikasi (SMTP), template konfirmasi WhatsApp, lalu Fase D dashboard & laporan. Jangan mengedit apps/web sampai penanda ini dilepas.
+- Pelaksana aktif: tidak ada; email/WhatsApp + Fase D selesai dan di-push.
 - Auctus Academy telah dipelajari pada 22 halaman publik dan sebagian area akun setelah login manual. Aplikasi proyek: apps/web (lihat bagian "Fondasi aplikasi").
 
 ## Tujuan dan kebutuhan yang sudah dinyatakan
@@ -76,6 +76,7 @@ File ini adalah sumber kebenaran tunggal untuk status, keputusan, dan serah teri
 | 2026-09-23 | Codex | Membuat struktur, memori, panduan kerja, dan pesan Claude | Terima URL lalu mulai audit |
 
 | 2026-09-23 | Codex | Memperbarui prompt AUC-SHARED-001 dan menyiapkan kolom konfirmasi Claude | Pengguna menyampaikan prompt; Codex memeriksa catatan setelah Claude selesai |
+| 2026-10-02 | Claude Code (PC 1) | Kwitansi email, notifikasi staf, template WhatsApp; Fase D laporan & performa + ekspor CSV | Isi WA & SMTP; Duitku; deploy |
 | 2026-10-02 | Claude Code (PC 1) | Fase C: cicilan 2–3x pengunci tahap, tahap & checklist task, validasi task, input penjualan admin, tombol Chat Admin WhatsApp | Isi nomor WA admin; Fase D dashboard |
 | 2026-10-02 | Claude Code (PC 1) | Fase B: layanan input manual (poster, deskripsi, benefit, masa belajar, add-on, HPP, SOP), pemesanan dengan total, kelayakan & fee tutor per layanan | Fase C: cicilan & penjualan admin |
 | 2026-10-02 | Claude Code (PC 1) | Peran Owner + checklist hak akses; Fase A (validasi, status fee, penutupan, payroll void, activity log, halaman Pencapaian/Payroll tutor) | Fase B: katalog layanan, paket berisi pilihan layanan, kelayakan tutor |
@@ -164,6 +165,16 @@ File ini adalah sumber kebenaran tunggal untuk status, keputusan, dan serah teri
 
 ## Arahan pengguna — 2 Oktober 2026 (setelah Fase C)
 - Pelanggan yang sudah bayar menerima kwitansi via email (bisa diatur); ada tombol konfirmasi ke admin via WhatsApp dengan template berisi identitas pelanggan dan paket. Owner dan admin menerima email pemberitahuan pelanggan baru. Lalu lanjut Fase D.
+
+## Email, WhatsApp, dan Fase D selesai — 2 Oktober 2026 (Claude Code)
+- Email: src/lib/email.ts (nodemailer SMTP dari .env: SMTP_HOST/PORT/USER/PASS/MAIL_FROM/APP_URL; tanpa SMTP email dicatat SKIPPED), model EmailLog, halaman /admin/email (izin Pengaturan situs). Kwitansi otomatis ke pelanggan saat bayar penuh/cicilan lunas (setelan sendReceiptEmail ya/tidak; kirim ulang di halaman order), halaman cetak /pembelian/[id]/kwitansi. Owner + admin (izin Murid atau Order) + email tambahan di Pengaturan menerima email pelanggan baru (daftar & input penjualan) dan order baru.
+- WhatsApp: template konfirmasi pembayaran di Pengaturan (placeholder {situs} {nama} {email} {whatsapp} {kode_order} {layanan} {masa_belajar} {addon} {cara_bayar} {total} {tagihan}); tombol hijau di halaman pesanan pelanggan.
+- Fase D: izin baru admin.reports "Laporan & performa"; /admin/laporan (filter periode WIB: bulan ini/lalu/tahun ini/semua/rentang) — keuangan (pendapatan = uang diterima, HPP proporsional per cicilan, laba kotor & margin, laba setelah fee, fee validated/payable/paid/projected), penjualan, operasional, peringatan (sesi lewat jadwal, akses berakhir ≤14 hari, menunggu tutor >2 hari, cicilan berikutnya, order belum bayar >3 hari), terlaris, performa layanan/kategori/tutor, sumber pelanggan, rincian pembayaran; ekspor CSV (UTF-8 BOM, pemisah ;) di /api/laporan/[pembayaran|order|layanan|tutor|sumber]. Angka uang tetap butuh admin.finance. Order kini menyimpan salinan HPP (kolom Order.hpp; order lama null).
+- Perbaikan tata letak: menu admin membuat halaman admin melebar di layar sempit — diperbaiki di admin/layout.tsx; input editor layanan responsif.
+- Diverifikasi di browser lokal dengan server SMTP lokal (smtp-server di scratchpad, bukan bagian repo): pendaftaran pelanggan → email "Pelanggan baru" ke owner (admin tanpa izin terkait tidak menerima); order → email "Order baru" berisi rincian; template WhatsApp terisi identitas, kode order, layanan, total, tagihan (nomor 0812… → wa.me/62812…); owner tandai lunas → kwitansi terkirim ke email pelanggan + tercatat di log; halaman kwitansi tampil & menyembunyikan header/footer saat cetak. Laporan "Semua": pendapatan Rp7.200.000, HPP Rp600.000, laba kotor Rp6.600.000 (91,7%), fee tervalidasi Rp300.000 = dibayar Rp150.000 + payable Rp150.000 — cocok dengan perhitungan manual; Oktober Rp6.700.000 (4 pembayaran), September Rp500.000; CSV 200 text/csv; admin tanpa izin laporan dialihkan & CSV 403; tidak ada overflow horizontal di 375px & 746px. Setelah uji: nomor WA uji dihapus, .env dipulihkan (SMTP kosong), server SMTP lokal dimatikan. tsc, eslint, next build lolos.
+- Data uji lokal tambahan: akun email.uji@dokteredukasi.test dengan order DE-261002-8FBCBC lunas.
+- Menunggu pengguna: isi nomor WhatsApp admin & (opsional) email tambahan di Pengaturan situs; isi SMTP di apps/web/.env agar email benar-benar terkirim.
+- Berikutnya: pembayaran online Duitku (sandbox), deploy (PostgreSQL + object storage + hosting), tes otomatis.
 
 ## Protokol pembaruan
 - Awal sesi: baca seluruh file ini, periksa berkas aktual dan perubahan lokal, lalu catat pelaksana serta fokus aktif.

@@ -14,6 +14,7 @@ export const ADMIN_PERMISSIONS = [
   { key: "admin.packages", label: "Layanan & harga", hint: "Membuat dan mengubah layanan: poster, deskripsi, benefit, harga, add-on, masa belajar" },
   { key: "admin.payroll", label: "Payroll tutor", hint: "Membuat payroll, mengunggah bukti transfer, menandai dibayar" },
   { key: "admin.settings", label: "Pengaturan situs", hint: "Teks beranda, kontak WhatsApp, tautan formulir tutor" },
+  { key: "admin.reports", label: "Laporan & performa", hint: "Dashboard performa layanan, tutor, sumber pelanggan, peringatan, dan ekspor laporan (angka uang tetap butuh Angka keuangan)" },
   { key: "admin.audit", label: "Activity log", hint: "Melihat riwayat siapa mengubah apa" },
 ] as const;
 
@@ -56,6 +57,7 @@ export function hasPermission(user: { role: string; permissions: string[] }, key
 // Halaman pertama yang boleh dibuka admin/tutor (dipakai setelah login).
 export const ADMIN_PAGES: { key: AdminPermission; href: string; label: string }[] = [
   { key: "admin.dashboard", href: "/admin", label: "Ringkasan" },
+  { key: "admin.reports", href: "/admin/laporan", label: "Laporan & performa" },
   { key: "admin.orders", href: "/admin/order", label: "Order" },
   { key: "admin.validation", href: "/admin/validasi", label: "Validasi" },
   { key: "admin.mentoring", href: "/admin/bimbingan", label: "Bimbingan" },

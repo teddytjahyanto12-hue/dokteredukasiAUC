@@ -331,10 +331,10 @@ export default async function AdminServiceEdit({ params, searchParams }: { param
                       <input type="hidden" name="packageId" value={pkg.id} />
                       <input type="hidden" name="id" value={a.id} />
                       <Field label="Nama add-on">
-                        <input className="input w-48" name="name" defaultValue={a.name} required />
+                        <input className="input w-full sm:w-48" name="name" defaultValue={a.name} required />
                       </Field>
                       <Field label="Keterangan">
-                        <input className="input w-64" name="description" defaultValue={a.description ?? ""} />
+                        <input className="input w-full sm:w-64" name="description" defaultValue={a.description ?? ""} />
                       </Field>
                       <Field label="Harga (Rp)">
                         <input className="input w-32" name="price" inputMode="numeric" defaultValue={a.price ?? ""} placeholder="menyusul" />
@@ -368,10 +368,10 @@ export default async function AdminServiceEdit({ params, searchParams }: { param
             <form action={addAddonAction} className="mt-4 flex flex-wrap items-end gap-2 border-t border-slate-100 pt-4">
               <input type="hidden" name="packageId" value={pkg.id} />
               <Field label="Nama add-on">
-                <input className="input w-48" name="name" required placeholder="Mis. Sesi Zoom tambahan" />
+                <input className="input w-full sm:w-48" name="name" required placeholder="Mis. Sesi Zoom tambahan" />
               </Field>
               <Field label="Keterangan">
-                <input className="input w-64" name="description" />
+                <input className="input w-full sm:w-64" name="description" />
               </Field>
               <Field label="Harga (Rp)">
                 <input className="input w-32" name="price" inputMode="numeric" />
@@ -405,10 +405,10 @@ export default async function AdminServiceEdit({ params, searchParams }: { param
                         <input type="hidden" name="id" value={st.id} />
                         <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-brand text-sm font-bold text-white">{st.number}</span>
                         <Field label="Nama tahap">
-                          <input className="input w-64" name="title" defaultValue={st.title} required />
+                          <input className="input w-full sm:w-64" name="title" defaultValue={st.title} required />
                         </Field>
                         <Field label="Keterangan">
-                          <input className="input w-64" name="description" defaultValue={st.description ?? ""} />
+                          <input className="input w-full sm:w-64" name="description" defaultValue={st.description ?? ""} />
                         </Field>
                         <button className="btn-secondary btn-sm mb-1" type="submit">
                           Simpan
@@ -451,7 +451,7 @@ export default async function AdminServiceEdit({ params, searchParams }: { param
                       <input type="hidden" name="packageId" value={pkg.id} />
                       <input type="hidden" name="stageId" value={st.id} />
                       <Field label="Tambah task (satu per baris)">
-                        <textarea className="input w-80" name="title" rows={2} placeholder="Mis. Judul disetujui" />
+                        <textarea className="input w-full sm:w-80" name="title" rows={2} placeholder="Mis. Judul disetujui" />
                       </Field>
                       <button className="btn btn-sm mb-1" type="submit">
                         + Task

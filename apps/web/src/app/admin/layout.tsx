@@ -8,8 +8,8 @@ export default async function AdminLayout({ children }: { children: React.ReactN
   const nav = ADMIN_PAGES.filter((p) => hasPermission(user, p.key) && p.key !== "admin.tutors").map((p) => [p.href, p.label] as const);
   if (user.role === "OWNER" || hasPermission(user, "admin.tutors")) nav.splice(5, 0, ["/admin/tim", user.role === "OWNER" ? "Tim & hak akses" : "Data tutor"]);
   return (
-    <div className="container-page grid gap-6 py-8 lg:grid-cols-[210px_1fr]">
-      <aside>
+    <div className="container-page grid grid-cols-1 gap-6 py-8 lg:grid-cols-[210px_minmax(0,1fr)]">
+      <aside className="min-w-0">
         <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-slate-500">{user.role === "OWNER" ? "Owner" : "Admin"}</p>
         <nav className="flex gap-1 overflow-x-auto lg:flex-col">
           {nav.map(([href, label]) => (
