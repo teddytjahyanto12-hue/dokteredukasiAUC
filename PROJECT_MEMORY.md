@@ -6,7 +6,7 @@ File ini adalah sumber kebenaran tunggal untuk status, keputusan, dan serah teri
 - Pembaruan terakhir: 2026-09-28 (Asia/Jakarta), fondasi website + backend di apps/web oleh Claude Code.
 - Tahap: fondasi aplikasi (frontend + backend + panel admin) sudah dibangun dan diuji lokal; belum di-deploy; harga/keterangan paket menunggu pengguna.
 - Pekerjaan terakhir oleh: Claude Code (PC 1).
-- Pelaksana aktif: tidak ada; Fase A blueprint + hak akses Owner selesai dan di-push.
+- Pelaksana aktif: Claude Code (PC 1) — Fase B: layanan yang diinput manual (poster, deskripsi, benefit, harga, add-on, pilihan masa belajar 3/6 bulan), HPP, SOP/WI, kelayakan & fee tutor per layanan. Jangan mengedit apps/web sampai penanda ini dilepas.
 - Auctus Academy telah dipelajari pada 22 halaman publik dan sebagian area akun setelah login manual. Aplikasi proyek: apps/web (lihat bagian "Fondasi aplikasi").
 
 ## Tujuan dan kebutuhan yang sudah dinyatakan
@@ -136,6 +136,9 @@ File ini adalah sumber kebenaran tunggal untuk status, keputusan, dan serah teri
 - Diverifikasi di browser lokal: owner melihat semua menu + angka keuangan; owner membuat "Admin Uji" dan mencentang Bimbingan+Validasi → admin hanya melihat 3 menu, tanpa angka keuangan, halaman lain dialihkan; tutor hanya 3 menu, /admin dialihkan; tandai selesai tanpa catatan/bukti ditolak; revisi → tutor melihat catatan → kirim ulang → owner validasi (fee Rp150.000 payable); tutup proyek → status Paid/Payable/No fee benar, chat read-only; activity log mencatat semua langkah; mencabut izin Payroll tutor langsung menyembunyikan menu & mengalihkan URL (lalu dipulihkan). tsc, eslint, next build lolos.
 - Data uji lokal tambahan: akun admin.uji@dokteredukasi.test (Admin; sandi sama dengan SEED_DEMO_PASSWORD), proyek bimbingan murid.uji ditutup (uji penutupan). Nama tampilan Owner masih "Admin Master" (bisa diubah di menu Akun).
 - Belum: Fase B (katalog layanan + HPP, paket berisi pilihan layanan, matriks kelayakan tutor × layanan, fee per layanan), Fase C (input penjualan admin, cicilan 2–3x yang mengunci tahap berikutnya, checklist task), Fase D (dashboard HPP/laba/performa). PC 2 sedang offline saat sesi ini; salin ulang ke folder PC 2 setelah online (atau Codex git pull).
+
+## Arahan Fase B — 2 Oktober 2026
+- Pengguna akan membuat layanan sendiri secara manual dari panel admin dan layanan muncul di website. Kolom yang diminta: poster layanan, deskripsi, benefit bagi customer, harga, paket add-on, pilihan masa waktu belajar (3 bulan dan 6 bulan). Semua bisa ditambah/dikurangi manual.
 
 ## Protokol pembaruan
 - Awal sesi: baca seluruh file ini, periksa berkas aktual dan perubahan lokal, lalu catat pelaksana serta fokus aktif.
