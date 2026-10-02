@@ -6,7 +6,7 @@ File ini adalah sumber kebenaran tunggal untuk status, keputusan, dan serah teri
 - Pembaruan terakhir: 2026-09-28 (Asia/Jakarta), fondasi website + backend di apps/web oleh Claude Code.
 - Tahap: fondasi aplikasi (frontend + backend + panel admin) sudah dibangun dan diuji lokal; belum di-deploy; harga/keterangan paket menunggu pengguna.
 - Pekerjaan terakhir oleh: Claude Code (PC 1).
-- Pelaksana aktif: Claude Code (PC 1) — Fase B: layanan yang diinput manual (poster, deskripsi, benefit, harga, add-on, pilihan masa belajar 3/6 bulan), HPP, SOP/WI, kelayakan & fee tutor per layanan. Jangan mengedit apps/web sampai penanda ini dilepas.
+- Pelaksana aktif: tidak ada; Fase B selesai dan di-push.
 - Auctus Academy telah dipelajari pada 22 halaman publik dan sebagian area akun setelah login manual. Aplikasi proyek: apps/web (lihat bagian "Fondasi aplikasi").
 
 ## Tujuan dan kebutuhan yang sudah dinyatakan
@@ -76,6 +76,7 @@ File ini adalah sumber kebenaran tunggal untuk status, keputusan, dan serah teri
 | 2026-09-23 | Codex | Membuat struktur, memori, panduan kerja, dan pesan Claude | Terima URL lalu mulai audit |
 
 | 2026-09-23 | Codex | Memperbarui prompt AUC-SHARED-001 dan menyiapkan kolom konfirmasi Claude | Pengguna menyampaikan prompt; Codex memeriksa catatan setelah Claude selesai |
+| 2026-10-02 | Claude Code (PC 1) | Fase B: layanan input manual (poster, deskripsi, benefit, masa belajar, add-on, HPP, SOP), pemesanan dengan total, kelayakan & fee tutor per layanan | Fase C: cicilan & penjualan admin |
 | 2026-10-02 | Claude Code (PC 1) | Peran Owner + checklist hak akses; Fase A (validasi, status fee, penutupan, payroll void, activity log, halaman Pencapaian/Payroll tutor) | Fase B: katalog layanan, paket berisi pilihan layanan, kelayakan tutor |
 | 2026-09-29 | Claude Code (PC 1) | Menganalisis Blueprint v3 → docs/ANALISIS_BLUEPRINT_V3.md | Pengguna menjawab keputusan; mulai Fase A (fondasi kontrol) |
 | 2026-09-28 | Claude Code (PC 1) | Fitur video (YouTube/Drive embed) & slide PPTX/PDF per materi, pratinjau admin | Pengguna putuskan pemasangan LibreOffice; uji dengan link Drive asli |
@@ -139,6 +140,15 @@ File ini adalah sumber kebenaran tunggal untuk status, keputusan, dan serah teri
 
 ## Arahan Fase B — 2 Oktober 2026
 - Pengguna akan membuat layanan sendiri secara manual dari panel admin dan layanan muncul di website. Kolom yang diminta: poster layanan, deskripsi, benefit bagi customer, harga, paket add-on, pilihan masa waktu belajar (3 bulan dan 6 bulan). Semua bisa ditambah/dikurangi manual.
+
+## Fase B selesai — 2 Oktober 2026 (Claude Code)
+- "Paket" kini tampil sebagai "Layanan" (model DB tetap Package, URL tetap /paket dan /admin/paket). Editor layanan /admin/paket/[id]: (1) data utama + poster publik + HPP + SOP/WI + materi + bimbingan; (2) benefit per baris; (3) pilihan masa belajar (label, bulan, harga, HPP, aktif, urutan; bawaan 3 & 6 bulan); (4) add-on (nama, keterangan, harga, HPP, aktif); (5) matriks tutor Primary/Backup + fee & jenis fee per layanan.
+- Model baru: PackageBenefit, PackageDuration, PackageAddon, TutorServiceEligibility, OrderAddon; kolom baru Package.posterFileId/hpp/sopUrl/sopNote, Order.durationLabel/durationMonths/basePrice, FileAsset.isPublic. Migrasi services_durations_addons_eligibility (+ data: tiap layanan lama mendapat opsi 3 & 6 bulan tanpa harga). Cadangan DB lokal sebelum migrasi ada di scratchpad sesi (bukan repo).
+- Pemesanan: customer memilih masa belajar + add-on, total tampil langsung; server menghitung ulang dan menolak opsi palsu; order menyimpan salinan pilihan & harga; hak akses berakhir sesuai bulan yang dipilih.
+- Penugasan tutor untuk bimbingan dari layanan hanya menampilkan tutor Primary/Backup layanan itu (juga dicek di server); fee validasi = isian admin → fee per layanan → rate umum. Tutor melihat SOP layanan di halaman bimbingan dan tabel fee per layanan di Pencapaian.
+- Diverifikasi di browser lokal: owner mengisi poster, deskripsi, 4 benefit lalu hapus 1, harga 3/6 bulan, add-on, tambah lalu hapus opsi 12 bulan; poster terbuka tanpa login (200 image/png); katalog & halaman layanan menampilkan semuanya; total langsung 6 bulan + add-on = Rp2.800.000; opsi palsu ditolak; order tersimpan Rp2.800.000 dengan rincian; owner tandai lunas → akses sampai 2 Apr 2027 (6 bulan), bimbingan dibuat, pilihan tutor hanya tutor Primary, SOP tampil. tsc, eslint, next build lolos.
+- Data uji lokal: layanan "Bimbingan Medical Research — Review" berisi poster/benefit/harga uji; order DE-261002-0097B7 (murid demo) lunas. Harga uji bisa diganti owner.
+- Berikutnya Fase C: cicilan 2–3x per layanan yang mengunci tahap berikutnya, input penjualan oleh admin, checklist task per layanan. Fase D: dashboard HPP/laba/performa.
 
 ## Protokol pembaruan
 - Awal sesi: baca seluruh file ini, periksa berkas aktual dan perubahan lokal, lalu catat pelaksana serta fokus aktif.

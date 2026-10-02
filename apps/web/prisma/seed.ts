@@ -210,6 +210,13 @@ async function seedPackages(categoryIds: Map<string, string>) {
         includesMentoring: p.includesMentoring ?? false,
         mentoringField: p.mentoringField,
         order: i,
+        // Pilihan masa belajar bawaan; harga diisi owner di panel admin.
+        durations: {
+          create: [
+            { label: "3 bulan", months: 3, order: 0 },
+            { label: "6 bulan", months: 6, order: 1 },
+          ],
+        },
         categories: {
           create: p.categories.map((key) => {
             const categoryId = categoryIds.get(key);
@@ -251,6 +258,15 @@ async function seedUsers() {
     update: {},
     create: { userId: tutor.id, field: "RESEARCH_REVIEW", rateNote: "Rate bimbingan Zoom — belum ditetapkan" },
   });
+  // Tutor demo berwenang (Primary) untuk layanan bimbingan Review.
+  const review = await db.package.findUnique({ where: { slug: "bimbingan-research-review" } });
+  if (review) {
+    await db.tutorServiceEligibility.upsert({
+      where: { tutorId_packageId: { tutorId: tutor.id, packageId: review.id } },
+      update: {},
+      create: { tutorId: tutor.id, packageId: review.id, level: "PRIMARY", feeBasis: "PER_SESSION" },
+    });
+  }
   const research = await db.track.findUnique({ where: { slug: "medical-research" } });
   if (research) {
     await db.tutorTrackAccess.upsert({

@@ -19,6 +19,11 @@ export default async function TutorAchievements() {
     }),
     db.mentoring.groupBy({ by: ["status"], where: { tutorId: user.id }, _count: true }),
   ]);
+  const services = await db.tutorServiceEligibility.findMany({
+    where: { tutorId: user.id },
+    include: { package: { select: { name: true } } },
+    orderBy: { level: "desc" },
+  });
 
   const rows = sessions.map((s) => ({ ...s, feeStatus: sessionFeeStatus({ ...s, mentoringStatus: s.mentoring.status }) }));
   const total = (st: FeeStatus) => rows.filter((r) => r.feeStatus === st).reduce((sum, r) => sum + (r.fee ?? 0), 0);
@@ -47,6 +52,31 @@ export default async function TutorAchievements() {
           </div>
         </dl>
         {profile?.rateNote && <p className="mt-3 text-sm text-slate-600">{profile.rateNote}</p>}
+        {services.length > 0 && (
+          <div className="mt-4 overflow-x-auto">
+            <p className="label">Fee per layanan yang Anda tangani</p>
+            <table className="table">
+              <thead>
+                <tr>
+                  <th>Layanan</th>
+                  <th>Peran</th>
+                  <th>Fee</th>
+                  <th>Jenis fee</th>
+                </tr>
+              </thead>
+              <tbody>
+                {services.map((s) => (
+                  <tr key={s.id}>
+                    <td>{s.package.name}</td>
+                    <td>{s.level === "PRIMARY" ? "Primary" : "Backup"}</td>
+                    <td>{s.fee !== null ? rupiah(s.fee) : profile?.rate ? `${rupiah(profile.rate)} (rate umum)` : "Belum ditetapkan"}</td>
+                    <td>{FEE_BASIS_LABEL[s.feeBasis ?? profile?.feeBasis ?? ""] ?? "Belum ditetapkan"}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
         <p className="mt-3 text-xs text-slate-500">
           Fee baru terutang (payable) setelah admin memvalidasi sesi yang Anda tandai selesai. Sesi yang dibatalkan atau proyek yang ditutup sebelum validasi
           tidak menghasilkan fee.

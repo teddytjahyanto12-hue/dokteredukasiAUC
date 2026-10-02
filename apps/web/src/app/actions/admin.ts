@@ -12,7 +12,7 @@ import { saveUpload, UploadError } from "@/lib/storage";
 import { back, bool, optInt, optStr, str } from "@/lib/flash";
 import { FEE_BASIS, MENTORING_FIELDS, ROLE_LABEL, SETTING_DEFAULTS, type Role, type SettingKey } from "@/lib/constants";
 import { DEFAULT_ADMIN_PERMISSIONS, DEFAULT_TUTOR_PERMISSIONS, hasPermission, sanitizePermissions } from "@/lib/permissions";
-import { rupiah, slugify } from "@/lib/format";
+import { rupiah } from "@/lib/format";
 
 const actor = (u: CurrentUser) => ({ id: u.id, name: u.name });
 
@@ -244,52 +244,6 @@ export async function createMentoringAction(form: FormData) {
 }
 
 // ---------- Paket ----------
-
-export async function savePackageAction(form: FormData) {
-  const me = await requirePermission("admin.packages");
-  const id = optStr(form, "id");
-  const name = str(form, "name");
-  const fail = id ? `/admin/paket/${id}` : "/admin/paket";
-  if (name.length < 3) back(fail, "Nama paket minimal 3 karakter.", "error");
-  const slug = slugify(str(form, "slug") || name);
-  const clash = await db.package.findFirst({ where: { slug, ...(id ? { NOT: { id } } : {}) } });
-  if (clash) back(fail, "Slug sudah dipakai paket lain.", "error");
-  const includesMentoring = bool(form, "includesMentoring");
-  const mentoringField = optStr(form, "mentoringField");
-  if (includesMentoring && !mentoringField) back(fail, "Pilih bidang bimbingan.", "error");
-
-  const before = id ? await db.package.findUnique({ where: { id } }) : null;
-  const data = {
-    name,
-    slug,
-    trackSlug: optStr(form, "trackSlug"),
-    summary: optStr(form, "summary"),
-    description: optStr(form, "description"),
-    price: optInt(form, "price"),
-    accessDays: optInt(form, "accessDays"),
-    includesMentoring,
-    mentoringField: includesMentoring ? mentoringField : null,
-    active: bool(form, "active"),
-    order: optInt(form, "order") ?? 0,
-  };
-  const pkg = id ? await db.package.update({ where: { id }, data }) : await db.package.create({ data });
-
-  const categoryIds = form.getAll("categoryIds").map(String);
-  await db.packageCategory.deleteMany({ where: { packageId: pkg.id, categoryId: { notIn: categoryIds } } });
-  for (const categoryId of categoryIds) {
-    await db.packageCategory.upsert({
-      where: { packageId_categoryId: { packageId: pkg.id, categoryId } },
-      update: {},
-      create: { packageId: pkg.id, categoryId },
-    });
-  }
-  await logAudit(actor(me), "PACKAGE_SAVED", "Package", pkg.id, `Paket ${name} disimpan`, {
-    before: before ? { price: before.price, accessDays: before.accessDays, active: before.active } : null,
-    after: { price: data.price, accessDays: data.accessDays, active: data.active },
-  });
-  revalidatePath("/paket");
-  back(`/admin/paket/${pkg.id}`, "Paket disimpan.");
-}
 
 export async function deletePackageAction(form: FormData) {
   const me = await requirePermission("admin.packages");

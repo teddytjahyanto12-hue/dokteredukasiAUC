@@ -27,7 +27,7 @@ export async function SiteHeader() {
             </Link>
           ))}
           <Link href="/paket" className="hover:text-brand">
-            Paket
+            Layanan
           </Link>
           <Link href="/gabung-tutor" className="hover:text-brand">
             Jadi Tutor
@@ -73,7 +73,7 @@ export async function SiteHeader() {
           </Link>
         ))}
         <Link href="/paket" className="whitespace-nowrap hover:text-brand">
-          Paket
+          Layanan
         </Link>
         <Link href="/gabung-tutor" className="whitespace-nowrap hover:text-brand">
           Jadi Tutor

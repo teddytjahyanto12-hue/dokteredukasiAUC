@@ -10,7 +10,7 @@ export async function SiteFooter() {
         <p>{s.footerNote}</p>
         <div className="flex flex-wrap gap-4">
           <Link href="/paket" className="hover:text-brand">
-            Paket
+            Layanan
           </Link>
           <Link href="/gabung-tutor" className="hover:text-brand">
             Jadi Tutor

@@ -153,6 +153,12 @@ export async function assignTutorAction(form: FormData) {
   if (tutorId) {
     const tutor = await db.user.findFirst({ where: { id: tutorId, role: "TUTOR", active: true } });
     if (!tutor) back(path, "Tutor tidak valid.", "error");
+    // Bimbingan dari layanan: hanya tutor Primary/Backup layanan tersebut yang boleh ditugaskan.
+    const full = await db.mentoring.findUnique({ where: { id: m.id }, select: { packageId: true } });
+    if (full?.packageId) {
+      const eligible = await db.tutorServiceEligibility.findUnique({ where: { tutorId_packageId: { tutorId, packageId: full.packageId } } });
+      if (!eligible) back(path, "Tutor ini belum ditetapkan berwenang (Primary/Backup) untuk layanan ini.", "error");
+    }
   }
   const title = optStr(form, "title");
   await db.mentoring.update({
@@ -208,10 +214,14 @@ export async function validateSessionAction(form: FormData) {
   if (!session.summary || (!session.proofUrl && !session.proofFileId && !session.recordingUrl)) {
     back(path, "Sesi belum memiliki catatan dan bukti; minta revisi ke tutor.", "error");
   }
-  const mentoring = await db.mentoring.findUnique({ where: { id: m.id }, select: { tutorId: true } });
+  const mentoring = await db.mentoring.findUnique({ where: { id: m.id }, select: { tutorId: true, packageId: true } });
   if (!mentoring?.tutorId) back(path, "Bimbingan belum memiliki tutor.", "error");
   const profile = await db.tutorProfile.findUnique({ where: { userId: mentoring.tutorId } });
-  const fee = optInt(form, "fee") ?? profile?.rate ?? null;
+  // Urutan fee: isian admin → fee tutor untuk layanan ini → rate umum tutor.
+  const serviceFee = mentoring.packageId
+    ? (await db.tutorServiceEligibility.findUnique({ where: { tutorId_packageId: { tutorId: mentoring.tutorId, packageId: mentoring.packageId } } }))?.fee
+    : null;
+  const fee = optInt(form, "fee") ?? serviceFee ?? profile?.rate ?? null;
   if (fee === null) back(path, "Rate tutor belum ditetapkan; isi fee sesi atau atur rate di data tutor.", "error");
 
   // updateMany dengan syarat verifiedAt null mencegah validasi ganda bersamaan.

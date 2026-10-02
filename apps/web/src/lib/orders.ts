@@ -2,18 +2,31 @@ import "server-only";
 import { randomBytes } from "node:crypto";
 import { db } from "./db";
 import { notifyStaff, notifyUser } from "./notify";
+import { addMonths, quote, QuoteError } from "./services";
 
 export function newOrderCode() {
   const date = new Date().toISOString().slice(2, 10).replaceAll("-", "");
   return `DE-${date}-${randomBytes(3).toString("hex").toUpperCase()}`;
 }
 
-export async function createOrder(userId: string, packageId: string) {
-  const pkg = await db.package.findUnique({ where: { id: packageId } });
-  if (!pkg || !pkg.active) throw new Error("Paket tidak tersedia.");
+// Membuat order dari pilihan customer (masa belajar + add-on). Harga dan nama
+// disalin ke order agar perubahan harga layanan kemudian tidak mengubah order lama.
+export async function createOrder(userId: string, packageId: string, choice: { durationId: string | null; addonIds: string[] }) {
+  const pkg = await db.package.findUnique({ where: { id: packageId }, include: { durations: true, addons: true } });
+  if (!pkg || !pkg.active) throw new QuoteError("Layanan tidak tersedia.");
+  const q = quote(pkg, choice.durationId, choice.addonIds);
 
   const order = await db.order.create({
-    data: { code: newOrderCode(), userId, packageId, amount: pkg.price },
+    data: {
+      code: newOrderCode(),
+      userId,
+      packageId,
+      durationLabel: q.duration?.label ?? null,
+      durationMonths: q.duration?.months ?? null,
+      basePrice: q.basePrice,
+      amount: q.total,
+      addons: { create: q.addons.map((a) => ({ addonId: a.id, name: a.name, price: a.price })) },
+    },
     include: { user: true },
   });
   await notifyStaff("admin.orders", {
@@ -48,7 +61,12 @@ export async function markOrderPaid(orderId: string, opts: { grantedById?: strin
         orderId: order.id,
         grantedById: opts.grantedById,
         startsAt: now,
-        expiresAt: order.package.accessDays ? new Date(now.getTime() + order.package.accessDays * 86400000) : null,
+        // Masa belajar yang dipilih customer; bila layanan tanpa pilihan, pakai masa akses bawaan.
+        expiresAt: order.durationMonths
+          ? addMonths(now, order.durationMonths)
+          : order.package.accessDays
+            ? new Date(now.getTime() + order.package.accessDays * 86400000)
+            : null,
       },
     });
     if (order.package.includesMentoring && order.package.mentoringField) {

@@ -2,25 +2,28 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { db } from "@/lib/db";
 import { getCurrentUser } from "@/lib/auth";
-import { rupiah } from "@/lib/format";
 import { FIELD_LABEL, type MentoringField } from "@/lib/constants";
 import { orderPackageAction } from "@/app/actions/student";
+import { ServiceOrderForm } from "@/components/service-order-form";
 import { Flash } from "@/components/ui";
 import { readFlash, type SearchParams } from "@/lib/flash";
 import { activeEntitlementWhere } from "@/lib/access";
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const p = await db.package.findUnique({ where: { slug }, select: { name: true } });
-  return { title: p?.name ?? "Paket" };
+  const p = await db.package.findUnique({ where: { slug }, select: { name: true, summary: true } });
+  return { title: p?.name ?? "Layanan", description: p?.summary ?? undefined };
 }
 
-export default async function PackageDetail({ params, searchParams }: { params: Promise<{ slug: string }>; searchParams: SearchParams }) {
+export default async function ServiceDetail({ params, searchParams }: { params: Promise<{ slug: string }>; searchParams: SearchParams }) {
   const { slug } = await params;
   const { pesan, tipe } = await readFlash(searchParams);
   const pkg = await db.package.findUnique({
     where: { slug },
     include: {
+      benefits: { orderBy: { order: "asc" } },
+      durations: { where: { active: true }, orderBy: [{ order: "asc" }, { months: "asc" }] },
+      addons: { where: { active: true }, orderBy: { order: "asc" } },
       categories: {
         include: {
           category: {
@@ -33,82 +36,113 @@ export default async function PackageDetail({ params, searchParams }: { params: 
   if (!pkg || !pkg.active) notFound();
 
   const user = await getCurrentUser();
-  const [owned, pending] = user
-    ? await Promise.all([
-        db.entitlement.findFirst({ where: { ...activeEntitlementWhere(user.id), packageId: pkg.id } }),
-        db.order.findFirst({ where: { userId: user.id, packageId: pkg.id, status: "PENDING" } }),
-      ])
-    : [null, null];
+  const [owned, pending] =
+    user?.role === "STUDENT"
+      ? await Promise.all([
+          db.entitlement.findFirst({ where: { ...activeEntitlementWhere(user.id), packageId: pkg.id } }),
+          db.order.findFirst({ where: { userId: user.id, packageId: pkg.id, status: "PENDING" } }),
+        ])
+      : [null, null];
+
+  const disabledReason = !user ? (
+    <Link href={`/masuk?next=/paket/${pkg.slug}`} className="btn w-full">
+      Masuk / daftar untuk memesan
+    </Link>
+  ) : user.role !== "STUDENT" ? (
+    <p className="text-sm text-slate-500">Pemesanan hanya untuk akun pelanggan.</p>
+  ) : owned ? (
+    <Link href="/belajar" className="btn w-full">
+      Anda sudah memiliki layanan ini
+    </Link>
+  ) : pending ? (
+    <Link href={`/pembelian/${pending.id}`} className="btn w-full">
+      Lihat pesanan {pending.code}
+    </Link>
+  ) : null;
 
   return (
-    <div className="container-page grid gap-8 py-10 lg:grid-cols-[1fr_340px]">
-      <div>
+    <div className="container-page grid gap-8 py-10 lg:grid-cols-[1fr_380px]">
+      <div className="min-w-0">
         <Link href="/paket" className="text-sm text-slate-500 hover:text-brand">
-          ← Semua paket
+          ← Semua layanan
         </Link>
-        <h1 className="h1 mt-2">{pkg.name}</h1>
-        <p className="mt-2 text-slate-600">{pkg.summary}</p>
-        {pkg.description && <div className="mt-6 whitespace-pre-line text-slate-700">{pkg.description}</div>}
-
-        <h2 className="h2 mt-10">Isi paket</h2>
-        <div className="mt-4 space-y-4">
-          {pkg.categories.map(({ category: c }) => (
-            <div key={c.id} className="card">
-              <p className="text-xs font-semibold uppercase tracking-wide text-brand">{c.track.title}</p>
-              <h3 className="mt-1 font-semibold text-slate-900">{c.title}</h3>
-              <p className="mt-1 text-sm text-slate-600">{c.description}</p>
-              {c.topics.length > 0 && (
-                <ul className="mt-3 flex flex-wrap gap-2">
-                  {c.topics.map((t) => (
-                    <li key={t.title} className="badge">
-                      {t.title}
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </div>
-          ))}
-          {pkg.includesMentoring && (
-            <div className="card border-amber-200 bg-amber-50">
-              <h3 className="font-semibold text-amber-900">Bimbingan tutor</h3>
-              <p className="mt-1 text-sm text-amber-900">
-                Bidang: {FIELD_LABEL[pkg.mentoringField as MentoringField] ?? "—"}. Setelah pembayaran dikonfirmasi, admin menjadwalkan sesi dan memilih tutor sesuai bidang.
-              </p>
-            </div>
+        <div className="mt-3 grid gap-6 md:grid-cols-[260px_1fr]">
+          {pkg.posterFileId && (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src={`/api/berkas/${pkg.posterFileId}`} alt={`Poster ${pkg.name}`} className="w-full rounded-xl border border-slate-200 object-cover shadow-sm" />
           )}
+          <div className={pkg.posterFileId ? "" : "md:col-span-2"}>
+            <h1 className="h1">{pkg.name}</h1>
+            {pkg.summary && <p className="mt-2 text-lg text-slate-600">{pkg.summary}</p>}
+            {pkg.includesMentoring && (
+              <p className="badge-warn mt-3">Termasuk bimbingan · {FIELD_LABEL[pkg.mentoringField as MentoringField] ?? ""}</p>
+            )}
+          </div>
         </div>
+
+        {pkg.description && (
+          <section className="mt-8">
+            <h2 className="h2">Tentang layanan</h2>
+            <div className="mt-2 whitespace-pre-line leading-relaxed text-slate-700">{pkg.description}</div>
+          </section>
+        )}
+
+        {pkg.benefits.length > 0 && (
+          <section className="mt-8">
+            <h2 className="h2">Yang Anda dapatkan</h2>
+            <ul className="mt-3 grid gap-2 sm:grid-cols-2">
+              {pkg.benefits.map((b) => (
+                <li key={b.id} className="flex items-start gap-2 text-slate-700">
+                  <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-brand text-xs text-white" aria-hidden>
+                    ✓
+                  </span>
+                  {b.text}
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+
+        {pkg.categories.length > 0 && (
+          <section className="mt-8">
+            <h2 className="h2">Materi yang terbuka</h2>
+            <div className="mt-3 space-y-3">
+              {pkg.categories.map(({ category: c }) => (
+                <div key={c.id} className="card">
+                  <p className="text-xs font-semibold uppercase tracking-wide text-brand">{c.track.title}</p>
+                  <h3 className="mt-1 font-semibold text-slate-900">{c.title}</h3>
+                  {c.topics.length > 0 && (
+                    <ul className="mt-2 flex flex-wrap gap-2">
+                      {c.topics.map((t) => (
+                        <li key={t.title} className="badge">
+                          {t.title}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
       </div>
 
       <aside className="lg:sticky lg:top-24 lg:self-start">
         <div className="card">
           <Flash pesan={pesan} tipe={tipe} />
-          <p className="muted">Harga</p>
-          <p className="text-2xl font-bold text-slate-900">{rupiah(pkg.price)}</p>
-          <p className="mt-1 text-sm text-slate-500">{pkg.accessDays ? `Masa akses ${pkg.accessDays} hari` : "Masa akses: menyusul"}</p>
-          <div className="mt-5">
-            {!user ? (
-              <Link href={`/masuk?next=/paket/${pkg.slug}`} className="btn w-full">
-                Masuk untuk memesan
-              </Link>
-            ) : user.role !== "STUDENT" ? (
-              <p className="text-sm text-slate-500">Pemesanan hanya untuk akun murid.</p>
-            ) : owned ? (
-              <Link href="/belajar" className="btn w-full">
-                Anda sudah memiliki paket ini
-              </Link>
-            ) : pending ? (
-              <Link href={`/pembelian/${pending.id}`} className="btn w-full">
-                Lihat pesanan {pending.code}
-              </Link>
-            ) : (
-              <form action={orderPackageAction}>
-                <input type="hidden" name="packageId" value={pkg.id} />
-                <button className="btn w-full" type="submit">
-                  Pesan paket ini
-                </button>
-              </form>
-            )}
-          </div>
+          <h2 className="h2 mb-4">Pesan layanan</h2>
+          <ServiceOrderForm
+            action={orderPackageAction}
+            packageId={pkg.id}
+            basePrice={pkg.price}
+            durations={pkg.durations.map((d) => ({ id: d.id, label: d.label, price: d.price }))}
+            addons={pkg.addons.map((a) => ({ id: a.id, label: a.name, price: a.price, description: a.description }))}
+            canOrder={!disabledReason}
+            disabledReason={disabledReason}
+          />
+          {!pkg.durations.length && (
+            <p className="mt-3 text-xs text-slate-500">{pkg.accessDays ? `Masa akses ${pkg.accessDays} hari` : "Masa akses tanpa batas waktu"}</p>
+          )}
         </div>
       </aside>
     </div>

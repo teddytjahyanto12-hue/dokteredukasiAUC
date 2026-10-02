@@ -1,64 +1,72 @@
-import { requirePermission } from "@/lib/auth";
 import Link from "next/link";
 import { db } from "@/lib/db";
+import { requirePermission } from "@/lib/auth";
 import { rupiah } from "@/lib/format";
-import { Flash, PageHeader } from "@/components/ui";
+import { startingPrice } from "@/lib/services";
+import { Empty, Flash, PageHeader } from "@/components/ui";
 import { readFlash, type SearchParams } from "@/lib/flash";
 
-export const metadata = { title: "Paket" };
+export const metadata = { title: "Layanan" };
 
-export default async function AdminPackages({ searchParams }: { searchParams: SearchParams }) {
+export default async function AdminServices({ searchParams }: { searchParams: SearchParams }) {
   await requirePermission("admin.packages");
   const { pesan, tipe } = await readFlash(searchParams);
-  const packages = await db.package.findMany({
+  const services = await db.package.findMany({
     orderBy: [{ trackSlug: "asc" }, { order: "asc" }],
-    include: { _count: { select: { categories: true, orders: true } } },
+    include: {
+      durations: true,
+      addons: true,
+      _count: { select: { benefits: true, orders: true, eligibilities: true } },
+    },
   });
   return (
     <>
       <PageHeader
-        title="Paket"
-        subtitle="Nama, harga, masa akses, isi materi, dan bimbingan. Harga kosong tampil sebagai “Harga segera diumumkan”."
+        title="Layanan"
+        subtitle="Buat dan atur layanan yang dijual di website: poster, deskripsi, benefit, harga, pilihan masa belajar, dan add-on."
         actions={
           <Link href="/admin/paket/baru" className="btn btn-sm">
-            + Paket baru
+            + Layanan baru
           </Link>
         }
       />
       <Flash pesan={pesan} tipe={tipe} />
-      <div className="card overflow-x-auto p-0">
-        <table className="table">
-          <thead>
-            <tr>
-              <th>Paket</th>
-              <th>Jalur</th>
-              <th>Harga</th>
-              <th>Masa akses</th>
-              <th>Isi</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            {packages.map((p) => (
-              <tr key={p.id}>
-                <td>
-                  <Link href={`/admin/paket/${p.id}`} className="link">
-                    {p.name}
-                  </Link>
-                  {p.includesMentoring && <span className="badge-warn ml-2">Bimbingan</span>}
-                </td>
-                <td className="text-xs">{p.trackSlug ?? "-"}</td>
-                <td>{p.price === null ? <span className="text-amber-700">Belum diisi</span> : rupiah(p.price)}</td>
-                <td>{p.accessDays ? `${p.accessDays} hari` : "Tanpa batas / belum diisi"}</td>
-                <td className="text-xs">
-                  {p._count.categories} kategori · {p._count.orders} order
-                </td>
-                <td>{p.active ? <span className="badge-brand">Aktif</span> : <span className="badge">Nonaktif</span>}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      {services.length === 0 ? (
+        <Empty>Belum ada layanan.</Empty>
+      ) : (
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+          {services.map((s) => {
+            const from = startingPrice(s);
+            const missingPrice = s.durations.filter((d) => d.active).some((d) => d.price === null) || (!s.durations.length && s.price === null);
+            return (
+              <Link key={s.id} href={`/admin/paket/${s.id}`} className="card flex gap-4 transition hover:shadow-md">
+                {s.posterFileId ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img src={`/api/berkas/${s.posterFileId}`} alt="" className="h-28 w-[90px] shrink-0 rounded-lg object-cover" />
+                ) : (
+                  <div className="grid h-28 w-[90px] shrink-0 place-items-center rounded-lg border border-dashed border-slate-300 text-center text-[10px] text-slate-400">
+                    Tanpa poster
+                  </div>
+                )}
+                <div className="min-w-0">
+                  <p className="font-semibold text-slate-900">{s.name}</p>
+                  <p className="text-xs text-slate-500">{s.trackSlug ?? "Lainnya"}</p>
+                  <p className="mt-1 text-sm">{from !== null ? `Mulai ${rupiah(from)}` : "Harga belum diisi"}</p>
+                  <p className="mt-1 text-xs text-slate-500">
+                    {s.durations.filter((d) => d.active).length} pilihan masa · {s.addons.filter((a) => a.active).length} add-on · {s._count.benefits} benefit ·{" "}
+                    {s._count.eligibilities} tutor
+                  </p>
+                  <div className="mt-2 flex flex-wrap gap-1">
+                    {s.active ? <span className="badge-brand">Tampil</span> : <span className="badge">Disembunyikan</span>}
+                    {s.includesMentoring && <span className="badge-warn">Bimbingan</span>}
+                    {missingPrice && <span className="badge-warn">Ada harga kosong</span>}
+                  </div>
+                </div>
+              </Link>
+            );
+          })}
+        </div>
+      )}
     </>
   );
 }

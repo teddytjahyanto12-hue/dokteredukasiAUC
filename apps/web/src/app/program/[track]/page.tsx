@@ -5,6 +5,7 @@ import { getCurrentUser } from "@/lib/auth";
 import { accessibleCategoryIds, canOpen } from "@/lib/access";
 import { DISPLAY_TYPE_LABEL } from "@/lib/constants";
 import { rupiah } from "@/lib/format";
+import { startingPrice } from "@/lib/services";
 
 export async function generateMetadata({ params }: { params: Promise<{ track: string }> }) {
   const { track } = await params;
@@ -34,7 +35,7 @@ export default async function TrackPage({ params }: { params: Promise<{ track: s
 
   const user = await getCurrentUser();
   const allowed = await accessibleCategoryIds(user);
-  const packages = await db.package.findMany({ where: { active: true, trackSlug: slug }, orderBy: { order: "asc" } });
+  const packages = await db.package.findMany({ where: { active: true, trackSlug: slug }, orderBy: { order: "asc" }, include: { durations: { where: { active: true } }, addons: true } });
 
   return (
     <div className="container-page py-10">
@@ -92,13 +93,13 @@ export default async function TrackPage({ params }: { params: Promise<{ track: s
 
       {packages.length > 0 && (
         <section className="mt-12">
-          <h2 className="text-xl font-bold text-slate-900">Paket {track.title}</h2>
+          <h2 className="text-xl font-bold text-slate-900">Layanan {track.title}</h2>
           <div className="mt-4 grid gap-4 md:grid-cols-3">
             {packages.map((p) => (
               <Link key={p.id} href={`/paket/${p.slug}`} className="card transition hover:shadow-md">
                 <h3 className="font-semibold text-slate-900">{p.name}</h3>
                 <p className="mt-1 text-sm text-slate-600">{p.summary}</p>
-                <p className="mt-3 font-bold text-brand">{rupiah(p.price)}</p>
+                <p className="mt-3 font-bold text-brand">{startingPrice(p) !== null ? `Mulai ${rupiah(startingPrice(p))}` : "Harga segera diumumkan"}</p>
               </Link>
             ))}
           </div>

@@ -4,6 +4,7 @@ import { homeFor, requireUser } from "@/lib/auth";
 import { canManage, findMentoringFor } from "@/lib/mentoring";
 import { hasPermission } from "@/lib/permissions";
 import { sessionFeeStatus, FEE_STATUS_TONE } from "@/lib/fees";
+import { ELIGIBILITY_LABEL } from "@/lib/services";
 import { rupiah, tanggal, toWibInput } from "@/lib/format";
 import {
   CLOSE_REASONS,
@@ -41,7 +42,7 @@ export default async function MentoringDetail({ params, searchParams }: { params
     include: {
       student: { select: { name: true, email: true, phone: true, institution: true } },
       tutor: { select: { id: true, name: true } },
-      package: { select: { name: true } },
+      package: { select: { id: true, name: true, sopUrl: true, sopNote: true, eligibilities: { select: { tutorId: true, level: true } } } },
       order: { select: { code: true, status: true } },
       sessions: {
         orderBy: { scheduledAt: "asc" },
@@ -58,12 +59,18 @@ export default async function MentoringDetail({ params, searchParams }: { params
   const isStudent = user.role === "STUDENT";
   const showFee = hasPermission(user, "admin.finance") || isTutor;
   const closed = m.status === "CLOSED";
+  // Bimbingan dari layanan: hanya tutor Primary/Backup layanan itu. Bimbingan manual: semua tutor aktif.
+  const eligibleLevel = new Map(m.package?.eligibilities.map((e) => [e.tutorId, e.level]));
   const tutors = isStaffMentoring
-    ? await db.user.findMany({
-        where: { role: "TUTOR", active: true },
-        orderBy: { name: "asc" },
-        select: { id: true, name: true, tutorProfile: { select: { field: true, acceptingClients: true } } },
-      })
+    ? (
+        await db.user.findMany({
+          where: { role: "TUTOR", active: true },
+          orderBy: { name: "asc" },
+          select: { id: true, name: true, tutorProfile: { select: { field: true, acceptingClients: true } } },
+        })
+      )
+        .filter((t) => !m.package || eligibleLevel.has(t.id))
+        .sort((a, b) => (eligibleLevel.get(a.id) === "PRIMARY" ? -1 : 0) - (eligibleLevel.get(b.id) === "PRIMARY" ? -1 : 0))
     : [];
   const backLink = isStaffMentoring ? { href: "/admin/bimbingan", label: "Semua bimbingan" } : { href: homeFor(user), label: "Dashboard" };
 
@@ -117,6 +124,18 @@ export default async function MentoringDetail({ params, searchParams }: { params
               )}
             </dl>
           </section>
+
+          {!isStudent && (m.package?.sopUrl || m.package?.sopNote) && (
+            <section className="card border-brand/30 bg-brand-soft/20">
+              <h2 className="h2">SOP / instruksi kerja layanan</h2>
+              {m.package.sopNote && <p className="mt-1 whitespace-pre-line text-sm text-slate-700">{m.package.sopNote}</p>}
+              {m.package.sopUrl && (
+                <a href={m.package.sopUrl} target="_blank" rel="noopener noreferrer" className="link mt-2 inline-block text-sm">
+                  Buka SOP ↗
+                </a>
+              )}
+            </section>
+          )}
 
           <section className="card">
             <h2 className="h2 mb-1">Sesi bimbingan (Zoom)</h2>
@@ -314,13 +333,18 @@ export default async function MentoringDetail({ params, searchParams }: { params
             <form action={assignTutorAction} className="card space-y-3">
               <input type="hidden" name="mentoringId" value={m.id} />
               <h2 className="h2">Penugasan</h2>
-              <Field label="Tutor" hint="✓ = bidang tutor sesuai bidang bimbingan.">
+              {m.package && tutors.length === 0 && (
+                <p className="rounded-lg bg-amber-50 p-2 text-xs text-amber-900">
+                  Belum ada tutor berwenang untuk layanan ini. Atur di Layanan → {m.package.name} → Tutor yang berwenang.
+                </p>
+              )}
+              <Field label="Tutor" hint={m.package ? "Hanya tutor Primary/Backup layanan ini." : "✓ = bidang tutor sesuai bidang bimbingan."}>
                 <select className="input" name="tutorId" defaultValue={m.tutor?.id ?? ""}>
                   <option value="">— Belum ditugaskan —</option>
                   {tutors.map((t) => (
                     <option key={t.id} value={t.id}>
-                      {t.name} · {FIELD_LABEL[t.tutorProfile?.field as MentoringField] ?? "bidang belum diisi"}
-                      {t.tutorProfile?.field === m.field ? " ✓" : ""}
+                      {t.name} · {ELIGIBILITY_LABEL[eligibleLevel.get(t.id) ?? ""] ?? FIELD_LABEL[t.tutorProfile?.field as MentoringField] ?? "bidang belum diisi"}
+                      {!m.package && t.tutorProfile?.field === m.field ? " ✓" : ""}
                       {t.tutorProfile && !t.tutorProfile.acceptingClients ? " (tidak menerima klien)" : ""}
                     </option>
                   ))}

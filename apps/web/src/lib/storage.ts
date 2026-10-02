@@ -43,29 +43,37 @@ function checkSize(size: number) {
   if (size > maxMb * 1024 * 1024) throw new UploadError(`Ukuran berkas melebihi ${maxMb} MB.`);
 }
 
-export async function saveBuffer(data: Buffer, originalName: string, mimeType: string, uploadedById: string) {
+export async function saveBuffer(data: Buffer, originalName: string, mimeType: string, uploadedById: string, isPublic = false) {
   checkSize(data.length);
   const safeName = originalName.replace(/[^a-zA-Z0-9._-]+/g, "_").slice(-80);
   const rel = path.join("uploads", `${randomUUID()}-${safeName}`);
   await mkdir(path.join(ROOT, "uploads"), { recursive: true });
   await writeFile(path.join(ROOT, rel), data);
   return db.fileAsset.create({
-    data: { storagePath: rel.replaceAll("\\", "/"), originalName, mimeType, size: data.length, uploadedById },
+    data: { storagePath: rel.replaceAll("\\", "/"), originalName, mimeType, size: data.length, uploadedById, isPublic },
   });
 }
 
 // Unggahan dokumen umum: PDF atau gambar (bukti Zoom, bukti transfer, materi PDF).
-export async function saveUpload(file: File | null, uploadedById: string, opts: { allowPresentation?: boolean } = {}) {
+export async function saveUpload(
+  file: File | null,
+  uploadedById: string,
+  opts: { allowPresentation?: boolean; imageOnly?: boolean; isPublic?: boolean } = {},
+) {
   if (!file || file.size === 0) return null;
   checkSize(file.size);
   const mime = detectMime(file);
+  if (opts.imageOnly) {
+    if (!mime.startsWith("image/") || !DOCUMENT_TYPES.has(mime)) throw new UploadError("Poster harus berupa gambar PNG, JPG, atau WEBP.");
+    return saveBuffer(Buffer.from(await file.arrayBuffer()), file.name, mime, uploadedById, opts.isPublic);
+  }
   const ok = DOCUMENT_TYPES.has(mime) || (opts.allowPresentation && (mime === PPTX || mime === PPT));
   if (!ok) {
     throw new UploadError(
       opts.allowPresentation ? "Format berkas harus PDF, PPTX/PPT, atau gambar (PNG/JPG/WEBP)." : "Format berkas harus PDF atau gambar (PNG/JPG/WEBP).",
     );
   }
-  return saveBuffer(Buffer.from(await file.arrayBuffer()), file.name, mime, uploadedById);
+  return saveBuffer(Buffer.from(await file.arrayBuffer()), file.name, mime, uploadedById, opts.isPublic);
 }
 
 export async function readStoredFile(storagePath: string) {

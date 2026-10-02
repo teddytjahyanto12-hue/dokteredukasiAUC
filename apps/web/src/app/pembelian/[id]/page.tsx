@@ -12,7 +12,7 @@ export default async function OrderDetail({ params, searchParams }: { params: Pr
   const user = await requireUser();
   const { id } = await params;
   const sp = await searchParams;
-  const order = await db.order.findFirst({ where: { id, userId: user.id }, include: { package: true } });
+  const order = await db.order.findFirst({ where: { id, userId: user.id }, include: { package: true, addons: true } });
   if (!order) notFound();
   const s = await getSettings();
   const wa = whatsappLink(
@@ -29,8 +29,12 @@ export default async function OrderDetail({ params, searchParams }: { params: Pr
         </div>
       )}
       <div className="card space-y-3">
-        <Row label="Paket" value={order.package.name} />
-        <Row label="Jumlah" value={rupiah(order.amount)} />
+        <Row label="Layanan" value={order.package.name} />
+        {order.durationLabel && <Row label={`Masa belajar ${order.durationLabel}`} value={rupiah(order.basePrice)} />}
+        {order.addons.map((a) => (
+          <Row key={a.id} label={`Add-on: ${a.name}`} value={rupiah(a.price)} />
+        ))}
+        <Row label="Total" value={rupiah(order.amount)} />
         <Row label="Tanggal" value={tanggal(order.createdAt, true)} />
         <Row label="Status" value={ORDER_STATUS_LABEL[order.status]} />
         {order.paidAt && <Row label="Dibayar" value={tanggal(order.paidAt, true)} />}

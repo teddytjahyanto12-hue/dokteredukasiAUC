@@ -6,21 +6,33 @@ import { db } from "@/lib/db";
 import { requireUser } from "@/lib/auth";
 import { activeEntitlementWhere, canAccessCategory } from "@/lib/access";
 import { createOrder } from "@/lib/orders";
+import { QuoteError } from "@/lib/services";
 import { back, str } from "@/lib/flash";
 
 export async function orderPackageAction(form: FormData) {
   const user = await requireUser(["STUDENT"]);
   const packageId = str(form, "packageId");
   const pkg = await db.package.findUnique({ where: { id: packageId } });
-  if (!pkg || !pkg.active) back("/paket", "Paket tidak tersedia.", "error");
+  if (!pkg || !pkg.active) back("/paket", "Layanan tidak tersedia.", "error");
+  const path = `/paket/${pkg.slug}`;
 
   const owned = await db.entitlement.findFirst({ where: { ...activeEntitlementWhere(user.id), packageId } });
-  if (owned) back(`/paket/${pkg.slug}`, "Anda sudah memiliki paket ini.", "error");
+  if (owned) back(path, "Anda sudah memiliki layanan ini.", "error");
   const pending = await db.order.findFirst({ where: { userId: user.id, packageId, status: "PENDING" } });
   if (pending) redirect(`/pembelian/${pending.id}`);
 
-  const order = await createOrder(user.id, packageId);
-  redirect(`/pembelian/${order.id}?baru=1`);
+  let orderId: string;
+  try {
+    const order = await createOrder(user.id, packageId, {
+      durationId: str(form, "durationId") || null,
+      addonIds: form.getAll("addonIds").map(String),
+    });
+    orderId = order.id;
+  } catch (e) {
+    if (e instanceof QuoteError) back(path, e.message, "error");
+    throw e;
+  }
+  redirect(`/pembelian/${orderId}?baru=1`);
 }
 
 export async function toggleItemDoneAction(form: FormData) {

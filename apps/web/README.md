@@ -32,7 +32,7 @@ Kontrol pekerjaan & fee (Blueprint v3): tutor menandai sesi selesai + bukti → 
 
 - **Konten materi** (`/admin/konten`): jalur → kategori → topik → materi (slide PDF, PDF, video, tautan, teks) + quiz per topik.
 - **Video & slide per topik** (`/admin/konten/topik/[id]`): tombol + Video / + Slide PPTX/PDF / + PDF / + Tautan / + Teks. Video memakai link YouTube (disarankan: Unlisted), Google Drive, Vimeo, atau Bunny Stream dan diputar di dalam halaman (`src/lib/embed.ts`). Slide bisa berupa PDF, link Google Slides/Drive/OneDrive, atau file PPTX yang otomatis dikonversi ke PDF bila LibreOffice terpasang (`src/lib/convert.ts`, atur lokasi lewat `SOFFICE_PATH`). Setiap materi punya pratinjau di panel admin.
-- **Paket** (`/admin/paket`): nama, harga, masa akses, isi kategori, bimbingan. Harga kosong tampil “Harga segera diumumkan”.
+- **Layanan** (`/admin/paket`): semua diisi manual — poster (gambar publik), deskripsi, benefit (tambah/hapus per baris), harga dasar, pilihan masa belajar dengan harga masing-masing (bawaan 3 & 6 bulan, bisa ditambah/dihapus/dinonaktifkan), add-on opsional berharga, HPP (hanya akses Angka keuangan), SOP/WI untuk tutor, materi yang terbuka, bimbingan, serta tutor yang berwenang (Primary/Backup) dan fee tutor per layanan. Harga kosong tampil “Harga segera diumumkan”. Total pesanan selalu dihitung ulang di server (`src/lib/services.ts`) dan disalin ke order.
 - **Pengaturan situs** (`/admin/pengaturan`): nama situs, teks beranda, WhatsApp admin, Google Form tutor, instruksi pembayaran, footer.
 - **Warna tema**: variabel `--brand` di `src/app/globals.css`.
 

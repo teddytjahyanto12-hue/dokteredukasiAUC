@@ -40,6 +40,7 @@ model User {
   payrolls           Payroll[]
   uploads            FileAsset[]
   auditLogs          AuditLog[]
+  serviceEligibility TutorServiceEligibility[]
 }
 
 model TutorProfile {
@@ -152,11 +153,13 @@ model FileAsset {
   size         Int
   uploadedById String?
   uploadedBy   User?    @relation(fields: [uploadedById], references: [id], onDelete: SetNull)
+  isPublic     Boolean  @default(false) // true = boleh dilihat tanpa login (mis. poster layanan)
   createdAt    DateTime @default(now())
   items        Item[] @relation("ItemFile")
   originalOf   Item[] @relation("ItemOriginalFile")
   sessionProofs MentoringSession[]
   payrollProofs Payroll[]
+  packagePosters Package[]
 }
 
 // ---------- Quiz ----------
@@ -217,7 +220,8 @@ model QuizAnswer {
   isCorrect  Boolean
 }
 
-// ---------- Paket & penjualan ----------
+// ---------- Layanan (paket) & penjualan ----------
+// "Package" = Layanan yang dijual di website. Semua isinya diinput manual oleh owner/admin.
 
 model Package {
   id                String   @id @default(cuid())
@@ -226,8 +230,13 @@ model Package {
   trackSlug         String?  // jalur utama untuk pengelompokan katalog
   summary           String?
   description       String?
-  price             Int?     // rupiah; null = harga belum ditetapkan
-  accessDays        Int?     // null = tanpa batas waktu
+  posterFileId      String?
+  posterFile        FileAsset? @relation(fields: [posterFileId], references: [id], onDelete: SetNull)
+  price             Int?     // harga dasar (dipakai bila tidak ada pilihan masa belajar); null = harga belum ditetapkan
+  accessDays        Int?     // dipakai bila tidak ada pilihan masa belajar; null = tanpa batas waktu
+  hpp               Int?     // harga pokok (internal, hanya untuk akses Angka keuangan)
+  sopUrl            String?  // SOP / instruksi kerja untuk tutor yang ditugaskan
+  sopNote           String?
   includesMentoring Boolean  @default(false)
   mentoringField    String?  // CLINICAL | PRECLINICAL | RESEARCH_REVIEW | RESEARCH_ORIGINAL
   active            Boolean  @default(true)
@@ -237,6 +246,61 @@ model Package {
   orders            Order[]
   entitlements      Entitlement[]
   mentorings        Mentoring[]
+  benefits          PackageBenefit[]
+  durations         PackageDuration[]
+  addons            PackageAddon[]
+  eligibilities     TutorServiceEligibility[]
+}
+
+// Benefit bagi customer (ditampilkan sebagai daftar centang di halaman layanan).
+model PackageBenefit {
+  id        String  @id @default(cuid())
+  packageId String
+  package   Package @relation(fields: [packageId], references: [id], onDelete: Cascade)
+  text      String
+  order     Int     @default(0)
+}
+
+// Pilihan masa waktu belajar, mis. 3 bulan / 6 bulan, masing-masing dengan harga.
+model PackageDuration {
+  id        String  @id @default(cuid())
+  packageId String
+  package   Package @relation(fields: [packageId], references: [id], onDelete: Cascade)
+  label     String  // "3 bulan"
+  months    Int
+  price     Int?    // null = harga belum ditetapkan
+  hpp       Int?
+  active    Boolean @default(true)
+  order     Int     @default(0)
+}
+
+// Paket add-on opsional yang bisa dipilih customer saat memesan.
+model PackageAddon {
+  id          String  @id @default(cuid())
+  packageId   String
+  package     Package @relation(fields: [packageId], references: [id], onDelete: Cascade)
+  name        String
+  description String?
+  price       Int?
+  hpp         Int?
+  active      Boolean @default(true)
+  order       Int     @default(0)
+  orderItems  OrderAddon[]
+}
+
+// Matriks kelayakan tutor × layanan (Blueprint v3). Tidak ada baris = tidak berwenang.
+model TutorServiceEligibility {
+  id        String  @id @default(cuid())
+  tutorId   String
+  tutor     User    @relation(fields: [tutorId], references: [id], onDelete: Cascade)
+  packageId String
+  package   Package @relation(fields: [packageId], references: [id], onDelete: Cascade)
+  level     String  // PRIMARY | BACKUP
+  fee       Int?    // fee tutor untuk layanan ini (mengalahkan rate umum tutor)
+  feeBasis  String? // PER_SESSION | PER_PROJECT | PER_MILESTONE | PER_EVENT | ROYALTY
+  note      String?
+
+  @@unique([tutorId, packageId])
 }
 
 model PackageCategory {
@@ -256,6 +320,11 @@ model Order {
   user          User      @relation(fields: [userId], references: [id], onDelete: Cascade)
   packageId     String
   package       Package   @relation(fields: [packageId], references: [id])
+  // Pilihan customer saat memesan (disalin agar perubahan harga kemudian tidak mengubah order lama).
+  durationLabel  String?
+  durationMonths Int?
+  basePrice      Int?
+  addons         OrderAddon[]
   amount        Int?
   status        String    @default("PENDING") // PENDING | PAID | CANCELLED
   paymentMethod String    @default("MANUAL")  // MANUAL | DUITKU
@@ -266,6 +335,16 @@ model Order {
   updatedAt     DateTime  @updatedAt
   entitlements  Entitlement[]
   mentorings    Mentoring[]
+}
+
+model OrderAddon {
+  id      String        @id @default(cuid())
+  orderId String
+  order   Order         @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  addonId String?
+  addon   PackageAddon? @relation(fields: [addonId], references: [id], onDelete: SetNull)
+  name    String
+  price   Int?
 }
 
 // Hak akses murid ke paket. Satu order bisa menghasilkan satu hak akses;

@@ -16,7 +16,7 @@ export default async function AdminOrderDetail({ params, searchParams }: { param
   const { pesan, tipe } = await readFlash(searchParams);
   const order = await db.order.findUnique({
     where: { id },
-    include: { user: true, package: true, entitlements: true, mentorings: { select: { id: true } } },
+    include: { user: true, package: true, addons: true, entitlements: true, mentorings: { select: { id: true } } },
   });
   if (!order) notFound();
   const s = await getSettings();
@@ -37,8 +37,18 @@ export default async function AdminOrderDetail({ params, searchParams }: { param
             <span className="text-slate-500">Status:</span> <strong>{ORDER_STATUS_LABEL[order.status]}</strong>
           </p>
           <p>
-            <span className="text-slate-500">Paket:</span> {order.package.name}
+            <span className="text-slate-500">Layanan:</span> {order.package.name}
           </p>
+          {order.durationLabel && (
+            <p>
+              <span className="text-slate-500">Masa belajar:</span> {order.durationLabel} ({rupiah(order.basePrice)})
+            </p>
+          )}
+          {order.addons.map((a) => (
+            <p key={a.id}>
+              <span className="text-slate-500">Add-on:</span> {a.name} ({rupiah(a.price)})
+            </p>
+          ))}
           <p>
             <span className="text-slate-500">Jumlah:</span> {rupiah(order.amount)}
           </p>
