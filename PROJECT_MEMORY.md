@@ -6,7 +6,7 @@ File ini adalah sumber kebenaran tunggal untuk status, keputusan, dan serah teri
 - Pembaruan terakhir: 2026-09-28 (Asia/Jakarta), fondasi website + backend di apps/web oleh Claude Code.
 - Tahap: fondasi aplikasi (frontend + backend + panel admin) sudah dibangun dan diuji lokal; belum di-deploy; harga/keterangan paket menunggu pengguna.
 - Pekerjaan terakhir oleh: Claude Code (PC 1).
-- Pelaksana aktif: tidak ada; Fase C selesai dan di-push.
+- Pelaksana aktif: Claude Code (PC 1) — email kwitansi & notifikasi (SMTP), template konfirmasi WhatsApp, lalu Fase D dashboard & laporan. Jangan mengedit apps/web sampai penanda ini dilepas.
 - Auctus Academy telah dipelajari pada 22 halaman publik dan sebagian area akun setelah login manual. Aplikasi proyek: apps/web (lihat bagian "Fondasi aplikasi").
 
 ## Tujuan dan kebutuhan yang sudah dinyatakan
@@ -161,6 +161,9 @@ File ini adalah sumber kebenaran tunggal untuk status, keputusan, dan serah teri
 - Diverifikasi di browser lokal: owner membuat 3 tahap × 2 task pada layanan Review; aturan cicilan salah (110%) ditolak, aturan DP 50% → tahap 1, Pelunasan 50% → tahap 3 tersimpan; admin input penjualan pelanggan baru via WhatsApp, 6 bulan, diskon Rp100.000, cicil 2x → total Rp2.400.000 = 2 × Rp1.200.000; konfirmasi DP → status Cicilan berjalan, proyek + 6 task, tahap 3 terkunci; tutor menyelesaikan task tahap 1, percobaan memalsukan task tahap 3 ditolak server; owner validasi task → progres 17%; konfirmasi pelunasan → Lunas & tahap 3 terbuka; halaman layanan menampilkan Cicil 2x (Rp750.000 × 2) dan tombol Chat Admin (tidak tampil untuk owner), nomor 0812… → wa.me/62812…; nomor uji dikosongkan lagi. tsc, eslint, next build lolos.
 - Data uji lokal: layanan Review berisi tahap/cicilan uji; akun cicil.uji@dokteredukasi.test (sandi = SEED_DEMO_PASSWORD) dengan order DE-261002-18C1F1 lunas.
 - Berikutnya Fase D: dashboard HPP/laba/margin, performa layanan/kategori/tutor, alert (overdue, akan kedaluwarsa, fee payable), laporan & ekspor. Juga: pembayaran online Duitku, email sungguhan, deploy.
+
+## Arahan pengguna — 2 Oktober 2026 (setelah Fase C)
+- Pelanggan yang sudah bayar menerima kwitansi via email (bisa diatur); ada tombol konfirmasi ke admin via WhatsApp dengan template berisi identitas pelanggan dan paket. Owner dan admin menerima email pemberitahuan pelanggan baru. Lalu lanjut Fase D.
 
 ## Protokol pembaruan
 - Awal sesi: baca seluruh file ini, periksa berkas aktual dan perubahan lokal, lalu catat pelaksana serta fokus aktif.
