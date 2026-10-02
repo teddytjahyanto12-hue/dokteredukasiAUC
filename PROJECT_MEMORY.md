@@ -6,7 +6,7 @@ File ini adalah sumber kebenaran tunggal untuk status, keputusan, dan serah teri
 - Pembaruan terakhir: 2026-09-28 (Asia/Jakarta), fondasi website + backend di apps/web oleh Claude Code.
 - Tahap: fondasi aplikasi (frontend + backend + panel admin) sudah dibangun dan diuji lokal; belum di-deploy; harga/keterangan paket menunggu pengguna.
 - Pekerjaan terakhir oleh: Claude Code (PC 1).
-- Pelaksana aktif: tidak ada; fondasi apps/web sudah di-push ke GitHub (main).
+- Pelaksana aktif: Claude Code (PC 1) — peran Owner + checklist hak akses admin/tutor, Fase A blueprint (validasi, status fee, penutupan proyek, activity log). Jangan mengedit apps/web sampai penanda ini dilepas.
 - Auctus Academy telah dipelajari pada 22 halaman publik dan sebagian area akun setelah login manual. Aplikasi proyek: apps/web (lihat bagian "Fondasi aplikasi").
 
 ## Tujuan dan kebutuhan yang sudah dinyatakan
@@ -118,6 +118,15 @@ File ini adalah sumber kebenaran tunggal untuk status, keputusan, dan serah teri
 ## Blueprint v3 (Controlled) — 29 September 2026
 - Pengguna memberikan Dokter_Edukasi_Web_Blueprint_v3_Controlled.xlsx (disalin ke design/blueprint/): aplikasi internal Owner/Admin–Tutor — penjualan, proyek, task/sesi, validasi admin, fee tutor Projected/Payable/Paid/No Fee, kelayakan tutor × layanan, pemetaan fee, audit log, dashboard HPP/laba.
 - Analisis & pemetaan ke kode: docs/ANALISIS_BLUEPRINT_V3.md (ADA/SEBAGIAN/BELUM, celah kontrol, usulan fase A–D). Belum ada implementasi; menunggu pengguna menjawab 6 keputusan di bagian 5 dokumen tersebut.
+
+## Keputusan pengguna atas Blueprint v3 — 2 Oktober 2026
+1. Owner punya semua akses dan satu-satunya yang membuat akun admin dan tutor.
+2. Hak akses admin dan tutor berupa checklist yang dipilih owner per akun. Admin bisa mendapat semua fitur bila dicentang owner. Tutor terbatas pada: Dashboard klien, Payroll, Pencapaian.
+3. Pelanggan/murid membuat akun sendiri saat mendaftar.
+4. Paket berisi pilihan layanan (bermacam paket, isi bisa dipilih) — dikerjakan di fase layanan/paket.
+5. Jenis fee diinformasikan ke tutor di halaman Pencapaian.
+6. Pembayaran bisa dicicil 2–3 kali; owner mengatur per layanan cicilan mana untuk tahap apa; tahap berikutnya terkunci sampai cicilan terkait dibayar — dikerjakan di fase penjualan.
+7. Penutupan proyek hanya dengan dua alasan: pelanggan tidak aktif dalam waktu tertentu, atau masa waktu habis. Hanya owner dan admin yang menutup. (Alasan "tutor gagal"/"dibatalkan pelanggan" tidak dipakai.)
 
 ## Protokol pembaruan
 - Awal sesi: baca seluruh file ini, periksa berkas aktual dan perubahan lokal, lalu catat pelaksana serta fokus aktif.
