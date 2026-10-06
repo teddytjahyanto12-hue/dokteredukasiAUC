@@ -64,6 +64,8 @@ export const ADMIN_PAGES: { key: AdminPermission; href: string; label: string }[
   { key: "admin.students", href: "/admin/pengguna", label: "Murid" },
   { key: "admin.tutors", href: "/admin/pengguna?role=TUTOR", label: "Data tutor" },
   { key: "admin.content", href: "/admin/konten", label: "Konten materi" },
+  { key: "admin.content", href: "/admin/jalur", label: "Jalur belajar" },
+  { key: "admin.content", href: "/admin/penawaran", label: "Halaman penawaran" },
   { key: "admin.packages", href: "/admin/paket", label: "Layanan" },
   { key: "admin.payroll", href: "/admin/payroll", label: "Payroll tutor" },
   { key: "admin.settings", href: "/admin/pengaturan", label: "Pengaturan situs" },

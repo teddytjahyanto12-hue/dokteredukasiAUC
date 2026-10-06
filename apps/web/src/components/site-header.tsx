@@ -20,14 +20,23 @@ export async function SiteHeader() {
           <span className="hidden sm:inline">{settings.siteName}</span>
         </Link>
 
-        <nav className="hidden items-center gap-5 text-sm font-medium text-slate-600 lg:flex">
+        <nav className="hidden items-center gap-5 text-sm font-medium text-slate-600 xl:flex">
           {tracks.map((t) => (
             <Link key={t.slug} href={`/program/${t.slug}`} className="hover:text-brand">
               {t.title}
             </Link>
           ))}
+          <Link href="/kelas" className="hover:text-brand">
+            Kelas
+          </Link>
+          <Link href="/jalur" className="hover:text-brand">
+            Jalur belajar
+          </Link>
           <Link href="/paket" className="hover:text-brand">
             Layanan
+          </Link>
+          <Link href="/penawaran" className="hover:text-brand">
+            Penawaran
           </Link>
           <Link href="/gabung-tutor" className="hover:text-brand">
             Jadi Tutor
@@ -66,14 +75,23 @@ export async function SiteHeader() {
           )}
         </div>
       </div>
-      <nav className="container-page flex gap-4 overflow-x-auto pb-2 text-sm font-medium text-slate-600 lg:hidden">
+      <nav className="container-page flex gap-4 overflow-x-auto pb-2 text-sm font-medium text-slate-600 xl:hidden">
         {tracks.map((t) => (
           <Link key={t.slug} href={`/program/${t.slug}`} className="whitespace-nowrap hover:text-brand">
             {t.title}
           </Link>
         ))}
+        <Link href="/kelas" className="whitespace-nowrap hover:text-brand">
+          Kelas
+        </Link>
+        <Link href="/jalur" className="whitespace-nowrap hover:text-brand">
+          Jalur belajar
+        </Link>
         <Link href="/paket" className="whitespace-nowrap hover:text-brand">
           Layanan
+        </Link>
+        <Link href="/penawaran" className="whitespace-nowrap hover:text-brand">
+          Penawaran
         </Link>
         <Link href="/gabung-tutor" className="whitespace-nowrap hover:text-brand">
           Jadi Tutor

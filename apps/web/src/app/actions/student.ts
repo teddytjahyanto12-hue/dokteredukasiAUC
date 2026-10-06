@@ -8,6 +8,9 @@ import { activeEntitlementWhere, canAccessCategory } from "@/lib/access";
 import { createOrder } from "@/lib/orders";
 import { QuoteError } from "@/lib/services";
 import { back, str } from "@/lib/flash";
+import { getSettings, whatsappLink } from "@/lib/settings";
+import { fillWaTemplate, invoiceNo, loadOrderForReceipt, orderSummary } from "@/lib/receipts";
+import { notifyStaff } from "@/lib/notify";
 import { createDuitkuPayment, DuitkuError, syncOrderPayments } from "@/lib/duitku";
 
 export async function orderPackageAction(form: FormData) {
@@ -49,6 +52,27 @@ export async function toggleItemDoneAction(form: FormData) {
   if (existing) await db.itemProgress.delete({ where: { id: existing.id } });
   else await db.itemProgress.create({ data: { userId: user.id, itemId } });
   revalidatePath(`/materi/${item.topicId}`);
+}
+
+// Tandai selesai lalu buka materi berikutnya di kelas yang sama (lintas topik).
+export async function completeAndNextAction(form: FormData) {
+  const user = await requireUser();
+  const itemId = str(form, "itemId");
+  const item = await db.item.findUnique({ where: { id: itemId }, include: { topic: true } });
+  if (!item) return;
+  const open = await canAccessCategory(user, item.topic.categoryId);
+  if (!item.isFree && !open) return;
+  await db.itemProgress.upsert({ where: { userId_itemId: { userId: user.id, itemId } }, update: {}, create: { userId: user.id, itemId } });
+
+  const topics = await db.topic.findMany({
+    where: { categoryId: item.topic.categoryId, published: true },
+    orderBy: { order: "asc" },
+    select: { id: true, items: { where: { published: true }, orderBy: { order: "asc" }, select: { id: true, type: true, isFree: true } } },
+  });
+  const lessons = topics.flatMap((t) => t.items.filter((i) => i.type !== "LINK" && (open || i.isFree)).map((i) => ({ id: i.id, topicId: t.id })));
+  const next = lessons[lessons.findIndex((l) => l.id === itemId) + 1];
+  revalidatePath(`/materi/${item.topicId}`);
+  redirect(next ? `/materi/${next.topicId}?item=${next.id}` : `/kelas/${item.topic.categoryId}?selesai=1`);
 }
 
 export async function submitQuizAction(form: FormData) {
@@ -109,4 +133,39 @@ export async function checkPaymentAction(orderId: string) {
   await syncOrderPayments(orderId);
   revalidatePath(`/pembelian/${orderId}`);
   redirect(`/pembelian/${orderId}?bayar=cek`);
+}
+
+// ---------- Pembayaran manual: invoice lewat WhatsApp admin ----------
+
+// Menyimpan catatan pelanggan, memberi tahu staf, lalu membuka WhatsApp admin dengan invoice
+// yang sudah terisi (nomor invoice, paket, biaya, cara bayar, catatan). Admin memproses manual.
+export async function requestManualInvoiceAction(orderId: string, form: FormData) {
+  const user = await requireUser();
+  const owned = await db.order.findFirst({ where: { id: orderId, userId: user.id }, select: { id: true, status: true } });
+  if (!owned) back("/pembelian", "Pesanan tidak ditemukan.", "error");
+  if (owned.status !== "PENDING" && owned.status !== "PARTIAL") back(`/pembelian/${orderId}`, "Pesanan ini tidak memiliki tagihan.", "error");
+  const s = await getSettings();
+  if (!whatsappLink(s.adminWhatsapp)) back(`/pembelian/${orderId}`, "Nomor WhatsApp admin belum diatur. Hubungi admin melalui kontak yang tersedia.", "error");
+
+  await db.order.update({ where: { id: orderId }, data: { customerNote: str(form, "catatan").slice(0, 500) || null, invoiceRequestedAt: new Date() } });
+  const o = (await loadOrderForReceipt(orderId))!;
+  const sum = orderSummary(o);
+  const inv = invoiceNo(o, sum.nextDue?.seq);
+  await notifyStaff("admin.orders", {
+    title: `Invoice manual ${inv}`,
+    body: `${sum.customer} meminta pembayaran manual. Kirim nomor rekening lewat WhatsApp, lalu tandai lunas setelah transfer diterima.`,
+    rows: [
+      ["No. invoice", inv],
+      ["Paket", sum.service],
+      ["Biaya", sum.total],
+      ["Pembayaran", sum.plan],
+      ["Tagihan saat ini", sum.due],
+      ["Catatan", o.customerNote ?? "-"],
+      ["WhatsApp pelanggan", sum.phone],
+    ],
+    link: `/admin/order/${orderId}`,
+    orderId,
+  });
+  revalidatePath(`/pembelian/${orderId}`);
+  redirect(whatsappLink(s.adminWhatsapp, fillWaTemplate(s.waConfirmTemplate, s.siteName, o))!);
 }

@@ -7,7 +7,7 @@ import { readFlash, type SearchParams } from "@/lib/flash";
 
 export const metadata = { title: "Pengaturan" };
 
-const LONG: SettingKey[] = ["heroSubtitle", "paymentInstructions"];
+const LONG: SettingKey[] = ["heroSubtitle", "paymentInstructions", "offerSubtitle", "offerBenefits"];
 const TALL: SettingKey[] = ["waConfirmTemplate"];
 const YES_NO: SettingKey[] = ["sendReceiptEmail"];
 const CHOICES: Partial<Record<SettingKey, [string, string][]>> = {
@@ -44,9 +44,9 @@ export default async function AdminSettings({ searchParams }: { searchParams: Se
                 ))}
               </select>
             ) : TALL.includes(key) ? (
-              <textarea className="input font-mono text-xs" name={key} rows={14} defaultValue={s[key]} />
+              <textarea className="input font-mono text-xs" name={key} rows={18} defaultValue={s[key]} />
             ) : LONG.includes(key) ? (
-              <textarea className="input" name={key} rows={3} defaultValue={s[key]} />
+              <textarea className="input" name={key} rows={key === "offerBenefits" ? 6 : 3} defaultValue={s[key]} />
             ) : (
               <input className="input" name={key} defaultValue={s[key]} />
             )}

@@ -26,8 +26,11 @@ export default async function HomePage() {
           <h1 className="max-w-3xl text-3xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">{s.heroTitle}</h1>
           <p className="mt-4 max-w-2xl text-lg text-slate-600">{s.heroSubtitle}</p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Link href="/paket" className="btn">
-              Lihat paket
+            <Link href="/penawaran" className="btn">
+              Lihat penawaran
+            </Link>
+            <Link href="/kelas" className="btn-secondary">
+              Jelajahi kelas
             </Link>
             <Link href="/daftar" className="btn-secondary">
               Daftar gratis
@@ -37,8 +40,8 @@ export default async function HomePage() {
       </section>
 
       <section className="container-page py-14">
-        <h2 className="text-2xl font-bold text-slate-900">Tiga jalur belajar</h2>
-        <p className="mt-1 text-slate-600">Pilih jalur sesuai tahap pendidikan dan kebutuhan Anda.</p>
+        <h2 className="text-2xl font-bold text-slate-900">Tiga program utama</h2>
+        <p className="mt-1 text-slate-600">Pilih program sesuai tahap pendidikan dan kebutuhan Anda.</p>
         <div className="mt-8 grid gap-5 md:grid-cols-3">
           {tracks.map((t) => (
             <Link key={t.id} href={`/program/${t.slug}`} className="card flex flex-col transition hover:-translate-y-1 hover:shadow-md">

@@ -59,11 +59,34 @@ export async function saveCategoryAction(form: FormData) {
   const clash = await db.category.findFirst({ where: { trackId, slug, ...(id ? { NOT: { id } } : {}) } });
   if (clash) back(fail, "Slug kategori sudah dipakai di jalur ini.", "error");
 
+  const me = await admin();
+  const before = id ? await db.category.findUnique({ where: { id }, select: { posterFileId: true } }) : null;
+  let posterFileId = before?.posterFileId ?? null;
+  try {
+    const poster = await saveUpload(form.get("poster") as File | null, me.id, { imageOnly: true, isPublic: true });
+    if (poster) posterFileId = poster.id;
+  } catch (e) {
+    if (e instanceof UploadError) back(fail, e.message, "error");
+    throw e;
+  }
+  if (bool(form, "removePoster")) posterFileId = null;
+  const level = optStr(form, "level");
+
   const data = {
     title,
     slug,
     trackId,
     displayType,
+    // Kolom halaman kelas hanya ada di form edit; saat membuat kategori baru dibiarkan kosong.
+    ...(id
+      ? {
+          level: level && ["PEMULA", "MENENGAH", "LANJUT"].includes(level) ? level : null,
+          durationText: optStr(form, "durationText"),
+          instructor: optStr(form, "instructor"),
+          outcomes: optStr(form, "outcomes"),
+          posterFileId,
+        }
+      : {}),
     description: optStr(form, "description"),
     published: id ? bool(form, "published") : true,
     order: optInt(form, "order") ?? 0,

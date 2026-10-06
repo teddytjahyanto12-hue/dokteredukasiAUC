@@ -24,7 +24,13 @@ export default async function AdminCategory({ params, searchParams }: { params: 
 
   return (
     <>
-      <PageHeader title={category.title} subtitle={`${category.track.title} · ${DISPLAY_TYPE_LABEL[category.displayType as keyof typeof DISPLAY_TYPE_LABEL]}`} back={{ href: "/admin/konten", label: "Konten" }} />
+      <PageHeader title={category.title} subtitle={`${category.track.title} · ${DISPLAY_TYPE_LABEL[category.displayType as keyof typeof DISPLAY_TYPE_LABEL]}`} back={{ href: "/admin/konten", label: "Konten" }}
+        actions={
+          <Link href={`/kelas/${category.id}`} className="btn-secondary btn-sm">
+            Lihat halaman kelas
+          </Link>
+        }
+      />
       <Flash pesan={pesan} tipe={tipe} />
 
       <section className="card mb-6">
@@ -68,7 +74,7 @@ export default async function AdminCategory({ params, searchParams }: { params: 
       <form action={saveCategoryAction} className="card grid gap-3 sm:grid-cols-2">
         <input type="hidden" name="id" value={category.id} />
         <input type="hidden" name="trackId" value={category.trackId} />
-        <h2 className="h2 sm:col-span-2">Pengaturan kategori</h2>
+        <h2 className="h2 sm:col-span-2">Pengaturan kategori (kelas)</h2>
         <Field label="Judul">
           <input className="input" name="title" defaultValue={category.title} required />
         </Field>
@@ -90,6 +96,38 @@ export default async function AdminCategory({ params, searchParams }: { params: 
         <div className="sm:col-span-2">
           <Field label="Deskripsi">
             <textarea className="input" name="description" rows={2} defaultValue={category.description ?? ""} />
+          </Field>
+        </div>
+        <h3 className="mt-2 text-sm font-semibold text-slate-900 sm:col-span-2">Halaman kelas (opsional)</h3>
+        <Field label="Tingkat">
+          <select className="input" name="level" defaultValue={category.level ?? ""}>
+            <option value="">Tidak ditentukan</option>
+            <option value="PEMULA">Pemula</option>
+            <option value="MENENGAH">Menengah</option>
+            <option value="LANJUT">Lanjut</option>
+          </select>
+        </Field>
+        <Field label="Lama belajar" hint="Mis. 6 jam video · 4 minggu">
+          <input className="input" name="durationText" defaultValue={category.durationText ?? ""} />
+        </Field>
+        <Field label="Pengajar">
+          <input className="input" name="instructor" defaultValue={category.instructor ?? ""} />
+        </Field>
+        <Field label="Poster kelas (gambar, rasio 16:9)">
+          <input className="input" type="file" name="poster" accept="image/*" />
+        </Field>
+        {category.posterFileId && (
+          <div className="flex items-center gap-3 sm:col-span-2">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={`/api/berkas/${category.posterFileId}`} alt="Poster kelas" className="h-20 rounded-lg border border-slate-200 object-cover" />
+            <label className="flex items-center gap-2 text-sm">
+              <input type="checkbox" name="removePoster" /> Hapus poster
+            </label>
+          </div>
+        )}
+        <div className="sm:col-span-2">
+          <Field label="Yang akan dipelajari" hint="Satu baris satu poin">
+            <textarea className="input" name="outcomes" rows={4} defaultValue={category.outcomes ?? ""} />
           </Field>
         </div>
         <label className="flex items-center gap-2 text-sm">

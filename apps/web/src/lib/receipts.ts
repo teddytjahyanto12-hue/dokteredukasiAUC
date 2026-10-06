@@ -26,13 +26,18 @@ export function orderSummary(o: OrderFull) {
     service: o.package.name,
     duration: o.durationLabel ?? "-",
     addons: o.addons.length ? o.addons.map((a) => a.name).join(", ") : "-",
-    plan: o.paymentPlan === "INSTALLMENT" ? `Cicilan ${o.installments.length}x` : "Bayar penuh",
+    plan: o.paymentPlan === "INSTALLMENT" ? `Cicilan ${o.installments.length}x` : "Langsung lunas",
     total: rupiah(o.amount),
     // Nominal yang sedang ditagih: cicilan berikutnya, atau total bila bayar penuh.
     due: nextDue ? `${nextDue.label} ${rupiah(nextDue.amount)}` : o.status === "PAID" ? "Lunas" : rupiah(o.amount),
     paidSoFar: o.paymentPlan === "INSTALLMENT" ? paidInstallments.reduce((s, i) => s + (i.amount ?? 0), 0) : o.status === "PAID" ? o.amount ?? 0 : 0,
     nextDue,
   };
+}
+
+// Nomor invoice pembayaran manual: satu per order, atau per cicilan bila dicicil.
+export function invoiceNo(o: { code: string }, seq?: number | null) {
+  return `INV-${o.code.replace(/^DE-/, "")}${seq ? `-C${seq}` : ""}`;
 }
 
 // Mengisi template WhatsApp dari Pengaturan situs dengan data order.
@@ -50,6 +55,10 @@ export function fillWaTemplate(template: string, siteName: string, o: OrderFull)
     cara_bayar: s.plan,
     total: s.total,
     tagihan: s.due,
+    no_invoice: invoiceNo(o, s.nextDue?.seq),
+    paket: s.service,
+    biaya: s.total,
+    catatan: o.customerNote?.trim() || "-",
   };
   return template.replace(/\{([a-z_]+)\}/g, (m, k: string) => vars[k] ?? m);
 }

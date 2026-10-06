@@ -22,7 +22,7 @@ export default async function StudentDashboard() {
                 category: {
                   include: {
                     track: { select: { title: true, slug: true } },
-                    topics: { where: { published: true }, orderBy: { order: "asc" }, include: { items: { where: { published: true }, select: { id: true } } } },
+                    topics: { where: { published: true }, orderBy: { order: "asc" }, include: { items: { where: { published: true, type: { not: "LINK" } }, orderBy: { order: "asc" }, select: { id: true } } } },
                   },
                 },
               },
@@ -98,29 +98,41 @@ export default async function StudentDashboard() {
 
       {categories.size > 0 && (
         <section className="mt-10">
-          <h2 className="h2 mb-3">Materi saya</h2>
+          <h2 className="h2 mb-3">Kelas saya</h2>
           <div className="grid gap-4 md:grid-cols-2">
             {[...categories.values()].map((c) => {
-              const itemIds = c.topics.flatMap((t) => t.items.map((i) => i.id));
-              const pct = itemIds.length ? Math.round((itemIds.filter((id) => done.has(id)).length / itemIds.length) * 100) : 0;
+              const lessons = c.topics.flatMap((t) => t.items.map((i) => ({ id: i.id, topicId: t.id })));
+              const itemIds = lessons.map((l) => l.id);
+              const doneCount = itemIds.filter((id) => done.has(id)).length;
+              const pct = itemIds.length ? Math.round((doneCount / itemIds.length) * 100) : 0;
+              const next = lessons.find((l) => !done.has(l.id));
               return (
-                <div key={c.id} className="card">
+                <div key={c.id} className="card flex flex-col">
                   <p className="text-xs font-semibold uppercase tracking-wide text-brand">{c.track.title}</p>
-                  <h3 className="mt-1 font-semibold text-slate-900">{c.title}</h3>
+                  <h3 className="mt-1 font-semibold text-slate-900">
+                    <Link href={`/kelas/${c.id}`} className="hover:text-brand">
+                      {c.title}
+                    </Link>
+                  </h3>
                   <div className="mt-3 flex items-center gap-3">
                     <ProgressBar value={pct} />
                     <span className="text-xs text-slate-500">{pct}%</span>
                   </div>
-                  <ul className="mt-4 space-y-1 text-sm">
-                    {c.topics.map((t) => (
-                      <li key={t.id}>
-                        <Link href={`/materi/${t.id}`} className="link">
-                          {t.title}
-                        </Link>
-                      </li>
-                    ))}
-                    {c.topics.length === 0 && <li className="text-slate-500">Materi sedang disiapkan.</li>}
-                  </ul>
+                  <p className="mt-1 text-xs text-slate-500">
+                    {doneCount} dari {itemIds.length} materi selesai · {c.topics.length} topik
+                  </p>
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {next ? (
+                      <Link href={`/materi/${next.topicId}?item=${next.id}`} className="btn btn-sm">
+                        {doneCount ? "Lanjutkan belajar" : "Mulai belajar"}
+                      </Link>
+                    ) : (
+                      itemIds.length > 0 && <span className="badge-brand">Selesai</span>
+                    )}
+                    <Link href={`/kelas/${c.id}`} className="btn-secondary btn-sm">
+                      Lihat silabus
+                    </Link>
+                  </div>
                 </div>
               );
             })}

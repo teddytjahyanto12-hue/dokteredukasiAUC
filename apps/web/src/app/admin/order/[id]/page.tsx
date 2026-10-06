@@ -5,6 +5,7 @@ import { requirePermission } from "@/lib/auth";
 import { rupiah, tanggal } from "@/lib/format";
 import { ORDER_STATUS_LABEL } from "@/lib/constants";
 import { LEAD_SOURCE_LABEL } from "@/lib/installments";
+import { invoiceNo } from "@/lib/receipts";
 import { getSettings, whatsappLink } from "@/lib/settings";
 import { cancelOrderAction, markInstallmentPaidAction, markOrderPaidAction, resendReceiptAction } from "@/app/actions/admin";
 import { ConfirmButton } from "@/components/confirm-button";
@@ -72,6 +73,8 @@ export default async function AdminOrderDetail({ params, searchParams }: { param
           {order.discount !== null && <Line label="Diskon">− {rupiah(order.discount)}</Line>}
           <Line label="Total">{rupiah(order.amount)}</Line>
           <Line label="Cara bayar">{isInstallment ? `Cicilan ${order.installments.length}x` : "Bayar penuh"}</Line>
+          {order.invoiceRequestedAt && <Line label="Invoice manual">{`${invoiceNo(order, next?.seq)} · dikirim pelanggan ${tanggal(order.invoiceRequestedAt, true)}`}</Line>}
+          {order.customerNote && <Line label="Catatan pelanggan">{order.customerNote}</Line>}
           {order.leadSource && <Line label="Sumber pelanggan">{LEAD_SOURCE_LABEL[order.leadSource] ?? order.leadSource}</Line>}
           <Line label="Dibuat">
             {tanggal(order.createdAt, true)}

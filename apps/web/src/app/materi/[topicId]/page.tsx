@@ -5,7 +5,7 @@ import { requireUser } from "@/lib/auth";
 import { accessibleCategoryIds, canOpen } from "@/lib/access";
 import { ITEM_TYPE_LABEL, type ItemType } from "@/lib/constants";
 import { MaterialViewer } from "@/components/material-viewer";
-import { toggleItemDoneAction } from "@/app/actions/student";
+import { completeAndNextAction, toggleItemDoneAction } from "@/app/actions/student";
 import { Empty } from "@/components/ui";
 import type { SearchParams } from "@/lib/flash";
 
@@ -42,7 +42,10 @@ export default async function TopicPage({ params, searchParams }: { params: Prom
         <Link href={`/program/${topic.category.track.slug}`} className="hover:text-brand">
           {topic.category.track.title}
         </Link>{" "}
-        / {topic.category.title}
+        /{" "}
+        <Link href={`/kelas/${topic.categoryId}`} className="hover:text-brand">
+          {topic.category.title}
+        </Link>
       </nav>
       <h1 className="h1 mt-2">{topic.title}</h1>
       {topic.description && <p className="mt-1 text-slate-600">{topic.description}</p>}
@@ -112,10 +115,13 @@ export default async function TopicPage({ params, searchParams }: { params: Prom
                   <p className="text-xs font-semibold uppercase tracking-wide text-brand">{ITEM_TYPE_LABEL[selected.type as ItemType]}</p>
                   <h2 className="text-lg font-bold text-slate-900">{selected.title}</h2>
                 </div>
-                <form action={toggleItemDoneAction}>
+                <form className="flex flex-wrap gap-2">
                   <input type="hidden" name="itemId" value={selected.id} />
-                  <button className={done.has(selected.id) ? "btn-secondary btn-sm" : "btn btn-sm"} type="submit">
+                  <button className="btn-secondary btn-sm" formAction={toggleItemDoneAction}>
                     {done.has(selected.id) ? "Batalkan tanda selesai" : "Tandai selesai"}
+                  </button>
+                  <button className="btn btn-sm" formAction={completeAndNextAction}>
+                    {done.has(selected.id) ? "Materi berikutnya →" : "Selesai & lanjut →"}
                   </button>
                 </form>
               </div>

@@ -5,11 +5,11 @@ import { requireUser } from "@/lib/auth";
 import { rupiah, tanggal } from "@/lib/format";
 import { ORDER_STATUS_LABEL } from "@/lib/constants";
 import { getSettings, whatsappLink } from "@/lib/settings";
-import { fillWaTemplate, loadOrderForReceipt } from "@/lib/receipts";
+import { invoiceNo } from "@/lib/receipts";
 import { Flash, PageHeader } from "@/components/ui";
 import type { SearchParams } from "@/lib/flash";
 import { duitkuConfigured, duitkuSandbox } from "@/lib/duitku";
-import { checkPaymentAction, payOnlineAction } from "@/app/actions/student";
+import { checkPaymentAction, payOnlineAction, requestManualInvoiceAction } from "@/app/actions/student";
 
 export default async function OrderDetail({ params, searchParams }: { params: Promise<{ id: string }>; searchParams: SearchParams }) {
   const user = await requireUser();
@@ -19,9 +19,7 @@ export default async function OrderDetail({ params, searchParams }: { params: Pr
   if (!order) notFound();
   const s = await getSettings();
   const next = order.installments.find((i) => i.status !== "PAID");
-  const full = await loadOrderForReceipt(order.id);
-  // Pesan konfirmasi dari template di Pengaturan situs: identitas pelanggan + layanan + tagihan.
-  const wa = full ? whatsappLink(s.adminWhatsapp, fillWaTemplate(s.waConfirmTemplate, s.siteName, full)) : null;
+  const wa = whatsappLink(s.adminWhatsapp);
   const awaiting = order.status === "PENDING" || order.status === "PARTIAL";
   const online = duitkuConfigured();
   const pendingOnline = online ? await db.paymentAttempt.count({ where: { orderId: order.id, status: "PENDING", reference: { not: null } } }) : 0;
@@ -98,16 +96,49 @@ export default async function OrderDetail({ params, searchParams }: { params: Pr
               {duitkuSandbox() && <p className="mt-2 text-xs text-amber-700">Mode uji coba (sandbox): belum memakai uang sungguhan.</p>}
             </div>
           )}
-          {online && <p className="mt-5 text-sm font-semibold text-slate-900">Atau transfer manual</p>}
+          <p className="mt-5 text-sm font-semibold text-slate-900">{online ? "Atau bayar manual lewat admin" : "Bayar manual lewat admin"}</p>
           <p className="mt-2 whitespace-pre-line text-sm text-slate-600">{s.paymentInstructions}</p>
           {wa ? (
-            <a href={wa} target="_blank" rel="noopener noreferrer" className="btn mt-4 bg-[#25D366] hover:bg-[#1ebe5b]">
-              Konfirmasi pembayaran ke admin via WhatsApp
-            </a>
+            <form action={requestManualInvoiceAction.bind(null, order.id)} className="mt-4 space-y-3">
+              <dl className="rounded-lg bg-slate-50 p-3 text-sm">
+                <div className="flex justify-between gap-3">
+                  <dt className="text-slate-500">No. invoice</dt>
+                  <dd className="font-semibold text-slate-900">{invoiceNo(order, next?.seq)}</dd>
+                </div>
+                <div className="flex justify-between gap-3">
+                  <dt className="text-slate-500">Paket</dt>
+                  <dd className="text-right font-medium text-slate-900">{order.package.name}</dd>
+                </div>
+                <div className="flex justify-between gap-3">
+                  <dt className="text-slate-500">Biaya</dt>
+                  <dd className="text-right font-medium text-slate-900">
+                    {rupiah(order.amount)} · {order.installments.length ? `cicilan ${order.installments.length}x` : "langsung lunas"}
+                  </dd>
+                </div>
+                {next && (
+                  <div className="flex justify-between gap-3">
+                    <dt className="text-slate-500">Tagihan saat ini</dt>
+                    <dd className="text-right font-medium text-slate-900">
+                      {next.label} {rupiah(next.amount)}
+                    </dd>
+                  </div>
+                )}
+              </dl>
+              <label className="block">
+                <span className="label">Catatan untuk admin (opsional)</span>
+                <textarea className="input" name="catatan" rows={2} maxLength={500} defaultValue={order.customerNote ?? ""} placeholder="Mis. bank yang dipakai, nama pengirim, atau permintaan lain" />
+              </label>
+              <button className="btn bg-[#25D366] hover:bg-[#1ebe5b]" type="submit">
+                Kirim invoice ke WhatsApp admin
+              </button>
+              {order.invoiceRequestedAt && <p className="text-xs text-slate-500">Invoice terakhir dikirim {tanggal(order.invoiceRequestedAt, true)}.</p>}
+            </form>
           ) : (
             <p className="mt-4 text-sm text-slate-500">Nomor WhatsApp admin belum diatur. Hubungi admin melalui kontak yang tersedia.</p>
           )}
-          <p className="mt-2 text-xs text-slate-500">Pesan berisi identitas Anda, kode order, layanan, dan nominal tagihan. Lampirkan bukti transfer di WhatsApp.</p>
+          <p className="mt-2 text-xs text-slate-500">
+            WhatsApp akan terbuka dengan invoice yang sudah terisi — tekan kirim. Admin membalas dengan nomor rekening, lalu mengaktifkan akses setelah transfer diterima.
+          </p>
         </div>
       )}
       {(order.status === "PAID" || order.status === "PARTIAL") && (

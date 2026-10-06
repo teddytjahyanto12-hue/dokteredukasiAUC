@@ -95,8 +95,16 @@ model Category {
   displayType String  @default("MATERIAL") // SLIDES | PDF | LINKS | MATERIAL_QUIZ | CHEATSHEET | MATERIAL
   order       Int     @default(0)
   published   Boolean @default(true)
+  // Informasi halaman kelas (/kelas/[id]) — semuanya opsional dan diisi admin.
+  level        String?  // PEMULA | MENENGAH | LANJUT
+  durationText String?  // mis. "6 jam video · 4 minggu"
+  instructor   String?
+  outcomes     String?  // yang akan dipelajari, satu baris satu poin
+  posterFileId String?
+  posterFile   FileAsset? @relation("CategoryPoster", fields: [posterFileId], references: [id], onDelete: SetNull)
   topics      Topic[]
   packages    PackageCategory[]
+  pathSteps   LearningPathStep[]
 
   @@unique([trackId, slug])
 }
@@ -160,6 +168,53 @@ model FileAsset {
   sessionProofs MentoringSession[]
   payrollProofs Payroll[]
   packagePosters Package[]
+  categoryPosters Category[] @relation("CategoryPoster")
+}
+
+// ---------- Jalur belajar: rangkaian kelas berurutan ----------
+
+model LearningPath {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  title       String
+  summary     String?
+  description String?
+  level       String?  // PEMULA | MENENGAH | LANJUT
+  published   Boolean  @default(false)
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  steps       LearningPathStep[]
+}
+
+model LearningPathStep {
+  id         String       @id @default(cuid())
+  pathId     String
+  path       LearningPath @relation(fields: [pathId], references: [id], onDelete: Cascade)
+  categoryId String
+  category   Category     @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  order      Int          @default(0)
+  note       String?      // mengapa kelas ini ada di urutan ini
+
+  @@unique([pathId, categoryId])
+}
+
+// ---------- Halaman penawaran ----------
+
+model Testimonial {
+  id        String  @id @default(cuid())
+  name      String
+  role      String? // mis. "Koas FK ..." 
+  quote     String
+  order     Int     @default(0)
+  published Boolean @default(true)
+}
+
+model Faq {
+  id        String  @id @default(cuid())
+  question  String
+  answer    String
+  order     Int     @default(0)
+  published Boolean @default(true)
 }
 
 // ---------- Quiz ----------
@@ -374,6 +429,8 @@ model Order {
   paymentMethod String    @default("MANUAL")  // MANUAL | DUITKU
   paymentRef    String?
   note          String?
+  customerNote  String?   // catatan pelanggan saat meminta invoice manual
+  invoiceRequestedAt DateTime? // terakhir kali pelanggan mengirim invoice manual ke WhatsApp admin
   paidAt        DateTime?
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
