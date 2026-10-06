@@ -220,34 +220,26 @@ export default async function StudentDashboard() {
         )}
       </section>
 
-      <section className="mt-12">
-        <h2 className="text-2xl font-bold tracking-tight text-slate-900">Bimbingan 1-on-1</h2>
-        {mentorings.length === 0 ? (
-          <p className="mt-3 text-sm text-slate-500">
-            Belum ada bimbingan.{" "}
-            <Link href="/paket" className="link">
-              Lihat layanan bimbingan
-            </Link>
-            .
-          </p>
-        ) : (
-          <div className="mt-4 grid gap-6 lg:grid-cols-2">
-            {mentorings.map((m) => (
-              <Link key={m.id} href={`/bimbingan/${m.id}`} className="rounded-xl border border-slate-200 bg-white p-6 transition hover:border-slate-300">
-                <div className="flex items-center justify-between gap-2">
-                  <h3 className="font-semibold text-slate-900">{FIELD_LABEL[m.field as MentoringField] ?? m.field}</h3>
-                  <span className="text-xs font-medium text-slate-500">{MENTORING_STATUS_LABEL[m.status]}</span>
-                </div>
-                <p className="mt-1 text-sm text-slate-600">Tutor: {m.tutor?.name ?? "sedang dipilih admin"}</p>
-                <div className="mt-3 flex items-center gap-3">
-                  <ProgressBar value={m.progress} />
-                  <span className="num text-xs text-slate-500">{m.progress}%</span>
-                </div>
-              </Link>
-            ))}
-          </div>
-        )}
-      </section>
+      {mentorings.length > 0 && (
+        <section className="mt-12">
+          <h2 className="text-2xl font-bold tracking-tight text-slate-900">Pendampingan Tutor Saya</h2>
+  <div className="mt-4 grid gap-6 lg:grid-cols-2">
+              {mentorings.map((m) => (
+                <Link key={m.id} href={`/bimbingan/${m.id}`} className="rounded-xl border border-slate-200 bg-white p-6 transition hover:border-slate-300">
+                  <div className="flex items-center justify-between gap-2">
+                    <h3 className="font-semibold text-slate-900">{FIELD_LABEL[m.field as MentoringField] ?? m.field}</h3>
+                    <span className="text-xs font-medium text-slate-500">{MENTORING_STATUS_LABEL[m.status]}</span>
+                  </div>
+                  <p className="mt-1 text-sm text-slate-600">Tutor: {m.tutor?.name ?? "sedang dipilih admin"}</p>
+                  <div className="mt-3 flex items-center gap-3">
+                    <ProgressBar value={m.progress} />
+                    <span className="num text-xs text-slate-500">{m.progress}%</span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+        </section>
+      )}
     </div>
   );
 }

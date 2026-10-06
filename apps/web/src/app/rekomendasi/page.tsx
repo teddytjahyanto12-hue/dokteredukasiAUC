@@ -13,12 +13,11 @@ export default async function RecommendationPage() {
   const user = await getCurrentUser();
   const [courses, tracks, allowed, done] = await Promise.all([
     loadCourses(),
-    db.track.findMany({ where: { published: true }, orderBy: { order: "asc" }, select: { slug: true, title: true, description: true, hasMentoring: true } }),
+    db.track.findMany({ where: { published: true }, orderBy: { order: "asc" }, select: { slug: true, title: true, description: true } }),
     accessibleCategoryIds(user),
     doneItemIds(user?.id),
   ]);
   const students = await studentCounts(courses);
-  const mentoring = new Map(tracks.map((t) => [t.slug, t.hasMentoring]));
   const data: PathfinderCourse[] = courses.map((c) => {
     const open = !!user && canOpen(allowed, c.id);
     const st = courseStats(c, done, open);
@@ -30,7 +29,6 @@ export default async function RecommendationPage() {
       description: c.description,
       trackSlug: c.track.slug,
       trackTitle: c.track.title,
-      hasMentoring: mentoring.get(c.track.slug) ?? false,
       topics: c.topics.map((t) => t.title),
       lessons: st.total,
       quizzes: st.quizzes,
@@ -54,7 +52,7 @@ export default async function RecommendationPage() {
         <p className="mt-4 text-lg text-slate-600">Jawab 4 pertanyaan singkat untuk mendapatkan rekomendasi kelas dan roadmap langkah demi langkah yang dipersonalisasi.</p>
       </header>
       <div className="mt-12">
-        <Pathfinder courses={data} tracks={tracks.map(({ slug, title, description }) => ({ slug, title, description }))} />
+        <Pathfinder courses={data} tracks={tracks} />
       </div>
     </div>
   );

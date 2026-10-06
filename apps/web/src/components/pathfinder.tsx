@@ -10,7 +10,6 @@ export type PathfinderCourse = {
   description: string | null;
   trackSlug: string;
   trackTitle: string;
-  hasMentoring: boolean;
   topics: string[];
   lessons: number;
   quizzes: number;
@@ -39,7 +38,6 @@ const HOURS = [
 const FORMATS = [
   ["video", "Video + PDF Handout"],
   ["quiz", "Drill Soal & Quiz"],
-  ["mentoring", "Mentoring 1-on-1"],
 ] as const;
 
 function Choice({ active, onClick, children, className = "" }: { active: boolean; onClick: () => void; children: React.ReactNode; className?: string }) {
@@ -97,10 +95,6 @@ export function Pathfinder({ courses, tracks }: { courses: PathfinderCourse[]; t
         score += 8;
         reasons.push(`memiliki ${c.quizzes} quiz latihan`);
       }
-      if (format === "mentoring" && c.hasMentoring) {
-        score += 8;
-        reasons.push("programnya menyediakan bimbingan tutor 1-on-1");
-      }
       if (c.lessons > 0) score += 5;
       return { c, score: Math.min(98, score), reasons };
     });
@@ -156,7 +150,7 @@ export function Pathfinder({ courses, tracks }: { courses: PathfinderCourse[]; t
         </Question>
 
         <Question n={4} icon="book" title="Format Belajar Favorit">
-          <div className="grid gap-3 sm:grid-cols-3">
+          <div className="grid gap-3 sm:grid-cols-2">
             {FORMATS.map(([k, label]) => (
               <Choice key={k} active={format === k} onClick={() => setFormat(k)}>
                 {label}
@@ -232,11 +226,6 @@ export function Pathfinder({ courses, tracks }: { courses: PathfinderCourse[]; t
               <Link href={`/kelas/${result.c.id}`} className="btn-secondary px-5 py-2.5">
                 Lihat Kurikulum
               </Link>
-              {format === "mentoring" && (
-                <Link href="/paket" className="btn-secondary px-5 py-2.5">
-                  Lihat Bimbingan 1-on-1
-                </Link>
-              )}
             </div>
 
             {result.others.length > 0 && (

@@ -47,7 +47,7 @@ export async function SiteFooter() {
               Dashboard Progres Belajar
             </Link>
             <Link href="/paket" className={link}>
-              Bimbingan & Layanan
+              Layanan
             </Link>
             <Link href="/penawaran" className={link}>
               Penawaran & Harga

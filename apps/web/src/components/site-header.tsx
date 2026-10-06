@@ -14,7 +14,7 @@ export function splitSiteName(name: string) {
   return { main: words.slice(0, 2).join(" "), sub: words.slice(2).join(" ") };
 }
 
-// Top bar: (1) logo & wordmark + pencarian, (2) empat tautan berikon, (3) streak & profil.
+// Top bar: (1) logo & wordmark + pencarian, (2) tiga tautan berikon, (3) streak & profil.
 export async function SiteHeader() {
   const [user, settings] = await Promise.all([getCurrentUser(), getSettings()]);
   const [unread, streak] = await Promise.all([
@@ -30,10 +30,9 @@ export async function SiteHeader() {
       href: !user || user.role === "STUDENT" ? (user ? "/belajar" : home) : home,
       label: !user || user.role === "STUDENT" ? "Pembelajaran Saya" : "Dashboard",
       icon: "award",
-      match: ["/belajar", "/admin", "/tutor-panel", "/pembelian"],
+      match: ["/belajar", "/admin", "/tutor-panel", "/pembelian", "/bimbingan"],
       dot: !!streak && !streak.activeToday,
     },
-    { href: "/paket", label: "Bimbingan 1-on-1", icon: "calendar", match: ["/paket", "/bimbingan", "/penawaran"] },
   ];
   const initials = user
     ? user.name
