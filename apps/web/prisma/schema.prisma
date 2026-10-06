@@ -100,6 +100,7 @@ model Category {
   durationText String?  // mis. "6 jam video · 4 minggu"
   instructor   String?
   outcomes     String?  // yang akan dipelajari, satu baris satu poin
+  studentBase  Int      @default(0) // jumlah murid awal yang diisi manual; ditambah otomatis dengan pembeli
   posterFileId String?
   posterFile   FileAsset? @relation("CategoryPoster", fields: [posterFileId], references: [id], onDelete: SetNull)
   topics      Topic[]

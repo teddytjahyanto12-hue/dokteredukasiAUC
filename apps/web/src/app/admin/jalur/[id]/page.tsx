@@ -2,7 +2,6 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { db } from "@/lib/db";
 import { requirePermission } from "@/lib/auth";
-import { LEVEL_LABEL, LEVELS } from "@/lib/courses";
 import { addPathStepAction, deletePathAction, deletePathStepAction, savePathAction, savePathStepAction } from "@/app/actions/paths";
 import { ConfirmButton } from "@/components/confirm-button";
 import { Empty, Field, Flash, PageHeader } from "@/components/ui";
@@ -108,16 +107,6 @@ export default async function AdminPath({ params, searchParams }: { params: Prom
         </Field>
         <Field label="Slug (alamat URL)">
           <input className="input" name="slug" defaultValue={path.slug} />
-        </Field>
-        <Field label="Tingkat">
-          <select className="input" name="level" defaultValue={path.level ?? ""}>
-            <option value="">Tidak ditentukan</option>
-            {LEVELS.map((l) => (
-              <option key={l} value={l}>
-                {LEVEL_LABEL[l]}
-              </option>
-            ))}
-          </select>
         </Field>
         <Field label="Urutan tampil">
           <input className="input" name="order" inputMode="numeric" defaultValue={path.order} />

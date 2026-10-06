@@ -2,7 +2,7 @@ import Link from "next/link";
 import { db } from "@/lib/db";
 import { getCurrentUser } from "@/lib/auth";
 import { accessibleCategoryIds, canOpen } from "@/lib/access";
-import { courseStats, doneItemIds, LEVEL_LABEL, LEVELS, loadCourses } from "@/lib/courses";
+import { courseStats, doneItemIds, loadCourses, studentCounts } from "@/lib/courses";
 import { CourseCard } from "@/components/course-card";
 import { Empty } from "@/components/ui";
 import { readFlash, type SearchParams } from "@/lib/flash";
@@ -12,21 +12,15 @@ export const metadata = { title: "Kelas" };
 export default async function CoursesPage({ searchParams }: { searchParams: SearchParams }) {
   const { pick } = await readFlash(searchParams);
   const program = pick("program");
-  const level = (LEVELS as readonly string[]).includes(pick("tingkat") ?? "") ? pick("tingkat") : undefined;
   const user = await getCurrentUser();
   const [courses, tracks, allowed, done] = await Promise.all([
-    loadCourses({ trackSlug: program, level }),
+    loadCourses({ trackSlug: program }),
     db.track.findMany({ where: { published: true }, orderBy: { order: "asc" }, select: { slug: true, title: true } }),
     accessibleCategoryIds(user),
     doneItemIds(user?.id),
   ]);
-  const href = (p?: string, l?: string) => {
-    const q = new URLSearchParams();
-    if (p) q.set("program", p);
-    if (l) q.set("tingkat", l);
-    const s = q.toString();
-    return s ? `/kelas?${s}` : "/kelas";
-  };
+  const students = await studentCounts(courses);
+  const href = (p?: string) => (p ? `/kelas?program=${p}` : "/kelas");
 
   return (
     <div className="container-page py-10">
@@ -35,21 +29,12 @@ export default async function CoursesPage({ searchParams }: { searchParams: Sear
 
       {/* Filter — satu baris di atas daftar */}
       <div className="mt-6 flex flex-wrap items-center gap-2">
-        <Link href={href(undefined, level)} className={!program ? "btn btn-sm" : "btn-secondary btn-sm"}>
+        <Link href={href()} className={!program ? "btn btn-sm" : "btn-secondary btn-sm"}>
           Semua program
         </Link>
         {tracks.map((t) => (
-          <Link key={t.slug} href={href(t.slug, level)} className={program === t.slug ? "btn btn-sm" : "btn-secondary btn-sm"}>
+          <Link key={t.slug} href={href(t.slug)} className={program === t.slug ? "btn btn-sm" : "btn-secondary btn-sm"}>
             {t.title}
-          </Link>
-        ))}
-        <span className="mx-1 hidden h-5 w-px bg-slate-200 sm:block" />
-        <Link href={href(program)} className={!level ? "btn btn-sm" : "btn-secondary btn-sm"}>
-          Semua tingkat
-        </Link>
-        {LEVELS.map((l) => (
-          <Link key={l} href={href(program, l)} className={level === l ? "btn btn-sm" : "btn-secondary btn-sm"}>
-            {LEVEL_LABEL[l]}
           </Link>
         ))}
       </div>
@@ -62,7 +47,7 @@ export default async function CoursesPage({ searchParams }: { searchParams: Sear
         <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {courses.map((c) => {
             const open = !!user && canOpen(allowed, c.id);
-            return <CourseCard key={c.id} course={c} open={open} stats={courseStats(c, done, open)} />;
+            return <CourseCard key={c.id} course={c} open={open} stats={courseStats(c, done, open)} students={students.get(c.id)?.total} />;
           })}
         </div>
       )}

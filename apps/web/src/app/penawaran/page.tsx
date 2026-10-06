@@ -3,7 +3,7 @@ import { db } from "@/lib/db";
 import { getCurrentUser } from "@/lib/auth";
 import { accessibleCategoryIds, canOpen } from "@/lib/access";
 import { getSettings } from "@/lib/settings";
-import { courseStats, doneItemIds, loadCourses } from "@/lib/courses";
+import { courseStats, doneItemIds, loadCourses, studentCounts } from "@/lib/courses";
 import { loadPaths } from "@/lib/paths";
 import { duitkuConfigured } from "@/lib/duitku";
 import { rupiah } from "@/lib/format";
@@ -37,6 +37,7 @@ export default async function OfferPage() {
     const open = !!user && canOpen(allowed, c.id);
     return { c, open, st: courseStats(c, done, open) };
   });
+  const students = await studentCounts(courses);
   const lessonCount = stats.reduce((n, x) => n + x.st.total, 0);
   const freeCount = stats.reduce((n, x) => n + x.st.free, 0);
   // Kelas dengan materi gratis ditampilkan lebih dulu.
@@ -107,7 +108,7 @@ export default async function OfferPage() {
           </div>
           <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {featured.map(({ c, open, st }) => (
-              <CourseCard key={c.id} course={c} open={open} stats={st} />
+              <CourseCard key={c.id} course={c} open={open} stats={st} students={students.get(c.id)?.total} />
             ))}
           </div>
         </section>

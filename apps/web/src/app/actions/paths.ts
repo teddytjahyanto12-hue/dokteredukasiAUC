@@ -5,7 +5,6 @@ import { db } from "@/lib/db";
 import { requirePermission } from "@/lib/auth";
 import { back, bool, optInt, optStr, str } from "@/lib/flash";
 import { slugify } from "@/lib/format";
-import { LEVELS } from "@/lib/courses";
 
 // Jalur belajar, testimoni, dan FAQ halaman penawaran — dikelola admin dengan akses Konten materi.
 const admin = () => requirePermission("admin.content");
@@ -21,13 +20,11 @@ export async function savePathAction(form: FormData) {
   if (title.length < 3) back(fail, "Judul jalur minimal 3 karakter.", "error");
   const slug = slugify(str(form, "slug") || title);
   if (await db.learningPath.findFirst({ where: { slug, ...(id ? { NOT: { id } } : {}) } })) back(fail, "Alamat (slug) sudah dipakai jalur lain.", "error");
-  const level = optStr(form, "level");
   const data = {
     title,
     slug,
     summary: optStr(form, "summary"),
     description: optStr(form, "description"),
-    level: level && (LEVELS as readonly string[]).includes(level) ? level : null,
     order: optInt(form, "order") ?? 0,
     published: id ? bool(form, "published") : false,
   };

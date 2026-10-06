@@ -70,7 +70,6 @@ export async function saveCategoryAction(form: FormData) {
     throw e;
   }
   if (bool(form, "removePoster")) posterFileId = null;
-  const level = optStr(form, "level");
 
   const data = {
     title,
@@ -80,7 +79,7 @@ export async function saveCategoryAction(form: FormData) {
     // Kolom halaman kelas hanya ada di form edit; saat membuat kategori baru dibiarkan kosong.
     ...(id
       ? {
-          level: level && ["PEMULA", "MENENGAH", "LANJUT"].includes(level) ? level : null,
+          studentBase: Math.max(0, optInt(form, "studentBase") ?? 0),
           durationText: optStr(form, "durationText"),
           instructor: optStr(form, "instructor"),
           outcomes: optStr(form, "outcomes"),

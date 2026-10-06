@@ -2,7 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getCurrentUser } from "@/lib/auth";
 import { accessibleCategoryIds, canOpen } from "@/lib/access";
-import { courseStats, doneItemIds, lessonHref, LEVEL_LABEL } from "@/lib/courses";
+import { courseStats, doneItemIds, lessonHref } from "@/lib/courses";
 import { loadPaths } from "@/lib/paths";
 import { ProgressBar } from "@/components/ui";
 
@@ -38,7 +38,6 @@ export default async function PathPage({ params }: { params: Promise<{ slug: str
       <h1 className="h1 mt-2">{path.title}</h1>
       {path.summary && <p className="mt-2 text-lg text-slate-600">{path.summary}</p>}
       <div className="mt-4 flex flex-wrap gap-2">
-        {path.level && <span className="badge">Tingkat: {LEVEL_LABEL[path.level] ?? path.level}</span>}
         <span className="badge">
           {rows.length} kelas · {total} materi
         </span>

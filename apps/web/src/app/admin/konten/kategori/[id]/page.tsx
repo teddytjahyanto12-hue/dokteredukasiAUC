@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { db } from "@/lib/db";
 import { DISPLAY_TYPE_LABEL, DISPLAY_TYPES } from "@/lib/constants";
+import { studentCounts } from "@/lib/courses";
 import { deleteCategoryAction, saveCategoryAction, saveTopicAction } from "@/app/actions/admin-content";
 import { ConfirmButton } from "@/components/confirm-button";
 import { Empty, Field, Flash, PageHeader } from "@/components/ui";
@@ -21,6 +22,7 @@ export default async function AdminCategory({ params, searchParams }: { params: 
     },
   });
   if (!category) notFound();
+  const counts = (await studentCounts([category])).get(category.id)!;
 
   return (
     <>
@@ -99,13 +101,8 @@ export default async function AdminCategory({ params, searchParams }: { params: 
           </Field>
         </div>
         <h3 className="mt-2 text-sm font-semibold text-slate-900 sm:col-span-2">Halaman kelas (opsional)</h3>
-        <Field label="Tingkat">
-          <select className="input" name="level" defaultValue={category.level ?? ""}>
-            <option value="">Tidak ditentukan</option>
-            <option value="PEMULA">Pemula</option>
-            <option value="MENENGAH">Menengah</option>
-            <option value="LANJUT">Lanjut</option>
-          </select>
+        <Field label="Jumlah murid awal (manual)" hint={`Tampil di kartu kelas: ${counts.total.toLocaleString("id-ID")} murid = ${counts.base.toLocaleString("id-ID")} (angka ini) + ${counts.auto.toLocaleString("id-ID")} pembeli. Bertambah otomatis setiap ada pembeli baru.`}>
+          <input className="input" name="studentBase" inputMode="numeric" defaultValue={category.studentBase} />
         </Field>
         <Field label="Lama belajar" hint="Mis. 6 jam video · 4 minggu">
           <input className="input" name="durationText" defaultValue={category.durationText ?? ""} />

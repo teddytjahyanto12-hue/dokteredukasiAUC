@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { db } from "@/lib/db";
 import { getCurrentUser } from "@/lib/auth";
 import { accessibleCategoryIds, canOpen } from "@/lib/access";
-import { courseInclude, courseStats, doneItemIds, lessonHref, LEVEL_LABEL } from "@/lib/courses";
+import { courseInclude, courseStats, doneItemIds, lessonHref, muridLabel, studentCounts } from "@/lib/courses";
 import { ITEM_TYPE_LABEL, type ItemType } from "@/lib/constants";
 import { rupiah } from "@/lib/format";
 import { startingPrice } from "@/lib/services";
@@ -33,6 +33,7 @@ export default async function CoursePage({ params, searchParams }: { params: Pro
     db.learningPath.findMany({ where: { published: true, steps: { some: { categoryId: id } } }, orderBy: { order: "asc" }, select: { slug: true, title: true } }),
   ]);
   const open = !!user && canOpen(allowed, course.id);
+  const students = (await studentCounts([course])).get(course.id)?.total ?? 0;
   const st = courseStats(course, done, open);
   const outcomes = (course.outcomes ?? "").split("\n").map((x) => x.trim()).filter(Boolean);
   const target = st.next ?? st.first;
@@ -62,7 +63,7 @@ export default async function CoursePage({ params, searchParams }: { params: Pro
           <h1 className="h1">{course.title}</h1>
           {course.description && <p className="mt-2 text-slate-600">{course.description}</p>}
           <div className="mt-4 flex flex-wrap gap-2">
-            {course.level && <span className="badge">Tingkat: {LEVEL_LABEL[course.level] ?? course.level}</span>}
+            {students > 0 && <span className="badge">{muridLabel(students)}</span>}
             <span className="badge">
               {course.topics.length} topik · {st.total} materi{st.quizzes ? ` · ${st.quizzes} quiz` : ""}
             </span>

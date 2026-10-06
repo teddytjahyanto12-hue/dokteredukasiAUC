@@ -1,11 +1,11 @@
 import Link from "next/link";
-import { LEVEL_LABEL, type Course } from "@/lib/courses";
+import { muridLabel, type Course } from "@/lib/courses";
 import { ProgressBar } from "@/components/ui";
 
 type Stats = { total: number; pct: number; free: number; started: boolean; completed: boolean };
 
 // Kartu kelas untuk katalog, jalur belajar, dan halaman penawaran.
-export function CourseCard({ course, stats, open }: { course: Course; stats: Stats; open: boolean }) {
+export function CourseCard({ course, stats, open, students }: { course: Course; stats: Stats; open: boolean; students?: number }) {
   return (
     <Link href={`/kelas/${course.id}`} className="card group flex flex-col overflow-hidden p-0 transition hover:border-slate-300">
       {course.posterFileId ? (
@@ -21,7 +21,7 @@ export function CourseCard({ course, stats, open }: { course: Course; stats: Sta
         <h3 className="mt-1.5 font-[family-name:var(--font-fraunces),Georgia,serif] text-lg font-semibold leading-snug text-slate-900 group-hover:text-brand">{course.title}</h3>
         {course.description && <p className="mt-1 line-clamp-2 text-sm text-slate-600">{course.description}</p>}
         <div className="mt-3 flex flex-wrap gap-x-1.5 gap-y-1">
-          {course.level && <span className="badge">{LEVEL_LABEL[course.level] ?? course.level}</span>}
+          {!!students && <span className="badge">{muridLabel(students)}</span>}
           <span className="badge">{stats.total} materi</span>
           {course.durationText && <span className="badge">{course.durationText}</span>}
           {!open && stats.free > 0 && <span className="badge-brand">{stats.free} materi gratis</span>}

@@ -3,9 +3,6 @@ import { db } from "./db";
 
 // "Kelas" = Category beserta topik dan materinya. Dipakai halaman /kelas, /jalur, /penawaran, /belajar.
 
-export const LEVELS = ["PEMULA", "MENENGAH", "LANJUT"] as const;
-export const LEVEL_LABEL: Record<string, string> = { PEMULA: "Pemula", MENENGAH: "Menengah", LANJUT: "Lanjut" };
-
 export const courseInclude = {
   track: { select: { slug: true, title: true } },
   topics: {
@@ -18,12 +15,11 @@ export const courseInclude = {
   },
 };
 
-export async function loadCourses(where: { trackSlug?: string; level?: string; ids?: string[] } = {}) {
+export async function loadCourses(where: { trackSlug?: string; ids?: string[] } = {}) {
   return db.category.findMany({
     where: {
       published: true,
       track: { published: true, ...(where.trackSlug ? { slug: where.trackSlug } : {}) },
-      ...(where.level ? { level: where.level } : {}),
       ...(where.ids ? { id: { in: where.ids } } : {}),
     },
     orderBy: [{ track: { order: "asc" } }, { order: "asc" }],
@@ -58,3 +54,25 @@ export function courseStats(course: Course, done: Set<string>, open: boolean) {
 }
 
 export const lessonHref = (l: { topicId: string; id: string }) => `/materi/${l.topicId}?item=${l.id}`;
+
+// Jumlah murid per kelas = angka awal yang diisi admin (studentBase) + murid yang benar-benar
+// memiliki akses lewat pembelian/pemberian layanan yang memuat kelas itu (dihitung per orang, sekali).
+export async function studentCounts(courses: { id: string; studentBase: number }[]) {
+  const ids = courses.map((c) => c.id);
+  const ents = ids.length
+    ? await db.entitlement.findMany({
+        where: { revokedAt: null, user: { role: "STUDENT" }, package: { categories: { some: { categoryId: { in: ids } } } } },
+        select: { userId: true, package: { select: { categories: { select: { categoryId: true } } } } },
+      })
+    : [];
+  const buyers = new Map<string, Set<string>>();
+  for (const e of ents) {
+    for (const pc of e.package.categories) {
+      if (!buyers.has(pc.categoryId)) buyers.set(pc.categoryId, new Set());
+      buyers.get(pc.categoryId)!.add(e.userId);
+    }
+  }
+  return new Map(courses.map((c) => [c.id, { base: c.studentBase, auto: buyers.get(c.id)?.size ?? 0, total: c.studentBase + (buyers.get(c.id)?.size ?? 0) }]));
+}
+
+export const muridLabel = (n: number) => `${n.toLocaleString("id-ID")} murid`;

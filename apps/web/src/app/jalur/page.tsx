@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { getCurrentUser } from "@/lib/auth";
 import { accessibleCategoryIds, canOpen } from "@/lib/access";
-import { courseStats, doneItemIds, LEVEL_LABEL } from "@/lib/courses";
+import { courseStats, doneItemIds } from "@/lib/courses";
 import { loadPaths } from "@/lib/paths";
 import { Empty, ProgressBar } from "@/components/ui";
 
@@ -36,7 +36,6 @@ export default async function PathsPage() {
             return (
               <Link key={p.id} href={`/jalur/${p.slug}`} className="card flex flex-col transition hover:-translate-y-0.5 hover:shadow-md">
                 <div className="flex flex-wrap gap-1.5">
-                  {p.level && <span className="badge">{LEVEL_LABEL[p.level] ?? p.level}</span>}
                   <span className="badge">
                     {p.steps.length} kelas · {total} materi
                   </span>
