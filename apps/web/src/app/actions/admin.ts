@@ -14,6 +14,7 @@ import { saveUpload, UploadError } from "@/lib/storage";
 import { back, bool, optInt, optStr, str } from "@/lib/flash";
 import { FEE_BASIS, MENTORING_FIELDS, ROLE_LABEL, SETTING_DEFAULTS, type Role, type SettingKey } from "@/lib/constants";
 import { DEFAULT_ADMIN_PERMISSIONS, DEFAULT_TUTOR_PERMISSIONS, hasPermission, sanitizePermissions } from "@/lib/permissions";
+import { sendPeriodicReport } from "@/lib/report-email";
 import { rupiah } from "@/lib/format";
 
 const actor = (u: CurrentUser) => ({ id: u.id, name: u.name });
@@ -443,4 +444,16 @@ export async function saveSettingsAction(form: FormData) {
   await logAudit(actor(me), "SETTINGS_SAVED", "Setting", null, "Pengaturan situs diubah");
   revalidatePath("/", "layout");
   back("/admin/pengaturan", "Pengaturan disimpan.");
+}
+
+// ---------- Laporan berkala ----------
+
+export async function sendReportNowAction(kind: "weekly" | "monthly") {
+  const me = await requirePermission("admin.reports");
+  if (!hasPermission(me, "admin.finance")) back("/admin/laporan", "Butuh akses Angka keuangan.", "error");
+  const r = await sendPeriodicReport(kind, { force: true });
+  await logAudit(actor(me), "REPORT_EMAIL_SENT", "Setting", null, `Laporan ${kind === "weekly" ? "mingguan" : "bulanan"} dikirim manual`);
+  if ("skipped" in r) back("/admin/laporan", r.skipped ?? "Tidak dikirim.", "error");
+  if (!r.sent) back("/admin/laporan", `Laporan ${r.label} tidak terkirim (${r.total} penerima). Periksa menu Email — kemungkinan SMTP belum diatur.`, "error");
+  back("/admin/laporan", `Laporan ${r.label} terkirim ke ${r.sent} dari ${r.total} penerima.`);
 }

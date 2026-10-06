@@ -11,6 +11,7 @@ const KIND_LABEL: Record<string, string> = {
   NEW_CUSTOMER: "Pelanggan baru",
   NEW_ORDER: "Order baru",
   NOTIFICATION: "Notifikasi",
+  REPORT: "Laporan berkala",
 };
 
 export default async function EmailPage() {

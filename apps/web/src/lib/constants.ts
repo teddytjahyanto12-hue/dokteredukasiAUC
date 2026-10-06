@@ -103,6 +103,8 @@ export const SETTING_DEFAULTS = {
     "Pembayaran online sedang disiapkan. Setelah memesan, admin akan menghubungi Anda melalui WhatsApp untuk konfirmasi pembayaran dan aktivasi akses.",
   footerNote: "© Dokter Edukasi Learning",
   sendReceiptEmail: "ya",
+  reportEmailSchedule: "tidak" as string,
+  reportEmailTo: "",
   waConfirmTemplate: [
     "Halo Admin {situs}, saya ingin konfirmasi pembayaran.",
     "",
@@ -131,6 +133,8 @@ export const SETTING_LABEL: Record<SettingKey, string> = {
   paymentInstructions: "Instruksi pembayaran (tampil setelah pesan paket)",
   footerNote: "Teks footer",
   sendReceiptEmail: "Kirim kwitansi otomatis ke email pelanggan setiap pembayaran/cicilan lunas",
+  reportEmailSchedule: "Kirim laporan otomatis ke email (mingguan: tiap Senin 07.00 WIB; bulanan: tiap tanggal 1 pukul 07.00 WIB)",
+  reportEmailTo: "Email tambahan penerima laporan (pisahkan dengan koma; owner & admin dengan akses Laporan + Angka keuangan sudah otomatis)",
   waConfirmTemplate:
     "Template pesan WhatsApp konfirmasi pembayaran. Kode yang bisa dipakai: {situs} {nama} {email} {whatsapp} {kode_order} {layanan} {masa_belajar} {addon} {cara_bayar} {total} {tagihan}",
 };

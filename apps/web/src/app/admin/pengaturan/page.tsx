@@ -10,6 +10,14 @@ export const metadata = { title: "Pengaturan" };
 const LONG: SettingKey[] = ["heroSubtitle", "paymentInstructions"];
 const TALL: SettingKey[] = ["waConfirmTemplate"];
 const YES_NO: SettingKey[] = ["sendReceiptEmail"];
+const CHOICES: Partial<Record<SettingKey, [string, string][]>> = {
+  reportEmailSchedule: [
+    ["tidak", "Tidak dikirim"],
+    ["mingguan", "Mingguan"],
+    ["bulanan", "Bulanan"],
+    ["keduanya", "Mingguan dan bulanan"],
+  ],
+};
 
 export default async function AdminSettings({ searchParams }: { searchParams: SearchParams }) {
   await requirePermission("admin.settings");
@@ -26,6 +34,14 @@ export default async function AdminSettings({ searchParams }: { searchParams: Se
               <select className="input max-w-xs" name={key} defaultValue={s[key]}>
                 <option value="ya">Ya</option>
                 <option value="tidak">Tidak</option>
+              </select>
+            ) : CHOICES[key] ? (
+              <select className="input max-w-xs" name={key} defaultValue={s[key]}>
+                {CHOICES[key]!.map(([v, label]) => (
+                  <option key={v} value={v}>
+                    {label}
+                  </option>
+                ))}
               </select>
             ) : TALL.includes(key) ? (
               <textarea className="input font-mono text-xs" name={key} rows={14} defaultValue={s[key]} />

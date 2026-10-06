@@ -39,6 +39,7 @@ Kontrol pekerjaan & fee (Blueprint v3): tutor menandai sesi selesai + bukti → 
 - **Kwitansi & email** : kwitansi otomatis ke email pelanggan setiap pembayaran/cicilan lunas (Pengaturan → bisa dimatikan; kirim ulang di halaman order), halaman kwitansi cetak `/pembelian/[id]/kwitansi`, email ke owner/admin untuk pelanggan & order baru. Email butuh SMTP di `.env` (lihat `.env.example`); status & riwayat di `/admin/email`.
 - **Template konfirmasi WhatsApp** (Pengaturan situs): pesan otomatis berisi identitas pelanggan, layanan, dan tagihan untuk tombol konfirmasi di halaman pesanan.
 - **Laporan & performa** (`/admin/laporan`): pendapatan diterima, HPP, laba kotor & margin, fee tutor (validated/payable/paid/projected), penjualan, operasional, peringatan, terlaris, performa layanan/kategori/tutor, sumber pelanggan, filter periode, ekspor CSV untuk Excel.
+- **Laporan berkala ke email** (tanpa AI): jadwal diatur di Pengaturan situs (mingguan Senin 07.00 WIB / bulanan tanggal 1 07.00 WIB / keduanya). Penjadwal bawaan di `src/instrumentation.ts` berjalan selama server menyala; di hosting serverless panggil `GET /api/cron/laporan` dengan `Authorization: Bearer $CRON_SECRET`. Tombol kirim manual ada di `/admin/laporan`.
 - **Pengaturan situs** (`/admin/pengaturan`): nama situs, teks beranda, WhatsApp admin, Google Form tutor, instruksi pembayaran, footer.
 - **Warna tema**: variabel `--brand` di `src/app/globals.css`.
 

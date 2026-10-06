@@ -31,7 +31,7 @@ export function appUrl(path = "") {
   return `${(process.env.APP_URL || "http://localhost:3000").replace(/\/$/, "")}${path}`;
 }
 
-export type EmailKind = "RECEIPT" | "NEW_CUSTOMER" | "NEW_ORDER" | "NOTIFICATION";
+export type EmailKind = "RECEIPT" | "NEW_CUSTOMER" | "NEW_ORDER" | "NOTIFICATION" | "REPORT";
 
 export async function sendEmail(p: { to: string; subject: string; html: string; text: string; kind: EmailKind; orderId?: string }) {
   const t = transport();

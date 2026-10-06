@@ -4,7 +4,10 @@ import { hasPermission } from "@/lib/permissions";
 import { buildReport, resolvePeriod } from "@/lib/reports";
 import { rupiah, tanggal } from "@/lib/format";
 import { LEAD_SOURCE_LABEL } from "@/lib/installments";
-import { Empty, PageHeader, Stat } from "@/components/ui";
+import { Empty, Flash, PageHeader, Stat } from "@/components/ui";
+import { getSettings } from "@/lib/settings";
+import { smtpConfigured } from "@/lib/email";
+import { sendReportNowAction } from "@/app/actions/admin";
 import { readFlash, type SearchParams } from "@/lib/flash";
 
 export const metadata = { title: "Laporan & performa" };
@@ -15,6 +18,12 @@ const PERIODS = [
   ["tahun-ini", "Tahun ini"],
   ["semua", "Semua"],
 ] as const;
+
+const SCHEDULE_LABEL: Record<string, string> = {
+  mingguan: "Mingguan — tiap Senin 07.00 WIB",
+  bulanan: "Bulanan — tiap tanggal 1 pukul 07.00 WIB",
+  keduanya: "Mingguan (Senin 07.00 WIB) dan bulanan (tanggal 1 pukul 07.00 WIB)",
+};
 
 const TRACK_LABEL: Record<string, string> = {
   "pre-clinical": "Pre-Clinical",
@@ -45,7 +54,8 @@ function RevenueBars({ rows }: { rows: { name: string; revenue: number; qty: num
 export default async function ReportsPage({ searchParams }: { searchParams: SearchParams }) {
   const me = await requirePermission("admin.reports");
   const finance = hasPermission(me, "admin.finance");
-  const { pick } = await readFlash(searchParams);
+  const { pick, pesan, tipe } = await readFlash(searchParams);
+  const settings = await getSettings();
   const period = resolvePeriod(pick("periode"), pick("dari"), pick("sampai"));
   const rep = await buildReport(period);
   const qs = `periode=${period.key}${pick("dari") ? `&dari=${pick("dari")}` : ""}${pick("sampai") ? `&sampai=${pick("sampai")}` : ""}`;
@@ -77,6 +87,29 @@ export default async function ReportsPage({ searchParams }: { searchParams: Sear
           Terapkan
         </button>
       </form>
+
+      <Flash pesan={pesan} tipe={tipe} />
+
+      {finance && (
+        <section className="card mb-8 text-sm">
+          <h2 className="font-semibold">Laporan otomatis ke email</h2>
+          <p className="mt-1 text-slate-600">
+            Jadwal: <b>{SCHEDULE_LABEL[settings.reportEmailSchedule] ?? "Tidak dikirim"}</b>
+            {!smtpConfigured() && " · Akun pengirim email (SMTP) belum diatur, jadi email belum benar-benar terkirim."}{" "}
+            <Link className="text-brand underline" href="/admin/pengaturan">
+              Ubah di Pengaturan situs
+            </Link>
+          </p>
+          <form className="mt-3 flex flex-wrap gap-2">
+            <button className="btn-secondary btn-sm" formAction={sendReportNowAction.bind(null, "weekly")}>
+              Kirim laporan minggu lalu sekarang
+            </button>
+            <button className="btn-secondary btn-sm" formAction={sendReportNowAction.bind(null, "monthly")}>
+              Kirim laporan bulan lalu sekarang
+            </button>
+          </form>
+        </section>
+      )}
 
       {finance && (
         <section className="mb-8">

@@ -6,7 +6,7 @@ File ini adalah sumber kebenaran tunggal untuk status, keputusan, dan serah teri
 - Pembaruan terakhir: 2026-09-28 (Asia/Jakarta), fondasi website + backend di apps/web oleh Claude Code.
 - Tahap: fondasi aplikasi (frontend + backend + panel admin) sudah dibangun dan diuji lokal; belum di-deploy; harga/keterangan paket menunggu pengguna.
 - Pekerjaan terakhir oleh: Claude Code (PC 1).
-- Pelaksana aktif: tidak ada; email/WhatsApp + Fase D selesai dan di-push.
+- Pelaksana aktif: tidak ada; laporan berkala via email selesai dan di-push.
 - Auctus Academy telah dipelajari pada 22 halaman publik dan sebagian area akun setelah login manual. Aplikasi proyek: apps/web (lihat bagian "Fondasi aplikasi").
 
 ## Tujuan dan kebutuhan yang sudah dinyatakan
@@ -212,3 +212,4 @@ File ini adalah sumber kebenaran tunggal untuk status, keputusan, dan serah teri
 - Serah terima arahan 2026-09-23: Codex memperbarui PROJECT_MEMORY.md saja untuk menegaskan audit menyeluruh sesuai akses → rencana penyesuaian → pembahasan prioritas → implementasi. Tahap akun tetap menunggu login manual pengguna.
 
 - Serah terima 2026-10-06 oleh Claude: membuat AKUN_DAN_ISIAN.md di akar proyek (akun login + daftar isian pengguna; berisi sandi, masuk .gitignore, TIDAK ada di GitHub/PC 2). Laporan dijelaskan ke pengguna sebagai otomatis dari database (tanpa AI). Tidak ada perubahan kode.
+- Serah terima 2026-10-06 oleh Claude: LAPORAN BERKALA VIA EMAIL (tanpa AI). File: apps/web/src/lib/report-email.ts (lastCompletedPeriod, reportRecipients, sendPeriodicReport, runReportSchedule), src/instrumentation.ts (penjadwal bawaan, cek tiap 10 menit; impor harus di dalam blok `if (NEXT_RUNTIME === "nodejs")` — bentuk early-return membuat build edge gagal karena node:child_process), src/app/api/cron/laporan (pemicu cadangan, header Bearer CRON_SECRET), sendReportNowAction di actions/admin.ts, panel + tombol kirim manual di /admin/laporan. Pengaturan baru: reportEmailSchedule (tidak/mingguan/bulanan/keduanya) dan reportEmailTo. Mingguan = Senin 07.00 WIB untuk Senin–Minggu sebelumnya; bulanan = tanggal 1 07.00 WIB; susulan bila server mati; anti-ganda lewat kunci Setting `reportSent:<jenis>:<periode>`; tidak jalan bila SMTP kosong. Penerima: owner + admin dengan admin.reports DAN admin.finance + reportEmailTo. Bukti uji (SMTP lokal, 2026-10-06): penjadwal mengirim 2 email (mingguan 28 Sep–4 Okt Rp7,2 jt; bulanan September Rp500 rb), pemicu kedua menjawab "Sudah dikirim", cron tanpa token 403, tombol manual terkirim 1/1. Setelah uji: .env dipulihkan, kunci & log uji dihapus, jadwal di DB lokal dibiarkan "keduanya". Belum diuji: jadwal menunggu sampai Senin/tanggal 1 sungguhan, dan SMTP asli.
