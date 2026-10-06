@@ -62,7 +62,7 @@ export async function reportRecipients() {
   return [...new Set([...allowed.map((u) => u.email.toLowerCase()), ...extra])];
 }
 
-const heading = (t: string) => `<h2 style="margin:20px 0 8px;font-size:15px;color:#0f766e">${t}</h2>`;
+const heading = (t: string) => `<h2 style="margin:20px 0 8px;font-size:15px;color:#0369a1">${t}</h2>`;
 
 export async function sendPeriodicReport(kind: ReportKind, opts: { force?: boolean } = {}) {
   const { period, lockKey, query } = lastCompletedPeriod(kind);

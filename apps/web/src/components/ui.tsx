@@ -51,7 +51,7 @@ export function Stat({ label, value, href }: { label: string; value: React.React
   const inner = (
     <div className="card h-full">
       <p className="muted">{label}</p>
-      <p className="mt-1 text-2xl font-bold text-slate-900">{value}</p>
+      <p className="num mt-1 text-2xl font-medium text-slate-900">{value}</p>
     </div>
   );
   return href ? (
@@ -67,7 +67,7 @@ export function ProgressBar({ value }: { value: number }) {
   const v = Math.max(0, Math.min(100, value));
   return (
     <div className="h-2 w-full overflow-hidden rounded-full bg-slate-100" aria-label={`Progres ${v}%`}>
-      <div className="h-full rounded-full bg-brand" style={{ width: `${v}%` }} />
+      <div className={`h-full rounded-full ${v === 100 ? "bg-success" : "bg-brand"}`} style={{ width: `${v}%` }} />
     </div>
   );
 }

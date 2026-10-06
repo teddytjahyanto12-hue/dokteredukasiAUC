@@ -42,7 +42,7 @@ function RevenueBars({ rows }: { rows: { name: string; revenue: number; qty: num
         <li key={r.name} className="grid grid-cols-[minmax(0,180px)_minmax(0,1fr)_auto] items-center gap-3 text-sm" title={`${r.name}: ${rupiah(r.revenue)} · ${r.qty} order`}>
           <span className="truncate text-slate-600">{r.name}</span>
           <span className="block min-w-0">
-            <span className="block h-3 rounded-r bg-[#0d9488]" style={{ width: `${Math.max((r.revenue / max) * 100, r.revenue ? 1.5 : 0)}%` }} />
+            <span className="block h-3 rounded-r bg-brand" style={{ width: `${Math.max((r.revenue / max) * 100, r.revenue ? 1.5 : 0)}%` }} />
           </span>
           <span className="text-xs text-slate-700">{rupiah(r.revenue)}</span>
         </li>

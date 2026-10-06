@@ -4,43 +4,37 @@ import { getSettings } from "@/lib/settings";
 import { db } from "@/lib/db";
 import { logoutAction } from "@/app/actions/auth";
 
+// Top bar: (1) wordmark, (2) tautan teks ringkas, (3) notifikasi & profil.
+const NAV = [
+  ["/kelas", "Katalog kelas"],
+  ["/jalur", "Jalur belajar"],
+  ["/paket", "Bimbingan & layanan"],
+  ["/penawaran", "Penawaran"],
+] as const;
+
 export async function SiteHeader() {
-  const [user, settings, tracks] = await Promise.all([
-    getCurrentUser(),
-    getSettings(),
-    db.track.findMany({ where: { published: true }, orderBy: { order: "asc" }, select: { slug: true, title: true } }),
-  ]);
+  const [user, settings] = await Promise.all([getCurrentUser(), getSettings()]);
   const unread = user ? await db.notification.count({ where: { userId: user.id, readAt: null } }) : 0;
 
   return (
-    <header className="sticky top-0 z-30 border-b border-slate-200 bg-white/90 backdrop-blur print:hidden">
+    <header className="sticky top-0 z-30 border-b border-slate-200 bg-white print:hidden">
       <div className="container-page flex h-16 items-center justify-between gap-4">
         <Link href="/" className="flex items-center gap-2 font-bold text-slate-900">
-          <span className="grid h-8 w-8 place-items-center rounded-lg bg-brand text-sm text-white">DE</span>
-          <span className="hidden sm:inline">{settings.siteName}</span>
+          <span className="grid h-8 w-8 place-items-center rounded-md bg-brand text-sm text-white">DE</span>
+          <span className="hidden font-[family-name:var(--font-fraunces),Georgia,serif] text-lg font-semibold tracking-tight sm:inline">{settings.siteName}</span>
         </Link>
 
-        <nav className="hidden items-center gap-5 text-sm font-medium text-slate-600 xl:flex">
-          {tracks.map((t) => (
-            <Link key={t.slug} href={`/program/${t.slug}`} className="hover:text-brand">
-              {t.title}
+        <nav className="hidden items-center gap-7 text-sm font-medium text-slate-600 lg:flex">
+          {NAV.map(([href, label]) => (
+            <Link key={href} href={href} className="hover:text-brand">
+              {label}
             </Link>
           ))}
-          <Link href="/kelas" className="hover:text-brand">
-            Kelas
-          </Link>
-          <Link href="/jalur" className="hover:text-brand">
-            Jalur belajar
-          </Link>
-          <Link href="/paket" className="hover:text-brand">
-            Layanan
-          </Link>
-          <Link href="/penawaran" className="hover:text-brand">
-            Penawaran
-          </Link>
-          <Link href="/gabung-tutor" className="hover:text-brand">
-            Jadi Tutor
-          </Link>
+          {user?.role === "STUDENT" && (
+            <Link href="/belajar" className="hover:text-brand">
+              Pembelajaran saya
+            </Link>
+          )}
         </nav>
 
         <div className="flex items-center gap-2">
@@ -54,8 +48,8 @@ export async function SiteHeader() {
                   </span>
                 )}
               </Link>
-              <Link href={homeFor(user)} className="btn btn-sm">
-                Dashboard
+              <Link href={homeFor(user)} className="btn-secondary btn-sm" title="Buka dashboard">
+                {user.name.split(" ")[0]}
               </Link>
               <form action={logoutAction}>
                 <button className="btn-secondary btn-sm" type="submit">
@@ -75,27 +69,17 @@ export async function SiteHeader() {
           )}
         </div>
       </div>
-      <nav className="container-page flex gap-4 overflow-x-auto pb-2 text-sm font-medium text-slate-600 xl:hidden">
-        {tracks.map((t) => (
-          <Link key={t.slug} href={`/program/${t.slug}`} className="whitespace-nowrap hover:text-brand">
-            {t.title}
+      <nav className="container-page flex gap-5 overflow-x-auto pb-2 text-sm font-medium text-slate-600 lg:hidden">
+        {NAV.map(([href, label]) => (
+          <Link key={href} href={href} className="whitespace-nowrap hover:text-brand">
+            {label}
           </Link>
         ))}
-        <Link href="/kelas" className="whitespace-nowrap hover:text-brand">
-          Kelas
-        </Link>
-        <Link href="/jalur" className="whitespace-nowrap hover:text-brand">
-          Jalur belajar
-        </Link>
-        <Link href="/paket" className="whitespace-nowrap hover:text-brand">
-          Layanan
-        </Link>
-        <Link href="/penawaran" className="whitespace-nowrap hover:text-brand">
-          Penawaran
-        </Link>
-        <Link href="/gabung-tutor" className="whitespace-nowrap hover:text-brand">
-          Jadi Tutor
-        </Link>
+        {user?.role === "STUDENT" && (
+          <Link href="/belajar" className="whitespace-nowrap hover:text-brand">
+            Pembelajaran saya
+          </Link>
+        )}
       </nav>
     </header>
   );

@@ -58,11 +58,11 @@ export function emailLayout(siteName: string, title: string, bodyHtml: string, a
   return `<!doctype html><html><body style="margin:0;background:#f1f5f9;font-family:Arial,Helvetica,sans-serif;color:#0f172a">
 <table width="100%" cellpadding="0" cellspacing="0" style="padding:24px 12px"><tr><td align="center">
 <table width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;background:#ffffff;border-radius:12px;overflow:hidden">
-<tr><td style="background:#0f766e;color:#ffffff;padding:18px 24px;font-size:16px;font-weight:bold">${esc(siteName)}</td></tr>
+<tr><td style="background:#0369a1;color:#ffffff;padding:18px 24px;font-size:16px;font-weight:bold">${esc(siteName)}</td></tr>
 <tr><td style="padding:24px">
 <h1 style="margin:0 0 16px;font-size:20px">${esc(title)}</h1>
 ${bodyHtml}
-${action ? `<p style="margin:24px 0 0"><a href="${esc(action.url)}" style="background:#0f766e;color:#ffffff;padding:10px 18px;border-radius:8px;text-decoration:none;font-weight:bold">${esc(action.label)}</a></p>` : ""}
+${action ? `<p style="margin:24px 0 0"><a href="${esc(action.url)}" style="background:#0369a1;color:#ffffff;padding:10px 18px;border-radius:8px;text-decoration:none;font-weight:bold">${esc(action.label)}</a></p>` : ""}
 </td></tr>
 <tr><td style="padding:16px 24px;font-size:12px;color:#64748b;border-top:1px solid #e2e8f0">Email ini dikirim otomatis oleh ${esc(siteName)}.</td></tr>
 </table></td></tr></table></body></html>`;

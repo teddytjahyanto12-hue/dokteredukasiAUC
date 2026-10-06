@@ -46,9 +46,9 @@ export default async function OfferPage() {
 
   return (
     <>
-      <section className="border-b border-slate-200 bg-gradient-to-b from-brand-soft/60 to-background">
+      <section className="border-b border-slate-200 bg-white">
         <div className="container-page py-14 sm:py-20">
-          <h1 className="max-w-3xl text-3xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">{s.offerTitle}</h1>
+          <h1 className="max-w-3xl text-4xl font-semibold leading-tight tracking-tight text-slate-900 sm:text-6xl">{s.offerTitle}</h1>
           <p className="mt-4 max-w-2xl text-lg text-slate-600">{s.offerSubtitle}</p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link href={user ? "/kelas" : "/daftar?next=/kelas"} className="btn">
@@ -61,22 +61,22 @@ export default async function OfferPage() {
           <dl className="mt-10 flex flex-wrap gap-x-10 gap-y-4 text-sm text-slate-600">
             <div>
               <dt>Kelas</dt>
-              <dd className="text-2xl font-bold text-slate-900">{courses.length}</dd>
+              <dd className="num text-3xl font-medium text-slate-900">{courses.length}</dd>
             </div>
             <div>
               <dt>Materi</dt>
-              <dd className="text-2xl font-bold text-slate-900">{lessonCount}</dd>
+              <dd className="num text-3xl font-medium text-slate-900">{lessonCount}</dd>
             </div>
             {freeCount > 0 && (
               <div>
                 <dt>Materi contoh gratis</dt>
-                <dd className="text-2xl font-bold text-slate-900">{freeCount}</dd>
+                <dd className="num text-3xl font-medium text-slate-900">{freeCount}</dd>
               </div>
             )}
             {paths.length > 0 && (
               <div>
                 <dt>Jalur belajar</dt>
-                <dd className="text-2xl font-bold text-slate-900">{paths.length}</dd>
+                <dd className="num text-3xl font-medium text-slate-900">{paths.length}</dd>
               </div>
             )}
           </dl>
@@ -85,7 +85,7 @@ export default async function OfferPage() {
 
       {benefits.length > 0 && (
         <section className="container-page py-12">
-          <h2 className="text-2xl font-bold text-slate-900">Yang Anda dapatkan</h2>
+          <h2 className="text-3xl font-semibold tracking-tight text-slate-900">Yang Anda dapatkan</h2>
           <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {benefits.map(([title, text]) => (
               <div key={title} className="card">
@@ -100,7 +100,7 @@ export default async function OfferPage() {
       {featured.length > 0 && (
         <section className="container-page py-12">
           <div className="flex flex-wrap items-end justify-between gap-3">
-            <h2 className="text-2xl font-bold text-slate-900">Kelas pilihan</h2>
+            <h2 className="text-3xl font-semibold tracking-tight text-slate-900">Kelas pilihan</h2>
             <Link href="/kelas" className="link text-sm">
               Semua kelas →
             </Link>
@@ -116,7 +116,7 @@ export default async function OfferPage() {
       {paths.length > 0 && (
         <section className="container-page py-12">
           <div className="flex flex-wrap items-end justify-between gap-3">
-            <h2 className="text-2xl font-bold text-slate-900">Tahu harus mulai dari mana</h2>
+            <h2 className="text-3xl font-semibold tracking-tight text-slate-900">Tahu harus mulai dari mana</h2>
             <Link href="/jalur" className="link text-sm">
               Semua jalur belajar →
             </Link>
@@ -135,7 +135,7 @@ export default async function OfferPage() {
 
       <section id="harga" className="border-y border-slate-200 bg-white">
         <div className="container-page py-12">
-          <h2 className="text-2xl font-bold text-slate-900">Pilihan layanan & harga</h2>
+          <h2 className="text-3xl font-semibold tracking-tight text-slate-900">Pilihan layanan & harga</h2>
           <p className="mt-1 text-slate-600">Pilih sesuai kebutuhan. Rincian masa belajar dan add-on ada di halaman tiap layanan.</p>
           {priced.length === 0 ? (
             <p className="mt-6 text-sm text-slate-500">
@@ -151,7 +151,7 @@ export default async function OfferPage() {
                 <div key={p.id} className="card flex flex-col">
                   <h3 className="font-semibold text-slate-900">{p.name}</h3>
                   {p.summary && <p className="mt-1 text-sm text-slate-600">{p.summary}</p>}
-                  <p className="mt-3 text-xl font-bold text-brand">Mulai {rupiah(startingPrice(p))}</p>
+                  <p className="num mt-3 text-xl font-medium text-slate-900">Mulai {rupiah(startingPrice(p))}</p>
                   <ul className="mt-3 flex-1 space-y-1 text-sm text-slate-700">
                     {p.benefits.map((b) => (
                       <li key={b.id} className="flex gap-2">
@@ -184,7 +184,7 @@ export default async function OfferPage() {
 
       {testimonials.length > 0 && (
         <section className="container-page py-12">
-          <h2 className="text-2xl font-bold text-slate-900">Kata mereka</h2>
+          <h2 className="text-3xl font-semibold tracking-tight text-slate-900">Kata mereka</h2>
           <div className="mt-6 grid gap-5 md:grid-cols-3">
             {testimonials.map((t) => (
               <figure key={t.id} className="card">
@@ -201,7 +201,7 @@ export default async function OfferPage() {
 
       {faqs.length > 0 && (
         <section className="container-page max-w-3xl py-12">
-          <h2 className="text-2xl font-bold text-slate-900">Pertanyaan umum</h2>
+          <h2 className="text-3xl font-semibold tracking-tight text-slate-900">Pertanyaan umum</h2>
           <div className="mt-6 space-y-2">
             {faqs.map((f) => (
               <details key={f.id} className="card py-3">
@@ -214,7 +214,7 @@ export default async function OfferPage() {
       )}
 
       <section className="container-page py-14 text-center">
-        <h2 className="text-2xl font-bold text-slate-900">Mulai belajar hari ini</h2>
+        <h2 className="text-3xl font-semibold tracking-tight text-slate-900">Mulai belajar hari ini</h2>
         <div className="mt-6 flex flex-wrap justify-center gap-3">
           <Link href={user ? "/kelas" : "/daftar?next=/kelas"} className="btn">
             {user ? "Buka kelas" : "Daftar gratis"}

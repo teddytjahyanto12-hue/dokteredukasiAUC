@@ -9,6 +9,15 @@ export async function SiteFooter() {
       <div className="container-page flex flex-col gap-3 py-8 text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between">
         <p>{s.footerNote}</p>
         <div className="flex flex-wrap gap-4">
+          <Link href="/program/pre-clinical" className="hover:text-brand">
+            Pre-Clinical
+          </Link>
+          <Link href="/program/clinical-practice" className="hover:text-brand">
+            Clinical Practice
+          </Link>
+          <Link href="/program/medical-research" className="hover:text-brand">
+            Medical Research
+          </Link>
           <Link href="/paket" className="hover:text-brand">
             Layanan
           </Link>

@@ -20,10 +20,10 @@ export default async function HomePage() {
 
   return (
     <>
-      <section className="border-b border-slate-200 bg-gradient-to-b from-brand-soft/60 to-background">
+      <section className="border-b border-slate-200 bg-white">
         <div className="container-page py-16 sm:py-24">
-          <p className="badge-brand mb-4">{s.siteName}</p>
-          <h1 className="max-w-3xl text-3xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">{s.heroTitle}</h1>
+          <p className="mb-4 text-xs font-semibold uppercase tracking-[0.18em] text-brand">{s.siteName}</p>
+          <h1 className="max-w-3xl text-4xl font-semibold leading-tight tracking-tight text-slate-900 sm:text-6xl">{s.heroTitle}</h1>
           <p className="mt-4 max-w-2xl text-lg text-slate-600">{s.heroSubtitle}</p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link href="/penawaran" className="btn">
@@ -40,7 +40,7 @@ export default async function HomePage() {
       </section>
 
       <section className="container-page py-14">
-        <h2 className="text-2xl font-bold text-slate-900">Tiga program utama</h2>
+        <h2 className="text-3xl font-semibold tracking-tight text-slate-900">Tiga program utama</h2>
         <p className="mt-1 text-slate-600">Pilih program sesuai tahap pendidikan dan kebutuhan Anda.</p>
         <div className="mt-8 grid gap-5 md:grid-cols-3">
           {tracks.map((t) => (
