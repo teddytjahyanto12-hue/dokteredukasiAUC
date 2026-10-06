@@ -4,13 +4,19 @@ import { db } from "@/lib/db";
 import { requireUser } from "@/lib/auth";
 import { accessibleCategoryIds, canOpen } from "@/lib/access";
 import { ITEM_TYPE_LABEL, type ItemType } from "@/lib/constants";
+import { rupiah } from "@/lib/format";
+import { startingPrice } from "@/lib/services";
 import { MaterialViewer } from "@/components/material-viewer";
 import { completeAndNextAction, toggleItemDoneAction } from "@/app/actions/student";
-import { Empty } from "@/components/ui";
+import { Icon } from "@/components/icons";
+import { ProgressBar } from "@/components/ui";
 import type { SearchParams } from "@/lib/flash";
 
 const ICON: Record<string, string> = { SLIDES: "🖼️", PDF: "📄", VIDEO: "🎬", LINK: "🔗", TEXT: "📝" };
 
+// Ruang belajar: materi di kanan, kurikulum seluruh kelas di kiri.
+// Murid yang belum membeli tetap bisa membuka materi bertanda gratis; sisanya tampil terkunci
+// dengan ajakan membeli. Isi materi terkunci tidak pernah dikirim ke browser.
 export default async function TopicPage({ params, searchParams }: { params: Promise<{ topicId: string }>; searchParams: SearchParams }) {
   const user = await requireUser();
   const { topicId } = await params;
@@ -18,28 +24,50 @@ export default async function TopicPage({ params, searchParams }: { params: Prom
   const topic = await db.topic.findUnique({
     where: { id: topicId },
     include: {
-      category: { include: { track: true, packages: { include: { package: true } } } },
+      category: {
+        include: {
+          track: true,
+          packages: { include: { package: { include: { durations: { where: { active: true } }, addons: true } } } },
+          // Kurikulum seluruh kelas untuk daftar di samping (tanpa isi materi).
+          topics: {
+            where: { published: true },
+            orderBy: { order: "asc" },
+            select: {
+              id: true,
+              title: true,
+              items: { where: { published: true }, orderBy: { order: "asc" }, select: { id: true, title: true, type: true, isFree: true } },
+              quiz: { select: { title: true, published: true, _count: { select: { questions: true } } } },
+            },
+          },
+        },
+      },
       items: { where: { published: true }, orderBy: { order: "asc" }, include: { file: true } },
-      quiz: { include: { _count: { select: { questions: true } } } },
     },
   });
   if (!topic || !topic.published) notFound();
 
   const allowed = await accessibleCategoryIds(user);
   const categoryOpen = canOpen(allowed, topic.categoryId);
-  const done = new Set(
-    (await db.itemProgress.findMany({ where: { userId: user.id, itemId: { in: topic.items.map((i) => i.id) } }, select: { itemId: true } })).map((p) => p.itemId),
-  );
-  const visible = topic.items.filter((i) => categoryOpen || i.isFree);
-  const selectedId = typeof sp.item === "string" ? sp.item : visible.find((i) => i.type !== "LINK")?.id;
-  const selected = visible.find((i) => i.id === selectedId && i.type !== "LINK");
-  const links = visible.filter((i) => i.type === "LINK");
+  const syllabus = topic.category.topics;
+  const lessons = syllabus.flatMap((t) => t.items.filter((i) => i.type !== "LINK"));
+  const done = new Set((await db.itemProgress.findMany({ where: { userId: user.id, itemId: { in: lessons.map((i) => i.id) } }, select: { itemId: true } })).map((p) => p.itemId));
+  const pct = lessons.length ? Math.round((lessons.filter((i) => done.has(i.id)).length / lessons.length) * 100) : 0;
+
+  const here = topic.items.filter((i) => i.type !== "LINK");
+  const canSee = (i: { isFree: boolean }) => categoryOpen || i.isFree;
+  const requested = typeof sp.item === "string" ? here.find((i) => i.id === sp.item) : undefined;
+  // Tanpa pilihan: materi pertama yang bisa dibuka; bila tidak ada, materi pertama (tampil terkunci).
+  const current = requested ?? here.find(canSee) ?? here[0];
+  const selected = current && canSee(current) ? current : undefined;
+  const locked = current && !canSee(current) ? current : undefined;
+  const links = topic.items.filter((i) => i.type === "LINK" && canSee(i));
   const offers = topic.category.packages.map((p) => p.package).filter((p) => p.active);
+  const freeLeft = lessons.filter((i) => i.isFree && !done.has(i.id)).length;
 
   return (
     <div className="container-page py-8">
       <nav className="text-sm text-slate-500">
-        <Link href={`/program/${topic.category.track.slug}`} className="hover:text-brand">
+        <Link href={`/kelas?program=${topic.category.track.slug}`} className="hover:text-brand">
           {topic.category.track.title}
         </Link>{" "}
         /{" "}
@@ -50,69 +78,85 @@ export default async function TopicPage({ params, searchParams }: { params: Prom
       <h1 className="h1 mt-2">{topic.title}</h1>
       {topic.description && <p className="mt-1 text-slate-600">{topic.description}</p>}
 
-      {!categoryOpen && (
-        <div className="mt-6 rounded-xl border border-amber-200 bg-amber-50 p-4 text-sm text-amber-900">
-          Materi ini termasuk dalam paket berbayar{visible.length ? "; Anda sedang melihat bagian gratis" : ""}.{" "}
-          {offers.length > 0 && (
-            <>
-              Tersedia di:{" "}
-              {offers.map((p, i) => (
-                <span key={p.id}>
-                  {i > 0 && ", "}
-                  <Link href={`/paket/${p.slug}`} className="font-semibold underline">
-                    {p.name}
+      <div className="mt-6 grid gap-6 lg:grid-cols-[320px_minmax(0,1fr)]">
+        <aside className="order-2 lg:order-1">
+          <div className="rounded-xl border border-slate-200 bg-white lg:sticky lg:top-24 lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto">
+            <div className="border-b border-slate-200 p-4">
+              <p className="text-xs font-semibold uppercase tracking-[0.1em] text-brand">Kurikulum Kelas</p>
+              <p className="mt-1 text-sm font-semibold text-slate-900">{topic.category.title}</p>
+              <div className="mt-3 flex items-center gap-3">
+                <ProgressBar value={pct} />
+                <span className="num text-xs text-slate-500">{pct}%</span>
+              </div>
+              {!categoryOpen && (
+                <p className="mt-2 text-xs text-slate-500">
+                  Anda belum membeli kelas ini. Materi bertanda <span className="font-semibold text-brand">Gratis</span> bisa dibuka; yang bergembok terbuka setelah membeli.
+                </p>
+              )}
+            </div>
+            <ol>
+              {syllabus.map((t, idx) => (
+                <li key={t.id} className="border-b border-slate-100 last:border-0">
+                  <Link href={`/materi/${t.id}`} className={`block px-4 pt-3 text-sm font-semibold ${t.id === topic.id ? "text-slate-900" : "text-slate-600 hover:text-brand"}`}>
+                    {idx + 1}. {t.title}
                   </Link>
-                </span>
+                  <ul className="pb-2 pt-1">
+                    {t.items
+                      .filter((i) => i.type !== "LINK")
+                      .map((i) => {
+                        const open = canSee(i);
+                        const active = current?.id === i.id;
+                        return (
+                          <li key={i.id}>
+                            <Link
+                              href={`/materi/${t.id}?item=${i.id}`}
+                              aria-current={active ? "true" : undefined}
+                              className={`flex items-start gap-2 px-4 py-2 text-sm ${active ? "bg-sky-50 text-slate-900" : open ? "text-slate-700 hover:bg-slate-50" : "text-slate-400 hover:bg-slate-50"}`}
+                            >
+                              <span className="w-5 shrink-0 text-center" aria-hidden>
+                                {done.has(i.id) ? "✅" : open ? ICON[i.type] : "🔒"}
+                              </span>
+                              <span className="min-w-0 flex-1">{i.title}</span>
+                              {i.isFree && !categoryOpen && <span className="shrink-0 text-xs font-semibold text-brand">Gratis</span>}
+                            </Link>
+                          </li>
+                        );
+                      })}
+                    {t.quiz?.published &&
+                      (categoryOpen ? (
+                        <li>
+                          <Link href={`/quiz/${t.id}`} className="flex items-start gap-2 px-4 py-2 text-sm font-medium text-amber-800 hover:bg-amber-50">
+                            <span className="w-5 shrink-0 text-center" aria-hidden>
+                              ✍️
+                            </span>
+                            {t.quiz.title} ({t.quiz._count.questions} soal)
+                          </Link>
+                        </li>
+                      ) : (
+                        <li className="flex items-start gap-2 px-4 py-2 text-sm text-slate-400">
+                          <span className="w-5 shrink-0 text-center" aria-hidden>
+                            🔒
+                          </span>
+                          {t.quiz.title} ({t.quiz._count.questions} soal)
+                        </li>
+                      ))}
+                    {t.items.length === 0 && !t.quiz && <li className="px-4 py-2 text-xs text-slate-400">Sedang disiapkan.</li>}
+                  </ul>
+                </li>
               ))}
-            </>
-          )}
-        </div>
-      )}
-
-      <div className="mt-6 grid gap-6 lg:grid-cols-[280px_1fr]">
-        <aside className="space-y-2">
-          {topic.items.length === 0 && <Empty>Materi topik ini sedang disiapkan.</Empty>}
-          {topic.items
-            .filter((i) => i.type !== "LINK")
-            .map((i) => {
-              const open = categoryOpen || i.isFree;
-              const active = selected?.id === i.id;
-              return open ? (
-                <Link
-                  key={i.id}
-                  href={`/materi/${topic.id}?item=${i.id}`}
-                  className={`flex items-start gap-2 rounded-lg border px-3 py-2 text-sm ${active ? "border-brand bg-brand-soft/50" : "border-slate-200 bg-white hover:bg-slate-50"}`}
-                >
-                  <span aria-hidden>{ICON[i.type]}</span>
-                  <span className="flex-1">
-                    {i.title}
-                    {i.isFree && !categoryOpen && <span className="badge-brand ml-2">Gratis</span>}
-                  </span>
-                  {done.has(i.id) && <span title="Selesai">✅</span>}
-                </Link>
-              ) : (
-                <div key={i.id} className="flex items-start gap-2 rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-sm text-slate-400">
-                  <span aria-hidden>🔒</span>
-                  <span>{i.title}</span>
-                </div>
-              );
-            })}
-          {topic.quiz && topic.quiz.published && (
-            <Link
-              href={`/quiz/${topic.id}`}
-              className={`flex items-center gap-2 rounded-lg border px-3 py-2 text-sm font-semibold ${categoryOpen ? "border-amber-300 bg-amber-50 text-amber-900" : "border-slate-200 bg-slate-50 text-slate-400"}`}
-            >
-              {categoryOpen ? "📝" : "🔒"} {topic.quiz.title} ({topic.quiz._count.questions} soal)
-            </Link>
-          )}
+            </ol>
+          </div>
         </aside>
 
-        <section className="min-w-0 space-y-6">
+        <section className="order-1 min-w-0 space-y-6 lg:order-2">
           {selected && (
             <article className="card">
               <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-wide text-brand">{ITEM_TYPE_LABEL[selected.type as ItemType]}</p>
+                  <p className="text-xs font-semibold uppercase tracking-wide text-brand">
+                    {ITEM_TYPE_LABEL[selected.type as ItemType]}
+                    {selected.isFree && !categoryOpen ? " · materi contoh gratis" : ""}
+                  </p>
                   <h2 className="text-lg font-bold text-slate-900">{selected.title}</h2>
                 </div>
                 <form className="flex flex-wrap gap-2">
@@ -131,6 +175,23 @@ export default async function TopicPage({ params, searchParams }: { params: Prom
             </article>
           )}
 
+          {locked && <Paywall title={locked.title} type={ITEM_TYPE_LABEL[locked.type as ItemType]} offers={offers} courseId={topic.categoryId} freeLeft={freeLeft} />}
+
+          {!current && (
+            <div className="rounded-xl border border-dashed border-slate-300 bg-white p-8 text-center text-sm text-slate-500">Materi topik ini sedang disiapkan. Pilih topik lain dari kurikulum.</div>
+          )}
+
+          {!categoryOpen && selected && offers.length > 0 && (
+            <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-slate-200 bg-white px-5 py-4">
+              <p className="text-sm text-slate-600">
+                Anda sedang melihat materi contoh gratis. <span className="font-medium text-slate-900">{lessons.filter((i) => !i.isFree).length} materi lain</span> terbuka setelah membeli.
+              </p>
+              <Link href={offers.length === 1 ? `/paket/${offers[0].slug}` : `/kelas/${topic.categoryId}`} className="btn btn-sm">
+                Buka seluruh kelas
+              </Link>
+            </div>
+          )}
+
           {links.length > 0 && (
             <div className="card">
               <h2 className="h2 mb-3">Tautan sumber</h2>
@@ -147,12 +208,52 @@ export default async function TopicPage({ params, searchParams }: { params: Prom
               </ul>
             </div>
           )}
-
-          {!selected && links.length === 0 && visible.length === 0 && topic.items.length > 0 && (
-            <Empty>Pilih paket yang sesuai untuk membuka materi ini.</Empty>
-          )}
         </section>
       </div>
     </div>
+  );
+}
+
+type Offer = { id: string; slug: string; name: string; summary: string | null } & Parameters<typeof startingPrice>[0];
+
+// Panel materi terkunci: menjelaskan kenapa terkunci dan layanan mana yang membukanya.
+function Paywall({ title, type, offers, courseId, freeLeft }: { title: string; type: string; offers: Offer[]; courseId: string; freeLeft: number }) {
+  return (
+    <article className="rounded-xl border border-slate-200 bg-white p-6 sm:p-10">
+      <div className="mx-auto max-w-lg text-center">
+        <span className="mx-auto grid h-12 w-12 place-items-center rounded-full bg-slate-100 text-xl" aria-hidden>
+          🔒
+        </span>
+        <p className="mt-4 text-xs font-semibold uppercase tracking-wide text-slate-500">{type} · terkunci</p>
+        <h2 className="mt-1 text-xl font-bold text-slate-900">{title}</h2>
+        <p className="mt-2 text-sm text-slate-600">Materi ini terbuka setelah Anda membeli layanan yang memuat kelas ini.{freeLeft > 0 ? ` Masih ada ${freeLeft} materi gratis yang bisa Anda buka dari kurikulum.` : ""}</p>
+      </div>
+      {offers.length > 0 ? (
+        <ul className="mx-auto mt-6 max-w-lg space-y-3">
+          {offers.map((p) => {
+            const price = startingPrice(p);
+            return (
+              <li key={p.id} className="flex flex-wrap items-center justify-between gap-3 rounded-lg border border-slate-200 px-4 py-3">
+                <div className="min-w-0">
+                  <p className="font-medium text-slate-900">{p.name}</p>
+                  <p className="num text-sm text-slate-600">{price !== null ? `Mulai ${rupiah(price)}` : "Harga segera diumumkan"}</p>
+                </div>
+                <Link href={`/paket/${p.slug}`} className="btn btn-sm">
+                  Beli untuk membuka
+                  <Icon name="arrow" className="h-3.5 w-3.5" />
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      ) : (
+        <p className="mt-6 text-center text-sm text-slate-500">Layanan untuk kelas ini belum tersedia. Hubungi admin.</p>
+      )}
+      <p className="mt-6 text-center">
+        <Link href={`/kelas/${courseId}`} className="link text-sm">
+          Lihat kurikulum lengkap
+        </Link>
+      </p>
+    </article>
   );
 }

@@ -20,6 +20,10 @@ export function CourseCard({ course, stats, open, students, loggedIn }: { course
   const detail = `/kelas/${course.id}`;
   const target = stats.next ?? stats.first;
   // Tamu diarahkan login dulu; materi gratis tetap wajib login.
+  // Belum membeli & tanpa materi gratis: tetap masuk ke ruang belajar; materi pertama tampil terkunci dengan ajakan membeli.
+  const firstAny = course.topics.flatMap((t) => t.items.filter((i) => i.type !== "LINK").map((i) => ({ id: i.id, topicId: t.id })))[0];
+  const startAt = target ?? firstAny;
+  const start = startAt ? (loggedIn ? lessonHref(startAt) : `/masuk?next=${encodeURIComponent(lessonHref(startAt))}`) : detail;
   const lesson = target ? (loggedIn ? lessonHref(target) : `/masuk?next=${encodeURIComponent(lessonHref(target))}`) : detail;
   const meta = [students ? muridLabel(students) : null, course.durationText, !open && stats.free > 0 ? `${stats.free} materi gratis` : null].filter(Boolean);
   const initials = (course.instructor ?? "")
@@ -94,8 +98,8 @@ export function CourseCard({ course, stats, open, students, loggedIn }: { course
               <Link href={detail} className="inline-flex items-center justify-center rounded-lg bg-slate-100 px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-200">
                 Lihat Kurikulum
               </Link>
-              <Link href={(open || stats.free > 0) && target ? lesson : detail} className="btn">
-                {open || stats.free === 0 ? "Mulai Modul" : "Coba Gratis"}
+              <Link href={start} className="btn">
+                Mulai Modul
                 <Icon name="arrow" className="h-3.5 w-3.5" />
               </Link>
             </div>

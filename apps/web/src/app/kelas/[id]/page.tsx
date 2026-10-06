@@ -88,7 +88,8 @@ export default async function CoursePage({ params, searchParams }: { params: Pro
           )}
 
           <section className="mt-8">
-            <h2 className="h2 mb-3">Silabus</h2>
+            <h2 className="h2 mb-1">Kurikulum</h2>
+            <p className="mb-3 text-sm text-slate-500">{open ? "Semua materi terbuka untuk Anda." : "Materi bertanda Gratis bisa langsung dibuka. Materi bergembok terbuka setelah membeli."}</p>
             {course.topics.length === 0 && <p className="text-sm text-slate-500">Materi kelas ini sedang disiapkan.</p>}
             <ol className="space-y-3">
               {course.topics.map((t, idx) => {
@@ -119,13 +120,9 @@ export default async function CoursePage({ params, searchParams }: { params: Pro
                         );
                         return (
                           <li key={i.id}>
-                            {can ? (
-                              <Link href={go(lessonHref({ topicId: t.id, id: i.id }))} className="flex items-center gap-2 px-4 py-2.5 hover:bg-slate-50">
-                                {row}
-                              </Link>
-                            ) : (
-                              <div className="flex items-center gap-2 px-4 py-2.5 text-slate-400">{row}</div>
-                            )}
+                            <Link href={go(lessonHref({ topicId: t.id, id: i.id }))} className={`flex items-center gap-2 px-4 py-2.5 hover:bg-slate-50 ${can ? "" : "text-slate-400"}`}>
+                              {row}
+                            </Link>
                           </li>
                         );
                       })}
