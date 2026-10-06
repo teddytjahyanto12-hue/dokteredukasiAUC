@@ -3,10 +3,10 @@
 File ini adalah sumber kebenaran tunggal untuk status, keputusan, dan serah terima Codex / Claude Code. Dokumen lain menyimpan detail, bukan salinan status.
 
 ## Status terkini
-- Pembaruan terakhir: 2026-09-28 (Asia/Jakarta), fondasi website + backend di apps/web oleh Claude Code.
-- Tahap: fondasi aplikasi (frontend + backend + panel admin) sudah dibangun dan diuji lokal; belum di-deploy; harga/keterangan paket menunggu pengguna.
-- Pekerjaan terakhir oleh: Claude Code (PC 1).
-- Pelaksana aktif: tidak ada; ruang belajar (kurikulum penuh + materi terkunci) selesai dan di-push.
+- Pembaruan terakhir: 2026-10-06 (Asia/Jakarta), serah terima Claude diterima dan sinkronisasi kode diperiksa oleh Codex.
+- Tahap: aplikasi lokal sudah mencakup katalog kelas, jalur belajar, rekomendasi, progres/streak, ruang belajar dengan materi terkunci, panel operasional, invoice manual, email/laporan, dan integrasi Duitku. Rincian serta hasil uji Claude ada di riwayat 2026-10-06; belum deploy, SMTP asli dan sandbox Duitku asli belum diuji.
+- Pekerjaan terakhir oleh: Codex (pemeriksaan sinkronisasi dan pembaruan memori; implementasi terakhir oleh Claude Code).
+- Pelaksana aktif: tidak ada; serah terima diterima, siap melanjutkan dari kode ffc6056 beserta catatan penerimaan ini.
 - Auctus Academy telah dipelajari pada 22 halaman publik dan sebagian area akun setelah login manual. Aplikasi proyek: apps/web (lihat bagian "Fondasi aplikasi").
 
 ## Tujuan dan kebutuhan yang sudah dinyatakan
@@ -24,13 +24,13 @@ File ini adalah sumber kebenaran tunggal untuk status, keputusan, dan serah teri
 - Riwayat percakapan tidak otomatis dibagikan. Keputusan penting harus dituliskan di sini.
 
 ## Keputusan yang berlaku
-- Arahan pengguna 2026-09-23: pelajari Auctus dahulu selengkap akses yang tersedia, kemudian rencanakan fitur yang dapat dibuat dan disesuaikan untuk platform sendiri. Saat ini fokus audit dan perencanaan; implementasi menunggu hasil pembahasan rencana.
+- Arahan awal pengguna 2026-09-23: pelajari Auctus dahulu selengkap akses yang tersedia, kemudian rencanakan penyesuaian. Implementasi kemudian diizinkan pada 2026-09-28 dan sudah berjalan; instruksi awal menunggu implementasi bukan status terkini.
 - Hasil perencanaan harus memetakan fitur referensi, manfaat untuk murid/tutor, penyesuaian yang diusulkan, kebutuhan data/backend, kompleksitas/dependensi, dan prioritas rilis. Semua prioritas masih usulan sampai dibahas dengan pengguna.
 - Gunakan PROJECT_MEMORY.md sebagai satu-satunya pusat status dan serah terima.
 - AGENTS.md dan CLAUDE.md hanya berisi aturan kerja yang merujuk pada memori ini.
 - Arahan pengguna 2026-09-28: push ke GitHub, bangun frontend + backend yang bisa diedit dahulu sesuai framework; nama paket disusun dari framework, harga & keterangan menyusul.
-- Stack yang dipakai: Next.js 15 + TypeScript + Tailwind v4, Prisma 6, SQLite untuk lokal (PostgreSQL saat deploy), sesi cookie JWT (jose) + bcrypt. Video: tautan embed (YouTube/Vimeo/Drive/Bunny) — layanan streaming belum dipilih. Hosting dan pembayaran online (Duitku kandidat) belum dipilih.
-- Sinkronisasi kode: GitHub teddytjahyanto12-hue/dokteredukasiAUC (main) adalah sumber kode. Folder PC 2 hanya salinan (tanpa node_modules/database/.git). Codex sebaiknya clone repo di PC 2 dan bekerja via git pull → commit → push.
+- Stack yang dipakai: Next.js 15 + TypeScript + Tailwind v4, Prisma 6, SQLite untuk lokal (PostgreSQL saat deploy), sesi cookie JWT (jose) + bcrypt. Video: tautan embed (YouTube/Vimeo/Drive/Bunny) — layanan streaming belum dipilih. Hosting belum dipilih; integrasi Duitku sudah dibuat, baru diuji dengan server tiruan oleh Claude.
+- Sinkronisasi kode: GitHub teddytjahyanto12-hue/dokteredukasiAUC (main) adalah sumber kode. Folder kerja UNC kini repositori Git penuh; Codex memverifikasi HEAD dan origin/main sama pada ffc6056 setelah fetch 2026-10-06. Database, storage, .env, dan AKUN_DAN_ISIAN.md tersedia lokal, tidak tersinkron lewat Git. Tidak perlu clone ulang. Identitas/salinan fisik PC 1 dan PC 2 tidak diperiksa ulang dalam sesi penerimaan ini.
 - Struktur folder awal bersifat persiapan; sesuaikan arsitektur setelah analisis referensi.
 - Gunakan implementasi dan konten milik proyek. Untuk aset, video, merek, atau teks referensi yang ingin dipakai, catat sumber dan izin penggunaannya.
 - Ketentuan platform referensi dicatat sebagai bukti dan bahan kebutuhan, bukan otomatis dianggap sebagai kebijakan proyek baru.
@@ -228,3 +228,10 @@ File ini adalah sumber kebenaran tunggal untuk status, keputusan, dan serah teri
 - Menunggu dari pengguna: nomor WhatsApp admin (Pengaturan situs), SMTP di `.env`, Merchant Code + API Key Duitku sandbox (integrasi Duitku baru diuji dengan server tiruan), keputusan LibreOffice, keputusan menghapus data uji (akun *.uji@dokteredukasi.test dan 4 order), poster 16:9 + nama pengajar tiap kelas.
 - Belum dibuat: membership semua-kelas, sertifikat, rating/ulasan, total jam belajar, pemesanan slot bimbingan, deploy (PostgreSQL + hosting), tes otomatis.
 
+## PENERIMAAN SERAH TERIMA OLEH CODEX — 2026-10-06
+- Permintaan pengguna: ambil hasil pekerjaan terbaru Claude sebagai dasar kelanjutan. Catatan serah terima telah dibaca; kode yang dipakai adalah ffc6056 pada main.
+- Verifikasi aktual: fetch origin berhasil, HEAD...origin/main = 0 tertinggal / 0 mendahului. Tidak diperlukan pembaruan kode. Status awal bersih kecuali folder pengguna contoh dari google studio/ yang tidak dilacak Git.
+- Keberadaan apps/web/prisma/dev.db, apps/web/storage/, apps/web/.env, AKUN_DAN_ISIAN.md, dan Jalankan Website.bat diperiksa. Empat lokasi data/konfigurasi lokal tersebut dikonfirmasi diabaikan Git. Isi rahasia tidak dibaca atau dicatat; database dan unggahan tidak diubah. Kesamaan database antarkomputer belum diperiksa ulang oleh Codex.
+- Git pada jalur jaringan memerlukan pengecualian kepemilikan. Sesi ini memakai opsi safe.directory hanya untuk jalur repositori ini pada setiap perintah; tidak mengubah kepercayaan global. Gunakan pengecualian spesifik ini, bukan wildcard '*' pada petunjuk lama.
+- Berkas berubah: PROJECT_MEMORY.md saja, memperbarui ringkasan yang tertinggal dan mencatat penerimaan. Pemeriksaan diff --check lolos. Aplikasi, build, dan alur pembayaran tidak dijalankan ulang pada sesi sinkronisasi; hasil uji sebelumnya tetap merupakan laporan Claude.
+- Langkah lanjut: jalankan dan verifikasi aplikasi di komputer kerja sebelum perubahan fitur berikutnya; lanjutkan prioritas pengguna dari implementasi terbaru. Pengujian SMTP asli, sandbox Duitku, dan deployment tetap belum selesai. Penanda pelaksana dilepas.
