@@ -46,12 +46,12 @@ export default async function RecommendationPage() {
       <header className="mx-auto max-w-3xl text-center">
         <p className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.08em] text-brand">
           <Icon name="sparkles" className="h-4 w-4 text-amber-500" />
-          Sistem Rekomendasi Personal
+          Panduan memilih kelas
         </p>
-        <h1 className="mt-3 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Temukan Jalur Pembelajaran Medis Sesuai Kebutuhan Anda</h1>
-        <p className="mt-4 text-lg text-slate-600">Jawab 4 pertanyaan singkat untuk mendapatkan rekomendasi kelas dan roadmap langkah demi langkah yang dipersonalisasi.</p>
+        <h1 className="mt-3 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Temukan kelas yang sesuai</h1>
+        <p className="mt-4 text-base leading-relaxed text-slate-600">Pilih jenjang, tujuan, waktu, dan format belajar. Kami bantu menemukan kelas dari katalog yang tersedia.</p>
       </header>
-      <div className="mt-12">
+      <div className="mt-8">
         <Pathfinder courses={data} tracks={tracks} />
       </div>
     </div>

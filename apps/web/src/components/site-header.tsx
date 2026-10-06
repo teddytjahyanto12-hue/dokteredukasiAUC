@@ -24,7 +24,7 @@ export async function SiteHeader() {
   const { main, sub } = splitSiteName(settings.siteName);
   const home = user ? homeFor(user) : "/masuk?next=/belajar";
   const items: NavItem[] = [
-    { href: "/kelas", label: "Katalog Kursus", icon: "book", match: ["/kelas", "/materi", "/quiz", "/jalur", "/program"] },
+    { href: "/kelas", label: "Katalog Kelas", icon: "book", match: ["/kelas", "/materi", "/quiz", "/jalur", "/program"] },
     { href: "/rekomendasi", label: "Tes Rekomendasi", icon: "sparkles", match: ["/rekomendasi"] },
     {
       href: !user || user.role === "STUDENT" ? (user ? "/belajar" : home) : home,
@@ -65,15 +65,15 @@ export async function SiteHeader() {
           />
         </form>
 
-        <nav className="hidden flex-1 items-center gap-1 lg:flex">
+        <nav className="hidden flex-1 items-center gap-1 xl:flex">
           <NavLinks items={items} />
         </nav>
 
-        <div className="ml-auto flex shrink-0 items-center gap-3">
+        <div className="ml-auto flex shrink-0 items-center gap-2 sm:gap-3">
           {user ? (
             <>
               {streak && (
-                <span className="inline-flex items-center gap-1.5 rounded-lg bg-amber-50 px-2.5 py-1.5 text-sm font-semibold text-amber-700" title="Streak belajar: hari berturut-turut Anda menyelesaikan materi atau quiz">
+                <span className="inline-flex items-center gap-1.5 rounded-lg bg-amber-50 px-2.5 py-1.5 text-sm font-semibold text-amber-700" title="Streak belajar: hari berturut-turut Anda menyelesaikan materi atau kuis">
                   <Icon name="flame" className="h-4 w-4 text-orange-500" fill />
                   <span className="num">{streak.days}</span> Hari
                 </span>
@@ -107,7 +107,7 @@ export async function SiteHeader() {
           )}
         </div>
       </div>
-      <nav className="flex gap-1 overflow-x-auto px-3 pb-2 lg:hidden">
+      <nav className="flex justify-between gap-1 px-3 pb-2 sm:justify-start xl:hidden" aria-label="Navigasi utama">
         <NavLinks items={items} compact />
       </nav>
     </header>

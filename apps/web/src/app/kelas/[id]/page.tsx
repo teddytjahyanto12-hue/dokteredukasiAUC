@@ -8,6 +8,7 @@ import { ITEM_TYPE_LABEL, type ItemType } from "@/lib/constants";
 import { rupiah } from "@/lib/format";
 import { startingPrice } from "@/lib/services";
 import { ProgressBar } from "@/components/ui";
+import { CourseArt } from "@/components/course-art";
 
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
@@ -37,6 +38,7 @@ export default async function CoursePage({ params, searchParams }: { params: Pro
   const st = courseStats(course, done, open);
   const outcomes = (course.outcomes ?? "").split("\n").map((x) => x.trim()).filter(Boolean);
   const target = st.next ?? st.first;
+  const hasResources = course.topics.some((t) => t.items.length > 0 || t.quiz?.published);
   // Tamu diarahkan login dulu; materi gratis tetap wajib login.
   const go = (href: string) => (user ? href : `/masuk?next=${encodeURIComponent(href)}`);
 
@@ -61,12 +63,11 @@ export default async function CoursePage({ params, searchParams }: { params: Pro
       <div className="mt-3 grid gap-8 lg:grid-cols-[minmax(0,1fr)_340px]">
         <div className="min-w-0">
           <h1 className="h1">{course.title}</h1>
+          {!hasResources && <p className="mt-4 rounded-lg border border-sky-100 bg-sky-50 p-4 text-sm text-sky-900"><strong>Segera hadir.</strong> Materi kelas ini sedang disiapkan. Anda dapat melihat gambaran kelas terlebih dahulu.</p>}
           {course.description && <p className="mt-2 text-slate-600">{course.description}</p>}
           <div className="mt-4 flex flex-wrap gap-2">
             {students > 0 && <span className="badge">{muridLabel(students)}</span>}
-            <span className="badge">
-              {course.topics.length} topik · {st.total} materi{st.quizzes ? ` · ${st.quizzes} quiz` : ""}
-            </span>
+            {hasResources && <span className="badge">{[course.topics.length ? `${course.topics.length} topik` : null, st.total ? `${st.total} materi` : null, st.quizzes ? `${st.quizzes} kuis` : null].filter(Boolean).join(" · ")}</span>}
             {course.durationText && <span className="badge">{course.durationText}</span>}
             {course.instructor && <span className="badge">Pengajar: {course.instructor}</span>}
           </div>
@@ -89,7 +90,7 @@ export default async function CoursePage({ params, searchParams }: { params: Pro
 
           <section className="mt-8">
             <h2 className="h2 mb-1">Kurikulum</h2>
-            <p className="mb-3 text-sm text-slate-500">{open ? "Semua materi terbuka untuk Anda." : "Materi bertanda Gratis bisa langsung dibuka. Materi bergembok terbuka setelah membeli."}</p>
+            <p className="mb-4 text-sm leading-relaxed text-slate-600">{!hasResources ? "Kurikulum akan dilengkapi saat materi tersedia." : open ? "Semua materi terbuka untuk Anda." : "Masuk untuk mencoba materi bertanda Gratis. Akses materi lainnya mengikuti layanan yang Anda pilih."}</p>
             {course.topics.length === 0 && <p className="text-sm text-slate-500">Materi kelas ini sedang disiapkan.</p>}
             <ol className="space-y-3">
               {course.topics.map((t, idx) => {
@@ -101,9 +102,9 @@ export default async function CoursePage({ params, searchParams }: { params: Pro
                       <h3 className="font-semibold text-slate-900">
                         {idx + 1}. {t.title}
                       </h3>
-                      <span className="shrink-0 text-xs text-slate-500">
+                      {user && lessons.length > 0 && <span className="shrink-0 text-xs text-slate-500">
                         {lessons.filter((i) => done.has(i.id)).length}/{lessons.length} selesai
-                      </span>
+                      </span>}
                     </div>
                     <ul className="divide-y divide-slate-100 text-sm">
                       {lessons.map((i) => {
@@ -150,12 +151,12 @@ export default async function CoursePage({ params, searchParams }: { params: Pro
           </section>
         </div>
 
-        <aside className="space-y-4 lg:sticky lg:top-20 lg:self-start">
+        <aside className="space-y-4 lg:sticky lg:top-36 lg:self-start">
           <div className="card p-0 overflow-hidden">
-            {course.posterFileId && (
+            {course.posterFileId ? (
               // eslint-disable-next-line @next/next/no-img-element
               <img src={`/api/berkas/${course.posterFileId}`} alt={`Poster ${course.title}`} className="aspect-[16/9] w-full object-cover" />
-            )}
+            ) : <div className="aspect-[16/9]"><CourseArt title={course.title} program={course.track.slug} /></div>}
             <div className="p-5">
               {user && (open || st.started) && (
                 <>
@@ -180,7 +181,7 @@ export default async function CoursePage({ params, searchParams }: { params: Pro
               ) : (
                 <>
                   <p className="text-sm text-slate-600">
-                    {st.free > 0 ? `Kelas ini punya ${st.free} materi contoh gratis. Coba dulu sebelum membeli.` : "Kelas ini termasuk dalam layanan berbayar."}
+                    {!hasResources ? "Materi belum tersedia untuk mulai belajar." : st.free > 0 ? `Tersedia ${st.free} materi gratis. Masuk untuk mencoba sebelum memilih layanan.` : "Lihat pilihan layanan dan cakupan akses di bawah."}
                   </p>
                   {st.free > 0 && target && (
                     <Link href={go(lessonHref(target))} className="btn mt-4 w-full justify-center">

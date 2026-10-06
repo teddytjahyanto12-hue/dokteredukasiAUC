@@ -79,8 +79,8 @@ export default async function TopicPage({ params, searchParams }: { params: Prom
       {topic.description && <p className="mt-1 text-slate-600">{topic.description}</p>}
 
       <div className="mt-6 grid gap-6 lg:grid-cols-[320px_minmax(0,1fr)]">
-        <aside className="order-2 lg:order-1">
-          <div className="rounded-xl border border-slate-200 bg-white lg:sticky lg:top-24 lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto">
+        <aside id="kurikulum-kelas" className="order-2 scroll-mt-36 lg:order-1">
+          <div className="rounded-2xl border border-slate-200 bg-white lg:sticky lg:top-36 lg:max-h-[calc(100vh-10rem)] lg:overflow-y-auto">
             <div className="border-b border-slate-200 p-4">
               <p className="text-xs font-semibold uppercase tracking-[0.1em] text-brand">Kurikulum Kelas</p>
               <p className="mt-1 text-sm font-semibold text-slate-900">{topic.category.title}</p>
@@ -111,7 +111,7 @@ export default async function TopicPage({ params, searchParams }: { params: Prom
                             <Link
                               href={`/materi/${t.id}?item=${i.id}`}
                               aria-current={active ? "true" : undefined}
-                              className={`flex items-start gap-2 px-4 py-2 text-sm ${active ? "bg-sky-50 text-slate-900" : open ? "text-slate-700 hover:bg-slate-50" : "text-slate-400 hover:bg-slate-50"}`}
+                              className={`flex items-start gap-2 border-l-2 px-4 py-3 text-sm ${active ? "border-brand bg-sky-50 font-medium text-slate-900" : open ? "border-transparent text-slate-700 hover:bg-slate-50" : "border-transparent text-slate-500 hover:bg-slate-50"}`}
                             >
                               <span className="w-5 shrink-0 text-center" aria-hidden>
                                 {done.has(i.id) ? "✅" : open ? ICON[i.type] : "🔒"}
@@ -149,8 +149,9 @@ export default async function TopicPage({ params, searchParams }: { params: Prom
         </aside>
 
         <section className="order-1 min-w-0 space-y-6 lg:order-2">
+          <a href="#kurikulum-kelas" className="btn-secondary w-full lg:hidden"><Icon name="book" />Lihat kurikulum kelas · {pct}% selesai</a>
           {selected && (
-            <article className="card">
+            <article className="card sm:p-7">
               <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-wide text-brand">
@@ -181,7 +182,7 @@ export default async function TopicPage({ params, searchParams }: { params: Prom
             <div className="rounded-xl border border-dashed border-slate-300 bg-white p-8 text-center text-sm text-slate-500">Materi topik ini sedang disiapkan. Pilih topik lain dari kurikulum.</div>
           )}
 
-          {!categoryOpen && selected && offers.length > 0 && (
+          {!categoryOpen && selected && offers.length > 0 && lessons.some((i) => !i.isFree) && (
             <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-slate-200 bg-white px-5 py-4">
               <p className="text-sm text-slate-600">
                 Anda sedang melihat materi contoh gratis. <span className="font-medium text-slate-900">{lessons.filter((i) => !i.isFree).length} materi lain</span> terbuka setelah membeli.

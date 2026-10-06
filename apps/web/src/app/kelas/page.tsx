@@ -2,7 +2,7 @@ import { getCurrentUser } from "@/lib/auth";
 import { CatalogSection } from "@/components/catalog-section";
 import { readFlash, type SearchParams } from "@/lib/flash";
 
-export const metadata = { title: "Katalog Kursus" };
+export const metadata = { title: "Katalog Kelas" };
 
 export default async function CoursesPage({ searchParams }: { searchParams: SearchParams }) {
   const { pick } = await readFlash(searchParams);

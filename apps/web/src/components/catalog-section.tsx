@@ -14,6 +14,8 @@ export async function CatalogSection({ user, program, q, basePath, as: Heading =
     doneItemIds(user?.id),
   ]);
   const students = await studentCounts(courses);
+  const ready = (c: typeof courses[number]) => c.topics.some((t) => t.items.length > 0 || t.quiz?.published);
+  const orderedCourses = [...courses].sort((a, b) => Number(ready(b)) - Number(ready(a)));
   const href = (p?: string) => {
     const params = new URLSearchParams();
     if (p) params.set("program", p);
@@ -24,16 +26,16 @@ export async function CatalogSection({ user, program, q, basePath, as: Heading =
   const tab = (active: boolean) => `whitespace-nowrap rounded-md px-3.5 py-1.5 text-sm transition ${active ? "bg-white font-semibold text-slate-900 shadow-sm" : "text-slate-600 hover:text-slate-900"}`;
 
   return (
-    <section id="katalog" className="scroll-mt-24">
+    <section id="katalog" className="scroll-mt-36">
       <div className="flex flex-col gap-4 border-b border-slate-200 pb-5 lg:flex-row lg:items-end lg:justify-between">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.12em] text-brand">Katalog Kurikulum Medis</p>
-          <Heading className="mt-1 text-3xl font-bold tracking-tight text-slate-900">Jelajahi Jalur Pembelajaran</Heading>
-          <p className="mt-2 max-w-xl text-sm leading-relaxed text-slate-600">Modul disusun secara bertahap mulai dari video penjelasan, slide PDF ringkasan, hingga latihan kasus klinis interaktif.</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.12em] text-brand">Pilihan pembelajaran</p>
+          <Heading className="mt-1 text-3xl font-bold tracking-tight text-slate-900">Temukan kelas Anda</Heading>
+          <p className="mt-2 max-w-xl text-sm leading-relaxed text-slate-600">Pilih program, lihat kurikulum, dan temukan materi yang ingin Anda pelajari.</p>
         </div>
-        <nav className="flex max-w-full gap-1 self-start overflow-x-auto rounded-lg border border-slate-200 bg-slate-100 p-1 lg:self-auto" aria-label="Filter program">
+        <nav className="flex max-w-full flex-wrap gap-1 self-start rounded-lg border border-slate-200 bg-slate-100 p-1 lg:self-auto" aria-label="Filter program">
           <Link href={href()} className={tab(!program)}>
-            Semua Jalur
+            Semua program
           </Link>
           {tracks.map((t) => (
             <Link key={t.slug} href={href(t.slug)} className={tab(program === t.slug)}>
@@ -43,6 +45,12 @@ export async function CatalogSection({ user, program, q, basePath, as: Heading =
         </nav>
       </div>
 
+      <form action="/kelas" role="search" className="mt-5 flex max-w-xl gap-2">
+        {program && <input type="hidden" name="program" value={program} />}
+        <label className="sr-only" htmlFor="catalog-search">Cari kelas</label>
+        <input id="catalog-search" name="q" type="search" defaultValue={q} placeholder="Cari judul kelas, topik, atau pengajar…" className="input min-w-0" />
+        <button type="submit" className="btn">Cari</button>
+      </form>
       <div className="flex flex-wrap items-center justify-between gap-2 py-4 text-sm text-slate-500">
         <span>
           {q ? (
@@ -57,7 +65,7 @@ export async function CatalogSection({ user, program, q, basePath, as: Heading =
           )}
         </span>
         <span>
-          Menampilkan <span className="num font-semibold text-slate-800">{courses.length}</span> kursus
+          Menampilkan <span className="num font-semibold text-slate-800">{courses.length}</span> kelas
         </span>
       </div>
 
@@ -65,7 +73,7 @@ export async function CatalogSection({ user, program, q, basePath, as: Heading =
         <p className="rounded-xl border border-dashed border-slate-300 bg-white p-8 text-center text-sm text-slate-500">Belum ada kelas untuk pilihan ini.</p>
       ) : (
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {courses.map((c) => {
+          {orderedCourses.map((c) => {
             const open = !!user && canOpen(allowed, c.id);
             return <CourseCard key={c.id} course={c} open={open} loggedIn={!!user} stats={courseStats(c, done, open)} students={students.get(c.id)?.total} />;
           })}

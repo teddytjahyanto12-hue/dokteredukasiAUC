@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { Icon, type IconName } from "@/components/icons";
+import { CourseArt } from "@/components/course-art";
 
 export type PathfinderCourse = {
   id: string;
@@ -37,7 +38,7 @@ const HOURS = [
 ] as const;
 const FORMATS = [
   ["video", "Video + PDF Handout"],
-  ["quiz", "Drill Soal & Quiz"],
+  ["quiz", "Latihan soal & kuis"],
 ] as const;
 
 function Choice({ active, onClick, children, className = "" }: { active: boolean; onClick: () => void; children: React.ReactNode; className?: string }) {
@@ -71,12 +72,15 @@ function Question({ n, icon, title, children }: { n: number; icon: IconName; tit
 export function Pathfinder({ courses, tracks }: { courses: PathfinderCourse[]; tracks: PathfinderTrack[] }) {
   const [stage, setStage] = useState<string>("");
   const [target, setTarget] = useState<string>("");
-  const [hours, setHours] = useState<string>("bertahap");
-  const [format, setFormat] = useState<string>("video");
+  const [hours, setHours] = useState<string>("");
+  const [format, setFormat] = useState<string>("");
+  const answered = [stage, target, hours, format].filter(Boolean).length;
 
   const result = useMemo(() => {
-    if (!stage || !target || courses.length === 0) return null;
-    const scored = courses.map((c) => {
+    if (!stage || !target || !hours || !format) return null;
+    const available = courses.filter((c) => c.lessons > 0 || c.quizzes > 0);
+    if (!available.length) return null;
+    const scored = available.map((c) => {
       const reasons: string[] = [];
       let score = 40;
       if (c.trackSlug === target) {
@@ -93,7 +97,7 @@ export function Pathfinder({ courses, tracks }: { courses: PathfinderCourse[]; t
       }
       if (format === "quiz" && c.quizzes > 0) {
         score += 8;
-        reasons.push(`memiliki ${c.quizzes} quiz latihan`);
+        reasons.push(`memiliki ${c.quizzes} kuis latihan`);
       }
       if (c.lessons > 0) score += 5;
       return { c, score: Math.min(98, score), reasons };
@@ -102,15 +106,19 @@ export function Pathfinder({ courses, tracks }: { courses: PathfinderCourse[]; t
     const best = scored[0];
     // Roadmap 4 pekan: topik kelas dibagi rata; pekan tanpa topik diisi pengulangan mandiri.
     const per = Math.max(1, Math.ceil(best.c.topics.length / 4));
-    const weeks = [0, 1, 2, 3].map((w) => best.c.topics.slice(w * per, (w + 1) * per).join(" · ") || (w === 3 ? "Ulang materi & kerjakan ulang quiz" : "Pendalaman & latihan mandiri"));
+    const weeks = [0, 1, 2, 3].map((w) => best.c.topics.slice(w * per, (w + 1) * per).join(" · ") || (w === 3 ? "Ulang materi & kerjakan ulang kuis" : "Pendalaman & latihan mandiri"));
     return { ...best, weeks, others: scored.slice(1, 3) };
-  }, [stage, target, format, courses]);
+  }, [stage, target, hours, format, courses]);
 
   const pace = HOURS.find(([k]) => k === hours);
 
   return (
     <div className="grid items-start gap-8 lg:grid-cols-2">
       <form className="space-y-8 rounded-2xl border border-slate-200 bg-white p-6 sm:p-8" onSubmit={(e) => e.preventDefault()}>
+        <div className="border-b border-slate-100 pb-5">
+          <div className="flex items-center justify-between gap-3 text-sm"><p className="font-semibold text-slate-900">Preferensi belajar Anda</p><span className="text-slate-500" aria-live="polite">{answered} dari 4 terisi</span></div>
+          <progress className="mt-3 h-1.5 w-full accent-sky-700" value={answered} max={4} aria-label="Kelengkapan preferensi" />
+        </div>
         <Question n={1} icon="cap" title="Jenjang Pendidikan Medis Saat Ini">
           <div className="grid gap-3 sm:grid-cols-2">
             {STAGES.map(([k, label]) => (
@@ -160,23 +168,24 @@ export function Pathfinder({ courses, tracks }: { courses: PathfinderCourse[]; t
         </Question>
       </form>
 
-      <section className="rounded-2xl border border-slate-200 bg-white p-6 sm:p-8 lg:sticky lg:top-24" aria-live="polite">
+      <section className="rounded-2xl border border-slate-200 bg-white p-6 sm:p-8 lg:sticky lg:top-36" aria-live="polite">
         {!result ? (
           <div className="py-10 text-center">
             <Icon name="sparkles" className="mx-auto h-8 w-8 text-amber-500" />
             <p className="mt-3 font-semibold text-slate-900">Rekomendasi Anda muncul di sini</p>
-            <p className="mt-1 text-sm text-slate-500">{courses.length === 0 ? "Belum ada kelas yang bisa direkomendasikan." : "Jawab pertanyaan 1 dan 2 untuk melihat kelas yang paling sesuai."}</p>
+            <p className="mt-2 text-sm leading-relaxed text-slate-500">{answered === 4 ? "Materi kelas sedang disiapkan. Jelajahi katalog untuk melihat pilihan program." : "Lengkapi empat pilihan di formulir. Rekomendasi akan muncul otomatis."}</p>
+            {answered === 4 && <Link href="/kelas" className="btn-secondary mt-4">Lihat katalog</Link>}
           </div>
         ) : (
           <>
             <div className="flex items-start justify-between gap-4 border-b border-slate-200 pb-6">
               <div>
-                <p className="text-sm font-semibold uppercase tracking-[0.08em] text-brand">Rekomendasi Kursus Terbaik</p>
+                <p className="text-sm font-semibold uppercase tracking-[0.08em] text-brand">Pilihan kelas Anda</p>
                 <p className="mt-1 text-sm text-slate-500">Berdasarkan jenjang, target, dan format belajar Anda</p>
               </div>
               <div className="shrink-0 text-right">
                 <p className="num text-4xl font-semibold leading-none text-brand">{result.score}%</p>
-                <p className="mt-1 text-xs font-medium text-brand">Tingkat Kesesuaian</p>
+                <p className="mt-1 text-xs font-medium text-brand">Skor rekomendasi</p>
               </div>
             </div>
 
@@ -185,7 +194,7 @@ export function Pathfinder({ courses, tracks }: { courses: PathfinderCourse[]; t
                 // eslint-disable-next-line @next/next/no-img-element
                 <img src={`/api/berkas/${result.c.posterFileId}`} alt="" className="h-28 w-36 shrink-0 rounded-lg object-cover" />
               ) : (
-                <div className="hidden h-28 w-36 shrink-0 rounded-lg bg-gradient-to-br from-slate-700 to-slate-900 sm:block" aria-hidden />
+                <div className="hidden h-28 w-28 shrink-0 overflow-hidden rounded-lg sm:block"><CourseArt title={result.c.title} program={result.c.trackSlug} compact /></div>
               )}
               <div className="min-w-0">
                 <p className="text-sm text-slate-500">{result.c.trackTitle}</p>
@@ -199,13 +208,14 @@ export function Pathfinder({ courses, tracks }: { courses: PathfinderCourse[]; t
               </div>
             </div>
 
+            <p className="mt-3 text-xs leading-relaxed text-slate-500">Skor dihitung dari pilihan Anda dan informasi kelas; bukan jaminan hasil belajar.</p>
             <p className="mt-6 rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-sm leading-relaxed text-slate-700">
               <span className="font-semibold text-slate-900">Mengapa ini tepat untuk Anda:</span>{" "}
               {result.reasons.length ? `Kelas ini ${result.reasons.join(", ")}.` : "Ini kelas yang paling mendekati pilihan Anda dari kelas yang tersedia saat ini."}
               {result.c.lessons === 0 && " Materinya masih disiapkan."}
             </p>
 
-            <p className="mt-7 text-sm font-semibold uppercase tracking-[0.08em] text-slate-700">Roadmap Belajar Terstruktur (4 Pekan)</p>
+            <p className="mt-7 text-sm font-semibold uppercase tracking-[0.08em] text-slate-700">Usulan rencana belajar · 4 pekan</p>
             <p className="mt-1 text-xs text-slate-500">
               Ritme {pace?.[1].replace(/\s/g, "")} per pekan ({pace?.[2].toLowerCase()}).
             </p>
@@ -221,7 +231,7 @@ export function Pathfinder({ courses, tracks }: { courses: PathfinderCourse[]; t
             <div className="mt-7 flex flex-wrap gap-3 border-t border-slate-200 pt-6">
               <Link href={result.c.startHref} className="btn px-5 py-2.5">
                 <Icon name="play" className="h-3.5 w-3.5" fill />
-                Mulai Belajar Kursus Ini
+                Mulai belajar
               </Link>
               <Link href={`/kelas/${result.c.id}`} className="btn-secondary px-5 py-2.5">
                 Lihat Kurikulum

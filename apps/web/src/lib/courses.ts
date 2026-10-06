@@ -6,7 +6,8 @@ import { db } from "./db";
 export const courseInclude = {
   track: { select: { slug: true, title: true } },
   topics: {
-    where: { published: true },
+    // Topik petunjuk bawaan seed tetap tersedia di admin, bukan kurikulum publik.
+    where: { published: true, NOT: { title: "Contoh Topik — ubah atau hapus di panel admin" } },
     orderBy: { order: "asc" as const },
     include: {
       items: { where: { published: true }, orderBy: { order: "asc" as const }, select: { id: true, title: true, type: true, isFree: true } },

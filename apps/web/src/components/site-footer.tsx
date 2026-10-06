@@ -41,7 +41,7 @@ export async function SiteFooter() {
           <p className={col}>Fitur Platform</p>
           <div className="mt-4 space-y-2">
             <Link href="/rekomendasi" className={link}>
-              Tes Rekomendasi Kursus
+              Tes Rekomendasi Kelas
             </Link>
             <Link href="/belajar" className={link}>
               Dashboard Progres Belajar
@@ -65,7 +65,7 @@ export async function SiteFooter() {
         <div>
           <p className={col}>Kepatuhan & Integritas Medis</p>
           <p className="mt-4 text-sm leading-relaxed text-slate-400">
-            Materi kursus ditujukan untuk tujuan edukasi kedokteran dan pelatihan akademik. Penerapan klinis pada pasien nyata selalu memerlukan pertimbangan dokter penanggung jawab pelayanan
+            Materi kelas ditujukan untuk tujuan edukasi kedokteran dan pelatihan akademik. Penerapan klinis pada pasien nyata selalu memerlukan pertimbangan dokter penanggung jawab pelayanan
             (DPJP).
           </p>
         </div>

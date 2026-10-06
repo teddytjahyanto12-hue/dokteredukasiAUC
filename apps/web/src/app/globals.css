@@ -45,14 +45,17 @@ h2 {
 }
 
 @layer components {
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.12em] text-brand;
+  }
   .container-page {
     @apply mx-auto w-full max-w-7xl px-4 sm:px-6;
   }
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-lg bg-brand px-4 py-2 text-sm font-semibold text-white transition hover:bg-brand-dark disabled:cursor-not-allowed disabled:opacity-50;
+    @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-brand px-4 py-2.5 text-center text-sm font-semibold text-white transition hover:bg-brand-dark disabled:cursor-not-allowed disabled:opacity-50;
   }
   .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2 rounded-lg border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:bg-slate-50;
+    @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-center text-sm font-semibold text-slate-700 transition hover:bg-slate-50;
   }
   .btn-danger {
     @apply inline-flex items-center justify-center gap-2 rounded-lg border border-red-200 bg-white px-3 py-1.5 text-sm font-semibold text-red-700 transition hover:bg-red-50;
@@ -105,3 +108,7 @@ h2 {
     @apply text-sm text-slate-500;
   }
 }
+/* Fokus keyboard terlihat pada seluruh tindakan interaktif. */
+:where(a, button, summary):focus-visible { outline: 3px solid #0284c7; outline-offset: 4px; }
+html { scroll-padding-top: 8rem; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; } }

@@ -9,6 +9,7 @@ import { tanggal } from "@/lib/format";
 import { FIELD_LABEL, MENTORING_STATUS_LABEL, type MentoringField } from "@/lib/constants";
 import { Icon, type IconName } from "@/components/icons";
 import { ProgressBar } from "@/components/ui";
+import { CourseArt } from "@/components/course-art";
 
 export const metadata = { title: "Pembelajaran Saya" };
 
@@ -41,13 +42,13 @@ export default async function StudentDashboard() {
   const rows = courses
     .map((c) => ({ c, open: ownedIds.has(c.id), st: courseStats(c, done, ownedIds.has(c.id)) }))
     // Yang sedang berjalan lebih dulu, lalu yang belum mulai, lalu yang selesai.
-    .sort((a, b) => Number(a.st.completed) - Number(b.st.completed) || Number(b.st.started) - Number(a.st.started));
+    .sort((a, b) => Number(a.st.total === 0) - Number(b.st.total === 0) || Number(a.st.completed) - Number(b.st.completed) || Number(b.st.started) - Number(a.st.started));
   const lessonTitle = new Map(courses.flatMap((c) => c.topics.flatMap((t) => t.items.map((i) => [i.id, i.title] as const))));
 
   const stats: { label: string; value: string; note: string; icon: IconName; tone: string }[] = [
     { label: "Kelas Diikuti", value: `${rows.length} Kelas`, note: `${rows.filter((r) => r.st.started && !r.st.completed).length} sedang berjalan`, icon: "book", tone: "text-brand" },
-    { label: "Materi Selesai", value: `${done.size} Sesi`, note: "Video, slide & PDF", icon: "checkCircle", tone: "text-success" },
-    { label: "Rata-rata Quiz", value: quiz._count ? `${Math.round(quiz._avg.score ?? 0)}%` : "—", note: quiz._count ? `${quiz._count} quiz dikerjakan` : "Belum ada quiz dikerjakan", icon: "trending", tone: "text-brand" },
+    { label: "Materi Selesai", value: `${done.size}`, note: "Video, slide & PDF", icon: "checkCircle", tone: "text-success" },
+    { label: "Rata-rata kuis", value: quiz._count ? `${Math.round(quiz._avg.score ?? 0)}%` : "—", note: quiz._count ? `${quiz._count} kuis dikerjakan` : "Belum ada kuis dikerjakan", icon: "trending", tone: "text-brand" },
     { label: "Kelas Selesai", value: `${rows.filter((r) => r.st.completed).length}`, note: "Semua materi ditandai selesai", icon: "award", tone: "text-amber-500" },
   ];
 
@@ -55,9 +56,9 @@ export default async function StudentDashboard() {
     <div className="container-page py-10">
       <section className="flex flex-col gap-6 rounded-2xl border border-slate-200 bg-white p-6 sm:p-9 lg:flex-row lg:items-center lg:justify-between">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.12em] text-brand">Dashboard Pelajar · {s.siteName}</p>
-          <h1 className="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Selamat Datang, {user.name}</h1>
-          <p className="mt-3 max-w-xl text-slate-600">Lanjutkan pencapaian target belajar Anda. Konsistensi belajar harian mempercepat penguasaan materi.</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.12em] text-brand">Pembelajaran saya · {s.siteName}</p>
+          <h1 className="mt-2 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Selamat belajar, {user.name}</h1>
+          <p className="mt-3 max-w-xl text-slate-600">Satu langkah setiap hari. Pilih kelas di bawah untuk melanjutkan belajar.</p>
           <div className="mt-4 flex flex-wrap gap-2">
             <Link href="/pembelian" className="btn-secondary btn-sm">
               Riwayat pembelian
@@ -102,27 +103,27 @@ export default async function StudentDashboard() {
         </div>
       )}
 
-      <section className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      <section className="mt-8 grid grid-cols-2 gap-3 lg:grid-cols-4">
         {stats.map((x) => (
-          <div key={x.label} className="rounded-xl border border-slate-200 bg-white p-6">
+          <div key={x.label} className="rounded-2xl border border-slate-200 bg-white p-4 sm:p-6">
             <div className="flex items-start justify-between">
               <p className="text-sm text-slate-500">{x.label}</p>
               <Icon name={x.icon} className={`h-5 w-5 ${x.tone}`} />
             </div>
-            <p className="mt-2 text-3xl font-bold tracking-tight text-slate-900 tabular-nums">{x.value}</p>
+            <p className="mt-2 text-xl font-bold tracking-tight text-slate-900 tabular-nums sm:text-3xl">{x.value}</p>
             <p className="mt-1.5 text-xs text-slate-500">{x.note}</p>
           </div>
         ))}
       </section>
 
-      <section className="mt-12">
+      <section className="mt-10">
         <div className="flex flex-wrap items-end justify-between gap-2">
           <div>
-            <h2 className="text-2xl font-bold tracking-tight text-slate-900">Kursus yang Sedang Dipelajari</h2>
+            <h2 className="text-2xl font-bold tracking-tight text-slate-900">Kelas saya</h2>
             <p className="mt-1 text-sm text-slate-500">Lanjutkan materi terakhir Anda untuk menjaga ritme belajar harian.</p>
           </div>
           <Link href="/kelas" className="text-sm font-semibold text-brand hover:underline">
-            + Ambil Kursus Baru
+            Jelajahi kelas lain →
           </Link>
         </div>
 
@@ -143,13 +144,13 @@ export default async function StudentDashboard() {
             {rows.map(({ c, open, st }) => {
               const target = st.next ?? st.first;
               return (
-                <article key={c.id} className="rounded-xl border border-slate-200 bg-white p-6">
+                <article key={c.id} className="rounded-2xl border border-slate-200 bg-white p-5 sm:p-6">
                   <div className="flex gap-4">
                     {c.posterFileId ? (
                       // eslint-disable-next-line @next/next/no-img-element
                       <img src={`/api/berkas/${c.posterFileId}`} alt="" className="h-20 w-20 shrink-0 rounded-lg object-cover sm:h-24 sm:w-24" />
                     ) : (
-                      <div className="h-20 w-20 shrink-0 rounded-lg bg-gradient-to-br from-slate-700 to-slate-900 sm:h-24 sm:w-24" aria-hidden />
+                      <div className="h-20 w-20 shrink-0 overflow-hidden rounded-lg sm:h-24 sm:w-24"><CourseArt title={c.title} program={c.track.slug} compact /></div>
                     )}
                     <div className="min-w-0">
                       <p className="text-xs font-semibold uppercase tracking-[0.08em] text-brand">{c.track.title}</p>
@@ -162,15 +163,15 @@ export default async function StudentDashboard() {
                     </div>
                   </div>
 
-                  <div className="mt-5 flex items-center justify-between text-sm">
-                    <span className="text-slate-600">Progres Kursus</span>
+                  {st.total > 0 && <><div className="mt-5 flex flex-wrap items-center justify-between gap-2 text-sm">
+                    <span className="text-slate-600">Progres kelas</span>
                     <span className="num font-semibold text-brand">
-                      {st.pct}% ({st.done}/{st.total} sesi)
+                      {st.pct}% ({st.done}/{st.total} materi)
                     </span>
                   </div>
                   <div className="mt-2">
                     <ProgressBar value={st.pct} />
-                  </div>
+                  </div></>}
 
                   <div className="mt-4 rounded-lg border border-slate-200 bg-slate-50 px-4 py-3">
                     <p className="text-[11px] font-semibold uppercase tracking-wide text-slate-500">{st.completed ? "Status:" : "Materi berikutnya:"}</p>
@@ -198,7 +199,7 @@ export default async function StudentDashboard() {
         )}
       </section>
 
-      <section className="mt-12">
+      <section className="mt-10">
         <h2 className="text-2xl font-bold tracking-tight text-slate-900">Layanan Aktif</h2>
         {entitlements.length === 0 ? (
           <p className="mt-3 text-sm text-slate-500">
@@ -221,11 +222,11 @@ export default async function StudentDashboard() {
       </section>
 
       {mentorings.length > 0 && (
-        <section className="mt-12">
+        <section className="mt-10">
           <h2 className="text-2xl font-bold tracking-tight text-slate-900">Pendampingan Tutor Saya</h2>
   <div className="mt-4 grid gap-6 lg:grid-cols-2">
               {mentorings.map((m) => (
-                <Link key={m.id} href={`/bimbingan/${m.id}`} className="rounded-xl border border-slate-200 bg-white p-6 transition hover:border-slate-300">
+                <Link key={m.id} href={`/bimbingan/${m.id}`} className="rounded-2xl border border-slate-200 bg-white p-5 sm:p-6 transition hover:border-slate-300">
                   <div className="flex items-center justify-between gap-2">
                     <h3 className="font-semibold text-slate-900">{FIELD_LABEL[m.field as MentoringField] ?? m.field}</h3>
                     <span className="text-xs font-medium text-slate-500">{MENTORING_STATUS_LABEL[m.status]}</span>
