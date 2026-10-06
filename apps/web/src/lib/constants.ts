@@ -100,7 +100,7 @@ export const SETTING_DEFAULTS = {
   adminEmail: "",
   tutorFormUrl: "",
   paymentInstructions:
-    "Pembayaran online sedang disiapkan. Setelah memesan, admin akan menghubungi Anda melalui WhatsApp untuk konfirmasi pembayaran dan aktivasi akses.",
+    "Transfer sesuai nominal tagihan ke rekening yang diinformasikan admin, lalu konfirmasi lewat tombol WhatsApp di bawah. Admin akan mengaktifkan akses Anda setelah pembayaran diperiksa.",
   footerNote: "© Dokter Edukasi Learning",
   sendReceiptEmail: "ya",
   reportEmailSchedule: "tidak" as string,

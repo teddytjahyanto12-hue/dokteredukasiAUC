@@ -379,6 +379,27 @@ model Order {
   updatedAt     DateTime  @updatedAt
   entitlements  Entitlement[]
   mentorings    Mentoring[]
+  payments      PaymentAttempt[]
+}
+
+// Satu percobaan bayar online (Duitku) untuk order bayar penuh atau satu cicilan.
+// merchantOrderId unik per percobaan; jumlah selalu dihitung server.
+model PaymentAttempt {
+  id              String    @id @default(cuid())
+  orderId         String
+  order           Order     @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  installmentSeq  Int?      // null = bayar penuh
+  merchantOrderId String    @unique
+  amount          Int
+  reference       String?   // nomor referensi Duitku
+  paymentUrl      String?
+  paymentCode     String?   // metode yang dipakai customer (mis. BC, QRIS)
+  status          String    @default("PENDING") // PENDING | PAID | FAILED | EXPIRED
+  expiresAt       DateTime
+  paidAt          DateTime?
+  createdAt       DateTime  @default(now())
+
+  @@index([orderId])
 }
 
 // Jadwal cicilan sebuah order (disalin dari aturan cicilan layanan saat order dibuat).

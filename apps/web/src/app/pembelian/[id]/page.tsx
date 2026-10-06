@@ -6,8 +6,10 @@ import { rupiah, tanggal } from "@/lib/format";
 import { ORDER_STATUS_LABEL } from "@/lib/constants";
 import { getSettings, whatsappLink } from "@/lib/settings";
 import { fillWaTemplate, loadOrderForReceipt } from "@/lib/receipts";
-import { PageHeader } from "@/components/ui";
+import { Flash, PageHeader } from "@/components/ui";
 import type { SearchParams } from "@/lib/flash";
+import { duitkuConfigured, duitkuSandbox } from "@/lib/duitku";
+import { checkPaymentAction, payOnlineAction } from "@/app/actions/student";
 
 export default async function OrderDetail({ params, searchParams }: { params: Promise<{ id: string }>; searchParams: SearchParams }) {
   const user = await requireUser();
@@ -21,6 +23,9 @@ export default async function OrderDetail({ params, searchParams }: { params: Pr
   // Pesan konfirmasi dari template di Pengaturan situs: identitas pelanggan + layanan + tagihan.
   const wa = full ? whatsappLink(s.adminWhatsapp, fillWaTemplate(s.waConfirmTemplate, s.siteName, full)) : null;
   const awaiting = order.status === "PENDING" || order.status === "PARTIAL";
+  const online = duitkuConfigured();
+  const pendingOnline = online ? await db.paymentAttempt.count({ where: { orderId: order.id, status: "PENDING", reference: { not: null } } }) : 0;
+  const pesan = typeof sp.pesan === "string" ? sp.pesan : undefined;
 
   return (
     <div className="container-page max-w-2xl py-10">
@@ -28,6 +33,16 @@ export default async function OrderDetail({ params, searchParams }: { params: Pr
       {sp.baru && (
         <div className="mb-4 rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-800">
           Pesanan dibuat. Admin sudah menerima notifikasi pesanan Anda.
+        </div>
+      )}
+      <Flash pesan={pesan} tipe={typeof sp.tipe === "string" ? sp.tipe : undefined} />
+      {sp.bayar === "cek" && (
+        <div className={`mb-4 rounded-lg border px-4 py-3 text-sm ${awaiting && pendingOnline ? "border-amber-200 bg-amber-50 text-amber-800" : "border-emerald-200 bg-emerald-50 text-emerald-800"}`}>
+          {awaiting && pendingOnline
+            ? "Pembayaran belum kami terima. Bila Anda sudah membayar, tunggu sebentar lalu tekan “Cek status pembayaran”."
+            : awaiting
+              ? "Status pembayaran sudah diperbarui."
+              : "Pembayaran diterima. Terima kasih — akses Anda sudah aktif."}
         </div>
       )}
       <div className="card space-y-3">
@@ -66,6 +81,24 @@ export default async function OrderDetail({ params, searchParams }: { params: Pr
       {awaiting && (
         <div className="card mt-6">
           <h2 className="h2">Langkah pembayaran{next ? ` — ${next.label} (${rupiah(next.amount)})` : ""}</h2>
+          {online && (
+            <div className="mt-4 rounded-lg border border-slate-200 p-4">
+              <p className="text-sm font-semibold text-slate-900">Bayar online — otomatis terkonfirmasi</p>
+              <p className="mt-1 text-xs text-slate-500">Virtual account bank, QRIS, e-wallet, atau kartu melalui Duitku. Akses langsung aktif setelah pembayaran berhasil.</p>
+              <form className="mt-3 flex flex-wrap gap-2">
+                <button className="btn" formAction={payOnlineAction.bind(null, order.id)}>
+                  Bayar sekarang {rupiah(next ? next.amount : order.amount)}
+                </button>
+                {pendingOnline > 0 && (
+                  <button className="btn-secondary" formAction={checkPaymentAction.bind(null, order.id)}>
+                    Cek status pembayaran
+                  </button>
+                )}
+              </form>
+              {duitkuSandbox() && <p className="mt-2 text-xs text-amber-700">Mode uji coba (sandbox): belum memakai uang sungguhan.</p>}
+            </div>
+          )}
+          {online && <p className="mt-5 text-sm font-semibold text-slate-900">Atau transfer manual</p>}
           <p className="mt-2 whitespace-pre-line text-sm text-slate-600">{s.paymentInstructions}</p>
           {wa ? (
             <a href={wa} target="_blank" rel="noopener noreferrer" className="btn mt-4 bg-[#25D366] hover:bg-[#1ebe5b]">

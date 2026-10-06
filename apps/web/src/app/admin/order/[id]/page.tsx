@@ -35,6 +35,7 @@ export default async function AdminOrderDetail({ params, searchParams }: { param
   });
   if (!order) notFound();
   const emails = await db.emailLog.findMany({ where: { orderId: order.id }, orderBy: { createdAt: "desc" }, take: 10 });
+  const attempts = await db.paymentAttempt.findMany({ where: { orderId: order.id }, orderBy: { createdAt: "desc" }, take: 10 });
   const createdBy = order.createdById ? await db.user.findUnique({ where: { id: order.createdById }, select: { name: true } }) : null;
   const s = await getSettings();
   const next = order.installments.find((i) => i.status !== "PAID");
@@ -159,6 +160,24 @@ export default async function AdminOrderDetail({ params, searchParams }: { param
                 Tandai lunas & aktifkan akses
               </button>
             </form>
+          )}
+
+          {attempts.length > 0 && (
+            <section className="card space-y-2">
+              <h2 className="h2">Pembayaran online (Duitku)</h2>
+              <ul className="text-xs text-slate-600">
+                {attempts.map((p) => (
+                  <li key={p.id}>
+                    {tanggal(p.createdAt, true)} · {p.installmentSeq ? `Cicilan ${p.installmentSeq}` : "Bayar penuh"} · {rupiah(p.amount)} ·{" "}
+                    <span className={p.status === "PAID" ? "text-emerald-700" : p.status === "PENDING" ? "text-amber-700" : "text-slate-500"}>
+                      {{ PAID: "berhasil", PENDING: "menunggu pembayaran", FAILED: "gagal/dibatalkan", EXPIRED: "kedaluwarsa" }[p.status] ?? p.status}
+                    </span>
+                    {p.reference && ` · ref ${p.reference}`}
+                    {p.paymentCode && ` · ${p.paymentCode}`}
+                  </li>
+                ))}
+              </ul>
+            </section>
           )}
 
           {(order.status === "PAID" || order.status === "PARTIAL") && (

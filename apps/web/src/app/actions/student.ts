@@ -8,6 +8,7 @@ import { activeEntitlementWhere, canAccessCategory } from "@/lib/access";
 import { createOrder } from "@/lib/orders";
 import { QuoteError } from "@/lib/services";
 import { back, str } from "@/lib/flash";
+import { createDuitkuPayment, DuitkuError, syncOrderPayments } from "@/lib/duitku";
 
 export async function orderPackageAction(form: FormData) {
   const user = await requireUser(["STUDENT"]);
@@ -84,4 +85,28 @@ export async function markNotificationsReadAction() {
   const user = await requireUser();
   await db.notification.updateMany({ where: { userId: user.id, readAt: null }, data: { readAt: new Date() } });
   revalidatePath("/notifikasi");
+}
+
+// ---------- Pembayaran online (Duitku) ----------
+
+export async function payOnlineAction(orderId: string) {
+  const user = await requireUser();
+  const order = await db.order.findFirst({ where: { id: orderId, userId: user.id }, select: { id: true } });
+  if (!order) back("/pembelian", "Pesanan tidak ditemukan.", "error");
+  let url: string;
+  try {
+    url = await createDuitkuPayment(orderId);
+  } catch (e) {
+    back(`/pembelian/${orderId}`, e instanceof DuitkuError ? e.message : "Pembayaran online gagal dibuat.", "error");
+  }
+  redirect(url);
+}
+
+export async function checkPaymentAction(orderId: string) {
+  const user = await requireUser();
+  const order = await db.order.findFirst({ where: { id: orderId, userId: user.id }, select: { id: true } });
+  if (!order) back("/pembelian", "Pesanan tidak ditemukan.", "error");
+  await syncOrderPayments(orderId);
+  revalidatePath(`/pembelian/${orderId}`);
+  redirect(`/pembelian/${orderId}?bayar=cek`);
 }
