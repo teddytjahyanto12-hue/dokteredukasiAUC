@@ -211,4 +211,4 @@ File ini adalah sumber kebenaran tunggal untuk status, keputusan, dan serah teri
 
 - Serah terima arahan 2026-09-23: Codex memperbarui PROJECT_MEMORY.md saja untuk menegaskan audit menyeluruh sesuai akses → rencana penyesuaian → pembahasan prioritas → implementasi. Tahap akun tetap menunggu login manual pengguna.
 
-
+- Serah terima 2026-10-06 oleh Claude: membuat AKUN_DAN_ISIAN.md di akar proyek (akun login + daftar isian pengguna; berisi sandi, masuk .gitignore, TIDAK ada di GitHub/PC 2). Laporan dijelaskan ke pengguna sebagai otomatis dari database (tanpa AI). Tidak ada perubahan kode.
