@@ -1,0 +1,76 @@
+import Link from "next/link";
+import { db } from "@/lib/db";
+import type { CurrentUser } from "@/lib/auth";
+import { accessibleCategoryIds, canOpen } from "@/lib/access";
+import { courseStats, doneItemIds, loadCourses, studentCounts } from "@/lib/courses";
+import { CourseCard } from "@/components/course-card";
+
+// Katalog kelas dengan filter program (dan kata kunci). Dipakai di beranda dan halaman /kelas.
+export async function CatalogSection({ user, program, q, basePath, as: Heading = "h2" }: { user: CurrentUser | null; program?: string; q?: string; basePath: string; as?: "h1" | "h2" }) {
+  const [courses, tracks, allowed, done] = await Promise.all([
+    loadCourses({ trackSlug: program, q }),
+    db.track.findMany({ where: { published: true }, orderBy: { order: "asc" }, select: { slug: true, title: true } }),
+    accessibleCategoryIds(user),
+    doneItemIds(user?.id),
+  ]);
+  const students = await studentCounts(courses);
+  const href = (p?: string) => {
+    const params = new URLSearchParams();
+    if (p) params.set("program", p);
+    if (q) params.set("q", q);
+    const s = params.toString();
+    return `${basePath}${s ? `?${s}` : ""}${basePath === "/" ? "#katalog" : ""}`;
+  };
+  const tab = (active: boolean) => `whitespace-nowrap rounded-md px-3.5 py-1.5 text-sm transition ${active ? "bg-white font-semibold text-slate-900 shadow-sm" : "text-slate-600 hover:text-slate-900"}`;
+
+  return (
+    <section id="katalog" className="scroll-mt-24">
+      <div className="flex flex-col gap-4 border-b border-slate-200 pb-5 lg:flex-row lg:items-end lg:justify-between">
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-[0.12em] text-brand">Katalog Kurikulum Medis</p>
+          <Heading className="mt-1 text-3xl font-bold tracking-tight text-slate-900">Jelajahi Jalur Pembelajaran</Heading>
+          <p className="mt-2 max-w-xl text-sm leading-relaxed text-slate-600">Modul disusun secara bertahap mulai dari video penjelasan, slide PDF ringkasan, hingga latihan kasus klinis interaktif.</p>
+        </div>
+        <nav className="flex max-w-full gap-1 self-start overflow-x-auto rounded-lg border border-slate-200 bg-slate-100 p-1 lg:self-auto" aria-label="Filter program">
+          <Link href={href()} className={tab(!program)}>
+            Semua Jalur
+          </Link>
+          {tracks.map((t) => (
+            <Link key={t.slug} href={href(t.slug)} className={tab(program === t.slug)}>
+              {t.title}
+            </Link>
+          ))}
+        </nav>
+      </div>
+
+      <div className="flex flex-wrap items-center justify-between gap-2 py-4 text-sm text-slate-500">
+        <span>
+          {q ? (
+            <>
+              Hasil pencarian “<span className="font-medium text-slate-800">{q}</span>” ·{" "}
+              <Link href={basePath} className="link">
+                hapus pencarian
+              </Link>
+            </>
+          ) : (
+            ""
+          )}
+        </span>
+        <span>
+          Menampilkan <span className="num font-semibold text-slate-800">{courses.length}</span> kursus
+        </span>
+      </div>
+
+      {courses.length === 0 ? (
+        <p className="rounded-xl border border-dashed border-slate-300 bg-white p-8 text-center text-sm text-slate-500">Belum ada kelas untuk pilihan ini.</p>
+      ) : (
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {courses.map((c) => {
+            const open = !!user && canOpen(allowed, c.id);
+            return <CourseCard key={c.id} course={c} open={open} loggedIn={!!user} stats={courseStats(c, done, open)} students={students.get(c.id)?.total} />;
+          })}
+        </div>
+      )}
+    </section>
+  );
+}

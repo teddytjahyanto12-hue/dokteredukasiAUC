@@ -15,12 +15,16 @@ export const courseInclude = {
   },
 };
 
-export async function loadCourses(where: { trackSlug?: string; ids?: string[] } = {}) {
+export async function loadCourses(where: { trackSlug?: string; ids?: string[]; q?: string } = {}) {
   return db.category.findMany({
     where: {
       published: true,
       track: { published: true, ...(where.trackSlug ? { slug: where.trackSlug } : {}) },
       ...(where.ids ? { id: { in: where.ids } } : {}),
+      // Pencarian kata kunci pada judul, deskripsi, pengajar, dan judul topik.
+      ...(where.q
+        ? { OR: [{ title: { contains: where.q } }, { description: { contains: where.q } }, { instructor: { contains: where.q } }, { topics: { some: { title: { contains: where.q } } } }] }
+        : {}),
     },
     orderBy: [{ track: { order: "asc" } }, { order: "asc" }],
     include: courseInclude,

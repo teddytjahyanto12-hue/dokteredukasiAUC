@@ -108,7 +108,7 @@ export default async function OfferPage() {
           </div>
           <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {featured.map(({ c, open, st }) => (
-              <CourseCard key={c.id} course={c} open={open} stats={st} students={students.get(c.id)?.total} />
+              <CourseCard key={c.id} course={c} open={open} loggedIn={!!user} stats={st} students={students.get(c.id)?.total} />
             ))}
           </div>
         </section>
