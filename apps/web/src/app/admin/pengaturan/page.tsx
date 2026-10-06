@@ -7,7 +7,7 @@ import { readFlash, type SearchParams } from "@/lib/flash";
 
 export const metadata = { title: "Pengaturan" };
 
-const LONG: SettingKey[] = ["heroSubtitle", "paymentInstructions", "offerSubtitle", "offerBenefits"];
+const LONG: SettingKey[] = ["heroSubtitle", "paymentInstructions", "offerSubtitle", "offerBenefits", "homeProgramNotes", "homeSteps", "catalogSubtitle", "recommendationSubtitle"];
 const TALL: SettingKey[] = ["waConfirmTemplate"];
 const YES_NO: SettingKey[] = ["sendReceiptEmail"];
 const CHOICES: Partial<Record<SettingKey, [string, string][]>> = {

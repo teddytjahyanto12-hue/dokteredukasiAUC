@@ -4,14 +4,16 @@ import type { CurrentUser } from "@/lib/auth";
 import { accessibleCategoryIds, canOpen } from "@/lib/access";
 import { courseStats, doneItemIds, loadCourses, studentCounts } from "@/lib/courses";
 import { CourseCard } from "@/components/course-card";
+import { getSettings } from "@/lib/settings";
 
 // Katalog kelas dengan filter program (dan kata kunci). Dipakai di beranda dan halaman /kelas.
 export async function CatalogSection({ user, program, q, basePath, as: Heading = "h2" }: { user: CurrentUser | null; program?: string; q?: string; basePath: string; as?: "h1" | "h2" }) {
-  const [courses, tracks, allowed, done] = await Promise.all([
+  const [courses, tracks, allowed, done, s] = await Promise.all([
     loadCourses({ trackSlug: program, q }),
     db.track.findMany({ where: { published: true }, orderBy: { order: "asc" }, select: { slug: true, title: true } }),
     accessibleCategoryIds(user),
     doneItemIds(user?.id),
+    getSettings(),
   ]);
   const students = await studentCounts(courses);
   const ready = (c: typeof courses[number]) => c.topics.some((t) => t.items.length > 0 || t.quiz?.published);
@@ -29,9 +31,9 @@ export async function CatalogSection({ user, program, q, basePath, as: Heading =
     <section id="katalog" className="scroll-mt-36">
       <div className="flex flex-col gap-4 border-b border-slate-200 pb-5 lg:flex-row lg:items-end lg:justify-between">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.12em] text-brand">Pilihan pembelajaran</p>
-          <Heading className="mt-1 text-3xl font-bold tracking-tight text-slate-900">Temukan kelas Anda</Heading>
-          <p className="mt-2 max-w-xl text-sm leading-relaxed text-slate-600">Pilih program, lihat kurikulum, dan temukan materi yang ingin Anda pelajari.</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.12em] text-brand">{s.catalogEyebrow}</p>
+          <Heading className="mt-1 text-3xl font-bold tracking-tight text-slate-900">{s.catalogTitle}</Heading>
+          <p className="mt-2 max-w-xl text-sm leading-relaxed text-slate-600">{s.catalogSubtitle}</p>
         </div>
         <nav className="flex max-w-full flex-wrap gap-1 self-start rounded-lg border border-slate-200 bg-slate-100 p-1 lg:self-auto" aria-label="Filter program">
           <Link href={href()} className={tab(!program)}>
@@ -48,7 +50,7 @@ export async function CatalogSection({ user, program, q, basePath, as: Heading =
       <form action="/kelas" role="search" className="mt-5 flex max-w-xl gap-2">
         {program && <input type="hidden" name="program" value={program} />}
         <label className="sr-only" htmlFor="catalog-search">Cari kelas</label>
-        <input id="catalog-search" name="q" type="search" defaultValue={q} placeholder="Cari judul kelas, topik, atau pengajar…" className="input min-w-0" />
+        <input id="catalog-search" name="q" type="search" defaultValue={q} placeholder={s.catalogSearchPlaceholder} className="input min-w-0" />
         <button type="submit" className="btn">Cari</button>
       </form>
       <div className="flex flex-wrap items-center justify-between gap-2 py-4 text-sm text-slate-500">
@@ -70,7 +72,7 @@ export async function CatalogSection({ user, program, q, basePath, as: Heading =
       </div>
 
       {courses.length === 0 ? (
-        <p className="rounded-xl border border-dashed border-slate-300 bg-white p-8 text-center text-sm text-slate-500">Belum ada kelas untuk pilihan ini.</p>
+        <p className="rounded-xl border border-dashed border-slate-300 bg-white p-8 text-center text-sm text-slate-500">{s.catalogEmptyText}</p>
       ) : (
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {orderedCourses.map((c) => {

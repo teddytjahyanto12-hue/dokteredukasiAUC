@@ -69,7 +69,7 @@ function Question({ n, icon, title, children }: { n: number; icon: IconName; tit
   );
 }
 
-export function Pathfinder({ courses, tracks }: { courses: PathfinderCourse[]; tracks: PathfinderTrack[] }) {
+export function Pathfinder({ courses, tracks, copy }: { courses: PathfinderCourse[]; tracks: PathfinderTrack[]; copy: { disclaimer: string; empty: string } }) {
   const [stage, setStage] = useState<string>("");
   const [target, setTarget] = useState<string>("");
   const [hours, setHours] = useState<string>("");
@@ -173,7 +173,7 @@ export function Pathfinder({ courses, tracks }: { courses: PathfinderCourse[]; t
           <div className="py-10 text-center">
             <Icon name="sparkles" className="mx-auto h-8 w-8 text-amber-500" />
             <p className="mt-3 font-semibold text-slate-900">Rekomendasi Anda muncul di sini</p>
-            <p className="mt-2 text-sm leading-relaxed text-slate-500">{answered === 4 ? "Materi kelas sedang disiapkan. Jelajahi katalog untuk melihat pilihan program." : "Lengkapi empat pilihan di formulir. Rekomendasi akan muncul otomatis."}</p>
+            <p className="mt-2 text-sm leading-relaxed text-slate-500">{answered === 4 ? "Materi kelas sedang disiapkan. Jelajahi katalog untuk melihat pilihan program." : copy.empty}</p>
             {answered === 4 && <Link href="/kelas" className="btn-secondary mt-4">Lihat katalog</Link>}
           </div>
         ) : (
@@ -208,7 +208,7 @@ export function Pathfinder({ courses, tracks }: { courses: PathfinderCourse[]; t
               </div>
             </div>
 
-            <p className="mt-3 text-xs leading-relaxed text-slate-500">Skor dihitung dari pilihan Anda dan informasi kelas; bukan jaminan hasil belajar.</p>
+            <p className="mt-3 text-xs leading-relaxed text-slate-500">{copy.disclaimer}</p>
             <p className="mt-6 rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-sm leading-relaxed text-slate-700">
               <span className="font-semibold text-slate-900">Mengapa ini tepat untuk Anda:</span>{" "}
               {result.reasons.length ? `Kelas ini ${result.reasons.join(", ")}.` : "Ini kelas yang paling mendekati pilihan Anda dari kelas yang tersedia saat ini."}

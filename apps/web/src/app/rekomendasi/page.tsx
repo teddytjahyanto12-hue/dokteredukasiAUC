@@ -1,5 +1,6 @@
 import { db } from "@/lib/db";
 import { getCurrentUser } from "@/lib/auth";
+import { getSettings } from "@/lib/settings";
 import { accessibleCategoryIds, canOpen } from "@/lib/access";
 import { courseStats, doneItemIds, lessonHref, loadCourses, studentCounts } from "@/lib/courses";
 import { Icon } from "@/components/icons";
@@ -11,11 +12,12 @@ export const metadata = { title: "Tes Rekomendasi" };
 // dengan skor kesesuaian berbasis aturan (bukan AI) dan roadmap 4 pekan dari topik kelas itu.
 export default async function RecommendationPage() {
   const user = await getCurrentUser();
-  const [courses, tracks, allowed, done] = await Promise.all([
+  const [courses, tracks, allowed, done, s] = await Promise.all([
     loadCourses(),
     db.track.findMany({ where: { published: true }, orderBy: { order: "asc" }, select: { slug: true, title: true, description: true } }),
     accessibleCategoryIds(user),
     doneItemIds(user?.id),
+    getSettings(),
   ]);
   const students = await studentCounts(courses);
   const data: PathfinderCourse[] = courses.map((c) => {
@@ -46,13 +48,13 @@ export default async function RecommendationPage() {
       <header className="mx-auto max-w-3xl text-center">
         <p className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.08em] text-brand">
           <Icon name="sparkles" className="h-4 w-4 text-amber-500" />
-          Panduan memilih kelas
+          {s.recommendationEyebrow}
         </p>
-        <h1 className="mt-3 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Temukan kelas yang sesuai</h1>
-        <p className="mt-4 text-base leading-relaxed text-slate-600">Pilih jenjang, tujuan, waktu, dan format belajar. Kami bantu menemukan kelas dari katalog yang tersedia.</p>
+        <h1 className="mt-3 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">{s.recommendationTitle}</h1>
+        <p className="mt-4 text-base leading-relaxed text-slate-600">{s.recommendationSubtitle}</p>
       </header>
       <div className="mt-8">
-        <Pathfinder courses={data} tracks={tracks} />
+        <Pathfinder courses={data} tracks={tracks} copy={{ disclaimer: s.recommendationDisclaimer, empty: s.recommendationEmptyText }} />
       </div>
     </div>
   );
