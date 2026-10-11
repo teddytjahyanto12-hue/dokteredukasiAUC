@@ -5,7 +5,7 @@ Status resmi dan riwayat lengkap tetap di `../PROJECT_MEMORY.md` (bagian bertang
 ## 1. Kondisi kode & lingkungan
 
 - Folder kerja: folder bersama `\\desktop-ch10vns\data bersama pc 1 pc 2\Project  Framework Auc` (di PC 2 = `C:\DATA BERSAMA PC 1 PC 2\Project  Framework Auc`). Repo Git `main`, commit terakhir `09b6578` (6 Okt).
-- **Semua pekerjaan 7–12 Okt BELUM di-commit dan BELUM di-push** (PC 2 belum login GitHub). `git status`: ±100 berkas berubah/baru. Folder milik pengguna yang tidak dilacak: `contoh dari google studio/`, `IDE MANUAL/`, `PAKET/`, `Formulir Isian Data Website.xlsx`.
+- Pekerjaan 7–12 Okt sudah di-commit lokal sebagai **`a810b04`**, tetapi **BELUM di-push** (PC 2 belum login GitHub). Berkas research/Framework Sparkmedical/, research/Laporan_Audit_SRMA_Auctus_2026-10-12.docx, dan research/build_auctus_report.py tidak ikut commit karena bukan buatan Claude. `git status`: ±100 berkas berubah/baru. Folder milik pengguna yang tidak dilacak: `contoh dari google studio/`, `IDE MANUAL/`, `PAKET/`, `Formulir Isian Data Website.xlsx`.
 - Server lokal PC 2 selalu aktif: `Server Selalu Aktif.bat` (akar proyek) + shortcut Startup Windows `Dokter Edukasi Academy - Server.lnk`. Server menyala ulang otomatis bila berhenti. **Sebelum `prisma migrate`, matikan jendela server** (file engine Prisma terkunci di Windows), lalu nyalakan lagi lewat shortcut.
 - `prisma migrate dev` menolak lingkungan non-interaktif bila ada perubahan berisiko; pola yang dipakai: buat folder migrasi → `npx prisma migrate diff --from-schema-datasource prisma/schema.prisma --to-schema-datamodel prisma/schema.prisma --script > migration.sql` → `npx prisma migrate deploy` → `npx prisma generate`.
 - Verifikasi terakhir: `npx tsc --noEmit` dan `npx eslint src prisma` lolos (12 Okt). `next build` belum dijalankan ulang sejak 28 Sep.
@@ -65,7 +65,7 @@ Semua skrip idempoten (aman dijalankan ulang).
 
 ## 7. Belum selesai / menunggu pengguna
 
-1. Commit + push ke GitHub (butuh login GitHub di PC 2 atau dilakukan dari komputer yang sudah login).
+1. Push commit `a810b04` ke GitHub (butuh `gh auth login` + `gh auth setup-git` di PC 2).
 2. Isi materi nyata: 22 Blok (Bab, materi, kuis), Toolkit SR-MA, kelas Medical Research lain; soal kuis Bab 1 masih 0.
 3. SMTP (email kwitansi/notifikasi) dan kunci Duitku belum diisi; Duitku memang disembunyikan sementara.
 4. Integrasi Google Drive untuk bukti pembayaran/rekap: belum dipilih pengguna (opsi Drive for desktop vs service account).
