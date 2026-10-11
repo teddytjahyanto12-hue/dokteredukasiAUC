@@ -5,7 +5,7 @@ import { accessibleCategoryIds, canOpen } from "@/lib/access";
 import { getSettings } from "@/lib/settings";
 import { courseStats, doneItemIds, loadCourses, studentCounts } from "@/lib/courses";
 import { loadPaths } from "@/lib/paths";
-import { duitkuConfigured } from "@/lib/duitku";
+import { onlinePaymentActive } from "@/lib/duitku";
 import { rupiah } from "@/lib/format";
 import { startingPrice } from "@/lib/services";
 import { CourseCard } from "@/components/course-card";
@@ -86,7 +86,7 @@ export default async function OfferPage() {
 
       {benefits.length > 0 && (
         <section className="container-page py-12">
-          <h2 className="text-3xl font-semibold tracking-tight text-slate-900">Yang Anda dapatkan</h2>
+          <h2 className="text-3xl font-semibold tracking-tight text-slate-900">Yang didapatkan</h2>
           <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {benefits.map(([title, text]) => (
               <div key={title} className="card">
@@ -175,8 +175,8 @@ export default async function OfferPage() {
           <div className="mt-8 rounded-xl border border-slate-200 bg-slate-50 p-5 text-sm text-slate-700">
             <p className="font-semibold text-slate-900">Cara pembayaran</p>
             <ul className="mt-2 list-disc space-y-1 pl-5">
-              {duitkuConfigured() && <li>Bayar online (virtual account, QRIS, e-wallet) — akses langsung aktif.</li>}
-              <li>Bayar manual: invoice dikirim ke WhatsApp admin, lalu admin memberi nomor rekening dan mengaktifkan akses Anda.</li>
+              {onlinePaymentActive(s) && <li>Bayar online (virtual account, QRIS, e-wallet) - akses langsung aktif.</li>}
+              <li>Bayar manual: invoice dikirim ke WhatsApp admin, lalu admin memberi nomor rekening dan mengaktifkan akses.</li>
               {installment && <li>Layanan tertentu bisa dicicil 2–3 kali.</li>}
             </ul>
           </div>

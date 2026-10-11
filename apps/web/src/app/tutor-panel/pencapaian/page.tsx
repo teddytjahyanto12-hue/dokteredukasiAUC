@@ -33,10 +33,10 @@ export default async function TutorAchievements() {
 
   return (
     <>
-      <PageHeader title="Pencapaian" subtitle="Jenis fee Anda, sesi yang sudah divalidasi, dan status fee per sesi." />
+      <PageHeader title="Pencapaian" subtitle="Jenis fee, sesi yang sudah divalidasi, dan status fee per sesi." />
 
       <section className="card mb-6">
-        <h2 className="h2">Jenis fee Anda</h2>
+        <h2 className="h2">Jenis fee</h2>
         <dl className="mt-3 grid gap-3 text-sm sm:grid-cols-3">
           <div>
             <dt className="text-slate-500">Bidang</dt>
@@ -54,7 +54,7 @@ export default async function TutorAchievements() {
         {profile?.rateNote && <p className="mt-3 text-sm text-slate-600">{profile.rateNote}</p>}
         {services.length > 0 && (
           <div className="mt-4 overflow-x-auto">
-            <p className="label">Fee per layanan yang Anda tangani</p>
+            <p className="label">Fee per layanan yang ditangani</p>
             <table className="table">
               <thead>
                 <tr>
@@ -78,13 +78,13 @@ export default async function TutorAchievements() {
           </div>
         )}
         <p className="mt-3 text-xs text-slate-500">
-          Fee baru terutang (payable) setelah admin memvalidasi sesi yang Anda tandai selesai. Sesi yang dibatalkan atau proyek yang ditutup sebelum validasi
+          Fee baru terutang (payable) setelah admin memvalidasi sesi yang ditandai selesai. Sesi yang dibatalkan atau proyek yang ditutup sebelum validasi
           tidak menghasilkan fee.
         </p>
       </section>
 
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        <Stat label={`Projected (${count("PROJECTED") + count("PENDING_VALIDATION")} sesi)`} value={projectedEstimate !== null ? `± ${rupiah(projectedEstimate)}` : "—"} />
+        <Stat label={`Projected (${count("PROJECTED") + count("PENDING_VALIDATION")} sesi)`} value={projectedEstimate !== null ? `± ${rupiah(projectedEstimate)}` : "-"} />
         <Stat label={`Menunggu validasi (${count("PENDING_VALIDATION")} sesi)`} value={count("PENDING_VALIDATION")} />
         <Stat label={`Payable / belum dibayar (${count("PAYABLE")} sesi)`} value={rupiah(total("PAYABLE"))} />
         <Stat label={`Sudah dibayar (${count("PAID")} sesi)`} value={rupiah(total("PAID"))} />
@@ -125,7 +125,7 @@ export default async function TutorAchievements() {
                     <td>
                       <span className={FEE_STATUS_TONE[s.feeStatus]}>{FEE_STATUS_LABEL[s.feeStatus]}</span>
                     </td>
-                    <td>{s.fee !== null ? rupiah(s.fee) : "—"}</td>
+                    <td>{s.fee !== null ? rupiah(s.fee) : "-"}</td>
                   </tr>
                 ))}
               </tbody>

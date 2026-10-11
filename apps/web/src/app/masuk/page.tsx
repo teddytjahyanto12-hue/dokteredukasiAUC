@@ -17,7 +17,7 @@ export default async function LoginPage({ searchParams }: { searchParams: Search
     <div className="container-page grid min-h-[70vh] place-items-center py-10">
       <div className="card w-full max-w-md">
         <h1 className="h1 mb-1">Masuk</h1>
-        <p className="muted mb-6">Masuk untuk mengakses materi, bimbingan, atau panel Anda.</p>
+        <p className="muted mb-6">Masuk untuk mengakses materi, bimbingan, atau panel akun.</p>
         <Flash pesan={pesan} tipe={tipe} />
         <form action={loginAction} className="space-y-4">
           {next && <input type="hidden" name="next" value={next} />}

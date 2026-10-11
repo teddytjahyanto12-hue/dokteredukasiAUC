@@ -15,9 +15,14 @@ export async function CatalogSection({ user, program, q, basePath, as: Heading =
     doneItemIds(user?.id),
     getSettings(),
   ]);
-  const students = await studentCounts(courses);
+  // Kelas induk bertanda "section" (mis. Review) tampil sebagai judul section berisi kartu kelas pilihannya.
+  const sectionParents = courses.filter((c) => c.showChildrenInCatalog && c.children.length > 0);
+  const childCourses = sectionParents.length ? await loadCourses({ ids: sectionParents.flatMap((p) => p.children.map((ch) => ch.id)) }) : [];
+  const students = await studentCounts([...courses, ...childCourses]);
   const ready = (c: typeof courses[number]) => c.topics.some((t) => t.items.length > 0 || t.quiz?.published);
-  const orderedCourses = [...courses].sort((a, b) => Number(ready(b)) - Number(ready(a)));
+  const orderedCourses = [...courses].filter((c) => !sectionParents.includes(c)).sort((a, b) => Number(ready(b)) - Number(ready(a)));
+  const sections = sectionParents.map((p) => ({ parent: p, items: childCourses.filter((c) => c.parentId === p.id) }));
+  const shown = orderedCourses.length + sections.reduce((n, s) => n + s.items.length, 0);
   const href = (p?: string) => {
     const params = new URLSearchParams();
     if (p) params.set("program", p);
@@ -67,18 +72,44 @@ export async function CatalogSection({ user, program, q, basePath, as: Heading =
           )}
         </span>
         <span>
-          Menampilkan <span className="num font-semibold text-slate-800">{courses.length}</span> kelas
+          Menampilkan <span className="num font-semibold text-slate-800">{shown}</span> kelas
         </span>
       </div>
 
-      {courses.length === 0 ? (
+      {shown === 0 ? (
         <p className="rounded-xl border border-dashed border-slate-300 bg-white p-8 text-center text-sm text-slate-500">{s.catalogEmptyText}</p>
       ) : (
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {orderedCourses.map((c) => {
-            const open = !!user && canOpen(allowed, c.id);
-            return <CourseCard key={c.id} course={c} open={open} loggedIn={!!user} stats={courseStats(c, done, open)} students={students.get(c.id)?.total} />;
-          })}
+        <div className="space-y-10">
+          {orderedCourses.length > 0 && (
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {orderedCourses.map((c) => {
+                const open = !!user && canOpen(allowed, c.id);
+                return <CourseCard key={c.id} course={c} open={open} loggedIn={!!user} stats={courseStats(c, done, open)} students={students.get(c.id)?.total} />;
+              })}
+            </div>
+          )}
+          {sections.map(({ parent, items }) => (
+            <section key={parent.id} aria-labelledby={`section-${parent.id}`}>
+              <div className="mb-4 flex flex-wrap items-end justify-between gap-2 border-b border-slate-200 pb-3">
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.12em] text-brand">{parent.track.title}</p>
+                  <h3 id={`section-${parent.id}`} className="mt-1 text-2xl font-bold tracking-tight text-slate-900">
+                    {parent.title}
+                  </h3>
+                  {parent.description && <p className="mt-1 max-w-2xl text-sm text-slate-600">{parent.description}</p>}
+                </div>
+                <Link href={`/kelas/${parent.id}`} className="text-sm font-semibold text-brand hover:underline">
+                  Lihat semua {(parent.childLabel || "pilihan").toLowerCase()} →
+                </Link>
+              </div>
+              <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                {items.map((c) => {
+                  const open = !!user && canOpen(allowed, c.id);
+                  return <CourseCard key={c.id} course={c} open={open} loggedIn={!!user} stats={courseStats(c, done, open)} students={students.get(c.id)?.total} />;
+                })}
+              </div>
+            </section>
+          ))}
         </div>
       )}
     </section>

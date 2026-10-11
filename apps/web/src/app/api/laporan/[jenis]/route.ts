@@ -1,8 +1,9 @@
 import { NextResponse } from "next/server";
+import { appUrl } from "@/lib/email";
 import { db } from "@/lib/db";
 import { getCurrentUser } from "@/lib/auth";
 import { hasPermission } from "@/lib/permissions";
-import { buildReport, cashEntries, resolvePeriod } from "@/lib/reports";
+import { buildReport, cashEntries, resolvePeriod, feeOwed } from "@/lib/reports";
 import { LEAD_SOURCE_LABEL } from "@/lib/installments";
 import { ORDER_STATUS_LABEL } from "@/lib/constants";
 
@@ -33,10 +34,28 @@ export async function GET(req: Request, { params }: { params: Promise<{ jenis: s
     if (!finance) return new NextResponse("Butuh akses Angka keuangan.", { status: 403 });
   }
 
-  if (jenis === "pembayaran") {
+  if (jenis === "fee-terutang") {
+    if (!finance) return new NextResponse("Butuh akses Angka keuangan.", { status: 403 });
+    const owed = await feeOwed();
+    rows = [["Tutor", "Jenis", "Item", "Murid", "Layanan", "Diverifikasi (WIB)", "Fee", "Status payroll"]];
+    for (const r of owed.rows) rows.push([r.tutor, r.kind, r.item, r.student, r.service, wib(r.verifiedAt), r.fee, r.payroll ? `Masuk payroll ${r.payroll} (belum dibayar)` : "Belum dibuatkan payroll"]);
+    rows.push([], ["TOTAL", "", "", "", "", "", owed.total, ""]);
+  } else if (jenis === "pembayaran") {
     const cash = await cashEntries(period);
-    rows = [["Tanggal (WIB)", "Kode order", "Pelanggan", "Layanan", "Pembayaran", "Jumlah", "HPP", "Sumber"]];
-    for (const c of cash) rows.push([wib(c.date), c.code, c.customer, c.service, c.label, c.amount, c.hppKnown ? c.hpp : "", LEAD_SOURCE_LABEL[c.leadSource ?? ""] ?? ""]);
+    rows = [["Tanggal (WIB)", "Kode order", "Pelanggan", "Layanan", "Pembayaran", "Jumlah", "HPP", "Sumber", "Referensi", "Bukti pembayaran"]];
+    for (const c of cash)
+      rows.push([
+        wib(c.date),
+        c.code,
+        c.customer,
+        c.service,
+        c.label,
+        c.amount,
+        c.hppKnown ? c.hpp : "",
+        LEAD_SOURCE_LABEL[c.leadSource ?? ""] ?? "",
+        c.paymentRef,
+        c.proofFileId ? appUrl(`/api/berkas/${c.proofFileId}`) : "",
+      ]);
   } else if (jenis === "order") {
     const r = period.from || period.to ? { ...(period.from ? { gte: period.from } : {}), ...(period.to ? { lt: period.to } : {}) } : undefined;
     const orders = await db.order.findMany({

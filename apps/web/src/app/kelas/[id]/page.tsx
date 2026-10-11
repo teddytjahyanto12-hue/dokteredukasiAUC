@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { db } from "@/lib/db";
 import { getCurrentUser } from "@/lib/auth";
 import { accessibleCategoryIds, canOpen } from "@/lib/access";
-import { courseInclude, courseStats, doneItemIds, lessonHref, muridLabel, studentCounts } from "@/lib/courses";
+import { courseInclude, courseStats, doneItemIds, lessonHref, muridLabel, studentCounts, withBlockTopics } from "@/lib/courses";
 import { ITEM_TYPE_LABEL, type ItemType } from "@/lib/constants";
 import { rupiah } from "@/lib/format";
 import { startingPrice } from "@/lib/services";
@@ -19,15 +19,20 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
 export default async function CoursePage({ params, searchParams }: { params: Promise<{ id: string }>; searchParams: Promise<Record<string, string | string[] | undefined>> }) {
   const { id } = await params;
   const finished = (await searchParams).selesai === "1";
-  const course = await db.category.findUnique({ where: { id }, include: courseInclude });
-  if (!course || !course.published) notFound();
+  const raw = await db.category.findUnique({ where: { id }, include: { ...courseInclude, parent: { select: { id: true, title: true } } } });
+  if (!raw || !raw.published) notFound();
+  const course = withBlockTopics(raw);
+  const blocks = raw.children; // terisi bila ini kelas induk (mis. Basic Medical Science, Review)
+  const childLabel = raw.childLabel || "Blok";
+  const isBlok = childLabel === "Blok";
 
   const user = await getCurrentUser();
   const [allowed, done, packages, paths] = await Promise.all([
     accessibleCategoryIds(user),
     doneItemIds(user?.id),
     db.package.findMany({
-      where: { active: true, categories: { some: { categoryId: id } } },
+      // Blok: tampilkan juga paket kelas induknya (mis. Paket Blok Komplit).
+      where: { active: true, categories: { some: { categoryId: { in: raw.parentId ? [id, raw.parentId] : [id] } } } },
       orderBy: { order: "asc" },
       include: { durations: { where: { active: true } }, addons: true },
     }),
@@ -52,29 +57,39 @@ export default async function CoursePage({ params, searchParams }: { params: Pro
         <Link href={`/kelas?program=${course.track.slug}`} className="hover:text-brand">
           {course.track.title}
         </Link>
+        {raw.parent && (
+          <>
+            {" "}
+            /{" "}
+            <Link href={`/kelas/${raw.parent.id}`} className="hover:text-brand">
+              {raw.parent.title}
+            </Link>
+          </>
+        )}
       </nav>
 
       {finished && (
         <div className="mt-4 rounded-lg border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-800">
-          {st.completed ? "Selamat, semua materi kelas ini sudah Anda selesaikan." : open ? "Anda sudah sampai di materi terakhir. Masih ada materi yang belum ditandai selesai." : "Materi contoh gratis sudah habis. Buka seluruh kelas lewat layanan di samping."}
+          {st.completed ? "Selamat, semua materi kelas ini sudah selesai." : open ? "Sudah sampai di materi terakhir. Masih ada materi yang belum ditandai selesai." : "Materi contoh gratis sudah habis. Buka seluruh kelas lewat layanan di samping."}
         </div>
       )}
 
       <div className="mt-3 grid gap-8 lg:grid-cols-[minmax(0,1fr)_340px]">
         <div className="min-w-0">
+          {course.code && <p className="num text-sm font-semibold text-brand">{course.code}</p>}
           <h1 className="h1">{course.title}</h1>
-          {!hasResources && <p className="mt-4 rounded-lg border border-sky-100 bg-sky-50 p-4 text-sm text-sky-900"><strong>Segera hadir.</strong> Materi kelas ini sedang disiapkan. Anda dapat melihat gambaran kelas terlebih dahulu.</p>}
+          {!hasResources && <p className="mt-4 rounded-lg border border-mascot bg-brand-soft p-4 text-sm text-ink"><strong>Segera hadir.</strong> Materi kelas ini sedang disiapkan. Gambaran kelas dapat dilihat terlebih dahulu.</p>}
           {course.description && <p className="mt-2 text-slate-600">{course.description}</p>}
           <div className="mt-4 flex flex-wrap gap-2">
             {students > 0 && <span className="badge">{muridLabel(students)}</span>}
-            {hasResources && <span className="badge">{[course.topics.length ? `${course.topics.length} topik` : null, st.total ? `${st.total} materi` : null, st.quizzes ? `${st.quizzes} kuis` : null].filter(Boolean).join(" · ")}</span>}
+            {hasResources && <span className="badge">{[blocks.length ? `${blocks.length} ${childLabel.toLowerCase()}` : course.topics.length ? `${course.topics.length} ${raw.parentId ? "bab" : "topik"}` : null, st.total ? `${st.total} materi` : null, st.quizzes ? `${st.quizzes} kuis` : null].filter(Boolean).join(" · ")}</span>}
             {course.durationText && <span className="badge">{course.durationText}</span>}
             {course.instructor && <span className="badge">Pengajar: {course.instructor}</span>}
           </div>
 
           {outcomes.length > 0 && (
             <section className="card mt-6">
-              <h2 className="h2 mb-3">Yang akan Anda pelajari</h2>
+              <h2 className="h2 mb-3">Yang akan dipelajari</h2>
               <ul className="grid gap-2 text-sm text-slate-700 sm:grid-cols-2">
                 {outcomes.map((o) => (
                   <li key={o} className="flex gap-2">
@@ -88,9 +103,48 @@ export default async function CoursePage({ params, searchParams }: { params: Pro
             </section>
           )}
 
-          <section className="mt-8">
+          {blocks.length > 0 && (
+            <section className="mt-8">
+              <h2 className="h2 mb-1">{isBlok ? "Kurikulum Blok" : `${childLabel} ${course.title}`}</h2>
+              <p className="mb-4 text-sm leading-relaxed text-slate-600">
+                {isBlok
+                  ? `${blocks.length} Blok tahap akademik (preklinik). Setiap Blok terbagi per Bab dan setiap Bab memiliki kuis. Bab 1 beserta satu materi dan kuisnya dapat dicoba gratis.`
+                  : `${blocks.length} ${childLabel.toLowerCase()} kelas. Pilih salah satu untuk melihat Bab, materi, dan kuisnya.`}
+              </p>
+              <ol className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+                {blocks.map((b, idx) => {
+                  const bOpen = !!user && canOpen(allowed, b.id);
+                  const lessons = b.topics.flatMap((t) => t.items.filter((i) => i.type !== "LINK"));
+                  const quizzes = b.topics.filter((t) => t.quiz?.published).length;
+                  return (
+                    <li key={b.id}>
+                      <Link href={`/kelas/${b.id}`} className="group flex h-full flex-col overflow-hidden rounded-xl border border-slate-200 bg-white transition hover:border-mascot">
+                        <div className="aspect-[16/9]">
+                          <CourseArt title={isBlok ? `Blok ${idx + 1}` : b.title} program={course.track.slug} art={b.artKey} />
+                        </div>
+                        <div className="flex flex-1 flex-col p-4">
+                          <p className="text-xs font-semibold uppercase tracking-[0.12em] text-brand">
+                            {b.code ? <span className="num">{b.code}</span> : null}
+                            {b.code ? " · " : ""}
+                            {isBlok ? `Blok ${idx + 1}` : course.title}
+                          </p>
+                          <h3 className="mt-1 font-semibold leading-snug text-slate-900 group-hover:text-brand">{b.title}</h3>
+                          <p className="mt-auto pt-3 text-xs text-slate-500">
+                            {[b.topics.length ? `${b.topics.length} bab` : null, lessons.length ? `${lessons.length} materi` : null, quizzes ? `${quizzes} kuis` : null].filter(Boolean).join(" · ") || "Materi sedang disiapkan"}
+                            {bOpen ? " · Terbuka" : ""}
+                          </p>
+                        </div>
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ol>
+            </section>
+          )}
+
+          {blocks.length === 0 && <section className="mt-8">
             <h2 className="h2 mb-1">Kurikulum</h2>
-            <p className="mb-4 text-sm leading-relaxed text-slate-600">{!hasResources ? "Kurikulum akan dilengkapi saat materi tersedia." : open ? "Semua materi terbuka untuk Anda." : "Masuk untuk mencoba materi bertanda Gratis. Akses materi lainnya mengikuti layanan yang Anda pilih."}</p>
+            <p className="mb-4 text-sm leading-relaxed text-slate-600">{!hasResources ? "Kurikulum akan dilengkapi saat materi tersedia." : open ? "Semua materi sudah terbuka." : "Masuk untuk mencoba materi bertanda Gratis. Akses materi lainnya mengikuti layanan yang dipilih."}</p>
             {course.topics.length === 0 && <p className="text-sm text-slate-500">Materi kelas ini sedang disiapkan.</p>}
             <ol className="space-y-3">
               {course.topics.map((t, idx) => {
@@ -100,7 +154,8 @@ export default async function CoursePage({ params, searchParams }: { params: Pro
                   <li key={t.id} className="card p-0">
                     <div className="flex items-center justify-between gap-3 border-b border-slate-100 px-4 py-3">
                       <h3 className="font-semibold text-slate-900">
-                        {idx + 1}. {t.title}
+                        {raw.code && <span className="num mr-2 text-sm text-brand">{raw.code}.{idx + 1}</span>}
+                        {raw.parentId ? t.title : `${idx + 1}. ${t.title}`}
                       </h3>
                       {user && lessons.length > 0 && <span className="shrink-0 text-xs text-slate-500">
                         {lessons.filter((i) => done.has(i.id)).length}/{lessons.length} selesai
@@ -130,11 +185,12 @@ export default async function CoursePage({ params, searchParams }: { params: Pro
                       {t.quiz?.published && (
                         <li className="flex items-center gap-2 px-4 py-2.5 text-slate-600">
                           <span className="w-5 shrink-0 text-center" aria-hidden>
-                            {open ? "📝" : "🔒"}
+                            {open || t.quiz.isFree ? "📝" : "🔒"}
                           </span>
-                          {open ? (
-                            <Link href={`/quiz/${t.id}`} className="link">
+                          {open || t.quiz.isFree ? (
+                            <Link href={go(`/quiz/${t.id}`)} className="link">
                               {t.quiz.title}
+                              {t.quiz.isFree && !open && <span className="badge-brand ml-2">Gratis</span>}
                             </Link>
                           ) : (
                             <span className="text-slate-400">{t.quiz.title}</span>
@@ -148,7 +204,7 @@ export default async function CoursePage({ params, searchParams }: { params: Pro
                 );
               })}
             </ol>
-          </section>
+          </section>}
         </div>
 
         <aside className="space-y-4 lg:sticky lg:top-36 lg:self-start">
@@ -156,11 +212,11 @@ export default async function CoursePage({ params, searchParams }: { params: Pro
             {course.posterFileId ? (
               // eslint-disable-next-line @next/next/no-img-element
               <img src={`/api/berkas/${course.posterFileId}`} alt={`Poster ${course.title}`} className="aspect-[16/9] w-full object-cover" />
-            ) : <div className="aspect-[16/9]"><CourseArt title={course.title} program={course.track.slug} /></div>}
+            ) : <div className="aspect-[16/9]"><CourseArt title={course.title} program={course.track.slug} art={course.artKey} /></div>}
             <div className="p-5">
               {user && (open || st.started) && (
                 <>
-                  <p className="text-sm font-semibold text-slate-900">Progres Anda</p>
+                  <p className="text-sm font-semibold text-slate-900">Progres belajar</p>
                   <div className="mt-2 flex items-center gap-3">
                     <ProgressBar value={st.pct} />
                     <span className="text-xs text-slate-500">{st.pct}%</span>
@@ -206,6 +262,7 @@ export default async function CoursePage({ params, searchParams }: { params: Pro
                   </li>
                 ))}
               </ul>
+              {blocks.length > 0 && isBlok && <p className="mt-3 text-xs leading-relaxed text-slate-500">Ingin satu Blok saja? Pilih Blok di kurikulum untuk melihat paket per Blok.</p>}
             </div>
           )}
 

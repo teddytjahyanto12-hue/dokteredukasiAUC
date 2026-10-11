@@ -5,7 +5,7 @@ export const metadata = { title: "Jadi Tutor" };
 const TRACKS = [
   { title: "Clinical Practice (spesialis)", end: "Penetapan rate bimbingan clinical." },
   { title: "Preklinik", end: "Penetapan rate bimbingan materi preklinik, lalu akses materi Preklinik." },
-  { title: "Research — Review / Original Research", end: "Penetapan rate bimbingan Zoom, lalu akses materi research yang dikuasai." },
+  { title: "Research: Review / Original Research", end: "Penetapan rate bimbingan Zoom, lalu akses materi research yang dikuasai." },
 ];
 
 const STEPS = ["Isi pendaftaran di Google Form", "Informasi seleksi via WhatsApp", "Interview Zoom", "Offering letter"];
@@ -21,7 +21,7 @@ export default async function JoinTutorPage() {
       <ol className="mt-8 grid gap-4 sm:grid-cols-4">
         {STEPS.map((step, i) => (
           <li key={step} className="card">
-            <span className="grid h-8 w-8 place-items-center rounded-full bg-brand text-sm font-bold text-white">{i + 1}</span>
+            <span className="grid h-8 w-8 place-items-center rounded-full bg-mascot text-sm font-bold text-ink">{i + 1}</span>
             <p className="mt-3 font-medium text-slate-800">{step}</p>
           </li>
         ))}

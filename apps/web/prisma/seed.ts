@@ -22,7 +22,7 @@ const TRACKS: TrackSeed[] = [
         title: "Basic Medical Science",
         description: "Paparan materi dalam bentuk slide seperti LMS. Setiap topik dilengkapi quiz.",
         displayType: "SLIDES",
-        topics: ["Contoh Topik — ubah atau hapus di panel admin"],
+        topics: ["Contoh Topik: ubah atau hapus di panel admin"],
       },
       {
         slug: "medical-e-books",
@@ -43,7 +43,7 @@ const TRACKS: TrackSeed[] = [
   {
     slug: "clinical-practice",
     title: "Clinical Practice",
-    description: "Pegangan praktik klinis: guideline, latihan EKG, dan cheatsheet — tersedia bimbingan tutor spesialis.",
+    description: "Pegangan praktik klinis: guideline, latihan EKG, dan cheatsheet: tersedia bimbingan tutor spesialis.",
     hasMentoring: true,
     categories: [
       {
@@ -72,7 +72,7 @@ const TRACKS: TrackSeed[] = [
   {
     slug: "medical-research",
     title: "Medical Research",
-    description: "Dari original research sampai review dan pengolahan data — tersedia bimbingan tutor riset.",
+    description: "Dari original research sampai review dan pengolahan data: tersedia bimbingan tutor riset.",
     hasMentoring: true,
     categories: [
       {
@@ -119,16 +119,16 @@ type PackageSeed = {
 };
 
 const PACKAGES: PackageSeed[] = [
-  { slug: "pre-clinical-basic-medical-science", name: "Pre-Clinical — Basic Medical Science", trackSlug: "pre-clinical", summary: "Slide materi per topik + quiz.", categories: ["pre-clinical/basic-medical-science"] },
-  { slug: "pre-clinical-medical-e-books", name: "Pre-Clinical — Medical E-books", trackSlug: "pre-clinical", summary: "Akses koleksi e-book di website.", categories: ["pre-clinical/medical-e-books"] },
+  { slug: "pre-clinical-basic-medical-science", name: "Pre-Clinical: Basic Medical Science", trackSlug: "pre-clinical", summary: "Slide materi per topik + quiz.", categories: ["pre-clinical/basic-medical-science"] },
+  { slug: "pre-clinical-medical-e-books", name: "Pre-Clinical: Medical E-books", trackSlug: "pre-clinical", summary: "Akses koleksi e-book di website.", categories: ["pre-clinical/medical-e-books"] },
   { slug: "pre-clinical-lengkap", name: "Pre-Clinical Lengkap", trackSlug: "pre-clinical", summary: "Basic Medical Science, Medical E-books, dan Daftar Pustaka.", categories: ["pre-clinical/basic-medical-science", "pre-clinical/medical-e-books", "pre-clinical/daftar-pustaka"] },
-  { slug: "clinical-ecg-challenges", name: "Clinical Practice — ECG Challenges", trackSlug: "clinical-practice", summary: "Materi EKG dan quiz.", categories: ["clinical-practice/ecg-challenges"] },
-  { slug: "clinical-medical-cheatsheet", name: "Clinical Practice — Medical Cheatsheet", trackSlug: "clinical-practice", summary: "Cheatsheet PDF (AI menyusul).", categories: ["clinical-practice/medical-cheatsheet"] },
+  { slug: "clinical-ecg-challenges", name: "Clinical Practice: ECG Challenges", trackSlug: "clinical-practice", summary: "Materi EKG dan quiz.", categories: ["clinical-practice/ecg-challenges"] },
+  { slug: "clinical-medical-cheatsheet", name: "Clinical Practice: Medical Cheatsheet", trackSlug: "clinical-practice", summary: "Cheatsheet PDF (AI menyusul).", categories: ["clinical-practice/medical-cheatsheet"] },
   { slug: "clinical-practice-lengkap", name: "Clinical Practice Lengkap", trackSlug: "clinical-practice", summary: "Clinical Guidelines, ECG Challenges, dan Medical Cheatsheet.", categories: ["clinical-practice/clinical-guidelines", "clinical-practice/ecg-challenges", "clinical-practice/medical-cheatsheet"] },
   { slug: "bimbingan-clinical-practice", name: "Bimbingan Clinical Practice", trackSlug: "clinical-practice", summary: "Bimbingan dengan tutor spesialis + akses Clinical Practice Lengkap.", categories: ["clinical-practice/clinical-guidelines", "clinical-practice/ecg-challenges", "clinical-practice/medical-cheatsheet"], includesMentoring: true, mentoringField: "CLINICAL" },
-  { slug: "medical-research-materi", name: "Medical Research — Materi Lengkap", trackSlug: "medical-research", summary: "Original Research, Review, Case Report, dan Pengolahan Data.", categories: ["medical-research/original-research", "medical-research/review", "medical-research/case-report", "medical-research/pengolahan-data"] },
-  { slug: "bimbingan-research-review", name: "Bimbingan Medical Research — Review", trackSlug: "medical-research", summary: "Bimbingan Zoom untuk narrative/systematic review, meta-analysis, scoping, bibliometric + akses materi riset.", categories: ["medical-research/original-research", "medical-research/review", "medical-research/case-report", "medical-research/pengolahan-data"], includesMentoring: true, mentoringField: "RESEARCH_REVIEW" },
-  { slug: "bimbingan-research-original", name: "Bimbingan Medical Research — Original Research", trackSlug: "medical-research", summary: "Bimbingan Zoom untuk original research + akses materi riset.", categories: ["medical-research/original-research", "medical-research/review", "medical-research/case-report", "medical-research/pengolahan-data"], includesMentoring: true, mentoringField: "RESEARCH_ORIGINAL" },
+  { slug: "medical-research-materi", name: "Medical Research: Materi Lengkap", trackSlug: "medical-research", summary: "Original Research, Review, Case Report, dan Pengolahan Data.", categories: ["medical-research/original-research", "medical-research/review", "medical-research/case-report", "medical-research/pengolahan-data"] },
+  { slug: "bimbingan-research-review", name: "Bimbingan Medical Research: Review", trackSlug: "medical-research", summary: "Bimbingan Zoom untuk narrative/systematic review, meta-analysis, scoping, bibliometric + akses materi riset.", categories: ["medical-research/original-research", "medical-research/review", "medical-research/case-report", "medical-research/pengolahan-data"], includesMentoring: true, mentoringField: "RESEARCH_REVIEW" },
+  { slug: "bimbingan-research-original", name: "Bimbingan Medical Research: Original Research", trackSlug: "medical-research", summary: "Bimbingan Zoom untuk original research + akses materi riset.", categories: ["medical-research/original-research", "medical-research/review", "medical-research/case-report", "medical-research/pengolahan-data"], includesMentoring: true, mentoringField: "RESEARCH_ORIGINAL" },
 ];
 
 async function seedContent() {
@@ -256,7 +256,7 @@ async function seedUsers() {
   const profile = await db.tutorProfile.upsert({
     where: { userId: tutor.id },
     update: {},
-    create: { userId: tutor.id, field: "RESEARCH_REVIEW", rateNote: "Rate bimbingan Zoom — belum ditetapkan" },
+    create: { userId: tutor.id, field: "RESEARCH_REVIEW", rateNote: "Rate bimbingan Zoom: belum ditetapkan" },
   });
   // Tutor demo berwenang (Primary) untuk layanan bimbingan Review.
   const review = await db.package.findUnique({ where: { slug: "bimbingan-research-review" } });

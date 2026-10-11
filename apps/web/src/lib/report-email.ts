@@ -62,7 +62,7 @@ export async function reportRecipients() {
   return [...new Set([...allowed.map((u) => u.email.toLowerCase()), ...extra])];
 }
 
-const heading = (t: string) => `<h2 style="margin:20px 0 8px;font-size:15px;color:#0369a1">${t}</h2>`;
+const heading = (t: string) => `<h2 style="margin:20px 0 8px;font-size:15px;color:#7a5a00">${t}</h2>`;
 
 export async function sendPeriodicReport(kind: ReportKind, opts: { force?: boolean } = {}) {
   const { period, lockKey, query } = lastCompletedPeriod(kind);
@@ -82,7 +82,7 @@ export async function sendPeriodicReport(kind: ReportKind, opts: { force?: boole
   const rep = await buildReport(period);
   const f = rep.finance;
   const a = rep.alerts;
-  const title = `${kind === "weekly" ? "Laporan mingguan" : "Laporan bulanan"} — ${period.label}`;
+  const title = `${kind === "weekly" ? "Laporan mingguan" : "Laporan bulanan"} - ${period.label}`;
 
   const sections: [string, [string, string][]][] = [
     [
@@ -146,7 +146,7 @@ export async function sendPeriodicReport(kind: ReportKind, opts: { force?: boole
 
   let sent = 0;
   for (const email of to) {
-    if (await sendEmail({ to: email, subject: `${title} — ${s.siteName}`, html, text, kind: "REPORT" })) sent++;
+    if (await sendEmail({ to: email, subject: `${title} - ${s.siteName}`, html, text, kind: "REPORT" })) sent++;
   }
   return { sent, total: to.length, label: period.label };
 }

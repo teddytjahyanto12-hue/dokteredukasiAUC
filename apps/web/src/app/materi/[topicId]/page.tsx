@@ -28,6 +28,7 @@ export default async function TopicPage({ params, searchParams }: { params: Prom
         include: {
           track: true,
           packages: { include: { package: { include: { durations: { where: { active: true } }, addons: true } } } },
+          parent: { select: { id: true, title: true, packages: { include: { package: { include: { durations: { where: { active: true } }, addons: true } } } } } },
           // Kurikulum seluruh kelas untuk daftar di samping (tanpa isi materi).
           topics: {
             where: { published: true },
@@ -36,7 +37,7 @@ export default async function TopicPage({ params, searchParams }: { params: Prom
               id: true,
               title: true,
               items: { where: { published: true }, orderBy: { order: "asc" }, select: { id: true, title: true, type: true, isFree: true } },
-              quiz: { select: { title: true, published: true, _count: { select: { questions: true } } } },
+              quiz: { select: { title: true, published: true, isFree: true, _count: { select: { questions: true } } } },
             },
           },
         },
@@ -60,8 +61,19 @@ export default async function TopicPage({ params, searchParams }: { params: Prom
   const current = requested ?? here.find(canSee) ?? here[0];
   const selected = current && canSee(current) ? current : undefined;
   const locked = current && !canSee(current) ? current : undefined;
+  // Riwayat "Terakhir dibuka" di dashboard: catat materi yang benar-benar dapat dibuka.
+  if (selected) {
+    await db.lessonView.upsert({
+      where: { userId_itemId: { userId: user.id, itemId: selected.id } },
+      update: { viewedAt: new Date() },
+      create: { userId: user.id, itemId: selected.id },
+    });
+  }
+  const babNo = syllabus.findIndex((t) => t.id === topic.id) + 1;
+  const topicCode = topic.category.code && babNo > 0 ? `${topic.category.code}.${babNo}` : null;
   const links = topic.items.filter((i) => i.type === "LINK" && canSee(i));
-  const offers = topic.category.packages.map((p) => p.package).filter((p) => p.active);
+  // Blok: tawarkan paket Blok ini dan paket kelas induknya (mis. Paket Blok Komplit).
+  const offers = [...topic.category.packages, ...(topic.category.parent?.packages ?? [])].map((p) => p.package).filter((p) => p.active);
   const freeLeft = lessons.filter((i) => i.isFree && !done.has(i.id)).length;
 
   return (
@@ -71,11 +83,20 @@ export default async function TopicPage({ params, searchParams }: { params: Prom
           {topic.category.track.title}
         </Link>{" "}
         /{" "}
+        {topic.category.parent && (
+          <>
+            <Link href={`/kelas/${topic.category.parent.id}`} className="hover:text-brand">
+              {topic.category.parent.title}
+            </Link>{" "}
+            /{" "}
+          </>
+        )}
         <Link href={`/kelas/${topic.categoryId}`} className="hover:text-brand">
           {topic.category.title}
         </Link>
       </nav>
-      <h1 className="h1 mt-2">{topic.title}</h1>
+      {topicCode && <p className="num mt-3 text-sm font-semibold text-brand">{topicCode}</p>}
+      <h1 className={`h1 ${topicCode ? "mt-1" : "mt-2"}`}>{topic.title}</h1>
       {topic.description && <p className="mt-1 text-slate-600">{topic.description}</p>}
 
       <div className="mt-6 grid gap-6 lg:grid-cols-[320px_minmax(0,1fr)]">
@@ -90,7 +111,7 @@ export default async function TopicPage({ params, searchParams }: { params: Prom
               </div>
               {!categoryOpen && (
                 <p className="mt-2 text-xs text-slate-500">
-                  Anda belum membeli kelas ini. Materi bertanda <span className="font-semibold text-brand">Gratis</span> bisa dibuka; yang bergembok terbuka setelah membeli.
+                  Kelas ini belum dibeli. Materi bertanda <span className="font-semibold text-brand">Gratis</span> bisa dibuka; yang bergembok terbuka setelah membeli.
                 </p>
               )}
             </div>
@@ -98,7 +119,8 @@ export default async function TopicPage({ params, searchParams }: { params: Prom
               {syllabus.map((t, idx) => (
                 <li key={t.id} className="border-b border-slate-100 last:border-0">
                   <Link href={`/materi/${t.id}`} className={`block px-4 pt-3 text-sm font-semibold ${t.id === topic.id ? "text-slate-900" : "text-slate-600 hover:text-brand"}`}>
-                    {idx + 1}. {t.title}
+                    {topic.category.code && <span className="num mr-1.5 text-xs text-brand">{topic.category.code}.{idx + 1}</span>}
+                    {topic.category.parent ? t.title : `${idx + 1}. ${t.title}`}
                   </Link>
                   <ul className="pb-2 pt-1">
                     {t.items
@@ -111,7 +133,7 @@ export default async function TopicPage({ params, searchParams }: { params: Prom
                             <Link
                               href={`/materi/${t.id}?item=${i.id}`}
                               aria-current={active ? "true" : undefined}
-                              className={`flex items-start gap-2 border-l-2 px-4 py-3 text-sm ${active ? "border-brand bg-sky-50 font-medium text-slate-900" : open ? "border-transparent text-slate-700 hover:bg-slate-50" : "border-transparent text-slate-500 hover:bg-slate-50"}`}
+                              className={`flex items-start gap-2 border-l-2 px-4 py-3 text-sm ${active ? "border-brand bg-brand-soft font-medium text-slate-900" : open ? "border-transparent text-slate-700 hover:bg-slate-50" : "border-transparent text-slate-500 hover:bg-slate-50"}`}
                             >
                               <span className="w-5 shrink-0 text-center" aria-hidden>
                                 {done.has(i.id) ? "✅" : open ? ICON[i.type] : "🔒"}
@@ -123,7 +145,7 @@ export default async function TopicPage({ params, searchParams }: { params: Prom
                         );
                       })}
                     {t.quiz?.published &&
-                      (categoryOpen ? (
+                      (categoryOpen || t.quiz.isFree ? (
                         <li>
                           <Link href={`/quiz/${t.id}`} className="flex items-start gap-2 px-4 py-2 text-sm font-medium text-amber-800 hover:bg-amber-50">
                             <span className="w-5 shrink-0 text-center" aria-hidden>
@@ -185,7 +207,7 @@ export default async function TopicPage({ params, searchParams }: { params: Prom
           {!categoryOpen && selected && offers.length > 0 && lessons.some((i) => !i.isFree) && (
             <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-slate-200 bg-white px-5 py-4">
               <p className="text-sm text-slate-600">
-                Anda sedang melihat materi contoh gratis. <span className="font-medium text-slate-900">{lessons.filter((i) => !i.isFree).length} materi lain</span> terbuka setelah membeli.
+                Ini materi contoh gratis. <span className="font-medium text-slate-900">{lessons.filter((i) => !i.isFree).length} materi lain</span> terbuka setelah membeli.
               </p>
               <Link href={offers.length === 1 ? `/paket/${offers[0].slug}` : `/kelas/${topic.categoryId}`} className="btn btn-sm">
                 Buka seluruh kelas
@@ -227,7 +249,7 @@ function Paywall({ title, type, offers, courseId, freeLeft }: { title: string; t
         </span>
         <p className="mt-4 text-xs font-semibold uppercase tracking-wide text-slate-500">{type} · terkunci</p>
         <h2 className="mt-1 text-xl font-bold text-slate-900">{title}</h2>
-        <p className="mt-2 text-sm text-slate-600">Materi ini terbuka setelah Anda membeli layanan yang memuat kelas ini.{freeLeft > 0 ? ` Masih ada ${freeLeft} materi gratis yang bisa Anda buka dari kurikulum.` : ""}</p>
+        <p className="mt-2 text-sm text-slate-600">Materi ini terbuka setelah membeli layanan yang memuat kelas ini.{freeLeft > 0 ? ` Masih ada ${freeLeft} materi gratis yang bisa dibuka dari kurikulum.` : ""}</p>
       </div>
       {offers.length > 0 ? (
         <ul className="mx-auto mt-6 max-w-lg space-y-3">

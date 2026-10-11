@@ -4,7 +4,7 @@ export function rupiah(value: number | null | undefined) {
 }
 
 export function tanggal(value: Date | null | undefined, withTime = false) {
-  if (!value) return "—";
+  if (!value) return "-";
   return new Intl.DateTimeFormat("id-ID", {
     dateStyle: "medium",
     ...(withTime ? { timeStyle: "short" } : {}),

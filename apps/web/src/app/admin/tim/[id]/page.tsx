@@ -93,8 +93,8 @@ export default async function TeamMemberPage({ params, searchParams }: { params:
           <form action={resetPasswordAction} className="card space-y-3 self-start">
             <input type="hidden" name="userId" value={user.id} />
             <h2 className="h2">Atur ulang kata sandi</h2>
-            <Field label="Kata sandi baru" hint="Minimal 8 karakter.">
-              <input className="input" name="password" minLength={8} required autoComplete="new-password" />
+            <Field label="Kata sandi baru" hint="Minimal 6 karakter.">
+              <input className="input" name="password" minLength={6} required autoComplete="new-password" />
             </Field>
             <button className="btn-secondary" type="submit">
               Ganti kata sandi
@@ -121,7 +121,7 @@ export default async function TeamMemberPage({ params, searchParams }: { params:
               </Field>
               <Field label="Jenis fee" hint="Ditampilkan ke tutor di halaman Pencapaian.">
                 <select className="input" name="feeBasis" defaultValue={user.tutorProfile?.feeBasis ?? ""}>
-                  <option value="">— Belum ditetapkan —</option>
+                  <option value="">Belum ditetapkan</option>
                   {FEE_BASIS.map((f) => (
                     <option key={f} value={f}>
                       {FEE_BASIS_LABEL[f]}

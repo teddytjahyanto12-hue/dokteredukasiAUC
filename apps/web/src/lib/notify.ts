@@ -11,7 +11,7 @@ async function emailTo(to: string, p: Payload) {
   const body = (p.body ? emailParagraph(p.body) : "") + (p.rows ? emailRows(p.rows) : "");
   const html = emailLayout(s.siteName, p.title, body, p.link ? { label: "Buka di website", url: appUrl(p.link) } : undefined);
   const text = [p.body, ...(p.rows ?? []).map(([k, v]) => `${k}: ${v}`), p.link ? appUrl(p.link) : ""].filter(Boolean).join("\n");
-  await sendEmail({ to, subject: `${p.title} — ${s.siteName}`, html, text, kind: p.kind ?? "NOTIFICATION", orderId: p.orderId });
+  await sendEmail({ to, subject: `${p.title} - ${s.siteName}`, html, text, kind: p.kind ?? "NOTIFICATION", orderId: p.orderId });
 }
 
 // Notifikasi di dalam website (+ email bila diminta).

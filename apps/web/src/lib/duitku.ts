@@ -16,6 +16,10 @@ const EXPIRY_MINUTES = 24 * 60;
 export function duitkuConfigured() {
   return !!process.env.DUITKU_MERCHANT_CODE && !!process.env.DUITKU_API_KEY;
 }
+// Pembayaran online tampil di website hanya bila owner mengaktifkannya DAN kunci Duitku tersedia.
+export function onlinePaymentActive(settings: { onlinePayment: string }) {
+  return settings.onlinePayment === "ya" && duitkuConfigured();
+}
 export function duitkuSandbox() {
   return process.env.DUITKU_ENV !== "production";
 }
@@ -48,7 +52,7 @@ export async function dueFor(orderId: string) {
   if (order.paymentPlan === "INSTALLMENT") {
     const next = order.installments.find((i) => i.status !== "PAID");
     if (!next || !next.amount) return null;
-    return { order, seq: next.seq as number | null, amount: next.amount, label: `${order.package.name} — ${next.label}` };
+    return { order, seq: next.seq as number | null, amount: next.amount, label: `${order.package.name} - ${next.label}` };
   }
   if (!order.amount) return null;
   return { order, seq: null as number | null, amount: order.amount, label: order.package.name };

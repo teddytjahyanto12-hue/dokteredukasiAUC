@@ -123,7 +123,7 @@ export default async function ValidationQueue({ searchParams }: { searchParams: 
               </div>
               <div className="mt-3 rounded-lg bg-slate-50 p-3 text-sm">
                 <p className="font-medium text-slate-700">Catatan tutor</p>
-                <p className="whitespace-pre-line text-slate-700">{s.summary || "—"}</p>
+                <p className="whitespace-pre-line text-slate-700">{s.summary || "-"}</p>
                 <div className="mt-2 flex flex-wrap gap-4">
                   {s.recordingUrl && (
                     <a href={s.recordingUrl} target="_blank" rel="noopener noreferrer" className="link">

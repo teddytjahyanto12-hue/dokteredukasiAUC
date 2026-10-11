@@ -82,6 +82,13 @@ export default async function AdminOrderDetail({ params, searchParams }: { param
           </Line>
           {order.paidAt && <Line label="Lunas">{tanggal(order.paidAt, true)}</Line>}
           {order.paymentRef && <Line label="Referensi">{order.paymentRef}</Line>}
+          {order.proofFileId && (
+            <Line label="Bukti pembayaran">
+              <a href={`/api/berkas/${order.proofFileId}`} target="_blank" rel="noopener noreferrer" className="link">
+                Lihat bukti
+              </a>
+            </Line>
+          )}
           {order.note && <Line label="Catatan">{order.note}</Line>}
           <hr className="my-3 border-slate-100" />
           <p className="font-semibold">Pelanggan</p>
@@ -123,16 +130,27 @@ export default async function AdminOrderDetail({ params, searchParams }: { param
                       {i.seq === 1 ? "Membuka layanan & tahap 1" : `Membuka tahap ${i.unlocksStage}`}
                       {i.paidAt && ` · dibayar ${tanggal(i.paidAt, true)}`}
                       {i.paymentRef && ` · ref ${i.paymentRef}`}
+                      {i.proofFileId && (
+                        <>
+                          {" · "}
+                          <a href={`/api/berkas/${i.proofFileId}`} target="_blank" rel="noopener noreferrer" className="link">
+                            bukti
+                          </a>
+                        </>
+                      )}
                     </p>
                     {order.status !== "CANCELLED" && next?.id === i.id && (
                       <form action={markInstallmentPaidAction} className="mt-3 flex flex-wrap items-end gap-2">
                         <input type="hidden" name="orderId" value={order.id} />
                         <input type="hidden" name="seq" value={i.seq} />
+                        <Field label="Bukti pembayaran" hint="Gambar atau PDF bukti transfer.">
+                          <input className="input w-56" type="file" name="proof" accept="image/png,image/jpeg,image/webp,application/pdf" required />
+                        </Field>
                         <Field label="Referensi transfer">
                           <input className="input w-56" name="paymentRef" placeholder="No. transfer / bank" />
                         </Field>
-                        <ConfirmButton message={`Konfirmasi ${i.label} sudah dibayar?`} className="btn btn-sm mb-1">
-                          Konfirmasi lunas
+                        <ConfirmButton message={`Setujui pembayaran ${i.label}?`} className="btn btn-sm mb-1">
+                          Setujui pembayaran
                         </ConfirmButton>
                       </form>
                     )}
@@ -145,11 +163,14 @@ export default async function AdminOrderDetail({ params, searchParams }: { param
           {!isInstallment && order.status === "PENDING" && (
             <form action={markOrderPaidAction} className="card space-y-3">
               <input type="hidden" name="orderId" value={order.id} />
-              <h2 className="h2">Konfirmasi pembayaran</h2>
+              <h2 className="h2">Setujui pembayaran</h2>
               <p className="text-sm text-slate-600">
-                Setelah ditandai lunas, akses layanan langsung aktif{order.package.includesMentoring ? " dan bimbingan dibuat (menunggu tutor)" : ""}. Pelanggan mendapat
+                Unggah bukti transfer dari pelanggan. Setelah disetujui, akses layanan langsung aktif{order.package.includesMentoring ? " dan bimbingan dibuat (menunggu tutor)" : ""}. Pelanggan mendapat
                 notifikasi.
               </p>
+              <Field label="Bukti pembayaran" hint="Gambar (PNG/JPG/WEBP) atau PDF bukti transfer. Wajib.">
+                <input className="input" type="file" name="proof" accept="image/png,image/jpeg,image/webp,application/pdf" required />
+              </Field>
               <Field label="Jumlah dibayar (Rp)" hint="Kosongkan bila sama dengan total.">
                 <input className="input" name="amount" inputMode="numeric" defaultValue={order.amount ?? ""} />
               </Field>
@@ -160,7 +181,7 @@ export default async function AdminOrderDetail({ params, searchParams }: { param
                 <input className="input" name="note" />
               </Field>
               <button className="btn" type="submit">
-                Tandai lunas & aktifkan akses
+                Setujui pembayaran & aktifkan akses
               </button>
             </form>
           )}

@@ -65,8 +65,8 @@ export default async function AdminUserDetail({ params, searchParams }: { params
         <form action={resetPasswordAction} className="card space-y-3 self-start">
           <input type="hidden" name="userId" value={user.id} />
           <h2 className="h2">Atur ulang kata sandi</h2>
-          <Field label="Kata sandi baru" hint="Minimal 8 karakter.">
-            <input className="input" name="password" minLength={8} required autoComplete="new-password" />
+          <Field label="Kata sandi baru" hint="Minimal 6 karakter.">
+            <input className="input" name="password" minLength={6} required autoComplete="new-password" />
           </Field>
           <button className="btn-secondary" type="submit">
             Ganti kata sandi

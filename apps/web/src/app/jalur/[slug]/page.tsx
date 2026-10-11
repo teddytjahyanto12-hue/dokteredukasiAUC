@@ -46,7 +46,7 @@ export default async function PathPage({ params }: { params: Promise<{ slug: str
 
       {user && doneCount > 0 && (
         <div className="card mt-6">
-          <p className="text-sm font-semibold text-slate-900">Progres jalur Anda</p>
+          <p className="text-sm font-semibold text-slate-900">Progres jalur</p>
           <div className="mt-2 flex items-center gap-3">
             <ProgressBar value={pct} />
             <span className="text-xs text-slate-500">{pct}%</span>
@@ -66,7 +66,7 @@ export default async function PathPage({ params }: { params: Promise<{ slug: str
             <li key={step.id} className={`card ${isCurrent ? "border-brand ring-1 ring-brand" : ""}`}>
               <div className="flex gap-4">
                 <span
-                  className={`grid h-9 w-9 shrink-0 place-items-center rounded-full text-sm font-bold ${st.completed ? "bg-brand text-white" : "bg-slate-100 text-slate-700"}`}
+                  className={`grid h-9 w-9 shrink-0 place-items-center rounded-full text-sm font-bold ${st.completed ? "bg-mascot text-ink" : "bg-slate-100 text-slate-700"}`}
                   aria-label={`Langkah ${i + 1}`}
                 >
                   {st.completed ? "✓" : i + 1}
@@ -74,7 +74,7 @@ export default async function PathPage({ params }: { params: Promise<{ slug: str
                 <div className="min-w-0 flex-1">
                   <p className="text-xs font-semibold uppercase tracking-wide text-brand">
                     {c.track.title}
-                    {isCurrent && doneCount > 0 ? " · langkah Anda sekarang" : ""}
+                    {isCurrent && doneCount > 0 ? " · langkah saat ini" : ""}
                   </p>
                   <h2 className="mt-0.5 text-lg font-bold text-slate-900">
                     <Link href={`/kelas/${c.id}`} className="hover:text-brand">

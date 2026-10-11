@@ -34,10 +34,10 @@ export default async function AccountPage({ searchParams }: { searchParams: Sear
           <input className="input" type="password" name="current" required autoComplete="current-password" />
         </Field>
         <Field label="Kata sandi baru">
-          <input className="input" type="password" name="password" required minLength={8} autoComplete="new-password" />
+          <input className="input" type="password" name="password" required minLength={6} autoComplete="new-password" />
         </Field>
         <Field label="Ulangi kata sandi baru">
-          <input className="input" type="password" name="confirm" required minLength={8} autoComplete="new-password" />
+          <input className="input" type="password" name="confirm" required minLength={6} autoComplete="new-password" />
         </Field>
         <button className="btn" type="submit">
           Ganti kata sandi

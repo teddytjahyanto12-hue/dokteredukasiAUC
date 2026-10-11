@@ -68,6 +68,7 @@ export const ADMIN_PAGES: { key: AdminPermission; href: string; label: string }[
   { key: "admin.content", href: "/admin/penawaran", label: "Halaman penawaran" },
   { key: "admin.packages", href: "/admin/paket", label: "Layanan" },
   { key: "admin.payroll", href: "/admin/payroll", label: "Payroll tutor" },
+  { key: "admin.settings", href: "/admin/pengumuman", label: "Pengumuman" },
   { key: "admin.settings", href: "/admin/pengaturan", label: "Pengaturan situs" },
   { key: "admin.settings", href: "/admin/email", label: "Email" },
   { key: "admin.audit", href: "/admin/audit", label: "Activity log" },

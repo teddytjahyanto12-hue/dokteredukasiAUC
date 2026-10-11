@@ -1,6 +1,6 @@
 import "server-only";
 import { db } from "./db";
-import { courseInclude } from "./courses";
+import { courseInclude, withBlockTopics } from "./courses";
 
 // Jalur belajar beserta kelasnya (hanya kelas yang ditampilkan di website).
 export async function loadPaths(where: { slug?: string; publishedOnly?: boolean } = {}) {
@@ -9,6 +9,6 @@ export async function loadPaths(where: { slug?: string; publishedOnly?: boolean 
     orderBy: [{ order: "asc" }, { createdAt: "asc" }],
     include: { steps: { orderBy: { order: "asc" }, include: { category: { include: courseInclude } } } },
   });
-  return paths.map((p) => ({ ...p, steps: p.steps.filter((s) => s.category.published) }));
+  return paths.map((p) => ({ ...p, steps: p.steps.filter((s) => s.category.published).map((s) => ({ ...s, category: withBlockTopics(s.category) })) }));
 }
 export type PathWithSteps = Awaited<ReturnType<typeof loadPaths>>[number];

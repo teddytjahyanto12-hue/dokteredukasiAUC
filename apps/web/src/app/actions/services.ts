@@ -78,6 +78,9 @@ export async function saveServiceAction(form: FormData) {
     posterFileId,
     includesMentoring,
     mentoringField: includesMentoring ? mentoringField : null,
+    zoomQuota: includesMentoring ? optInt(form, "zoomQuota") : null,
+    zoomFee: includesMentoring ? optInt(form, "zoomFee") : null,
+    serviceMonths: includesMentoring ? optInt(form, "serviceMonths") : null,
     active: bool(form, "active"),
     order: optInt(form, "order") ?? 0,
   };
@@ -210,6 +213,7 @@ function addonData(me: CurrentUser, form: FormData, currentHpp: number | null) {
     hpp: hppFrom(me, form, "hpp", currentHpp),
     active: bool(form, "active"),
     order: optInt(form, "order") ?? 0,
+    zoomCredits: Math.max(0, optInt(form, "zoomCredits") ?? 0),
   };
 }
 
@@ -355,7 +359,7 @@ export async function updateTaskTemplateAction(form: FormData) {
   if (!title) back(pathOf(pkg.id), "Nama task tidak boleh kosong.", "error");
   await db.serviceTaskTemplate.updateMany({
     where: { id: str(form, "id"), stage: { packageId: pkg.id } },
-    data: { title, order: optInt(form, "order") ?? 0 },
+    data: { title, order: optInt(form, "order") ?? 0, fee: optInt(form, "fee") },
   });
   back(pathOf(pkg.id), "Task disimpan.");
 }

@@ -2,20 +2,27 @@
 
 /* Warna merek: ubah di sini untuk mengganti tema seluruh situs. */
 :root {
-  /* Sistem desain: 60% kanvas netral, 30% permukaan bergaris tipis, 10% aksen. */
-  --brand: #0369a1; /* sky blue — aksen fokus utama */
-  --brand-dark: #075985;
-  --brand-soft: #e0f2fe;
-  --accent: #d97706; /* amber — peringatan/sorotan */
-  --success: #059669; /* emerald — selesai/berhasil */
-  --background: #f8fafc;
-  --foreground: #0f172a;
+  /* Palet maskot Dokter Edukasi: kuning, hitam, dan krem jas dokter.
+     Kuning (--mascot) untuk bidang/tombol dengan teks hitam; teks aksen memakai emas tua (--brand) agar kontras di latar terang. */
+  --mascot: #ffd20a; /* kuning maskot */
+  --mascot-dark: #f0bf00;
+  --ink: #141414; /* hitam maskot */
+  --brand: #7a5a00; /* emas tua: teks aksen, tautan, garis fokus (kontras 6:1 di putih) */
+  --brand-dark: #5a4200;
+  --brand-soft: #fff6c7; /* kuning pucat untuk sorotan */
+  --accent: #d97706; /* amber: peringatan/sorotan */
+  --success: #059669; /* emerald: selesai/berhasil */
+  --background: #faf8f2; /* krem jas dokter */
+  --foreground: #141414;
 }
 
 @theme inline {
   --color-brand: var(--brand);
   --color-brand-dark: var(--brand-dark);
   --color-brand-soft: var(--brand-soft);
+  --color-mascot: var(--mascot);
+  --color-mascot-dark: var(--mascot-dark);
+  --color-ink: var(--ink);
   --color-accent: var(--accent);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -52,7 +59,7 @@ h2 {
     @apply mx-auto w-full max-w-7xl px-4 sm:px-6;
   }
   .btn {
-    @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-brand px-4 py-2.5 text-center text-sm font-semibold text-white transition hover:bg-brand-dark disabled:cursor-not-allowed disabled:opacity-50;
+    @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-lg bg-mascot px-4 py-2.5 text-center text-sm font-semibold text-ink transition hover:bg-mascot-dark disabled:cursor-not-allowed disabled:opacity-50;
   }
   .btn-secondary {
     @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-center text-sm font-semibold text-slate-700 transition hover:bg-slate-50;
@@ -109,6 +116,36 @@ h2 {
   }
 }
 /* Fokus keyboard terlihat pada seluruh tindakan interaktif. */
-:where(a, button, summary):focus-visible { outline: 3px solid #0284c7; outline-offset: 4px; }
+:where(a, button, summary):focus-visible { outline: 3px solid var(--ink); outline-offset: 4px; }
 html { scroll-padding-top: 8rem; }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; } }
+
+/* Animasi ilustrasi organ Blok (components/block-art.tsx). */
+.ba-float { animation: ba-float 4s ease-in-out infinite; }
+@keyframes ba-float { 50% { transform: translateY(-6px); } }
+.ba-pulse, .ba-breathe, .ba-spin, .ba-blink, .ba-contract, .ba-tilt, .ba-swing { transform-box: fill-box; transform-origin: center; }
+.ba-pulse { animation: ba-pulse 1.4s ease-in-out infinite; }
+@keyframes ba-pulse { 0%, 100% { transform: scale(1); } 15% { transform: scale(1.08); } 30% { transform: scale(0.98); } 45% { transform: scale(1.05); } }
+.ba-breathe { transform-origin: center bottom; animation: ba-breathe 4s ease-in-out infinite; }
+@keyframes ba-breathe { 50% { transform: scale(1.07, 1.1); } }
+.ba-spin { animation: ba-spin 16s linear infinite; }
+@keyframes ba-spin { to { transform: rotate(360deg); } }
+.ba-flow { stroke-dasharray: 6 8; animation: ba-flow 1.6s linear infinite; }
+@keyframes ba-flow { to { stroke-dashoffset: -28; } }
+.ba-blink { animation: ba-blink 5s ease-in-out infinite; }
+@keyframes ba-blink { 0%, 44%, 52%, 100% { transform: scaleY(1); } 48% { transform: scaleY(0.08); } }
+.ba-contract { animation: ba-contract 2.4s ease-in-out infinite; }
+@keyframes ba-contract { 50% { transform: scale(0.86, 1.18); } }
+.ba-tilt { animation: ba-tilt 4s ease-in-out infinite; }
+@keyframes ba-tilt { 25% { transform: rotate(-7deg); } 75% { transform: rotate(7deg); } }
+.ba-swing { transform-origin: left center; animation: ba-swing 3s ease-in-out infinite; }
+@keyframes ba-swing { 50% { transform: rotate(-40deg); } }
+.ba-drift { animation: ba-drift 3s ease-in-out infinite; }
+@keyframes ba-drift { 0% { transform: translateX(-8px); opacity: 0.4; } 50% { opacity: 1; } 100% { transform: translateX(14px); opacity: 0.4; } }
+.ba-drip { animation: ba-drip 2s ease-in infinite; }
+@keyframes ba-drip { 0% { transform: translateY(0); opacity: 1; } 100% { transform: translateY(20px); opacity: 0; } }
+.ba-rise { animation: ba-rise 2.4s ease-out infinite; }
+@keyframes ba-rise { 0% { transform: translateY(0); opacity: 0; } 30% { opacity: 1; } 100% { transform: translateY(-34px); opacity: 0; } }
+.ba-spark { animation: ba-spark 2s ease-in-out infinite; }
+@keyframes ba-spark { 0%, 100% { opacity: 0.2; } 50% { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { [class*="ba-"] { animation: none !important; } }

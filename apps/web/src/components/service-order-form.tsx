@@ -122,7 +122,7 @@ export function ServiceOrderForm({
                   <span>
                     {r.label} ({r.percent}%)
                     <span className="block text-xs text-slate-500">
-                      {r.seq === 1 ? "Saat mulai — membuka layanan & tahap 1" : `Sebelum tahap ${r.unlocksStage}${r.stageTitle ? ` (${r.stageTitle})` : ""}`}
+                      {r.seq === 1 ? "Saat mulai - membuka layanan & tahap 1" : `Sebelum tahap ${r.unlocksStage}${r.stageTitle ? ` (${r.stageTitle})` : ""}`}
                     </span>
                   </span>
                   <span className="font-semibold">{rp(r.amount)}</span>
@@ -135,9 +135,9 @@ export function ServiceOrderForm({
 
       {leadSources.length > 0 && (
         <label className="block">
-          <span className="label">Tahu layanan ini dari (opsional)</span>
-          <select className="input" name="leadSource" defaultValue="">
-            <option value="">—</option>
+          <span className="label">Tahu layanan ini dari</span>
+          <select className="input" name="leadSource" defaultValue="" required>
+            <option value="" disabled>Pilih salah satu</option>
             {leadSources.map((l) => (
               <option key={l.value} value={l.value}>
                 {l.label}

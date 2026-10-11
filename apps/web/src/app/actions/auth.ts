@@ -13,8 +13,8 @@ const registerSchema = z
     name: z.string().min(2, "Nama minimal 2 karakter."),
     email: z.string().email("Format email tidak valid."),
     phone: z.string().min(8, "Nomor WhatsApp wajib diisi."),
-    institution: z.string().optional(),
-    password: z.string().min(8, "Kata sandi minimal 8 karakter."),
+    institution: z.string().min(2, "Instansi / universitas wajib diisi."),
+    password: z.string().min(6, "Kata sandi minimal 6 karakter."),
     confirm: z.string(),
   })
   .refine((v) => v.password === v.confirm, { message: "Konfirmasi kata sandi tidak sama.", path: ["confirm"] });
@@ -26,7 +26,7 @@ export async function registerAction(form: FormData) {
     name: str(form, "name"),
     email: str(form, "email").toLowerCase(),
     phone: str(form, "phone"),
-    institution: str(form, "institution") || undefined,
+    institution: str(form, "institution"),
     password: String(form.get("password") ?? ""),
     confirm: String(form.get("confirm") ?? ""),
   });
@@ -47,7 +47,7 @@ export async function registerAction(form: FormData) {
       ["Nama", name],
       ["Email", email],
       ["WhatsApp", phone],
-      ["Instansi", institution ?? "-"],
+      ["Instansi", institution],
     ],
     link: `/admin/pengguna/${user.id}`,
     kind: "NEW_CUSTOMER",
@@ -93,7 +93,7 @@ export async function changePasswordAction(form: FormData) {
   const confirm = String(form.get("confirm") ?? "");
   const row = await db.user.findUniqueOrThrow({ where: { id: user.id } });
   if (!(await verifyPassword(current, row.passwordHash))) back("/akun", "Kata sandi saat ini salah.", "error");
-  if (password.length < 8) back("/akun", "Kata sandi baru minimal 8 karakter.", "error");
+  if (password.length < 6) back("/akun", "Kata sandi baru minimal 6 karakter.", "error");
   if (password !== confirm) back("/akun", "Konfirmasi kata sandi tidak sama.", "error");
   await db.user.update({ where: { id: user.id }, data: { passwordHash: await hashPassword(password) } });
   back("/akun", "Kata sandi diganti.");

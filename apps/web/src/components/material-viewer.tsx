@@ -48,7 +48,7 @@ export function MaterialViewer({ item, showOriginalDownload = false }: { item: V
     if (embed.kind === "video") {
       blocks.push(
         <video key="url" src={embed.src} controls preload="metadata" className="aspect-video w-full rounded-lg bg-black" controlsList="nodownload">
-          Browser Anda tidak mendukung pemutar video.
+          Browser ini tidak mendukung pemutar video.
         </video>,
       );
     } else if (embed.kind === "iframe") {

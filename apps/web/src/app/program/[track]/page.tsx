@@ -19,7 +19,7 @@ export default async function TrackPage({ params }: { params: Promise<{ track: s
     where: { slug },
     include: {
       categories: {
-        where: { published: true },
+        where: { published: true, parentId: null },
         orderBy: { order: "asc" },
         include: {
           topics: {
@@ -87,7 +87,7 @@ export default async function TrackPage({ params }: { params: Promise<{ track: s
 
       {track.hasMentoring && (
         <div className="mt-8 rounded-xl border border-amber-200 bg-amber-50 p-5 text-sm text-amber-900">
-          Jalur ini menyediakan <strong>bimbingan</strong>: setelah pembayaran, admin menjadwalkan sesi dan memilih tutor sesuai bidang Anda.
+          Jalur ini menyediakan <strong>bimbingan</strong>: setelah pembayaran, admin menjadwalkan sesi dan memilih tutor sesuai bidang.
         </div>
       )}
 

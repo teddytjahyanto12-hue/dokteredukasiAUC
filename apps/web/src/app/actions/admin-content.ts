@@ -8,6 +8,7 @@ import { deleteStoredFile, isPresentation, readStoredFile, saveBuffer, saveUploa
 import { convertToPdf } from "@/lib/convert";
 import { isSlideEmbeddable, isVideoEmbeddable } from "@/lib/embed";
 import { back, bool, optInt, optStr, str } from "@/lib/flash";
+import { normalizeCode } from "@/lib/codes";
 import { DISPLAY_TYPES, ITEM_TYPES } from "@/lib/constants";
 import { slugify } from "@/lib/format";
 
@@ -58,6 +59,20 @@ export async function saveCategoryAction(form: FormData) {
   const slug = slugify(str(form, "slug") || title);
   const clash = await db.category.findFirst({ where: { trackId, slug, ...(id ? { NOT: { id } } : {}) } });
   if (clash) back(fail, "Slug kategori sudah dipakai di jalur ini.", "error");
+  // Kode kelas/Blok: huruf-angka seperti BKV-12, unik di seluruh kelas.
+  const code = id ? normalizeCode(str(form, "code")) : undefined;
+  if (code && !/^[A-Z]{2,6}-\d{1,3}$/.test(code)) back(fail, "Format kode: 2-6 huruf, tanda hubung, lalu angka. Contoh BKV-12.", "error");
+  if (code && (await db.category.findFirst({ where: { code, ...(id ? { NOT: { id } } : {}) } }))) back(fail, `Kode ${code} sudah dipakai kelas lain.`, "error");
+  // Kelas induk: hanya kelas utama di jalur yang sama; kelas yang sudah punya sub-kelas tidak bisa menjadi sub-kelas.
+  let parentId: string | null | undefined = undefined;
+  if (id && form.has("parentId")) {
+    parentId = optStr(form, "parentId");
+    if (parentId) {
+      const p = await db.category.findUnique({ where: { id: parentId }, select: { trackId: true, parentId: true } });
+      if (!p || p.trackId !== trackId || p.parentId || parentId === id) back(fail, "Kelas induk tidak valid.", "error");
+      if (await db.category.count({ where: { parentId: id } })) back(fail, "Kelas ini punya sub-kelas, jadi tidak bisa dijadikan sub-kelas.", "error");
+    }
+  }
 
   const me = await admin();
   const before = id ? await db.category.findUnique({ where: { id }, select: { posterFileId: true } }) : null;
@@ -82,6 +97,11 @@ export async function saveCategoryAction(form: FormData) {
           studentBase: Math.max(0, optInt(form, "studentBase") ?? 0),
           durationText: optStr(form, "durationText"),
           instructor: optStr(form, "instructor"),
+          instructorTitle: optStr(form, "instructorTitle"),
+          code,
+          ...(parentId !== undefined ? { parentId } : {}),
+          childLabel: optStr(form, "childLabel"),
+          showChildrenInCatalog: bool(form, "showChildrenInCatalog"),
           outcomes: optStr(form, "outcomes"),
           posterFileId,
         }
@@ -220,6 +240,7 @@ export async function saveItemAction(form: FormData) {
     description: optStr(form, "description"),
     body: optStr(form, "body"),
     sourceNote: optStr(form, "sourceNote"),
+    durationMinutes: optInt(form, "durationMinutes"),
     isFree: bool(form, "isFree"),
     published: bool(form, "published"),
     order: optInt(form, "order") ?? 0,

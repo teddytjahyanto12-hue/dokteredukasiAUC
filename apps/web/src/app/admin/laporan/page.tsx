@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { requirePermission } from "@/lib/auth";
 import { hasPermission } from "@/lib/permissions";
-import { buildReport, resolvePeriod } from "@/lib/reports";
+import { buildReport, feeOwed, resolvePeriod } from "@/lib/reports";
 import { rupiah, tanggal } from "@/lib/format";
 import { LEAD_SOURCE_LABEL } from "@/lib/installments";
 import { Empty, Flash, PageHeader, Stat } from "@/components/ui";
@@ -20,8 +20,8 @@ const PERIODS = [
 ] as const;
 
 const SCHEDULE_LABEL: Record<string, string> = {
-  mingguan: "Mingguan — tiap Senin 07.00 WIB",
-  bulanan: "Bulanan — tiap tanggal 1 pukul 07.00 WIB",
+  mingguan: "Mingguan - tiap Senin 07.00 WIB",
+  bulanan: "Bulanan - tiap tanggal 1 pukul 07.00 WIB",
   keduanya: "Mingguan (Senin 07.00 WIB) dan bulanan (tanggal 1 pukul 07.00 WIB)",
 };
 
@@ -42,7 +42,7 @@ function RevenueBars({ rows }: { rows: { name: string; revenue: number; qty: num
         <li key={r.name} className="grid grid-cols-[minmax(0,180px)_minmax(0,1fr)_auto] items-center gap-3 text-sm" title={`${r.name}: ${rupiah(r.revenue)} · ${r.qty} order`}>
           <span className="truncate text-slate-600">{r.name}</span>
           <span className="block min-w-0">
-            <span className="block h-3 rounded-r bg-brand" style={{ width: `${Math.max((r.revenue / max) * 100, r.revenue ? 1.5 : 0)}%` }} />
+            <span className="block h-3 rounded-r bg-mascot" style={{ width: `${Math.max((r.revenue / max) * 100, r.revenue ? 1.5 : 0)}%` }} />
           </span>
           <span className="text-xs text-slate-700">{rupiah(r.revenue)}</span>
         </li>
@@ -58,8 +58,9 @@ export default async function ReportsPage({ searchParams }: { searchParams: Sear
   const settings = await getSettings();
   const period = resolvePeriod(pick("periode"), pick("dari"), pick("sampai"));
   const rep = await buildReport(period);
+  const owed = hasPermission(me, "admin.finance") ? await feeOwed() : null;
   const qs = `periode=${period.key}${pick("dari") ? `&dari=${pick("dari")}` : ""}${pick("sampai") ? `&sampai=${pick("sampai")}` : ""}`;
-  const money = (v: number) => (finance ? rupiah(v) : "—");
+  const money = (v: number) => (finance ? rupiah(v) : "-");
   const a = rep.alerts;
   const alertCount = a.overdueSessions.length + a.expiring.length + a.waitingTutorOld.length + a.partialOrders.length + a.stalePending.length;
 
@@ -128,6 +129,71 @@ export default async function ReportsPage({ searchParams }: { searchParams: Sear
           </div>
           {rep.finance.hppMissing && (
             <p className="mt-3 text-xs text-amber-700">Sebagian order belum punya HPP (dihitung 0). Isi HPP di halaman layanan agar laba akurat untuk order berikutnya.</p>
+          )}
+        </section>
+      )}
+
+      {finance && owed && (
+        <section className="card mb-8">
+          <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
+            <div>
+              <h2 className="h2">Fee tutor terutang</h2>
+              <p className="text-xs text-slate-500">Sesi Zoom & pencapaian yang sudah diverifikasi admin tetapi belum dibayar (kondisi saat ini, tidak mengikuti periode).</p>
+            </div>
+            <div className="flex gap-2">
+              <a href={`/api/laporan/fee-terutang?${qs}`} className="btn-secondary btn-sm">
+                Unduh Excel (CSV)
+              </a>
+              <Link href="/admin/payroll" className="btn-secondary btn-sm">
+                Buat payroll
+              </Link>
+            </div>
+          </div>
+          {owed.rows.length === 0 ? (
+            <Empty>Tidak ada fee terutang. Semua fee tervalidasi sudah dibayar.</Empty>
+          ) : (
+            <>
+              <div className="mb-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+                <Stat label={`Total terutang (${owed.rows.length} item)`} value={rupiah(owed.total)} />
+                {owed.byTutor.map((t) => (
+                  <Stat key={t.tutor} label={`${t.tutor} · ${t.count} item${t.inPayroll ? ` · ${rupiah(t.inPayroll)} sudah di payroll` : ""}`} value={rupiah(t.total)} />
+                ))}
+              </div>
+              <div className="overflow-x-auto">
+                <table className="table">
+                  <thead>
+                    <tr>
+                      <th>Tutor</th>
+                      <th>Jenis</th>
+                      <th>Item</th>
+                      <th>Murid</th>
+                      <th>Layanan</th>
+                      <th>Diverifikasi</th>
+                      <th className="text-right">Fee</th>
+                      <th>Payroll</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {owed.rows.map((r, i) => (
+                      <tr key={`${r.mentoringId}-${r.item}-${i}`}>
+                        <td>{r.tutor}</td>
+                        <td className="text-xs">{r.kind}</td>
+                        <td>
+                          <Link href={`/bimbingan/${r.mentoringId}`} className="link">
+                            {r.item}
+                          </Link>
+                        </td>
+                        <td>{r.student}</td>
+                        <td className="text-xs">{r.service}</td>
+                        <td className="whitespace-nowrap text-xs">{tanggal(r.verifiedAt, true)}</td>
+                        <td className="text-right">{rupiah(r.fee)}</td>
+                        <td className="text-xs">{r.payroll ? `${r.payroll} (belum dibayar)` : "Belum dibuat"}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </>
           )}
         </section>
       )}
@@ -250,7 +316,7 @@ export default async function ReportsPage({ searchParams }: { searchParams: Sear
             <ol className="space-y-1 text-sm">
               {rep.topByQty.map((s, i) => (
                 <li key={s.id}>
-                  {i + 1}. {s.name} — {s.qty} order
+                  {i + 1}. {s.name} - {s.qty} order
                 </li>
               ))}
             </ol>
@@ -268,7 +334,7 @@ export default async function ReportsPage({ searchParams }: { searchParams: Sear
                 .filter((s) => s.revenue)
                 .map((s, i) => (
                   <li key={s.id}>
-                    {i + 1}. {s.name} — {rupiah(s.revenue)}
+                    {i + 1}. {s.name} - {rupiah(s.revenue)}
                   </li>
                 ))}
             </ol>
@@ -321,7 +387,7 @@ export default async function ReportsPage({ searchParams }: { searchParams: Sear
                           <td className="text-right">{rupiah(s.revenue)}</td>
                           <td className="text-right">{rupiah(s.hpp)}</td>
                           <td className="text-right">{rupiah(s.profit)}</td>
-                          <td className="text-right">{s.revenue ? `${s.margin}%` : "—"}</td>
+                          <td className="text-right">{s.revenue ? `${s.margin}%` : "-"}</td>
                         </>
                       )}
                     </tr>
@@ -341,7 +407,7 @@ export default async function ReportsPage({ searchParams }: { searchParams: Sear
                         <>
                           <td className="text-right">{rupiah(c.revenue)}</td>
                           <td className="text-right">laba {rupiah(c.profit)}</td>
-                          <td className="text-right">{c.revenue ? `${c.margin}%` : "—"}</td>
+                          <td className="text-right">{c.revenue ? `${c.margin}%` : "-"}</td>
                         </>
                       )}
                     </tr>
@@ -472,6 +538,7 @@ export default async function ReportsPage({ searchParams }: { searchParams: Sear
                     <th>Pembayaran</th>
                     <th className="text-right">Jumlah</th>
                     <th className="text-right">HPP</th>
+                    <th>Bukti</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -487,7 +554,16 @@ export default async function ReportsPage({ searchParams }: { searchParams: Sear
                       <td>{c.service}</td>
                       <td className="text-xs">{c.label}</td>
                       <td className="text-right">{rupiah(c.amount)}</td>
-                      <td className="text-right">{c.hppKnown ? rupiah(c.hpp) : "—"}</td>
+                      <td className="text-right">{c.hppKnown ? rupiah(c.hpp) : "-"}</td>
+                      <td className="text-xs">
+                        {c.proofFileId ? (
+                          <a href={`/api/berkas/${c.proofFileId}`} target="_blank" rel="noopener noreferrer" className="link">
+                            Lihat
+                          </a>
+                        ) : (
+                          "-"
+                        )}
+                      </td>
                     </tr>
                   ))}
                 </tbody>

@@ -11,14 +11,14 @@ export default async function TutorPayroll() {
   const payrolls = await db.payroll.findMany({
     where: { tutorId: user.id },
     orderBy: { createdAt: "desc" },
-    include: { proofFile: { select: { id: true } }, _count: { select: { sessions: true } } },
+    include: { proofFile: { select: { id: true } }, _count: { select: { sessions: true, tasks: true } } },
   });
   const paid = payrolls.filter((p) => p.status === "PAID").reduce((sum, p) => sum + p.amount, 0);
   const unpaid = payrolls.filter((p) => p.status === "UNPAID").reduce((sum, p) => sum + p.amount, 0);
 
   return (
     <>
-      <PageHeader title="Payroll" subtitle="Rekap pembayaran fee Anda dari owner/admin." />
+      <PageHeader title="Payroll" subtitle="Rekap pembayaran fee dari owner/admin." />
       <div className="grid gap-4 sm:grid-cols-2">
         <Stat label="Payroll menunggu transfer" value={rupiah(unpaid)} />
         <Stat label="Total sudah dibayar" value={rupiah(paid)} />
@@ -42,7 +42,7 @@ export default async function TutorPayroll() {
                 {payrolls.map((p) => (
                   <tr key={p.id}>
                     <td>{p.periodLabel}</td>
-                    <td>{p._count.sessions}</td>
+                    <td>{p._count.sessions}{p._count.tasks ? ` + ${p._count.tasks} pencapaian` : ""}</td>
                     <td>{rupiah(p.amount)}</td>
                     <td>
                       <span className={p.status === "PAID" ? "badge-brand" : p.status === "VOID" ? "badge" : "badge-warn"}>{PAYROLL_STATUS_LABEL[p.status]}</span>
@@ -55,7 +55,7 @@ export default async function TutorPayroll() {
                           Lihat bukti
                         </a>
                       ) : (
-                        "—"
+                        "-"
                       )}
                     </td>
                   </tr>

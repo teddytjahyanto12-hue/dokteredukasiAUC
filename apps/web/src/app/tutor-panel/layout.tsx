@@ -18,7 +18,7 @@ export default async function TutorLayout({ children }: { children: React.ReactN
           Akun
         </Link>
       </nav>
-      {pages.length === 0 ? <p className="muted">Owner belum memberikan akses fitur apa pun ke akun Anda.</p> : children}
+      {pages.length === 0 ? <p className="muted">Owner belum memberikan akses fitur apa pun ke akun ini.</p> : children}
     </div>
   );
 }

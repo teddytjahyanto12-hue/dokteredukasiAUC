@@ -29,7 +29,11 @@ import {
   addProjectTaskAction,
   cancelProjectTaskAction,
   applyServiceTemplateAction,
+  requestZoomAction,
+  confirmZoomAction,
+  cancelZoomRequestAction,
 } from "@/app/actions/mentoring";
+import { zoomAllowance } from "@/lib/zoom";
 import { isStageLocked, lockedFromStage, TASK_STATUS_LABEL } from "@/lib/installments";
 import { ConfirmButton } from "@/components/confirm-button";
 import { Empty, Field, Flash, PageHeader, ProgressBar } from "@/components/ui";
@@ -50,7 +54,7 @@ export default async function MentoringDetail({ params, searchParams }: { params
       tutor: { select: { id: true, name: true } },
       package: { select: { id: true, name: true, sopUrl: true, sopNote: true, eligibilities: { select: { tutorId: true, level: true } } } },
       order: { select: { code: true, status: true, paymentPlan: true, installments: { orderBy: { seq: "asc" } } } },
-      tasks: { orderBy: [{ stageNumber: "asc" }, { order: "asc" }] },
+      tasks: { orderBy: [{ stageNumber: "asc" }, { order: "asc" }], include: { evidenceFile: { select: { id: true, originalName: true } } } },
       sessions: {
         orderBy: { scheduledAt: "asc" },
         include: { proofFile: { select: { id: true, originalName: true } }, payroll: { select: { status: true } } },
@@ -89,6 +93,9 @@ export default async function MentoringDetail({ params, searchParams }: { params
         .filter((t) => !m.package || eligibleLevel.has(t.id))
         .sort((a, b) => (eligibleLevel.get(a.id) === "PRIMARY" ? -1 : 0) - (eligibleLevel.get(b.id) === "PRIMARY" ? -1 : 0))
     : [];
+  const zoom = await zoomAllowance(m.id);
+  const hasZoomQuota = !!zoom && zoom.quota > 0;
+  const hasPaidMilestones = m.tasks.some((t) => (t.fee ?? 0) > 0);
   const backLink = isStaffMentoring ? { href: "/admin/bimbingan", label: "Semua bimbingan" } : { href: homeFor(user), label: "Dashboard" };
 
   return (
@@ -98,7 +105,7 @@ export default async function MentoringDetail({ params, searchParams }: { params
 
       {closed && (
         <div className="mb-6 rounded-xl border border-slate-300 bg-slate-100 p-4 text-sm text-slate-700">
-          Proyek ditutup {tanggal(m.closedAt)} — {CLOSE_REASON_LABEL[m.closeReason ?? ""] ?? m.closeReason}
+          Proyek ditutup {tanggal(m.closedAt)} - {CLOSE_REASON_LABEL[m.closeReason ?? ""] ?? m.closeReason}
           {m.closeNote && `. Catatan: ${m.closeNote}`}. Sesi yang belum selesai dibatalkan tanpa fee; chat hanya bisa dibaca.
         </div>
       )}
@@ -161,12 +168,12 @@ export default async function MentoringDetail({ params, searchParams }: { params
             </section>
           )}
 
-          <section className="card">
+          {!(isStudent && stages.length === 0) && <section className="card">
             <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
-              <h2 className="h2">Checklist pekerjaan</h2>
+              <h2 className="h2">{hasPaidMilestones ? (isStudent ? "Progres pencapaian" : "Pencapaian keberhasilan tutor") : "Checklist pekerjaan"}</h2>
               {activeTasks.length > 0 && (
                 <span className="text-sm text-slate-500">
-                  {validatedTasks}/{activeTasks.length} task tervalidasi
+                  {validatedTasks}/{activeTasks.length} {isStudent ? "pencapaian selesai" : "task tervalidasi"}
                 </span>
               )}
             </div>
@@ -187,14 +194,14 @@ export default async function MentoringDetail({ params, searchParams }: { params
                 {stages.map((st) => (
                   <div key={st.number}>
                     <div className="flex flex-wrap items-center gap-2">
-                      <span className={`grid h-7 w-7 place-items-center rounded-full text-sm font-bold ${st.locked ? "bg-slate-200 text-slate-500" : "bg-brand text-white"}`}>
+                      <span className={`grid h-7 w-7 place-items-center rounded-full text-sm font-bold ${st.locked ? "bg-slate-200 text-slate-500" : "bg-mascot text-ink"}`}>
                         {st.locked ? "🔒" : st.number}
                       </span>
                       <p className="font-semibold">
                         Tahap {st.number}: {st.title}
                       </p>
                       {st.locked && (
-                        <span className="badge-warn">Terkunci — menunggu {st.unlockBy?.label ?? "pembayaran"}</span>
+                        <span className="badge-warn">Terkunci - menunggu {st.unlockBy?.label ?? "pembayaran"}</span>
                       )}
                     </div>
                     <ul className="mt-2 space-y-2 border-l-2 border-slate-100 pl-5">
@@ -207,8 +214,11 @@ export default async function MentoringDetail({ params, searchParams }: { params
                                 {t.validatedAt ? "✅ " : t.status === "DONE" ? "⏳ " : ""}
                                 {t.title}
                               </span>
-                              <span className={t.validatedAt ? "badge-brand" : t.status === "DONE" || t.status === "REVISION" ? "badge-warn" : "badge"}>
-                                {t.validatedAt ? "Tervalidasi" : TASK_STATUS_LABEL[t.status]}
+                              <span className="flex flex-wrap items-center gap-2">
+                                {showFee && t.fee ? <span className="text-xs text-slate-500">Fee {rupiah(t.fee)}</span> : null}
+                                <span className={t.validatedAt ? "badge-brand" : t.status === "DONE" || t.status === "REVISION" ? "badge-warn" : "badge"}>
+                                  {t.validatedAt ? (isStudent ? "Selesai" : "Terverifikasi") : t.status === "DONE" ? "Menunggu verifikasi admin" : TASK_STATUS_LABEL[t.status]}
+                                </span>
                               </span>
                             </div>
                             {t.revisionNote && t.status === "REVISION" && (
@@ -225,6 +235,14 @@ export default async function MentoringDetail({ params, searchParams }: { params
                                     </a>
                                   </>
                                 )}
+                                {t.evidenceFile && (
+                                  <>
+                                    {" · "}
+                                    <a href={`/api/berkas/${t.evidenceFile.id}`} target="_blank" rel="noopener noreferrer" className="link">
+                                      {t.evidenceFile.originalName}
+                                    </a>
+                                  </>
+                                )}
                               </p>
                             )}
                             {canWork && (
@@ -232,7 +250,14 @@ export default async function MentoringDetail({ params, searchParams }: { params
                                 <input type="hidden" name="mentoringId" value={m.id} />
                                 <input type="hidden" name="taskId" value={t.id} />
                                 <input className="input min-w-48 flex-1" name="note" placeholder="Catatan hasil (wajib)" required />
-                                <input className="input w-56" name="evidenceUrl" placeholder="Link bukti (opsional)" />
+                                <input className="input w-56" name="evidenceUrl" placeholder="Link bukti / rekaman" />
+                                <input
+                                  className="input w-64"
+                                  type="file"
+                                  name="evidenceFile"
+                                  accept="image/png,image/jpeg,image/webp,application/pdf,.docx,.xlsx"
+                                  aria-label="Unggah bukti (screenshot, PDF, DOCX, XLSX)"
+                                />
                                 <button className="btn btn-sm" type="submit">
                                   Tandai selesai
                                 </button>
@@ -290,14 +315,60 @@ export default async function MentoringDetail({ params, searchParams }: { params
                 </button>
               </form>
             )}
-          </section>
+          </section>}
 
           <section className="card">
             <h2 className="h2 mb-1">Sesi bimbingan (Zoom)</h2>
             {isTutor && (
               <p className="mb-3 text-xs text-slate-500">
-                Setelah sesi berlangsung, isi catatan + bukti lalu pilih “Tandai selesai”. Fee menjadi terutang setelah admin memvalidasi.
+                Setelah sesi berlangsung, unggah rekaman Zoom ke Google Drive, isi link rekamannya (pastikan akses bisa dilihat) + catatan, lalu pilih “Tandai selesai”. Fee masuk payroll setelah admin memverifikasi.
               </p>
+            )}
+            {hasZoomQuota && zoom && (
+              <div className="mb-4 rounded-lg border border-slate-200 bg-slate-50 p-4 text-sm">
+                <p>
+                  Kuota Zoom paket: <strong>{zoom.used.size}</strong> dari <strong>{zoom.quota}</strong> sudah diajukan
+                  {zoom.extra > 0 && ` (termasuk ${zoom.extra} Zoom tambahan)`}
+                  {zoom.serviceEndsAt && ` · berlaku s.d. ${tanggal(zoom.serviceEndsAt)}`}
+                </p>
+                {isStudent && !closed && (
+                  zoom.expired ? (
+                    <p className="mt-2 text-amber-800">Masa penggunaan Zoom sudah berakhir.</p>
+                  ) : zoom.available.length === 0 ? (
+                    <p className="mt-2 text-slate-500">Semua kuota Zoom sudah diajukan.</p>
+                  ) : (
+                    <div className="mt-3 space-y-2">
+                      <p className="text-slate-600">Pilih Zoom, lalu tentukan tanggal & jam yang diinginkan. Permintaan dikirim ke WhatsApp admin untuk dikonfirmasi.</p>
+                      <div className="flex flex-wrap gap-2">
+                        {Array.from({ length: zoom.quota }, (_, i) => i + 1).map((n) =>
+                          zoom.available.includes(n) ? (
+                            <details key={n} className="group w-full rounded-lg border border-slate-200 bg-white sm:w-auto">
+                              <summary className="btn cursor-pointer list-none">Zoom {n}</summary>
+                              <form action={requestZoomAction} className="grid gap-2 p-3 sm:w-80">
+                                <input type="hidden" name="mentoringId" value={m.id} />
+                                <input type="hidden" name="seq" value={n} />
+                                <Field label="Tanggal & jam (WIB)">
+                                  <input className="input" type="datetime-local" name="preferredAt" required />
+                                </Field>
+                                <Field label="Catatan (opsional)">
+                                  <input className="input" name="note" placeholder="Mis. topik yang ingin dibahas" />
+                                </Field>
+                                <button className="btn" type="submit">
+                                  Ajukan Zoom {n} via WhatsApp
+                                </button>
+                              </form>
+                            </details>
+                          ) : (
+                            <span key={n} className="btn-secondary pointer-events-none opacity-60">
+                              Zoom {n} ✓
+                            </span>
+                          ),
+                        )}
+                      </div>
+                    </div>
+                  )
+                )}
+              </div>
             )}
             {m.sessions.length === 0 ? (
               <Empty>Belum ada sesi terjadwal.</Empty>
@@ -305,12 +376,13 @@ export default async function MentoringDetail({ params, searchParams }: { params
               <ul className="space-y-4">
                 {m.sessions.map((s, i) => {
                   const fee = sessionFeeStatus({ ...s, mentoringStatus: m.status });
-                  const editable = manage && !closed && !s.verifiedAt && s.status !== "CANCELLED";
+                  const editable = manage && !closed && !s.verifiedAt && s.status !== "CANCELLED" && s.status !== "REQUESTED";
                   return (
                     <li key={s.id} className="rounded-lg border border-slate-200 p-4">
                       <div className="flex flex-wrap items-center justify-between gap-2">
                         <p className="font-semibold">
-                          Sesi {i + 1} · {tanggal(s.scheduledAt, true)} WIB
+                          {s.seq ? `Zoom ${s.seq}` : `Sesi ${i + 1}`} · {s.status === "REQUESTED" ? "diajukan " : ""}
+                          {tanggal(s.scheduledAt, true)} WIB
                         </p>
                         <div className="flex flex-wrap gap-2">
                           <span className="badge">{s.verifiedAt ? "Tervalidasi admin" : SESSION_STATUS_LABEL[s.status]}</span>
@@ -344,6 +416,52 @@ export default async function MentoringDetail({ params, searchParams }: { params
                         {showFee && s.fee !== null && <span className="text-slate-500">Fee: {rupiah(s.fee)}</span>}
                       </div>
                       {s.summary && <p className="mt-2 whitespace-pre-line text-sm text-slate-700">{s.summary}</p>}
+                      {s.status === "REQUESTED" && isStudent && (
+                        <p className="mt-2 text-sm text-slate-500">Menunggu konfirmasi admin. Jadwal final akan muncul di sini dan dikirim lewat notifikasi.</p>
+                      )}
+                      {s.status === "REQUESTED" && isStaffMentoring && !closed && (
+                        <form action={confirmZoomAction} className="mt-3 grid gap-3 rounded-lg bg-slate-50 p-3 sm:grid-cols-2">
+                          <input type="hidden" name="mentoringId" value={m.id} />
+                          <input type="hidden" name="sessionId" value={s.id} />
+                          <p className="text-sm font-semibold sm:col-span-2">Konfirmasi jadwal final (disetujui murid & tutor)</p>
+                          <Field label="Jadwal final (WIB)">
+                            <input className="input" type="datetime-local" name="scheduledAt" defaultValue={toWibInput(s.scheduledAt)} required />
+                          </Field>
+                          <Field label="Link Zoom">
+                            <input className="input" name="zoomLink" placeholder="https://zoom.us/j/…" />
+                          </Field>
+                          {!m.tutor && (
+                            <Field label="Tutor">
+                              <select className="input" name="tutorId" required defaultValue="">
+                                <option value="" disabled>
+                                  Pilih tutor
+                                </option>
+                                {tutors.map((t) => (
+                                  <option key={t.id} value={t.id}>
+                                    {t.name}
+                                  </option>
+                                ))}
+                              </select>
+                            </Field>
+                          )}
+                          <div className="sm:col-span-2">
+                            <button className="btn btn-sm" type="submit">
+                              Konfirmasi & jadwalkan
+                            </button>
+                          </div>
+                        </form>
+                      )}
+                      {s.status === "REQUESTED" && isStaffMentoring && !closed && (
+                        <form action={cancelZoomRequestAction} className="mt-2 flex flex-wrap items-end gap-2">
+                          <input type="hidden" name="mentoringId" value={m.id} />
+                          <input type="hidden" name="sessionId" value={s.id} />
+                          <input className="input w-64" name="reason" placeholder="Alasan (mis. jadwal tutor penuh)" />
+                          <button className="btn-secondary btn-sm" type="submit">
+                            Batalkan permintaan
+                          </button>
+                        </form>
+                      )}
+                      {s.status === "CANCELLED" && s.revisionNote && <p className="mt-2 text-xs text-slate-500">Dibatalkan: {s.revisionNote}</p>}
 
                       {editable && (
                         <details className="mt-3" open={s.status === "REVISION"}>
@@ -364,8 +482,8 @@ export default async function MentoringDetail({ params, searchParams }: { params
                             <Field label="Link Zoom">
                               <input className="input" name="zoomLink" defaultValue={s.zoomLink ?? ""} />
                             </Field>
-                            <Field label="Link rekaman">
-                              <input className="input" name="recordingUrl" defaultValue={s.recordingUrl ?? ""} />
+                            <Field label={s.seq ? "Link Google Drive rekaman Zoom (wajib saat selesai)" : "Link rekaman"}>
+                              <input className="input" name="recordingUrl" defaultValue={s.recordingUrl ?? ""} placeholder="https://drive.google.com/…" />
                             </Field>
                             <Field label="Link bukti lain (opsional)">
                               <input className="input" name="proofUrl" defaultValue={s.proofUrl ?? ""} />
@@ -393,7 +511,7 @@ export default async function MentoringDetail({ params, searchParams }: { params
                             <input type="hidden" name="mentoringId" value={m.id} />
                             <input type="hidden" name="sessionId" value={s.id} />
                             <input type="hidden" name="decision" value="APPROVE" />
-                            {showFee && <input className="input w-36" name="fee" placeholder="Fee (kosong = rate)" inputMode="numeric" />}
+                            {showFee && <input className="input w-36" name="fee" placeholder={s.seq ? "Fee (kosong = fee Zoom paket)" : "Fee (kosong = rate)"} inputMode="numeric" />}
                             <button className="btn btn-sm" type="submit">
                               Validasi
                             </button>
@@ -495,7 +613,7 @@ export default async function MentoringDetail({ params, searchParams }: { params
               )}
               <Field label="Tutor" hint={m.package ? "Hanya tutor Primary/Backup layanan ini." : "✓ = bidang tutor sesuai bidang bimbingan."}>
                 <select className="input" name="tutorId" defaultValue={m.tutor?.id ?? ""}>
-                  <option value="">— Belum ditugaskan —</option>
+                  <option value="">Belum ditugaskan</option>
                   {tutors.map((t) => (
                     <option key={t.id} value={t.id}>
                       {t.name} · {ELIGIBILITY_LABEL[eligibleLevel.get(t.id) ?? ""] ?? FIELD_LABEL[t.tutorProfile?.field as MentoringField] ?? "bidang belum diisi"}
@@ -559,7 +677,7 @@ export default async function MentoringDetail({ params, searchParams }: { params
               {m.messages.map((msg) => {
                 const mine = msg.sender.id === user.id;
                 return (
-                  <div key={msg.id} className={`max-w-[85%] rounded-lg px-3 py-2 text-sm ${mine ? "ml-auto bg-brand text-white" : "bg-slate-100 text-slate-800"}`}>
+                  <div key={msg.id} className={`max-w-[85%] rounded-lg px-3 py-2 text-sm ${mine ? "ml-auto bg-mascot text-ink" : "bg-slate-100 text-slate-800"}`}>
                     {!mine && <p className="text-xs font-semibold">{msg.sender.name}</p>}
                     <p className="whitespace-pre-line">{msg.body}</p>
                     <p className={`mt-1 text-[10px] ${mine ? "text-white/70" : "text-slate-500"}`}>{tanggal(msg.createdAt, true)}</p>

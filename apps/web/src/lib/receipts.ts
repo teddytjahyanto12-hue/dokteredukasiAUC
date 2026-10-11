@@ -95,11 +95,11 @@ export async function sendReceipt(orderId: string, opts: { seq?: number; force?:
   }
   const intro = inst
     ? `Terima kasih, ${s.customer}. Pembayaran ${inst.label} untuk layanan ${s.service} sudah kami terima.`
-    : `Terima kasih, ${s.customer}. Pembayaran layanan ${s.service} sudah kami terima dan akses Anda sudah aktif.`;
+    : `Terima kasih, ${s.customer}. Pembayaran layanan ${s.service} sudah kami terima dan akses sudah aktif.`;
   const html = emailLayout(settings.siteName, `Kwitansi pembayaran ${receiptNo}`, emailParagraph(intro) + emailRows(rows), {
     label: "Lihat kwitansi & mulai belajar",
     url: appUrl(`/pembelian/${o.id}/kwitansi`),
   });
   const text = `${intro}\n\n${rows.map(([k, v]) => `${k}: ${v}`).join("\n")}\n\nKwitansi: ${appUrl(`/pembelian/${o.id}/kwitansi`)}`;
-  return sendEmail({ to: o.user.email, subject: `Kwitansi pembayaran ${receiptNo} — ${settings.siteName}`, html, text, kind: "RECEIPT", orderId: o.id });
+  return sendEmail({ to: o.user.email, subject: `Kwitansi pembayaran ${receiptNo} - ${settings.siteName}`, html, text, kind: "RECEIPT", orderId: o.id });
 }

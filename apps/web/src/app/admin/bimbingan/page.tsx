@@ -69,7 +69,7 @@ export default async function AdminMentoring({ searchParams }: { searchParams: S
                   <td className="min-w-28">
                     <ProgressBar value={m.progress} />
                   </td>
-                  <td>{m._count.sessions > 0 ? <span className="badge-warn">{m._count.sessions} sesi</span> : "—"}</td>
+                  <td>{m._count.sessions > 0 ? <span className="badge-warn">{m._count.sessions} sesi</span> : "-"}</td>
                   <td>{tanggal(m.createdAt)}</td>
                 </tr>
               ))}

@@ -9,7 +9,7 @@ export const metadata = { title: "Pengaturan" };
 
 const LONG: SettingKey[] = ["heroSubtitle", "paymentInstructions", "offerSubtitle", "offerBenefits", "homeProgramNotes", "homeSteps", "catalogSubtitle", "recommendationSubtitle"];
 const TALL: SettingKey[] = ["waConfirmTemplate"];
-const YES_NO: SettingKey[] = ["sendReceiptEmail"];
+const YES_NO: SettingKey[] = ["sendReceiptEmail", "onlinePayment"];
 const CHOICES: Partial<Record<SettingKey, [string, string][]>> = {
   reportEmailSchedule: [
     ["tidak", "Tidak dikirim"],

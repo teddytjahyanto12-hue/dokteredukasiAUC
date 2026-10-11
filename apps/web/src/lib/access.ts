@@ -7,6 +7,15 @@ import { hasPermission } from "./permissions";
 // - Owner & admin: semua materi.
 // - Tutor: materi pada jalur (Track) yang diberikan di profil tutornya.
 // - Murid: item gratis, atau kategori yang termasuk paket dengan hak akses aktif.
+// Akses ke kelas induk (mis. Basic Medical Science) otomatis membuka semua Blok di dalamnya.
+
+export async function withChildCategories(ids: Iterable<string>) {
+  const set = new Set(ids);
+  if (!set.size) return set;
+  const children = await db.category.findMany({ where: { parentId: { in: [...set] } }, select: { id: true } });
+  for (const c of children) set.add(c.id);
+  return set;
+}
 
 export function activeEntitlementWhere(userId: string) {
   const now = new Date();
@@ -28,13 +37,13 @@ export async function accessibleCategoryIds(user: CurrentUser | null): Promise<S
       select: { trackAccess: { select: { track: { select: { categories: { select: { id: true } } } } } } },
     });
     const ids = profile?.trackAccess.flatMap((a) => a.track.categories.map((c) => c.id)) ?? [];
-    return new Set(ids);
+    return withChildCategories(ids);
   }
   const ents = await db.entitlement.findMany({
     where: activeEntitlementWhere(user.id),
     select: { package: { select: { categories: { select: { categoryId: true } } } } },
   });
-  return new Set(ents.flatMap((e) => e.package.categories.map((c) => c.categoryId)));
+  return withChildCategories(ents.flatMap((e) => e.package.categories.map((c) => c.categoryId)));
 }
 
 export function canOpen(allowed: Set<string> | null, categoryId: string, isFree = false) {
@@ -55,6 +64,8 @@ export async function canAccessFile(user: CurrentUser | null, fileId: string) {
       items: { select: { isFree: true, published: true, topic: { select: { categoryId: true } } } },
       sessionProofs: { select: { mentoring: { select: { studentId: true, tutorId: true } } } },
       payrollProofs: { select: { tutorId: true } },
+      orderProofs: { select: { userId: true } },
+      installmentProofs: { select: { order: { select: { userId: true } } } },
     },
   });
   if (!file) return false;
@@ -65,6 +76,8 @@ export async function canAccessFile(user: CurrentUser | null, fileId: string) {
   }
   if (file.sessionProofs.some((s) => s.mentoring.studentId === user.id || s.mentoring.tutorId === user.id)) return true;
   if (file.payrollProofs.some((p) => p.tutorId === user.id)) return true;
+  // Bukti pembayaran: pelanggan pemilik order boleh melihat buktinya sendiri.
+  if (file.orderProofs.some((o) => o.userId === user.id) || file.installmentProofs.some((i) => i.order.userId === user.id)) return true;
   if (file.items.length) {
     const allowed = await accessibleCategoryIds(user);
     return file.items.some((i) => i.published && canOpen(allowed, i.topic.categoryId, i.isFree));

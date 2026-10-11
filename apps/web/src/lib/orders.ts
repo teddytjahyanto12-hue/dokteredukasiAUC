@@ -115,7 +115,14 @@ async function activateOrder(tx: Tx, order: OrderWithPackage, grantedById?: stri
   });
   if (order.package.includesMentoring && order.package.mentoringField) {
     const m = await tx.mentoring.create({
-      data: { studentId: order.userId, packageId: order.packageId, orderId: order.id, field: order.package.mentoringField },
+      data: {
+        studentId: order.userId,
+        packageId: order.packageId,
+        orderId: order.id,
+        field: order.package.mentoringField,
+        // Zoom & bimbingan berlaku sekian bulan sejak aktif (materi tetap seumur hidup bila paketnya demikian).
+        serviceEndsAt: order.package.serviceMonths ? addMonths(now, order.package.serviceMonths) : null,
+      },
     });
     await copyServiceTasks(tx, m.id, order.packageId);
   }
@@ -136,6 +143,7 @@ export async function copyServiceTasks(tx: Tx, mentoringId: string, packageId: s
       title: t.title,
       description: t.description,
       order: i,
+      fee: t.fee,
     })),
   );
   if (rows.length) await tx.projectTask.createMany({ data: rows });

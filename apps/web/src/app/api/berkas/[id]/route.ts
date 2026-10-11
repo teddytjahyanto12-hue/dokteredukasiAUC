@@ -13,7 +13,7 @@ export async function GET(_req: Request, { params }: { params: Promise<{ id: str
   if (!file.isPublic) {
     const user = await getCurrentUser();
     if (!user) return new NextResponse("Silakan masuk terlebih dahulu.", { status: 401 });
-    if (!(await canAccessFile(user, id))) return new NextResponse("Anda tidak memiliki akses ke berkas ini.", { status: 403 });
+    if (!(await canAccessFile(user, id))) return new NextResponse("Tidak ada akses ke berkas ini.", { status: 403 });
   }
   try {
     const data = await readStoredFile(file.storagePath);

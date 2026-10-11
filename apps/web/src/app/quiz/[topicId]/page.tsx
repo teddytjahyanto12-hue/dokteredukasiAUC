@@ -21,7 +21,7 @@ export default async function QuizPage({ params, searchParams }: { params: Promi
   });
   if (!quiz || !quiz.published) notFound();
 
-  const allowed = await canAccessCategory(user, quiz.topic.categoryId);
+  const allowed = quiz.isFree || (await canAccessCategory(user, quiz.topic.categoryId));
   if (!allowed) {
     return (
       <div className="container-page py-10">
@@ -57,7 +57,7 @@ export default async function QuizPage({ params, searchParams }: { params: Promi
 
       {result && (
         <div className={`mt-4 rounded-xl border p-5 ${result.score >= quiz.passingScore ? "border-emerald-200 bg-emerald-50" : "border-amber-200 bg-amber-50"}`}>
-          <p className="text-sm text-slate-600">Hasil Anda</p>
+          <p className="text-sm text-slate-600">Hasil kuis</p>
           <p className="text-3xl font-bold text-slate-900">{result.score}</p>
           <p className="text-sm text-slate-700">
             {result.correct} dari {result.total} benar · {result.score >= quiz.passingScore ? "Lulus 🎉" : "Belum mencapai nilai lulus"}
@@ -111,7 +111,7 @@ export default async function QuizPage({ params, searchParams }: { params: Promi
           <ul className="text-sm text-slate-600">
             {history.map((h) => (
               <li key={h.id}>
-                {tanggal(h.createdAt, true)} — {h.score} ({h.correct}/{h.total})
+                {tanggal(h.createdAt, true)} - {h.score} ({h.correct}/{h.total})
               </li>
             ))}
           </ul>

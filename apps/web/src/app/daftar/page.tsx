@@ -27,17 +27,17 @@ export default async function RegisterPage({ searchParams }: { searchParams: Sea
           <Field label="Nomor WhatsApp" hint="Dipakai admin untuk konfirmasi pembayaran dan jadwal bimbingan.">
             <input className="input" name="phone" required inputMode="tel" autoComplete="tel" placeholder="0812…" />
           </Field>
-          <Field label="Instansi / universitas (opsional)">
-            <input className="input" name="institution" />
+          <Field label="Instansi / universitas">
+            <input className="input" name="institution" required autoComplete="organization" />
           </Field>
           <Field label="Email">
             <input className="input" type="email" name="email" required autoComplete="email" />
           </Field>
-          <Field label="Kata sandi" hint="Minimal 8 karakter.">
-            <input className="input" type="password" name="password" required minLength={8} autoComplete="new-password" />
+          <Field label="Kata sandi" hint="Minimal 6 karakter.">
+            <input className="input" type="password" name="password" required minLength={6} autoComplete="new-password" />
           </Field>
           <Field label="Ulangi kata sandi">
-            <input className="input" type="password" name="confirm" required minLength={8} autoComplete="new-password" />
+            <input className="input" type="password" name="confirm" required minLength={6} autoComplete="new-password" />
           </Field>
           <button className="btn w-full" type="submit">
             Daftar

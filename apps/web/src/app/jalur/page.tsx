@@ -14,7 +14,7 @@ export default async function PathsPage() {
   return (
     <div className="container-page py-10">
       <h1 className="h1">Jalur belajar</h1>
-      <p className="mt-2 max-w-2xl text-slate-600">Rangkaian kelas yang disusun berurutan, supaya Anda tahu harus mulai dari mana dan apa langkah berikutnya.</p>
+      <p className="mt-2 max-w-2xl text-slate-600">Rangkaian kelas yang disusun berurutan, supaya jelas harus mulai dari mana dan apa langkah berikutnya.</p>
 
       {paths.length === 0 ? (
         <div className="mt-8">

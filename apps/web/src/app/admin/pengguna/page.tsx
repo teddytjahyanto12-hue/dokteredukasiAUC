@@ -27,7 +27,7 @@ export default async function AdminStudents({ searchParams }: { searchParams: Se
 
   return (
     <>
-      <PageHeader title="Murid" subtitle="Pelanggan mendaftar sendiri di website. Di sini Anda bisa mencari, mengubah, dan memberi akses paket." />
+      <PageHeader title="Murid" subtitle="Pelanggan mendaftar sendiri di website. Di sini murid bisa dicari, diubah, dan diberi akses paket." />
       <Flash pesan={pesan} tipe={tipe} />
 
       <details className="card mb-6">
@@ -43,8 +43,8 @@ export default async function AdminStudents({ searchParams }: { searchParams: Se
           <Field label="No. WhatsApp">
             <input className="input" name="phone" />
           </Field>
-          <Field label="Kata sandi awal" hint="Minimal 8 karakter. Sampaikan ke murid secara pribadi.">
-            <input className="input" name="password" required minLength={8} autoComplete="new-password" />
+          <Field label="Kata sandi awal" hint="Minimal 6 karakter. Sampaikan ke murid secara pribadi.">
+            <input className="input" name="password" required minLength={6} autoComplete="new-password" />
           </Field>
           <div>
             <button className="btn" type="submit">

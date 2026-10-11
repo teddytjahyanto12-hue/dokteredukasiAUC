@@ -13,6 +13,9 @@ import { parseWibDateTime, tanggal } from "@/lib/format";
 import { CLOSE_REASONS, CLOSE_REASON_LABEL } from "@/lib/constants";
 import { isStageLocked, lockedFromStage } from "@/lib/installments";
 import { copyServiceTasks } from "@/lib/orders";
+import { zoomAllowance } from "@/lib/zoom";
+import { getSettings, whatsappLink } from "@/lib/settings";
+import { redirect } from "next/navigation";
 
 async function load(form: FormData) {
   const user = await requireUser();
@@ -74,6 +77,7 @@ export async function updateSessionAction(form: FormData) {
   if (!session) back(path, "Sesi tidak ditemukan.", "error");
   if (session.verifiedAt) back(path, "Sesi sudah divalidasi dan dikunci. Batalkan validasi dulu bila perlu perubahan.", "error");
   if (session.status === "CANCELLED") back(path, "Sesi sudah dibatalkan.", "error");
+  if (session.status === "REQUESTED") back(path, "Jadwal Zoom ini masih menunggu konfirmasi admin.", "error");
 
   const isAdmin = hasPermission(user, "admin.mentoring");
   const status = str(form, "status");
@@ -96,6 +100,10 @@ export async function updateSessionAction(form: FormData) {
 
   // Menandai selesai wajib menyertakan bukti untuk divalidasi admin.
   if (status === "DONE" && !summary) back(path, "Isi catatan/bahasan sesi sebelum menandai selesai.", "error");
+  // Zoom dari kuota paket: rekaman wajib diunggah ke Drive dan tautannya dilampirkan.
+  if (status === "DONE" && session.seq !== null && !recordingUrl) {
+    back(path, "Lampirkan link Google Drive rekaman Zoom (pastikan aksesnya bisa dilihat) sebelum menandai selesai.", "error");
+  }
   if (status === "DONE" && !proofUrl && !proofFileId && !recordingUrl) {
     back(path, "Sertakan bukti sesi (link rekaman, link bukti, atau unggah screenshot/PDF) sebelum menandai selesai.", "error");
   }
@@ -216,14 +224,27 @@ export async function validateSessionAction(form: FormData) {
   if (!session.summary || (!session.proofUrl && !session.proofFileId && !session.recordingUrl)) {
     back(path, "Sesi belum memiliki catatan dan bukti; minta revisi ke tutor.", "error");
   }
-  const mentoring = await db.mentoring.findUnique({ where: { id: m.id }, select: { tutorId: true, packageId: true } });
+  const mentoring = await db.mentoring.findUnique({
+    where: { id: m.id },
+    select: {
+      tutorId: true,
+      packageId: true,
+      package: { select: { zoomFee: true, zoomQuota: true } },
+      order: { select: { addons: { select: { addon: { select: { zoomCredits: true, hpp: true } } } } } },
+    },
+  });
   if (!mentoring?.tutorId) back(path, "Bimbingan belum memiliki tutor.", "error");
   const profile = await db.tutorProfile.findUnique({ where: { userId: mentoring.tutorId } });
   // Urutan fee: isian admin → fee tutor untuk layanan ini → rate umum tutor.
   const serviceFee = mentoring.packageId
     ? (await db.tutorServiceEligibility.findUnique({ where: { tutorId_packageId: { tutorId: mentoring.tutorId, packageId: mentoring.packageId } } }))?.fee
     : null;
-  const fee = optInt(form, "fee") ?? serviceFee ?? profile?.rate ?? null;
+  // Zoom dari kuota paket memakai fee Zoom paket (mis. Rp40.000 Basic/Intermediate, Rp35.000 Pro).
+  // Zoom tambahan (di luar kuota paket) dibayar sesuai biaya tutor add-on Zoom (HPP add-on, mis. Rp40.000).
+  const extraZoomFee = mentoring.order?.addons.find((a) => (a.addon?.zoomCredits ?? 0) > 0)?.addon?.hpp ?? null;
+  const isExtraZoom = session.seq !== null && session.seq > (mentoring.package?.zoomQuota ?? 0);
+  const zoomFee = session.seq !== null ? (isExtraZoom ? extraZoomFee ?? mentoring.package?.zoomFee : mentoring.package?.zoomFee) ?? null : null;
+  const fee = optInt(form, "fee") ?? zoomFee ?? serviceFee ?? profile?.rate ?? null;
   if (fee === null) back(path, "Rate tutor belum ditetapkan; isi fee sesi atau atur rate di data tutor.", "error");
 
   // updateMany dengan syarat verifiedAt null mencegah validasi ganda bersamaan.
@@ -261,7 +282,7 @@ export async function closeProjectAction(form: FormData) {
       data: { status: "CLOSED", closeReason: reason, closeNote: note, closedAt: new Date(), closedById: user.id },
     }),
   ]);
-  await logAudit(actor(user), "PROJECT_CLOSED", "Mentoring", m.id, `Ditutup: ${CLOSE_REASON_LABEL[reason]}${note ? ` — ${note}` : ""}`, {
+  await logAudit(actor(user), "PROJECT_CLOSED", "Mentoring", m.id, `Ditutup: ${CLOSE_REASON_LABEL[reason]}${note ? ` - ${note}` : ""}`, {
     before: { status: m.status },
     after: { status: "CLOSED", reason },
   });
@@ -315,13 +336,22 @@ export async function markTaskDoneAction(form: FormData) {
   if (!note) back(path, "Isi catatan hasil pekerjaan sebelum menandai selesai.", "error");
   const evidenceUrl = optStr(form, "evidenceUrl");
   if (evidenceUrl && !/^https?:\/\//.test(evidenceUrl)) back(path, "Link bukti harus diawali http(s)://", "error");
+  let evidenceFileId = task.evidenceFileId;
+  try {
+    const upload = await saveUpload(form.get("evidenceFile") as File | null, user.id, { allowOffice: true });
+    if (upload) evidenceFileId = upload.id;
+  } catch (e) {
+    if (e instanceof UploadError) back(path, e.message, "error");
+    throw e;
+  }
+  if (!evidenceUrl && !evidenceFileId) back(path, "Unggah bukti (screenshot chat grup, PDF, DOCX, XLSX) atau isi link bukti/rekaman.", "error");
 
-  await db.projectTask.update({ where: { id: task.id }, data: { status: "DONE", note, evidenceUrl, doneAt: new Date(), revisionNote: null } });
+  await db.projectTask.update({ where: { id: task.id }, data: { status: "DONE", note, evidenceUrl, evidenceFileId, doneAt: new Date(), revisionNote: null } });
   await logAudit(actor(user), "TASK_MARKED_DONE", "ProjectTask", task.id, `${user.name} menandai selesai: ${task.title}`, {
     before: { status: task.status },
     after: { status: "DONE" },
   });
-  await notifyStaff("admin.validation", { title: "Task menunggu validasi", body: `${task.title} — ${user.name}`, link: "/admin/validasi" });
+  await notifyStaff("admin.validation", { title: "Task menunggu validasi", body: `${task.title} - ${user.name}`, link: "/admin/validasi" });
   back(path, "Task ditandai selesai dan masuk antrean validasi admin.");
 }
 
@@ -333,6 +363,7 @@ export async function validateTaskAction(form: FormData) {
 
   if (decision === "UNVALIDATE") {
     if (!task.validatedAt) back(path, "Task belum divalidasi.", "error");
+    if (task.payrollId) back(path, "Pencapaian sudah masuk payroll; void payroll dulu bila perlu.", "error");
     await db.projectTask.update({ where: { id: task.id }, data: { validatedAt: null, validatedById: null } });
     await logAudit(actor(user), "TASK_REVISION", "ProjectTask", task.id, `Validasi task dibatalkan: ${task.title}`);
     back(path, "Validasi task dibatalkan.");
@@ -352,7 +383,9 @@ export async function validateTaskAction(form: FormData) {
   if (decision !== "APPROVE") back(path, "Keputusan tidak valid.", "error");
   const res = await db.projectTask.updateMany({ where: { id: task.id, validatedAt: null, status: "DONE" }, data: { validatedAt: new Date(), validatedById: user.id } });
   if (res.count === 0) back(path, "Task sudah divalidasi admin lain.", "error");
-  await logAudit(actor(user), "TASK_VALIDATED", "ProjectTask", task.id, `Task divalidasi: ${task.title}`);
+  await logAudit(actor(user), "TASK_VALIDATED", "ProjectTask", task.id, `Task divalidasi: ${task.title}${task.fee ? ` (fee Rp${task.fee.toLocaleString("id-ID")} payable)` : ""}`);
+  const tutorOf = await db.mentoring.findUnique({ where: { id: m.id }, select: { tutorId: true } });
+  if (tutorOf?.tutorId) await notifyUser(tutorOf.tutorId, { title: "Pencapaian diverifikasi", body: task.fee ? `${task.title}: fee masuk daftar payroll.` : task.title, link: `/bimbingan/${m.id}` });
 
   // Progres proyek mengikuti persentase task tervalidasi.
   const [total, done] = await Promise.all([
@@ -406,4 +439,101 @@ export async function applyServiceTemplateAction(form: FormData) {
   if (!n) back(path, "Layanan belum punya tahap & checklist. Atur di halaman layanan.", "error");
   await logAudit(actor(user), "TASK_CHANGED", "Mentoring", m.id, `Checklist layanan diterapkan (${n} task)`);
   back(path, `${n} task dari layanan ditambahkan.`);
+}
+
+
+// ---------- Zoom dari kuota paket ----------
+
+// Murid memilih "Zoom n", tanggal & jam → sesi REQUESTED → diarahkan ke WhatsApp admin dengan rincian.
+export async function requestZoomAction(form: FormData) {
+  const { user, m, path } = await load(form);
+  if (m.studentId !== user.id) back(path, "Hanya murid pemilik bimbingan yang dapat mengajukan jadwal Zoom.", "error");
+  const z = await zoomAllowance(m.id);
+  if (!z || z.closed) back(path, "Bimbingan sudah ditutup.", "error");
+  if (z.expired) back(path, `Masa penggunaan Zoom berakhir ${tanggal(z.serviceEndsAt)}.`, "error");
+  const seq = optInt(form, "seq");
+  if (!seq || !z.available.includes(seq)) back(path, "Zoom ini sudah diajukan atau di luar kuota paket.", "error");
+  const when = parseWibDateTime(str(form, "preferredAt"));
+  if (!when) back(path, "Pilih tanggal dan jam Zoom.", "error");
+  if (when.getTime() < Date.now() + 60 * 60 * 1000) back(path, "Pilih waktu minimal 1 jam dari sekarang.", "error");
+  const note = optStr(form, "note");
+
+  const s = await db.mentoringSession.create({
+    data: { mentoringId: m.id, seq, scheduledAt: when, requestedAt: new Date(), status: "REQUESTED", summary: note ? `Permintaan murid: ${note}` : null },
+  });
+  await logAudit(actor(user), "ZOOM_REQUESTED", "MentoringSession", s.id, `${user.name} mengajukan Zoom ${seq}: ${tanggal(when, true)} WIB`);
+  await notifyStaff("admin.mentoring", { title: `Permintaan Zoom ${seq}`, body: `${user.name} memilih ${tanggal(when, true)} WIB.`, link: `/bimbingan/${m.id}` });
+
+  const [settings, detail] = await Promise.all([
+    getSettings(),
+    db.mentoring.findUnique({ where: { id: m.id }, select: { package: { select: { name: true } }, order: { select: { code: true } }, tutor: { select: { name: true } } } }),
+  ]);
+  const text = [
+    `*Permintaan jadwal Zoom ${seq}*`,
+    settings.siteName,
+    "",
+    `Nama: ${user.name}`,
+    `Email: ${user.email}`,
+    `Paket: ${detail?.package?.name ?? "-"}`,
+    detail?.order ? `Kode order: ${detail.order.code}` : null,
+    `Zoom ke-${seq} dari ${z.quota}`,
+    `Jadwal yang dipilih: ${tanggal(when, true)} WIB`,
+    detail?.tutor ? `Tutor: ${detail.tutor.name}` : null,
+    note ? `Catatan: ${note}` : null,
+    "",
+    "Mohon konfirmasi jadwalnya. Terima kasih.",
+  ]
+    .filter((x) => x !== null)
+    .join("\n");
+  const wa = whatsappLink(settings.adminWhatsapp, text);
+  revalidatePath(path);
+  if (wa) redirect(wa);
+  back(path, `Permintaan Zoom ${seq} terkirim ke admin. Nomor WhatsApp admin belum diatur, jadi admin akan menghubungi lewat notifikasi.`);
+}
+
+// Admin menetapkan jadwal final yang disetujui murid & tutor (+ tutor bila belum ada) → Zoom terjadwal.
+export async function confirmZoomAction(form: FormData) {
+  const { user, m, path } = await load(form);
+  if (!hasPermission(user, "admin.mentoring")) back(path, "Hanya admin bimbingan yang dapat mengonfirmasi jadwal.", "error");
+  assertOpen(m, path);
+  const session = await db.mentoringSession.findFirst({ where: { id: str(form, "sessionId"), mentoringId: m.id } });
+  if (!session || session.status !== "REQUESTED") back(path, "Permintaan Zoom tidak ditemukan atau sudah dikonfirmasi.", "error");
+  const scheduledAt = parseWibDateTime(str(form, "scheduledAt"));
+  if (!scheduledAt) back(path, "Isi jadwal final (tanggal & jam).", "error");
+  const zoomLink = optStr(form, "zoomLink");
+  if (zoomLink && !/^https?:\/\//.test(zoomLink)) back(path, "Link Zoom harus diawali http(s)://", "error");
+
+  let tutorId = m.tutorId;
+  const pickTutor = optStr(form, "tutorId");
+  if (!tutorId && pickTutor) {
+    const t = await db.user.findFirst({ where: { id: pickTutor, role: "TUTOR", active: true } });
+    if (!t) back(path, "Tutor tidak valid.", "error");
+    tutorId = t.id;
+    await db.mentoring.update({ where: { id: m.id }, data: { tutorId, status: "ACTIVE" } });
+  }
+  if (!tutorId) back(path, "Tugaskan tutor terlebih dahulu (pilih tutor pada form konfirmasi).", "error");
+
+  await db.mentoringSession.update({ where: { id: session.id }, data: { status: "SCHEDULED", scheduledAt, zoomLink } });
+  await db.mentoring.update({ where: { id: m.id }, data: { status: "ACTIVE" } });
+  await logAudit(actor(user), "ZOOM_CONFIRMED", "MentoringSession", session.id, `Zoom ${session.seq ?? ""} dikonfirmasi: ${tanggal(scheduledAt, true)} WIB`, {
+    before: { status: "REQUESTED", scheduledAt: session.scheduledAt },
+    after: { status: "SCHEDULED", scheduledAt },
+  });
+  const body = `Zoom ${session.seq ?? ""} terjadwal ${tanggal(scheduledAt, true)} WIB.`;
+  await notifyUser(m.studentId, { title: "Jadwal Zoom dikonfirmasi", body, link: `/bimbingan/${m.id}`, email: true });
+  await notifyUser(tutorId, { title: "Zoom baru terjadwal", body, link: `/bimbingan/${m.id}`, email: true });
+  back(path, "Jadwal Zoom dikonfirmasi. Murid dan tutor sudah diberi tahu.");
+}
+
+// Admin membatalkan permintaan Zoom (mis. jadwal tidak cocok) → kuota Zoom ke-n kembali bisa diajukan murid.
+export async function cancelZoomRequestAction(form: FormData) {
+  const { user, m, path } = await load(form);
+  if (!hasPermission(user, "admin.mentoring")) back(path, "Hanya admin bimbingan yang dapat membatalkan permintaan.", "error");
+  const session = await db.mentoringSession.findFirst({ where: { id: str(form, "sessionId"), mentoringId: m.id, status: "REQUESTED" } });
+  if (!session) back(path, "Permintaan Zoom tidak ditemukan atau sudah diproses.", "error");
+  const reason = str(form, "reason") || "Jadwal belum cocok";
+  await db.mentoringSession.update({ where: { id: session.id }, data: { status: "CANCELLED", revisionNote: reason } });
+  await logAudit(actor(user), "ZOOM_REQUEST_CANCELLED", "MentoringSession", session.id, `Permintaan Zoom ${session.seq ?? ""} dibatalkan: ${reason}`);
+  await notifyUser(m.studentId, { title: `Permintaan Zoom ${session.seq ?? ""} perlu diajukan ulang`, body: reason, link: `/bimbingan/${m.id}` });
+  back(path, "Permintaan dibatalkan. Murid dapat mengajukan jadwal baru untuk Zoom ini.");
 }

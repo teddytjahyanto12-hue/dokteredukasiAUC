@@ -36,19 +36,20 @@ export function CourseCard({ course, stats, open, students, loggedIn }: { course
     .join("");
 
   return (
-    <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white transition hover:border-sky-300">
+    <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white transition hover:border-mascot">
       <Link href={detail} className="relative block" aria-label={`Lihat kelas ${course.title}`}>
         {course.posterFileId ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img src={`/api/berkas/${course.posterFileId}`} alt="" className="aspect-[16/9] w-full object-cover" />
         ) : (
-          <div className="aspect-[16/9]"><CourseArt title={course.title} program={course.track.slug} /></div>
+          <div className="aspect-[16/9]"><CourseArt title={course.title} program={course.track.slug} art={course.artKey} /></div>
         )}
       </Link>
 
       <div className="flex flex-1 flex-col p-5">
         <div className="flex flex-wrap items-center justify-between gap-2 text-xs"><span className="font-semibold text-brand">{course.track.title}</span>{!hasResources && <span className="text-slate-500">Segera hadir</span>}</div>
         {meta.length > 0 && <p className="mt-2 text-xs text-slate-500">{meta.join("  ·  ")}</p>}
+        {course.code && <p className="num mt-2 text-xs font-semibold text-brand">{course.code}</p>}
         <h3 className="mt-2 line-clamp-2 text-lg font-semibold leading-snug text-slate-900">
           <Link href={detail} className="hover:text-brand">
             {course.title}
@@ -65,7 +66,7 @@ export function CourseCard({ course, stats, open, students, loggedIn }: { course
 
         {hasResources ? <dl className="mt-4 flex flex-wrap gap-x-4 gap-y-2 border-t border-slate-100 pt-4">
           {[
-            [course.topics.length, "topik"],
+            course.children.length ? [course.children.length, (course.childLabel || "Blok").toLowerCase()] : [course.topics.length, "topik"],
             [stats.total, "materi"],
             [stats.quizzes, "kuis"],
           ].filter(([n]) => Number(n) > 0).map(([n, unit]) => (
@@ -83,11 +84,20 @@ export function CourseCard({ course, stats, open, students, loggedIn }: { course
                 <span className="num font-semibold text-brand">{stats.pct}%</span>
               </div>
               <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-slate-100">
-                <div className={`h-full rounded-full ${stats.pct === 100 ? "bg-success" : "bg-brand"}`} style={{ width: `${stats.pct}%` }} />
+                <div className={`h-full rounded-full ${stats.pct === 100 ? "bg-success" : "bg-mascot"}`} style={{ width: `${stats.pct}%` }} />
               </div>
             </div>
           )}
-          {stats.started && target ? (
+          {course.children.length > 0 && !(stats.started && target) ? (
+            // Kelas induk berisi Blok: arahkan ke halaman kelas untuk melihat kurikulum Blok.
+            <div className="flex flex-col gap-3">
+              <Link href={detail} className="btn w-full">
+                Lihat Kelas
+                <Icon name="arrow" className="h-3.5 w-3.5" />
+              </Link>
+              {startAt && !open && stats.free > 0 && <Link href={start} className="py-1 text-center text-sm font-medium text-slate-600 hover:text-brand">Coba materi gratis</Link>}
+            </div>
+          ) : stats.started && target ? (
             <Link href={lesson} className="btn w-full">
               <Icon name="play" className="h-3.5 w-3.5" fill />
               {stats.completed ? "Buka Lagi" : "Lanjutkan Belajar"} ({stats.done}/{stats.total})

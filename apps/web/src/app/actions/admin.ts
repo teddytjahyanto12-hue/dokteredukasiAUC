@@ -21,6 +21,18 @@ const actor = (u: CurrentUser) => ({ id: u.id, name: u.name });
 
 // ---------- Order ----------
 
+// Bukti transfer wajib diunggah saat admin menyetujui pembayaran manual.
+async function saveProof(form: FormData, me: CurrentUser, path: string) {
+  let file: Awaited<ReturnType<typeof saveUpload>>;
+  try {
+    file = await saveUpload(form.get("proof") as File | null, me.id);
+  } catch (e) {
+    back(path, e instanceof UploadError ? e.message : "Bukti pembayaran gagal diunggah.", "error");
+  }
+  if (!file) back(path, "Unggah bukti pembayaran (gambar atau PDF) sebelum menyetujui.", "error");
+  return file.id;
+}
+
 export async function markOrderPaidAction(form: FormData) {
   const me = await requirePermission("admin.orders");
   const id = str(form, "orderId");
@@ -29,6 +41,8 @@ export async function markOrderPaidAction(form: FormData) {
   const note = optStr(form, "note");
   const before = await db.order.findUnique({ where: { id } });
   if (!before) back("/admin/order", "Order tidak ditemukan.", "error");
+  if (before.status === "PAID") back(path, "Order sudah lunas sebelumnya.");
+  const proofFileId = await saveProof(form, me, path);
   if (before.status === "PENDING" && (amount !== null || note !== null)) {
     await db.order.update({ where: { id }, data: { ...(amount !== null ? { amount } : {}), ...(note !== null ? { note } : {}) } });
   }
@@ -39,11 +53,12 @@ export async function markOrderPaidAction(form: FormData) {
     back(path, e instanceof Error ? e.message : "Gagal menandai lunas.", "error");
   }
   if (result.alreadyPaid) back(path, "Order sudah lunas sebelumnya.");
-  await logAudit(actor(me), "ORDER_PAID", "Order", id, `Order ${before.code} ditandai lunas (${rupiah(result.order.amount)})`, {
+  await db.order.update({ where: { id }, data: { proofFileId } });
+  await logAudit(actor(me), "ORDER_PAID", "Order", id, `Pembayaran order ${before.code} disetujui dengan bukti transfer (${rupiah(result.order.amount)})`, {
     before: { status: before.status, amount: before.amount },
-    after: { status: "PAID", amount: result.order.amount, paymentRef: result.order.paymentRef },
+    after: { status: "PAID", amount: result.order.amount, paymentRef: result.order.paymentRef, proofFileId },
   });
-  back(path, "Order ditandai lunas. Akses murid aktif.");
+  back(path, "Pembayaran disetujui dan bukti tersimpan. Akses murid aktif.");
 }
 
 export async function markInstallmentPaidAction(form: FormData) {
@@ -52,14 +67,16 @@ export async function markInstallmentPaidAction(form: FormData) {
   const path = `/admin/order/${id}`;
   const seq = optInt(form, "seq");
   if (!seq) back(path, "Cicilan tidak valid.", "error");
+  const proofFileId = await saveProof(form, me, path);
   let result: Awaited<ReturnType<typeof markInstallmentPaid>>;
   try {
     result = await markInstallmentPaid(id, seq, { grantedById: me.id, paymentRef: optStr(form, "paymentRef") });
   } catch (e) {
     back(path, e instanceof Error ? e.message : "Gagal mengonfirmasi cicilan.", "error");
   }
-  await logAudit(actor(me), "INSTALLMENT_PAID", "Order", id, `${result.installment.label} order ${result.order.code} lunas (${rupiah(result.installment.amount)})`, {
-    after: { seq, orderStatus: result.order.status },
+  await db.orderInstallment.update({ where: { orderId_seq: { orderId: id, seq } }, data: { proofFileId } });
+  await logAudit(actor(me), "INSTALLMENT_PAID", "Order", id, `${result.installment.label} order ${result.order.code} disetujui dengan bukti transfer (${rupiah(result.installment.amount)})`, {
+    after: { seq, orderStatus: result.order.status, proofFileId },
   });
   back(
     path,
@@ -157,7 +174,7 @@ const userSchema = z.object({
   name: z.string().min(2, "Nama minimal 2 karakter."),
   email: z.string().email("Email tidak valid."),
   role: z.enum(["ADMIN", "TUTOR", "STUDENT"]),
-  password: z.string().min(8, "Kata sandi minimal 8 karakter."),
+  password: z.string().min(6, "Kata sandi minimal 6 karakter."),
 });
 
 function canManageAccount(me: CurrentUser, targetRole: string) {
@@ -202,7 +219,7 @@ export async function updateUserAction(form: FormData) {
   const backTo = str(form, "back") || `/admin/pengguna/${id}`;
   const target = await db.user.findUnique({ where: { id } });
   if (!target) back("/admin", "Akun tidak ditemukan.", "error");
-  if (!canManageAccount(me, target.role)) back(backTo, "Anda tidak berwenang mengubah akun ini.", "error");
+  if (!canManageAccount(me, target.role)) back(backTo, "Tidak berwenang mengubah akun ini.", "error");
   const name = str(form, "name");
   if (name.length < 2) back(backTo, "Nama minimal 2 karakter.", "error");
   const active = bool(form, "active");
@@ -250,9 +267,9 @@ export async function resetPasswordAction(form: FormData) {
   const id = str(form, "userId");
   const target = await db.user.findUnique({ where: { id } });
   const backTo = target?.role === "STUDENT" ? `/admin/pengguna/${id}` : `/admin/tim/${id}`;
-  if (!target || !canManageAccount(me, target.role)) back(backTo, "Anda tidak berwenang.", "error");
+  if (!target || !canManageAccount(me, target.role)) back(backTo, "Tidak berwenang.", "error");
   const password = String(form.get("password") ?? "");
-  if (password.length < 8) back(backTo, "Kata sandi minimal 8 karakter.", "error");
+  if (password.length < 6) back(backTo, "Kata sandi minimal 6 karakter.", "error");
   await db.user.update({ where: { id }, data: { passwordHash: await hashPassword(password) } });
   await logAudit(actor(me), "PASSWORD_RESET", "User", id, `Kata sandi ${target.name} diatur ulang`);
   back(backTo, "Kata sandi diganti. Sampaikan ke pengguna melalui kanal pribadi.");
@@ -368,20 +385,24 @@ export async function createPayrollAction(form: FormData) {
   const sessions = await db.mentoringSession.findMany({
     where: { mentoring: { tutorId }, verifiedAt: { not: null }, payrollId: null },
   });
-  if (sessions.length === 0) back("/admin/payroll", "Tidak ada sesi tervalidasi yang belum dibayar untuk tutor ini.", "error");
-  const amount = sessions.reduce((sum, s) => sum + (s.fee ?? 0), 0);
+  // Pencapaian berbayar (mis. paket Pro) yang sudah diverifikasi admin.
+  const tasks = await db.projectTask.findMany({ where: { mentoring: { tutorId }, validatedAt: { not: null }, fee: { gt: 0 }, payrollId: null } });
+  if (sessions.length === 0 && tasks.length === 0) back("/admin/payroll", "Tidak ada sesi/pencapaian tervalidasi yang belum dibayar untuk tutor ini.", "error");
+  const amount = sessions.reduce((sum, s) => sum + (s.fee ?? 0), 0) + tasks.reduce((sum, t) => sum + (t.fee ?? 0), 0);
   const payroll = await db.$transaction(async (tx) => {
     const p = await tx.payroll.create({ data: { tutorId, periodLabel, amount, notes: optStr(form, "notes") } });
     // Syarat payrollId null mencegah sesi yang sama masuk dua payroll bila diproses bersamaan.
     const res = await tx.mentoringSession.updateMany({ where: { id: { in: sessions.map((s) => s.id) }, payrollId: null }, data: { payrollId: p.id } });
     if (res.count !== sessions.length) throw new Error("Sebagian sesi sudah masuk payroll lain. Muat ulang halaman.");
+    const resT = await tx.projectTask.updateMany({ where: { id: { in: tasks.map((t) => t.id) }, payrollId: null }, data: { payrollId: p.id } });
+    if (resT.count !== tasks.length) throw new Error("Sebagian pencapaian sudah masuk payroll lain. Muat ulang halaman.");
     return p;
   });
-  await logAudit(actor(me), "PAYROLL_CREATED", "Payroll", payroll.id, `Payroll ${periodLabel}: ${sessions.length} sesi, ${rupiah(amount)}`, {
-    after: { sessionIds: sessions.map((s) => s.id), amount },
+  await logAudit(actor(me), "PAYROLL_CREATED", "Payroll", payroll.id, `Payroll ${periodLabel}: ${sessions.length} sesi, ${tasks.length} pencapaian, ${rupiah(amount)}`, {
+    after: { sessionIds: sessions.map((s) => s.id), taskIds: tasks.map((t) => t.id), amount },
   });
-  await notifyUser(tutorId, { title: `Payroll ${periodLabel} dibuat`, body: `${sessions.length} sesi.`, link: "/tutor-panel/payroll" });
-  back("/admin/payroll", `Payroll dibuat untuk ${sessions.length} sesi.`);
+  await notifyUser(tutorId, { title: `Payroll ${periodLabel} dibuat`, body: `${sessions.length} sesi, ${tasks.length} pencapaian.`, link: "/tutor-panel/payroll" });
+  back("/admin/payroll", `Payroll dibuat: ${sessions.length} sesi dan ${tasks.length} pencapaian.`);
 }
 
 export async function markPayrollPaidAction(form: FormData) {
@@ -427,6 +448,7 @@ export async function voidPayrollAction(form: FormData) {
   if (!reason) back("/admin/payroll", "Isi alasan pembatalan payroll.", "error");
   await db.$transaction([
     db.mentoringSession.updateMany({ where: { payrollId: id }, data: { payrollId: null } }),
+    db.projectTask.updateMany({ where: { payrollId: id }, data: { payrollId: null } }),
     db.payroll.update({ where: { id }, data: { status: "VOID", voidReason: reason } }),
   ]);
   await logAudit(actor(me), "PAYROLL_VOIDED", "Payroll", id, `Payroll ${payroll.periodLabel} dibatalkan: ${reason}`);
@@ -454,6 +476,6 @@ export async function sendReportNowAction(kind: "weekly" | "monthly") {
   const r = await sendPeriodicReport(kind, { force: true });
   await logAudit(actor(me), "REPORT_EMAIL_SENT", "Setting", null, `Laporan ${kind === "weekly" ? "mingguan" : "bulanan"} dikirim manual`);
   if ("skipped" in r) back("/admin/laporan", r.skipped ?? "Tidak dikirim.", "error");
-  if (!r.sent) back("/admin/laporan", `Laporan ${r.label} tidak terkirim (${r.total} penerima). Periksa menu Email — kemungkinan SMTP belum diatur.`, "error");
+  if (!r.sent) back("/admin/laporan", `Laporan ${r.label} tidak terkirim (${r.total} penerima). Periksa menu Email - kemungkinan SMTP belum diatur.`, "error");
   back("/admin/laporan", `Laporan ${r.label} terkirim ke ${r.sent} dari ${r.total} penerima.`);
 }

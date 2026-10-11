@@ -22,7 +22,7 @@ export default async function ServicesPage() {
   return (
     <div className="container-page py-10">
       <h1 className="h1">Layanan</h1>
-      <p className="mt-2 text-slate-600">Pilih layanan, masa belajar, dan add-on sesuai kebutuhan Anda.</p>
+      <p className="mt-2 text-slate-600">Pilih layanan, masa belajar, dan add-on sesuai kebutuhan.</p>
 
       {groups.map((g) => (
         <section key={g.key} className="mt-10">
@@ -37,7 +37,7 @@ export default async function ServicesPage() {
                     <img src={`/api/berkas/${p.posterFileId}`} alt={`Poster ${p.name}`} className="aspect-[4/5] w-full object-cover" />
                   ) : (
                     // Tanpa poster: tampilkan kartu berbentuk poster agar grid tetap rapi.
-                    <div className="flex aspect-[4/5] w-full flex-col justify-end bg-gradient-to-br from-brand to-brand-dark p-6 text-white" aria-hidden>
+                    <div className="flex aspect-[4/5] w-full flex-col justify-end bg-gradient-to-br from-neutral-900 to-neutral-700 p-6 text-white" aria-hidden>
                       <span className="text-xs font-semibold uppercase tracking-widest text-white/70">{g.title}</span>
                       <span className="mt-2 text-2xl font-bold leading-tight">{p.name}</span>
                     </div>

@@ -3,10 +3,11 @@
 File ini adalah sumber kebenaran tunggal untuk status, keputusan, dan serah terima Codex / Claude Code. Dokumen lain menyimpan detail, bukan salinan status.
 
 ## Status terkini
-- Pembaruan terakhir: 2026-10-06 (Asia/Jakarta), serah terima Claude diterima dan sinkronisasi kode diperiksa oleh Codex.
-- Tahap: aplikasi lokal sudah mencakup katalog kelas, jalur belajar, rekomendasi, progres/streak, ruang belajar dengan materi terkunci, panel operasional, invoice manual, email/laporan, dan integrasi Duitku. Rincian serta hasil uji Claude ada di riwayat 2026-10-06; belum deploy, SMTP asli dan sandbox Duitku asli belum diuji.
-- Pekerjaan terakhir oleh: Codex (pemeriksaan sinkronisasi dan pembaruan memori; implementasi terakhir oleh Claude Code).
-- Pelaksana aktif: tidak ada; keterangan visual sudah diarahkan ke pengaturan owner dan serah terima Claude siap.
+- Pembaruan terakhir: 2026-10-12 (Asia/Jakarta), Claude Code (PC 2): WA admin, laporan fee terutang, pembersihan paket lama, serah terima ke Codex.
+- Tahap: aplikasi lokal berisi katalog (22 Blok BMS + section Medical Research), paket Blok & SR-MA, pembayaran manual dengan bukti, alur Zoom & pencapaian Pro dengan payroll, laporan fee terutang, kode Blok/Bab, Terakhir dibuka, banner pengumuman. Semua perubahan 7-12 Okt BELUM di-commit/push; belum deploy. Ringkasan operan: handoffs/SERAH_TERIMA_CODEX_2026-10-12.md.
+- Pekerjaan terakhir oleh: Claude Code (PC 2).
+- Pelaksana aktif: tidak ada; Claude Code (PC 2) menyerahkan ke Codex (2026-10-12). Codex: baca handoffs/SERAH_TERIMA_CODEX_2026-10-12.md lalu catat penerimaan di sini.
+- Referensi kedua: folder research/Framework Sparkmedical/ dibuat 2026-10-12 (Claude Code) berisi README, AUDIT.md, SORTIR.md, screenshots/. Audit Sparkmedical BELUM dimulai; URL belum diberikan. Fitur hanya diterapkan setelah disortir pengguna di SORTIR.md.
 - Auctus Academy telah dipelajari pada 22 halaman publik dan sebagian area akun setelah login manual. Aplikasi proyek: apps/web (lihat bagian "Fondasi aplikasi").
 
 ## Tujuan dan kebutuhan yang sudah dinyatakan
@@ -46,6 +47,7 @@ File ini adalah sumber kebenaran tunggal untuk status, keputusan, dan serah teri
 | P06 | Menentukan arsitektur dan model data | Selesai (fondasi) | apps/web/prisma/schema.prisma; docs/RENCANA_EKSEKUSI_DOKTER_EDUKASI.md |
 | P07 | Implementasi frontend, backend, dan video | Fondasi selesai | apps/web: publik, murid, tutor, admin; video via tautan embed; Duitku/email/AI belum |
 | P08 | Pengujian peran, akses, video, dan deployment | Sebagian | Uji manual alur lengkap di browser lokal 2026-09-28; belum ada tes otomatis; belum deploy |
+| P09 | Studi referensi kedua: Sparkmedical | Disiapkan | research/Framework Sparkmedical/ (templat audit & sortir); audit belum dimulai, menunggu URL/cakupan akses dari pengguna |
 
 ## Masukan yang masih dibutuhkan
 1. URL sudah diterima: https://auctus.academy/. Login manual telah dilakukan untuk audit akun pada 23 September; audit lanjutan mengikuti sesi dan izin yang tersedia.
@@ -263,3 +265,125 @@ File ini adalah sumber kebenaran tunggal untuk status, keputusan, dan serah teri
 - Berkas: `apps/web/src/lib/constants.ts`, `apps/web/src/app/admin/pengaturan/page.tsx`, `apps/web/src/app/page.tsx`, `apps/web/src/components/catalog-section.tsx`, `apps/web/src/app/rekomendasi/page.tsx`, `apps/web/src/components/pathfinder.tsx`.
 - Verifikasi: TypeScript dan ESLint pada salinan server Desktop lolos; `git diff --check` lolos; enam berkas kode UNC dan Desktop cocok hash. Default tampilan tetap sama setelah field baru karena nilai awal dipindahkan dari teks hardcoded ke `SETTING_DEFAULTS`. Pemeriksaan form owner dilakukan melalui kode/form generator; sesi browser aktif tetap akun murid sehingga tidak mengubah sesi pengguna.
 - Serah terima: commit sesi ini akan dipush ke GitHub `main`. Claude cukup `git pull`, membaca PROJECT_MEMORY.md, lalu melanjutkan dari commit terbaru. Pelaksana dilepas.
+
+## Formulir isian data website — Claude Code (PC 2), 2026-10-07
+- Permintaan pengguna: ambil update terakhir lalu buat Excel untuk mengisi data yang tampil di website; aturan baru pengguna: **1 paket = 1 outcome** (satu hasil spesifik per paket) untuk data ke depan.
+- Update: `git pull` dari PC 2 gagal karena PC 2 belum login GitHub; folder bersama sudah berada di commit `09b6578` (6 Okt 17:25) dan memori tidak mencatat commit lebih baru. Kode tidak berubah.
+- Berkas baru: `Formulir Isian Data Website.xlsx` di akar proyek (belum di-commit). Sheet: Petunjuk, Data Umum, Paket, Masa Belajar, Add-on, Tahap & Checklist, Tutor Paket, Kelas, Topik & Materi, Kuis, Testimoni, FAQ, Jalur Belajar, Daftar Pilihan. Dibuat dari skema `apps/web/prisma/schema.prisma` + `SETTING_DEFAULTS`, dan diisi awal dari `dev.db` lokal PC 2 (10 paket, 10 kelas, topik, masa belajar, data bimbingan Review). Sheet Paket memakai `ID Paket` (= slug) sebagai kunci ke sheet lain dan kolom wajib `OUTCOME`.
+- Kolom otomatis: total cicilan, jumlah pilihan masa belajar, status kelengkapan (Belum lengkap / Belum ada harga / Isi bidang bimbingan / Total cicilan harus 100% / Siap tampil). Diverifikasi dengan Excel (COM): 0 sel error; uji isi sementara → "Siap tampil" dan "Belum ada harga" sesuai, isian uji dikosongkan lagi.
+- Celah: website BELUM punya field "outcome" pada Package. Jika outcome harus tampil, perlu migrasi Prisma + form admin + tampilan katalog/detail (belum dikerjakan, menunggu persetujuan pengguna). Persen cicilan di Excel disimpan sebagai pecahan (50% = 0,5); aplikasi memakai bilangan bulat.
+- Langkah lanjut: pengguna mengisi Excel → impor ke website (manual lewat panel admin atau skrip impor) → konfirmasi harga paket `bimbingan-research-review` (1,5 jt/2,5 jt, kemungkinan data uji).
+
+## Revisi 7-10-2026 + palet maskot — Claude Code (PC 2), 2026-10-07
+- Arahan pengguna (permanen): **tidak boleh ada em-dash (—) di website**; yang tidak disebut dalam revisi tetap dipertahankan. Nama: **Dokter Edukasi Academy**, tagline **Pusat Pembelajaran & Riset Medis** (setting baru `siteTagline`, tampil di bawah nama di header/footer). Headline/subheadline beranda, judul katalog "Temukan Kelas" + subjudul tanpa kata "Anda". Warna situs mengikuti **maskot** (kuning #ffd20a, hitam #141414, krem #faf8f2; teks aksen emas tua #7a5a00 agar kontras). Gambar maskot hanya dikirim di chat, belum ada file di proyek.
+- Struktur baru: `Category.parentId` (kelas induk berisi Blok) + `Category.artKey` (animasi organ) + `Quiz.isFree`. Migrasi `20261007134145_blok_kurikulum_kuis_gratis`. Akses ke kelas induk otomatis membuka semua Blok (`withChildCategories` di lib/access.ts). Katalog hanya menampilkan kelas induk; induk menghitung materi dari Blok (`withBlockTopics` di lib/courses.ts).
+- Data (skrip idempoten `npm run db:revisi-2026-10-07`, file prisma/revisi-2026-10-07.ts): Basic Medical Science berisi 22 Blok; tiap Blok punya Bab 1 dengan 1.1 (gratis) dan 1.2 (terkunci) berupa TEKS PLACEHOLDER, serta Kuis Bab 1 gratis dengan 0 soal. 22 paket "Paket 1 Blok: ..." Rp150.000 seumur hidup + "Paket Blok Komplit (22 Blok)" Rp2.200.000 (membuka kelas induk). Semua 23 paket punya add-on "Bimbingan dengan Pengajar (Dokter Umum Professional) 60 Menit" Rp150.000 via Zoom. Paket lama "Pre-Clinical: Basic Medical Science" dinonaktifkan (tidak dihapus). Em-dash dibersihkan dari kode (80 baris) dan data DB (11 baris; " — " menjadi ": ").
+- Animasi organ: components/block-art.tsx (22 SVG milik proyek) + kelas `ba-*` di globals.css, mati saat prefers-reduced-motion.
+- Verifikasi aktual: `tsc --noEmit` dan `eslint src prisma` lolos; skrip revisi dijalankan 2x (kedua kali 0 perubahan, tanpa duplikasi). Browser lokal: beranda, katalog, halaman Basic Medical Science (22 kartu Blok beranimasi), Blok 12 sebagai murid demo (1.1 terbuka, 1.2 terkunci, Kuis Bab 1 terbuka), halaman paket (add-on, total Rp300.000), pesan paket → halaman pembayaran manual. Pindaian 9 halaman publik: 0 em-dash. `next build` tidak dijalankan (server dev sedang hidup).
+- Data uji baru: order **DE-261007-8A7BE0** (murid demo, Paket 1 Blok Kardiovaskuler + add-on, status menunggu pembayaran).
+- Belum: tombol WhatsApp konfirmasi butuh nomor WA admin; email detail pesanan butuh SMTP; Duitku butuh Merchant Code/API Key; isi materi & soal kuis 22 Blok; harga "Pre-Clinical Lengkap" (kini otomatis membuka 22 Blok karena memuat kelas induk). Perubahan BELUM di-commit/push (PC 2 belum login GitHub).
+- PC lain wajib menjalankan: `npx prisma migrate deploy` lalu `npm run db:revisi-2026-10-07` di apps/web (database tidak ikut Git).
+
+## Revisi lanjutan 7-10-2026 — Claude Code (PC 2)
+- Arahan pengguna (permanen): **kata "Anda" tidak dipakai di seluruh website**. 54 baris teks kode ditulis ulang tanpa "Anda" (mis. "Yang didapatkan", "Progres belajar", "Hasil kuis"); setting `paymentInstructions` di DB dibersihkan lewat skrip revisi. Pindaian 11 halaman publik: 0 "Anda", 0 em-dash.
+- Daftar murid: nama, WhatsApp, **instansi/universitas wajib** (klien + server), email, kata sandi, ulangi kata sandi. **Kata sandi minimal 6 karakter** di semua alur (daftar, ganti sandi akun, buat/reset akun oleh admin, penjualan admin).
+- Form pesan paket: "Tahu layanan ini dari" wajib (select required + validasi server di orderPackageAction), label tanpa kata "wajib".
+- Halaman pesanan (/pembelian/[id]): dua pilihan berdampingan **Bayar dengan Duitku** (langsung ke pembayaran online) dan **Bayar manual via WhatsApp** (membuka WA admin dengan template data pesanan `waConfirmTemplate`). Bila Duitku/WA belum diatur, tombol tampil nonaktif dengan keterangan.
+- Verifikasi: tsc + eslint lolos; HTML /daftar menunjukkan 6 field required dan minLength 6; form paket tidak valid tanpa sumber info; halaman pesanan uji DE-261007-8A7BE0 menampilkan dua pilihan (keduanya nonaktif karena kunci Duitku & nomor WA admin belum diisi). Klik WA dan Duitku sungguhan belum diuji.
+
+## Pembayaran manual saja + persetujuan dengan bukti + server selalu aktif — Claude Code (PC 2), 2026-10-07
+- Arahan pengguna: pembayaran online di website **dinonaktifkan sementara**; opsi hanya manual (WhatsApp). Setting baru `onlinePayment` (Owner → Pengaturan situs, default "Tidak"); Duitku tampil hanya bila "Ya" DAN kunci .env ada (`onlinePaymentActive` di lib/duitku.ts). `payOnlineAction` menolak di server bila nonaktif. Kode Duitku tetap ada.
+- Admin menyetujui pembayaran dengan **unggah bukti wajib** (gambar/PDF) di /admin/order/[id], untuk bayar penuh dan per cicilan. Field baru `Order.proofFileId`, `OrderInstallment.proofFileId` (migrasi `20261007151900_bukti_pembayaran`). Bukti bisa dilihat admin/owner dan pelanggan pemilik order (lib/access.ts). Rekap Owner: tabel "Rincian pembayaran diterima" di /admin/laporan punya kolom Bukti; CSV `/api/laporan/pembayaran` menambah kolom Referensi + tautan Bukti pembayaran.
+- Verifikasi aktual: tsc + eslint lolos; customer hanya melihat opsi manual; server menolak persetujuan tanpa bukti (status tetap menunggu); persetujuan dengan PNG uji → order DE-261007-8A7BE0 Lunas, bukti terbuka 200 image/png, baris CSV memuat referensi UJI-BCA-001 + tautan bukti. Murid demo kini punya akses Blok 12 dari order uji ini.
+- **Belum: integrasi Google Drive** untuk bukti/rekap. Butuh keputusan & akses pengguna (opsi: Google Drive for desktop menyinkronkan folder apps/web/storage, atau Google service account + folder Drive bersama untuk unggah otomatis & spreadsheet rekap). Bukti saat ini tersimpan lokal di apps/web/storage (tidak ikut Git).
+- Server selalu aktif: `Server Selalu Aktif.bat` (akar proyek) menjalankan `npm run dev` dan menyalakan ulang otomatis bila berhenti; shortcut di folder Startup Windows PC 2 (`Dokter Edukasi Academy - Server.lnk`, jendela minimize). Untuk migrasi Prisma, matikan dulu jendela server (file engine terkunci di Windows).
+
+## Kartu kelas dashboard murid — Claude Code (PC 2), 2026-10-08
+- Permintaan pengguna (dengan contoh screenshot): model kartu tambahan di dashboard murid. Arahan lanjutan: **tanpa keterangan dokter/pengajar di kartu**, tampilkan **berapa menit** materinya.
+- /belajar "Kelas saya" kini punya pilihan **Kartu** (bawaan) dan **Daftar** (tampilan lama, `?tampilan=daftar`). Komponen `src/components/learning-card.tsx`: poster/ilustrasi + label program + "Akses penuh", jumlah murid, judul, deskripsi, tiga angka (total **Menit** materi | jumlah Blok/Bab/Modul | Sesi = materi + kuis), progres, tombol "Lanjutkan Belajar (x/y)" atau "Lihat Kurikulum" + "Mulai Modul".
+- Field baru: `Item.durationMinutes` (diisi admin di form materi, "Durasi (menit)"; dijumlahkan `courseStats().minutes`) dan `Category.instructorTitle` (form admin kelas; dibuat sebelum arahan "tanpa dokter", kini tidak tampil di kartu). Migrasi `20261008073151_pengajar_gelar`, `20261008073401_durasi_materi_menit`.
+- Rating/ulasan TIDAK ditampilkan karena belum ada fitur ulasan (tidak memakai angka palsu); level tidak ditampilkan karena tingkat kelas sudah dihapus sebelumnya.
+- Verifikasi: tsc + eslint lolos; browser 1280px (kartu Blok 12 menampilkan 35 Menit dari data uji 15 + 20 menit pada materi placeholder 1.1/1.2), toggle Daftar benar, 375px tanpa overflow horizontal.
+
+## Audit referensi Monash LMS — Claude Code (PC 2), 2026-10-10
+- Arahan pengguna: pelajari https://learning.monash.edu/my/ (Chrome profil pengguna, sudah login) secara mendalam; rencana **kode per materi**; **jangan terapkan apa pun sebelum diminta** — pengguna akan memilih fitur.
+- Hasil: research/AUDIT_MONASH_LMS.md (read-only, tanpa data pribadi). Platform = Moodle. Pola penting: kode unit + periode, tab unit, Learning Journey (Own-time/Real-time/Wrap-up), outcome bernomor, schedule dengan bobot & tenggat, completion per aktivitas + course index, timeline/task tracker, assignment dengan umpan balik, kuis dengan batas percobaan & waktu, forum, support hub, filter My units. Daftar pilihan M1–M19 menunggu keputusan pengguna.
+- Belum terverifikasi: isi kuis, forum diskusi, notifikasi/pesan, kalender penuh, tampilan dosen. Tidak ada perubahan kode aplikasi.
+
+## Kode Blok/Bab, Terakhir dibuka, banner pengumuman — Claude Code (PC 2), 2026-10-11
+- Pilihan pengguna dari audit Monash: M1 (kode), M14 (Terakhir dibuka), M18 (banner pengumuman di halaman depan untuk semua, dibuat admin/owner). Fitur Monash lain BELUM dipilih.
+- **Kode**: `Category.code` (unik, mis. `BKV-12`); kode Bab = kode Blok + nomor Bab tampil (`BKV-12.1`) via src/lib/codes.ts. 22 Blok diisi `npm run db:kode-blok` (pola B + 2 huruf + nomor, tanpa nol depan: BAT-1 … BKV-12 … BEH-22; hanya mengisi yang kosong). Admin bisa mengubah di form kelas (format 2-6 huruf-angka, disimpan huruf besar). Pencarian /kelas: kode persis langsung membuka Blok (`BKV-12`) atau Bab (`BKV-12.1`, tidak peka huruf besar/kecil); kode sebagian ikut dicocokkan di katalog. Kode tampil di halaman kelas, kartu Blok, judul Bab, ruang belajar, kartu katalog & dashboard.
+- **Terakhir dibuka**: model `LessonView` (upsert saat materi yang boleh dibuka ditampilkan di /materi); dashboard murid menampilkan 5 terakhir (judul, kode Bab, kelas, Bab, waktu).
+- **Pengumuman**: model `Announcement` (judul, isi, tautan, jenis Info/Penting, aktif, jadwal mulai/berakhir WIB). Kelola di Owner/Admin → **Pengumuman** (`/admin/pengumuman`, izin admin.settings, tercatat di activity log). Banner tampil di beranda untuk semua pengunjung, maks. 3 aktif.
+- Migrasi `20261011090000_kode_riwayat_pengumuman` dibuat dengan `prisma migrate diff` + `migrate deploy` (migrate dev menolak lingkungan non-interaktif karena indeks unik baru).
+- Verifikasi: tsc + eslint lolos; curl /kelas?q=BKV-12 → Blok 12, bkv-12.1 → Bab 1, BKV-12.9 → Blok 12, BAT-1 → Blok 1, teks biasa tetap 200; browser murid demo: Bab menampilkan BKV-12.1, dashboard "Terakhir dibuka" berisi 1.1 Materi pembuka (BKV-12.1); owner membuat pengumuman uji → status "Sedang tampil", banner tampil di beranda (juga untuk tamu, dicek via curl).
+- Data uji: satu pengumuman "Uji pengumuman: Blok 12 Kardiovaskuler (BKV-12) sudah tersedia" masih aktif di beranda (hapus/ubah dari menu Pengumuman).
+- PC lain wajib: `npx prisma migrate deploy` lalu `npm run db:kode-blok` di apps/web.
+
+## Section katalog Medical Research — Claude Code (PC 2), 2026-10-11
+- Arahan pengguna: katalog Medical Research dibagi section: Original Research (Univariate, Multivariate), Pengolahan Data (SPSS, RStudio; STATA dipertahankan), Review (Systematic Review, Narrative Literature Review, Scoping Review, dll), dan Case Report.
+- Field baru `Category.childLabel` (sebutan sub-kelas, "Blok"/"Pilihan") dan `Category.showChildrenInCatalog` (induk tampil sebagai section). Migrasi `20261011120000_section_katalog` (diff + deploy; tabel Category didefinisi ulang SQLite, data tersalin).
+- Skrip idempoten `npm run db:revisi-2026-10-11-riset`: 11 topik lama dipindah menjadi kelas pilihan (sub-kelas) dengan topiknya menjadi "Bab 1" (materi, kuis, progres ikut). Urutan: Review = Systematic, Narrative, Scoping, Meta-analysis, Bibliometric; Pengolahan Data = SPSS, RStudio, STATA. Basic Medical Science diberi childLabel "Blok". Paket MR yang memuat kelas induk otomatis membuka semua pilihannya (withChildCategories).
+- Katalog: induk bertanda section tampil sebagai judul section + kartu kelas pilihan + tautan "Lihat semua pilihan"; kelas biasa tetap grid di atas. Halaman induk memakai "Pilihan {judul}" (Basic Medical Science tetap "Kurikulum Blok"). Pencarian juga mencocokkan nama sub-kelas.
+- Admin (form kelas): "Bagian dari kelas induk" (kelas utama di jalur sama), "Sebutan sub-kelas", centang "Tampilkan di katalog sebagai section" — owner bisa menambah jenis Review baru tanpa kode.
+- Verifikasi: tsc + eslint lolos; skrip dijalankan 3x (tanpa duplikasi); browser: Medical Research menampilkan 11 kelas dalam 4 section sesuai urutan; Semua program 17 kelas; halaman Review "5 pilihan"; Systematic Review berbreadcrumb Medical Research / Review dengan slide & kuis lama. Backup DB sebelum restrukturisasi di scratchpad sesi (dev.db.bak-20261011).
+- PC lain wajib: `npx prisma migrate deploy` lalu `npm run db:revisi-2026-10-11-riset` di apps/web.
+
+## Ringkasan biaya dan materi SR-MA Auctus - Codex, 2026-10-11
+- Pelaksana aktif sesi ini: Codex; fokus membaca assessment tersimpan untuk menjawab biaya dan cakupan systematic review, tanpa perubahan aplikasi.
+- Arahan pengguna: gunakan assessment di folder saja. Sumber: research/PLATFORM_AUDIT.md, bagian SR-MA, Bootcamp, ketentuan coaching, dan course akun.
+- Fakta tersimpan: Free Rp0, Video Only Rp349.000, Complete Rp499.000, Private Coaching Rp949.000; kurikulum Day 1-7 + Bonus Resources. Harga adalah snapshot audit September 2026, tidak diverifikasi ulang daring.
+- Verifikasi: membaca dokumen audit dan mencari rujukan dalam research/docs; tidak menjalankan build/tes karena tidak ada perubahan kode.
+- Batas bukti: publik menyebut 18 modul video, dashboard Complete menampilkan 25 modul; jumlah ini berbeda konteks dan tidak disamakan. Isi seluruh video dan rincian tiap submodul belum diverifikasi.
+- Progres: bahan jawaban siap; tidak ada hambatan atau perubahan keputusan proyek. Langkah lanjut bila diminta: gunakan ringkasan sebagai referensi penyusunan paket milik proyek.
+- Pelaksana aktif sesi ini: dilepas; serah terima selesai.
+
+## Audit lanjutan SR-MA Auctus dan laporan DOCX - Codex, 2026-10-12
+- Pelaksana/fokus Codex: audit baca saja situs Auctus melalui browser dalam aplikasi; laporan di research/. Penanda aktif Claude Code untuk apps/web tetap berlaku; Codex tidak mengedit aplikasi.
+- Arahan pengguna: login manual dibantu pengguna, pelajari seluruh akses dan materi SR-MA, buat DOCX serta jelaskan isi/model video.
+- Cakupan laporan: inventaris dan ringkasan materi, kuis, catatan, sumber pendukung, akses dan penyajian video; tidak menyalin massal konten berlisensi atau menyimpan kredensial.
+- Progres terverifikasi: halaman https://auctus.academy/login terbuka dalam browser aplikasi; form login terlihat. Belum login, belum ada audit materi baru atau DOCX yang dibuat.
+- Hambatan: menunggu pengguna memasukkan akun langsung pada halaman login. Lanjut setelah pengguna memberi tahu login selesai.
+- Penanda Codex dilepas sementara untuk serah terima login; penanda Claude Code tidak diubah.
+
+## Audit SR-MA lanjutan aktif - Codex, 2026-10-12
+- Pelaksana Codex pada audit ini: selesai dan penanda aktif dilepas pada 2026-10-12. Audit baca saja akses SR-MA dan laporan DOCX di research/; tidak mengedit apps/web.
+- Login manual pengguna selesai; dashboard akun terverifikasi. Tidak menyimpan kredensial atau data pribadi pada laporan/memori.
+- Fokus: seluruh halaman materi yang tersedia, kuis, bacaan, sumber pendukung, model video dan batas verifikasi; laporan berupa rangkuman/inventaris.
+
+## Paket Systematic Review & Meta-Analisis + alur Zoom + pencapaian Pro — Claude Code (PC 2), 2026-10-12
+- Sumber: PAKET/SYSTEMATIC REVIEW - META ANALISIS.docx (tanggal dokumen 11-10-2026). Arahan tambahan 12-10: kelas Meta-analysis dihapus; "Systematic Review" diganti nama **"Systematic Review and Meta-Analysis"** (slug tetap review-systematic-review).
+- Keputusan atas ketidaksesuaian dokumen: Intermediate = **3 Zoom** (tabel paket, tombol Zoom 1-3, modal 120.000 = 3x40.000; kalimat "4x" dianggap salah ketik). Pro: 12 pencapaian (Rp420.000) dibayar per pencapaian + 3 Zoom dibayar lewat alur Zoom Rp35.000/sesi (total modal 525.000 sesuai dokumen, tanpa bayar ganda). Zoom tambahan (add-on Rp100.000) dibayar ke tutor sesuai HPP add-on Rp40.000.
+- Paket (skrip idempoten `npm run db:paket-srma`): Basic Rp399.000 (HPP 80.000, 2 Zoom @40.000), Intermediate Rp599.000 (HPP 120.000, 3 Zoom @40.000), Pro Rp1.199.000 (HPP 525.000, 3 Zoom @35.000 + 12 pencapaian berbayar). Semua: materi seumur hidup, Zoom & bimbingan 6 bulan (`serviceMonths`), bidang Research-Review, add-on "Zoom tambahan 60 menit" Rp100.000 (+1 kuota). Kelas: Basic → Systematic Review and Meta-Analysis; Intermediate/Pro → + kelas baru "Toolkit SR-MA: Template, Guideline & Prompt AI" (sub-kelas Review, isi belum ada). Gratis = materi pengenalan SR ("Slide Pengantar") ditandai gratis.
+- Skema (migrasi `20261012090000_paket_srma_zoom_pencapaian`): Package.zoomQuota/zoomFee/serviceMonths, PackageAddon.zoomCredits, Mentoring.serviceEndsAt, MentoringSession.seq/requestedAt (+status REQUESTED), ServiceTaskTemplate.fee, ProjectTask.fee/evidenceFileId/payrollId, Payroll.tasks. Unggahan bukti pencapaian kini menerima DOCX/XLSX (saveUpload allowOffice).
+- Alur Zoom: murid di /bimbingan/[id] klik "Zoom n" → pilih tanggal & jam (+catatan) → sesi REQUESTED → diarahkan ke WhatsApp admin dengan template (fallback notifikasi bila nomor WA kosong) → admin "Konfirmasi jadwal final" (+link Zoom, pilih tutor bila belum ada) → SCHEDULED, notifikasi + email murid & tutor → tutor wajib isi link Google Drive rekaman saat tandai selesai → admin verifikasi → fee otomatis = fee Zoom paket (payable) → masuk payroll.
+- Pencapaian Pro: tutor tandai selesai dengan bukti (link atau unggah gambar/PDF/DOCX/XLSX) → "Menunggu verifikasi admin" + notifikasi admin → verifikasi (fee payable, notifikasi tutor) atau revisi dengan alasan (notifikasi tutor). Murid melihat "Progres pencapaian" (status saja, tanpa fee). Payroll kini mengumpulkan sesi + pencapaian; void mengembalikan keduanya.
+- Admin: form Layanan punya Kuota Zoom, Fee tutor per Zoom, Masa berlaku (bulan); fee per task checklist; add-on "Tambah kuota Zoom".
+- Verifikasi aktual (browser, akun uji): murid pesan Pro → owner setujui dengan bukti → bimbingan + 12 pencapaian + berlaku s.d. 12 Apr 2027 → murid ajukan Zoom 1 (20 Okt 19.00) → owner konfirmasi 20.00 + Tutor Demo → tutor tanpa link rekaman ditolak, dengan link diterima → tutor tandai "Judul Systematic Review Fix" + DOCX → owner verifikasi sesi & pencapaian → payroll Tutor Demo Rp85.000 (35.000 + 50.000) → payroll "Uji Oktober 2026" dibuat. tsc + eslint lolos. Redirect ke WhatsApp belum teruji karena nomor WA admin kosong.
+- Data uji baru: order DE-261011-6A132F (Pro, lunas), bimbingannya, payroll "Uji Oktober 2026" (belum dibayar), kelayakan Tutor Demo = PRIMARY untuk paket Pro.
+- Belum: laporan "payable" di /admin/laporan masih menghitung fee sesi saja (belum fee pencapaian); isi materi Toolkit; paket lama "Bimbingan Medical Research: Review" (harga uji) masih aktif.
+- PC lain wajib: `npx prisma migrate deploy`, lalu `npm run db:revisi-2026-10-11-riset` dan `npm run db:paket-srma` di apps/web.
+
+## WA admin, laporan fee terutang, paket lama — Claude Code (PC 2), 2026-10-12
+- WhatsApp admin (Admin 1) = 085174121270 (setting `adminWhatsapp`, via `npm run db:revisi-2026-10-12` bila masih kosong). Dicek: footer & permintaan Zoom membuka wa.me/6285174121270 dengan template lengkap.
+- Laporan **Fee tutor terutang** di /admin/laporan (akses Angka keuangan): total, per tutor, rincian per sesi Zoom & pencapaian, status payroll; CSV `/api/laporan/fee-terutang`. Ringkasan keuangan (fee tervalidasi, payable, projected, fee per tutor) kini ikut menghitung fee pencapaian. Diverifikasi: payable Rp85.000, CSV 2 baris + total.
+- Paket lama yang punya pengganti: "Pre-Clinical: Basic Medical Science" dihapus (0 order); "Bimbingan Medical Research: Review" dinonaktifkan (4 order uji dipertahankan).
+- Tambahan: admin dapat **membatalkan permintaan Zoom** (alasan + notifikasi murid); kuota Zoom kembali. Diverifikasi di browser.
+- tsc + eslint lolos.
+
+## SERAH TERIMA KE CODEX — 2026-10-12 (oleh Claude Code, PC 2)
+- Baca `handoffs/SERAH_TERIMA_CODEX_2026-10-12.md`: kondisi Git (belum commit/push), urutan skrip database untuk komputer lain, arahan permanen pengguna, daftar fitur 7-12 Okt beserta berkasnya, keputusan desain SR-MA, data uji, dan pekerjaan yang belum selesai.
+- Penerimaan oleh Codex: belum diperiksa.
+
+## Laporan audit akses Complete Auctus selesai disusun - Codex, 2026-10-12
+- Arahan pengguna: setelah login manual selesai, gali akses dan materi SR-MA lalu laporkan dalam DOCX. Hasil berupa ringkasan dan inventaris, tanpa salinan massal materi berlisensi, bank soal, atau rekaman.
+- Berkas hasil: [Laporan Audit SRMA Auctus](research/Laporan_Audit_SRMA_Auctus_2026-10-12.docx). Penyusun yang dapat dijalankan ulang: research/build_auctus_report.py.
+- Bukti langsung: 25 halaman modul dibuka, 17 halaman pelajaran video dengan 19 slot utama, 7 kuis berisi 70 soal, 40 jawaban FAQ, 6 alat bantu, 6 kartu dan seluruh panduan template. Header empat sheet dataset MA/NMA diperiksa. Pemutaran diuji pada tiga sampel; tidak menyimpan rekaman atau isi video di memori.
+- Akses akun: Complete aktif; progres tetap 0/25 dan 0 persen. Tidak mengirim kuis, menandai selesai, membeli paket, membuat proyek, mengunggah data pribadi, atau mendaftarkan protokol.
+- Fakta ketidaksesuaian dalam materi dicatat pada laporan: jaminan akurasi AI versus FAQ, urutan registrasi, batas abstrak, panduan sitasi lama, contoh cover letter dengan desain berbeda, dan petunjuk input R yang tidak konsisten. Tidak menyatakan script atau metodologi sudah tervalidasi independen.
+- Biaya tetap diberi label snapshot assessment September 2026, bukan harga checkout terbaru.
+- Verifikasi DOCX aktual: berkas 57594 byte, paket ZIP/XML valid, 10 tabel, 40 elemen hyperlink (20 tautan), sekitar 6285 kata, tidak ada alamat email pribadi atau URL rahasia bertanda tangan dalam teks. Struktur dan isi diperiksa.
+- Hambatan verifikasi tampilan: render_docx.py dijalankan tetapi gagal karena soffice.exe tidak tersedia. Runtime Windows tidak menyediakan LibreOffice bundel; tidak memakai aplikasi desktop atau memasang software sebagai jalan pintas. Pratinjau per halaman belum diverifikasi. Permintaan membuka DOCX di panel Codex berstatus queued, bukan konfirmasi berhasil dirender.
+- Batas cakupan: seluruh menit video, kunci/skor/retry/sertifikat, coaching, isi lengkap seluruh lampiran eksternal dan berkas template, hasil script R atau kalkulator, serta ketentuan harga/akses terbaru belum terverifikasi. Batas ini tertulis pada laporan dan harus ikut dibawa bila digunakan kembali.
+- Tidak ada perubahan aplikasi, commit, push, build, atau deployment. Pemeriksaan git status tidak berjalan karena kepemilikan repository UNC; konfigurasi Git tidak diubah.
+- Pelaksana aktif Codex dilepas. Langkah lanjut: bila diperlukan audit menyeluruh setiap berkas eksternal atau video, lanjutkan dari daftar sumber dan status pada laporan; verifikasi tata letak DOCX ketika renderer tersedia. Penanda dan pekerjaan Claude Code tidak diubah.

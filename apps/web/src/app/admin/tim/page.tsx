@@ -61,8 +61,8 @@ export default async function TeamPage({ searchParams }: { searchParams: SearchP
             <Field label="No. WhatsApp">
               <input className="input" name="phone" />
             </Field>
-            <Field label="Kata sandi awal" hint="Minimal 8 karakter. Sampaikan secara pribadi; pengguna bisa menggantinya di menu Akun.">
-              <input className="input" name="password" required minLength={8} autoComplete="new-password" />
+            <Field label="Kata sandi awal" hint="Minimal 6 karakter. Sampaikan secara pribadi; pengguna bisa menggantinya di menu Akun.">
+              <input className="input" name="password" required minLength={6} autoComplete="new-password" />
             </Field>
             <p className="text-xs text-slate-500 sm:col-span-2">
               Akses awal: admin hanya Ringkasan; tutor mendapat Dashboard klien, Payroll, dan Pencapaian. Ubah centangnya setelah akun dibuat.

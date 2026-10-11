@@ -74,7 +74,7 @@ export default async function AdminServiceEdit({ params, searchParams }: { param
     <>
       <PageHeader
         title={pkg?.name ?? "Layanan baru"}
-        subtitle="Semua isi di halaman ini tampil di website dan bisa Anda ubah kapan saja."
+        subtitle="Semua isi di halaman ini tampil di website dan bisa diubah kapan saja."
         back={{ href: "/admin/paket", label: "Semua layanan" }}
         actions={
           pkg && (
@@ -182,13 +182,22 @@ export default async function AdminServiceEdit({ params, searchParams }: { param
         </label>
         <Field label="Bidang bimbingan">
           <select className="input" name="mentoringField" defaultValue={pkg?.mentoringField ?? ""}>
-            <option value="">—</option>
+            <option value="">-</option>
             {MENTORING_FIELDS.map((f) => (
               <option key={f} value={f}>
                 {FIELD_LABEL[f]}
               </option>
             ))}
           </select>
+        </Field>
+        <Field label="Kuota Zoom (khusus layanan dengan bimbingan)" hint="Jumlah tombol Zoom untuk murid, mis. 2 (Basic) atau 3 (Intermediate/Pro).">
+          <input className="input" name="zoomQuota" inputMode="numeric" defaultValue={pkg?.zoomQuota ?? ""} />
+        </Field>
+        <Field label="Fee tutor per Zoom (Rp)" hint="Masuk payroll otomatis setelah admin memverifikasi rekaman.">
+          <input className="input" name="zoomFee" inputMode="numeric" defaultValue={pkg?.zoomFee ?? ""} />
+        </Field>
+        <Field label="Masa berlaku Zoom & bimbingan (bulan)" hint="Dihitung sejak pembayaran disetujui, mis. 6. Kosong = tanpa batas.">
+          <input className="input" name="serviceMonths" inputMode="numeric" defaultValue={pkg?.serviceMonths ?? ""} />
         </Field>
         <label className="flex items-center gap-2 text-sm">
           <input type="checkbox" name="active" defaultChecked={pkg?.active ?? true} /> Tampilkan di website & bisa dipesan
@@ -252,7 +261,7 @@ export default async function AdminServiceEdit({ params, searchParams }: { param
               Customer memilih salah satu saat memesan. Harga di sini menggantikan harga dasar. Matikan “Aktif” untuk menyembunyikan tanpa menghapus.
             </p>
             {pkg.durations.length === 0 ? (
-              <Empty>Tidak ada pilihan masa belajar — harga & masa akses dasar yang dipakai.</Empty>
+              <Empty>Tidak ada pilihan masa belajar - harga & masa akses dasar yang dipakai.</Empty>
             ) : (
               <div className="space-y-2">
                 {pkg.durations.map((d) => (
@@ -336,6 +345,9 @@ export default async function AdminServiceEdit({ params, searchParams }: { param
                       <Field label="Keterangan">
                         <input className="input w-full sm:w-64" name="description" defaultValue={a.description ?? ""} />
                       </Field>
+                      <Field label="Tambah kuota Zoom">
+                        <input className="input w-20" name="zoomCredits" inputMode="numeric" defaultValue={a.zoomCredits} />
+                      </Field>
                       <Field label="Harga (Rp)">
                         <input className="input w-32" name="price" inputMode="numeric" defaultValue={a.price ?? ""} placeholder="menyusul" />
                       </Field>
@@ -373,6 +385,9 @@ export default async function AdminServiceEdit({ params, searchParams }: { param
               <Field label="Keterangan">
                 <input className="input w-full sm:w-64" name="description" />
               </Field>
+              <Field label="Tambah kuota Zoom">
+                <input className="input w-20" name="zoomCredits" inputMode="numeric" defaultValue={0} />
+              </Field>
               <Field label="Harga (Rp)">
                 <input className="input w-32" name="price" inputMode="numeric" />
               </Field>
@@ -403,7 +418,7 @@ export default async function AdminServiceEdit({ params, searchParams }: { param
                       <form action={updateStageAction} className="flex flex-1 flex-wrap items-end gap-2">
                         <input type="hidden" name="packageId" value={pkg.id} />
                         <input type="hidden" name="id" value={st.id} />
-                        <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-brand text-sm font-bold text-white">{st.number}</span>
+                        <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-mascot text-sm font-bold text-ink">{st.number}</span>
                         <Field label="Nama tahap">
                           <input className="input w-full sm:w-64" name="title" defaultValue={st.title} required />
                         </Field>
@@ -432,6 +447,7 @@ export default async function AdminServiceEdit({ params, searchParams }: { param
                             <input type="hidden" name="id" value={t.id} />
                             <input className="input w-16" name="order" inputMode="numeric" defaultValue={t.order} aria-label="Urutan" />
                             <input className="input min-w-48 flex-1" name="title" defaultValue={t.title} required />
+                            <input className="input w-28" name="fee" inputMode="numeric" defaultValue={t.fee ?? ""} placeholder="Fee (Rp)" aria-label="Fee tutor" />
                             <button className="btn-secondary btn-sm" type="submit">
                               Simpan
                             </button>
@@ -523,7 +539,7 @@ export default async function AdminServiceEdit({ params, searchParams }: { param
                           <select className="input" name={`stage_${seq}`} defaultValue={r.unlocksStage}>
                             {pkg.stages.filter((st) => st.number > 1).map((st) => (
                               <option key={st.id} value={st.number}>
-                                Tahap {st.number} — {st.title}
+                                Tahap {st.number}: {st.title}
                               </option>
                             ))}
                             {pkg.stages.filter((st) => st.number > 1).length === 0 && <option value={0}>Buat tahap 2 dulu</option>}
@@ -615,7 +631,7 @@ export default async function AdminServiceEdit({ params, searchParams }: { param
           <form action={deletePackageAction} className="mt-8">
             <input type="hidden" name="id" value={pkg.id} />
             <ConfirmButton message="Hapus layanan ini? Layanan yang sudah punya order hanya dinonaktifkan.">Hapus layanan</ConfirmButton>
-            {pkg._count.orders > 0 && <span className="ml-3 text-xs text-slate-500">{pkg._count.orders} order — hanya akan dinonaktifkan.</span>}
+            {pkg._count.orders > 0 && <span className="ml-3 text-xs text-slate-500">{pkg._count.orders} order - hanya akan dinonaktifkan.</span>}
           </form>
         </>
       )}

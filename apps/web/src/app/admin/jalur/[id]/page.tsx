@@ -85,7 +85,7 @@ export default async function AdminPath({ params, searchParams }: { params: Prom
               </option>
               {available.map((c) => (
                 <option key={c.id} value={c.id}>
-                  {c.track.title} — {c.title}
+                  {c.track.title}: {c.title}
                 </option>
               ))}
             </select>

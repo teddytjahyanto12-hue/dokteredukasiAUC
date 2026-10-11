@@ -23,6 +23,9 @@ export default async function AdminCategory({ params, searchParams }: { params: 
   });
   if (!category) notFound();
   const counts = (await studentCounts([category])).get(category.id)!;
+  // Calon kelas induk: kelas utama lain di jalur yang sama (bukan sub-kelas).
+  const parents = await db.category.findMany({ where: { trackId: category.trackId, parentId: null, NOT: { id: category.id } }, orderBy: { order: "asc" }, select: { id: true, title: true } });
+  const childCount = await db.category.count({ where: { parentId: category.id } });
 
   return (
     <>
@@ -80,6 +83,25 @@ export default async function AdminCategory({ params, searchParams }: { params: 
         <Field label="Judul">
           <input className="input" name="title" defaultValue={category.title} required />
         </Field>
+        <Field label="Kode kelas / Blok" hint="Mis. BKV-12. Kode Bab otomatis BKV-12.1, BKV-12.2, dst. Bisa dipakai untuk pencarian.">
+          <input className="input uppercase" name="code" defaultValue={category.code ?? ""} placeholder="BKV-12" />
+        </Field>
+        <Field label="Bagian dari kelas induk" hint="Mis. Systematic Review bagian dari Review. Kosong = kelas utama.">
+          <select className="input" name="parentId" defaultValue={category.parentId ?? ""} disabled={childCount > 0}>
+            <option value="">Tidak (kelas utama)</option>
+            {parents.map((p) => (
+              <option key={p.id} value={p.id}>
+                {p.title}
+              </option>
+            ))}
+          </select>
+        </Field>
+        <Field label="Sebutan sub-kelas" hint={`Dipakai bila kelas ini punya sub-kelas (saat ini ${childCount}). Mis. "Blok" atau "Pilihan".`}>
+          <input className="input" name="childLabel" defaultValue={category.childLabel ?? ""} placeholder="Pilihan" />
+        </Field>
+        <label className="flex items-center gap-2 text-sm sm:col-span-2">
+          <input type="checkbox" name="showChildrenInCatalog" defaultChecked={category.showChildrenInCatalog} /> Tampilkan di katalog sebagai section berisi kartu sub-kelas (mis. Review → Systematic Review, Scoping Review)
+        </label>
         <Field label="Slug (alamat URL)">
           <input className="input" name="slug" defaultValue={category.slug} />
         </Field>
@@ -110,6 +132,9 @@ export default async function AdminCategory({ params, searchParams }: { params: 
         <Field label="Pengajar">
           <input className="input" name="instructor" defaultValue={category.instructor ?? ""} />
         </Field>
+        <Field label="Gelar / jabatan pengajar" hint="Tampil di bawah nama pengajar pada kartu kelas, mis. Spesialis Jantung & Pembuluh Darah.">
+          <input className="input" name="instructorTitle" defaultValue={category.instructorTitle ?? ""} />
+        </Field>
         <Field label="Poster kelas (gambar, rasio 16:9)">
           <input className="input" type="file" name="poster" accept="image/*" />
         </Field>
@@ -131,7 +156,7 @@ export default async function AdminCategory({ params, searchParams }: { params: 
           <input type="checkbox" name="published" defaultChecked={category.published} /> Tampilkan di website
         </label>
         <p className="text-xs text-slate-500 sm:col-span-2">
-          Termasuk dalam paket: {category.packages.map((p) => p.package.name).join(", ") || "belum ada — atur di menu Paket"}
+          Termasuk dalam paket: {category.packages.map((p) => p.package.name).join(", ") || "belum ada - atur di menu Paket"}
         </p>
         <div>
           <button className="btn" type="submit">

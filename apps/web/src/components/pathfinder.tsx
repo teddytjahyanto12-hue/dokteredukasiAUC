@@ -48,7 +48,7 @@ function Choice({ active, onClick, children, className = "" }: { active: boolean
       onClick={onClick}
       aria-pressed={active}
       className={`flex w-full items-center justify-between gap-3 rounded-lg border px-4 py-3 text-left text-sm transition ${
-        active ? "border-brand bg-sky-50 text-slate-900" : "border-slate-200 bg-white text-slate-700 hover:border-slate-300"
+        active ? "border-brand bg-brand-soft text-slate-900" : "border-slate-200 bg-white text-slate-700 hover:border-slate-300"
       } ${className}`}
     >
       <span className="min-w-0">{children}</span>
@@ -85,7 +85,7 @@ export function Pathfinder({ courses, tracks, copy }: { courses: PathfinderCours
       let score = 40;
       if (c.trackSlug === target) {
         score += 35;
-        reasons.push(`termasuk program ${c.trackTitle} yang Anda pilih sebagai target`);
+        reasons.push(`termasuk program ${c.trackTitle} yang dipilih sebagai target`);
       }
       if (STAGE_TRACK[stage] === c.trackSlug) {
         score += 12;
@@ -116,8 +116,8 @@ export function Pathfinder({ courses, tracks, copy }: { courses: PathfinderCours
     <div className="grid items-start gap-8 lg:grid-cols-2">
       <form className="space-y-8 rounded-2xl border border-slate-200 bg-white p-6 sm:p-8" onSubmit={(e) => e.preventDefault()}>
         <div className="border-b border-slate-100 pb-5">
-          <div className="flex items-center justify-between gap-3 text-sm"><p className="font-semibold text-slate-900">Preferensi belajar Anda</p><span className="text-slate-500" aria-live="polite">{answered} dari 4 terisi</span></div>
-          <progress className="mt-3 h-1.5 w-full accent-sky-700" value={answered} max={4} aria-label="Kelengkapan preferensi" />
+          <div className="flex items-center justify-between gap-3 text-sm"><p className="font-semibold text-slate-900">Preferensi belajar</p><span className="text-slate-500" aria-live="polite">{answered} dari 4 terisi</span></div>
+          <progress className="mt-3 h-1.5 w-full accent-[#7a5a00]" value={answered} max={4} aria-label="Kelengkapan preferensi" />
         </div>
         <Question n={1} icon="cap" title="Jenjang Pendidikan Medis Saat Ini">
           <div className="grid gap-3 sm:grid-cols-2">
@@ -148,7 +148,7 @@ export function Pathfinder({ courses, tracks, copy }: { courses: PathfinderCours
                 type="button"
                 onClick={() => setHours(k)}
                 aria-pressed={hours === k}
-                className={`rounded-lg border px-2 py-3 text-center text-sm transition ${hours === k ? "border-brand bg-sky-50" : "border-slate-200 hover:border-slate-300"}`}
+                className={`rounded-lg border px-2 py-3 text-center text-sm transition ${hours === k ? "border-brand bg-brand-soft" : "border-slate-200 hover:border-slate-300"}`}
               >
                 <span className="num block font-semibold text-slate-900">{label}</span>
                 <span className="mt-0.5 block text-xs text-slate-500">{note}</span>
@@ -172,7 +172,7 @@ export function Pathfinder({ courses, tracks, copy }: { courses: PathfinderCours
         {!result ? (
           <div className="py-10 text-center">
             <Icon name="sparkles" className="mx-auto h-8 w-8 text-amber-500" />
-            <p className="mt-3 font-semibold text-slate-900">Rekomendasi Anda muncul di sini</p>
+            <p className="mt-3 font-semibold text-slate-900">Rekomendasi muncul di sini</p>
             <p className="mt-2 text-sm leading-relaxed text-slate-500">{answered === 4 ? "Materi kelas sedang disiapkan. Jelajahi katalog untuk melihat pilihan program." : copy.empty}</p>
             {answered === 4 && <Link href="/kelas" className="btn-secondary mt-4">Lihat katalog</Link>}
           </div>
@@ -180,8 +180,8 @@ export function Pathfinder({ courses, tracks, copy }: { courses: PathfinderCours
           <>
             <div className="flex items-start justify-between gap-4 border-b border-slate-200 pb-6">
               <div>
-                <p className="text-sm font-semibold uppercase tracking-[0.08em] text-brand">Pilihan kelas Anda</p>
-                <p className="mt-1 text-sm text-slate-500">Berdasarkan jenjang, target, dan format belajar Anda</p>
+                <p className="text-sm font-semibold uppercase tracking-[0.08em] text-brand">Pilihan kelas</p>
+                <p className="mt-1 text-sm text-slate-500">Berdasarkan jenjang, target, dan format belajar yang dipilih</p>
               </div>
               <div className="shrink-0 text-right">
                 <p className="num text-4xl font-semibold leading-none text-brand">{result.score}%</p>
@@ -210,8 +210,8 @@ export function Pathfinder({ courses, tracks, copy }: { courses: PathfinderCours
 
             <p className="mt-3 text-xs leading-relaxed text-slate-500">{copy.disclaimer}</p>
             <p className="mt-6 rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-sm leading-relaxed text-slate-700">
-              <span className="font-semibold text-slate-900">Mengapa ini tepat untuk Anda:</span>{" "}
-              {result.reasons.length ? `Kelas ini ${result.reasons.join(", ")}.` : "Ini kelas yang paling mendekati pilihan Anda dari kelas yang tersedia saat ini."}
+              <span className="font-semibold text-slate-900">Mengapa kelas ini tepat:</span>{" "}
+              {result.reasons.length ? `Kelas ini ${result.reasons.join(", ")}.` : "Ini kelas yang paling mendekati pilihan dari kelas yang tersedia saat ini."}
               {result.c.lessons === 0 && " Materinya masih disiapkan."}
             </p>
 

@@ -83,7 +83,7 @@ export function SaleForm({
             <input className="input" name="name" placeholder="Nama lengkap" required />
             <input className="input" name="phone" placeholder="No. WhatsApp" />
             <input className="input" type="email" name="email" placeholder="Email (untuk login)" required />
-            <input className="input" name="password" placeholder="Kata sandi awal (min. 8)" minLength={8} required autoComplete="new-password" />
+            <input className="input" name="password" placeholder="Kata sandi awal (min. 6)" minLength={6} required autoComplete="new-password" />
           </div>
         )}
       </fieldset>

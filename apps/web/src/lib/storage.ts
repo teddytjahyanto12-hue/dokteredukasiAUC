@@ -12,6 +12,8 @@ const ROOT = path.join(process.cwd(), "storage");
 
 const PPTX = "application/vnd.openxmlformats-officedocument.presentationml.presentation";
 const PPT = "application/vnd.ms-powerpoint";
+const DOCX = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+const XLSX = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
 const BY_EXT: Record<string, string> = {
   ".pdf": "application/pdf",
   ".png": "image/png",
@@ -20,6 +22,8 @@ const BY_EXT: Record<string, string> = {
   ".webp": "image/webp",
   ".pptx": PPTX,
   ".ppt": PPT,
+  ".docx": DOCX,
+  ".xlsx": XLSX,
 };
 const DOCUMENT_TYPES = new Set(["application/pdf", "image/png", "image/jpeg", "image/webp"]);
 
@@ -58,7 +62,7 @@ export async function saveBuffer(data: Buffer, originalName: string, mimeType: s
 export async function saveUpload(
   file: File | null,
   uploadedById: string,
-  opts: { allowPresentation?: boolean; imageOnly?: boolean; isPublic?: boolean } = {},
+  opts: { allowPresentation?: boolean; allowOffice?: boolean; imageOnly?: boolean; isPublic?: boolean } = {},
 ) {
   if (!file || file.size === 0) return null;
   checkSize(file.size);
@@ -67,10 +71,14 @@ export async function saveUpload(
     if (!mime.startsWith("image/") || !DOCUMENT_TYPES.has(mime)) throw new UploadError("Poster harus berupa gambar PNG, JPG, atau WEBP.");
     return saveBuffer(Buffer.from(await file.arrayBuffer()), file.name, mime, uploadedById, opts.isPublic);
   }
-  const ok = DOCUMENT_TYPES.has(mime) || (opts.allowPresentation && (mime === PPTX || mime === PPT));
+  const ok = DOCUMENT_TYPES.has(mime) || (opts.allowPresentation && (mime === PPTX || mime === PPT)) || (opts.allowOffice && (mime === DOCX || mime === XLSX));
   if (!ok) {
     throw new UploadError(
-      opts.allowPresentation ? "Format berkas harus PDF, PPTX/PPT, atau gambar (PNG/JPG/WEBP)." : "Format berkas harus PDF atau gambar (PNG/JPG/WEBP).",
+      opts.allowPresentation
+        ? "Format berkas harus PDF, PPTX/PPT, atau gambar (PNG/JPG/WEBP)."
+        : opts.allowOffice
+          ? "Format berkas harus gambar (PNG/JPG/WEBP), PDF, DOCX, atau XLSX."
+          : "Format berkas harus PDF atau gambar (PNG/JPG/WEBP).",
     );
   }
   return saveBuffer(Buffer.from(await file.arrayBuffer()), file.name, mime, uploadedById, opts.isPublic);

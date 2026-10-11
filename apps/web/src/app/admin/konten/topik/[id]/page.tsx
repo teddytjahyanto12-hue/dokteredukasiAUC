@@ -27,6 +27,7 @@ type ItemRow = {
   url: string | null;
   body: string | null;
   sourceNote: string | null;
+  durationMinutes: number | null;
   isFree: boolean;
   published: boolean;
   order: number;
@@ -113,7 +114,7 @@ export default async function AdminTopic({ params, searchParams }: { params: Pro
           {ADD_TYPES.map((t) => (
             <details key={t.type} className="rounded-lg border border-dashed border-brand/50">
               <summary className="cursor-pointer px-4 py-2 font-semibold text-brand">
-                + {t.label} <span className="text-xs font-normal text-slate-500">— {t.hint}</span>
+                + {t.label} <span className="text-xs font-normal text-slate-500">- {t.hint}</span>
               </summary>
               <div className="border-t border-dashed border-brand/30 p-4">
                 <ItemForm topicId={topic.id} type={t.type} nextOrder={topic.items.length} soffice={soffice} />
@@ -321,6 +322,9 @@ function ItemForm({
       </div>
       <Field label="Sumber & izin penggunaan" hint="Mis. milik sendiri / izin penerbit / tautan resmi.">
         <input className="input" name="sourceNote" defaultValue={item?.sourceNote ?? ""} />
+      </Field>
+      <Field label="Durasi (menit)" hint="Lama video/bacaan. Dijumlahkan menjadi total menit di kartu kelas.">
+        <input className="input w-32" name="durationMinutes" inputMode="numeric" defaultValue={item?.durationMinutes ?? ""} />
       </Field>
       <Field label="Urutan">
         <input className="input" name="order" inputMode="numeric" defaultValue={item?.order ?? nextOrder} />

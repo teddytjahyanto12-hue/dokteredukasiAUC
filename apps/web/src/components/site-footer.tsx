@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { db } from "@/lib/db";
 import { getSettings, whatsappLink } from "@/lib/settings";
-import { splitSiteName } from "@/components/site-header";
 
 export async function SiteFooter() {
   const [s, tracks] = await Promise.all([
@@ -9,20 +8,20 @@ export async function SiteFooter() {
     db.track.findMany({ where: { published: true }, orderBy: { order: "asc" }, select: { slug: true, title: true } }),
   ]);
   const wa = whatsappLink(s.adminWhatsapp, `Halo admin ${s.siteName}`);
-  const { main, sub } = splitSiteName(s.siteName);
   const col = "text-xs font-bold uppercase tracking-[0.12em] text-white";
   const link = "block text-sm text-slate-400 hover:text-white";
   return (
-    <footer className="mt-16 bg-[#0b1120] print:hidden">
+    <footer className="mt-16 bg-ink print:hidden">
       <div className="mx-auto grid w-full max-w-[1400px] gap-10 px-4 py-12 sm:px-6 md:grid-cols-2 lg:grid-cols-4">
         <div>
           <p className="flex items-center gap-2.5">
-            <span className="grid h-8 w-8 place-items-center rounded-md bg-brand text-sm font-bold text-white">DE</span>
-            <span className="font-[family-name:var(--font-fraunces),Georgia,serif] text-lg font-bold text-white">
-              {main} {sub}
+            <span className="grid h-8 w-8 place-items-center rounded-md bg-mascot text-sm font-bold text-ink">DE</span>
+            <span className="leading-tight">
+              <span className="block font-[family-name:var(--font-fraunces),Georgia,serif] text-lg font-bold text-white">{s.siteName}</span>
+              {s.siteTagline && <span className="block text-xs font-semibold text-mascot">{s.siteTagline}</span>}
             </span>
           </p>
-          <p className="mt-4 max-w-xs text-sm leading-relaxed text-slate-400">{s.heroSubtitle}</p>
+          <p className="mt-4 max-w-xs whitespace-pre-line text-sm leading-relaxed text-slate-400">{s.heroSubtitle}</p>
         </div>
         <div>
           <p className={col}>Jalur Pembelajaran</p>

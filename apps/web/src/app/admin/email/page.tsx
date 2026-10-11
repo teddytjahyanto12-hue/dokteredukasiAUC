@@ -26,7 +26,7 @@ export default async function EmailPage() {
         <h2 className="h2">Pengirim email (SMTP)</h2>
         {configured ? (
           <p className="mt-1 text-sm text-emerald-800">
-            Aktif — dikirim dari <strong>{process.env.MAIL_FROM || process.env.SMTP_USER}</strong> melalui {process.env.SMTP_HOST}.
+            Aktif - dikirim dari <strong>{process.env.MAIL_FROM || process.env.SMTP_USER}</strong> melalui {process.env.SMTP_HOST}.
           </p>
         ) : (
           <div className="mt-1 space-y-2 text-sm text-amber-900">

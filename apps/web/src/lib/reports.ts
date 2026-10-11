@@ -52,6 +52,8 @@ export type CashEntry = {
   amount: number;
   hpp: number;
   hppKnown: boolean;
+  paymentRef: string | null;
+  proofFileId: string | null;
 };
 
 // Semua penerimaan uang dalam periode.
@@ -81,6 +83,8 @@ export async function cashEntries(p: Period): Promise<CashEntry[]> {
       amount: o.amount ?? 0,
       hpp: o.hpp ?? 0,
       hppKnown: o.hpp !== null,
+      paymentRef: o.paymentRef,
+      proofFileId: o.proofFileId,
     })),
     ...inst.map((i) => ({
       date: i.paidAt!,
@@ -95,6 +99,8 @@ export async function cashEntries(p: Period): Promise<CashEntry[]> {
       amount: i.amount ?? 0,
       hpp: Math.round(((i.order.hpp ?? 0) * i.percent) / 100),
       hppKnown: i.order.hpp !== null,
+      paymentRef: i.paymentRef,
+      proofFileId: i.proofFileId,
     })),
   ];
   return rows.sort((a, b) => b.date.getTime() - a.date.getTime());
@@ -129,7 +135,7 @@ export async function buildReport(p: Period) {
       select: { fee: true, mentoring: { select: { tutorId: true } } },
     }),
     db.payroll.findMany({ where: { status: "PAID", ...(r ? { paidAt: r } : {}) }, select: { amount: true } }),
-    db.mentoringSession.aggregate({ where: { verifiedAt: { not: null }, OR: [{ payrollId: null }, { payroll: { status: "UNPAID" } }] }, _sum: { fee: true } }),
+    feeOwed(),
     db.mentoringSession.findMany({
       where: { verifiedAt: null, status: { in: ["SCHEDULED", "DONE", "REVISION"] }, mentoring: { status: { not: "CLOSED" } } },
       select: { mentoring: { select: { tutor: { select: { tutorProfile: { select: { rate: true } } } } } } },
@@ -144,7 +150,15 @@ export async function buildReport(p: Period) {
   const revenue = sum(cash.map((c) => c.amount));
   const hpp = sum(cash.map((c) => c.hpp));
   const grossProfit = revenue - hpp;
-  const tutorFee = sum(feeValidated.map((s) => s.fee ?? 0));
+  const taskFees = await db.projectTask.findMany({
+    where: { validatedAt: r ?? { not: null }, fee: { gt: 0 } },
+    select: { fee: true, mentoring: { select: { tutorId: true } } },
+  });
+  const tutorFee = sum(feeValidated.map((s) => s.fee ?? 0)) + sum(taskFees.map((t) => t.fee ?? 0));
+  const projectedTasks = await db.projectTask.aggregate({
+    where: { validatedAt: null, status: { in: ["TODO", "DONE", "REVISION"] }, fee: { gt: 0 }, mentoring: { status: { not: "CLOSED" } } },
+    _sum: { fee: true },
+  });
   const finance = {
     revenue,
     hpp,
@@ -153,8 +167,8 @@ export async function buildReport(p: Period) {
     tutorFee,
     profitAfterFee: grossProfit - tutorFee,
     feePaid: sum(feePaid.map((x) => x.amount)),
-    feePayable: payable._sum.fee ?? 0,
-    feeProjected: sum(projectedSessions.map((s) => s.mentoring.tutor?.tutorProfile?.rate ?? 0)),
+    feePayable: payable.total,
+    feeProjected: sum(projectedSessions.map((s) => s.mentoring.tutor?.tutorProfile?.rate ?? 0)) + (projectedTasks._sum.fee ?? 0),
     hppMissing: cash.some((c) => !c.hppKnown),
     payments: cash.length,
   };
@@ -218,7 +232,9 @@ export async function buildReport(p: Period) {
         db.mentoring.findMany({ where: { tutorId: t.id, orderId: { not: null } }, select: { orderId: true } }),
       ]);
       const ids = new Set(projectOrderIds.map((x) => x.orderId!));
-      const fee = sum(feeValidated.filter((s) => s.mentoring.tutorId === t.id).map((s) => s.fee ?? 0));
+      const fee =
+        sum(feeValidated.filter((s) => s.mentoring.tutorId === t.id).map((s) => s.fee ?? 0)) +
+        sum(taskFees.filter((x) => x.mentoring.tutorId === t.id).map((x) => x.fee ?? 0));
       const rev = sum(cash.filter((c) => ids.has(c.orderId)).map((c) => c.amount));
       return { id: t.id, name: t.name, active, closed, sessionsValidated, tasksValidated, revisions, pending, fee, revenue: rev, contribution: rev - fee };
     }),
@@ -284,4 +300,83 @@ export async function buildReport(p: Period) {
     alerts: { overdueSessions, expiring, waitingTutorOld, partialOrders, stalePending },
     cash,
   };
+}
+
+
+// ---------- Fee tutor terutang ----------
+// Sesi Zoom & pencapaian yang sudah diverifikasi admin tetapi belum dibayar
+// (belum masuk payroll, atau payroll-nya masih "Belum dibayar").
+export type FeeOwedRow = {
+  kind: "Sesi Zoom" | "Pencapaian";
+  tutorId: string;
+  tutor: string;
+  student: string;
+  service: string;
+  item: string;
+  verifiedAt: Date;
+  fee: number;
+  payroll: string | null;
+  mentoringId: string;
+};
+
+export async function feeOwed() {
+  const unpaid = { OR: [{ payrollId: null }, { payroll: { status: "UNPAID" } }] };
+  const [sessions, tasks] = await Promise.all([
+    db.mentoringSession.findMany({
+      where: { verifiedAt: { not: null }, ...unpaid },
+      orderBy: { verifiedAt: "asc" },
+      select: {
+        seq: true,
+        scheduledAt: true,
+        verifiedAt: true,
+        fee: true,
+        payroll: { select: { periodLabel: true } },
+        mentoring: { select: { id: true, tutor: { select: { id: true, name: true } }, student: { select: { name: true } }, package: { select: { name: true } } } },
+      },
+    }),
+    db.projectTask.findMany({
+      where: { validatedAt: { not: null }, fee: { gt: 0 }, ...unpaid },
+      orderBy: { validatedAt: "asc" },
+      select: {
+        title: true,
+        validatedAt: true,
+        fee: true,
+        payroll: { select: { periodLabel: true } },
+        mentoring: { select: { id: true, tutor: { select: { id: true, name: true } }, student: { select: { name: true } }, package: { select: { name: true } } } },
+      },
+    }),
+  ]);
+  const rows: FeeOwedRow[] = [
+    ...sessions.map((s) => ({
+      kind: "Sesi Zoom" as const,
+      tutorId: s.mentoring.tutor?.id ?? "-",
+      tutor: s.mentoring.tutor?.name ?? "Tanpa tutor",
+      student: s.mentoring.student.name,
+      service: s.mentoring.package?.name ?? "Bimbingan manual",
+      item: s.seq ? `Zoom ${s.seq}` : "Sesi bimbingan",
+      verifiedAt: s.verifiedAt!,
+      fee: s.fee ?? 0,
+      payroll: s.payroll?.periodLabel ?? null,
+      mentoringId: s.mentoring.id,
+    })),
+    ...tasks.map((t) => ({
+      kind: "Pencapaian" as const,
+      tutorId: t.mentoring.tutor?.id ?? "-",
+      tutor: t.mentoring.tutor?.name ?? "Tanpa tutor",
+      student: t.mentoring.student.name,
+      service: t.mentoring.package?.name ?? "Bimbingan manual",
+      item: t.title,
+      verifiedAt: t.validatedAt!,
+      fee: t.fee ?? 0,
+      payroll: t.payroll?.periodLabel ?? null,
+      mentoringId: t.mentoring.id,
+    })),
+  ].sort((a, b) => a.tutor.localeCompare(b.tutor) || a.verifiedAt.getTime() - b.verifiedAt.getTime());
+  const byTutor = [...group(rows, (r) => r.tutorId)].map(([, list]) => ({
+    tutor: list[0].tutor,
+    count: list.length,
+    total: sum(list.map((r) => r.fee)),
+    inPayroll: sum(list.filter((r) => r.payroll).map((r) => r.fee)),
+  }));
+  return { rows, byTutor, total: sum(rows.map((r) => r.fee)) };
 }

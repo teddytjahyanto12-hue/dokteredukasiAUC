@@ -55,7 +55,7 @@ export default async function ServiceDetail({ params, searchParams }: { params: 
     <p className="text-sm text-slate-500">Pemesanan hanya untuk akun pelanggan.</p>
   ) : owned ? (
     <Link href="/belajar" className="btn w-full">
-      Anda sudah memiliki layanan ini
+      Layanan ini sudah dimiliki
     </Link>
   ) : pending ? (
     <Link href={`/pembelian/${pending.id}`} className="btn w-full">
@@ -92,11 +92,11 @@ export default async function ServiceDetail({ params, searchParams }: { params: 
 
         {pkg.benefits.length > 0 && (
           <section className="mt-8">
-            <h2 className="h2">Yang Anda dapatkan</h2>
+            <h2 className="h2">Yang didapatkan</h2>
             <ul className="mt-3 grid gap-2 sm:grid-cols-2">
               {pkg.benefits.map((b) => (
                 <li key={b.id} className="flex items-start gap-2 text-slate-700">
-                  <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-brand text-xs text-white" aria-hidden>
+                  <span className="mt-0.5 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-mascot text-xs text-ink" aria-hidden>
                     ✓
                   </span>
                   {b.text}
@@ -164,7 +164,7 @@ export default async function ServiceDetail({ params, searchParams }: { params: 
             disabledReason={disabledReason}
           />
           {!pkg.durations.length && (
-            <p className="mt-3 text-xs text-slate-500">{pkg.accessDays ? `Masa akses ${pkg.accessDays} hari` : "Masa akses tanpa batas waktu"}</p>
+            <p className="mt-3 text-xs text-slate-500">{pkg.accessDays ? `Masa akses ${pkg.accessDays} hari` : "Masa akses seumur hidup"}</p>
           )}
         </div>
       </aside>

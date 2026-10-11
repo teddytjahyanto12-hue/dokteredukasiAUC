@@ -67,7 +67,7 @@ export function ProgressBar({ value }: { value: number }) {
   const v = Math.max(0, Math.min(100, value));
   return (
     <div className="h-2 w-full overflow-hidden rounded-full bg-slate-100" aria-label={`Progres ${v}%`}>
-      <div className={`h-full rounded-full ${v === 100 ? "bg-success" : "bg-brand"}`} style={{ width: `${v}%` }} />
+      <div className={`h-full rounded-full ${v === 100 ? "bg-success" : "bg-mascot"}`} style={{ width: `${v}%` }} />
     </div>
   );
 }

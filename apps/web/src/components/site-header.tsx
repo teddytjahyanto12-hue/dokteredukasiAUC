@@ -8,12 +8,6 @@ import { logoutAction } from "@/app/actions/auth";
 import { Icon } from "@/components/icons";
 import { NavLinks, type NavItem } from "@/components/nav-links";
 
-// Nama situs dipecah menjadi wordmark (dua kata pertama) dan baris kecil di bawahnya (sisanya).
-export function splitSiteName(name: string) {
-  const words = name.trim().split(/\s+/);
-  return { main: words.slice(0, 2).join(" "), sub: words.slice(2).join(" ") };
-}
-
 // Top bar: (1) logo & wordmark + pencarian, (2) tiga tautan berikon, (3) streak & profil.
 export async function SiteHeader() {
   const [user, settings] = await Promise.all([getCurrentUser(), getSettings()]);
@@ -21,7 +15,6 @@ export async function SiteHeader() {
     user ? db.notification.count({ where: { userId: user.id, readAt: null } }) : 0,
     user?.role === "STUDENT" ? learningStreak(user.id) : null,
   ]);
-  const { main, sub } = splitSiteName(settings.siteName);
   const home = user ? homeFor(user) : "/masuk?next=/belajar";
   const items: NavItem[] = [
     { href: "/kelas", label: "Katalog Kelas", icon: "book", match: ["/kelas", "/materi", "/quiz", "/jalur", "/program"] },
@@ -47,10 +40,10 @@ export async function SiteHeader() {
     <header className="sticky top-0 z-30 border-b border-slate-200 bg-white print:hidden">
       <div className="mx-auto flex h-[72px] w-full max-w-[1400px] items-center gap-4 px-4 sm:px-6">
         <Link href="/" className="flex shrink-0 items-center gap-2.5">
-          <span className="grid h-10 w-10 place-items-center rounded-lg bg-brand text-base font-bold text-white">DE</span>
+          <span className="grid h-10 w-10 place-items-center rounded-lg bg-mascot text-base font-bold text-ink">DE</span>
           <span className="hidden leading-none sm:block">
-            <span className="block font-[family-name:var(--font-fraunces),Georgia,serif] text-xl font-bold tracking-tight text-slate-900">{main}</span>
-            {sub && <span className="mt-0.5 block text-[11px] font-semibold uppercase tracking-[0.12em] text-brand">{sub}</span>}
+            <span className="block font-[family-name:var(--font-fraunces),Georgia,serif] text-xl font-bold tracking-tight text-slate-900">{settings.siteName}</span>
+            {settings.siteTagline && <span className="mt-1 block text-[11px] font-semibold tracking-[0.04em] text-brand">{settings.siteTagline}</span>}
           </span>
         </Link>
 
@@ -73,7 +66,7 @@ export async function SiteHeader() {
           {user ? (
             <>
               {streak && (
-                <span className="inline-flex items-center gap-1.5 rounded-lg bg-amber-50 px-2.5 py-1.5 text-sm font-semibold text-amber-700" title="Streak belajar: hari berturut-turut Anda menyelesaikan materi atau kuis">
+                <span className="inline-flex items-center gap-1.5 rounded-lg bg-amber-50 px-2.5 py-1.5 text-sm font-semibold text-amber-700" title="Streak belajar: hari berturut-turut menyelesaikan materi atau kuis">
                   <Icon name="flame" className="h-4 w-4 text-orange-500" fill />
                   <span className="num">{streak.days}</span> Hari
                 </span>

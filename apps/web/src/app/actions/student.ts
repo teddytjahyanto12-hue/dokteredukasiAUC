@@ -11,7 +11,8 @@ import { back, str } from "@/lib/flash";
 import { getSettings, whatsappLink } from "@/lib/settings";
 import { fillWaTemplate, invoiceNo, loadOrderForReceipt, orderSummary } from "@/lib/receipts";
 import { notifyStaff } from "@/lib/notify";
-import { createDuitkuPayment, DuitkuError, syncOrderPayments } from "@/lib/duitku";
+import { LEAD_SOURCES } from "@/lib/installments";
+import { createDuitkuPayment, DuitkuError, onlinePaymentActive, syncOrderPayments } from "@/lib/duitku";
 
 export async function orderPackageAction(form: FormData) {
   const user = await requireUser(["STUDENT"]);
@@ -21,9 +22,10 @@ export async function orderPackageAction(form: FormData) {
   const path = `/paket/${pkg.slug}`;
 
   const owned = await db.entitlement.findFirst({ where: { ...activeEntitlementWhere(user.id), packageId } });
-  if (owned) back(path, "Anda sudah memiliki layanan ini.", "error");
+  if (owned) back(path, "Layanan ini sudah dimiliki.", "error");
   const pending = await db.order.findFirst({ where: { userId: user.id, packageId, status: "PENDING" } });
   if (pending) redirect(`/pembelian/${pending.id}`);
+  if (!(LEAD_SOURCES as readonly string[]).includes(str(form, "leadSource"))) back(path, "Pilih dari mana mengetahui layanan ini.", "error");
 
   let orderId: string;
   try {
@@ -83,7 +85,7 @@ export async function submitQuizAction(form: FormData) {
     include: { topic: true, questions: { include: { options: true } } },
   });
   if (!quiz || !quiz.published) back("/belajar", "Quiz tidak ditemukan.", "error");
-  if (!(await canAccessCategory(user, quiz.topic.categoryId))) back(`/materi/${quiz.topicId}`, "Anda belum memiliki akses ke quiz ini.", "error");
+  if (!quiz.isFree && !(await canAccessCategory(user, quiz.topic.categoryId))) back(`/materi/${quiz.topicId}`, "Belum ada akses ke quiz ini.", "error");
   if (quiz.questions.length === 0) back(`/quiz/${quiz.topicId}`, "Quiz belum memiliki soal.", "error");
 
   const answers = quiz.questions.map((q) => {
@@ -117,6 +119,7 @@ export async function payOnlineAction(orderId: string) {
   const user = await requireUser();
   const order = await db.order.findFirst({ where: { id: orderId, userId: user.id }, select: { id: true } });
   if (!order) back("/pembelian", "Pesanan tidak ditemukan.", "error");
+  if (!onlinePaymentActive(await getSettings())) back(`/pembelian/${orderId}`, "Pembayaran online belum aktif. Gunakan pembayaran manual via WhatsApp.", "error");
   let url: string;
   try {
     url = await createDuitkuPayment(orderId);

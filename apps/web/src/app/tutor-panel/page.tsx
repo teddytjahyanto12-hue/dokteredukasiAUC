@@ -96,7 +96,7 @@ export default async function TutorHome() {
                       <ProgressBar value={c.progress} />
                       <span className="text-xs text-slate-500">{c.progress}%</span>
                     </td>
-                    <td>{c.sessions[0] ? `${tanggal(c.sessions[0].scheduledAt, true)} WIB` : "—"}</td>
+                    <td>{c.sessions[0] ? `${tanggal(c.sessions[0].scheduledAt, true)} WIB` : "-"}</td>
                   </tr>
                 ))}
               </tbody>
@@ -106,7 +106,7 @@ export default async function TutorHome() {
       </section>
 
       <section className="mt-8">
-        <h2 className="h2 mb-3">Materi yang dapat Anda akses</h2>
+        <h2 className="h2 mb-3">Materi yang dapat diakses</h2>
         {!profile || profile.trackAccess.length === 0 ? (
           <Empty>Admin belum memberikan akses materi.</Empty>
         ) : (

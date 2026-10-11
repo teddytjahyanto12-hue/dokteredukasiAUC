@@ -19,19 +19,24 @@ export default async function AdminPayroll({ searchParams }: { searchParams: Sea
       orderBy: { name: "asc" },
       include: {
         tutorProfile: true,
-        mentoringsAsTutor: { select: { sessions: { where: { verifiedAt: { not: null }, payrollId: null }, select: { fee: true } } } },
+        mentoringsAsTutor: {
+          select: {
+            sessions: { where: { verifiedAt: { not: null }, payrollId: null }, select: { fee: true } },
+            tasks: { where: { validatedAt: { not: null }, fee: { gt: 0 }, payrollId: null }, select: { fee: true } },
+          },
+        },
       },
     }),
     db.payroll.findMany({
       orderBy: { createdAt: "desc" },
-      include: { tutor: { include: { tutorProfile: true } }, proofFile: { select: { id: true } }, _count: { select: { sessions: true } } },
+      include: { tutor: { include: { tutorProfile: true } }, proofFile: { select: { id: true } }, _count: { select: { sessions: true, tasks: true } } },
     }),
   ]);
   const defaultPeriod = new Intl.DateTimeFormat("id-ID", { month: "long", year: "numeric", timeZone: "Asia/Jakarta" }).format(new Date());
 
   return (
     <>
-      <PageHeader title="Payroll tutor" subtitle="Sesi yang sudah diverifikasi admin dikumpulkan menjadi payroll, lalu unggah bukti transfer ke rekening tutor." />
+      <PageHeader title="Payroll tutor" subtitle="Sesi Zoom dan pencapaian yang sudah diverifikasi admin dikumpulkan menjadi payroll, lalu unggah bukti transfer ke rekening tutor." />
       <Flash pesan={pesan} tipe={tipe} />
 
       <section className="card mb-6">
@@ -42,7 +47,7 @@ export default async function AdminPayroll({ searchParams }: { searchParams: Sea
               <tr>
                 <th>Tutor</th>
                 <th>Rekening</th>
-                <th>Sesi terverifikasi</th>
+                <th>Sesi & pencapaian terverifikasi</th>
                 <th>Total</th>
                 <th>Buat payroll</th>
               </tr>
@@ -50,7 +55,8 @@ export default async function AdminPayroll({ searchParams }: { searchParams: Sea
             <tbody>
               {tutors.map((t) => {
                 const sessions = t.mentoringsAsTutor.flatMap((m) => m.sessions);
-                const total = sessions.reduce((s, x) => s + (x.fee ?? 0), 0);
+                const tasks = t.mentoringsAsTutor.flatMap((m) => m.tasks);
+                const total = [...sessions, ...tasks].reduce((s, x) => s + (x.fee ?? 0), 0);
                 return (
                   <tr key={t.id}>
                     <td>
@@ -61,10 +67,13 @@ export default async function AdminPayroll({ searchParams }: { searchParams: Sea
                     <td className="text-xs">
                       {t.tutorProfile?.bankName ? `${t.tutorProfile.bankName} ${t.tutorProfile.bankAccount ?? ""} a.n. ${t.tutorProfile.bankHolder ?? "-"}` : "Belum diisi"}
                     </td>
-                    <td>{sessions.length}</td>
+                    <td>
+                      {sessions.length} sesi
+                      {tasks.length > 0 && ` · ${tasks.length} pencapaian`}
+                    </td>
                     <td>{rupiah(total)}</td>
                     <td>
-                      {sessions.length > 0 ? (
+                      {sessions.length + tasks.length > 0 ? (
                         <form action={createPayrollAction} className="flex gap-2">
                           <input type="hidden" name="tutorId" value={t.id} />
                           <input className="input w-40" name="periodLabel" defaultValue={defaultPeriod} required />
@@ -73,7 +82,7 @@ export default async function AdminPayroll({ searchParams }: { searchParams: Sea
                           </button>
                         </form>
                       ) : (
-                        <span className="text-xs text-slate-500">—</span>
+                        <span className="text-xs text-slate-500">-</span>
                       )}
                     </td>
                   </tr>
@@ -99,7 +108,7 @@ export default async function AdminPayroll({ searchParams }: { searchParams: Sea
                       {p.tutor.name} · {p.periodLabel}
                     </p>
                     <p className="text-sm text-slate-600">
-                      {rupiah(p.amount)} · {p._count.sessions} sesi · dibuat {tanggal(p.createdAt)}
+                      {rupiah(p.amount)} · {p._count.sessions} sesi{p._count.tasks ? ` · ${p._count.tasks} pencapaian` : ""} · dibuat {tanggal(p.createdAt)}
                       {p.paidAt && ` · dibayar ${tanggal(p.paidAt)}`}
                     </p>
                   </div>
