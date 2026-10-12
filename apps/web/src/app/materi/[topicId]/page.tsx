@@ -11,6 +11,11 @@ import { completeAndNextAction, toggleItemDoneAction } from "@/app/actions/stude
 import { Icon } from "@/components/icons";
 import { ProgressBar } from "@/components/ui";
 import type { SearchParams } from "@/lib/flash";
+import { SR_SLUG } from "@/lib/srma-config";
+import { LessonNote } from "@/components/lesson-note";
+import { ModulePanel } from "@/components/module-panel";
+import { getSrmaProgression } from "@/lib/srma-progression";
+import { SrmaQuizLock } from "@/components/srma-quiz-lock";
 
 const ICON: Record<string, string> = { SLIDES: "🖼️", PDF: "📄", VIDEO: "🎬", LINK: "🔗", TEXT: "📝" };
 
@@ -45,7 +50,11 @@ export default async function TopicPage({ params, searchParams }: { params: Prom
       items: { where: { published: true }, orderBy: { order: "asc" }, include: { file: true } },
     },
   });
-  if (!topic || !topic.published) notFound();
+  if (!topic || !topic.published || !topic.category.published || !topic.category.track.published) notFound();
+  const isSrma = topic.category.slug === SR_SLUG;
+  const progression = await getSrmaProgression(user, topic.categoryId);
+  const prerequisite = progression?.locked.get(topicId);
+  if (prerequisite) return <div className="container-page py-8"><h1 className="h1 mb-5">{topic.title}</h1><SrmaQuizLock prerequisite={prerequisite} categoryId={topic.categoryId} /></div>;
 
   const allowed = await accessibleCategoryIds(user);
   const categoryOpen = canOpen(allowed, topic.categoryId);
@@ -98,9 +107,10 @@ export default async function TopicPage({ params, searchParams }: { params: Prom
       {topicCode && <p className="num mt-3 text-sm font-semibold text-brand">{topicCode}</p>}
       <h1 className={`h1 ${topicCode ? "mt-1" : "mt-2"}`}>{topic.title}</h1>
       {topic.description && <p className="mt-1 text-slate-600">{topic.description}</p>}
+      {isSrma && <div className="mt-4 flex flex-wrap gap-3"><Link className="btn-secondary btn-sm" href={`/kelas/${topic.categoryId}`}>Kurikulum SR-MA</Link><Link className="btn-secondary btn-sm" href="/toolkit-srma">Toolkit SR-MA →</Link><span className="self-center text-xs text-slate-500">Alat kerja tersedia untuk Intermediate dan Pro.</span></div>}
 
       <div className="mt-6 grid gap-6 lg:grid-cols-[320px_minmax(0,1fr)]">
-        <aside id="kurikulum-kelas" className="order-2 scroll-mt-36 lg:order-1">
+        <ModulePanel simplified={isSrma}>
           <div className="rounded-2xl border border-slate-200 bg-white lg:sticky lg:top-36 lg:max-h-[calc(100vh-10rem)] lg:overflow-y-auto">
             <div className="border-b border-slate-200 p-4">
               <p className="text-xs font-semibold uppercase tracking-[0.1em] text-brand">Kurikulum Kelas</p>
@@ -118,6 +128,7 @@ export default async function TopicPage({ params, searchParams }: { params: Prom
             <ol>
               {syllabus.map((t, idx) => (
                 <li key={t.id} className="border-b border-slate-100 last:border-0">
+                  {isSrma && (t.id === "dea-srma-chapter-group-1" || t.id === "dea-srma-chapter-group-5") && <p className="bg-ink px-4 py-3 text-xs font-bold uppercase tracking-wide text-mascot">{t.id.endsWith("-1") ? "I. Telaah Sistematik · Bab 01–11" : "II. Meta-analisis · Bab 12–22"}</p>}
                   <Link href={`/materi/${t.id}`} className={`block px-4 pt-3 text-sm font-semibold ${t.id === topic.id ? "text-slate-900" : "text-slate-600 hover:text-brand"}`}>
                     {topic.category.code && <span className="num mr-1.5 text-xs text-brand">{topic.category.code}.{idx + 1}</span>}
                     {topic.category.parent ? t.title : `${idx + 1}. ${t.title}`}
@@ -126,7 +137,7 @@ export default async function TopicPage({ params, searchParams }: { params: Prom
                     {t.items
                       .filter((i) => i.type !== "LINK")
                       .map((i) => {
-                        const open = canSee(i);
+                        const open = canSee(i) && !progression?.locked.has(t.id);
                         const active = current?.id === i.id;
                         return (
                           <li key={i.id}>
@@ -145,7 +156,7 @@ export default async function TopicPage({ params, searchParams }: { params: Prom
                         );
                       })}
                     {t.quiz?.published &&
-                      (categoryOpen || t.quiz.isFree ? (
+                      ((categoryOpen || t.quiz.isFree) && !progression?.locked.has(t.id) ? (
                         <li>
                           <Link href={`/quiz/${t.id}`} className="flex items-start gap-2 px-4 py-2 text-sm font-medium text-amber-800 hover:bg-amber-50">
                             <span className="w-5 shrink-0 text-center" aria-hidden>
@@ -168,10 +179,10 @@ export default async function TopicPage({ params, searchParams }: { params: Prom
               ))}
             </ol>
           </div>
-        </aside>
+        </ModulePanel>
 
         <section className="order-1 min-w-0 space-y-6 lg:order-2">
-          <a href="#kurikulum-kelas" className="btn-secondary w-full lg:hidden"><Icon name="book" />Lihat kurikulum kelas · {pct}% selesai</a>
+          {!isSrma && <a href="#kurikulum-kelas" className="btn-secondary w-full lg:hidden"><Icon name="book" />Lihat kurikulum kelas · {pct}% selesai</a>}
           {selected && (
             <article className="card sm:p-7">
               <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
@@ -195,8 +206,11 @@ export default async function TopicPage({ params, searchParams }: { params: Prom
               {selected.description && <p className="mb-4 text-sm text-slate-600">{selected.description}</p>}
               <MaterialViewer item={selected} />
               {selected.sourceNote && <p className="mt-3 text-xs text-slate-500">Sumber: {selected.sourceNote}</p>}
+              {isSrma && topic.id.startsWith("dea-srma-chapter-group-") && <div className="mt-5 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-mascot bg-brand-soft p-4"><p className="text-sm">Selesai membaca bab dalam kelompok ini? Uji pemahaman melalui 10 soal dengan pembahasan.</p><Link href={`/quiz/${topic.id}`} className="btn-secondary btn-sm">Kuis kelompok {babNo} →</Link></div>}
             </article>
           )}
+
+          {isSrma && selected && <LessonNote key={selected.id} itemId={selected.id} initial={(await db.setting.findUnique({ where: { key: `srma.note.${user.id}.${selected.id}` } }))?.value ?? ""} />}
 
           {locked && <Paywall title={locked.title} type={ITEM_TYPE_LABEL[locked.type as ItemType]} offers={offers} courseId={topic.categoryId} freeLeft={freeLeft} />}
 

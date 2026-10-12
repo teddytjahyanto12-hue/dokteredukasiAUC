@@ -1,5 +1,6 @@
 import { resolveEmbed, PROVIDER_LABEL } from "@/lib/embed";
 import { Empty } from "@/components/ui";
+import { PdfViewer } from "@/components/pdf-viewer";
 
 export type ViewerItem = {
   type: string;
@@ -24,11 +25,11 @@ export function MaterialViewer({ item, showOriginalDownload = false }: { item: V
         <img key="file" src={src} alt={item.title} className="w-full rounded-lg border border-slate-200" />
       ) : (
         <div key="file">
-          <iframe
+          {item.file.mimeType === "application/pdf" ? <PdfViewer src={src} title={item.title} /> : <iframe
             src={`${src}#view=FitH&toolbar=1&navpanes=0`}
             title={item.title}
             className="h-[70vh] min-h-[420px] w-full rounded-lg border border-slate-200 bg-slate-100"
-          />
+          />}
           <div className="mt-2 flex flex-wrap gap-4 text-sm text-slate-500">
             <a href={src} target="_blank" rel="noopener noreferrer" className="hover:text-brand">
               Layar penuh ↗

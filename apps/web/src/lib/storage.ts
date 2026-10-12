@@ -8,7 +8,7 @@ import { db } from "./db";
 // dibuka lewat /api/berkas/[id] yang memeriksa hak akses).
 // Saat deploy, ganti implementasi ini ke object storage (Supabase Storage / R2 / S3).
 
-const ROOT = path.join(process.cwd(), "storage");
+const ROOT = process.env.DEA_STORAGE_DIR || path.join(process.cwd(), "storage");
 
 const PPTX = "application/vnd.openxmlformats-officedocument.presentationml.presentation";
 const PPT = "application/vnd.ms-powerpoint";

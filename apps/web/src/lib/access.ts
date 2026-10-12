@@ -2,6 +2,7 @@ import "server-only";
 import { db } from "./db";
 import type { CurrentUser } from "./auth";
 import { hasPermission } from "./permissions";
+import { canAccessSrmaTopic } from "./srma-progression";
 
 // Aturan akses materi (diperiksa di server untuk setiap halaman/berkas):
 // - Owner & admin: semua materi.
@@ -61,7 +62,7 @@ export async function canAccessFile(user: CurrentUser | null, fileId: string) {
   const file = await db.fileAsset.findUnique({
     where: { id: fileId },
     select: {
-      items: { select: { isFree: true, published: true, topic: { select: { categoryId: true } } } },
+      items: { select: { isFree: true, published: true, topic: { select: { id: true, categoryId: true, published: true } } } },
       sessionProofs: { select: { mentoring: { select: { studentId: true, tutorId: true } } } },
       payrollProofs: { select: { tutorId: true } },
       orderProofs: { select: { userId: true } },
@@ -80,7 +81,9 @@ export async function canAccessFile(user: CurrentUser | null, fileId: string) {
   if (file.orderProofs.some((o) => o.userId === user.id) || file.installmentProofs.some((i) => i.order.userId === user.id)) return true;
   if (file.items.length) {
     const allowed = await accessibleCategoryIds(user);
-    return file.items.some((i) => i.published && canOpen(allowed, i.topic.categoryId, i.isFree));
+    for (const i of file.items) {
+      if (i.published && i.topic.published && canOpen(allowed, i.topic.categoryId, i.isFree) && await canAccessSrmaTopic(user, i.topic.id, i.topic.categoryId)) return true;
+    }
   }
   return false;
 }

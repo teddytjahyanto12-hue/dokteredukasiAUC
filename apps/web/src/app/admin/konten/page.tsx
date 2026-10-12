@@ -25,6 +25,7 @@ export default async function AdminContent({ searchParams }: { searchParams: Sea
     <>
       <PageHeader title="Konten materi" subtitle="Struktur: Jalur → Kategori → Topik → Materi (slide/PDF/video/tautan/teks) + quiz per topik." />
       <Flash pesan={pesan} tipe={tipe} />
+      <Link href="/admin/srma" className="btn-secondary mb-5">Kelola pembelajaran dan Toolkit SR-MA →</Link>
       <div className="space-y-6">
         {tracks.map((t) => (
           <section key={t.id} className="card">

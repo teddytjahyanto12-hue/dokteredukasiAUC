@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
+import { SR_SLUG, TOOLKIT_SLUG } from "@/lib/srma-config";
 import { db } from "@/lib/db";
 import { getCurrentUser } from "@/lib/auth";
 import { accessibleCategoryIds, canOpen } from "@/lib/access";
@@ -9,6 +10,7 @@ import { rupiah } from "@/lib/format";
 import { startingPrice } from "@/lib/services";
 import { ProgressBar } from "@/components/ui";
 import { CourseArt } from "@/components/course-art";
+import { getSrmaProgression } from "@/lib/srma-progression";
 
 export async function generateMetadata({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
@@ -21,6 +23,7 @@ export default async function CoursePage({ params, searchParams }: { params: Pro
   const finished = (await searchParams).selesai === "1";
   const raw = await db.category.findUnique({ where: { id }, include: { ...courseInclude, parent: { select: { id: true, title: true } } } });
   if (!raw || !raw.published) notFound();
+  if (raw.slug === TOOLKIT_SLUG) redirect("/toolkit-srma");
   const course = withBlockTopics(raw);
   const blocks = raw.children; // terisi bila ini kelas induk (mis. Basic Medical Science, Review)
   const childLabel = raw.childLabel || "Blok";
@@ -42,8 +45,11 @@ export default async function CoursePage({ params, searchParams }: { params: Pro
   const students = (await studentCounts([course])).get(course.id)?.total ?? 0;
   const st = courseStats(course, done, open);
   const outcomes = (course.outcomes ?? "").split("\n").map((x) => x.trim()).filter(Boolean);
-  const target = st.next ?? st.first;
+  const progression = await getSrmaProgression(user, course.id);
+  const reachable = course.topics.filter(t => !progression?.locked.has(t.id)).flatMap(t => t.items.filter(i => i.type !== "LINK" && (open || i.isFree)).map(i => ({ ...i, topicId: t.id })));
+  const target = progression ? reachable.find(i => !done.has(i.id)) ?? reachable[0] : st.next ?? st.first;
   const hasResources = course.topics.some((t) => t.items.length > 0 || t.quiz?.published);
+  const chapterCurriculum = course.slug === SR_SLUG && course.topics.some(t => t.id.startsWith("dea-srma-chapter-group-"));
   // Tamu diarahkan login dulu; materi gratis tetap wajib login.
   const go = (href: string) => (user ? href : `/masuk?next=${encodeURIComponent(href)}`);
 
@@ -78,11 +84,12 @@ export default async function CoursePage({ params, searchParams }: { params: Pro
         <div className="min-w-0">
           {course.code && <p className="num text-sm font-semibold text-brand">{course.code}</p>}
           <h1 className="h1">{course.title}</h1>
+          {course.slug === SR_SLUG && <div className="mt-4 rounded-xl border border-mascot bg-brand-soft p-4"><p className="text-sm">Pelajari modul di kurikulum. Gunakan Toolkit saat mulai mengerjakan riset.</p><Link className="btn-secondary btn-sm mt-3" href="/toolkit-srma">Buka Toolkit SR-MA →</Link><p className="mt-2 text-xs text-slate-600">Toolkit termasuk dalam paket Intermediate dan Pro.</p></div>}
           {!hasResources && <p className="mt-4 rounded-lg border border-mascot bg-brand-soft p-4 text-sm text-ink"><strong>Segera hadir.</strong> Materi kelas ini sedang disiapkan. Gambaran kelas dapat dilihat terlebih dahulu.</p>}
           {course.description && <p className="mt-2 text-slate-600">{course.description}</p>}
           <div className="mt-4 flex flex-wrap gap-2">
             {students > 0 && <span className="badge">{muridLabel(students)}</span>}
-            {hasResources && <span className="badge">{[blocks.length ? `${blocks.length} ${childLabel.toLowerCase()}` : course.topics.length ? `${course.topics.length} ${raw.parentId ? "bab" : "topik"}` : null, st.total ? `${st.total} materi` : null, st.quizzes ? `${st.quizzes} kuis` : null].filter(Boolean).join(" · ")}</span>}
+            {hasResources && <span className="badge">{[blocks.length ? `${blocks.length} ${childLabel.toLowerCase()}` : course.topics.length ? `${course.topics.length} ${chapterCurriculum ? "kelompok" : raw.parentId ? "bab" : "topik"}` : null, st.total ? `${st.total} materi` : null, st.quizzes ? `${st.quizzes} kuis` : null].filter(Boolean).join(" · ")}</span>}
             {course.durationText && <span className="badge">{course.durationText}</span>}
             {course.instructor && <span className="badge">Pengajar: {course.instructor}</span>}
           </div>
@@ -144,16 +151,20 @@ export default async function CoursePage({ params, searchParams }: { params: Pro
 
           {blocks.length === 0 && <section className="mt-8">
             <h2 className="h2 mb-1">Kurikulum</h2>
-            <p className="mb-4 text-sm leading-relaxed text-slate-600">{!hasResources ? "Kurikulum akan dilengkapi saat materi tersedia." : open ? "Semua materi sudah terbuka." : "Masuk untuk mencoba materi bertanda Gratis. Akses materi lainnya mengikuti layanan yang dipilih."}</p>
+            {chapterCurriculum && <div className="my-4 rounded-2xl border-2 border-ink bg-brand-soft p-5"><p className="font-bold">Dari telaah sistematik hingga meta-analisis</p><p className="mt-1 text-sm text-slate-700">22 bab PDF · 8 kelompok belajar · 80 soal latihan</p><p className="mt-2 text-sm text-slate-600">Lulus kuis setiap kelompok dengan nilai minimal 80 untuk membuka kelompok berikutnya. Bila belum lulus, pelajari kembali bab yang tersedia dan ulangi kuis. Bab 01 dan kuis kelompok pertama dapat dicoba gratis setelah masuk.</p><div className="mt-4 flex flex-wrap gap-2"><a className="btn-secondary btn-sm" href="#bagian-systematic-review">I. Telaah sistematik · Bab 01–11</a><a className="btn-secondary btn-sm" href="#bagian-meta-analisis">II. Meta-analisis · Bab 12–22</a></div></div>}
+            <p className="mb-4 text-sm leading-relaxed text-slate-600">{!hasResources ? "Kurikulum akan dilengkapi saat materi tersedia." : progression ? "Materi dibuka berurutan berdasarkan kelulusan kuis. Akses paket tetap berlaku." : open ? "Semua materi sudah terbuka." : "Masuk untuk mencoba materi bertanda Gratis. Akses materi lainnya mengikuti layanan yang dipilih."}</p>
             {course.topics.length === 0 && <p className="text-sm text-slate-500">Materi kelas ini sedang disiapkan.</p>}
             <ol className="space-y-3">
               {course.topics.map((t, idx) => {
                 const lessons = t.items.filter((i) => i.type !== "LINK");
                 const links = t.items.length - lessons.length;
+                const prerequisite = progression?.locked.get(t.id);
                 return (
                   <li key={t.id} className="card p-0">
+                    {chapterCurriculum && (t.id === "dea-srma-chapter-group-1" || t.id === "dea-srma-chapter-group-5") && <div id={t.id.endsWith("-1") ? "bagian-systematic-review" : "bagian-meta-analisis"} className="scroll-mt-36 rounded-t-xl bg-ink px-4 py-4 text-white"><p className="text-xs font-semibold uppercase tracking-wider text-mascot">{t.id.endsWith("-1") ? "Bagian I · Bab 01–11" : "Bagian II · Bab 12–22"}</p><h3 className="mt-1 text-lg font-bold">{t.id.endsWith("-1") ? "Telaah Sistematik" : "Meta-analisis"}</h3></div>}
                     <div className="flex items-center justify-between gap-3 border-b border-slate-100 px-4 py-3">
                       <h3 className="font-semibold text-slate-900">
+                        {chapterCurriculum && <span className="mb-1 block text-xs font-semibold uppercase tracking-wide text-brand">Kelompok {idx + 1} · {lessons.length} bab PDF · 10 soal</span>}
                         {raw.code && <span className="num mr-2 text-sm text-brand">{raw.code}.{idx + 1}</span>}
                         {raw.parentId ? t.title : `${idx + 1}. ${t.title}`}
                       </h3>
@@ -161,9 +172,12 @@ export default async function CoursePage({ params, searchParams }: { params: Pro
                         {lessons.filter((i) => done.has(i.id)).length}/{lessons.length} selesai
                       </span>}
                     </div>
+                    {chapterCurriculum && t.description && <p className="border-b border-slate-100 px-4 py-3 text-sm text-slate-600">{t.description}</p>}
+                    {prerequisite && <p className="border-b border-slate-100 bg-amber-50 px-4 py-3 text-sm text-amber-900">🔒 Lulus {prerequisite.quiz?.title || "kuis kelompok sebelumnya"} dengan nilai minimal 80 untuk membuka kelompok ini.</p>}
+                    {progression?.passed.has(t.id) && <p className="px-4 py-2 text-sm font-semibold text-emerald-700">✓ Kuis kelompok lulus</p>}
                     <ul className="divide-y divide-slate-100 text-sm">
                       {lessons.map((i) => {
-                        const can = open || i.isFree;
+                        const can = (open || i.isFree) && !prerequisite;
                         const row = (
                           <>
                             <span className="w-5 shrink-0 text-center" aria-hidden>
@@ -185,9 +199,9 @@ export default async function CoursePage({ params, searchParams }: { params: Pro
                       {t.quiz?.published && (
                         <li className="flex items-center gap-2 px-4 py-2.5 text-slate-600">
                           <span className="w-5 shrink-0 text-center" aria-hidden>
-                            {open || t.quiz.isFree ? "📝" : "🔒"}
+                            {(open || t.quiz.isFree) && !prerequisite ? "📝" : "🔒"}
                           </span>
-                          {open || t.quiz.isFree ? (
+                          {(open || t.quiz.isFree) && !prerequisite ? (
                             <Link href={go(`/quiz/${t.id}`)} className="link">
                               {t.quiz.title}
                               {t.quiz.isFree && !open && <span className="badge-brand ml-2">Gratis</span>}

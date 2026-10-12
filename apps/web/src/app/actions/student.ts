@@ -12,6 +12,7 @@ import { getSettings, whatsappLink } from "@/lib/settings";
 import { fillWaTemplate, invoiceNo, loadOrderForReceipt, orderSummary } from "@/lib/receipts";
 import { notifyStaff } from "@/lib/notify";
 import { LEAD_SOURCES } from "@/lib/installments";
+import { canAccessSrmaTopic, getSrmaProgression } from "@/lib/srma-progression";
 import { createDuitkuPayment, DuitkuError, onlinePaymentActive, syncOrderPayments } from "@/lib/duitku";
 
 export async function orderPackageAction(form: FormData) {
@@ -48,6 +49,7 @@ export async function toggleItemDoneAction(form: FormData) {
   const itemId = str(form, "itemId");
   const item = await db.item.findUnique({ where: { id: itemId }, include: { topic: true } });
   if (!item) return;
+  if (!(await canAccessSrmaTopic(user, item.topicId, item.topic.categoryId))) return;
   if (!item.isFree && !(await canAccessCategory(user, item.topic.categoryId))) return;
 
   const existing = await db.itemProgress.findUnique({ where: { userId_itemId: { userId: user.id, itemId } } });
@@ -62,6 +64,7 @@ export async function completeAndNextAction(form: FormData) {
   const itemId = str(form, "itemId");
   const item = await db.item.findUnique({ where: { id: itemId }, include: { topic: true } });
   if (!item) return;
+  if (!(await canAccessSrmaTopic(user, item.topicId, item.topic.categoryId))) return;
   const open = await canAccessCategory(user, item.topic.categoryId);
   if (!item.isFree && !open) return;
   await db.itemProgress.upsert({ where: { userId_itemId: { userId: user.id, itemId } }, update: {}, create: { userId: user.id, itemId } });
@@ -74,6 +77,8 @@ export async function completeAndNextAction(form: FormData) {
   const lessons = topics.flatMap((t) => t.items.filter((i) => i.type !== "LINK" && (open || i.isFree)).map((i) => ({ id: i.id, topicId: t.id })));
   const next = lessons[lessons.findIndex((l) => l.id === itemId) + 1];
   revalidatePath(`/materi/${item.topicId}`);
+  const progression = await getSrmaProgression(user, item.topic.categoryId);
+  if (progression && !progression.passed.has(item.topicId) && (!next || next.topicId !== item.topicId)) redirect(`/quiz/${item.topicId}`);
   redirect(next ? `/materi/${next.topicId}?item=${next.id}` : `/kelas/${item.topic.categoryId}?selesai=1`);
 }
 
@@ -85,6 +90,7 @@ export async function submitQuizAction(form: FormData) {
     include: { topic: true, questions: { include: { options: true } } },
   });
   if (!quiz || !quiz.published) back("/belajar", "Quiz tidak ditemukan.", "error");
+  if (!(await canAccessSrmaTopic(user, quiz.topicId, quiz.topic.categoryId))) back(`/quiz/${quiz.topicId}`, "Lulus kuis kelompok sebelumnya dengan nilai minimal 80 terlebih dahulu.", "error");
   if (!quiz.isFree && !(await canAccessCategory(user, quiz.topic.categoryId))) back(`/materi/${quiz.topicId}`, "Belum ada akses ke quiz ini.", "error");
   if (quiz.questions.length === 0) back(`/quiz/${quiz.topicId}`, "Quiz belum memiliki soal.", "error");
 
@@ -104,6 +110,9 @@ export async function submitQuizAction(form: FormData) {
       answers: { create: answers },
     },
   });
+  revalidatePath(`/kelas/${quiz.topic.categoryId}`);
+  revalidatePath("/materi", "layout");
+  revalidatePath("/quiz", "layout");
   redirect(`/quiz/${quiz.topicId}?hasil=${attempt.id}`);
 }
 

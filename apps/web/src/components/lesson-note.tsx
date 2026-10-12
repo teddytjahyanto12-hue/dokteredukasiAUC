@@ -1,0 +1,10 @@
+"use client";
+import { useState } from "react";
+import { saveLessonNote, reportSrmaLesson } from "@/app/actions/srma";
+export function LessonNote({ itemId, initial }: { itemId: string; initial: string }) {
+  const [body, setBody] = useState(initial), [status, setStatus] = useState(""), [busy, setBusy] = useState(false);
+  const [report, setReport] = useState(""), [reportStatus, setReportStatus] = useState("");
+  async function save() { setBusy(true); try { await saveLessonNote(itemId, body); setStatus("Catatan tersimpan."); } catch { setStatus("Catatan gagal disimpan. Coba lagi."); } finally { setBusy(false); } }
+  async function sendReport() { setBusy(true); try { await reportSrmaLesson(itemId, report); setReportStatus("Laporan diterima admin."); setReport(""); } catch { setReportStatus("Laporan gagal dikirim. Coba lagi."); } finally { setBusy(false); } }
+  return <section className="card mt-4"><h2 className="h2">Catatan pribadi</h2><p className="mt-1 text-xs text-slate-500">Catat hal penting dari materi ini, lalu simpan untuk melanjutkan nanti.</p><textarea aria-label="Catatan pribadi" className="input mt-3" rows={5} maxLength={20000} value={body} onChange={e => { setBody(e.target.value); setStatus("Belum disimpan."); }} /><div className="mt-3 flex items-center gap-3"><button className="btn-secondary" onClick={save} disabled={busy}>{busy ? "Menyimpan…" : "Simpan catatan"}</button><span role="status" className="text-xs">{status}</span></div><details className="mt-5 border-t pt-4 text-sm"><summary className="cursor-pointer">Laporkan masalah materi</summary><p className="mt-2 text-xs text-slate-500">Jelaskan tautan rusak, kesalahan isi, atau masalah video. Laporan dikirim ke admin.</p><textarea aria-label="Laporan masalah materi" className="input mt-3" rows={3} maxLength={3000} value={report} onChange={e => setReport(e.target.value)} /><button className="btn-secondary btn-sm mt-3" disabled={busy || report.trim().length < 5} onClick={sendReport}>Kirim laporan</button><p role="status" className="mt-2 text-xs">{reportStatus}</p></details></section>;
+}

@@ -7,6 +7,9 @@ import { tanggal } from "@/lib/format";
 import { submitQuizAction } from "@/app/actions/student";
 import { Empty, Flash } from "@/components/ui";
 import { readFlash, type SearchParams } from "@/lib/flash";
+import { getSrmaProgression } from "@/lib/srma-progression";
+import { SRMA_PASSING_SCORE } from "@/lib/srma-progression-rules";
+import { SrmaQuizLock } from "@/components/srma-quiz-lock";
 
 export default async function QuizPage({ params, searchParams }: { params: Promise<{ topicId: string }>; searchParams: SearchParams }) {
   const user = await requireUser();
@@ -15,11 +18,18 @@ export default async function QuizPage({ params, searchParams }: { params: Promi
   const quiz = await db.quiz.findUnique({
     where: { topicId },
     include: {
-      topic: true,
+      topic: { include: { category: { select: { slug: true } } } },
       questions: { orderBy: { order: "asc" }, include: { options: { orderBy: { order: "asc" } } } },
     },
   });
   if (!quiz || !quiz.published) notFound();
+  const isSrma = quiz.topic.category.slug === "review-systematic-review";
+  const passingScore = isSrma ? SRMA_PASSING_SCORE : quiz.passingScore;
+  const progression = await getSrmaProgression(user, quiz.topic.categoryId);
+  const prerequisite = progression?.locked.get(topicId);
+  if (prerequisite) return <div className="container-page py-10"><h1 className="h1 mb-5">{quiz.title}</h1><SrmaQuizLock prerequisite={prerequisite} categoryId={quiz.topic.categoryId} /></div>;
+  const index = progression?.topics.findIndex(t => t.id === topicId) ?? -1;
+  const next = progression && index >= 0 ? progression.topics[index + 1] : undefined;
 
   const allowed = quiz.isFree || (await canAccessCategory(user, quiz.topic.categoryId));
   if (!allowed) {
@@ -37,7 +47,7 @@ export default async function QuizPage({ params, searchParams }: { params: Promi
 
   const resultId = pick("hasil");
   const result = resultId
-    ? await db.quizAttempt.findFirst({ where: { id: resultId, userId: user.id }, include: { answers: true } })
+    ? await db.quizAttempt.findFirst({ where: { id: resultId, userId: user.id, quizId: quiz.id }, include: { answers: true } })
     : null;
   const history = await db.quizAttempt.findMany({ where: { userId: user.id, quizId: quiz.id }, orderBy: { createdAt: "desc" }, take: 5 });
   const chosen = new Map(result?.answers.map((a) => [a.questionId, a.optionId]) ?? []);
@@ -49,22 +59,24 @@ export default async function QuizPage({ params, searchParams }: { params: Promi
       </Link>
       <h1 className="h1 mt-2">{quiz.title}</h1>
       <p className="muted mt-1">
-        {quiz.questions.length} soal · nilai lulus {quiz.passingScore}
+        {quiz.questions.length} soal · nilai lulus {passingScore}
       </p>
       <div className="mt-4">
         <Flash pesan={pesan} tipe={tipe} />
       </div>
 
       {result && (
-        <div className={`mt-4 rounded-xl border p-5 ${result.score >= quiz.passingScore ? "border-emerald-200 bg-emerald-50" : "border-amber-200 bg-amber-50"}`}>
+        <div className={`mt-4 rounded-xl border p-5 ${result.score >= passingScore ? "border-emerald-200 bg-emerald-50" : "border-amber-200 bg-amber-50"}`}>
           <p className="text-sm text-slate-600">Hasil kuis</p>
           <p className="text-3xl font-bold text-slate-900">{result.score}</p>
           <p className="text-sm text-slate-700">
-            {result.correct} dari {result.total} benar · {result.score >= quiz.passingScore ? "Lulus 🎉" : "Belum mencapai nilai lulus"}
+            {result.correct} dari {result.total} benar · {result.score >= passingScore ? "Lulus 🎉" : "Belum mencapai nilai lulus"}
           </p>
           <Link href={`/quiz/${topicId}`} className="btn-secondary btn-sm mt-3">
             Ulangi quiz
           </Link>
+          {isSrma && !progression?.passed.has(topicId) && result.score < passingScore && <p className="mt-3 text-sm text-amber-900">Kelompok berikutnya masih terkunci. Pelajari kembali materi dan ulangi kuis sampai mencapai nilai 80.</p>}
+          {progression?.passed.has(topicId) && <div className="mt-3"><p className="text-sm text-emerald-800">{next ? "Kelompok berikutnya sudah terbuka." : "Seluruh kuis SR-MA sudah lulus."}</p><Link href={next ? `/materi/${next.id}` : `/kelas/${quiz.topic.categoryId}`} className="btn btn-sm mt-3">{next ? "Lanjut ke kelompok berikutnya →" : "Kembali ke kurikulum"}</Link></div>}
         </div>
       )}
 
