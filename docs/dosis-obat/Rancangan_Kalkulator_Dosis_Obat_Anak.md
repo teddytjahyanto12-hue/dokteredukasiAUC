@@ -1,6 +1,6 @@
 # Rancangan Kalkulator Dosis Obat Anak (DRAF untuk dicek pemilik)
 
-- Versi: draf 0.2, 13 Oktober 2026 (revisi dari draf 0.1 sesuai arahan pemilik)
+- Versi: draf 0.3, 13 Oktober 2026 (draf 0.2 ditambah verifikasi artikel yang diunggah pemilik)
 - Status: **belum diimplementasikan di website.** Dokumen ini hanya berisi kerangka tampilan dan isi materi untuk ditinjau.
 - Penyusun: Claude Code (PC 2).
 - Cakupan: kerangka fitur, aturan perhitungan, kebijakan sumber, dan **8 monografi contoh (pilot)**: parasetamol, ibuprofen, amoksisilin, seftriakson, gentamisin, ondansetron, deksametason, asiklovir.
@@ -13,6 +13,7 @@
 4. **Tabel penyesuaian ginjal asiklovir** sudah dicek ulang pada gambar halaman buku dan pada label resmi. Hasilnya di bagian 5.
 5. **Setiap dosis IDAI dicocokkan dengan sumber pendukung** (label resmi FDA, WHO Model Formulary for Children 2010, WHO Pocket Book 2013, jurnal di PubMed). Hasil pencocokan ada di bagian "Pendukung" tiap obat dan di Lampiran B.
 6. Sumber yang **tidak bisa saya akses** (situs penerbit menolak akses otomatis) saya daftarkan di **Lampiran D** beserta link, untuk diunduh pemilik.
+7. **Draf 0.3:** delapan berkas yang diunggah pemilik ke folder `dosis obat/Sumber jurnal luar/` sudah dibaca teks lengkapnya dan dipakai untuk verifikasi: AAP 2013 (otitis media akut), IDSA 2011 (pneumonia anak), AHA 2021 (profilaksis endokarditis), IDSA 2004 (meningitis bakterial), Daschner 2005 (dosis pada gangguan ginjal), Freedman 2006 (ondansetron oral), dan pedoman NIH infeksi oportunistik anak dengan HIV (bagian HSV dan VZV; dua berkas pedoman yang diunggah isinya identik). Status pendukung tiap dosis diperbarui.
 
 ---
 
@@ -160,9 +161,9 @@ Penyesuaian pada gangguan ginjal (IDAI hlm. 76; dosis normal 10–15 mg/kg/dosis
 - 15 mg/kg/kali tiap 4 jam dan maks 90 mg/kg/hari: **Sejalan**.
   - WHO-PB hlm. 366: 10–15 mg/kg, sampai enam kali sehari (15 mg/kg × 6 kali = 90 mg/kg/hari).
   - WHO-MFC hlm. 20: anak 15 mg/kg tiap 4–6 jam bila perlu, maksimal 4 dosis atau 4 g per 24 jam (jumlah dosis per hari lebih sedikit).
-- Dosis pertama oral 20 mg/kg: **Belum terverifikasi** (tidak tercantum di WHO-PB, WHO-MFC, maupun label yang dipakai).
+- Dosis pertama oral 20 mg/kg: **Belum terverifikasi** (tidak tercantum di WHO-PB, WHO-MFC, label yang dipakai, maupun artikel yang diunggah pemilik).
 - Rektal 40 mg/kg dosis pertama: **Sejalan** dengan Birmingham dkk. 2001 (abstrak PubMed): dosis awal rektal 40 mg/kg. Dosis lanjutan pada studi itu 20 mg/kg tiap 6 jam, sedangkan IDAI 30 mg/kg, jadi dosis lanjutan rektal **Berbeda**.
-- Tabel ginjal: **Belum terverifikasi** (Daschner 2005, link di Lampiran D).
+- Tabel ginjal: **Sebagian sejalan**. Daschner 2005 hlm. 1677 (Tabel 2): parasetamol 10–20 mg/kg per kali (maks 4 kali/hari, maks 4 g/hari); dosis normal pada LFG 40, dan 50% dengan memperpanjang interval pada LFG 10 dan anuria. Arahnya sama dengan IDAI (interval diperpanjang bila fungsi ginjal turun), tetapi Daschner memakai batas LFG 40/10/anuria, bukan >50/10–50/<10.
 
 **Sediaan** (FORNAS 2025 hlm. 13)
 
@@ -206,7 +207,7 @@ Penyesuaian pada gangguan ginjal (IDAI hlm. 76; dosis normal 10–15 mg/kg/dosis
 - Mekanisme pasti efek analgesik dan antipiretik belum diketahui; diduga terutama melalui kerja sentral.
 - Terbukti memiliki aktivitas analgesik dan antipiretik pada studi hewan dan manusia.
 
-**Daftar pustaka**: [P1], [P2], [L1], [W1], [W2], [J9]
+**Daftar pustaka**: [P1], [P2], [L1], [W1], [W2], [J6], [J9]
 
 ---
 
@@ -233,6 +234,7 @@ Penyesuaian pada gangguan ginjal (IDAI hlm. 84): dosis 100% pada LFG >50, 10–5
   - WHO-PB hlm. 364: 5–10 mg/kg tiap 6–8 jam; dosis total harian maksimal 40 mg/kg.
   - Perbedaannya: IDAI menulis interval tiap 4–8 jam dan tidak menulis dosis maksimal. **Perlu keputusan pemilik** apakah batas 40 mg/kg/hari dari WHO ditampilkan sebagai catatan pendukung.
 - Duktus arteriosus paten 10–5–5 mg/kg: **Sejalan** dengan label NeoProfen (ibuprofen lisin): dosis awal 10 mg/kg diikuti dua dosis 5 mg/kg setelah 24 dan 48 jam, intravena, berdasarkan berat lahir.
+- Tanpa penyesuaian pada gangguan ginjal: **Sejalan** dengan Daschner 2005 hlm. 1677: ibuprofen 20–30 mg/kg/hari dalam 3–4 dosis, dosis normal pada LFG 40, 10, dan anuria; dosis harian maksimal 1,2 g.
 
 **Sediaan** (FORNAS 2025 hlm. 12)
 
@@ -280,7 +282,7 @@ Penyesuaian pada gangguan ginjal (IDAI hlm. 84): dosis 100% pada LFG >50, 10–5
 - Mekanisme kerjanya, seperti OAINS lain, belum sepenuhnya dipahami; melibatkan hambatan siklooksigenase (COX-1 dan COX-2).
 - Ibuprofen adalah penghambat kuat sintesis prostaglandin in vitro.
 
-**Daftar pustaka**: [P1], [P2], [L2], [L12], [W1], [W2]
+**Daftar pustaka**: [P1], [P2], [L2], [L12], [W1], [W2], [J6]
 
 ---
 
@@ -306,11 +308,13 @@ Catatan tata letak: pada tabel IDAI, "Maksimal 4g/hari" tertulis di kolom ketera
 **Pendukung**
 
 - 40–45 mg/kg/hari dalam 3 dosis: **Sejalan**.
+  - IDSA 2011 hlm. e31: amoksisilin 45 mg/kg/hari dalam 3 dosis (atau 90 mg/kg/hari dalam 2 dosis).
   - Label amoksisilin, Tabel 1 (anak ≥3 bulan, BB <40 kg): infeksi berat 40 mg/kg/hari dibagi tiap 8 jam atau 45 mg/kg/hari dibagi tiap 12 jam.
   - WHO-MFC hlm. 80: otitis media 40 mg/kg/hari dalam tiga dosis (maksimal 3 g/hari).
-- 80–90 mg/kg/hari: **Belum terverifikasi** (AAP 2013 dan IDSA 2011, link di Lampiran D).
-- 150 mg/kg/hari dan batas 4 g/hari: **Belum terverifikasi**.
-- Profilaksis endokarditis 50 mg/kg: **Belum terverifikasi** (AHA 2021, link di Lampiran D).
+- 80–90 mg/kg/hari: **Sebagian sejalan**. Dosisnya sama, tetapi jumlah pembagian berbeda: IDAI menulis 3 dosis, sedangkan AAP 2013 hlm. e983 (Tabel 5, otitis media akut) menulis 80–90 mg/kg/hari dalam 2 dosis dan IDSA 2011 hlm. e34 (pneumonia, rawat jalan) menulis 90 mg/kg/hari dalam 2 dosis.
+- Batas 4 g/hari: **Sejalan** dengan IDSA 2011 hlm. e34 (amoksisilin oral 90 mg/kg/hari dalam 2 dosis sampai maksimal 4 g/hari).
+- 150 mg/kg/hari: **Belum terverifikasi**. Tidak ditemukan di AAP 2013, IDSA 2011, maupun sumber lain yang sudah dibaca.
+- Profilaksis endokarditis 50 mg/kg: **Sejalan** dengan AHA 2021 hlm. e973 (Tabel 5): anak, amoksisilin oral 50 mg/kg dosis tunggal 30–60 menit sebelum tindakan (dewasa 2 g).
 - Catatan label: untuk bayi <3 bulan, label menganjurkan dosis atas 30 mg/kg/hari dibagi tiap 12 jam. IDAI tidak memisahkan kelompok umur ini.
 
 **Sediaan** (FORNAS 2025 hlm. 23)
@@ -355,7 +359,7 @@ Catatan tata letak: pada tabel IDAI, "Maksimal 4g/hari" tertulis di kolom ketera
 - Bekerja melalui hambatan biosintesis dinding sel yang menyebabkan kematian bakteri.
 - Resistensi terutama diperantarai enzim beta-laktamase.
 
-**Daftar pustaka**: [P1], [P2], [L3], [W1]
+**Daftar pustaka**: [P1], [P2], [L3], [W1], [J1], [J2], [J3]
 
 ---
 
@@ -378,9 +382,9 @@ Serbuk injeksi tidak dikonversi ke mL (lihat 2.3).
 **Pendukung**
 
 - 50–75 mg/kg/hari, maks 2 g/hari: **Sejalan** dengan label seftriakson (infeksi kulit: 50–75 mg/kg/hari sekali sehari atau dibagi dua; total tidak melebihi 2 g).
-- 100 mg/kg/hari, maks 4 g: **Sejalan** dengan label untuk meningitis (100 mg/kg/hari, tidak melebihi 4 g, sekali sehari atau dibagi tiap 12 jam). WHO-PB hlm. 358: meningitis 50 mg/kg tiap 12 jam atau 100 mg/kg sekali sehari.
-- OMA 50 mg/kg IM, sampai 1 g: **Sejalan** dengan label (dosis tunggal IM 50 mg/kg, tidak melebihi 1 g). Pemberian sampai 3 hari: **Belum terverifikasi** (AAP 2013, Lampiran D).
-- Tanpa penyesuaian pada gangguan ginjal: **Sejalan** dengan label (penyesuaian dosis tidak diperlukan pada gangguan ginjal untuk dosis sampai 2 g/hari).
+- 100 mg/kg/hari, maks 4 g: **Sejalan** dengan label untuk meningitis (100 mg/kg/hari, tidak melebihi 4 g, sekali sehari atau dibagi tiap 12 jam). WHO-PB hlm. 358: meningitis 50 mg/kg tiap 12 jam atau 100 mg/kg sekali sehari. IDSA 2004 hlm. 1277 (Tabel 6, meningitis): bayi dan anak 80–100 mg/kg/hari dengan interval 12–24 jam. IDSA 2011 hlm. e31: *S. pneumoniae* resisten penisilin, seftriakson 100 mg/kg/hari tiap 12–24 jam.
+- OMA 50 mg/kg IM, sampai 1 g: **Sejalan** dengan label (dosis tunggal IM 50 mg/kg, tidak melebihi 1 g). Pemberian 1–3 hari: **Sejalan** dengan AAP 2013 hlm. e983: seftriakson 50 mg/kg IM sebagai alternatif awal, dan pada Tabel 5 diberikan IM atau IV selama 1 atau 3 hari (di tabel tertulis "50 mg" tanpa "/kg"; teks di halaman yang sama menulis 50 mg/kg).
+- Tanpa penyesuaian pada gangguan ginjal: **Sejalan** dengan label (penyesuaian dosis tidak diperlukan pada gangguan ginjal untuk dosis sampai 2 g/hari). **Berbeda** dari Daschner 2005 hlm. 1678: dosis normal pada LFG 40, 80% pada LFG 10, 50% pada anuria (maks 2 g/hari).
 - Catatan: WHO-MFC hlm. 89 memberi batas lebih rendah untuk anak <50 kg (50–100 mg/kg/hari, maksimal 1 g). **Berbeda** dari IDAI dan label.
 
 **Sediaan** (FORNAS 2025 hlm. 29)
@@ -424,7 +428,7 @@ Serbuk injeksi tidak dikonversi ke mL (lihat 2.3).
 - Agen bakterisidal yang bekerja dengan menghambat sintesis dinding sel bakteri.
 - Tetap aktif dengan adanya sebagian beta-laktamase (penisilinase dan sefalosporinase) dari bakteri Gram-negatif dan Gram-positif.
 
-**Daftar pustaka**: [P1], [P2], [L4], [W1], [W2]
+**Daftar pustaka**: [P1], [P2], [L4], [W1], [W2], [J1], [J2], [J5], [J6]
 
 ---
 
@@ -458,12 +462,16 @@ Tabel penyesuaian dosis penyakit ginjal (IDAI hlm. 83): dosis normal tertulis 2�
 
 - Anak 3–7,5 mg/kg/hari dalam 3 dosis: **Sebagian sejalan**.
   - Label gentamisin: anak 6–7,5 mg/kg/hari (2–2,5 mg/kg tiap 8 jam). Batas atas sama; batas bawah IDAI (3 mg/kg/hari) lebih rendah dari label.
+  - Daschner 2005 hlm. 1677: 3–5 mg/kg/hari dalam 3 dosis (batas bawah sama dengan IDAI); kadar puncak 5–10 mg/L, lembah 0,5–2 mg/L.
+  - IDSA 2004 hlm. 1277 (Tabel 6, meningitis): bayi dan anak 7,5 mg/kg/hari tiap 8 jam (batas atas sama dengan IDAI).
   - WHO-MFC hlm. 107 dan WHO-PB hlm. 363: 7,5 mg/kg **sekali sehari** (interval berbeda).
 - Dosis normal 2–2,5 mg/kg tiap 8 jam di tabel ginjal: **Sejalan** dengan label.
 - Tabel neonatus: **Belum terverifikasi** pada sumber terbuka.
   - Label gentamisin hanya memuat "neonatus prematur atau cukup bulan usia ≤1 minggu: 5 mg/kg/hari (2,5 mg/kg tiap 12 jam)".
   - WHO-PB hlm. 71 memakai skema lain: minggu pertama, BBLR 3 mg/kg dan berat lahir normal 5 mg/kg sekali sehari; minggu 2–4, 7,5 mg/kg sekali sehari.
+  - IDSA 2004 hlm. 1277 (Tabel 6, meningitis): neonatus umur 0–7 hari 5 mg/kg/hari tiap 12 jam; 8–28 hari 7,5 mg/kg/hari tiap 8 jam. Skema ini juga **berbeda** dari tabel IDAI.
   - Tabel IDAI tampaknya mengikuti referensi neonatal komersial (Lampiran D).
+- Tabel ginjal: **Berbeda**. Daschner 2005 hlm. 1677: 60% pada LFG 40, 10% pada LFG 10, 5% pada anuria; IDAI 60–90%, 30–70%, 20–30% dengan batas LFG yang berbeda.
 - Pemantauan kadar: label menganjurkan menghindari kadar puncak yang lama di atas 12 mcg/mL dan kadar lembah di atas 2 mcg/mL; WHO-MFC hlm. 107: kadar lembah sebaiknya <1 mg/L. **Sejalan** dengan keterangan IDAI bahwa dosis disesuaikan dengan kadar serum.
 
 **Sediaan** (FORNAS 2025 hlm. 32)
@@ -505,7 +513,7 @@ Aminoglikosida tidak diindikasikan untuk episode awal infeksi saluran kemih tanp
 - Aminoglikosida yang berikatan dengan ribosom prokariot dan menghambat sintesis protein bakteri yang peka.
 - Bakterisidal in vitro terhadap bakteri Gram-positif dan Gram-negatif.
 
-**Daftar pustaka**: [P1], [P2], [L5], [W1], [W2]
+**Daftar pustaka**: [P1], [P2], [L5], [W1], [W2], [J5], [J6]
 
 ---
 
@@ -531,8 +539,10 @@ Penyesuaian pada gangguan ginjal (IDAI hlm. 87): dosis 100% pada semua tingkat L
 
 - Kemoterapi 0,15 mg/kg, maks 16 mg, 3 dosis: **Sejalan** dengan label ondansetron injeksi (anak ≥6 bulan: 0,15 mg/kg per dosis untuk 3 dosis, maksimal 16 mg per dosis; dosis pertama 30 menit sebelum kemoterapi, diulang 4 dan 8 jam kemudian).
 - Profilaksis 0,15 mg/kg IV: **Berbeda**. Untuk mual-muntah pascaoperasi, label injeksi memakai 0,1 mg/kg (anak 1 bulan–12 tahun, BB ≤40 kg) dan WHO-MFC hlm. 368 memakai 100 mcg/kg (maks 4 mg). Angka 0,15 mg/kg di label dipakai untuk kemoterapi.
-- Terapi 0,2 mg/kg IV: **Belum terverifikasi**.
-- Oral 0,1–0,2 mg/kg tiap 6–12 jam: **Belum terverifikasi**. Label tablet untuk anak memakai dosis tetap menurut umur pada kemoterapi (4–11 tahun: 4 mg; 12–17 tahun: 8 mg). Studi Freedman 2006 (gastroenteritis) ada di Lampiran D.
+- Terapi 0,2 mg/kg IV: **Belum terverifikasi** (tidak ditemukan di sumber yang sudah dibaca).
+- Oral 0,1–0,2 mg/kg tiap 6–12 jam: **Sebagian sejalan**. Label tablet untuk anak memakai dosis tetap menurut umur pada kemoterapi (4–11 tahun: 4 mg; 12–17 tahun: 8 mg). Freedman 2006 hlm. 1700 (gastroenteritis, dosis tunggal oral menurut berat badan): 2 mg untuk BB 8–15 kg, 4 mg untuk BB >15–30 kg, 8 mg untuk BB >30 kg. Pada BB 8–15 kg, 2 mg setara sekitar 0,13–0,25 mg/kg (hitungan penyusun). Studi ini memakai dosis tunggal, bukan dosis berulang tiap 6–12 jam.
+- Profilaksis: Daschner 2005 hlm. 1682 juga memakai 0,1 mg/kg per kali (maks 3 kali/hari, maks 24 mg/hari).
+- Tanpa penyesuaian pada gangguan ginjal: **Berbeda** dari Daschner 2005 hlm. 1682: dosis normal pada LFG 40, 75% pada LFG 10, 60% pada anuria.
 
 **Sediaan** (FORNAS 2025 hlm. 190–191)
 
@@ -586,7 +596,7 @@ Restriksi FORNAS:
 - Reseptor 5-HT3 terdapat di perifer (ujung saraf vagus) dan di sentral (*chemoreceptor trigger zone* area postrema). Belum pasti apakah efek antiemetiknya bekerja di sentral, perifer, atau keduanya.
 - Kemoterapi sitotoksik tampaknya berkaitan dengan pelepasan serotonin dari sel enterokromafin usus halus; serotonin itu dapat merangsang aferen vagus melalui reseptor 5-HT3 dan memicu refleks muntah.
 
-**Daftar pustaka**: [P1], [P2], [L6], [L13], [W1]
+**Daftar pustaka**: [P1], [P2], [L6], [L13], [W1], [J6], [J7]
 
 ---
 
@@ -613,7 +623,7 @@ Penyesuaian pada gangguan ginjal (IDAI hlm. 81): dosis 100% pada semua tingkat L
 - 0,1–0,25 mg/kg/kali tiap 6 jam (0,4–1 mg/kg/hari): **Sebagian sejalan**.
   - WHO-MFC hlm. 29: gangguan inflamasi dan alergi, IM atau IV lambat, 100–400 mcg/kg dalam 1–2 dosis terbagi (maksimal 24 mg/hari). Rentang per dosis mirip, tetapi frekuensi lebih jarang.
   - Label injeksi (edema serebri): pada anak dipakai dosis efektif terkecil, sebaiknya oral, kira-kira 0,2 mg/kg/24 jam dalam dosis terbagi (lebih rendah dari IDAI).
-  - IDSA 2004 (meningitis bakterial): **Belum terverifikasi** (Lampiran D).
+  - IDSA 2004 hlm. 1277 (meningitis bakterial): **Sejalan**. Deksametason 0,15 mg/kg tiap 6 jam selama 2–4 hari, dimulai 10–20 menit sebelum atau bersamaan dengan dosis antibiotik pertama (meningitis H. influenzae tipe b pada bayi dan anak). Angka ini berada di dalam rentang IDAI dengan interval yang sama.
 - Kesetaraan 1 mg = 25 mg hidrokortison: **Sebagian sejalan**. Label tablet mencantumkan kesetaraan 0,75 mg deksametason = 20 mg hidrokortison, yaitu sekitar 1 mg = 26,7 mg.
 
 **Sediaan** (FORNAS 2025)
@@ -663,7 +673,7 @@ Penyesuaian pada gangguan ginjal (IDAI hlm. 81): dosis 100% pada semua tingkat L
 - Analog sintetis seperti deksametason terutama dipakai untuk efek antiinflamasinya.
 - Pada dosis antiinflamasi yang setara, deksametason hampir tidak memiliki sifat retensi natrium seperti hidrokortison.
 
-**Daftar pustaka**: [P1], [P2], [L7], [L8], [W1]
+**Daftar pustaka**: [P1], [P2], [L7], [L8], [W1], [J5]
 
 ---
 
@@ -701,7 +711,13 @@ Tabel penyesuaian dosis penyakit ginjal (IDAI hlm. 76), dosis normal tertulis 10
   - Label injeksi (zoster pada imunokompromais, anak <12 tahun): 20 mg/kg tiap 8 jam selama 7 hari.
 - Varisela/zoster pada HIV 500 mg/m² IV tiap 8 jam selama 7 hari: **Sejalan** dengan WHO-MFC hlm. 149 (imunokompromais, 500 mg/m² tiap 8 jam) dan studi pada label injeksi (500 mg/m² tiap 8 jam selama 7 hari).
 - Oral 20 mg/kg (maks 800 mg/dosis): **Sejalan** dengan label tablet untuk cacar air (anak ≥2 tahun 20 mg/kg per dosis 4 kali sehari selama 5 hari; anak >40 kg 800 mg 4 kali sehari).
-- Regimen khusus HIV lainnya: **Belum terverifikasi** (pedoman NIH, Lampiran D).
+- Regimen pada HIV, dicocokkan dengan pedoman NIH infeksi oportunistik anak (bagian HSV hlm. M-11 s.d. M-12; bagian VZV hlm. X-11 s.d. X-13):
+  - Gingivostomatitis IV 5–10 mg/kg tiap 8 jam: **Sejalan** (NIH: gingivostomatitis sedang–berat 5–10 mg/kg per dosis IV tiap 8 jam).
+  - Gingivostomatitis oral 20 mg/kg tiap 8 jam selama 7–14 hari: **Sebagian sejalan** (NIH, gejala ringan: 20 mg/kg per dosis, maksimal 400 mg/dosis, 4 kali sehari selama 7–10 hari).
+  - HSV diseminata atau ensefalitis 10 mg/kg IV tiap 8 jam selama 21 hari: **Sejalan** (NIH: di luar periode neonatal 10 mg/kg, sampai 15 mg/kg per dosis pada anak <12 tahun, IV tiap 8 jam selama 21 hari). Alternatif 500 mg/m² tidak tercantum di bagian HSV NIH.
+  - Varisela 10 mg/kg atau 500 mg/m² IV tiap 8 jam selama 7 hari: **Sejalan** (NIH: imunosupresi berat atau varisela berat, 10 mg/kg atau 500 mg/m² per dosis IV tiap 8 jam minimal 7 hari dan sampai tidak ada lesi baru selama 48 jam).
+  - Herpes zoster oral 20 mg/kg (maks 800 mg/dosis) tiap 6 jam selama 7 hari: **Sejalan** (NIH: 20 mg/kg per dosis, maksimal 800 mg/dosis, 4 kali sehari selama 7–14 hari).
+- HSV neonatal: NIH hlm. M-11 menulis 20 mg/kg IV tiap 8 jam, minimal 21 hari untuk penyakit SSP atau diseminata dan 14 hari untuk penyakit terbatas kulit, mata, dan mulut (**Sejalan** dengan IDAI 14–21 hari).
 - Batas atas label injeksi: dosis setara 20 mg/kg tiap 8 jam tidak boleh dilampaui pada pasien mana pun.
 
 **Sediaan** (FORNAS 2025 hlm. 53)
@@ -753,7 +769,7 @@ Tabel penyesuaian dosis penyakit ginjal (IDAI hlm. 76), dosis normal tertulis 10
   2. inkorporasi dan terminasi rantai DNA virus;
   3. inaktivasi DNA polimerase virus.
 
-**Daftar pustaka**: [P1], [P2], [L9], [L10], [W1], [J4]
+**Daftar pustaka**: [P1], [P2], [L9], [L10], [W1], [J4], [J6], [J8]
 
 ---
 
@@ -777,7 +793,18 @@ Bila dosis normal 10 mg/kg, label menghasilkan 10 mg/kg tiap 8 jam (>50), 10 mg/
 - a. tetap menampilkan angka IDAI apa adanya, dengan catatan perbandingan ini; atau
 - b. menampilkan penyesuaian ginjal dalam bentuk persen dosis dan interval (pola label), dengan label asal "label FDA". Opsi ini melanggar aturan "dosis hanya IDAI/FORNAS", jadi perlu izin khusus.
 
-Referensi tabel ginjal pediatrik yang mungkin menjadi acuan (Daschner 2005) belum bisa saya akses; link di Lampiran D.
+**3. Pengecekan dengan artikel yang diunggah pemilik (draf 0.3).**
+
+- Pedoman NIH infeksi oportunistik anak (bagian VZV, hlm. X-11) memberi penyesuaian ginjal asiklovir IV dengan pola yang sama dengan label:
+  - klirens kreatinin >50: tanpa penyesuaian dosis;
+  - 25–50: dosis biasa tiap 12 jam;
+  - 10 sampai <25: dosis biasa tiap 24 jam;
+  - <10: 50% dosis biasa tiap 24 jam. NIH memberi contoh: bila dosis biasa 10 mg/kg tiap 8 jam, maka 5 mg/kg tiap 24 jam;
+  - hemodialisis intermiten: 5 mg/kg IV tiap 24 jam, diberikan sesudah dialisis.
+- Jadi, untuk dosis normal 10 mg/kg, NIH dan label sama-sama memberi **10 mg/kg tiap 8 jam pada LFG >50** dan **5 mg/kg tiap 24 jam pada LFG <10**. IDAI menulis 5 mg/kg dan 2,5 mg/kg. Dugaan bahwa angka IDAI bergeser satu kolom (angka LFG >50 sebenarnya untuk LFG <50) tidak cocok: pada LFG 10–50, NIH dan label tetap memberi dosis penuh dengan interval lebih panjang, bukan 5 mg/kg tiap 8 jam.
+- Daschner 2005 hlm. 1680 memakai sistem lain (dosis per m² dan batas LFG 40/10/anuria): asiklovir VZV 1.500 mg/m²/hari dalam 3 dosis, HSV 750 mg/m²/hari dalam 3 dosis; 60% dalam 2 dosis pada LFG 40, 20% dalam 1 dosis pada LFG 10, 15% dalam 1 dosis pada anuria. Daschner bukan sumber asal tabel IDAI, karena batas LFG-nya berbeda.
+
+**Kesimpulan setelah verifikasi:** angka penyesuaian ginjal asiklovir di IDAI hlm. 76 tidak didukung oleh label FDA maupun pedoman NIH; keduanya memberi angka dua kali lipat dari IDAI. Opsi a/b di atas tetap memerlukan keputusan pemilik atau dokter. Bila pemilik memilih opsi b, sumber yang dipakai sebaiknya pedoman NIH, karena pedoman itu khusus untuk anak.
 
 ---
 
@@ -789,7 +816,10 @@ Referensi tabel ginjal pediatrik yang mungkin menjadi acuan (Daschner 2005) belu
 4. **Gentamisin anak**: batas bawah IDAI 3 mg/kg/hari lebih rendah dari label (6 mg/kg/hari). WHO memakai 7,5 mg/kg sekali sehari.
 5. **Parasetamol rektal**: dosis lanjutan IDAI 30 mg/kg tiap 6 jam; studi Birmingham 2001 memakai 20 mg/kg tiap 6 jam.
 6. **Seftriakson**: WHO-MFC memakai batas 1 g/hari untuk anak <50 kg, berbeda dari IDAI dan label (2 g dan 4 g).
-7. **FORNAS ibuprofen injeksi 100 mg/mL** mencantumkan "2.400 mg/hari selama 3 hari". Draf ini menganggapnya peresepan maksimal (bukan dosis anak per kg), sehingga rute injeksi ibuprofen dikeluarkan. Mohon konfirmasi.
+7. **Amoksisilin 80–90 mg/kg/hari**: IDAI membagi dalam 3 dosis; AAP 2013 dan IDSA 2011 membagi dalam 2 dosis.
+8. **Gentamisin neonatus**: tabel IDAI berbeda dari label (2,5 mg/kg tiap 12 jam pada usia ≤1 minggu), WHO-PB, dan IDSA 2004 (5 mg/kg/hari tiap 12 jam pada usia 0–7 hari; 7,5 mg/kg/hari tiap 8 jam pada usia 8–28 hari).
+9. **Penyesuaian ginjal seftriakson dan ondansetron**: IDAI menulis 100% di semua tingkat LFG, sedangkan Daschner 2005 menurunkan dosis pada LFG 10 dan anuria. Label seftriakson mendukung tanpa penyesuaian sampai 2 g/hari.
+10. **FORNAS ibuprofen injeksi 100 mg/mL** mencantumkan "2.400 mg/hari selama 3 hari". Draf ini menganggapnya peresepan maksimal (bukan dosis anak per kg), sehingga rute injeksi ibuprofen dikeluarkan. Mohon konfirmasi.
 
 ---
 
@@ -827,6 +857,16 @@ Referensi tabel ginjal pediatrik yang mungkin menjadi acuan (Daschner 2005) belu
 - **[J4]** Kimberlin DW, Lin CY, Jacobs RF, dkk. Safety and efficacy of high-dose intravenous acyclovir in the management of neonatal herpes simplex virus infections. *Pediatrics.* 2001;108(2):230-8. https://doi.org/10.1542/peds.108.2.230
 - **[J9]** Birmingham PK, Tobin MJ, Fisher DM, dkk. Initial and subsequent dosing of rectal acetaminophen in children: a 24-hour pharmacokinetic study of new dose recommendations. *Anesthesiology.* 2001;94(3):385-9. https://doi.org/10.1097/00000542-200103000-00005
 
+**Artikel dan pedoman yang diunggah pemilik (teks lengkap sudah dibaca)**
+
+- **[J1]** Lieberthal AS, Carroll AE, Chonmaitree T, dkk. The diagnosis and management of acute otitis media. *Pediatrics.* 2013;131(3):e964-99. https://doi.org/10.1542/peds.2012-3488
+- **[J2]** Bradley JS, Byington CL, Shah SS, dkk. The management of community-acquired pneumonia in infants and children older than 3 months of age: clinical practice guidelines by PIDS and IDSA. *Clin Infect Dis.* 2011;53(7):e25-76. https://doi.org/10.1093/cid/cir531
+- **[J3]** Wilson WR, Gewitz M, Lockhart PB, dkk. Prevention of viridans group streptococcal infective endocarditis: a scientific statement from the American Heart Association. *Circulation.* 2021;143(20):e963-78. https://doi.org/10.1161/CIR.0000000000000969
+- **[J5]** Tunkel AR, Hartman BJ, Kaplan SL, dkk. Practice guidelines for the management of bacterial meningitis. *Clin Infect Dis.* 2004;39(9):1267-84. https://doi.org/10.1086/425368
+- **[J6]** Daschner M. Drug dosage in children with reduced renal function. *Pediatr Nephrol.* 2005;20(12):1675-86. https://doi.org/10.1007/s00467-005-1922-9
+- **[J7]** Freedman SB, Adler M, Seshadri R, Powell EC. Oral ondansetron for gastroenteritis in a pediatric emergency department. *N Engl J Med.* 2006;354(16):1698-705. https://doi.org/10.1056/NEJMoa055119
+- **[J8]** Panel on Opportunistic Infections in Children With and Exposed to HIV. *Guidelines for the Prevention and Treatment of Opportunistic Infections in Children With and Exposed to HIV.* Department of Health and Human Services. Pembaruan 23 April 2026 (bagian HSV diperbarui 27 Juni 2018; bagian VZV 23 April 2026). https://clinicalinfo.hiv.gov/en/guidelines/pediatric-opportunistic-infection
+
 **Acuan konsep tampilan (tidak disalin)**
 
 - Aplikasi "Dosis Obat Anak" (Steven Tiro), Google Play: https://play.google.com/store/apps/details?id=com.dosisobatanak
@@ -860,30 +900,41 @@ Amfoterisin B (konvensional), amikasin, aminofilin, ampisilin, ampisilin sulbakt
 
 ## Lampiran B. Ringkasan verifikasi
 
-Setiap dosis IDAI dan sediaan FORNAS di draf ini sudah dicocokkan ulang secara otomatis dengan teks sumber (skrip pencocokan kalimat), dan untuk tabel dengan gambar halaman buku. Hasil skrip: 46 dari 46 kutipan IDAI dan FORNAS cocok dengan teks sumber pada halaman yang dikutip, dan 47 dari 47 kutipan pendukung (WHO-MFC, WHO-PB, label FDA) cocok dengan teks sumbernya. Dua kutipan label/WHO awalnya tidak cocok hanya karena karakter tak terlihat (zero-width joiner dan tanda kutip lengkung); setelah dicek manual, isinya sama.
+Setiap dosis IDAI dan sediaan FORNAS di draf ini sudah dicocokkan ulang secara otomatis dengan teks sumber (skrip pencocokan kalimat), dan untuk tabel dengan gambar halaman buku. Hasil skrip: 46 dari 46 kutipan IDAI dan FORNAS cocok dengan teks sumber pada halaman yang dikutip, dan 47 dari 47 kutipan pendukung (WHO-MFC, WHO-PB, label FDA) cocok dengan teks sumbernya. Dua kutipan label/WHO awalnya tidak cocok hanya karena karakter tak terlihat (zero-width joiner dan tanda kutip lengkung); setelah dicek manual, isinya sama. Pada draf 0.3, 31 dari 31 kutipan dari artikel yang diunggah pemilik (AAP 2013, IDSA 2011, AHA 2021, IDSA 2004, Daschner 2005, Freedman 2006, pedoman NIH) juga cocok dengan teks lengkapnya; dua di antaranya awalnya tidak cocok hanya karena karakter kontrol pengganti tanda "×" di PDF Daschner.
 
 | Obat | Regimen IDAI | Status pendukung | Sumber pendukung |
 |---|---|---|---|
 | Parasetamol | Oral 15 mg/kg tiap 4 jam, maks 90 mg/kg/hari | Sejalan | WHO-PB hlm. 366; WHO-MFC hlm. 20 (sebagian) |
 | Parasetamol | Oral dosis pertama 20 mg/kg | Belum terverifikasi | – |
 | Parasetamol | Rektal 40 mg/kg lalu 30 mg/kg tiap 6 jam | Sebagian sejalan | Birmingham 2001 (40 lalu 20 mg/kg) |
+| Parasetamol | Tabel ginjal (interval diperpanjang) | Sebagian sejalan | Daschner 2005 hlm. 1677 |
 | Ibuprofen | Oral 5–10 mg/kg tiap 4–8 jam | Sebagian sejalan | WHO-MFC hlm. 18; WHO-PB hlm. 364 |
 | Ibuprofen | DAP 10–5–5 mg/kg | Sejalan | Label NeoProfen |
-| Amoksisilin | 40–45 mg/kg/hari dalam 3 dosis | Sejalan | Label amoksisilin; WHO-MFC hlm. 80 |
-| Amoksisilin | 80–90 mg/kg/hari; 150 mg/kg/hari; profilaksis 50 mg/kg | Belum terverifikasi | AAP 2013, IDSA 2011, AHA 2021 (Lampiran D) |
+| Ibuprofen | Tanpa penyesuaian ginjal | Sejalan | Daschner 2005 hlm. 1677 |
+| Amoksisilin | 40–45 mg/kg/hari dalam 3 dosis | Sejalan | Label amoksisilin; WHO-MFC hlm. 80; IDSA 2011 hlm. e31 |
+| Amoksisilin | 80–90 mg/kg/hari dalam 3 dosis | Sebagian sejalan (sumber: 2 dosis) | AAP 2013 hlm. e983; IDSA 2011 hlm. e34 |
+| Amoksisilin | Maksimal 4 g/hari | Sejalan | IDSA 2011 hlm. e34 |
+| Amoksisilin | 150 mg/kg/hari | Belum terverifikasi | Tidak ditemukan |
+| Amoksisilin | Profilaksis endokarditis 50 mg/kg | Sejalan | AHA 2021 hlm. e973 |
 | Seftriakson | 50–75 mg/kg/hari (maks 2 g); 100 mg/kg/hari (maks 4 g); OMA 50 mg/kg (maks 1 g) | Sejalan | Label seftriakson; WHO-PB hlm. 358 |
-| Seftriakson | OMA sampai 3 hari | Belum terverifikasi | AAP 2013 (Lampiran D) |
-| Gentamisin | Anak 3–7,5 mg/kg/hari dalam 3 dosis | Sebagian sejalan | Label gentamisin (6–7,5); WHO (7,5 sekali sehari) |
-| Gentamisin | Tabel neonatus | Belum terverifikasi | Referensi neonatal komersial (Lampiran D) |
+| Seftriakson | 100 mg/kg/hari (meningitis/pneumokokus resisten) | Sejalan | IDSA 2004 hlm. 1277; IDSA 2011 hlm. e31 |
+| Seftriakson | OMA 1–3 hari | Sejalan | AAP 2013 hlm. e983 |
+| Seftriakson | Tanpa penyesuaian ginjal | Sejalan dengan label; berbeda dari Daschner | Label; Daschner 2005 hlm. 1678 |
+| Gentamisin | Anak 3–7,5 mg/kg/hari dalam 3 dosis | Sejalan (batas bawah dan atas didukung sumber berbeda) | Daschner 2005 hlm. 1677 (3–5); IDSA 2004 hlm. 1277 dan label (7,5) |
+| Gentamisin | Tabel neonatus | Berbeda / belum terverifikasi | Label, WHO-PB, IDSA 2004 memakai skema lain; referensi neonatal komersial belum tersedia |
+| Gentamisin | Tabel ginjal | Berbeda | Daschner 2005 hlm. 1677 |
 | Ondansetron | Kemoterapi 0,15 mg/kg maks 16 mg × 3 | Sejalan | Label ondansetron injeksi |
 | Ondansetron | Profilaksis 0,15 mg/kg IV | Berbeda | Label injeksi dan WHO-MFC: 0,1 mg/kg |
-| Ondansetron | Terapi 0,2 mg/kg IV; oral 0,1–0,2 mg/kg | Belum terverifikasi | Freedman 2006 (Lampiran D) |
-| Deksametason | 0,1–0,25 mg/kg tiap 6 jam | Sebagian sejalan | WHO-MFC hlm. 29; label injeksi |
+| Ondansetron | Terapi 0,2 mg/kg IV | Belum terverifikasi | Tidak ditemukan |
+| Ondansetron | Oral 0,1–0,2 mg/kg tiap 6–12 jam | Sebagian sejalan (dosis tunggal) | Freedman 2006 hlm. 1700 |
+| Ondansetron | Tanpa penyesuaian ginjal | Berbeda | Daschner 2005 hlm. 1682 |
+| Deksametason | 0,1–0,25 mg/kg tiap 6 jam | Sejalan untuk meningitis (0,15 mg/kg tiap 6 jam); sebagian sejalan untuk indikasi lain | IDSA 2004 hlm. 1277; WHO-MFC hlm. 29; label injeksi |
 | Asiklovir | HSV IV 20 mg/kg tiap 8 jam 14–21 hari | Sejalan | WHO-MFC hlm. 149; Kimberlin 2001 |
 | Asiklovir | VZV IV 10–15 mg/kg tiap 8 jam | Sebagian sejalan | WHO-MFC hlm. 149; label injeksi |
 | Asiklovir | Oral 20 mg/kg (maks 800 mg/dosis) | Sejalan | Label tablet |
-| Asiklovir | Regimen HIV lain | Belum terverifikasi | Pedoman NIH (Lampiran D) |
-| Asiklovir | Tabel ginjal | Berbeda (lihat bagian 5) | Label injeksi Tabel 5 |
+| Asiklovir | HIV: gingivostomatitis IV, diseminata/ensefalitis, varisela, herpes zoster oral | Sejalan | Pedoman NIH hlm. M-11 s.d. M-12, X-11 s.d. X-13 |
+| Asiklovir | HIV: gingivostomatitis oral 20 mg/kg tiap 8 jam | Sebagian sejalan | NIH: 4 kali sehari, maks 400 mg/dosis |
+| Asiklovir | Tabel ginjal | Berbeda (lihat bagian 5) | Label injeksi Tabel 5; pedoman NIH hlm. X-11 |
 
 ---
 
@@ -899,18 +950,24 @@ Setiap dosis IDAI dan sediaan FORNAS di draf ini sudah dicocokkan ulang secara o
 
 ---
 
-## Lampiran D. Sumber pendukung yang belum bisa saya akses (mohon diunduh dan diunggah)
+## Lampiran D. Status sumber pendukung yang diminta
 
-| No | Sumber | Untuk memverifikasi | Link |
-|---|---|---|---|
-| 1 | Lieberthal AS, dkk. The diagnosis and management of acute otitis media. *Pediatrics* 2013;131(3):e964-99 (AAP) | Amoksisilin 80–90 mg/kg/hari; seftriakson IM 1 atau 3 hari | https://doi.org/10.1542/peds.2012-3488 |
-| 2 | Bradley JS, dkk. Community-acquired pneumonia in infants and children >3 months. *Clin Infect Dis* 2011;53(7):e25-76 (PIDS/IDSA) | Amoksisilin dosis tinggi; seftriakson | https://doi.org/10.1093/cid/cir531 (teks lengkap gratis: https://pmc.ncbi.nlm.nih.gov/articles/PMC7107838/) |
-| 3 | Wilson WR, dkk. Prevention of viridans group streptococcal infective endocarditis. *Circulation* 2021;143(20):e963-78 (AHA) | Amoksisilin profilaksis 50 mg/kg | https://doi.org/10.1161/CIR.0000000000000969 |
-| 4 | Tunkel AR, dkk. Practice guidelines for the management of bacterial meningitis. *Clin Infect Dis* 2004;39(9):1267-84 (IDSA) | Deksametason 0,15 mg/kg tiap 6 jam; seftriakson meningitis | https://doi.org/10.1086/425368 |
-| 5 | Daschner M. Drug dosage in children with reduced renal function. *Pediatr Nephrol* 2005;20(12):1675-86 | Tabel penyesuaian ginjal (parasetamol, asiklovir, gentamisin, dll.) | https://doi.org/10.1007/s00467-005-1922-9 |
-| 6 | Freedman SB, dkk. Oral ondansetron for gastroenteritis in a pediatric emergency department. *N Engl J Med* 2006;354(16):1698-705 | Ondansetron oral pada anak | https://doi.org/10.1056/NEJMoa055119 |
-| 7 | NIH/CDC/IDSA. Guidelines for the Prevention and Treatment of Opportunistic Infections in Children with HIV: Herpes Simplex Virus | Asiklovir pada HIV (gingivostomatitis, diseminata/ensefalitis) | https://clinicalinfo.hiv.gov/en/guidelines/pediatric-opportunistic-infection/herpes-simplex-virus |
-| 8 | Pedoman yang sama: Varicella-Zoster Virus | Asiklovir varisela dan zoster pada HIV | https://clinicalinfo.hiv.gov/en/guidelines/pediatric-opportunistic-infection/varicella-zoster-virus |
-| 9 | Referensi neonatal (misalnya NeoFax/Lexicomp atau AAP Red Book), bila pemilik memiliki akses | Tabel gentamisin neonatus menurut umur pascakonsepsi dan umur pascanatal | Produk berlangganan, tidak ada link unduhan bebas |
+Draf 0.2 meminta pemilik mengunduh 9 sumber. Pada draf 0.3, delapan berkas sudah diunggah ke `dosis obat/Sumber jurnal luar/` dan teks lengkapnya sudah dibaca.
 
-Catatan: untuk nomor 1–6, PubMed hanya memberi abstrak; teks lengkap ada di situs penerbit yang menolak akses otomatis. Situs nomor 7–8 memakai pemeriksaan browser (Cloudflare) yang tidak saya lewati.
+| No | Sumber | Status |
+|---|---|---|
+| 1 | AAP 2013, otitis media akut | Diterima dan dibaca (36 halaman) |
+| 2 | IDSA 2011, pneumonia komunitas anak | Diterima dan dibaca (52 halaman) |
+| 3 | AHA 2021, profilaksis endokarditis | Diterima dan dibaca (16 halaman) |
+| 4 | IDSA 2004, meningitis bakterial | Diterima dan dibaca (18 halaman) |
+| 5 | Daschner 2005, dosis pada gangguan ginjal anak | Diterima dan dibaca (12 halaman) |
+| 6 | Freedman 2006, ondansetron oral | Diterima dan dibaca (8 halaman) |
+| 7–8 | Pedoman NIH infeksi oportunistik anak dengan HIV (HSV dan VZV) | Diterima dan dibaca. Kedua berkas yang diunggah identik dan berisi pedoman lengkap (693 halaman, pembaruan 23 April 2026) yang sudah mencakup bagian HSV dan VZV. |
+| 9 | Referensi neonatal (NeoFax/Lexicomp atau AAP Red Book) | Belum ada. Diperlukan untuk memverifikasi tabel gentamisin neonatus. |
+
+Dosis yang masih belum ditemukan pendukungnya pada semua sumber yang sudah dibaca:
+
+- parasetamol oral dosis pertama 20 mg/kg;
+- amoksisilin 150 mg/kg/hari;
+- ondansetron terapi 0,2 mg/kg IV;
+- tabel gentamisin neonatus (nomor 9).

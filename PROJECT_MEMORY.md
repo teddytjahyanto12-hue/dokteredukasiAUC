@@ -716,6 +716,21 @@ File ini adalah sumber kebenaran tunggal untuk status, keputusan, dan serah teri
 - Tabel ginjal asiklovir IDAI hlm. 76 dicek pada gambar halaman: tercetak 5 mg/kg q8 untuk LFG >50. Ini bukan pergeseran kolom: semua angka IDAI tepat setengah dari pola label FDA (100%/q8, q12–24, 50%/q24) dengan dosis dasar 10 mg/kg. Menunggu keputusan pemilik (opsi a/b di bagian 5 draf).
 - Sumber yang belum bisa diakses (penerbit 403, Cloudflare tidak dilewati) didaftarkan di Lampiran D untuk diunduh pemilik: AAP AOM 2013, IDSA CAP 2011, AHA 2021, IDSA meningitis 2004, Daschner 2005, Freedman 2006, pedoman OI anak NIH (HSV, VZV), referensi neonatal NeoFax/Red Book.
 - Belum ada perubahan kode website. Pelaksana aktif Claude Code (PC 2) sesi Dosis Obat: dilepas setelah publikasi draf 0.2.
+- Draf 0.3 (13 Okt, 35 halaman DOCX). Pemilik mengunggah 8 PDF ke `dosis obat/Sumber jurnal luar/`:
+  - isinya AAP AOM 2013, IDSA CAP 2011, AHA 2021, IDSA meningitis 2004, Daschner 2005, Freedman 2006, dan pedoman NIH pediatric OI (2 berkas identik, 693 halaman, pembaruan 23 Apr 2026);
+  - berkas berhak cipta, tetap lokal dan TIDAK di-commit.
+- Teks lengkap sudah dibaca; 31/31 kutipan baru cocok.
+- Status pendukung yang berubah menjadi Sejalan:
+  - amoksisilin profilaksis 50 mg/kg (AHA) dan maks 4 g/hari (IDSA CAP);
+  - seftriakson 1–3 hari untuk OMA (AAP) dan 100 mg/kg/hari (IDSA);
+  - deksametason 0,15 mg/kg q6h untuk meningitis (IDSA);
+  - regimen asiklovir pada HIV (NIH);
+  - rentang gentamisin anak (Daschner 3–5 + IDSA/label 7,5).
+- Status Sebagian sejalan: amoksisilin 80–90 mg/kg/hari (sumber membagi 2 dosis, IDAI 3); ondansetron oral (Freedman, dosis tunggal per pita BB).
+- Status Berbeda: tabel ginjal gentamisin, seftriakson, dan ondansetron dibanding Daschner.
+- Tabel ginjal asiklovir IDAI: pedoman NIH (hlm. X-11) memberi pola yang sama dengan label FDA (contoh NIH: dosis 10 mg/kg q8 menjadi 5 mg/kg q24 pada CrCl <10). Angka IDAI tetap setengahnya, dan ini bukan pergeseran kolom. Masih menunggu keputusan pemilik (opsi a/b).
+- Masih tanpa pendukung: parasetamol dosis awal oral 20 mg/kg, amoksisilin 150 mg/kg/hari, ondansetron terapi 0,2 mg/kg IV, tabel gentamisin neonatus (butuh NeoFax/Red Book).
+- Pelaksana aktif Claude Code (PC 2) sesi Dosis Obat: dilepas setelah publikasi draf 0.3.
 
 ## Integrasi Scoping Review - Codex, 2026-10-13
 - Pelaksana aktif: Codex sesi Scoping Review. Fokus: 21 PDF, 6 kelompok/kuis dari draf pengguna, lulus80, gratis kelompok1. Berkas: prisma/scoping-chapters.ts, render-scoping-pages.py, tests/scoping-http.mjs, lib/srma-progression.ts, lib/pdf-pages.ts, halaman kelas/materi/quiz, launcher, docs/SCOPING_KURIKULUM.md. HEAD/origin2665c79 identik setelah fetch. Tidak mengubah desain lokal atau dokumen dosis obat Claude aktif. Runtime PC2 terakhir build NLR; build baru akan dibuat terpisah, database diimpor terarah.
