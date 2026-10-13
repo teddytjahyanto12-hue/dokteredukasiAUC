@@ -24,6 +24,8 @@ export function CourseCard({ course, stats, open, students, loggedIn }: { course
   // Tamu diarahkan login dulu; materi gratis tetap wajib login.
   // Belum membeli & tanpa materi gratis: tetap masuk ke ruang belajar; materi pertama tampil terkunci dengan ajakan membeli.
   const firstAny = course.topics.flatMap((t) => t.items.filter((i) => i.type !== "LINK").map((i) => ({ id: i.id, topicId: t.id })))[0];
+  const firstFree = course.topics.flatMap(t => t.items.filter(i => i.type !== "LINK" && i.isFree).map(i => ({ id: i.id, topicId: t.id })))[0];
+  const freeHref = firstFree ? (loggedIn ? lessonHref(firstFree) : `/masuk?next=${encodeURIComponent(lessonHref(firstFree))}`) : detail;
   const startAt = target ?? firstAny;
   const start = startAt ? (loggedIn ? lessonHref(startAt) : `/masuk?next=${encodeURIComponent(lessonHref(startAt))}`) : detail;
   const lesson = target ? (loggedIn ? lessonHref(target) : `/masuk?next=${encodeURIComponent(lessonHref(target))}`) : detail;
@@ -44,6 +46,7 @@ export function CourseCard({ course, stats, open, students, loggedIn }: { course
         ) : (
           <div className="aspect-[16/9]"><CourseArt title={course.title} program={course.track.slug} art={course.artKey} /></div>
         )}
+
       </Link>
 
       <div className="flex flex-1 flex-col p-5">
@@ -95,7 +98,7 @@ export function CourseCard({ course, stats, open, students, loggedIn }: { course
                 Lihat Kelas
                 <Icon name="arrow" className="h-3.5 w-3.5" />
               </Link>
-              {startAt && !open && stats.free > 0 && <Link href={start} className="py-1 text-center text-sm font-medium text-slate-600 hover:text-brand">Coba materi gratis</Link>}
+              {startAt && !open && stats.free > 0 && <a href={freeHref} className="py-1 text-center text-sm font-medium text-slate-600 hover:text-brand">Coba materi gratis</a>}
             </div>
           ) : stats.started && target ? (
             <Link href={lesson} className="btn w-full">
@@ -104,10 +107,7 @@ export function CourseCard({ course, stats, open, students, loggedIn }: { course
             </Link>
           ) : (
             <div className="flex flex-col gap-3">
-              <Link href={startAt ? start : detail} className={startAt ? "btn w-full" : "btn-secondary w-full"}>
-                {startAt ? (stats.free > 0 && !open ? "Coba materi gratis" : "Mulai belajar") : "Lihat kelas"}
-                <Icon name="arrow" className="h-3.5 w-3.5" />
-              </Link>
+              {startAt && stats.free > 0 && !open ? <a href={freeHref} className="btn w-full">Coba materi gratis<Icon name="arrow" className="h-3.5 w-3.5" /></a> : <Link href={startAt ? start : detail} className={startAt ? "btn w-full" : "btn-secondary w-full"}>{startAt ? "Mulai belajar" : "Lihat kelas"}<Icon name="arrow" className="h-3.5 w-3.5" /></Link>}
               {startAt && <Link href={detail} className="py-1 text-center text-sm font-medium text-slate-600 hover:text-brand">Lihat kurikulum</Link>}
             </div>
           )}
@@ -116,3 +116,4 @@ export function CourseCard({ course, stats, open, students, loggedIn }: { course
     </article>
   );
 }
+
