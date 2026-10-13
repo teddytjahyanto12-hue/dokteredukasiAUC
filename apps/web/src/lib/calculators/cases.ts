@@ -169,4 +169,8 @@ export const CASES: TestCase[] = [
   { slug: "imunisasi", input: { kolom: "7" }, value: "2", label: "9 bulan", note: "Primer MR dan influenza tahunan; JE dosis 1 di daerah endemis (kasus latihan 2)" },
   { slug: "imunisasi", input: { kolom: "10" }, value: "8", label: "18 bulan", note: "Booster HB, Polio, DTP, Hib, MR/MMR; primer Varisela, Hepatitis A, influenza tahunan" },
   { slug: "imunisasi", input: { kolom: "0" }, value: "3", label: "Lahir", note: "HB 0, Polio 0, BCG" },
+  { slug: "tfu", input: { tfu: "30", ug: "30" }, value: "30", label: "sesuai", note: "Tabel 14.1: 30 ± 2 cm (kasus latihan 1)" },
+  { slug: "tfu", input: { tfu: "25", ug: "30" }, value: "25", label: "lebih kecil", note: "Di bawah 28 cm" },
+  { slug: "tfu", input: { tfu: "33", station: "minus" }, value: "3.100", label: "Johnson", note: "155 × (33 − 13) = 3100 g (kasus latihan 2)" },
+  { slug: "tfu", input: { tfu: "32", ug: "38", station: "plus" }, value: "32", label: "3.255", note: "Di luar 20–36 minggu; TBJ 155 × (32 − 11) = 3255 g" },
 ];

@@ -5,6 +5,31 @@ const PNPK_HT = "https://keslan.kemkes.go.id/unduhan/fileunduhan1780387327_36263
 const JUKNIS_TB = "https://p2.kemkes.go.id/wp-content/uploads/2025/12/Buku-Petunjuk-Teknis-Penatalaksanaan-Tuberkulosis-Sensitif-Obat-di-Indonesia_FINAL.pdf";
 
 export const CONTENT_TAMBAHAN: Record<string, CalcContent> = {
+  tfu: {
+    interpretation: [
+      "PPK FKTP 2022 Tabel 14.1: dengan pita ukur, TFU = (minggu gestasi ± 2) cm pada 20, 22–27, 28, 29–35, dan 36 minggu.",
+      "Dengan palpasi: 12 minggu teraba di atas simfisis pubis; 16 minggu di antara simfisis dan umbilikus; 20 minggu setinggi umbilikus; 28 minggu antara umbilikus dan prosesus xifoideus; 36 minggu pada prosesus xifoideus.",
+      "Taksiran berat janin Johnson-Toshach (presentasi kepala): 155 × (TFU cm − K) gram, dengan K = 13 bila kepala di station minus, 12 di station 0, dan 11 di station plus.",
+    ],
+    material: [
+      { heading: "Pemeriksaan antenatal", body: "PPK FKTP 2022 mencantumkan pengukuran TFU, palpasi Leopold I–IV, dan auskultasi bunyi jantung janin (120–160 kali/menit) pada pemeriksaan obstetrik abdomen." },
+      { heading: "Ketepatan rumus Johnson-Toshach", body: "Pada publikasi asli 1954, taksiran berada dalam ±353 g dari berat lahir pada 68% dari 200 kasus. Torloni dkk. (2008) mendapatkan 57% dalam rentang itu dan menyebut obesitas ibu sebagai salah satu penjelasan perbedaan." },
+      { heading: "Catatan tabel", body: "Tabel 14.1 tidak mencantumkan 21 minggu dan tidak memuat ukuran sentimeter di luar 20–36 minggu; kalkulator tidak membuat perbandingan untuk usia tersebut." },
+    ],
+    pitfalls: [
+      "Rentang sentimeter pada Tabel 14.1 adalah minggu gestasi ± 2 cm, bukan ± 2 minggu.",
+      "Nilai K Johnson-Toshach bergantung pada penurunan kepala.",
+      "Rumus Johnson-Toshach hanya untuk presentasi kepala.",
+    ],
+    cases: [
+      { title: "Kasus 1", scenario: "Usia kehamilan 30 minggu, TFU 30 cm.", answer: "Sesuai usia kehamilan", explanation: "Rentang harapan 28–32 cm." },
+      { title: "Kasus 2", scenario: "TFU 33 cm, kepala belum masuk panggul.", answer: "TBJ 3.100 g", explanation: "155 × (33 − 13) = 3.100 g." },
+    ],
+    sources: [
+      { label: "Kementerian Kesehatan RI. KMK HK.01.07/MENKES/1186/2022 (PPK FKTP): Kehamilan Normal, Tabel 14.1 Tinggi fundus sesuai usia kehamilan (hal. 709–710).", url: "https://puskesmaslabuapi-dikes.lombokbaratkab.go.id/media/Kepmenkes_nomor_HK.01.07_MENKES_1186_2022_-_PPK_Dokter_Mei_2022.pdf", note: "Salinan berwatermark JDIH di situs Dinkes Lombok Barat" },
+      { label: "Torloni MR dkk. Clinical formulas, mother's opinion and ultrasound in predicting birth weight. Sao Paulo Med J 2008;126(3):145-149.", url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11026007/", note: "Rumus Johnson-Toshach dan nilai K" },
+    ],
+  },
   imunisasi: {
     interpretation: [
       "Kalkulator menampilkan isi satu kolom usia pada tabel Jadwal Imunisasi Anak Usia 0–18 Tahun Rekomendasi IDAI 2024: imunisasi primer, booster, kejar (catch-up), di daerah endemis, dan untuk anak risiko tinggi.",
@@ -76,7 +101,7 @@ export const CONTENT_TAMBAHAN: Record<string, CalcContent> = {
       { title: "Kasus 2", scenario: "Gejala mingguan, malam jarang, APE 70%.", answer: "Persisten sedang", explanation: "Komponen faal paru (60–80%) paling berat." },
     ],
     sources: [
-      { label: "Kementerian Kesehatan RI. KMK HK.01.07/MENKES/1186/2022 tentang Panduan Praktik Klinis bagi Dokter di Fasilitas Pelayanan Kesehatan Tingkat Pertama: Asma Bronkial (Asma Stabil), Tabel 10.3 (hal. 447–448). KMK 1936/2022 (perubahan) tidak mengubah bab ini.", url: "https://www.komunitasbelajar.id/p/kmk-nomor-hk0107menkes11862022-tentang.html", note: "PDF dari pemilik; naskah resmi regulasi.bkpk.kemkes.go.id tidak dapat dijangkau" },
+      { label: "Kementerian Kesehatan RI. KMK HK.01.07/MENKES/1186/2022 tentang Panduan Praktik Klinis bagi Dokter di Fasilitas Pelayanan Kesehatan Tingkat Pertama: Asma Bronkial (Asma Stabil), Tabel 10.3 (hal. 447–448). KMK 1936/2022 (perubahan) tidak mengubah bab ini.", url: "https://puskesmaslabuapi-dikes.lombokbaratkab.go.id/media/Kepmenkes_nomor_HK.01.07_MENKES_1186_2022_-_PPK_Dokter_Mei_2022.pdf", note: "Salinan berwatermark JDIH di situs Dinkes Lombok Barat; identik dengan PDF pemilik" },
     ],
   },
   "asma-kontrol": {
@@ -99,7 +124,7 @@ export const CONTENT_TAMBAHAN: Record<string, CalcContent> = {
       { title: "Kasus 2", scenario: "Gejala harian sering, terbangun malam, APE 70%.", answer: "Tidak terkontrol", explanation: "Tiga gambaran." },
     ],
     sources: [
-      { label: "Kementerian Kesehatan RI. KMK HK.01.07/MENKES/1186/2022 (PPK FKTP), Tabel 10.4 Penilaian derajat kontrol asma (hal. 449).", url: "https://www.komunitasbelajar.id/p/kmk-nomor-hk0107menkes11862022-tentang.html", note: "PDF dari pemilik" },
+      { label: "Kementerian Kesehatan RI. KMK HK.01.07/MENKES/1186/2022 (PPK FKTP), Tabel 10.4 Penilaian derajat kontrol asma (hal. 449).", url: "https://puskesmaslabuapi-dikes.lombokbaratkab.go.id/media/Kepmenkes_nomor_HK.01.07_MENKES_1186_2022_-_PPK_Dokter_Mei_2022.pdf", note: "Salinan berwatermark JDIH di situs Dinkes Lombok Barat" },
     ],
   },
   aria: {

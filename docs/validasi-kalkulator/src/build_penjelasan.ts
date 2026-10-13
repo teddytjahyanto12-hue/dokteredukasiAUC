@@ -102,7 +102,7 @@ C.push(table(["No", "Kalkulator", "Bidang", "Akses", "Uji kasus", "Verifikasi su
   return [String(i + 1), c.title, c.field, c.access === "free" ? "Gratis" : "Premium", DEFS[c.slug] ? `${cs.filter((x) => x.ok).length}/${cs.length} cocok` : "Tes GCS/HPL lulus", EVIDENCE[c.slug]?.status === "ok" ? "Terverifikasi" : "Sebagian perlu konfirmasi"];
 }), [5, 31, 17, 11, 15, 21]));
 C.push(h3("Segera hadir (belum aktif)"));
-C.push(table(["Kalkulator", "Bidang", "Catatan"], soon.map((c) => [c.title, c.field, c.slug === "koreksi-natrium" ? "PAPDI tidak tersedia daring; menunggu sumber dari pemilik" : c.slug === "koreksi-kalium" ? "Menunggu sumber primer" : c.slug === "kpsp" ? "Menunggu PDF Buku SDIDTK 2022 dari pemilik" : c.slug === "imunisasi" ? "Pedoman Imunisasi IDAI 2024 tidak tersedia di situs resmi IDAI" : c.slug === "ekg" ? "Naskah AHA/ACCF/HRS 2009 tidak dapat dibuka otomatis (verifikasi bot)" : c.slug === "asma" ? "Naskah resmi PPK FKTP 2022 belum dapat diakses" : c.slug === "aria" ? "Naskah ARIA 2008 berbayar; PPK FKTP belum dapat diakses" : "Tahap berikutnya"]), [40, 22, 38]));
+C.push(table(["Kalkulator", "Bidang", "Catatan"], soon.map((c) => [c.title, c.field, c.slug === "koreksi-natrium" ? "PAPDI tidak tersedia daring; menunggu sumber dari pemilik" : c.slug === "koreksi-kalium" ? "Menunggu sumber primer" : c.slug === "imunisasi" ? "Pedoman Imunisasi IDAI 2024 tidak tersedia di situs resmi IDAI" : c.slug === "ekg" ? "Naskah AHA/ACCF/HRS 2009 tidak dapat dibuka otomatis (verifikasi bot)" : c.slug === "asma" ? "Naskah resmi PPK FKTP 2022 belum dapat diakses" : c.slug === "aria" ? "Naskah ARIA 2008 berbayar; PPK FKTP belum dapat diakses" : "Tahap berikutnya"]), [40, 22, 38]));
 
 active.forEach((c, idx) => {
   const k = CONTENT[c.slug];

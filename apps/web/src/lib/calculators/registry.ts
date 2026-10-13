@@ -92,9 +92,9 @@ const ACTIVE: Row[] = [
   ["aria", "premium", "Klasifikasi Rinitis Alergi (ARIA 2008)", "ARIA", "THT", "Intermiten/persisten dan ringan/sedang-berat menurut ARIA 2008.", ["aria", "rinitis alergi", "alergi hidung", "bersin"]],
   ["kpsp", "premium", "KPSP: Pemilihan Formulir dan Interpretasi (SDIDTK 2022)", "KPSP", "Anak", "Umur dan umur koreksi, formulir KPSP yang dipakai, dan interpretasi jumlah jawaban Ya.", ["kpsp", "perkembangan", "sdidtk", "denver", "tumbuh kembang", "skrining perkembangan"]],
   ["imunisasi", "premium", "Jadwal Imunisasi Anak (IDAI 2024)", "Imunisasi", "Anak", "Imunisasi primer, booster, kejar, daerah endemis, dan risiko tinggi per kolom usia jadwal IDAI 2024.", ["imunisasi", "vaksin", "idai", "jadwal imunisasi", "catch-up", "booster"]],
+  ["tfu", "premium", "Tinggi Fundus Uteri dan Taksiran Berat Janin", "TFU", "Obstetri & Ginekologi", "Kesesuaian TFU dengan usia kehamilan (PPK FKTP 2022) dan taksiran berat janin Johnson-Toshach.", ["tfu", "fundus", "mcdonald", "taksiran berat janin", "tbj", "johnson", "antenatal"]],
 ];
 const SOON: Row[] = [
-  ["tfu", "premium", "Tinggi Fundus Uteri", "TFU", "Obstetri & Ginekologi", "Segera hadir.", ["tfu", "fundus", "mcdonald", "taksiran berat janin"]],
 ];
 const toMeta = (status: CalcStatus) => ([slug, access, title, short, field, summary, keywords]: Row): CalcMeta => ({ slug, access, title, short, field, summary, keywords, status, version: status === "soon" ? undefined : "0.1" });
 

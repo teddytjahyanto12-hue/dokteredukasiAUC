@@ -85,7 +85,7 @@ C.push(h1("Ringkasan"));
 C.push(p("Dari sekitar 65 tool dashboard SPARK, **31 kalkulator Tahap 1 sudah dibuat** karena logikanya sesuai sumber (ditambah GCS dan HPL yang sudah ada). Butir di bawah ini **belum dibuat** dan menunggu keputusan."));
 C.push(table(["ID", "Kalkulator", "Tingkat", "Usulan singkat"], ITEMS.map((i) => [i.id, i.tool, i.level, i.usul]), [7, 22, 11, 60]));
 C.push(gap());
-C.push(note("Asma (dibuat sendiri dari PPK FKTP) dan KPSP (pengganti Denver) sudah disetujui pemilik dan masuk tahap berikutnya bersama antropometri WHO/CDC, tekanan darah anak, ikterus, nomogram berat bayi, EKG, imunisasi, gizi buruk, dan autoformat."));
+C.push(note("Asma (dibuat sendiri dari PPK FKTP) dan KPSP (pengganti Denver) sudah disetujui pemilik dan masuk tahap berikutnya bersama antropometri WHO/CDC, tekanan darah anak, ikterus, nomogram berat bayi, EKG, imunisasi, dan gizi buruk."));
 
 C.push(h1("Rincian per Kalkulator"));
 for (const i of ITEMS) {

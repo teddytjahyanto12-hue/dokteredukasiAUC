@@ -16,6 +16,7 @@ import { ekg } from "./ekg";
 import { asma, asmaKontrol, aria } from "./asma-aria";
 import { kpsp } from "./kpsp";
 import { imunisasi } from "./imunisasi";
+import { tfu } from "./tfu";
 import { bishop, cairanDewasa, alvarado, dehidrasi, kalori, gangguanDengar } from "./tambahan";
 import { midParental, pat, ballard, downes, gir, hollidaySegar, skorTbAnak } from "./anak";
 
@@ -31,7 +32,7 @@ const ALL: CalcDef[] = [
   bishop, cairanDewasa, alvarado, dehidrasi, kalori, gangguanDengar,
   antropometri, giziBuruk, tdAnak, ikterus,
   natrium, kalium, ekg,
-  asma, asmaKontrol, aria, kpsp, imunisasi,
+  asma, asmaKontrol, aria, kpsp, imunisasi, tfu,
 ];
 
 export const DEFS: Record<string, CalcDef> = Object.fromEntries(ALL.map((d) => [d.slug, d]));
