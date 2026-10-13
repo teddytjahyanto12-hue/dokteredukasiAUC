@@ -21,7 +21,14 @@ try {
   assert.equal(exercises.length, 18);
   assert.deepEqual(materials.map((c) => c.title), exercises.map((c) => c.title));
   const page = await html("/kelas?program=ukmppd");
-  for (const c of uk) assert.ok(page.includes(c.title), c.title);
+  for (const c of parents) {
+    assert.ok(page.includes(`href="/kelas/${c.id}"`), c.title);
+    const chosen = await html(`/kelas/${c.id}`);
+    for (const child of uk.filter((child) => child.parentId === c.id)) {
+      assert.ok(!page.includes(`href="/kelas/${child.id}"`), `Kelas tampil sebelum pilihan: ${child.title}`);
+      assert.ok(chosen.includes(`href="/kelas/${child.id}"`), `Kelas hilang sesudah pilihan: ${child.title}`);
+    }
+  }
   const home = await html("/");
   assert.ok(home.includes('program=ukmppd'));
   for (const page of [home, await html("/kelas")]) {

@@ -23,13 +23,13 @@ export async function updateCatalog(client: PrismaClient = db) {
     await tx.category.updateMany({ where: { OR: [{ trackId: pre.id, slug: "daftar-pustaka" }, { trackId: clinical.id, slug: "clinical-guidelines" }] }, data: { published: false } });
     const material = await tx.category.upsert({
       where: { trackId_slug: { trackId: uk.id, slug: "materi-ukmppd" } },
-      update: { title: "Materi UKMPPD", published: true, showChildrenInCatalog: true },
-      create: { trackId: uk.id, slug: "materi-ukmppd", title: "Materi UKMPPD", description: "Daftar isi akan disesuaikan dengan modul yang tersedia.", order: 0, childLabel: "Kelas", showChildrenInCatalog: true },
+      update: { title: "Materi UKMPPD", published: true, showChildrenInCatalog: false },
+      create: { trackId: uk.id, slug: "materi-ukmppd", title: "Materi UKMPPD", description: "Daftar isi akan disesuaikan dengan modul yang tersedia.", order: 0, childLabel: "Kelas", showChildrenInCatalog: false },
     });
     const practice = await tx.category.upsert({
       where: { trackId_slug: { trackId: uk.id, slug: "latihan-soal-ukmppd" } },
-      update: { title: "Latihan Soal UKMPPD", published: true, showChildrenInCatalog: true },
-      create: { trackId: uk.id, slug: "latihan-soal-ukmppd", title: "Latihan Soal UKMPPD", order: 1, childLabel: "Kelas", showChildrenInCatalog: true, displayType: "MATERIAL_QUIZ" },
+      update: { title: "Latihan Soal UKMPPD", published: true, showChildrenInCatalog: false },
+      create: { trackId: uk.id, slug: "latihan-soal-ukmppd", title: "Latihan Soal UKMPPD", order: 1, childLabel: "Kelas", showChildrenInCatalog: false, displayType: "MATERIAL_QUIZ" },
     });
     for (const [order, title] of specialties.entries()) {
       await tx.category.upsert({ where: { trackId_slug: { trackId: uk.id, slug: slugify(title) } }, update: { title, order, parentId: material.id, published: true }, create: { trackId: uk.id, slug: slugify(title), title, order, parentId: material.id, displayType: "MATERIAL" } });
