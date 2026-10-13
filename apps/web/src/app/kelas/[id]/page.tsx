@@ -49,7 +49,8 @@ export default async function CoursePage({ params, searchParams }: { params: Pro
   const reachable = course.topics.filter(t => !progression?.locked.has(t.id)).flatMap(t => t.items.filter(i => i.type !== "LINK" && (open || i.isFree)).map(i => ({ ...i, topicId: t.id })));
   const target = progression ? reachable.find(i => !done.has(i.id)) ?? reachable[0] : st.next ?? st.first;
   const hasResources = course.topics.some((t) => t.items.length > 0 || t.quiz?.published);
-  const chapterCurriculum = course.slug === SR_SLUG && course.topics.some(t => t.id.startsWith("dea-srma-chapter-group-"));
+  const caseReportCurriculum = course.slug === "case-report-case-report";
+  const chapterCurriculum = caseReportCurriculum || course.slug === SR_SLUG && course.topics.some(t => t.id.startsWith("dea-srma-chapter-group-"));
   // Tamu diarahkan login dulu; materi gratis tetap wajib login.
   const go = (href: string) => (user ? href : `/masuk?next=${encodeURIComponent(href)}`);
 
@@ -151,8 +152,9 @@ export default async function CoursePage({ params, searchParams }: { params: Pro
 
           {blocks.length === 0 && <section className="mt-8">
             <h2 className="h2 mb-1">Kurikulum</h2>
-            {chapterCurriculum && <div className="my-4 rounded-2xl border-2 border-ink bg-brand-soft p-5"><p className="font-bold">Dari telaah sistematik hingga meta-analisis</p><p className="mt-1 text-sm text-slate-700">22 bab PDF · 8 kelompok belajar · 80 soal latihan</p><p className="mt-2 text-sm text-slate-600">Lulus kuis setiap kelompok dengan nilai minimal 80 untuk membuka kelompok berikutnya. Bila belum lulus, pelajari kembali bab yang tersedia dan ulangi kuis. Bab 01 dan kuis kelompok pertama dapat dicoba gratis setelah masuk.</p><div className="mt-4 flex flex-wrap gap-2"><a className="btn-secondary btn-sm" href="#bagian-systematic-review">I. Telaah sistematik · Bab 01–11</a><a className="btn-secondary btn-sm" href="#bagian-meta-analisis">II. Meta-analisis · Bab 12–22</a></div></div>}
-            <p className="mb-4 text-sm leading-relaxed text-slate-600">{!hasResources ? "Kurikulum akan dilengkapi saat materi tersedia." : progression ? "Materi dibuka berurutan berdasarkan kelulusan kuis. Akses paket tetap berlaku." : open ? "Semua materi sudah terbuka." : "Masuk untuk mencoba materi bertanda Gratis. Akses materi lainnya mengikuti layanan yang dipilih."}</p>
+            {chapterCurriculum && !caseReportCurriculum && <div className="my-4 rounded-2xl border-2 border-ink bg-brand-soft p-5"><p className="font-bold">Dari telaah sistematik hingga meta-analisis</p><p className="mt-1 text-sm text-slate-700">22 bab PDF · 8 kelompok belajar · 80 soal latihan</p><p className="mt-2 text-sm text-slate-600">Lulus kuis setiap kelompok dengan nilai minimal 80 untuk membuka kelompok berikutnya. Bila belum lulus, pelajari kembali bab yang tersedia dan ulangi kuis. Bab 01 dan kuis kelompok pertama dapat dicoba gratis setelah masuk.</p><div className="mt-4 flex flex-wrap gap-2"><a className="btn-secondary btn-sm" href="#bagian-systematic-review">I. Telaah sistematik · Bab 01–11</a><a className="btn-secondary btn-sm" href="#bagian-meta-analisis">II. Meta-analisis · Bab 12–22</a></div></div>}
+            {caseReportCurriculum && <div className="my-4 rounded-2xl border-2 border-ink bg-brand-soft p-5"><p className="font-bold">Menyusun laporan kasus dari dasar hingga publikasi</p><p className="mt-1 text-sm text-slate-700">18 bab PDF · 5 kelompok materi · 1 evaluasi penerapan · 60 soal</p><p className="mt-2 text-sm text-slate-600">Baca setiap bab lalu kerjakan kuis kelompok. Nilai minimal 80/100 membuka urutan berikutnya. Akses gratis mencakup Bab 01–02 dan kuis kelompok 1 setelah masuk. Kelompok 2–6 memerlukan paket kelas Case Report.</p></div>}
+              <p className="mb-4 text-sm leading-relaxed text-slate-600">{!hasResources ? "Kurikulum akan dilengkapi saat materi tersedia." : progression ? "Materi dibuka berurutan berdasarkan kelulusan kuis. Akses paket tetap berlaku." : open ? "Semua materi sudah terbuka." : "Masuk untuk mencoba materi bertanda Gratis. Akses materi lainnya mengikuti layanan yang dipilih."}</p>
             {course.topics.length === 0 && <p className="text-sm text-slate-500">Materi kelas ini sedang disiapkan.</p>}
             <ol className="space-y-3">
               {course.topics.map((t, idx) => {
@@ -164,7 +166,7 @@ export default async function CoursePage({ params, searchParams }: { params: Pro
                     {chapterCurriculum && (t.id === "dea-srma-chapter-group-1" || t.id === "dea-srma-chapter-group-5") && <div id={t.id.endsWith("-1") ? "bagian-systematic-review" : "bagian-meta-analisis"} className="scroll-mt-36 rounded-t-xl bg-ink px-4 py-4 text-white"><p className="text-xs font-semibold uppercase tracking-wider text-mascot">{t.id.endsWith("-1") ? "Bagian I · Bab 01–11" : "Bagian II · Bab 12–22"}</p><h3 className="mt-1 text-lg font-bold">{t.id.endsWith("-1") ? "Telaah Sistematik" : "Meta-analisis"}</h3></div>}
                     <div className="flex items-center justify-between gap-3 border-b border-slate-100 px-4 py-3">
                       <h3 className="font-semibold text-slate-900">
-                        {chapterCurriculum && <span className="mb-1 block text-xs font-semibold uppercase tracking-wide text-brand">Kelompok {idx + 1} · {lessons.length} bab PDF · 10 soal</span>}
+                        {chapterCurriculum && <span className="mb-1 block text-xs font-semibold uppercase tracking-wide text-brand">Kelompok {idx + 1} · {caseReportCurriculum && idx === 5 ? "Evaluasi seluruh bab" : `${lessons.length} bab PDF`} · 10 soal</span>}
                         {raw.code && <span className="num mr-2 text-sm text-brand">{raw.code}.{idx + 1}</span>}
                         {raw.parentId ? t.title : `${idx + 1}. ${t.title}`}
                       </h3>

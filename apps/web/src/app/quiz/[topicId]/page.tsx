@@ -23,7 +23,7 @@ export default async function QuizPage({ params, searchParams }: { params: Promi
     },
   });
   if (!quiz || !quiz.published) notFound();
-  const isSrma = quiz.topic.category.slug === "review-systematic-review";
+  const isSrma = ["review-systematic-review", "case-report-case-report"].includes(quiz.topic.category.slug);
   const passingScore = isSrma ? SRMA_PASSING_SCORE : quiz.passingScore;
   const progression = await getSrmaProgression(user, quiz.topic.categoryId);
   const prerequisite = progression?.locked.get(topicId);
@@ -76,7 +76,7 @@ export default async function QuizPage({ params, searchParams }: { params: Promi
             Ulangi quiz
           </Link>
           {isSrma && !progression?.passed.has(topicId) && result.score < passingScore && <p className="mt-3 text-sm text-amber-900">Kelompok berikutnya masih terkunci. Pelajari kembali materi dan ulangi kuis sampai mencapai nilai 80.</p>}
-          {progression?.passed.has(topicId) && <div className="mt-3"><p className="text-sm text-emerald-800">{next ? "Kelompok berikutnya sudah terbuka." : "Seluruh kuis SR-MA sudah lulus."}</p><Link href={next ? `/materi/${next.id}` : `/kelas/${quiz.topic.categoryId}`} className="btn btn-sm mt-3">{next ? "Lanjut ke kelompok berikutnya →" : "Kembali ke kurikulum"}</Link></div>}
+          {progression?.passed.has(topicId) && <div className="mt-3"><p className="text-sm text-emerald-800">{next ? "Persyaratan nilai kelompok berikutnya sudah terpenuhi. Akses paket tetap berlaku." : "Seluruh kuis kelas ini sudah lulus."}</p><Link href={next ? `/materi/${next.id}` : `/kelas/${quiz.topic.categoryId}`} className="btn btn-sm mt-3">{next ? "Lanjut ke kelompok berikutnya →" : "Kembali ke kurikulum"}</Link></div>}
         </div>
       )}
 
