@@ -2,7 +2,7 @@ import "server-only";
 import { db } from "./db";
 export type PdfPages = { pages: string[] };
 export async function isSrmaPdf(fileId: string) {
-  return !!await db.item.findFirst({ where: { fileId, topic: { category: { slug: { in: ["review-systematic-review", "case-report-case-report"] } } } }, select: { id: true } });
+  return !!await db.item.findFirst({ where: { fileId, topic: { category: { slug: { in: ["review-systematic-review", "case-report-case-report", "review-narrative-literature-review"] } } } }, select: { id: true } });
 }
 export async function getPdfPages(fileId: string): Promise<PdfPages | null> {
   const row = await db.setting.findUnique({ where: { key: `material.pdf-pages.${fileId}` } });
