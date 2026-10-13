@@ -1,7 +1,7 @@
 @echo off
 setlocal
 title Dokter Edukasi Academy - server produksi stabil
-set "DEA_BUILD_DIR=.next-scoping-final-20261013"
+set "DEA_BUILD_DIR=.next-katalog-20261013"
 pushd "%~dp0apps\web" || goto gagal
 if not exist .env (
   echo Konfigurasi .env belum tersedia. Tidak ada database atau akun yang diubah.

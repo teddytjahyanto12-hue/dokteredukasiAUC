@@ -190,10 +190,6 @@ export default async function StudentDashboard({ searchParams }: { searchParams:
         {rows.length === 0 ? (
           <p className="mt-5 rounded-xl border border-dashed border-slate-300 bg-white p-8 text-center text-sm text-slate-500">
             Belum ada kelas.{" "}
-            <Link href="/rekomendasi" className="link">
-              Ikuti tes rekomendasi
-            </Link>{" "}
-            atau{" "}
             <Link href="/kelas" className="link">
               jelajahi katalog
             </Link>

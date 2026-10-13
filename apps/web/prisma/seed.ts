@@ -4,6 +4,7 @@
 
 import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcryptjs";
+import { updateCatalog } from "./revisi-katalog-20261013";
 
 const db = new PrismaClient();
 
@@ -13,8 +14,8 @@ type TrackSeed = { slug: string; title: string; description: string; hasMentorin
 const TRACKS: TrackSeed[] = [
   {
     slug: "pre-clinical",
-    title: "Pre-Clinical",
-    description: "Fondasi ilmu kedokteran dasar: materi slide per topik dengan quiz, e-book, dan daftar pustaka.",
+    title: "Preclinical",
+    description: "Fondasi ilmu kedokteran dasar: materi slide per topik, quiz, dan e-book.",
     hasMentoring: false,
     categories: [
       {
@@ -31,28 +32,14 @@ const TRACKS: TrackSeed[] = [
         displayType: "PDF",
         topics: ["Koleksi E-book"],
       },
-      {
-        slug: "daftar-pustaka",
-        title: "Daftar Pustaka",
-        description: "Kumpulan tautan sumber, dibagi per section materi.",
-        displayType: "LINKS",
-        topics: ["Section: Basic Medical Science"],
-      },
     ],
   },
   {
     slug: "clinical-practice",
     title: "Clinical Practice",
-    description: "Pegangan praktik klinis: guideline, latihan EKG, dan cheatsheet: tersedia bimbingan tutor spesialis.",
+    description: "Pegangan praktik klinis: latihan EKG, dan cheatsheet: tersedia bimbingan tutor spesialis.",
     hasMentoring: true,
     categories: [
-      {
-        slug: "clinical-guidelines",
-        title: "Clinical Guidelines",
-        description: "Merujuk langsung ke sumber guideline resmi.",
-        displayType: "LINKS",
-        topics: ["Daftar Guideline"],
-      },
       {
         slug: "ecg-challenges",
         title: "ECG Challenges",
@@ -119,13 +106,13 @@ type PackageSeed = {
 };
 
 const PACKAGES: PackageSeed[] = [
-  { slug: "pre-clinical-basic-medical-science", name: "Pre-Clinical: Basic Medical Science", trackSlug: "pre-clinical", summary: "Slide materi per topik + quiz.", categories: ["pre-clinical/basic-medical-science"] },
-  { slug: "pre-clinical-medical-e-books", name: "Pre-Clinical: Medical E-books", trackSlug: "pre-clinical", summary: "Akses koleksi e-book di website.", categories: ["pre-clinical/medical-e-books"] },
-  { slug: "pre-clinical-lengkap", name: "Pre-Clinical Lengkap", trackSlug: "pre-clinical", summary: "Basic Medical Science, Medical E-books, dan Daftar Pustaka.", categories: ["pre-clinical/basic-medical-science", "pre-clinical/medical-e-books", "pre-clinical/daftar-pustaka"] },
+  { slug: "pre-clinical-basic-medical-science", name: "Preclinical: Basic Medical Science", trackSlug: "pre-clinical", summary: "Slide materi per topik + quiz.", categories: ["pre-clinical/basic-medical-science"] },
+  { slug: "pre-clinical-medical-e-books", name: "Preclinical: Medical E-books", trackSlug: "pre-clinical", summary: "Akses koleksi e-book di website.", categories: ["pre-clinical/medical-e-books"] },
+  { slug: "pre-clinical-lengkap", name: "Preclinical Lengkap", trackSlug: "pre-clinical", summary: "Basic Medical Science dan Medical E-books.", categories: ["pre-clinical/basic-medical-science", "pre-clinical/medical-e-books"] },
   { slug: "clinical-ecg-challenges", name: "Clinical Practice: ECG Challenges", trackSlug: "clinical-practice", summary: "Materi EKG dan quiz.", categories: ["clinical-practice/ecg-challenges"] },
   { slug: "clinical-medical-cheatsheet", name: "Clinical Practice: Medical Cheatsheet", trackSlug: "clinical-practice", summary: "Cheatsheet PDF (AI menyusul).", categories: ["clinical-practice/medical-cheatsheet"] },
-  { slug: "clinical-practice-lengkap", name: "Clinical Practice Lengkap", trackSlug: "clinical-practice", summary: "Clinical Guidelines, ECG Challenges, dan Medical Cheatsheet.", categories: ["clinical-practice/clinical-guidelines", "clinical-practice/ecg-challenges", "clinical-practice/medical-cheatsheet"] },
-  { slug: "bimbingan-clinical-practice", name: "Bimbingan Clinical Practice", trackSlug: "clinical-practice", summary: "Bimbingan dengan tutor spesialis + akses Clinical Practice Lengkap.", categories: ["clinical-practice/clinical-guidelines", "clinical-practice/ecg-challenges", "clinical-practice/medical-cheatsheet"], includesMentoring: true, mentoringField: "CLINICAL" },
+  { slug: "clinical-practice-lengkap", name: "Clinical Practice Lengkap", trackSlug: "clinical-practice", summary: "ECG Challenges dan Medical Cheatsheet.", categories: ["clinical-practice/ecg-challenges", "clinical-practice/medical-cheatsheet"] },
+  { slug: "bimbingan-clinical-practice", name: "Bimbingan Clinical Practice", trackSlug: "clinical-practice", summary: "Bimbingan dengan tutor spesialis + akses Clinical Practice Lengkap.", categories: ["clinical-practice/ecg-challenges", "clinical-practice/medical-cheatsheet"], includesMentoring: true, mentoringField: "CLINICAL" },
   { slug: "medical-research-materi", name: "Medical Research: Materi Lengkap", trackSlug: "medical-research", summary: "Original Research, Review, Case Report, dan Pengolahan Data.", categories: ["medical-research/original-research", "medical-research/review", "medical-research/case-report", "medical-research/pengolahan-data"] },
   { slug: "bimbingan-research-review", name: "Bimbingan Medical Research: Review", trackSlug: "medical-research", summary: "Bimbingan Zoom untuk narrative/systematic review, meta-analysis, scoping, bibliometric + akses materi riset.", categories: ["medical-research/original-research", "medical-research/review", "medical-research/case-report", "medical-research/pengolahan-data"], includesMentoring: true, mentoringField: "RESEARCH_REVIEW" },
   { slug: "bimbingan-research-original", name: "Bimbingan Medical Research: Original Research", trackSlug: "medical-research", summary: "Bimbingan Zoom untuk original research + akses materi riset.", categories: ["medical-research/original-research", "medical-research/review", "medical-research/case-report", "medical-research/pengolahan-data"], includesMentoring: true, mentoringField: "RESEARCH_ORIGINAL" },
@@ -282,6 +269,7 @@ async function main() {
   await seedExampleQuiz();
   await seedPackages(categoryIds);
   await seedUsers();
+  await updateCatalog(db);
   const counts = await Promise.all([db.track.count(), db.category.count(), db.topic.count(), db.package.count(), db.user.count()]);
   console.log(`Seed selesai: ${counts[0]} jalur, ${counts[1]} kategori, ${counts[2]} topik, ${counts[3]} paket, ${counts[4]} pengguna.`);
 }

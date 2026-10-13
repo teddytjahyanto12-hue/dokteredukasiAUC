@@ -39,9 +39,6 @@ export async function SiteFooter() {
         <div>
           <p className={col}>Fitur Platform</p>
           <div className="mt-4 space-y-2">
-            <Link href="/rekomendasi" className={link}>
-              Tes Rekomendasi Kelas
-            </Link>
             <Link href="/belajar" className={link}>
               Dashboard Progres Belajar
             </Link>

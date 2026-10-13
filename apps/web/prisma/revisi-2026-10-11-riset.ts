@@ -48,7 +48,7 @@ async function main() {
   }
   // Urutan pilihan mengikuti arahan pengguna.
   const ORDER: Record<string, string[]> = {
-    "original-research": ["Univariate", "Multivariate"],
+    "original-research": ["Univariate", "Bivariate", "Multivariate"],
     // Meta-analysis digabung ke "Systematic Review and Meta-Analysis" (12-10-2026); slug kelas tetap review-systematic-review.
     review: ["Systematic Review", "Narrative Literature Review", "Scoping Review", "Bibliometric Analysis"],
     "pengolahan-data": ["SPSS", "RStudio", "STATA"],

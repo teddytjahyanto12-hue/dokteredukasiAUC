@@ -19,7 +19,6 @@ export async function SiteHeader() {
   const home = user ? homeFor(user) : "/masuk?next=/belajar";
   const items: NavItem[] = [
     { href: "/kelas", label: "Katalog Kelas", icon: "book", match: ["/kelas", "/materi", "/quiz", "/jalur", "/program"] },
-    { href: "/rekomendasi", label: "Tes Rekomendasi", icon: "sparkles", match: ["/rekomendasi"] },
     { href: "/kalkulator", label: "Kalkulator Medis", icon: "calculator", match: ["/kalkulator"] },
     {
       href: !user || user.role === "STUDENT" ? (user ? "/belajar" : home) : home,

@@ -14,6 +14,7 @@ export default async function HomePage({ searchParams }: { searchParams: SearchP
   const steps = s.homeSteps.split("\n").map((line) => line.split("|").map((x) => x.trim())).filter((x) => x.length >= 2).slice(0, 4);
   const programs: { label: string; note: string; slug: string; icon: IconName; color: string }[] = [
     { label: tracks.find((t) => t.slug === "pre-clinical")?.title ?? "Pre-Clinical", note: notes.get("pre-clinical") ?? "", slug: "pre-clinical", icon: "book", color: "bg-mascot text-ink" },
+    { label: tracks.find((t) => t.slug === "ukmppd")?.title ?? "UKMPPD", note: notes.get("ukmppd") ?? "Persiapan ujian kompetensi dokter", slug: "ukmppd", icon: "cap", color: "bg-mascot text-ink" },
     { label: tracks.find((t) => t.slug === "clinical-practice")?.title ?? "Clinical Practice", note: notes.get("clinical-practice") ?? "", slug: "clinical-practice", icon: "shield", color: "bg-ink text-mascot" },
     { label: tracks.find((t) => t.slug === "medical-research")?.title ?? "Medical Research", note: notes.get("medical-research") ?? "", slug: "medical-research", icon: "trending", color: "bg-brand-soft text-brand-dark" },
   ];
@@ -28,7 +29,6 @@ export default async function HomePage({ searchParams }: { searchParams: SearchP
             <p className="mt-5 max-w-xl whitespace-pre-line text-base leading-relaxed text-slate-600">{s.heroSubtitle}</p>
             <div className="mt-7 flex flex-col gap-3 sm:flex-row">
               <Link href="#katalog" className="btn px-5">Jelajahi kelas <Icon name="arrow" /></Link>
-              <Link href="/rekomendasi" className="btn-secondary px-5"><Icon name="sparkles" /> Bantu pilih kelas</Link>
             </div>
             <p className="mt-5 flex items-center gap-2 text-xs leading-relaxed text-slate-500"><Icon name="checkCircle" className="h-4 w-4 text-brand" />Belajar bertahap, pantau progres dari akun.</p>
           </div>
