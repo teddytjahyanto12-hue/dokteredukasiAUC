@@ -973,3 +973,20 @@ Dosis yang masih belum ditemukan pendukungnya pada semua sumber yang sudah dibac
 - amoksisilin 150 mg/kg/hari;
 - ondansetron terapi 0,2 mg/kg IV;
 - tabel gentamisin neonatus (nomor 9).
+
+---
+
+## Batch 2 (draf 0.5, 13 Oktober 2026)
+
+Obat: ampisilin, sefiksim, azitromisin, kotrimoksazol, metronidazol, salbutamol, setirizin, fenobarbital, furosemid, prednison.
+
+- Kutipan IDAI dan FORNAS: 45 dari 45 cocok dengan teks sumber (skrip pencocokan urutan kata). Tabel IDAI (antimikroba, perinatologi, penyesuaian ginjal) juga dicek pada gambar halaman.
+- Penulisan buku yang disalin apa adanya:
+  - salbutamol, aerosol (IDAI hlm. 69): buku mencetak "1-2 uff" dan "akut 4-8 uff";
+  - tabel ginjal (IDAI hlm. 77): ampisilin tercetak "Amplicillin";
+  - tabel ginjal (IDAI hlm. 83): furosemid tercetak "Frusemide";
+  - kotrimoksazol (IDAI hlm. 26): keterangan tercetak "Kontraindikasi untuk usia < 2 tahun", sedangkan label sulfametoksazol-trimetoprim menulis kontraindikasi pada anak kurang dari 2 bulan.
+- Satu kalimat dosis dari label inhaler HFA (dua inhalasi tiap 4–6 jam) tidak dimasukkan karena dosis hanya boleh dari IDAI atau FORNAS.
+- Sediaan FORNAS yang tidak dimasukkan karena tidak ada dosisnya: metronidazol ovula 500 mg; salbutamol kombinasi dengan ipratropium (cairan inhalasi).
+- Label fenobarbital tablet di DailyMed berasal dari produk yang beredar di AS; label Sezaby adalah produk injeksi yang disetujui FDA untuk kejang neonatus.
+

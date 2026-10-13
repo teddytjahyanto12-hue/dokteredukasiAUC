@@ -743,6 +743,16 @@ File ini adalah sumber kebenaran tunggal untuk status, keputusan, dan serah teri
 - Indikasi seftriakson dari label ditambahkan.
 - Hasil verifikasi (status pendukung WHO/jurnal/NIH, temuan, indeks 275 entri IDAI) dipindah ke docs/dosis-obat/Catatan_Verifikasi_Dosis_Obat_Anak.md, berkas kerja internal yang bukan materi website.
 - Pelaksana aktif Claude Code (PC 2) sesi Dosis Obat: dilepas setelah publikasi draf 0.4.
+- Pelaksana aktif: Claude Code (PC 2), batch 2 Dosis Obat Anak.
+  - Obat: ampisilin, sefiksim, azitromisin, kotrimoksazol, metronidazol, salbutamol, setirizin, fenobarbital, furosemid, prednison.
+  - Format sama dengan draf 0.4.
+  - Berkas yang disentuh: docs/dosis-obat/ saja.
+- Draf 0.5 (13 Okt): 10 monografi batch 2 ditambahkan sebagai 3.9–3.18; dokumen kini berisi 18 obat (DOCX 41 halaman).
+  - Format sama dengan draf 0.4: dosis IDAI apa adanya, sediaan dan peresepan maksimal FORNAS, label DailyMed, daftar pustaka per obat.
+  - Verifikasi: kutipan IDAI/FORNAS 45/45 cocok; tabel juga dicek pada gambar halaman.
+  - Catatan penulisan buku ("uff", "Amplicillin", "Frusemide") dan sediaan yang tidak dimasukkan dicatat di Catatan_Verifikasi_Dosis_Obat_Anak.md.
+  - Batch berikutnya dapat diambil dari indeks IDAI di berkas catatan verifikasi.
+- Pelaksana aktif Claude Code (PC 2) sesi Dosis Obat: dilepas setelah publikasi draf 0.5.
 
 ## Integrasi Scoping Review - Codex, 2026-10-13
 - Pelaksana aktif: Codex sesi Scoping Review. Fokus: 21 PDF, 6 kelompok/kuis dari draf pengguna, lulus80, gratis kelompok1. Berkas: prisma/scoping-chapters.ts, render-scoping-pages.py, tests/scoping-http.mjs, lib/srma-progression.ts, lib/pdf-pages.ts, halaman kelas/materi/quiz, launcher, docs/SCOPING_KURIKULUM.md. HEAD/origin2665c79 identik setelah fetch. Tidak mengubah desain lokal atau dokumen dosis obat Claude aktif. Runtime PC2 terakhir build NLR; build baru akan dibuat terpisah, database diimpor terarah.
@@ -804,3 +814,4 @@ File ini adalah sumber kebenaran tunggal untuk status, keputusan, dan serah teri
 - Pelaksana aktif Codex desain: dilepas. Langkah lanjut: pengguna meninjau katalog lokal; restart server PC2 menggunakan launcherbaru untuk menerapkan build, lalu verifikasi cover. PC1 dan QA visual browser belum diperiksa.
 
 - Sinkronisasi terverifikasi: commit450d2ccb3167b4ddd0684a64bf09235cc108219a (28berkas:25aset+CourseArt+launcher+memori) dipush; fetch ulang memastikan HEAD/originmain identik. Pengaturan/env/draft/dokumen lokal lain tetap tidak dipublikasikan. Runtime lokal baru terverifikasi; PC2 membutuhkan restart launcher, PC1 belum diperiksa. Penanda Codex desain tetap dilepas.
+- Pembersihan catatan pada buku modul SR-MA dan berkas per bab (Claude Code PC 1, 2026-10-13), atas permintaan pengguna agar tidak ada catatan tambahan yang tidak perlu. Dibuang: label lembaga dan nama buku di kepala tiap berkas bab; frasa "Gambar disusun/dibuat oleh Dokter Edukasi Academy" (kini "Diadaptasi dari ..." atau "Data dari ..."); tanggal pengambilan pada keterangan tangkapan layar (kini "Sumber: PubMed, National Library of Medicine"); kalimat "ilustrasi dan bukan data penelitian" pada tiga gambar skema; lima catatan tabel yang bukan singkatan. Sitasi sumber pada tiap gambar dan tabel tetap ada. "buku ini" diganti "modul ini". Buku utuh (48 halaman) dan 22 berkas bab DOCX/PDF dibangun ulang; 23 berkas lolos validate.py; penomoran tabel 1-17 dan gambar 1-23 utuh. Permintaan pengguna memasukkan PDF per bab ke website dengan pengelompokan sesuai kuis BELUM dikerjakan: pengguna menghentikan langkah itu dan meminta verifikasi ulang lebih dulu.
