@@ -3,17 +3,20 @@ import { db } from "@/lib/db";
 import { getCurrentUser } from "@/lib/auth";
 import { canAccessFile } from "@/lib/access";
 import { readStoredFile } from "@/lib/storage";
+import { isSrmaPdf } from "@/lib/pdf-pages";
 
 // Menyajikan berkas unggahan hanya kepada pengguna yang berhak.
 export async function GET(_req: Request, { params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const file = await db.fileAsset.findUnique({ where: { id } });
   if (!file) return new NextResponse("Berkas tidak ditemukan.", { status: 404 });
+  const viewOnly = file.mimeType === "application/pdf" && (!!(await db.setting.findUnique({ where: { key: `material.pdf-pages.${id}` }, select: { key: true } })) || await isSrmaPdf(id));
   // Berkas publik (poster layanan) boleh dilihat siapa saja; lainnya wajib login & berhak.
-  if (!file.isPublic) {
+  if (!file.isPublic || viewOnly) {
     const user = await getCurrentUser();
     if (!user) return new NextResponse("Silakan masuk terlebih dahulu.", { status: 401 });
     if (!(await canAccessFile(user, id))) return new NextResponse("Tidak ada akses ke berkas ini.", { status: 403 });
+    if (user.role === "STUDENT" && viewOnly) return new NextResponse("Materi ini hanya ditayangkan di website.", { status: 403 });
   }
   try {
     const data = await readStoredFile(file.storagePath);

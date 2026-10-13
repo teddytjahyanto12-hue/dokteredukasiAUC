@@ -1,6 +1,8 @@
 import { resolveEmbed, PROVIDER_LABEL } from "@/lib/embed";
 import { Empty } from "@/components/ui";
 import { PdfViewer } from "@/components/pdf-viewer";
+import { PdfPagesViewer } from "@/components/pdf-pages-viewer";
+import { getPdfPages, isSrmaPdf } from "@/lib/pdf-pages";
 
 export type ViewerItem = {
   type: string;
@@ -14,11 +16,17 @@ export type ViewerItem = {
 
 // Menampilkan satu materi di dalam halaman: video diputar di tempat,
 // slide/PDF ditampilkan dalam penampil, tanpa mengarahkan ke situs lain.
-export function MaterialViewer({ item, showOriginalDownload = false }: { item: ViewerItem; showOriginalDownload?: boolean }) {
+export async function MaterialViewer({ item, showOriginalDownload = false }: { item: ViewerItem; showOriginalDownload?: boolean }) {
   const blocks: React.ReactNode[] = [];
 
   if (item.fileId && item.file) {
     const src = `/api/berkas/${item.fileId}`;
+    const pages = item.file.mimeType === "application/pdf" ? await getPdfPages(item.fileId) : null;
+    if (pages) {
+      blocks.push(<PdfPagesViewer key={item.fileId} fileId={item.fileId} count={pages.pages.length} title={item.title} />);
+    } else if (item.file.mimeType === "application/pdf" && !showOriginalDownload && await isSrmaPdf(item.fileId)) {
+      blocks.push(<Empty key="pending">Halaman materi sedang disiapkan oleh pengajar.</Empty>);
+    } else {
     blocks.push(
       item.file.mimeType.startsWith("image/") ? (
         // eslint-disable-next-line @next/next/no-img-element
@@ -43,6 +51,7 @@ export function MaterialViewer({ item, showOriginalDownload = false }: { item: V
         </div>
       ),
     );
+    }
   } else if (item.url && item.type !== "LINK") {
     const embed = resolveEmbed(item.url);
     const isVideo = item.type === "VIDEO";

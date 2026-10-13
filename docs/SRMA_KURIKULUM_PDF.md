@@ -25,8 +25,12 @@ Tidak ada migrasi skema atau penghapusan riwayat. `db:srma-chapters` juga memper
 
 ## Tampilan dan pengelolaan
 
+Pembaruan 13 Oktober 2026: 22 PDF SR-MA (59 halaman) sekarang ditayangkan sebagai halaman PNG privat beresolusi 2x (144 dpi), sehingga tidak bergantung pada plugin/worker PDF browser. Penampil memiliki pemilih halaman, zoom dan tombol fullscreen di website (Escape atau Tutup layar penuh untuk keluar). Tautan ke PDF asli tidak ditampilkan dalam materi SR-MA. Murid ditolak pada endpoint PDF asli meskipun memiliki akses paket; halaman PNG tetap mengikuti sesi, akses kelas dan gerbang kelulusan. Owner/admin/tutor tetap dapat mengakses sumber sesuai izin pengelola. Tampilan browser tetap bisa ditangkap/disalin; ini pembatasan unduh berkas asli, bukan DRM mutlak.
+
+Pembuatan halaman: `python prisma/render-srma-pages.py <folder-app-web> <path-database> [path-database-runtime]`, membutuhkan PyMuPDF (`pip install pymupdf`). Skrip mempertahankan PDF sumber, membuat `storage/srma-pages/<sha256>/page-NNN.png`, lalu mendaftarkan daftar halaman pada `Setting` key `material.pdf-pages.<fileId>`. Folder storage/metadata DB tidak ikut Git. Jalankan lagi bila pengajar mengganti PDF; aset baru harus didaftarkan berdasarkan fileId baru. API `/api/materi-pdf/[fileId]/[page]` mengirim hanya halaman PNG setelah pemeriksaan akses. Endpoint menolak halaman tidak valid/tidak terdaftar. Registrasi view-only tetap memblokir PDF asli bagi murid meskipun metadata render rusak, karena pemblokiran memeriksa keberadaan key.
+
 - Kelas SR-MA memiliki dua bagian besar, delapan kelompok, navigasi ke setiap bagian, daftar PDF per bab dan kuis pada akhir kelompok.
-- Halaman belajar menggunakan PDF.js 6.4.299, dirender langsung dalam halaman dengan tombol sebelum/berikutnya serta pemilih nomor halaman. Fitur Layar penuh tetap tersedia. Worker dan font berada di `public/pdfjs/` dengan lisensi Apache 2.0; versinya harus sama dengan dependensi `pdfjs-dist` saat diperbarui.
+- PDF lain yang belum mempunyai registrasi halaman masih menggunakan PDF.js 6.4.299. Worker dan font berada di `public/pdfjs/` dengan lisensi Apache 2.0; versinya harus sama dengan dependensi `pdfjs-dist` saat diperbarui.
 - PDF tetap disimpan di `storage/srma/`, di luar folder publik. `/api/berkas/[id]` tetap memeriksa sesi dan akses. Semua file materi diimpor dengan `isPublic=false`.
 - Admin dapat mengubah kelompok, PDF, urutan, soal dan publikasi melalui editor konten yang sudah tersedia.
 - Tujuh modul kerangka sebelumnya dan topik contoh lama di database yang diperiksa diarsipkan (`published=false`), tanpa menghapus materi, jawaban, percobaan atau progres. Topik lain dan Toolkit tidak diubah.

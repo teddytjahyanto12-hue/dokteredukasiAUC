@@ -21,6 +21,9 @@ async function main() {
   assert(quizzes.every(q => q.passingScore === 80));
   const q1 = quizzes[0], q2 = quizzes[1];
   const file2 = await db.item.findFirstOrThrow({ where: { topicId: q2.topicId, type: "PDF" } });
+  const viewOnly = !!await db.setting.findUnique({ where: { key: `material.pdf-pages.${file2.fileId}` } });
+  assert(viewOnly, "Register SR-MA pages with render-srma-pages.py before this integration test");
+  const resource = viewOnly ? `/api/materi-pdf/${file2.fileId}/1` : `/api/berkas/${file2.fileId}`;
   const page1 = await (await get(`/quiz/${q1.topicId}`)).text();
   const quizForm = page1.match(/<form\b[^>]*>[\s\S]*?<\/form>/g)?.find(form => form.includes('name="quizId"'));
   const action = quizForm?.match(/name="(\$ACTION_ID_[^"]+)"/)?.[1];
@@ -34,7 +37,7 @@ async function main() {
   }
   assert.match(await (await get(`/materi/${q2.topicId}`)).text(), /Kelompok ini belum terbuka/);
   assert.match(await (await get(`/quiz/${q2.topicId}`)).text(), /Kelompok ini belum terbuka/);
-  assert.equal((await get(`/api/berkas/${file2.fileId}`)).status, 403);
+  assert.equal((await get(resource)).status, 403);
   await submit(q2, 10);
   assert.equal(await db.quizAttempt.count({ where: { userId, quizId: q2.id } }), 0, "Locked quiz POST must not create an attempt");
   const failed = await submit(q1, 7);
@@ -48,13 +51,14 @@ async function main() {
   const passedPage = await (await get(pass.headers.get("location")!)).text();
   assert.match(passedPage, /Kelompok berikutnya sudah terbuka/);
   assert(!/Kelompok ini belum terbuka/.test(await (await get(`/materi/${q2.topicId}`)).text()));
-  assert.equal((await get(`/api/berkas/${file2.fileId}`)).status, 200);
+  assert.equal((await get(resource)).status, 200);
+  if (viewOnly) assert.equal((await get(`/api/berkas/${file2.fileId}`)).status, 403, "Students cannot download the source PDF");
   assert.match(await (await get(`/materi/${quizzes[2].topicId}`)).text(), /Kelompok ini belum terbuka/);
   await submit(q1, 0);
-  assert.equal((await get(`/api/berkas/${file2.fileId}`)).status, 200, "A failed retry must not erase an earlier pass");
+  assert.equal((await get(resource)).status, 200, "A failed retry must not erase an earlier pass");
   await db.entitlement.update({ where: { id: entitlement.id }, data: { revokedAt: new Date() } });
-  assert.equal((await get(`/api/berkas/${file2.fileId}`)).status, 403, "Passing does not replace paid access");
-  assert.equal((await fetch(base + `/api/berkas/${file2.fileId}`)).status, 401);
+  assert.equal((await get(resource)).status, 403, "Passing does not replace paid access");
+  assert.equal((await fetch(base + resource)).status, 401);
   console.log("SR-MA HTTP: kuis 70 gagal, ulangi 80 lulus, pembukaan satu kelompok, blok URL/PDF/POST, hak paket dan kelulusan tersimpan lulus.");
 }
 main().catch(error => { console.error(error); process.exitCode = 1; }).finally(async () => { if (userId) await db.user.delete({ where: { id: userId } }); await db.$disconnect(); });
