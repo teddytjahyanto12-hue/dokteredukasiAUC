@@ -1,0 +1,5 @@
+{
+  "name": "validasi-kalkulator",
+  "private": true,
+  "dependencies": { "docx": "^9.5.1" }
+}

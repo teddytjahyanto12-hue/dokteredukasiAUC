@@ -7,6 +7,7 @@ import { learningStreak } from "@/lib/streak";
 import { logoutAction } from "@/app/actions/auth";
 import { Icon } from "@/components/icons";
 import { NavLinks, type NavItem } from "@/components/nav-links";
+import { SiteSearch } from "@/components/site-search";
 
 // Top bar: (1) logo & wordmark + pencarian, (2) tiga tautan berikon, (3) streak & profil.
 export async function SiteHeader() {
@@ -19,6 +20,7 @@ export async function SiteHeader() {
   const items: NavItem[] = [
     { href: "/kelas", label: "Katalog Kelas", icon: "book", match: ["/kelas", "/materi", "/quiz", "/jalur", "/program"] },
     { href: "/rekomendasi", label: "Tes Rekomendasi", icon: "sparkles", match: ["/rekomendasi"] },
+    { href: "/kalkulator", label: "Kalkulator Medis", icon: "calculator", match: ["/kalkulator"] },
     {
       href: !user || user.role === "STUDENT" ? (user ? "/belajar" : home) : home,
       label: !user || user.role === "STUDENT" ? "Pembelajaran Saya" : "Dashboard",
@@ -38,7 +40,7 @@ export async function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-30 border-b border-slate-200 bg-white print:hidden">
-      <div className="mx-auto flex h-[72px] w-full max-w-[1400px] items-center gap-4 px-4 sm:px-6">
+      <div className="mx-auto flex h-[72px] w-full max-w-[1400px] items-center gap-2 px-4 sm:gap-3 sm:px-6">
         <Link href="/" className="flex shrink-0 items-center gap-2.5">
           <span className="grid h-10 w-10 place-items-center rounded-lg bg-mascot text-base font-bold text-ink">DE</span>
           <span className="hidden leading-none sm:block">
@@ -47,16 +49,12 @@ export async function SiteHeader() {
           </span>
         </Link>
 
-        <form action="/kelas" className="group relative hidden md:block">
-          <Icon name="search" className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
-          <input
-            name="q"
-            type="search"
-            aria-label="Cari kelas"
-            placeholder="Cari kelas…"
-            className="h-9 w-12 cursor-pointer rounded-full bg-slate-100 pl-9 pr-2 text-sm text-transparent outline-none transition-all placeholder:text-transparent focus:w-56 focus:cursor-text focus:bg-white focus:text-slate-900 focus:ring-2 focus:ring-brand/30 focus:placeholder:text-slate-400"
-          />
-        </form>
+        <div className="hidden md:block">
+          <SiteSearch />
+        </div>
+        <Link href="/cari" className="grid h-9 w-9 place-items-center rounded-full bg-slate-100 text-slate-500 md:hidden" aria-label="Cari">
+          <Icon name="search" className="h-4 w-4" />
+        </Link>
 
         <nav className="hidden flex-1 items-center gap-1 xl:flex">
           <NavLinks items={items} />
@@ -77,7 +75,7 @@ export async function SiteHeader() {
               </Link>
               <Link href={home} className="flex items-center gap-2.5" title="Buka dashboard">
                 <span className="grid h-9 w-9 place-items-center rounded-full bg-slate-800 text-xs font-bold text-white">{initials}</span>
-                <span className="hidden leading-tight xl:block">
+                <span className="hidden leading-tight 2xl:block">
                   <span className="block max-w-[160px] truncate text-sm font-semibold text-slate-900">{user.name}</span>
                   <span className="block text-xs text-slate-500">{ROLE_LABEL[user.role as Role] ?? user.role}</span>
                 </span>
@@ -100,7 +98,7 @@ export async function SiteHeader() {
           )}
         </div>
       </div>
-      <nav className="flex justify-between gap-1 px-3 pb-2 sm:justify-start xl:hidden" aria-label="Navigasi utama">
+      <nav className="flex justify-between gap-1 px-3 pb-2 md:justify-start xl:hidden" aria-label="Navigasi utama">
         <NavLinks items={items} compact />
       </nav>
     </header>

@@ -17,6 +17,7 @@
     "db:srma-chapters": "tsx prisma/srma-chapters.ts",
     "test:srma": "tsx tests/srma-tools.ts",
     "db:revisi-2026-10-12": "tsx prisma/revisi-2026-10-12.ts",
+    "db:kalkulator-medis": "tsx prisma/kalkulator-medis.ts",
     "db:reset": "prisma migrate reset --force",
     "db:studio": "prisma studio",
     "typecheck": "tsc --noEmit",
