@@ -775,3 +775,5 @@ File ini adalah sumber kebenaran tunggal untuk status, keputusan, dan serah teri
 - Runtime lokal3000 kini PID38828/buildbaru; DB runtime terpisah dan storage/.env tetap, tanpa reset/seed/impor. Pratinjau3008 PID38896 akan dihentikan setelah verifikasi. BuildPC2 disalin terpisah dan launcher disiapkan; serverPC2 perlu restart pengguna sebelum diklaim tampil terbaru. Backup/hash sebelum tulis cocok. Scope publikasi CourseArt,25aset,launcher,memori; pengaturan/env/draft/dokumen lokal tetap di luar scope.
 
 - Pelaksana aktif Codex desain: dilepas. Langkah lanjut: pengguna meninjau katalog lokal; restart server PC2 menggunakan launcherbaru untuk menerapkan build, lalu verifikasi cover. PC1 dan QA visual browser belum diperiksa.
+
+- Sinkronisasi terverifikasi: commit450d2ccb3167b4ddd0684a64bf09235cc108219a (28berkas:25aset+CourseArt+launcher+memori) dipush; fetch ulang memastikan HEAD/originmain identik. Pengaturan/env/draft/dokumen lokal lain tetap tidak dipublikasikan. Runtime lokal baru terverifikasi; PC2 membutuhkan restart launcher, PC1 belum diperiksa. Penanda Codex desain tetap dilepas.
