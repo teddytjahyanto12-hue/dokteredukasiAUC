@@ -731,6 +731,18 @@ File ini adalah sumber kebenaran tunggal untuk status, keputusan, dan serah teri
 - Tabel ginjal asiklovir IDAI: pedoman NIH (hlm. X-11) memberi pola yang sama dengan label FDA (contoh NIH: dosis 10 mg/kg q8 menjadi 5 mg/kg q24 pada CrCl <10). Angka IDAI tetap setengahnya, dan ini bukan pergeseran kolom. Masih menunggu keputusan pemilik (opsi a/b).
 - Masih tanpa pendukung: parasetamol dosis awal oral 20 mg/kg, amoksisilin 150 mg/kg/hari, ondansetron terapi 0,2 mg/kg IV, tabel gentamisin neonatus (butuh NeoFax/Red Book).
 - Pelaksana aktif Claude Code (PC 2) sesi Dosis Obat: dilepas setelah publikasi draf 0.3.
+- Draf 0.4 (13 Okt). Arahan pemilik:
+  - tampilkan angka IDAI apa adanya, tanpa catatan penyusun;
+  - yang tidak ada sumbernya jangan dimasukkan.
+- docs/dosis-obat/Rancangan_Kalkulator_Dosis_Obat_Anak.md/.docx (18 halaman) kini bersih. Isinya:
+  - kerangka fitur dan aturan hitung;
+  - 8 monografi, masing-masing berisi tabel dosis IDAI (disalin apa adanya, termasuk tabel ginjal asiklovir), sediaan dan peresepan maksimal FORNAS, isi label DailyMed, dan daftar pustaka lengkap per obat.
+- Yang dihapus dari dokumen utama:
+  - contoh hitung, status pendukung, temuan, dan lampiran;
+  - catatan "tidak tercantum".
+- Indikasi seftriakson dari label ditambahkan.
+- Hasil verifikasi (status pendukung WHO/jurnal/NIH, temuan, indeks 275 entri IDAI) dipindah ke docs/dosis-obat/Catatan_Verifikasi_Dosis_Obat_Anak.md, berkas kerja internal yang bukan materi website.
+- Pelaksana aktif Claude Code (PC 2) sesi Dosis Obat: dilepas setelah publikasi draf 0.4.
 
 ## Integrasi Scoping Review - Codex, 2026-10-13
 - Pelaksana aktif: Codex sesi Scoping Review. Fokus: 21 PDF, 6 kelompok/kuis dari draf pengguna, lulus80, gratis kelompok1. Berkas: prisma/scoping-chapters.ts, render-scoping-pages.py, tests/scoping-http.mjs, lib/srma-progression.ts, lib/pdf-pages.ts, halaman kelas/materi/quiz, launcher, docs/SCOPING_KURIKULUM.md. HEAD/origin2665c79 identik setelah fetch. Tidak mengubah desain lokal atau dokumen dosis obat Claude aktif. Runtime PC2 terakhir build NLR; build baru akan dibuat terpisah, database diimpor terarah.
