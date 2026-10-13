@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { getCurrentUser, homeFor } from "@/lib/auth";
 import { getSettings } from "@/lib/settings";
@@ -41,9 +42,9 @@ export async function SiteHeader() {
     <header className="sticky top-0 z-30 border-b border-slate-200 bg-white print:hidden">
       <div className="mx-auto flex h-[72px] w-full max-w-[1400px] items-center gap-2 px-4 sm:gap-3 sm:px-6">
         <Link href="/" className="flex shrink-0 items-center gap-2.5">
-          <span className="grid h-10 w-10 place-items-center rounded-lg bg-mascot text-base font-bold text-ink">DE</span>
+          <span className="brand-emblem" aria-hidden="true"><Image src="/brand/identity.png" alt="" width={1536} height={1024} unoptimized /><span className="sr-only">DE</span></span>
           <span className="hidden leading-none sm:block">
-            <span className="block font-[family-name:var(--font-fraunces),Georgia,serif] text-xl font-bold tracking-tight text-slate-900">{settings.siteName}</span>
+            <span className="block font-sans text-base font-bold tracking-tight text-slate-900">{settings.siteName}</span>
             {settings.siteTagline && <span className="mt-1 block text-[11px] font-semibold tracking-[0.04em] text-brand">{settings.siteTagline}</span>}
           </span>
         </Link>

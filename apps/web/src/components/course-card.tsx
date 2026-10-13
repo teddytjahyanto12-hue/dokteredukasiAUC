@@ -1,3 +1,4 @@
+import { CoverBrand } from "@/components/cover-brand";
 import Link from "next/link";
 import { lessonHref, muridLabel, type Course } from "@/lib/courses";
 import { Icon } from "@/components/icons";
@@ -38,7 +39,7 @@ export function CourseCard({ course, stats, open, students, loggedIn }: { course
     .join("");
 
   return (
-    <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white transition hover:border-mascot">
+    <article className="academy-course-card group flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white transition hover:border-mascot">
       <Link href={detail} className="relative block" aria-label={`Lihat kelas ${course.title}`}>
         {course.posterFileId ? (
           // eslint-disable-next-line @next/next/no-img-element
@@ -46,7 +47,7 @@ export function CourseCard({ course, stats, open, students, loggedIn }: { course
         ) : (
           <div className="aspect-[16/9]"><CourseArt title={course.title} program={course.track.slug} art={course.artKey} /></div>
         )}
-
+        {course.posterFileId && <CoverBrand />}
       </Link>
 
       <div className="flex flex-1 flex-col p-5">
@@ -116,4 +117,3 @@ export function CourseCard({ course, stats, open, students, loggedIn }: { course
     </article>
   );
 }
-

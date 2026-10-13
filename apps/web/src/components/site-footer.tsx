@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { db } from "@/lib/db";
 import { getSettings, whatsappLink } from "@/lib/settings";
@@ -15,9 +16,9 @@ export async function SiteFooter() {
       <div className="mx-auto grid w-full max-w-[1400px] gap-10 px-4 py-12 sm:px-6 md:grid-cols-2 lg:grid-cols-4">
         <div>
           <p className="flex items-center gap-2.5">
-            <span className="grid h-8 w-8 place-items-center rounded-md bg-mascot text-sm font-bold text-ink">DE</span>
+            <span className="brand-emblem" aria-hidden="true"><Image src="/brand/identity.png" alt="" width={1536} height={1024} unoptimized /><span className="sr-only">DE</span></span>
             <span className="leading-tight">
-              <span className="block font-[family-name:var(--font-fraunces),Georgia,serif] text-lg font-bold text-white">{s.siteName}</span>
+              <span className="block font-sans text-lg font-bold text-white">{s.siteName}</span>
               {s.siteTagline && <span className="block text-xs font-semibold text-mascot">{s.siteTagline}</span>}
             </span>
           </p>

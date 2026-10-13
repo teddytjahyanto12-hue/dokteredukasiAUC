@@ -30,7 +30,7 @@ export async function CatalogSection({ user, program, q, basePath, as: Heading =
     const s = params.toString();
     return `${basePath}${s ? `?${s}` : ""}${basePath === "/" ? "#katalog" : ""}`;
   };
-  const tab = (active: boolean) => `whitespace-nowrap rounded-md px-3.5 py-1.5 text-sm transition ${active ? "bg-white font-semibold text-slate-900 shadow-sm" : "text-slate-600 hover:text-slate-900"}`;
+  const tab = (active: boolean) => `inline-flex min-h-11 items-center whitespace-nowrap rounded-lg border px-3.5 py-2 text-sm transition ${active ? "border-ink bg-ink font-bold text-white" : "border-slate-400 bg-white font-semibold text-slate-700 hover:border-ink hover:text-ink"}`;
 
   return (
     <section id="katalog" className="scroll-mt-36">
@@ -40,7 +40,7 @@ export async function CatalogSection({ user, program, q, basePath, as: Heading =
           <Heading className="mt-1 text-3xl font-bold tracking-tight text-slate-900">{s.catalogTitle}</Heading>
           <p className="mt-2 max-w-xl text-sm leading-relaxed text-slate-600">{s.catalogSubtitle}</p>
         </div>
-        <nav className="flex max-w-full flex-wrap gap-1 self-start rounded-lg border border-slate-200 bg-slate-100 p-1 lg:self-auto" aria-label="Filter program">
+        <nav className="flex max-w-full flex-wrap gap-2 self-start lg:self-auto" aria-label="Filter program">
           <Link href={href()} className={tab(!program)}>
             Semua program
           </Link>

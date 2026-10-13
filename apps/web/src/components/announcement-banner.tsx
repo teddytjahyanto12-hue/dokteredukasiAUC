@@ -23,7 +23,7 @@ export async function AnnouncementBanner() {
         const important = a.tone === "PENTING";
         const external = a.linkUrl?.startsWith("http");
         return (
-          <div key={a.id} className={important ? "bg-ink text-white" : "bg-mascot text-ink"}>
+          <div key={a.id} className={important ? "bg-ink text-white" : "bg-brand-soft text-ink"}>
             <div className="container-page flex flex-col gap-2 py-3 sm:flex-row sm:items-center sm:justify-between">
               <p className="text-sm leading-relaxed">
                 <span className={`mr-2 inline-block rounded px-1.5 py-0.5 text-[11px] font-bold uppercase tracking-wide ${important ? "bg-mascot text-ink" : "bg-ink text-mascot"}`}>{important ? "Penting" : "Info"}</span>
