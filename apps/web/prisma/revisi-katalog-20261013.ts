@@ -8,8 +8,8 @@ const slugify = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").repla
 export async function updateCatalog(client: PrismaClient = db) {
   await client.$transaction(async (tx) => {
     const tracks = [
-      ["pre-clinical", "Preclinical", "Fondasi ilmu kedokteran dasar, e-book, dan quiz per blok."],
-      ["ukmppd", "UKMPPD", "Persiapan ujian kompetensi dokter melalui 18 bidang kedokteran."],
+      ["pre-clinical", "Pre-Clinical", "Fondasi ilmu kedokteran dasar, e-book, dan quiz per blok."],
+      ["ukmppd", "UKMPPD", "Persiapan ujian kompetensi dokter melalui materi dan latihan soal dalam 18 bidang kedokteran."],
       ["clinical-practice", "Clinical Practice", "Latihan EKG dan ringkasan praktik klinis."],
       ["medical-research", "Medical Research", "Riset, review, pengolahan data, dan publikasi jurnal."],
     ];
@@ -21,12 +21,27 @@ export async function updateCatalog(client: PrismaClient = db) {
     const research = await tx.track.findUniqueOrThrow({ where: { slug: "medical-research" } });
     const uk = await tx.track.findUniqueOrThrow({ where: { slug: "ukmppd" } });
     await tx.category.updateMany({ where: { OR: [{ trackId: pre.id, slug: "daftar-pustaka" }, { trackId: clinical.id, slug: "clinical-guidelines" }] }, data: { published: false } });
+    const material = await tx.category.upsert({
+      where: { trackId_slug: { trackId: uk.id, slug: "materi-ukmppd" } },
+      update: { title: "Materi UKMPPD", published: true, showChildrenInCatalog: true },
+      create: { trackId: uk.id, slug: "materi-ukmppd", title: "Materi UKMPPD", description: "Daftar isi akan disesuaikan dengan modul yang tersedia.", order: 0, childLabel: "Kelas", showChildrenInCatalog: true },
+    });
+    const practice = await tx.category.upsert({
+      where: { trackId_slug: { trackId: uk.id, slug: "latihan-soal-ukmppd" } },
+      update: { title: "Latihan Soal UKMPPD", published: true, showChildrenInCatalog: true },
+      create: { trackId: uk.id, slug: "latihan-soal-ukmppd", title: "Latihan Soal UKMPPD", order: 1, childLabel: "Kelas", showChildrenInCatalog: true, displayType: "MATERIAL_QUIZ" },
+    });
     for (const [order, title] of specialties.entries()) {
-      await tx.category.upsert({ where: { trackId_slug: { trackId: uk.id, slug: slugify(title) } }, update: { title, order, published: true }, create: { trackId: uk.id, slug: slugify(title), title, order, displayType: "MATERIAL_QUIZ" } });
+      await tx.category.upsert({ where: { trackId_slug: { trackId: uk.id, slug: slugify(title) } }, update: { title, order, parentId: material.id, published: true }, create: { trackId: uk.id, slug: slugify(title), title, order, parentId: material.id, displayType: "MATERIAL" } });
+      const course = await tx.category.upsert({ where: { trackId_slug: { trackId: uk.id, slug: `latihan-soal-${slugify(title)}` } }, update: { title, order, parentId: practice.id, published: true }, create: { trackId: uk.id, slug: `latihan-soal-${slugify(title)}`, title, order, parentId: practice.id, displayType: "MATERIAL_QUIZ" } });
+      for (const number of [1, 2]) {
+        const id = `ukmppd-${slugify(title)}-latihan-${number}`;
+        await tx.topic.upsert({ where: { id }, update: {}, create: { id, categoryId: course.id, title: `Latihan Soal ${number}`, order: number } });
+      }
     }
     const original = await tx.category.findUniqueOrThrow({ where: { trackId_slug: { trackId: research.id, slug: "original-research" } } });
     await tx.category.update({ where: { id: original.id }, data: { showChildrenInCatalog: true, childLabel: "Pilihan" } });
-    await tx.category.upsert({ where: { trackId_slug: { trackId: research.id, slug: "original-research-bivariate" } }, update: { parentId: original.id, title: "Bivariat", order: 2, published: true }, create: { trackId: research.id, slug: "original-research-bivariate", title: "Bivariat", parentId: original.id, order: 2 } });
+    await tx.category.upsert({ where: { trackId_slug: { trackId: research.id, slug: "original-research-bivariate" } }, update: { parentId: original.id, title: "Bivariate", order: 2, published: true }, create: { trackId: research.id, slug: "original-research-bivariate", title: "Bivariate", parentId: original.id, order: 2 } });
     await tx.category.updateMany({ where: { trackId: research.id, slug: "original-research-univariate" }, data: { order: 1 } });
     await tx.category.updateMany({ where: { trackId: research.id, slug: "original-research-multivariate" }, data: { order: 3 } });
     const publication = await tx.category.upsert({ where: { trackId_slug: { trackId: research.id, slug: "publikasi-jurnal" } }, update: { published: true, showChildrenInCatalog: true }, create: { trackId: research.id, slug: "publikasi-jurnal", title: "Publikasi Jurnal", order: 5, childLabel: "Pilihan", showChildrenInCatalog: true } });
@@ -40,12 +55,15 @@ export async function updateCatalog(client: PrismaClient = db) {
     }
     const hero = await tx.setting.findUnique({ where: { key: "heroSubtitle" } });
     if (hero?.value.includes("Pre-Clinical, Clinical Practice, hingga Medical Research")) {
-      await tx.setting.update({ where: { key: "heroSubtitle" }, data: { value: hero.value.replace("Pre-Clinical, Clinical Practice, hingga Medical Research", "Preclinical, UKMPPD, Clinical Practice, hingga Medical Research") } });
+      await tx.setting.update({ where: { key: "heroSubtitle" }, data: { value: hero.value.replace("Pre-Clinical, Clinical Practice, hingga Medical Research", "Pre-Clinical, UKMPPD, Clinical Practice, hingga Medical Research") } });
+    }
+    if (hero?.value.includes("Preclinical, UKMPPD")) {
+      await tx.setting.update({ where: { key: "heroSubtitle" }, data: { value: hero.value.replace("Preclinical, UKMPPD", "Pre-Clinical, UKMPPD") } });
     }
     // Ringkasan paket lama tidak lagi menyebut kategori yang telah disembunyikan.
     await tx.package.updateMany({ where: { slug: "pre-clinical-lengkap" }, data: { summary: "Basic Medical Science dan Medical E-books." } });
     await tx.package.updateMany({ where: { slug: "clinical-practice-lengkap" }, data: { summary: "ECG Challenges dan Medical Cheatsheet." } });
-    console.log(`Katalog diperbarui: ${specialties.length} UKMPPD, ${bms.children.length} blok Quiz, Bivariat, SINTA/Scopus.`);
+    console.log(`Katalog diperbarui: ${specialties.length} UKMPPD, ${bms.children.length} blok Quiz, Bivariate, SINTA/Scopus.`);
   }, { timeout: 60000 });
 }
 if (process.argv[1]?.replaceAll("\\", "/").endsWith("/revisi-katalog-20261013.ts")) {

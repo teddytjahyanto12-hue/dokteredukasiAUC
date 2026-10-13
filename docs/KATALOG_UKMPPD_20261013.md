@@ -1,8 +1,8 @@
-# Katalog UKMPPD — 13 Oktober 2026
+# Katalog UKMPPD â€” 13 Oktober 2026
 
-PPDS dibatalkan oleh pemilik. Program: Preclinical, UKMPPD, Clinical Practice, Medical Research.
+PPDS dibatalkan oleh pemilik. Program: Pre-Clinical, UKMPPD, Clinical Practice, Medical Research.
 
-UKMPPD berisi 18 kelas sesuai daftar pemilik. Original Research berurutan Univariate → Bivariat → Multivariate. Kelompok Publikasi Jurnal berisi Publikasi Jurnal SINTA dan Publikasi Jurnal Scopus. Katalog Quiz Preclinical berisi 22 subkelas sesuai judul/urutan blok BMS terbit saat impor.
+UKMPPD dibagi menjadi Materi UKMPPD dan Latihan Soal UKMPPD, masing-masing18kelas sesuai daftar pemilik. Kelas UKMPPD lama tetap memakai ID/slug yang sama dan menjadi anak Materi UKMPPD. Setiap kelas Latihan Soal memiliki topik Latihan Soal1 dan Latihan Soal2 (tanpa soal/kuis terbit). Materi belum dibuatkan daftar isi; menunggu modul dari pemilik. Original Research berurutan Univariate â†’ Bivariate â†’ Multivariate. Kelompok Publikasi Jurnal berisi Publikasi Jurnal SINTA dan Publikasi Jurnal Scopus. Katalog Quiz Pre-Clinical berisi 22 subkelas sesuai judul/urutan blok BMS terbit saat impor.
 
 Daftar Pustaka/Clinical Guidelines dinonaktifkan dari publik tanpa menghapus materi, percobaan, hak akses atau relasi paket. Tes Rekomendasi dihapus dari beranda, header/footer, dashboard kosong dan pencarian; URL lama mengembalikan 404. Struktur kelas baru dapat diisi admin; belum ada materi/soal baru, kuis BMS tidak disalin otomatis.
 
