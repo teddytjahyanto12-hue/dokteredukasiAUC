@@ -52,6 +52,7 @@ export default async function TopicPage({ params, searchParams }: { params: Prom
   });
   if (!topic || !topic.published || !topic.category.published || !topic.category.track.published) notFound();
   const isSrma = topic.category.slug === SR_SLUG;
+  const isScoping = topic.category.slug === "review-scoping-review";
   const isNlr = topic.category.slug === "review-narrative-literature-review";
   const isCaseReport = topic.category.slug === "case-report-case-report";
   const progression = await getSrmaProgression(user, topic.categoryId);
@@ -112,7 +113,7 @@ export default async function TopicPage({ params, searchParams }: { params: Prom
       {isSrma && <div className="mt-4 flex flex-wrap gap-3"><Link className="btn-secondary btn-sm" href={`/kelas/${topic.categoryId}`}>Kurikulum SR-MA</Link><Link className="btn-secondary btn-sm" href="/toolkit-srma">Toolkit SR-MA →</Link><span className="self-center text-xs text-slate-500">Alat kerja tersedia untuk Intermediate dan Pro.</span></div>}
 
       <div className="mt-6 grid gap-6 lg:grid-cols-[320px_minmax(0,1fr)]">
-        <ModulePanel simplified={isSrma || isCaseReport || isNlr}>
+        <ModulePanel simplified={isSrma || isCaseReport || isNlr || isScoping}>
           <div className="rounded-2xl border border-slate-200 bg-white lg:sticky lg:top-36 lg:max-h-[calc(100vh-10rem)] lg:overflow-y-auto">
             <div className="border-b border-slate-200 p-4">
               <p className="text-xs font-semibold uppercase tracking-[0.1em] text-brand">Kurikulum Kelas</p>
@@ -184,7 +185,7 @@ export default async function TopicPage({ params, searchParams }: { params: Prom
         </ModulePanel>
 
         <section className="order-1 min-w-0 space-y-6 lg:order-2">
-          {!isSrma && !isCaseReport && !isNlr && <a href="#kurikulum-kelas" className="btn-secondary w-full lg:hidden"><Icon name="book" />Lihat kurikulum kelas · {pct}% selesai</a>}
+          {!isSrma && !isCaseReport && !isNlr && !isScoping && <a href="#kurikulum-kelas" className="btn-secondary w-full lg:hidden"><Icon name="book" />Lihat kurikulum kelas · {pct}% selesai</a>}
           {selected && (
             <article className="card sm:p-7">
               <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
@@ -208,7 +209,7 @@ export default async function TopicPage({ params, searchParams }: { params: Prom
               {selected.description && <p className="mb-4 text-sm text-slate-600">{selected.description}</p>}
               <MaterialViewer item={selected} />
               {selected.sourceNote && <p className="mt-3 text-xs text-slate-500">Sumber: {selected.sourceNote}</p>}
-              {(isSrma || isCaseReport || isNlr) && (topic.id.startsWith("dea-srma-chapter-group-") || topic.id.startsWith("dea-case-report-group-") || topic.id.startsWith("dea-nlr-chapter-group-")) && <div className="mt-5 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-mascot bg-brand-soft p-4"><p className="text-sm">Selesai membaca bab dalam kelompok ini? Uji pemahaman melalui 10 soal dengan pembahasan.</p><Link href={`/quiz/${topic.id}`} className="btn-secondary btn-sm">Kuis kelompok {babNo} →</Link></div>}
+              {(isSrma || isCaseReport || isNlr || isScoping) && (topic.id.startsWith("dea-srma-chapter-group-") || topic.id.startsWith("dea-case-report-group-") || topic.id.startsWith("dea-nlr-chapter-group-") || topic.id.startsWith("dea-scoping-chapter-group-")) && <div className="mt-5 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-mascot bg-brand-soft p-4"><p className="text-sm">Selesai membaca bab dalam kelompok ini? Uji pemahaman melalui 10 soal dengan pembahasan.</p><Link href={`/quiz/${topic.id}`} className="btn-secondary btn-sm">Kuis kelompok {babNo} →</Link></div>}
             </article>
           )}
 

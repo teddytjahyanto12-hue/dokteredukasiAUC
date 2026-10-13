@@ -23,7 +23,7 @@ export default async function QuizPage({ params, searchParams }: { params: Promi
     },
   });
   if (!quiz || !quiz.published) notFound();
-  const isSrma = ["review-systematic-review", "case-report-case-report", "review-narrative-literature-review"].includes(quiz.topic.category.slug);
+  const isSrma = ["review-systematic-review", "case-report-case-report", "review-narrative-literature-review", "review-scoping-review"].includes(quiz.topic.category.slug);
   const passingScore = isSrma ? SRMA_PASSING_SCORE : quiz.passingScore;
   const progression = await getSrmaProgression(user, quiz.topic.categoryId);
   const prerequisite = progression?.locked.get(topicId);
