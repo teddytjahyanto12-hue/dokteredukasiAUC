@@ -753,6 +753,13 @@ File ini adalah sumber kebenaran tunggal untuk status, keputusan, dan serah teri
   - Catatan penulisan buku ("uff", "Amplicillin", "Frusemide") dan sediaan yang tidak dimasukkan dicatat di Catatan_Verifikasi_Dosis_Obat_Anak.md.
   - Batch berikutnya dapat diambil dari indeks IDAI di berkas catatan verifikasi.
 - Pelaksana aktif Claude Code (PC 2) sesi Dosis Obat: dilepas setelah publikasi draf 0.5.
+- Pelaksana aktif: Claude Code (PC 2), batch 3 Dosis Obat Anak (15 Okt).
+  - Obat: meropenem, vankomisin, seftazidim, kloramfenikol, klindamisin, eritromisin, omeprazol, metoklopramid, fitomenadion, hidrokortison.
+  - Berkas yang disentuh: docs/dosis-obat/ saja.
+- Draf 0.6 (15 Okt): batch 3 ditambahkan sebagai 3.19–3.28; dokumen kini 28 obat (DOCX 62 halaman).
+  - Verifikasi IDAI/FORNAS 36/36 cocok.
+  - Menunggu konfirmasi pemilik: baris tanpa nama di tabel IDAI hlm. 16 (IM/IV, tampak klindamisin) tidak dimasukkan. Detail di Catatan_Verifikasi_Dosis_Obat_Anak.md.
+- Pelaksana aktif Claude Code (PC 2) sesi Dosis Obat: dilepas setelah publikasi draf 0.6.
 
 ## Integrasi Scoping Review - Codex, 2026-10-13
 - Pelaksana aktif: Codex sesi Scoping Review. Fokus: 21 PDF, 6 kelompok/kuis dari draf pengguna, lulus80, gratis kelompok1. Berkas: prisma/scoping-chapters.ts, render-scoping-pages.py, tests/scoping-http.mjs, lib/srma-progression.ts, lib/pdf-pages.ts, halaman kelas/materi/quiz, launcher, docs/SCOPING_KURIKULUM.md. HEAD/origin2665c79 identik setelah fetch. Tidak mengubah desain lokal atau dokumen dosis obat Claude aktif. Runtime PC2 terakhir build NLR; build baru akan dibuat terpisah, database diimpor terarah.

@@ -990,3 +990,19 @@ Obat: ampisilin, sefiksim, azitromisin, kotrimoksazol, metronidazol, salbutamol,
 - Sediaan FORNAS yang tidak dimasukkan karena tidak ada dosisnya: metronidazol ovula 500 mg; salbutamol kombinasi dengan ipratropium (cairan inhalasi).
 - Label fenobarbital tablet di DailyMed berasal dari produk yang beredar di AS; label Sezaby adalah produk injeksi yang disetujui FDA untuk kejang neonatus.
 
+---
+
+## Batch 3 (draf 0.6, 15 Oktober 2026)
+
+Obat: meropenem, vankomisin, seftazidim, kloramfenikol, klindamisin, eritromisin, omeprazol, metoklopramid, fitomenadion (vitamin K1), hidrokortison.
+
+- Kutipan IDAI dan FORNAS: 36 dari 36 cocok dengan teks sumber; tabel juga dicek pada gambar halaman.
+- Penulisan buku yang disalin apa adanya:
+  - vankomisin (IDAI hlm. 27): kolom infeksi berat tercetak "(dosis harian dewasa, 2–4g)I";
+  - tabel ginjal vankomisin (IDAI hlm. 91): dosis normal tertulis "10 mg/kg/dosis q6 jam po", kolom LFG berisi dosis dewasa "1,0 gm".
+- Baris tanpa nama obat di tabel antimikroba IDAI hlm. 16 (rute IM, IV: 20 mg dalam 3 dosis / 40 mg dalam 3–4 dosis; keterangan tentang anaerob, Bacteroides, pneumokokus resisten multiobat, dan SARM) terletak di antara baris kloramfenikol dan klindamisin. Isinya tampak sesuai klindamisin, tetapi karena tidak bernama, baris ini **tidak dimasukkan** ke kloramfenikol maupun klindamisin. Dosis IV/IM klindamisin diambil dari kolom dosis normal tabel ginjal (IDAI hlm. 80). **Mohon konfirmasi pemilik.**
+- Dosis FORNAS dipakai untuk fitomenadion injeksi 2 mg/mL (bayi baru lahir 1 mg; bayi prematur 0,5 mg), dengan label asal FORNAS.
+- Sediaan FORNAS yang tidak dimasukkan karena tidak ada dosisnya: fitomenadion tablet 10 mg; kloramfenikol salep/tetes mata dan tetes telinga; hidrokortison krim 1% dan 2,5%.
+- Kalimat dari label yang menyangkut interval atau rute dosis (hidrokortison tiap 4–6 jam; vitamin K1 sebaiknya subkutan) tidak dimasukkan ke Aturan penggunaan karena dosis hanya dari IDAI atau FORNAS. Peringatan berbingkai vitamin K1 tentang reaksi hipersensitivitas pada pemberian IV/IM tetap dicantumkan di bagian Peringatan.
+- Eritromisin IV ada dosisnya di IDAI tetapi FORNAS tidak mencantumkan sediaan injeksi; baris dosis tetap dimasukkan (sumber IDAI), sediaan hanya yang ada di FORNAS.
+

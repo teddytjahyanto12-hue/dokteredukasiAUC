@@ -1,6 +1,6 @@
 # Kalkulator Dosis Obat Anak
 
-Draf 0.5, 13 Oktober 2026 (18 obat). Materi untuk ditinjau pemilik; belum diterapkan di website.
+Draf 0.6, 15 Oktober 2026 (28 obat). Materi untuk ditinjau pemilik; belum diterapkan di website.
 
 ---
 
@@ -1398,3 +1398,724 @@ IDAI hlm. 53, daftar dosis obat:
 1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
 2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
 3. Prednisone Tablets, USP (Mylan), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=fec09050-5ac2-451b-a2b9-5a21b2def212
+
+---
+
+### 3.19 Meropenem
+
+**Kalkulator berat badan**
+
+IDAI hlm. 12, tabel antimikroba (dosis per kg per hari):
+
+| Rute | Infeksi ringan–sedang | Infeksi berat | Keterangan |
+|---|---|---|---|
+| IV | Tidak cocok | 60 mg dalam 3 dosis. Maksimal 6 g/hari | Dosis yang lebih tinggi (120 mg dalam 3 dosis) digunakan untuk pengobatan meningitis |
+
+IDAI hlm. 31–32, neonatus:
+
+- IV drip dalam 30 menit.
+- Sepsis: 20 mg/kg per dosis IV.
+
+| Umur kehamilan (pascakonsepsi), minggu | Umur pascanatal, hari | Dosis (mg/kg) | Interval (jam) |
+|---|---|---|---|
+| <32 | ≤14 | 20 | 12 |
+| <32 | >14 | 20 | 8 |
+| >32 | ≤7 | 20 | 12 |
+| >32 | >7 | 20 | 8 |
+
+**Penyesuaian dosis pada penyakit ginjal** (IDAI hlm. 86)
+
+| Dosis normal | Dosis (D)/Interval (I) | LFG >50 | LFG 10–50 | LFG <10 | HD | PD |
+|---|---|---|---|---|---|---|
+| 10–20 mg/kg/dosis q8 jam iv | D, I | 100% | 100% q12 jam | 100% q24 jam | Dosis sesudah dialisis | Dosis untuk LFG <10 |
+
+**Sediaan** (FORNAS 2025 hlm. 34)
+
+| Sediaan | Peresepan maksimal |
+|---|---|
+| Serbuk injeksi 500 mg | a) *Febrile neutropenia*: dosis 1–3 g/hari, sampai ANC >500/mm³. b) Sepsis dan infeksi berat mengancam jiwa: dosis 1–3 g/hari sampai diperoleh hasil kultur, maks 7 hari. Setelah hasil kultur diperoleh, digantikan dengan antibiotik spektrum sempit yang masih efektif. Meropenem hanya dapat dilanjutkan apabila hasil kultur yang diambil dari tempat yang dicurigai sebagai sumber infeksi menunjukkan bahwa bakteri penyebab hanya sensitif terhadap meropenem |
+| Serbuk injeksi 1.000 mg | |
+
+Restriksi FORNAS: a) diberikan atas persetujuan KFT/KPRA/pimpinan RS untuk antibiotik lini ketiga (*reserved antibiotic*) pada infeksi oleh kuman penghasil ESBL; b) tidak untuk profilaksis prabedah.
+
+**Aturan penggunaan**
+
+- Dosis harian dibagi 3 dosis (IDAI).
+- Neonatus: IV drip dalam 30 menit; interval sesuai umur kehamilan dan umur pascanatal (IDAI).
+
+**Manfaat obat** (label meropenem)
+
+- Infeksi kulit dan struktur kulit dengan komplikasi (dewasa dan anak usia 3 bulan ke atas).
+- Infeksi intraabdomen dengan komplikasi: apendisitis dengan komplikasi dan peritonitis (dewasa dan anak).
+- Meningitis bakterial (anak usia 3 bulan ke atas).
+
+**Efek samping** (label meropenem)
+
+- Anak (infeksi selain meningitis, 10–20 mg/kg tiap 8 jam): diare 3,5%, ruam 1,6%, mual dan muntah 0,8%.
+- Anak dengan meningitis (40 mg/kg tiap 8 jam): diare 4,7%, ruam (terutama kandidiasis area popok) 3,1%, kandidiasis oral 1,9%, glositis 1,0%.
+- Neonatus dan bayi <3 bulan: kejang 5,0%, hiperbilirubinemia (terkonjugasi) 4,5%, muntah 2,5%.
+
+**Peringatan** (label meropenem)
+
+- Kontraindikasi: hipersensitivitas terhadap komponen produk atau obat sekelas, atau riwayat reaksi anafilaktik terhadap beta-laktam.
+- Reaksi hipersensitivitas (anafilaksis) serius dan kadang fatal.
+- Reaksi kulit berat (SJS, TEN, DRESS, eritema multiformis, AGEP).
+- Rabdomiolisis.
+- Kejang dan efek SSP lain, terutama pada pasien dengan gangguan SSP, meningitis bakterial, dan/atau gangguan fungsi ginjal.
+
+**Farmakokinetik** (label meropenem)
+
+- Ikatan protein plasma sekitar 2%.
+- Waktu paruh eliminasi sekitar 1 jam pada fungsi ginjal normal.
+- Sekitar 70% (50–75%) dosis dikeluarkan di urin dalam bentuk tidak berubah dalam 12 jam; 28% lagi sebagai metabolit yang tidak aktif secara mikrobiologis; feses sekitar 2%.
+
+**Farmakodinamik** (label meropenem)
+
+- Aktivitas bakterisidal berasal dari hambatan sintesis dinding sel; meropenem menembus dinding sel sebagian besar bakteri Gram-positif dan Gram-negatif dan berikatan dengan *penicillin-binding protein* (PBP).
+- Persentase waktu kadar bebas di atas KHM dalam satu interval dosis paling berkorelasi dengan efikasi pada model hewan dan in vitro.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. Meropenem for Injection, USP (Sagent), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=e8848f4a-bca9-4978-b0a1-38483fd4d639
+
+---
+
+### 3.20 Vankomisin
+
+**Kalkulator berat badan** (IDAI hlm. 27, tabel antimikroba; dosis per kg per hari)
+
+| Rute | Infeksi ringan–sedang | Infeksi berat | Keterangan |
+|---|---|---|---|
+| IV | 30–40 mg dalam 3–4 dosis (dosis harian dewasa, 1–2 g) | 60–70 mg dalam 3–4 dosis (dosis harian dewasa, 2–4g)I | Dosis dan frekuensi individual berdasarkan analisis konsentrasi serum |
+
+**Penyesuaian dosis pada penyakit ginjal** (IDAI hlm. 91)
+
+| Dosis normal | Dosis (D)/Interval (I) | LFG >50 | LFG 10–50 | LFG <10 | HD | PD |
+|---|---|---|---|---|---|---|
+| 10 mg/kg/dosis q6 jam po | D, I | 1,0 gm q12–24 jam | 1,0 gm q24–96 jam | 1,0 gm q4–7 hari | dosis untuk LFG <10 | dosis untuk LFG <10 |
+
+**Sediaan** (FORNAS 2025 hlm. 35)
+
+| Sediaan | Peresepan maksimal |
+|---|---|
+| Injeksi 500 mg | Maks 10 hari/kasus |
+
+Restriksi FORNAS: diberikan atas persetujuan KFT/KPRA/pimpinan RS untuk antibiotik lini ketiga (*reserved antibiotic*) pada infeksi oleh kuman MRSA atau MRSE positif (dibuktikan dengan hasil kultur).
+
+**Aturan penggunaan**
+
+- Dosis harian dibagi 3–4 dosis; dosis dan frekuensi individual berdasarkan analisis konsentrasi serum (IDAI).
+- Diberikan dalam larutan encer selama tidak kurang dari 60 menit untuk menghindari reaksi akibat infus cepat (label vankomisin).
+
+**Manfaat obat** (label vankomisin injeksi)
+
+- Infeksi berat oleh stafilokokus yang resisten metisilin (resisten beta-laktam).
+- Pasien alergi penisilin, pasien yang tidak dapat menerima atau tidak berespons terhadap obat lain termasuk penisilin atau sefalosporin, dan infeksi oleh organisme peka vankomisin yang resisten terhadap obat lain.
+- Endokarditis stafilokokus; juga dilaporkan efektif pada septikemia, infeksi tulang, infeksi saluran napas bawah, serta infeksi kulit dan struktur kulit oleh stafilokokus.
+
+**Efek samping** (label vankomisin injeksi)
+
+- Reaksi infus (terutama bila infus cepat): reaksi anafilaktoid termasuk hipotensi, mengi, sesak, urtikaria, gatal; kemerahan tubuh bagian atas (*red neck*); nyeri dan spasme otot dada dan punggung.
+- Nefrotoksisitas: cedera ginjal akut; nefritis interstisial.
+- Ototoksisitas: gangguan pendengaran, sebagian besar pada pasien dengan gangguan ginjal atau gangguan pendengaran sebelumnya.
+- Neutropenia reversibel, biasanya mulai 1 minggu atau lebih setelah terapi dimulai atau setelah dosis total lebih dari 25 g.
+- Kolitis pseudomembranosa.
+
+**Peringatan** (label vankomisin injeksi)
+
+- Kontraindikasi: hipersensitivitas terhadap vankomisin.
+- Pemberian bolus cepat dapat disertai hipotensi berat, termasuk syok dan, jarang, henti jantung.
+- Pantau fungsi ginjal; risiko cedera ginjal akut meningkat seiring kadar serum.
+- Ototoksisitas dapat sementara atau permanen.
+- Reaksi kulit berat, diare terkait *Clostridioides difficile*, dan vaskulitis oklusif retina hemoragik.
+
+**Farmakokinetik** (label vankomisin injeksi)
+
+- Diserap buruk setelah pemberian oral.
+- Waktu paruh eliminasi rata-rata 4–6 jam pada fungsi ginjal normal; sekitar 7,5 hari pada pasien anefrik.
+- Sekitar 75% dosis dikeluarkan di urin melalui filtrasi glomerulus dalam 24 jam pertama; tidak ada metabolisme yang nyata.
+- Sekitar 55% terikat protein serum.
+- Tidak mudah berdifusi melalui meninges normal ke cairan spinal.
+
+**Farmakodinamik** (label vankomisin injeksi)
+
+- Aksi bakterisidal terutama melalui hambatan biosintesis dinding sel; vankomisin juga mengubah permeabilitas membran sel bakteri dan sintesis RNA.
+- Tidak ada resistensi silang dengan antibiotik lain; tidak aktif in vitro terhadap basil Gram-negatif, mikobakteria, atau jamur.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. Vancomycin Hydrochloride for Injection, USP (Mylan Institutional), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=2dc7b3d6-3874-40ac-b8aa-7bcfe2dc0cdf
+
+---
+
+### 3.21 Seftazidim
+
+**Kalkulator berat badan**
+
+IDAI hlm. 14, tabel antimikroba (dosis per kg per hari):
+
+| Rute | Infeksi ringan–sedang | Infeksi berat | Keterangan |
+|---|---|---|---|
+| IV, IM | 90–150 mg dalam 3 dosis (dosis harian dewasa, 3 g) | 200–300 mg dalam 3 dosis (maksimal 8–12 g/hari) | Spektrum luas. Bekerja sebagai anti-*Pseudomonas* |
+
+IDAI hlm. 33, neonatus (IV atau IM):
+
+| Berat badan | Umur pascanatal | Dosis |
+|---|---|---|
+| <1 kg | ≤14 hari | 50 mg/kg/dosis tiap 12 jam |
+| <1 kg | 15–28 hari | 50 mg/kg/dosis tiap 8–12 jam |
+| 1–2 kg | ≤7 hari | 50 mg/kg/dosis tiap 12 jam |
+| 1–2 kg | 8–28 hari | 50 mg/kg/dosis tiap 8–12 jam |
+| >2 kg | ≤7 hari | 50 mg/kg/dosis tiap 12 jam |
+| >2 kg | 8–28 hari | 50 mg/kg/dosis tiap 8 jam |
+
+Meningitis (IDAI hlm. 33):
+
+- Umur pascanatal ≤7 hari: 100–150 mg/kg/hari dibagi 8–12 jam.
+- Umur pascanatal >7 hari: 150 mg/kg/hari dibagi 8 jam.
+
+**Penyesuaian dosis pada penyakit ginjal** (IDAI hlm. 79)
+
+| Dosis normal | Dosis (D)/Interval (I) | LFG >50 | LFG 10–50 | LFG <10 | HD | PD |
+|---|---|---|---|---|---|---|
+| 15–25 mg/kg/dosis q8 jam iv, im. Infeksi berat: 50 mg/kg/dosis q6 jam | I | q8–12 jam | q24–48 jam | q48 jam | dosis sesudah dialisis | 50% |
+
+**Sediaan** (FORNAS 2025 hlm. 28)
+
+| Sediaan | Peresepan maksimal |
+|---|---|
+| Serbuk injeksi 1.000 mg | 3 g/hari selama 7 hari |
+
+Restriksi FORNAS: antibiotik lini ketiga (*reserved antibiotic*), untuk infeksi yang terbukti disebabkan oleh *Pseudomonas aeruginosa*. Diberikan atas persetujuan KFT/KPRA/pimpinan RS.
+
+**Aturan penggunaan**
+
+- Dosis harian dibagi 3 dosis (IDAI).
+- Neonatus: interval sesuai berat badan dan umur pascanatal (IDAI).
+
+**Manfaat obat** (label Tazicef; infeksi oleh galur yang peka)
+
+- Infeksi saluran napas bawah, termasuk pneumonia.
+- Infeksi kulit dan struktur kulit.
+- Infeksi saluran kemih, dengan atau tanpa komplikasi.
+- Septikemia bakterial.
+- Infeksi tulang dan sendi.
+- Infeksi ginekologi.
+- Infeksi intraabdomen, termasuk peritonitis.
+- Infeksi sistem saraf pusat, termasuk meningitis.
+
+**Efek samping** (label Tazicef)
+
+- Paling sering: reaksi lokal setelah injeksi IV, reaksi alergi, dan reaksi saluran cerna.
+- Lokal (<2%): flebitis dan inflamasi di tempat suntikan.
+- Hipersensitivitas (2%): gatal, ruam, demam.
+- Saluran cerna (<2%): diare, mual, muntah, nyeri perut.
+- SSP (<1%): sakit kepala, pusing, parestesia. Kejang pernah dilaporkan pada beberapa sefalosporin, termasuk seftazidim; ensefalopati, koma, asteriksis, eksitabilitas neuromuskular, dan mioklonia pernah dilaporkan pada pasien gangguan ginjal dengan dosis yang tidak disesuaikan.
+
+**Peringatan** (label Tazicef)
+
+- Kontraindikasi: hipersensitivitas terhadap seftazidim atau golongan sefalosporin.
+- Kadar serum tinggi dan lama dapat terjadi dengan dosis biasa pada penurunan produksi urin akibat insufisiensi ginjal; dosis harian total harus dikurangi.
+
+**Farmakokinetik** (label Tazicef)
+
+- Waktu paruh setelah pemberian IV sekitar 1,9 jam.
+- Kurang dari 10% terikat protein; tidak bergantung kadar.
+- Sekitar 80–90% dosis IM atau IV dikeluarkan dalam bentuk tidak berubah oleh ginjal dalam 24 jam; sekitar 50% dosis muncul di urin dalam 2 jam pertama.
+
+**Farmakodinamik** (label Tazicef)
+
+- Agen bakterisidal yang bekerja dengan menghambat sintesis dinding sel bakteri.
+- Aktif dengan adanya sebagian beta-laktamase (penisilinase dan sefalosporinase) dari bakteri Gram-negatif dan Gram-positif.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. TAZICEF (ceftazidime for injection) (Hospira), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=40d48c5d-650e-461b-a67b-7e65772d1b92
+
+---
+
+### 3.22 Kloramfenikol
+
+**Kalkulator berat badan**
+
+IDAI hlm. 16, tabel antimikroba (dosis per kg per hari):
+
+| Rute | Infeksi ringan–sedang | Infeksi berat | Keterangan |
+|---|---|---|---|
+| IV | 50–75 mg/kg/hari | 75–100 mg dalam 4 dosis (dosis harian dewasa, 2–4 g) | Dosis dan frekuensi individual berdasarkan analisis konsentrasi serum. Biasanya disediakan untuk infeksi serius karena risiko langka anemia aplastik. HATI-HATI pada: anak usia <1 tahun; anak usia <10 tahun dengan keluhan gastrointestinal; neonatus (prematur dan matur, karena lebih rentan terhadap risiko *gray syndrome*) |
+
+**Penyesuaian dosis pada penyakit ginjal** (IDAI hlm. 80)
+
+| Dosis normal | Dosis (D)/Interval (I) | LFG >50 | LFG 10–50 | LFG <10 | HD | PD |
+|---|---|---|---|---|---|---|
+| 40 mg/kg/dosis stat kmd 25 mg/kg/dosis q6–24 jam iv, im, po | D | 100% | 75% | 50% | tak ada | tak ada |
+
+**Sediaan** (FORNAS 2025 hlm. 29)
+
+| Sediaan | Peresepan maksimal |
+|---|---|
+| Kapsul 250 mg | 4 kaps/hari selama 5 hari. Untuk meningitis: anak 2 g/hari selama 14 hari; dewasa 4 g/hari selama 14 hari |
+| Kapsul 500 mg | (sama dengan kapsul 250 mg) |
+| Suspensi 125 mg/5 mL | 5 hari. Untuk meningitis: maks 14 hari |
+| Injeksi 1.000 mg | 14 hari |
+
+**Aturan penggunaan**
+
+- Dosis harian dibagi 4 dosis; dosis dan frekuensi individual berdasarkan analisis konsentrasi serum (IDAI).
+- Sediaan natrium suksinat hanya untuk intravena; terbukti tidak efektif bila diberikan intramuskular (label kloramfenikol injeksi).
+
+**Manfaat obat** (label kloramfenikol injeksi)
+
+Hanya untuk infeksi serius bila obat yang kurang berbahaya tidak efektif atau dikontraindikasikan:
+
+- Infeksi akut oleh *Salmonella typhi* (tidak dianjurkan untuk pengobatan rutin keadaan karier tifoid).
+- Infeksi serius oleh: spesies *Salmonella*; *H. influenzae*, terutama infeksi meningen; *Rickettsia*; kelompok limfogranuloma-psitakosis; berbagai bakteri Gram-negatif penyebab bakteremia, meningitis, atau infeksi Gram-negatif serius lain; organisme peka lain yang terbukti resisten terhadap semua antimikroba lain yang sesuai.
+- Regimen fibrosis kistik.
+
+**Efek samping** (label kloramfenikol injeksi)
+
+- Diskrasia darah: depresi sumsum tulang adalah efek samping paling serius; anemia aplastik, anemia hipoplastik, trombositopenia, dan granulositopenia yang serius dan fatal. Tipe reversibel yang bergantung dosis juga dapat terjadi.
+- *Gray syndrome*: reaksi toksik termasuk kematian pada bayi prematur dan neonatus; gejala berurutan berupa distensi abdomen dengan atau tanpa muntah, sianosis pucat progresif, kolaps vasomotor yang sering disertai pernapasan tidak teratur, dan kematian.
+- Saluran cerna: mual, muntah, glositis, stomatitis, diare, enterokolitis.
+- Neurotoksik: sakit kepala, depresi ringan, kebingungan, delirium; neuritis optik dan perifer, biasanya setelah terapi jangka panjang.
+- Hipersensitivitas: demam, ruam makular dan vesikular, angioedema, urtikaria.
+
+**Peringatan** (label kloramfenikol injeksi)
+
+- Diskrasia darah serius dan fatal dapat terjadi setelah terapi jangka pendek maupun panjang; anemia aplastik yang kemudian berakhir sebagai leukemia pernah dilaporkan.
+- Tidak boleh digunakan untuk infeksi ringan atau bukan indikasinya (misalnya selesma, influenza, infeksi tenggorokan) atau sebagai profilaksis.
+- Pemeriksaan darah yang memadai diperlukan selama terapi.
+- Kontraindikasi: riwayat hipersensitivitas dan/atau reaksi toksik terhadap kloramfenikol.
+- Bayi prematur, neonatus cukup bulan, dan bayi: hati-hati terhadap toksisitas *gray syndrome*; kadar darah berlebih dapat terjadi pada dosis yang dianjurkan karena metabolisme belum matang.
+
+**Farmakokinetik** (label kloramfenikol injeksi)
+
+- Diserap cepat dari saluran cerna bila diberikan oral.
+- Ekskresi urin total 68–99% dalam 3 hari; 8–12% berupa kloramfenikol bebas, sisanya metabolit inaktif, terutama konjugat glukuronat.
+- Distribusi cepat tetapi tidak merata; kadar tertinggi di hati dan ginjal, terendah di otak dan cairan serebrospinal. Masuk ke cairan serebrospinal walaupun tanpa radang meninges, dengan kadar sekitar setengah kadar darah.
+
+**Farmakodinamik** (label kloramfenikol injeksi)
+
+- Antibiotik spektrum luas yang menghambat sintesis protein bakteri dengan mengganggu transfer asam amino teraktivasi dari RNA terlarut ke ribosom.
+- In vitro terutama bersifat bakteriostatik terhadap berbagai bakteri Gram-negatif dan Gram-positif.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. Chloramphenicol Sodium Succinate for Injection, USP (Fresenius Kabi), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=aed29594-211d-49ef-813f-131975a8d0e3
+
+---
+
+### 3.23 Klindamisin
+
+**Kalkulator berat badan**
+
+IDAI hlm. 16, tabel antimikroba (dosis per kg per hari):
+
+| Rute | Infeksi ringan–sedang | Infeksi berat | Keterangan |
+|---|---|---|---|
+| PO | 10–25 mg dalam 3 dosis (dosis harian dewasa, 600 mg–1,8 g) | 30–40 mg dalam 3–4 dosis (dosis harian dewasa, 1,2–1,8 g) | Dosis 30–40 mg dianjurkan untuk OMA, SARM terkait komunitas |
+
+**Penyesuaian dosis pada penyakit ginjal** (IDAI hlm. 80)
+
+| Dosis normal | Dosis (D)/Interval (I) | LFG >50 | LFG 10–50 | LFG <10 | HD | PD |
+|---|---|---|---|---|---|---|
+| 6 mg/kg/dosis q6 jam po atau 10 mg/kg/dosis q8 jam iv, im | D | 100% | 100% | 100% | tak ada | tak ada |
+
+**Sediaan** (FORNAS 2025 hlm. 33)
+
+| Sediaan | Peresepan maksimal |
+|---|---|
+| Kapsul 150 mg | 4 kaps/hari selama 5 hari kecuali untuk toksoplasmosis selama 6 minggu |
+| Kapsul 300 mg | 4 kaps/hari selama 5 hari kecuali untuk toksoplasmosis 8 kaps/hari selama 6 minggu. Untuk abses paru atau empiema: 3–4 kaps/hari selama 14 hari |
+
+**Aturan penggunaan**
+
+- Dosis harian dibagi 3 atau 3–4 dosis (IDAI).
+
+**Manfaat obat** (label Cleocin HCl)
+
+- Infeksi serius oleh bakteri anaerob yang peka: infeksi saluran napas serius (empiema, pneumonitis anaerob, abses paru), infeksi kulit dan jaringan lunak serius, septikemia, infeksi intraabdomen (peritonitis, abses intraabdomen).
+- Infeksi serius oleh galur streptokokus, pneumokokus, dan stafilokokus yang peka; penggunaannya disediakan untuk pasien alergi penisilin atau pasien yang menurut dokter tidak sesuai mendapat penisilin.
+
+**Efek samping** (label Cleocin HCl)
+
+- Saluran cerna: kolitis *Clostridioides difficile*, nyeri perut, kolitis pseudomembranosa, mual, muntah, diare; esofagitis dan ulkus esofagus, terutama bila diminum sambil berbaring atau dengan sedikit air; rasa tidak enak atau rasa logam.
+- Hipersensitivitas: ruam morbiliformis (makulopapular) ringan–sedang adalah efek samping yang paling sering dilaporkan; ruam vesikulobulosa, urtikaria; reaksi kulit berat seperti nekrolisis epidermal toksik, AGEP, eritema multiformis.
+
+**Peringatan** (label Cleocin HCl)
+
+- Peringatan berbingkai: infeksi *Clostridioides difficile* dapat terjadi, dari diare ringan sampai kolitis fatal; disediakan untuk infeksi serius bila antimikroba yang kurang toksik tidak sesuai; tidak untuk infeksi nonbakteri seperti sebagian besar infeksi saluran napas atas.
+- Kontraindikasi: riwayat hipersensitivitas terhadap sediaan yang mengandung klindamisin atau linkomisin.
+- Reaksi hipersensitivitas berat dan reaksi kulit berat (TEN, DRESS, SJS), sebagian fatal.
+- Berpotensi nefrotoksik; cedera ginjal akut pernah dilaporkan.
+- Tidak digunakan untuk meningitis karena tidak berdifusi cukup ke cairan serebrospinal.
+- Bila diberikan pada anak (lahir sampai 16 tahun), pemantauan fungsi sistem organ yang sesuai diperlukan.
+
+**Farmakokinetik** (label Cleocin HCl)
+
+- Diserap cepat dan hampir sempurna (90%) setelah pemberian oral; makanan tidak banyak mengubah kadar serum.
+- Tersebar luas di cairan dan jaringan tubuh, termasuk tulang; tidak mencapai kadar bermakna di cairan serebrospinal, bahkan pada meninges meradang.
+- Dimetabolisme terutama oleh CYP3A4 (sedikit oleh CYP3A5) menjadi klindamisin sulfoksida dan N-desmetilklindamisin.
+- Waktu paruh biologis rata-rata 2,4 jam; sekitar 10% bioaktivitas dikeluarkan di urin dan 3,6% di feses.
+
+**Farmakodinamik** (label Cleocin HCl)
+
+- Menghambat sintesis protein bakteri dengan berikatan pada 23S RNA subunit ribosom 50S.
+- Bersifat bakteriostatik.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. CLEOCIN HCl (clindamycin hydrochloride) capsules (Pharmacia & Upjohn), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=df9a2a41-b132-4f43-8940-b2d773b1369a
+
+---
+
+### 3.24 Eritromisin
+
+**Kalkulator berat badan**
+
+IDAI hlm. 20, tabel antimikroba (dosis per kg per hari):
+
+| Rute | Infeksi ringan–sedang | Infeksi berat | Keterangan |
+|---|---|---|---|
+| PO | 50 mg dalam 3–4 dosis (dosis harian dewasa, 1–2 g) | Tidak cocok | Tersedia dalam basa, stearat, dan persiapan etilsuksinat. Profilaksis demam reumatik: 250 mg, oral, 12 jam |
+| IV | Tidak cocok | 20 mg dalam 4 dosis (dosis harian dewasa, 2–4 g) | Pengobatan lebih dari setidaknya 60 menit berpotensi untuk mencegah aritmia jantung |
+
+**Penyesuaian dosis pada penyakit ginjal** (IDAI hlm. 82)
+
+| Dosis normal | Dosis (D)/Interval (I) | LFG >50 | LFG 10–50 | LFG <10 | HD | PD |
+|---|---|---|---|---|---|---|
+| 10 mg/kg/dosis q6 jam iv, po | D | 100% | 100% | 100% | tak ada | tak ada |
+
+**Sediaan** (FORNAS 2025 hlm. 31)
+
+| Sediaan | Peresepan maksimal |
+|---|---|
+| Tablet/kapsul 250 mg | 4 tab/kaps per hari selama 5 hari. Untuk *Streptococcus pyogenes* dan difteri: 10 hari |
+| Tablet/kapsul 500 mg | – |
+| Sirup kering 200 mg/5 mL | 5 hari. Untuk *Streptococcus pyogenes* dan difteri: 10 hari |
+
+**Aturan penggunaan**
+
+- Oral: dosis harian dibagi 3–4 dosis (IDAI).
+
+**Manfaat obat** (label eritromisin etilsuksinat suspensi oral; infeksi oleh galur yang peka)
+
+- Infeksi saluran napas atas ringan–sedang oleh *S. pyogenes*, *S. pneumoniae*, atau *H. influenzae* (bersama sulfonamida).
+- Infeksi saluran napas bawah ringan–sedang oleh *S. pneumoniae* atau *S. pyogenes*.
+- Listeriosis.
+- Pertusis: mengeliminasi organisme dari nasofaring sehingga penderita tidak menular.
+- Infeksi saluran napas oleh *Mycoplasma pneumoniae*.
+- Infeksi kulit dan struktur kulit ringan–sedang oleh *S. pyogenes* atau *S. aureus*.
+- Difteri: sebagai tambahan antitoksin, untuk mencegah dan mengeradikasi karier.
+- Eritrasma.
+- Amebiasis usus (eritromisin oral).
+
+**Efek samping** (label eritromisin etilsuksinat)
+
+- Paling sering pada saluran cerna dan bergantung dosis: mual, muntah, nyeri perut, diare, anoreksia.
+- Gejala hepatitis, gangguan fungsi hati, dan/atau hasil uji fungsi hati abnormal.
+- Kolitis pseudomembranosa.
+- Pemanjangan QT dan aritmia ventrikel, termasuk takikardia ventrikel dan torsades de pointes.
+- Reaksi alergi dari urtikaria sampai anafilaksis; reaksi kulit dari erupsi ringan sampai eritema multiformis, sindrom Stevens-Johnson, dan nekrolisis epidermal toksik (jarang).
+- Nefritis interstisial.
+
+**Peringatan** (label eritromisin etilsuksinat)
+
+- Kontraindikasi: hipersensitivitas terhadap eritromisin; penggunaan bersama terfenadin, astemizol, pimozid, atau cisaprid; penggunaan bersama statin yang banyak dimetabolisme CYP3A4 (lovastatin, simvastatin).
+- Stenosis pilorus hipertrofik infantil pernah dilaporkan pada bayi setelah terapi eritromisin. Pada satu kohort 157 bayi baru lahir yang mendapat eritromisin untuk profilaksis pertusis, 7 bayi (5%) mengalami stenosis pilorus yang memerlukan piloromiotomi.
+- Pemanjangan interval QT; kasus torsades de pointes dan kematian pernah dilaporkan.
+
+**Farmakokinetik** (label eritromisin etilsuksinat)
+
+- Suspensi etilsuksinat diserap baik pada keadaan puasa maupun tidak puasa.
+- Mudah berdifusi ke sebagian besar cairan tubuh; kadar di cairan spinal biasanya rendah, tetapi meningkat pada meningitis.
+- Pada fungsi hati normal, dipekatkan di hati dan dikeluarkan di empedu; kurang dari 5% dosis oral dikeluarkan dalam bentuk aktif di urin.
+- Melintasi plasenta (kadar plasma janin rendah) dan dikeluarkan di ASI.
+
+**Farmakodinamik** (label eritromisin etilsuksinat)
+
+- Menghambat sintesis protein dengan berikatan pada subunit ribosom 50S organisme yang peka; tidak memengaruhi sintesis asam nukleat.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. Erythromycin Ethylsuccinate for Oral Suspension (Amneal), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=581d7430-1a80-42a6-befb-4c3ae8140392
+
+---
+
+### 3.25 Omeprazol
+
+**Kalkulator berat badan** (IDAI hlm. 66)
+
+| Rute | Dosis |
+|---|---|
+| Oral | 0,4–0,8 mg/kg, 12–24 jam |
+| IV | 2 mg/kg, kemudian 1 mg/kg |
+
+**Penyesuaian dosis pada penyakit ginjal** (IDAI hlm. 87)
+
+| Dosis normal | Dosis (D)/Interval (I) | LFG >50 | LFG 10–50 | LFG <10 | HD | PD |
+|---|---|---|---|---|---|---|
+| 0,4–0,8 mg/kg/dosis q12–24 jam po | D | 100% | 100% | 100% | Tak ada data | Tak ada data |
+
+**Sediaan** (FORNAS 2025 hlm. 189)
+
+| Sediaan | Peresepan maksimal | Restriksi |
+|---|---|---|
+| Kapsul 20 mg | 30 kaps/bulan | a) Untuk terapi jangka pendek pada kasus tukak lambung, tukak duodenum, dan refluks esofagitis. b) Diberikan 1 jam sebelum makan |
+| Injeksi 40 mg | 1–3 ampul/hari maks 3 hari | Untuk pasien IGD atau rawat inap dengan riwayat perdarahan saluran cerna |
+
+**Aturan penggunaan**
+
+- Oral: interval 12–24 jam (IDAI).
+- Kapsul diberikan 1 jam sebelum makan (FORNAS).
+
+**Manfaat obat** (label Prilosec)
+
+- Pengobatan heartburn dan gejala lain akibat penyakit refluks gastroesofagus (GERD) sampai 4 minggu pada pasien usia 1 tahun ke atas.
+- Pengobatan jangka pendek (4–8 minggu) esofagitis erosif akibat GERD yang didiagnosis endoskopi pada pasien usia 1 tahun ke atas, dan pada anak 1 bulan sampai <1 tahun.
+- Pemeliharaan penyembuhan esofagitis erosif.
+- Pada dewasa: tukak duodenum aktif, eradikasi *H. pylori*, tukak lambung jinak aktif.
+
+**Efek samping** (label Prilosec)
+
+- Dewasa (≥2%): sakit kepala 7%, nyeri perut 5%, mual 4%, diare 4%, muntah 3%, flatulens 3%.
+- Profil keamanan pada anak mirip dewasa. Khusus pada anak, efek samping sistem pernapasan sering dilaporkan (usia 1 bulan–<1 tahun 42%, 1–<2 tahun 75%, 2–16 tahun 19%); otitis media sering pada usia 1 bulan–<1 tahun (22%); demam sering pada usia 1–<2 tahun (33%).
+
+**Peringatan** (label Prilosec)
+
+- Kontraindikasi: hipersensitivitas terhadap benzimidazol tersubstitusi atau komponen formulasi; pasien yang mendapat produk yang mengandung rilpivirin.
+- Nefritis tubulointerstisial akut.
+- Diare terkait *Clostridioides difficile*.
+- Fraktur tulang.
+- Reaksi kulit berat; lupus eritematosus kutaneus dan sistemik.
+- Defisiensi vitamin B12 pada terapi jangka panjang; hipomagnesemia.
+- Polip kelenjar fundus.
+
+**Farmakokinetik** (label Prilosec)
+
+- Penyerapan dimulai setelah granul tahan asam lambung meninggalkan lambung; kadar puncak setelah dosis berulang suspensi 1,5–2 jam.
+- Waktu paruh plasma 0,5–1 jam pada orang sehat.
+- Ikatan protein sekitar 95%.
+- Dimetabolisme luas oleh CYP2C19 (membentuk hidroksiomeprazol) dan CYP3A4 (membentuk omeprazol sulfon).
+- Sekitar 77% dosis dikeluarkan di urin sebagai metabolit; sisanya di feses.
+
+**Farmakodinamik** (label Prilosec)
+
+- Golongan benzimidazol tersubstitusi yang menekan sekresi asam lambung dengan menghambat secara spesifik sistem enzim H+/K+ ATPase (pompa proton) di permukaan sekretorik sel parietal lambung.
+- Memblok langkah akhir produksi asam; efeknya bergantung dosis dan menghambat sekresi asam basal maupun terstimulasi.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. PRILOSEC (omeprazole magnesium) (Covis Pharma), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=b6761f84-53ac-4745-a8c8-1e5427d7e179
+
+---
+
+### 3.26 Metoklopramid
+
+**Kalkulator berat badan** (IDAI hlm. 63)
+
+| Rute/keadaan | Dosis |
+|---|---|
+| IV, IM, oral | 0,1–0,3 mg/kg, 8 jam |
+| Perrektal | 0,2–0,4 mg/kg, 8 jam |
+| Perioperatif | 0,5 mg/kg, IV, kemudian 0,2 mg/kg, 4–6 jam bila perlu |
+| Kemoterapi | maks 1–2 mg/kg, 4 jam, IV |
+
+**Penyesuaian dosis pada penyakit ginjal** (IDAI hlm. 86)
+
+| Dosis normal | Dosis (D)/Interval (I) | LFG >50 | LFG 10–50 | LFG <10 | HD | PD |
+|---|---|---|---|---|---|---|
+| 0,15–0,3 mg/kg/dosis q6 jam iv, im, po | D | 100% | 75% | 50% | Tak ada | Tak ada data |
+
+**Sediaan** (FORNAS 2025 hlm. 190)
+
+| Sediaan |
+|---|
+| Tablet 5 mg |
+| Tablet 10 mg |
+| Injeksi 5 mg/mL |
+
+**Aturan penggunaan**
+
+- Sesuai tabel IDAI.
+- Gunakan untuk durasi sesingkat mungkin dan nilai ulang kebutuhan terapi secara berkala (label Reglan).
+
+**Manfaat obat**
+
+- Tablet (dewasa): refluks gastroesofagus simtomatik yang tidak berespons terhadap terapi konvensional (4–12 minggu) dan gastroparesis diabetik (label Reglan).
+- Injeksi: memudahkan intubasi usus halus pada dewasa dan anak bila selang tidak melewati pilorus dengan cara biasa; pada dewasa juga untuk gastroparesis diabetik, profilaksis muntah akibat kemoterapi emetogenik, profilaksis mual-muntah pascaoperasi, dan pemeriksaan radiologi (label injeksi).
+
+**Efek samping**
+
+- Paling sering (sekitar 10% pasien yang mendapat 10 mg 4 kali sehari): gelisah, mengantuk, lelah, lesu (label Reglan).
+- Reaksi distonia akut, jenis gejala ekstrapiramidal tersering: sekitar 0,2% pada dosis 30–40 mg/hari; pada kemoterapi dengan 1–2 mg/kg per dosis, 25% atau lebih pada anak dan dewasa <30 tahun yang tidak mendapat profilaksis difenhidramin (label injeksi).
+
+**Peringatan**
+
+- Peringatan berbingkai: dapat menyebabkan diskinesia tardif, gangguan gerak serius yang dapat permanen; risikonya meningkat dengan lama terapi dan dosis kumulatif. Hentikan segera bila timbul tanda diskinesia tardif (label Reglan).
+- Tidak dianjurkan pada anak karena risiko diskinesia tardif dan gejala ekstrapiramidal lain, serta risiko methemoglobinemia pada neonatus. Distonia dan gejala ekstrapiramidal lebih sering pada anak dibanding dewasa (label Reglan).
+- Keamanan dan efektivitas injeksi pada anak hanya ditetapkan untuk dosis tunggal guna memudahkan intubasi usus halus (label injeksi).
+- Kontraindikasi: riwayat diskinesia tardif atau reaksi distonia terhadap metoklopramid; bila stimulasi motilitas saluran cerna berbahaya (perdarahan, obstruksi mekanik, perforasi); feokromositoma; epilepsi; hipersensitivitas terhadap metoklopramid (label Reglan).
+
+**Farmakokinetik** (label Reglan)
+
+- Bioavailabilitas oral absolut 80% ± 15,5%; kadar puncak 1–2 jam setelah dosis oral tunggal.
+- Waktu paruh eliminasi rata-rata 5–6 jam pada fungsi ginjal normal.
+- Tidak banyak terikat protein plasma (sekitar 30%); volume distribusi tinggi (sekitar 3,5 L/kg).
+- Dimetabolisme di hati melalui oksidasi serta konjugasi glukuronida dan sulfat; metabolit oksidatif utama dibentuk terutama oleh CYP2D6.
+- Sekitar 85% radioaktivitas dosis oral muncul di urin dalam 72 jam.
+
+**Farmakodinamik**
+
+- Merangsang motilitas saluran cerna atas tanpa merangsang sekresi lambung, empedu, atau pankreas; meningkatkan tonus dan amplitudo kontraksi lambung, merelaksasi sfingter pilorus dan bulbus duodenum, meningkatkan peristaltik duodenum dan jejunum, serta meningkatkan tonus istirahat sfingter esofagus bawah (label Reglan).
+- Memblok stimulasi *chemoreceptor trigger zone* oleh dopamin dan zat mirip dopamin melalui antagonisme reseptor dopamin (label injeksi).
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. REGLAN (metoclopramide) tablets (ANI Pharmaceuticals), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=de55c133-eb08-4a35-91a2-5dc093027397
+4. Metoclopramide Injection (Baxter), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=f6efdc63-a9df-4bbd-acf8-75fc9d1b0347
+
+---
+
+### 3.27 Fitomenadion (Vitamin K1)
+
+**Kalkulator berat badan**
+
+| Keadaan | Dosis | Sumber |
+|---|---|---|
+| Perdarahan karena defisiensi vitamin K | 1 mg intravena | IDAI hlm. 30 |
+| Profilaksis pada neonatus | 1 mg (0,1 ml) 1 jam setelah lahir | IDAI hlm. 30 dan 72 |
+| DKPD/APCD | 1 mg IM selama 3 hari | IDAI hlm. 72 |
+| Injeksi 2 mg/mL (i.m.) | Dosis untuk bayi baru lahir 1 mg; dosis untuk bayi prematur 0,5 mg | FORNAS hlm. 114 |
+
+**Sediaan** (FORNAS 2025 hlm. 114)
+
+| Sediaan |
+|---|
+| Injeksi 2 mg/mL (i.m.) |
+| Injeksi 10 mg/mL (i.m.) |
+
+**Aturan penggunaan**
+
+- Sesuai tabel di atas (IDAI, FORNAS).
+
+**Manfaat obat** (label vitamin K1 injeksi)
+
+- Profilaksis dan pengobatan perdarahan akibat defisiensi vitamin K pada neonatus.
+- Pengobatan hipoprotrombinemia akibat defisiensi atau gangguan aktivitas vitamin K: akibat antikoagulan kumarin atau indandion, akibat terapi antibakteri, akibat gangguan penyerapan atau sintesis vitamin K (misalnya ikterus obstruktif, fistula bilier, penyakit seliak, fibrosis kistik pankreas), dan akibat obat lain seperti salisilat.
+
+**Efek samping** (label vitamin K1 injeksi)
+
+- Jantung: takikardia, hipotensi.
+- Lokal dan umum: kemerahan menyeluruh; nyeri, bengkak, dan nyeri tekan di tempat suntikan.
+- Hepatobilier: hiperbilirubinemia.
+- Imun: reaksi hipersensitivitas fatal, reaksi anafilaktik.
+- Saraf: gangguan pengecapan, pusing. Paru: sesak.
+- Kulit: eritema, plak gatal, lesi mirip skleroderma.
+
+**Peringatan** (label vitamin K1 injeksi)
+
+- Peringatan berbingkai: reaksi hipersensitivitas fatal, termasuk anafilaksis, terjadi selama dan segera setelah injeksi intravena dan intramuskular, walaupun sudah diencerkan dan pada dosis pertama.
+- Kontraindikasi: hipersensitivitas terhadap fitomenadion atau komponen lain.
+- Hiperbilirubinemia pada bayi baru lahir, terutama bayi prematur, dapat terjadi akibat dosis berlebih.
+- Reaksi serius termasuk kematian dan *gasping syndrome* terjadi pada bayi prematur di ruang intensif yang mendapat obat dengan pengawet benzil alkohol.
+
+**Farmakokinetik** (label vitamin K1 injeksi)
+
+- Mudah diserap setelah pemberian intramuskular.
+- Setelah diserap, mula-mula terkonsentrasi di hati, lalu kadarnya cepat turun; sangat sedikit tertimbun di jaringan.
+- Nasib metabolisme belum banyak diketahui; hampir tidak ada vitamin K bebas yang tidak dimetabolisme di empedu atau urin.
+
+**Farmakodinamik** (label vitamin K1 injeksi)
+
+- Memiliki aktivitas yang sama dengan vitamin K alami, yang diperlukan hati untuk memproduksi protrombin (faktor II), faktor VII, IX, dan X.
+- Kofaktor enzim mikrosomal yang mengkatalisis karboksilasi residu asam glutamat pada prekursor faktor II, VII, IX, dan X.
+- Efek pemberian intravena biasanya terdeteksi dalam 1–2 jam; perdarahan biasanya terkontrol dalam 3–6 jam; INR normal sering tercapai dalam 12–14 jam.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. Vitamin K1 (phytonadione) Injectable Emulsion (Hospira), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=e8808230-2c44-44c6-8cab-8f29b6b34051
+
+---
+
+### 3.28 Hidrokortison
+
+**Kalkulator berat badan** (IDAI hlm. 54)
+
+| Keadaan | Dosis |
+|---|---|
+| – | 5 mg/kg, IV, IM, 12 jam |
+| Inflamasi, imunosupresi, insufisiensi adrenal akut | 2–4 mg/kg (maks 100 mg), 6 jam IV |
+| Fisiologis, stress | 1 mg/kg 6 jam IV, IM |
+| Penggantian kronik, oral | Insufisiensi adrenal 3–4 mg/m² (maks 10 mg) 8 jam; hipoplasia adrenal kongenital 6–8 mg/m² 8 jam (bayi), >12 bulan 3–6 mg/m² (maks 10 mg) 8 jam |
+
+**Penyesuaian dosis pada penyakit ginjal** (IDAI hlm. 84)
+
+| Dosis normal | Dosis (D)/Interval (I) | LFG >50 | LFG 10–50 | LFG <10 | HD | PD |
+|---|---|---|---|---|---|---|
+| 0,5–2 mg/kg/dosis q6–8 jam po | D | 100% | 100% | 100% | tak ada data | tak ada data |
+
+**Sediaan** (FORNAS 2025)
+
+| Sediaan | Halaman FORNAS |
+|---|---|
+| Tablet 20 mg | hlm. 148 |
+| Injeksi 100 mg | hlm. 17, 148 |
+
+**Aturan penggunaan**
+
+- Sesuai tabel IDAI.
+
+**Manfaat obat** (label Solu-Cortef; IV atau IM bila terapi oral tidak memungkinkan)
+
+- Keadaan alergi berat yang tidak teratasi dengan terapi konvensional: asma, dermatitis atopik, dermatitis kontak, reaksi hipersensitivitas obat, *serum sickness*, reaksi transfusi.
+- Gangguan endokrin: insufisiensi adrenokortikal primer atau sekunder (hidrokortison atau kortison adalah obat pilihan), hiperplasia adrenal kongenital, hiperkalsemia akibat kanker, tiroiditis nonsupuratif.
+- Penyakit kulit, saluran cerna, hematologi, neoplastik (leukemia dan limfoma), sistem saraf (edema serebri), mata, ginjal (sindrom nefrotik idiopatik atau akibat lupus), saluran napas, dan reumatik.
+
+**Efek samping** (label Solu-Cortef; dilaporkan dengan Solu-Cortef atau kortikosteroid lain)
+
+- Alergi: reaksi alergi atau hipersensitivitas, reaksi anafilaktoid, anafilaksis, angioedema.
+- Kardiovaskular: antara lain hipertensi, takikardia, gagal jantung kongestif, kardiomiopati hipertrofik pada bayi prematur.
+- Kulit: antara lain akne, rasa terbakar atau kesemutan (terutama di perineum setelah injeksi IV), gangguan penyembuhan luka, striae, kulit tipis rapuh.
+- Endokrin: antara lain keadaan cushingoid, gangguan toleransi glukosa, **supresi pertumbuhan pada anak**.
+- Cairan dan elektrolit: retensi cairan dan natrium, kehilangan kalium, alkalosis hipokalemik.
+
+**Peringatan** (label Solu-Cortef)
+
+- Kontraindikasi: infeksi jamur sistemik; hipersensitivitas terhadap produk; pemberian intratekal. Sediaan kortikosteroid intramuskular dikontraindikasikan pada purpura trombositopenik idiopatik.
+- Anak yang mendapat kortikosteroid lewat rute apa pun dapat mengalami penurunan kecepatan pertumbuhan.
+
+**Farmakokinetik** (label Solu-Cortef)
+
+- Setelah injeksi IV hidrokortison natrium suksinat, efek terlihat dalam 1 jam dan bertahan dalam waktu yang bervariasi.
+- Ekskresi dosis hampir lengkap dalam 12 jam.
+- Diserap cepat bila diberikan intramuskular.
+
+**Farmakodinamik** (label Solu-Cortef)
+
+- Glukokortikoid alami (hidrokortison dan kortison) juga memiliki sifat retensi garam dan dipakai sebagai terapi pengganti pada defisiensi adrenokortikal.
+- Hidrokortison natrium suksinat memiliki aksi metabolik dan antiinflamasi yang sama dengan hidrokortison; pada jumlah ekuimolar keduanya setara aktivitas biologisnya.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. SOLU-CORTEF (hydrocortisone sodium succinate) for injection (Pharmacia & Upjohn), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=65eefd58-b166-4d71-ade6-45c8fdf86922
