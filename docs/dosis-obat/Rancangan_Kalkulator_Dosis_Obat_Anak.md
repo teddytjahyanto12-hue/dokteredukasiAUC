@@ -1,6 +1,6 @@
 # Kalkulator Dosis Obat Anak
 
-Draf 0.7, 15 Oktober 2026 (38 obat). Materi untuk ditinjau pemilik; belum diterapkan di website.
+Draf 0.8, 15 Oktober 2026 (48 obat). Materi untuk ditinjau pemilik; belum diterapkan di website.
 
 ---
 
@@ -2748,3 +2748,641 @@ Restriksi FORNAS: untuk perdarahan masif atau berpotensi perdarahan >600 cc.
 1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
 2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
 3. ALDACTONE (spironolactone) tablets (Pfizer), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=0fed2822-3a03-4b64-9857-c682fcd462bc
+
+---
+
+### 3.39 Morfin
+
+**Kalkulator berat badan**
+
+| Rute | Dosis | Sumber |
+|---|---|---|
+| IM | Neonatus 0,1 mg/kg, anak 0,1–0,2 mg/kg | IDAI hlm. 64 |
+| IV | 0,1–0,2 mg/kg/dosis | IDAI hlm. 64 |
+| PO | 0,1–0,2 mg/kg/dosis q4 jam po | IDAI hlm. 86 (tabel ginjal, kolom dosis normal) |
+
+**Penyesuaian dosis pada penyakit ginjal** (IDAI hlm. 86)
+
+| Dosis normal | Dosis (D)/Interval (I) | LFG >50 | LFG 10–50 | LFG <10 | HD | PD |
+|---|---|---|---|---|---|---|
+| 0,1–0,2 mg/kg/dosis q4 jam po | D | 100% | 75% | 50% | Tak ada | Tak ada data |
+
+**Sediaan** (FORNAS 2025 hlm. 10)
+
+| Sediaan | Peresepan maksimal |
+|---|---|
+| Tablet 10 mg | 120–180 tab/bulan |
+| Tablet lepas lambat 10 mg | 60 tab/bulan |
+| Tablet lepas lambat 15 mg | 60 tab/bulan |
+| Tablet lepas lambat 30 mg | 60 tab/bulan |
+| Sirup 10 mg/5 mL | 15 botol/bulan. Untuk pasien yang tidak dapat mengkonsumsi sediaan tablet |
+| Injeksi 10 mg/mL (i.m./s.k./i.v.) | Infus per 24 jam |
+
+Restriksi FORNAS: diberikan pada salah satu atau lebih kondisi berikut: a) untuk pemakaian pada tindakan anestesi atau perawatan di rumah sakit; b) untuk mengatasi nyeri kanker yang tidak respons terhadap analgesik non narkotik; c) untuk nyeri pada sindrom koroner akut.
+
+**Aturan penggunaan**
+
+- Sesuai tabel IDAI.
+
+**Manfaat obat**
+
+- Injeksi: nyeri yang cukup berat sehingga memerlukan analgesik opioid dan terapi alternatif tidak memadai (label morfin injeksi).
+- Larutan oral: nyeri akut yang cukup berat sehingga memerlukan analgesik opioid pada anak usia 2 tahun ke atas, bila terapi alternatif tidak memadai; keamanan dan efektivitasnya telah ditetapkan untuk anak 2–17 tahun (label morfin larutan oral).
+
+**Efek samping** (label morfin injeksi)
+
+- Paling sering: sedasi, kepala terasa ringan, pusing, mual, muntah, konstipasi, berkeringat.
+- SSP: euforia, disforia, lemah, sakit kepala, agitasi, tremor, gangguan penglihatan, halusinasi sementara, disorientasi.
+- Saluran cerna: konstipasi, spasme saluran empedu.
+- Kardiovaskular: takikardia, bradikardia, berdebar, pingsan, hipotensi ortostatik.
+- Saluran kemih: oliguria, retensi urin.
+- Alergi: gatal, urtikaria, ruam.
+
+**Peringatan** (label morfin injeksi)
+
+- Peringatan berbingkai: risiko adiksi, penyalahgunaan, dan penyalahgunaan yang dapat menyebabkan overdosis dan kematian; depresi napas serius yang mengancam nyawa, terutama saat awal terapi atau setelah kenaikan dosis; sedasi berat, depresi napas, koma, dan kematian bila digunakan bersama benzodiazepin atau depresan SSP lain.
+- Kontraindikasi: depresi napas bermakna; asma bronkial akut atau berat tanpa pemantauan atau peralatan resusitasi; penggunaan penghambat MAO dalam 14 hari terakhir; obstruksi saluran cerna yang diketahui atau dicurigai.
+- Keamanan dan efektivitas morfin injeksi pada pasien di bawah 18 tahun belum ditetapkan.
+
+**Farmakokinetik** (label morfin injeksi)
+
+- Kadar puncak plasma sekitar 5–30 menit setelah injeksi IM 10 mg.
+- Volume distribusi 1,0–4,7 L/kg; ikatan protein rendah (sekitar 36%).
+- Waktu paruh eliminasi pada orang normal 1,5–2 jam.
+- Jalur utama adalah glukuronidasi di hati menjadi morfin-3-glukuronida yang tidak aktif; konjugat dikeluarkan terutama lewat ginjal, sekitar 10% di feses; 2–12% dikeluarkan di urin dalam bentuk tidak berubah.
+
+**Farmakodinamik** (label morfin injeksi)
+
+- Agonis opioid penuh yang relatif selektif terhadap reseptor mu-opioid; efek terapi utama adalah analgesia.
+- Seperti agonis opioid penuh lainnya, tidak ada efek plafon untuk analgesia; dosis dibatasi oleh efek samping, termasuk depresi napas dan SSP.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. Morphine Sulfate Injection (Fresenius Kabi), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=1f53de80-efc8-4930-b3e3-fba0d026af05
+4. Morphine Sulfate Oral Solution (Precision Dose), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=6654b91e-3b3f-4062-ac65-a2a70f942da4
+
+---
+
+### 3.40 Ketamin
+
+**Kalkulator berat badan** (IDAI hlm. 57)
+
+| Keadaan | Dosis |
+|---|---|
+| Sedasi, analgetik | 1–1,5 mg/kg IV, 3–4 mg/kg IM (dapat diulang setelah 10 menit) |
+
+**Penyesuaian dosis pada penyakit ginjal** (IDAI hlm. 85)
+
+| Dosis normal | Dosis (D)/Interval (I) | LFG >50 | LFG 10–50 | LFG <10 | HD | PD |
+|---|---|---|---|---|---|---|
+| 1–2 mg/kg/dosis iv | D | 100% | 100% | 100% | Tak ada data | Tak ada data |
+
+**Sediaan** (FORNAS 2025 hlm. 16)
+
+| Sediaan |
+|---|
+| Injeksi 50 mg/mL (i.v.) |
+| Injeksi 100 mg/mL (i.v.) |
+
+**Aturan penggunaan**
+
+- Sesuai tabel IDAI.
+- Diberikan oleh atau di bawah arahan dokter yang berpengalaman dalam anestesi umum, menjaga jalan napas, dan oksigenasi (label Ketalar).
+
+**Manfaat obat** (label Ketalar)
+
+- Anestetik tunggal untuk prosedur diagnostik dan bedah yang tidak memerlukan relaksasi otot rangka.
+- Induksi anestesi sebelum pemberian anestetik umum lain.
+- Tambahan untuk anestetik lain.
+
+**Efek samping** (label Ketalar)
+
+- Kardiovaskular: kenaikan tekanan darah, denyut jantung, dan indeks jantung; penurunan tekanan darah dan denyut jantung; aritmia.
+- Reaksi saat pulih (*emergence*): delirium pada sekitar 12% pasien, berupa keadaan seperti mimpi, gambaran jelas, halusinasi, kebingungan, dan perilaku tidak rasional; biasanya berlangsung beberapa jam.
+- Depresi napas pada overdosis atau pemberian terlalu cepat.
+
+**Peringatan** (label Ketalar)
+
+- Kontraindikasi: pasien yang berisiko serius bila tekanan darah naik bermakna; hipersensitivitas terhadap ketamin atau eksipiennya.
+- Tidak menekan refleks faring dan laring; hindari sebagai anestetik tunggal pada prosedur faring, laring, atau bronkus.
+- Neurotoksisitas pada anak: studi hewan menunjukkan obat anestesi dan sedasi yang menghambat reseptor NMDA dan/atau memperkuat GABA meningkatkan apoptosis neuron pada otak yang berkembang bila dipakai lebih dari 3 jam; makna klinisnya belum jelas.
+- Keamanan dan efektivitas pada anak di bawah 16 tahun belum ditetapkan.
+
+**Farmakokinetik** (label Ketalar)
+
+- Setelah pemberian IV, fase awal (alfa) berlangsung sekitar 45 menit dengan waktu paruh 10–15 menit; fase ini sesuai dengan efek anestesi.
+- Dimetabolisme melalui N-dealkilasi menjadi metabolit aktif norketamin, terutama oleh CYP2B6 dan CYP3A4.
+- Waktu paruh redistribusi dari SSP ke jaringan perifer (fase beta) 2,5 jam.
+
+**Farmakodinamik** (label Ketalar)
+
+- Campuran rasemik ketamin; antagonis nonkompetitif dan nonselektif reseptor N-metil-D-aspartat (NMDA), reseptor glutamat ionotropik.
+- Metabolit utama norketamin juga aktif pada reseptor yang sama dengan afinitas lebih rendah.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. KETALAR (ketamine hydrochloride) injection (Par Health), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=14e8f864-8b8a-4e7e-8439-e510d3107063
+
+---
+
+### 3.41 Nalokson
+
+**Kalkulator berat badan** (IDAI hlm. 65)
+
+| Keadaan | Dosis |
+|---|---|
+| Sedasi post-op | 0,002 mg/kg/dosis, ulangi setiap 2 menit jika perlu; kemudian 0,3 mg/kg dalam 30 ml dengan laju 1 ml/jam |
+
+**Penyesuaian dosis pada penyakit ginjal** (IDAI hlm. 87)
+
+| Dosis normal | Dosis (D)/Interval (I) | LFG >50 | LFG 10–50 | LFG <10 | HD | PD |
+|---|---|---|---|---|---|---|
+| 0,1 mg/kg/dosis iv | D | 100% | 100% | 100% | Tak ada data | Tak ada data |
+
+**Sediaan** (FORNAS 2025 hlm. 19)
+
+| Sediaan |
+|---|
+| Injeksi 0,4 mg/mL |
+
+Restriksi FORNAS: hanya untuk mengatasi depresi pernapasan akibat morfin atau opioid.
+
+**Aturan penggunaan**
+
+- Sesuai tabel IDAI.
+- Dapat diberikan IV, IM, atau subkutan pada anak dan neonatus untuk membalik efek opiat; American Academy of Pediatrics tidak menganjurkan pemberian subkutan atau IM pada intoksikasi opiat karena penyerapan dapat tidak menentu atau tertunda (label nalokson).
+
+**Manfaat obat** (label nalokson injeksi)
+
+- Membalik sebagian atau seluruh depresi akibat opioid, termasuk depresi napas, oleh opioid alami dan sintetis.
+- Diagnosis dugaan overdosis opioid akut.
+- Dapat berguna sebagai tambahan untuk menaikkan tekanan darah pada syok septik.
+
+**Efek samping** (label nalokson injeksi)
+
+- Pascaoperasi: hipotensi, hipertensi, takikardia dan fibrilasi ventrikel, sesak, edema paru, henti jantung; dosis berlebihan dapat membalik analgesia secara bermakna dan menyebabkan agitasi.
+- Pembalikan mendadak depresi opioid: mual, muntah, berkeringat, takikardia, kenaikan tekanan darah, gemetar, kejang, takikardia dan fibrilasi ventrikel, edema paru, henti jantung.
+- Pembalikan mendadak pada ketergantungan opioid dapat mencetuskan sindrom putus obat akut.
+
+**Peringatan** (label nalokson injeksi)
+
+- Kontraindikasi: hipersensitivitas terhadap nalokson atau bahan lain dalam sediaan.
+- Anak yang mengalami intoksikasi opiat berespons dramatis terhadap nalokson, tetapi harus dipantau ketat minimal 24 jam.
+- Keamanan dan efektivitas untuk hipotensi pada anak dan neonatus dengan syok septik belum ditetapkan.
+
+**Farmakokinetik** (label nalokson injeksi)
+
+- Bila diberikan IV, mula kerja umumnya tampak dalam 2 menit; sedikit lebih lambat bila diberikan subkutan atau IM.
+- Lama kerja bergantung dosis dan rute; pemberian IM menghasilkan efek lebih lama daripada IV.
+- Lama kerja nalokson dapat lebih pendek daripada beberapa opiat, sehingga efek opiat dapat kembali saat efek nalokson hilang.
+
+**Farmakodinamik** (label nalokson injeksi)
+
+- Antagonis opioid yang pada dasarnya murni; mencegah atau membalik efek opioid termasuk depresi napas, sedasi, dan hipotensi.
+- Tanpa adanya opioid, pada dosis biasa praktis tidak memiliki aktivitas farmakologis; tidak menimbulkan toleransi maupun ketergantungan.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. Naloxone Hydrochloride Injection, USP (Dr. Reddy's), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=b1303f15-c48b-a44d-b28a-72f370094e02
+
+---
+
+### 3.42 Digoksin
+
+**Kalkulator berat badan** (IDAI hlm. 47)
+
+| Rute | Dosis |
+|---|---|
+| IV perlahan atau oral | 15 mcg/kg, 5 mcg/kg setelah 6 jam, kemudian 3–5 mcg/kg (maks dosis 200 mcg IV atau 250 mcg oral), 12 jam |
+
+**Penyesuaian dosis pada penyakit ginjal** (IDAI hlm. 82)
+
+| Dosis normal | Dosis (D)/Interval (I) | LFG >50 | LFG 10–50 | LFG <10 | HD | PD |
+|---|---|---|---|---|---|---|
+| 15 mcg/kg/dosis stat dan 5 mcg/kg/dosis 6 jam kmd, dilanjutkan 3–5 mcg/kg/dosis q12 jam po | D, I | 100% | 75% | 50% | tak ada | tak ada |
+
+**Sediaan** (FORNAS 2025)
+
+| Sediaan | Halaman FORNAS | Peresepan maksimal/restriksi |
+|---|---|---|
+| Tablet 0,25 mg | hlm. 151 | 30 tab/bulan |
+| Tablet 0,25 mg | hlm. 161 | 30 tab/bulan. Hanya untuk gagal jantung dengan atrial fibrilasi atau sinus takikardia |
+| Injeksi 0,25 mg/mL | hlm. 151, 161 | – |
+
+**Aturan penggunaan**
+
+- Sesuai tabel IDAI; IV diberikan perlahan.
+
+**Manfaat obat** (label Lanoxin)
+
+- Gagal jantung ringan sampai sedang pada dewasa.
+- Pada anak dengan gagal jantung, meningkatkan kontraktilitas miokard.
+- Pengendalian laju ventrikel pada fibrilasi atrium kronik pada dewasa.
+
+**Efek samping** (label Lanoxin)
+
+- Efek samping umumnya bergantung dosis dan terjadi pada dosis di atas dosis terapeutik; insidens keseluruhan 5–20%, sekitar separuhnya toksisitas jantung, seperempat gangguan saluran cerna, dan seperempat SSP dan lainnya.
+- Saluran cerna: mual, muntah, nyeri perut, iskemia usus, nekrosis hemoragik usus.
+- SSP: sakit kepala, lemah, pusing, apatis, kebingungan, gangguan mental.
+- Pada anak, digoksin dapat menimbulkan aritmia apa pun; tersering gangguan konduksi atau takiaritmia supraventrikular. Bradikardia sinus dapat menjadi tanda intoksikasi, terutama pada bayi.
+
+**Peringatan** (label Lanoxin)
+
+- Kontraindikasi: fibrilasi ventrikel; hipersensitivitas terhadap digoksin.
+- Sindrom Wolff-Parkinson-White dengan fibrilasi atrium berisiko tinggi fibrilasi ventrikel.
+- Bradikardia sinus berat atau blok sinoatrial.
+- Toksisitas digoksin: anoreksia, mual, muntah, gangguan penglihatan, aritmia; biasanya pada kadar >2 ng/mL. Berat badan rendah, usia lanjut, gangguan ginjal, hipokalemia, hiperkalsemia, atau hipomagnesemia meningkatkan risiko.
+- Bayi baru lahir sangat bervariasi toleransinya; bayi prematur dan imatur sangat sensitif sehingga dosis harus dikurangi dan disesuaikan dengan tingkat kematangan.
+
+**Farmakokinetik** (label Lanoxin; data dewasa kecuali disebutkan lain)
+
+- Kadar puncak serum 1–3 jam setelah pemberian oral; penyerapan tablet 60–80% dibanding dosis IV.
+- Fase distribusi jaringan 6–8 jam; terkonsentrasi di jaringan dengan volume distribusi besar (sekitar 475–500 L); melintasi sawar darah-otak dan plasenta.
+- 50–70% dosis IV dikeluarkan di urin dalam bentuk tidak berubah; ekskresi ginjal sebanding dengan klirens kreatinin.
+- Waktu paruh 1,5–2 hari pada fungsi ginjal normal; 3,5–5 hari pada pasien anuria. Tidak efektif dikeluarkan dengan dialisis atau transfusi tukar.
+
+**Farmakodinamik** (label Lanoxin)
+
+- Semua efek digoksin diperantarai hambatan Na-K ATPase (pompa natrium).
+- Hambatan ini meningkatkan ketersediaan kalsium intrasel di miokard dan sistem konduksi, sehingga inotropi dan automatisitas meningkat serta kecepatan konduksi menurun.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. LANOXIN (digoxin) tablets (Advanz Pharma), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=d91e3646-4c63-4512-ab22-db39c085c4dc
+
+---
+
+### 3.43 Dobutamin
+
+**Kalkulator berat badan** (IDAI hlm. 48)
+
+| Berat badan | Dosis |
+|---|---|
+| <30 kg | 15 mg/kg dalam 50 ml NS dengan kecepatan 1–3 ml/jam (5–15 mcg/kg/mnt) |
+| >30 kg | 6 mg/kg dalam 100 ml NS dengan kecepatan 5–15 ml/jam (5–15 mcg/kg/mnt) |
+
+**Penyesuaian dosis pada penyakit ginjal** (IDAI hlm. 82)
+
+| Dosis normal | Dosis (D)/Interval (I) | LFG >50 | LFG 10–50 | LFG <10 | HD | PD |
+|---|---|---|---|---|---|---|
+| 1–20 mcg/kg/menit iv | D | 100% | 75% | 50% | tak ada data | tak ada data |
+
+**Sediaan** (FORNAS 2025 hlm. 163)
+
+| Sediaan | Restriksi |
+|---|---|
+| Injeksi 12,5 mg/mL | Hanya untuk infark miokard akut dan syok kardiogenik |
+| Injeksi 25 mg/mL | – |
+| Injeksi 50 mg/mL | – |
+
+**Aturan penggunaan**
+
+- Infus kontinu sesuai tabel IDAI.
+
+**Manfaat obat** (label dobutamin)
+
+- Dukungan inotropik jangka pendek pada dewasa dengan dekompensasi jantung akibat penurunan kontraktilitas, baik karena penyakit jantung organik maupun prosedur bedah jantung, bila terapi parenteral diperlukan.
+
+**Efek samping** (label dobutamin)
+
+- Kenaikan tekanan sistolik 10–20 mmHg dan denyut jantung 5–15 kali/menit pada sebagian besar pasien; sekitar 5% mengalami peningkatan denyut ventrikel prematur. Efek ini bergantung dosis.
+- Penurunan tekanan darah yang tiba-tiba kadang dilaporkan.
+- Flebitis dan perubahan inflamasi lokal di tempat infus.
+
+**Peringatan** (label dobutamin)
+
+- Kontraindikasi: stenosis subaorta hipertrofik idiopatik; hipersensitivitas terhadap dobutamin.
+- Dapat meningkatkan denyut jantung atau tekanan darah secara nyata; sekitar 10% pasien mengalami kenaikan denyut ≥30 kali/menit dan sekitar 7,5% kenaikan tekanan sistolik ≥50 mmHg.
+- Memudahkan konduksi atrioventrikular sehingga pasien fibrilasi atrium berisiko respons ventrikel cepat.
+- Mengandung natrium metabisulfit, suatu sulfit yang dapat menyebabkan reaksi tipe alergi termasuk gejala anafilaksis dan serangan asma pada orang yang rentan.
+- Keamanan dan efektivitas pada anak belum diteliti.
+
+**Farmakokinetik** (label dobutamin)
+
+- Mula kerja 1–2 menit; efek puncak suatu kecepatan infus dapat memerlukan sampai 10 menit.
+- Waktu paruh plasma 2 menit.
+- Metabolisme utama melalui metilasi katekol dan konjugasi; produk ekskresi di urin berupa konjugat dobutamin dan 3-O-metil dobutamin yang tidak aktif.
+
+**Farmakodinamik** (label dobutamin)
+
+- Agen inotropik kerja langsung yang terutama merangsang reseptor beta jantung, dengan efek kronotropik, hipertensif, aritmogenik, dan vasodilatasi yang relatif ringan.
+- Tidak menyebabkan pelepasan norepinefrin endogen seperti dopamin.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. Dobutamine Injection, USP (Hospira), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=89becb0c-da60-4f43-0a98-29ff7a9eca58
+
+---
+
+### 3.44 Dopamin
+
+**Kalkulator berat badan** (IDAI hlm. 48; via CVC)
+
+| Berat badan | Dosis |
+|---|---|
+| <30 kg | 15 mg/kg dalam 50 ml NS dengan kecepatan 1–3 ml/jam (5–15 mcg/kg/mnt) |
+| >30 kg | 6 mg/kg dalam 100 ml NS dengan kecepatan 5–15 ml/jam (5–15 mcg/kg/mnt) |
+
+**Sediaan** (FORNAS 2025 hlm. 163)
+
+| Sediaan |
+|---|
+| Injeksi 40 mg/mL |
+
+Restriksi FORNAS: a) hanya untuk syok kardiogenik, dekompensasi kordis akut, dan syok septik; b) tidak untuk syok hipovolemik.
+
+**Aturan penggunaan**
+
+- Melalui kateter vena sentral (CVC) (IDAI).
+- Hipovolemia, asidosis, dan hipoksia diatasi sebelum memulai dopamin; penghentian infus dilakukan bertahap (label dopamin).
+
+**Manfaat obat** (label dopamin)
+
+- Memperbaiki status hemodinamik pada syok distributif atau syok akibat penurunan curah jantung.
+
+**Efek samping** (label dopamin)
+
+- Iskemia jaringan, aritmia jantung, hipotensi setelah penghentian mendadak, reaksi hipersensitivitas berat.
+- Pascapemasaran: nyeri angina, berdebar, mual, muntah, azotemia, sakit kepala, cemas, sesak, piloereksi, hipertensi.
+
+**Peringatan** (label dopamin)
+
+- Kontraindikasi: feokromositoma.
+- Pemberian pada pasien hipotensi akibat hipovolemia dapat menyebabkan vasokonstriksi perifer dan viseral berat, penurunan perfusi ginjal, hipoksia jaringan, dan asidosis laktat; gangren ekstremitas pernah terjadi pada penyakit vaskular oklusif.
+- Penghentian infus mendadak dapat menyebabkan hipotensi berat.
+- Pada anak, digunakan sejak lahir sampai remaja dengan dosis serupa dewasa (dalam mcg/kg/menit); efek samping khas anak hanya vasokonstriksi akibat infus tidak sengaja ke arteri umbilikalis.
+
+**Farmakokinetik** (label dopamin)
+
+- Tersebar luas di tubuh tetapi tidak banyak melintasi sawar darah-otak.
+- Waktu paruh pada dewasa kurang dari 2 menit.
+- Sekitar 75% dimetabolisme oleh MAO dan COMT di hati, ginjal, dan plasma menjadi senyawa tidak aktif; sekitar 25% dimetabolisme menjadi norepinefrin di ujung saraf adrenergik.
+
+**Farmakodinamik** (label dopamin)
+
+- Katekolamin alami, prekursor norepinefrin; bekerja melalui reseptor dopamin D1 dan D2, beta-1, dan alfa-1, bergantung dosis.
+- Mula kerja dalam 5 menit setelah IV; lama kerja kurang dari sekitar 10 menit.
+- Pada <5 mcg/kg/menit mengaktifkan reseptor D1 dan D2 di pembuluh ginjal, mesenterik, dan koroner (vasodilatasi); pada 5–10 mcg/kg/menit mengaktifkan beta-1 (denyut dan kontraktilitas meningkat); pada >10 mcg/kg/menit mengaktifkan alfa-1 (vasokonstriksi dan kenaikan tekanan darah).
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. Dopamine Hydrochloride Injection, USP (Hospira), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=1f306ad2-3606-4525-5a8a-ce78f426c1a2
+
+---
+
+### 3.45 Natrium bikarbonat
+
+**Kalkulator berat badan** (IDAI hlm. 42; tertulis "Bikarbonat")
+
+| Keadaan | Dosis |
+|---|---|
+| IV pelan | Dosis (mEq) = BE x BB/4 (<5 kg), BE x BB/6 (anak), BE x BB/10 (dewasa). Dosis ini mengkoreksi setengah defisit basa |
+| Urin alkalinisasi | 0,25 mEq/kg, 6–12 jam, oral atau 35–45 mEq/m²/24 jam |
+| Asidosis tubular renal | 10–15 mEq/kg/hari dalam dosis terbagi |
+| Type 1 RTA | Infants: 5–8 mEq/kg/hari; anak: 3–4 mEq/kg/hari; dewasa: 1–2 mEq/kg/hari |
+| Type 2 RTA | 10–20 mEq/kg/hari (infan membutuhkan dosis lebih besar) |
+
+**Sediaan** (FORNAS 2025)
+
+| Sediaan | Halaman FORNAS | Peresepan maksimal/keterangan |
+|---|---|---|
+| Tablet 500 mg | hlm. 19, 171 | Hlm. 171: 90 tab/bulan |
+| Injeksi 8,4% (i.v.) | hlm. 19 | *High alert medicine* |
+
+**Aturan penggunaan**
+
+- Sesuai tabel IDAI; IV diberikan pelan.
+
+**Manfaat obat** (label natrium bikarbonat injeksi)
+
+- Asidosis metabolik pada penyakit ginjal berat, diabetes tidak terkontrol, insufisiensi sirkulasi akibat syok atau dehidrasi berat, sirkulasi darah ekstrakorporeal, henti jantung, dan asidosis laktat primer berat.
+- Intoksikasi obat tertentu (barbiturat, salisilat, metil alkohol) dan reaksi hemolitik yang memerlukan alkalinisasi urin.
+- Diare berat yang sering disertai kehilangan bikarbonat bermakna.
+
+**Efek samping** (label natrium bikarbonat injeksi)
+
+- Terapi yang terlalu agresif dapat menyebabkan alkalosis metabolik (disertai kedutan otot, iritabilitas, dan tetani) serta hipernatremia.
+- Ekstravasasi larutan hipertonik dapat menyebabkan selulitis kimia dengan nekrosis jaringan, ulserasi, atau pengelupasan di tempat infiltrasi.
+
+**Peringatan** (label natrium bikarbonat injeksi)
+
+- Kontraindikasi: pasien yang kehilangan klorida karena muntah atau penyedotan saluran cerna terus-menerus, dan pasien yang mendapat diuretik yang menimbulkan alkalosis hipokloremik.
+- Larutan mengandung natrium harus digunakan sangat hati-hati pada gagal jantung kongestif, insufisiensi ginjal berat, dan keadaan edema dengan retensi natrium.
+
+**Farmakokinetik** (label natrium bikarbonat injeksi)
+
+- Kadar bikarbonat plasma normal 24–31 mEq/liter dan diatur ginjal melalui pengasaman atau alkalinisasi urin.
+- Bikarbonat dapat diubah menjadi asam karbonat lalu karbon dioksida yang dikeluarkan melalui paru; pada orang dewasa sehat hampir semua bikarbonat yang tersaring direabsorpsi, kurang dari 1% dikeluarkan di urin.
+
+**Farmakodinamik** (label natrium bikarbonat injeksi)
+
+- Meningkatkan bikarbonat plasma, menyangga kelebihan ion hidrogen, menaikkan pH darah, dan membalik manifestasi klinis asidosis.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. Sodium Bicarbonate Injection, USP (Hospira), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=8664c7ce-707b-4c6c-9ce4-7160b5f877f8
+
+---
+
+### 3.46 Flukonazol
+
+**Kalkulator berat badan** (IDAI hlm. 52)
+
+| Keadaan | Dosis |
+|---|---|
+| – | 12 mg/kg/hari IV |
+| Koinfeksi HIV–*Candida albicans*: infeksi superfisial | 6 mg/kg, kemudian 3 mg/kg/hari oral atau IV |
+
+**Penyesuaian dosis pada penyakit ginjal** (IDAI hlm. 83)
+
+| Dosis normal | Dosis (D)/Interval (I) | LFG >50 | LFG 10–50 | LFG <10 | HD | PD |
+|---|---|---|---|---|---|---|
+| 6 mg/kg/dosis stat kmd 3 mg/kg/dosis q24 jam iv, po | D | 100% | 100% | 100% | Dosis sesudah dialisis | Dosis untuk LFG <10 |
+
+**Sediaan** (FORNAS 2025 hlm. 50)
+
+| Sediaan |
+|---|
+| Kapsul 50 mg |
+| Kapsul 150 mg |
+| Infus 2 mg/mL |
+
+Restriksi FORNAS: a) digunakan untuk kandidiasis sistemik/pada pasien *immunocompromised*; b) digunakan untuk berbagai bentuk kriptokokosis.
+
+**Aturan penggunaan**
+
+- Sesuai tabel IDAI.
+- Dapat diminum tanpa memperhatikan waktu makan (label Diflucan).
+
+**Manfaat obat** (label Diflucan)
+
+- Kandidiasis vagina.
+- Kandidiasis orofaring dan esofagus; juga efektif pada infeksi saluran kemih, peritonitis, dan infeksi *Candida* sistemik termasuk kandidemia, kandidiasis diseminata, dan pneumonia (studi terbuka kecil).
+- Meningitis kriptokokus.
+- Profilaksis: menurunkan insidens kandidiasis pada pasien transplantasi sumsum tulang yang mendapat kemoterapi sitotoksik dan/atau radioterapi.
+
+**Efek samping** (label Diflucan)
+
+- Anak (577 pasien usia 1 hari–17 tahun, dosis sampai 15 mg/kg/hari): 13% mengalami efek samping terkait pengobatan; tersering muntah 5%, nyeri perut 3%, mual 2%, diare 2%.
+- Pola dan insidens efek samping pada anak sebanding dengan dewasa.
+
+**Peringatan** (label Diflucan)
+
+- Kontraindikasi: hipersensitivitas terhadap flukonazol atau eksipiennya; pemberian bersama obat tertentu yang memperpanjang QT dan dimetabolisme CYP3A4 (misalnya eritromisin, pimozid, dan kuinidin).
+- Cedera hati: jarang terjadi toksisitas hati serius termasuk kematian, terutama pada pasien dengan kondisi dasar serius.
+- Anafilaksis (jarang); reaksi kulit eksfoliatif termasuk sindrom Stevens-Johnson, nekrolisis epidermal toksik, dan DRESS.
+- Pemanjangan QT dan torsade de pointes (jarang), terutama pada pasien sakit berat dengan banyak faktor risiko.
+
+**Farmakokinetik** (label Diflucan)
+
+- Bioavailabilitas oral lebih dari 90% dibanding IV; kadar puncak 1–2 jam; waktu paruh eliminasi plasma sekitar 30 jam (20–50 jam) pada dewasa.
+- Ikatan protein plasma rendah (11–12%); menembus semua cairan tubuh yang diteliti.
+- Sekitar 80% dosis muncul di urin dalam bentuk tidak berubah dan 11% sebagai metabolit; farmakokinetik sangat dipengaruhi penurunan fungsi ginjal.
+- Anak: waktu paruh sekitar 54,2 jam pada bayi 2–60 hari (IV) dan sekitar 19,5–25 jam pada anak 9 bulan–13 tahun (oral).
+
+**Farmakodinamik** (label Diflucan)
+
+- Penghambat sangat selektif enzim jamur lanosterol 14-alfa-demetilase yang bergantung sitokrom P450; enzim ini mengubah lanosterol menjadi ergosterol.
+- Hilangnya sterol normal dan penumpukan 14-alfa-metil sterol pada jamur diduga mendasari aktivitas fungistatik flukonazol.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. DIFLUCAN (fluconazole) tablets and oral suspension (Roerig/Pfizer), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=f694c617-3383-416c-91b6-b94fda371204
+
+---
+
+### 3.47 Alopurinol
+
+**Kalkulator berat badan** (IDAI hlm. 36)
+
+| Keadaan | Dosis |
+|---|---|
+| – | 10–20 mg/kg (maks 600 mg), 8 jam, oral |
+| Pencegahan lisis tumor | 100–150 mg/m², IV, oral, 12 jam |
+
+**Penyesuaian dosis pada penyakit ginjal** (IDAI hlm. 76)
+
+| Dosis normal | Dosis (D)/Interval (I) | LFG >50 | LFG 10–50 | LFG <10 | HD | PD |
+|---|---|---|---|---|---|---|
+| 10 mg/kg/dosis q12–24 jam po | D | 75% | 50% | 25% | dosis | tak ada data |
+
+**Sediaan** (FORNAS 2025 hlm. 14)
+
+| Sediaan | Peresepan maksimal |
+|---|---|
+| Tablet 100 mg | 30 tab/bulan |
+| Tablet 300 mg | 60 tab/bulan |
+
+Restriksi FORNAS: tidak diberikan pada saat nyeri akut.
+
+**Aturan penggunaan**
+
+- Sesuai tabel IDAI.
+- Dihentikan pada tanda pertama ruam kulit atau tanda lain reaksi alergi (label Zyloprim).
+
+**Manfaat obat** (label Zyloprim)
+
+- Gout primer atau sekunder (serangan akut, tofi, kerusakan sendi, batu asam urat, dan/atau nefropati).
+- Pasien leukemia, limfoma, dan keganasan lain yang mendapat terapi kanker yang meningkatkan kadar asam urat serum dan urin.
+- Batu kalsium oksalat berulang dengan ekskresi asam urat harian tinggi.
+- Pada anak jarang diindikasikan, kecuali hiperurisemia akibat keganasan atau kelainan bawaan metabolisme purin tertentu.
+
+**Efek samping** (label Zyloprim)
+
+- Efek samping tersering adalah ruam kulit; reaksi kulit dapat berat dan kadang fatal.
+- Peningkatan serangan gout akut pada awal terapi.
+
+**Peringatan** (label Zyloprim)
+
+- Kontraindikasi: pasien yang pernah mengalami reaksi berat terhadap alopurinol tidak boleh diberi obat ini lagi.
+- Ruam kulit dapat diikuti reaksi hipersensitivitas lebih berat (lesi eksfoliatif, urtikaria, purpura, sindrom Stevens-Johnson, vaskulitis menyeluruh, hepatotoksisitas ireversibel), jarang sampai kematian.
+- Pemberian bersama merkaptopurin atau azatioprin memerlukan pengurangan dosis obat tersebut.
+
+**Farmakokinetik** (label Zyloprim)
+
+- Sekitar 90% diserap dari saluran cerna; kadar puncak alopurinol 1,5 jam dan oksipurinol 4,5 jam.
+- Sekitar 20% dosis dikeluarkan di feses.
+- Waktu paruh plasma alopurinol sekitar 1–2 jam; metabolit aktif oksipurinol sekitar 15 jam.
+
+**Farmakodinamik** (label Zyloprim)
+
+- Analog struktural basa purin hipoksantin; menghambat xantin oksidase, enzim yang mengubah hipoksantin menjadi xantin dan xantin menjadi asam urat.
+- Metabolitnya, oksipurinol, juga menghambat xantin oksidase.
+- Menurunkan produksi asam urat tanpa mengganggu biosintesis purin.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. ZYLOPRIM (allopurinol) tablets (Prometheus Laboratories), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=342832b5-1a32-4bea-bc49-ab0fd152154e
+
+---
+
+### 3.48 Asam folat
+
+**Kalkulator berat badan** (IDAI hlm. 36)
+
+| Keadaan | Dosis |
+|---|---|
+| Talasemia | 1 mg/hari, 12 jam, oral |
+
+**Sediaan** (FORNAS 2025 hlm. 112)
+
+| Sediaan |
+|---|
+| Tablet 0,4 mg |
+| Tablet 1 mg |
+| Tablet 5 mg |
+
+**Aturan penggunaan**
+
+- Sesuai tabel IDAI.
+
+**Manfaat obat** (label asam folat tablet)
+
+- Anemia megaloblastik akibat defisiensi asam folat (seperti pada sprue tropis maupun nontropis).
+- Anemia akibat gizi, kehamilan, masa bayi, atau masa kanak-kanak.
+
+**Efek samping** (label asam folat tablet)
+
+- Sensitisasi alergi pernah dilaporkan pada pemberian oral maupun parenteral; asam folat relatif tidak toksik.
+- Reaksi alergi jarang: eritema, ruam kulit, gatal, malaise, dan sesak akibat bronkospasme.
+
+**Peringatan** (label asam folat tablet)
+
+- Kontraindikasi: riwayat intoleransi terhadap obat ini.
+- Pemberian asam folat saja tidak tepat untuk anemia pernisiosa dan anemia megaloblastik lain akibat defisiensi vitamin B12.
+- Dosis di atas 0,1 mg/hari dapat menutupi anemia pernisiosa: remisi hematologis dapat terjadi sementara gangguan neurologis tetap berlanjut.
+
+**Farmakokinetik** (label asam folat tablet)
+
+- Diserap cepat dari usus halus, terutama bagian proksimal; muncul di plasma 15–30 menit setelah dosis oral dan kadar puncak dalam 1 jam.
+- Kadar di cairan serebrospinal beberapa kali lebih tinggi daripada di serum.
+- Dimetabolisme di hati menjadi asam 7,8-dihidrofolat lalu asam 5,6,7,8-tetrahidrofolat.
+
+**Farmakodinamik** (label asam folat tablet)
+
+- Bekerja pada sumsum tulang megaloblastik sehingga menjadi normoblastik.
+- Prekursor asam tetrahidrofolat, kofaktor reaksi transformilasi dalam biosintesis purin dan timidilat asam nukleat; gangguan sintesis timidilat pada defisiensi folat diduga menyebabkan sintesis DNA terganggu dan pembentukan megaloblas.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. Folic Acid Tablets, USP (Rising Pharma), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=0baa10dd-6d1d-4946-8236-566451132da3

@@ -1022,3 +1022,15 @@ Obat: isoniazid, aminofilin, epinefrin (adrenalin), asam traneksamat, difenhidra
 - Sediaan FORNAS yang tidak dimasukkan: isoniazid dalam kombinasi KDT/FDC (produk berbeda); epinefrin 1:80.000 (kombinasi untuk kedokteran gigi); metilprednisolon tablet di kelas onkologi hlm. 110 (sediaan sama dengan hlm. 148/199).
 - Baris dalam kolom "Keadaan" yang di buku tidak berjudul ditandai "–" (bukan judul buatan penyusun).
 
+---
+
+## Batch 5 (draf 0.8, 15 Oktober 2026)
+
+Obat: morfin, ketamin, nalokson, digoksin, dobutamin, dopamin, natrium bikarbonat, flukonazol, alopurinol, asam folat.
+
+- Kutipan IDAI dan FORNAS: 27 dari 27 cocok dengan teks sumber.
+- Morfin oral: IDAI hlm. 64 hanya memuat IM dan IV; baris PO diambil dari kolom dosis normal tabel ginjal (IDAI hlm. 86), sama seperti pola klindamisin.
+- Penulisan buku yang disalin apa adanya: tabel ginjal alopurinol (IDAI hlm. 76) kolom HD tertulis "dosis".
+- FORNAS morfin injeksi 10 mg/mL: kolom peresepan maksimal tertulis "infus per 24 jam", disalin apa adanya.
+- Sediaan FORNAS yang tidak dimasukkan: asam folat dalam kombinasi dengan zat besi (produk berbeda).
+- Label DailyMed: dobutamin mengandung natrium metabisulfit (bukan bisulfit); kontraindikasi flukonazol mencantumkan eritromisin, pimozid, dan kuinidin.

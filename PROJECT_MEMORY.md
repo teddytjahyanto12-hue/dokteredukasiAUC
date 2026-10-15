@@ -767,6 +767,11 @@ File ini adalah sumber kebenaran tunggal untuk status, keputusan, dan serah teri
   - Verifikasi IDAI/FORNAS 38/38 cocok.
   - Catatan penulisan buku dan sediaan yang tidak dimasukkan ada di Catatan_Verifikasi_Dosis_Obat_Anak.md.
 - Pelaksana aktif Claude Code (PC 2) sesi Dosis Obat: dilepas setelah publikasi draf 0.7.
+- Checkpoint draf 0.8 (15 Oktober 2026, batch 5, 48 obat):
+  - Obat baru 3.39–3.48: morfin, ketamin, nalokson, digoksin, dobutamin, dopamin, natrium bikarbonat, flukonazol, alopurinol, asam folat.
+  - Verifikasi IDAI/FORNAS 27/27 cocok; catatan batch 5 ada di Catatan_Verifikasi_Dosis_Obat_Anak.md.
+  - Perkiraan total sekitar 15–16 batch (sekitar 155 obat IDAI yang juga ada di FORNAS); sisa sekitar 107 obat.
+- Pelaksana aktif Claude Code (PC 2) sesi Dosis Obat: dilepas setelah publikasi draf 0.8.
 
 ## Integrasi Scoping Review - Codex, 2026-10-13
 - Pelaksana aktif: Codex sesi Scoping Review. Fokus: 21 PDF, 6 kelompok/kuis dari draf pengguna, lulus80, gratis kelompok1. Berkas: prisma/scoping-chapters.ts, render-scoping-pages.py, tests/scoping-http.mjs, lib/srma-progression.ts, lib/pdf-pages.ts, halaman kelas/materi/quiz, launcher, docs/SCOPING_KURIKULUM.md. HEAD/origin2665c79 identik setelah fetch. Tidak mengubah desain lokal atau dokumen dosis obat Claude aktif. Runtime PC2 terakhir build NLR; build baru akan dibuat terpisah, database diimpor terarah.
