@@ -1006,3 +1006,19 @@ Obat: meropenem, vankomisin, seftazidim, kloramfenikol, klindamisin, eritromisin
 - Kalimat dari label yang menyangkut interval atau rute dosis (hidrokortison tiap 4–6 jam; vitamin K1 sebaiknya subkutan) tidak dimasukkan ke Aturan penggunaan karena dosis hanya dari IDAI atau FORNAS. Peringatan berbingkai vitamin K1 tentang reaksi hipersensitivitas pada pemberian IV/IM tetap dicantumkan di bagian Peringatan.
 - Eritromisin IV ada dosisnya di IDAI tetapi FORNAS tidak mencantumkan sediaan injeksi; baris dosis tetap dimasukkan (sumber IDAI), sediaan hanya yang ada di FORNAS.
 
+---
+
+## Batch 4 (draf 0.7, 15 Oktober 2026)
+
+Obat: isoniazid, aminofilin, epinefrin (adrenalin), asam traneksamat, difenhidramin, kaptopril, kalsium glukonat, manitol, metilprednisolon, spironolakton.
+
+- Prometazin semula direncanakan, tetapi tidak tercantum di FORNAS 2025, sehingga diganti kaptopril.
+- Kutipan IDAI dan FORNAS: 38 dari 38 cocok dengan teks sumber.
+- Penulisan buku yang disalin apa adanya:
+  - tabel ginjal spironolakton (IDAI hlm. 90): nama tercetak "Spironolactione" dan dosis normal tertulis "6,25–25 mg/dosis" (dicek pada gambar halaman);
+  - tabel ginjal asam traneksamat (IDAI hlm. 90): LFG >50 tertulis 50%, sedangkan LFG 10–50 dan <10 tertulis 100%.
+- Dosis FORNAS dipakai untuk isoniazid tablet 100 mg (10 mg/kgBB, maks 6 bulan setiap hari; profilaksis TB pada anak).
+- Tabel ginjal "Theophyllne" (IDAI hlm. 90) tidak dimasukkan ke aminofilin karena nama obatnya berbeda.
+- Sediaan FORNAS yang tidak dimasukkan: isoniazid dalam kombinasi KDT/FDC (produk berbeda); epinefrin 1:80.000 (kombinasi untuk kedokteran gigi); metilprednisolon tablet di kelas onkologi hlm. 110 (sediaan sama dengan hlm. 148/199).
+- Baris dalam kolom "Keadaan" yang di buku tidak berjudul ditandai "–" (bukan judul buatan penyusun).
+
