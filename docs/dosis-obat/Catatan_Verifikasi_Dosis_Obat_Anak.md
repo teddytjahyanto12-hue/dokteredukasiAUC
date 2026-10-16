@@ -1242,3 +1242,16 @@ Obat: abakavir, klonidin, karvedilol, natrium diklofenak, oktreotid, rituksimab,
   - tenofovir + emtrisitabin: FORNAS hanya untuk PrEP, sedangkan IDAI tidak menyebut indikasi;
   - fluorourasil: IDAI untuk kanker pankreas/karsinoma skuamosa, FORNAS untuk kanker kepala-leher, saluran cerna, payudara, leher rahim;
   - karvedilol, klonidin, diklofenak, fluorourasil: label menyatakan keamanan/efektivitas pada anak belum ditetapkan.
+
+## Batch 15, penutup (draf 0.18, 16 Oktober 2026)
+
+Obat: faktor VIII (konsentrat).
+
+- Dosis memakai rumus FORNAS hlm. 123 (FVIII (unit) = BB (kg) x % (target kadar plasma - kadar FVIII pasien) x 0.5); rumus terletak di bawah nama obat sehingga berlaku untuk seluruh sediaan. IDAI hlm. 51 hanya mencantumkan sediaan ("Serbuk Inj 250 mg Unit/vial", satuan janggal) sehingga tidak dipakai. Kutipan FORNAS 2 dari 2 cocok; halaman 123–124 dicek pada gambar.
+- Untuk implementasi kalkulator: entri ini membutuhkan input tambahan (target kadar dan kadar FVIII pasien dalam %), berbeda dari dosis per kg biasa.
+- Kandidat terakhir yang dikeluarkan:
+  - dekstrosa/glukosa: dosis IDAI hlm. 45 jelas, tetapi FORNAS hanya menulis kelompok "Larutan Mengandung Karbohidrat" tanpa kadar atau sediaan;
+  - seng sulfat (IDAI hlm. 69): dosis defisiensi dan diare tidak menyebut apakah dalam bentuk garam atau elemental, padahal IDAI mencantumkan konversi 27,5 mg seng sulfat = 10 mg elemental; FORNAS memuat zinc drops 10 mg/mL; label DailyMed hanya injeksi;
+  - garam ferrous/fero sulfat: dosis IDAI hlm. 53 jelas dan FORNAS memuat tablet 300 mg serta sirup 150 mg/5 mL, tetapi label DailyMed hanya OTC/suplemen (sesuai keputusan pemilik untuk klorfeniramin dan loratadin);
+  - faktor VIIa dan faktor IX: tanpa dosis di IDAI maupun FORNAS.
+- Dengan ini kandidat dari indeks IDAI yang memiliki sediaan FORNAS dan sumber jelas telah selesai diproses. Entri IDAI lainnya tidak ada di FORNAS 2025 atau sudah dibatalkan dengan alasan yang tercatat pada bagian batch masing-masing.

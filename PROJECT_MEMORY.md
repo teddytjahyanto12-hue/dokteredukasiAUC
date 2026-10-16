@@ -817,6 +817,11 @@ File ini adalah sumber kebenaran tunggal untuk status, keputusan, dan serah teri
   - Verifikasi IDAI/FORNAS 20/20 cocok plus cek gambar halaman. DOCX 252 halaman.
   - Kandidat tersisa yang belum diproses: dekstrosa/glukosa, faktor VIII (rumus FORNAS), seng sulfat (label oral), serta entri IDAI tanpa FORNAS. Banyak lainnya sudah batal (rincian Catatan Batch 13–14).
 - Pelaksana aktif Claude Code (PC 2) sesi Dosis Obat: dilepas setelah publikasi draf 0.17.
+- Checkpoint draf 0.18 (16 Oktober 2026, batch 15 penutup, 134 obat):
+  - Obat baru 3.134: faktor VIII (konsentrat) dengan rumus dosis FORNAS (butuh input target kadar dan kadar FVIII pasien). Verifikasi FORNAS 2/2 plus cek gambar. DOCX 253 halaman.
+  - Dekstrosa, seng sulfat, fero sulfat, faktor VIIa/IX dikeluarkan (alasan di Catatan Batch 15). Kandidat indeks IDAI dengan sediaan FORNAS dan sumber jelas sudah habis.
+  - Langkah berikut: tinjauan pemilik atas draf 0.18 dan butir terbuka (ranitidin, nifedipin, deferoksamin <3 thn, celah efavirenz 32–<33 kg, pembulatan dan perhitungan mg/m²); implementasi website baru setelah disetujui.
+- Pelaksana aktif Claude Code (PC 2) sesi Dosis Obat: dilepas setelah publikasi draf 0.18.
 
 ## Integrasi Scoping Review - Codex, 2026-10-13
 - Pelaksana aktif: Codex sesi Scoping Review. Fokus: 21 PDF, 6 kelompok/kuis dari draf pengguna, lulus80, gratis kelompok1. Berkas: prisma/scoping-chapters.ts, render-scoping-pages.py, tests/scoping-http.mjs, lib/srma-progression.ts, lib/pdf-pages.ts, halaman kelas/materi/quiz, launcher, docs/SCOPING_KURIKULUM.md. HEAD/origin2665c79 identik setelah fetch. Tidak mengubah desain lokal atau dokumen dosis obat Claude aktif. Runtime PC2 terakhir build NLR; build baru akan dibuat terpisah, database diimpor terarah.

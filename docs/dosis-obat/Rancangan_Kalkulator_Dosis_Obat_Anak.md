@@ -1,6 +1,6 @@
 # Kalkulator Dosis Obat Anak
 
-Draf 0.17, 16 Oktober 2026 (133 obat). Materi untuk ditinjau pemilik; belum diterapkan di website.
+Draf 0.18, 16 Oktober 2026 (134 obat). Materi untuk ditinjau pemilik; belum diterapkan di website.
 
 ---
 
@@ -8423,3 +8423,55 @@ Catatan FORNAS: disediakan oleh Program Kemenkes. Restriksi FORNAS: a) sebagai p
 1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
 2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
 3. Truvada (Gilead Sciences), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=54e82b13-a037-49ed-b4b3-030b37c0ecdd
+
+### 3.134 Faktor VIII (Konsentrat)
+
+**Kalkulator** (FORNAS 2025 hlm. 123)
+
+| Rumus | Dosis |
+|---|---|
+| FVIII (unit) | BB (kg) x % (target kadar plasma - kadar FVIII pasien) x 0.5 |
+
+**Sediaan** (FORNAS 2025 hlm. 123–124; produk darah)
+
+Restriksi FORNAS (sediaan 250 IU, 500 IU, dan 1.000 IU): a) untuk terapi kasus hemofilia A; b) dapat diresepkan oleh dokter yang memiliki kompetensi di bidang ilmu penyakit dalam atau penyakit anak, di bawah pengawasan dokter yang memiliki kompetensi di bidang hematologi onkologi anak atau hematologi onkologi medik dewasa.
+
+| Sediaan | Peresepan maksimal |
+|---|---|
+| Injeksi 250 IU | – |
+| Injeksi 500 IU | – |
+| Injeksi 230–340 IU | – |
+| Injeksi 480–600 IU | – |
+| Injeksi 1.000 IU | – |
+
+**Aturan penggunaan**
+
+- Sesuai rumus FORNAS.
+- Pantau aktivitas faktor VIII plasma dengan uji tervalidasi untuk memastikan kadar yang memadai tercapai dan dipertahankan (label KOĀTE).
+
+**Manfaat obat** (label KOĀTE)
+
+- Mengendalikan dan mencegah episode perdarahan, atau untuk tindakan bedah darurat dan elektif, pada pasien hemofilia A (defisiensi faktor VIII herediter); tidak diindikasikan untuk penyakit von Willebrand.
+
+**Efek samping** (label KOĀTE)
+
+- Tersering (≥5% subjek) pada uji klinis: gelisah, sakit kepala, nyeri perut, mual, parestesia, dan penglihatan kabur.
+
+**Peringatan** (label KOĀTE)
+
+- Kontraindikasi: riwayat reaksi hipersensitivitas, termasuk anafilaksis, terhadap produk atau komponennya.
+- Reaksi hipersensitivitas termasuk anafilaksis; pembentukan antibodi penetral (inhibitor) faktor VIII; hemolisis intravaskular pada dosis besar atau sering pada golongan darah A, B, atau AB; risiko penularan agen infeksius karena berasal dari darah manusia.
+
+**Farmakokinetik** (label KOĀTE)
+
+- Pemulihan *in vivo* inkremental 10 menit setelah infus sekitar 1,9% per unit/kg; rerata waktu paruh biologis sekitar 16 jam.
+- Anak mempunyai waktu paruh lebih pendek dan pemulihan faktor VIII lebih rendah daripada dewasa; karena klirens per kg lebih tinggi, dosis yang lebih tinggi atau lebih sering mungkin diperlukan.
+
+**Farmakodinamik** (label KOĀTE)
+
+- Menggantikan sementara faktor pembekuan VIII yang kurang, yang diperlukan untuk hemostasis efektif.
+
+**Daftar pustaka**
+
+1. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+2. KOĀTE (Kedrion Biopharma), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=2f77d685-e382-b2e7-2414-0d3a3448688a
