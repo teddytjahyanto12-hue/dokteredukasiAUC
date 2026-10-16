@@ -1,5 +1,5 @@
 import "server-only";
-import { cookies } from "next/headers";
+import { cookies, headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { SignJWT, jwtVerify } from "jose";
 import bcrypt from "bcryptjs";
@@ -34,10 +34,13 @@ export async function createSession(userId: string) {
     .setExpirationTime(`${SESSION_DAYS}d`)
     .sign(secretKey());
   const jar = await cookies();
+  // HTTP hanya diizinkan lewat peluncur LAN dan Host jaringan MikroTik lokal.
+  const host = (await headers()).get("host") || "";
+  const lanHttp = process.env.DEA_LAN_HTTP === "true" && /^(localhost|127\.0\.0\.1|192\.168\.88\.\d{1,3})(:\d+)?$/i.test(host);
   jar.set(SESSION_COOKIE, token, {
     httpOnly: true,
     sameSite: "lax",
-    secure: process.env.NODE_ENV === "production",
+    secure: process.env.NODE_ENV === "production" && !lanHttp,
     path: "/",
     maxAge: SESSION_DAYS * 24 * 60 * 60,
   });

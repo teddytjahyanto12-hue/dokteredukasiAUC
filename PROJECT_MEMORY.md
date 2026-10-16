@@ -838,3 +838,7 @@ File ini adalah sumber kebenaran tunggal untuk status, keputusan, dan serah teri
 ## 2026-10-15 22:00 WIB - Akses website LAN mini PC
 - Pelaksana aktif: Codex LAN. HEAD/origin main f5c3e1a sama setelah fetch. Fokus auth cookie mode LAN eksplisit, launcher/setup LAN dan build terpisah, docs/pemeriksaan. Tidak menyentuh docs/dosis-obat Claude aktif atau settings/env/gitignore lokal. Mini PC .251 HTTP200 dari PC utama .254 melalui LAN; runtime produksi, versi build akan dicocokkan. Jaringan dibaca dari catatan MikroTik; tidak perlu membuka akses WAN.
 
+
+- 2026-10-16 07:16 WIB - Lanjutan Codex LAN: pengguna melaporkan login berulang serta Back dua kali dan posisi Toolkit meloncat. Perlu menyelesaikan cookie LAN, mengganti history login sukses dengan replace, dan pemulihan posisi katalog. Fokus tambahan actions/auth.ts, komponen posisi katalog, CatalogSection, tests. Build belum aktif; instalasi dependensi staging selesai namun Prisma client belum digenerate, typecheck awal gagal karena client kosong; akan generate lalu ulang.
+
+- 2026-10-16 07:22 WIB checkpoint Codex LAN: TypeScript/lint cakupan/build penuh lulus, BuildID F4OM1WD8LCIFDZ_vk9Yky (.next-lan-navigation-20261016). Tes HTTP login lokal3009 danIP.254 lulus,HttpOnly/SameSite dan HostpublikSecure. QA browser nyata preview: login sekali keToolkit,Back sekali katalog posisiToolkit(scroll1599/top-58),batal loginBack juga tepat; source guardakses tetap. Copy build ke miniPC berlangsung; belum aktivasi. Klaim tambahan course-card.tsx untuk IDkartu stabil. Catatan docs/AKSES_WEBSITE_LAN.md.

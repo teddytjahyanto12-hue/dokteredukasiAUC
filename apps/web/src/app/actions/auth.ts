@@ -1,6 +1,6 @@
 "use server";
 
-import { redirect } from "next/navigation";
+import { redirect, RedirectType } from "next/navigation";
 import { z } from "zod";
 import { db } from "@/lib/db";
 import { createSession, destroySession, hashPassword, homeFor, requireUser, verifyPassword } from "@/lib/auth";
@@ -52,7 +52,7 @@ export async function registerAction(form: FormData) {
     link: `/admin/pengguna/${user.id}`,
     kind: "NEW_CUSTOMER",
   });
-  redirect(next ?? "/belajar");
+  redirect(next ?? "/belajar", RedirectType.replace);
 }
 
 export async function loginAction(form: FormData) {
@@ -67,7 +67,7 @@ export async function loginAction(form: FormData) {
   }
   if (!user.active) back(`/masuk${nextQs}`, "Akun dinonaktifkan. Hubungi admin.", "error");
   await createSession(user.id);
-  redirect(next ?? homeFor({ role: user.role, permissions: parsePermissions(user.permissions) }));
+  redirect(next ?? homeFor({ role: user.role, permissions: parsePermissions(user.permissions) }), RedirectType.replace);
 }
 
 export async function logoutAction() {

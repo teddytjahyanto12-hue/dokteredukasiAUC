@@ -5,6 +5,7 @@ import { accessibleCategoryIds, canOpen } from "@/lib/access";
 import { courseStats, doneItemIds, loadCourses, studentCounts } from "@/lib/courses";
 import { CourseCard } from "@/components/course-card";
 import { getSettings } from "@/lib/settings";
+import { CatalogPosition } from "@/components/catalog-position";
 
 // Katalog kelas dengan filter program (dan kata kunci). Dipakai di beranda dan halaman /kelas.
 export async function CatalogSection({ user, program, q, basePath, as: Heading = "h2" }: { user: CurrentUser | null; program?: string; q?: string; basePath: string; as?: "h1" | "h2" }) {
@@ -34,6 +35,7 @@ export async function CatalogSection({ user, program, q, basePath, as: Heading =
 
   return (
     <section id="katalog" className="scroll-mt-36">
+      <CatalogPosition key={`${basePath}:${program || ""}:${q || ""}`} catalogKey={`${basePath}:${program || ""}:${q || ""}`} />
       <div className="flex flex-col gap-4 border-b border-slate-200 pb-5 lg:flex-row lg:items-end lg:justify-between">
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.12em] text-brand">{s.catalogEyebrow}</p>

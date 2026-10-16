@@ -39,7 +39,7 @@ export function CourseCard({ course, stats, open, students, loggedIn }: { course
     .join("");
 
   return (
-    <article className="academy-course-card group flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white transition hover:border-mascot">
+    <article id={`course-${course.id}`} className="academy-course-card group flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white transition hover:border-mascot">
       <Link href={detail} className="relative block" aria-label={`Lihat kelas ${course.title}`}>
         {course.posterFileId ? (
           // eslint-disable-next-line @next/next/no-img-element
