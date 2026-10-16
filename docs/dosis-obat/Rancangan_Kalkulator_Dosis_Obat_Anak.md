@@ -1,6 +1,6 @@
 # Kalkulator Dosis Obat Anak
 
-Draf 0.16, 16 Oktober 2026 (125 obat). Materi untuk ditinjau pemilik; belum diterapkan di website.
+Draf 0.17, 16 Oktober 2026 (133 obat). Materi untuk ditinjau pemilik; belum diterapkan di website.
 
 ---
 
@@ -8005,3 +8005,421 @@ Restriksi FORNAS: untuk a) luka baru terkontaminasi pada pasien dengan riwayat v
 1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
 2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
 3. Vinblastine Sulfate Injection (Fresenius Kabi), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=f073b58e-56d6-4c8d-a2ce-b37719402d77
+
+### 3.126 Abakavir
+
+**Kalkulator** (IDAI hlm. 34, tertulis "Abacavir")
+
+| Keadaan | Dosis |
+|---|---|
+| <16 tahun atau BB <37,5 kg | 8 mg/kg (maks 300 mg/dosis), per oral, 12 jam |
+
+**Sediaan** (FORNAS 2025 hlm. 54; NRTI)
+
+Catatan FORNAS: disediakan oleh Program Kemenkes.
+
+| Sediaan | Peresepan maksimal |
+|---|---|
+| Tablet 300 mg | – |
+
+**Aturan penggunaan**
+
+- Sesuai tabel IDAI.
+- Diberikan dalam kombinasi dengan antiretroviral lain; lakukan skrining alel HLA-B*5701 sebelum memulai atau memulai kembali terapi (label Ziagen).
+
+**Manfaat obat** (label Ziagen)
+
+- Pengobatan infeksi HIV-1, dikombinasikan dengan antiretroviral lain; keamanan dan efektivitas telah ditetapkan pada anak usia 3 bulan ke atas.
+
+**Efek samping** (label Ziagen)
+
+- Tersering pada anak: demam dan menggigil, ruam, mual, serta infeksi telinga, hidung, atau tenggorokan.
+- Tersering pada dewasa: mual, kelelahan, sakit kepala, muntah, rasa tidak enak badan, mimpi buruk atau gangguan tidur.
+
+**Peringatan** (label Ziagen)
+
+- Peringatan berbingkai: reaksi hipersensitivitas serius dan kadang fatal yang melibatkan banyak organ; risiko lebih tinggi pada pembawa alel HLA-B*5701; hentikan segera bila dicurigai.
+- Kontraindikasi: alel HLA-B*5701; riwayat reaksi hipersensitivitas terhadap abakavir; gangguan hati sedang atau berat.
+- Asidosis laktat dan hepatomegali berat dengan steatosis; sindrom rekonstitusi imun; hubungan dengan risiko infark miokard pada studi observasional.
+
+**Farmakokinetik** (label Ziagen)
+
+- Diabsorpsi cepat; bioavailabilitas absolut tablet 83%; volume distribusi 0,86 L/kg; ikatan protein plasma sekitar 50%.
+- Waktu paruh eliminasi 1,54 ± 0,63 jam; dimetabolisme oleh alkohol dehidrogenase dan glukuronil transferase menjadi metabolit tidak aktif, tidak bermakna melalui CYP450.
+
+**Farmakodinamik** (label Ziagen)
+
+- Analog nukleosida karbosiklik yang diubah menjadi karbovir trifosfat; metabolit aktif ini menghambat reverse transcriptase HIV-1 melalui kompetisi dengan dGTP dan inkorporasi ke DNA virus.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. Ziagen (ViiV Healthcare), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=ca73b519-015a-436d-aa3c-af53492825a1
+
+### 3.127 Klonidin
+
+**Kalkulator** (IDAI hlm. 44, tertulis "Clonidin")
+
+| Indikasi | Dosis |
+|---|---|
+| Hipertensi (IV) | 1–5 mcg/kg IV perlahan |
+| Hipertensi (oral) | 1–6 mcg/kg, 8–12 jam, oral |
+
+**Sediaan** (FORNAS 2025 hlm. 153; antihipertensi)
+
+| Sediaan | Peresepan maksimal |
+|---|---|
+| Tablet 0,15 mg | 90 tab/bulan |
+| Injeksi 150 mcg/mL (i.v.) | – |
+
+**Aturan penggunaan**
+
+- Sesuai tabel IDAI dan FORNAS.
+- Jangan dihentikan mendadak; turunkan dosis bertahap selama 2–4 hari (label klonidin).
+
+**Manfaat obat** (label klonidin)
+
+- Pengobatan hipertensi, tunggal atau bersama antihipertensi lain.
+
+**Efek samping** (label klonidin)
+
+- Tersering (terkait dosis): mulut kering sekitar 40%, mengantuk sekitar 33%, pusing sekitar 16%, konstipasi dan sedasi masing-masing sekitar 10%.
+- Lainnya: kelelahan, sakit kepala, bradikardia, blok AV, gejala ortostatik, dan sindrom putus obat.
+
+**Peringatan** (label klonidin)
+
+- Kontraindikasi: hipersensitivitas terhadap klonidin.
+- Penghentian mendadak dapat menimbulkan gelisah, agitasi, sakit kepala, tremor, dan kenaikan tekanan darah cepat; jarang ensefalopati hipertensif, stroke, dan kematian.
+- Anak sering mengalami penyakit saluran cerna dengan muntah sehingga lebih rentan mengalami episode hipertensi akibat tidak dapat minum obat; depresi SSP dapat lebih sering pada anak.
+- Keamanan dan efektivitas pada anak belum ditetapkan dalam uji terkontrol yang memadai.
+
+**Farmakokinetik** (label klonidin)
+
+- Setelah pemberian IV, disposisi bifasik: waktu paruh distribusi sekitar 20 menit dan waktu paruh eliminasi 12–16 jam; meningkat hingga 41 jam pada gangguan ginjal berat.
+
+**Farmakodinamik** (label klonidin)
+
+- Merangsang reseptor alfa-adrenergik di batang otak sehingga aliran simpatis dari SSP menurun, disertai penurunan resistensi perifer, resistensi vaskular ginjal, denyut jantung, dan tekanan darah.
+- Tekanan darah turun dalam 30–60 menit setelah dosis oral, dengan penurunan maksimal dalam 2–4 jam.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. Clonidine Hydrochloride Tablets (Alembic Pharmaceuticals), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=88a8db46-0fc9-48cd-b7cc-ac9c9cdea100
+
+### 3.128 Karvedilol
+
+**Kalkulator** (IDAI hlm. 44, tertulis "Carvedilol")
+
+| Rute | Dosis |
+|---|---|
+| Oral | 0,08 mg/kg, 12 jam ditingkatkan 0,08 mg/kg/dosis tiap 1–2 minggu |
+
+**Sediaan** (FORNAS 2025 hlm. 162; obat gagal jantung)
+
+Restriksi FORNAS: hanya untuk gagal jantung kronis dengan penurunan fungsi ventrikular sistolik yang sudah terkompensasi.
+
+| Sediaan | Peresepan maksimal |
+|---|---|
+| Tablet 6,25 mg | 60 tab/bulan |
+| Tablet 25 mg | 60 tab/bulan |
+
+**Aturan penggunaan**
+
+- Sesuai tabel IDAI dan FORNAS.
+- Diminum bersama makanan untuk mengurangi risiko hipotensi ortostatik; jangan dihentikan mendadak (label Coreg).
+
+**Manfaat obat** (label Coreg)
+
+- Gagal jantung kronik ringan sampai berat; disfungsi ventrikel kiri setelah infark miokard; hipertensi esensial (dewasa).
+
+**Efek samping** (label Coreg)
+
+- Pada uji anak dengan gagal jantung kronik: nyeri dada 17% (plasebo 6%), pusing 13% (plasebo 2%), dan sesak napas 11% (plasebo 0%).
+- Bradikardia, hipotensi dan hipotensi postural, sinkop, serta perburukan gagal jantung atau retensi cairan saat titrasi naik.
+
+**Peringatan** (label Coreg)
+
+- Kontraindikasi: asma bronkial atau kondisi bronkospastik; blok AV derajat dua atau tiga; *sick sinus syndrome*; bradikardia berat (kecuali terpasang pacu jantung permanen); syok kardiogenik atau gagal jantung dekompensasi yang membutuhkan inotropik IV; gangguan hati berat; riwayat hipersensitivitas serius.
+- Dapat menutupi tanda awal hipoglikemia (terutama pada anak dan pasien yang puasa) dan tanda hipertiroidisme.
+- Efektivitas pada usia di bawah 18 tahun belum ditetapkan; pada uji anak tidak ada efek bermakna terhadap luaran klinis setelah 8 bulan.
+
+**Farmakokinetik** (label Coreg)
+
+- Bioavailabilitas absolut 25–35% karena metabolisme lintas pertama; waktu paruh eliminasi terminal 7–10 jam.
+- Terikat protein plasma >98% (terutama albumin); volume distribusi sekitar 115 L; dimetabolisme luas (termasuk melalui CYP2D6).
+- Paparan pada anak tampak lebih rendah daripada dewasa.
+
+**Farmakodinamik** (label Coreg)
+
+- Campuran rasemik dengan aktivitas penyekat beta nonselektif (enantiomer S) dan penyekat alfa-1 (kedua enantiomer); tanpa aktivitas simpatomimetik intrinsik.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. Coreg (Waylis Therapeutics), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=07c619c6-4a0c-445e-94fa-664a54f68a39
+
+### 3.129 Natrium Diklofenak
+
+**Kalkulator** (IDAI hlm. 47, tertulis "Diklofenak")
+
+| Indikasi/sediaan | Dosis |
+|---|---|
+| Artritis juvenile idiopatik | 1–1.5 mg/kg (maks 75 mg), 12 jam oral |
+| Tetes mata 0.1% | preop 1–5 tetes dalam 3 jam, post op 1 tetes, kemudian 1 tetes 4–6 jam |
+
+**Sediaan** (FORNAS 2025 hlm. 13 dan 174)
+
+| Sediaan | Peresepan maksimal/restriksi |
+|---|---|
+| Tablet salut enterik 25 mg | 30 tab/bulan |
+| Tablet salut enterik 50 mg | 30 tab/bulan |
+| Injeksi 25 mg/mL | Maks 2 hari. Hanya untuk nyeri akut pascaoperasi |
+| Tetes mata 1 mg/mL (hlm. 174) | – |
+
+**Aturan penggunaan**
+
+- Sesuai tabel IDAI dan FORNAS.
+- Gunakan dosis efektif terendah untuk durasi tersingkat (label diklofenak tablet).
+
+**Manfaat obat**
+
+- Tablet lepas tunda: meredakan tanda dan gejala osteoartritis, artritis reumatoid, dan spondilitis ankilosa (label diklofenak tablet).
+- Tetes mata: inflamasi pascaoperasi ekstraksi katarak, serta meredakan nyeri dan fotofobia pada bedah refraktif kornea (label diklofenak tetes mata).
+
+**Efek samping**
+
+- Tablet (sekitar 1–10% pasien): nyeri perut, konstipasi, diare, dispepsia, flatulensi, perdarahan/perforasi saluran cerna, nyeri ulu hati, mual, tukak lambung/duodenum, muntah, gangguan fungsi ginjal, anemia, pusing, edema, peningkatan enzim hati, sakit kepala, pemanjangan waktu perdarahan, dan gatal (label diklofenak tablet).
+- Tetes mata: rasa terbakar dan perih sementara sekitar 15%; keratitis hingga 28% pada studi bedah katarak; peningkatan tekanan intraokular sekitar 15% (label diklofenak tetes mata).
+
+**Peringatan**
+
+- Peringatan berbingkai (tablet): risiko kejadian trombotik kardiovaskular serius (infark miokard, stroke) dan perdarahan, ulserasi, serta perforasi saluran cerna; kontraindikasi pada bedah CABG (label diklofenak tablet).
+- Kontraindikasi tablet: hipersensitivitas terhadap diklofenak; riwayat asma, urtikaria, atau reaksi alergi setelah aspirin atau NSAID lain (label diklofenak tablet).
+- Hepatotoksisitas, hipertensi, gagal jantung dan edema, toksisitas ginjal dan hiperkalemia, reaksi anafilaksis, reaksi kulit serius, toksisitas hematologi (label diklofenak tablet).
+- Tetes mata: kemungkinan peningkatan perdarahan jaringan okular pada bedah mata; potensi sensitivitas silang dengan asam asetilsalisilat dan NSAID lain (label diklofenak tetes mata).
+- Keamanan dan efektivitas pada anak belum ditetapkan (kedua label).
+
+**Farmakokinetik** (label diklofenak tablet)
+
+- Bioavailabilitas absolut 55%; waktu mencapai kadar puncak 2,3 jam; volume distribusi 1,4 L/kg; terikat protein serum >99% (terutama albumin).
+- Waktu paruh terminal 2,3 jam; kurang dari 1% diekskresi utuh melalui urin.
+
+**Farmakodinamik** (label diklofenak tablet)
+
+- Analgesik, antiinflamasi, dan antipiretik; menghambat siklooksigenase (COX-1 dan COX-2) sehingga sintesis prostaglandin menurun.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. Diclofenac Sodium Delayed-Release Tablets (Aurobindo Pharma), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=3487033c-7c62-4034-8718-73a7c49b26a0
+4. Diclofenac Sodium Ophthalmic Solution (Bausch & Lomb), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=39dfffb0-612a-48f3-8db5-1a59899b91e9
+
+### 3.130 Oktreotid
+
+**Kalkulator** (IDAI hlm. 66, tertulis "Octreotide")
+
+| Rute | Dosis |
+|---|---|
+| IV | 1 mcg/kg, kemudian 1–5 mcg/kg/jam |
+
+**Sediaan** (FORNAS 2025 hlm. 194, tertulis "oktreotid asetat")
+
+Restriksi FORNAS: untuk kasus perdarahan varises esofagus akut.
+
+| Sediaan | Peresepan maksimal |
+|---|---|
+| Injeksi 0,1 mg/mL | 3 hari |
+
+**Aturan penggunaan**
+
+- Sesuai tabel IDAI dan FORNAS.
+
+**Manfaat obat** (label Sandostatin)
+
+- Menurunkan kadar hormon pertumbuhan dan IGF-1 pada akromegali; mengatasi diare berat dan *flushing* pada tumor karsinoid metastatik; diare cair berlimpah pada VIPoma.
+
+**Efek samping** (label Sandostatin)
+
+- Kelainan kandung empedu (batu dan/atau lumpur empedu) sering terjadi pada terapi kronik.
+- Diare, feses lembek, mual, dan rasa tidak nyaman di perut (34–61% pada pasien akromegali).
+
+**Peringatan** (label Sandostatin)
+
+- Kontraindikasi: sensitivitas terhadap obat atau komponennya.
+- Blok atrioventrikular (termasuk blok total pada pemberian IV) dan gangguan fungsi jantung lain; kolelitiasis dan komplikasinya; hiperglikemia atau hipoglikemia; hipotiroidisme; steatorea; penurunan kadar vitamin B12.
+- Keamanan dan efikasi pada anak belum dibuktikan; pada laporan pascapemasaran terjadi efek serius (hipoksia, enterokolitis nekrotikans, kematian) pada anak, terutama di bawah 2 tahun, dengan hubungan kausal yang belum dapat ditetapkan.
+
+**Farmakokinetik** (label Sandostatin)
+
+- Sekitar 65% terikat di plasma, terutama pada lipoprotein.
+- Waktu paruh eliminasi 1,7–1,9 jam (somatostatin alami 1–3 menit); lama kerja hingga 12 jam; sekitar 32% dosis diekskresi utuh melalui urin.
+
+**Farmakodinamik** (label Sandostatin)
+
+- Analog somatostatin yang menghambat hormon pertumbuhan, glukagon, dan insulin lebih kuat daripada somatostatin; menurunkan aliran darah splanknik dan menghambat pelepasan serotonin, gastrin, VIP, sekretin, motilin, serta polipeptida pankreas.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. Sandostatin (Novartis), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=4e2c9856-1836-49f0-9472-4dbeeb408f39
+
+### 3.131 Rituksimab
+
+**Kalkulator** (IDAI hlm. 68, tertulis "Rituximab"; dosis per luas permukaan tubuh atau dosis tetap)
+
+| Indikasi | Dosis |
+|---|---|
+| Limfoma | 375 mg/m2 iv, 1 kali/minggu, 4 minggu |
+| Rheumatoid arthritis | 1000 mg iv, pemberian 2 dosis jarak 2 minggu |
+| SLE | 350–450 mg/m2/dosis iv, 2–12 dosis |
+
+**Sediaan** (FORNAS 2025 hlm. 91–92; antibodi monoklonal)
+
+Restriksi FORNAS: a) untuk *Diffuse Large B-Cell Lymphoma* (DLBCL) dengan hasil pemeriksaan CD20 positif; atau b) untuk terapi *Chronic Lymphocytic Leukemia* (CLL) dengan hasil pemeriksaan CD20 positif.
+
+| Sediaan | Peresepan maksimal |
+|---|---|
+| Injeksi 10 mg/mL | 375 mg/m2 setiap 3 minggu, maks 6 siklus |
+
+**Aturan penggunaan**
+
+- Sesuai tabel IDAI dan FORNAS.
+- Pantau ketat selama infus; reaksi infus berat umumnya terjadi pada infus pertama (label Rituxan).
+
+**Manfaat obat** (label Rituxan)
+
+- Pada anak usia 6 bulan ke atas: DLBCL, limfoma Burkitt, limfoma mirip Burkitt, atau leukemia akut sel B matur stadium lanjut CD20 positif yang belum diobati, dikombinasikan dengan kemoterapi.
+- Pada anak usia 2 tahun ke atas dan dewasa: granulomatosis dengan poliangiitis (GPA) dan poliangiitis mikroskopik (MPA), bersama glukokortikoid.
+- Pada dewasa: limfoma non-Hodgkin, CLL, artritis reumatoid, dan pemfigus vulgaris.
+
+**Efek samping** (label Rituxan)
+
+- Tersering (≥25%) pada NHL: reaksi infus, demam, limfopenia, menggigil, infeksi, dan astenia; pada CLL: reaksi infus dan neutropenia.
+
+**Peringatan** (label Rituxan)
+
+- Peringatan berbingkai: reaksi infus fatal; reaksi mukokutan berat; reaktivasi virus hepatitis B; *progressive multifocal leukoencephalopathy* (PML).
+- Kontraindikasi: tidak ada.
+- Sindrom lisis tumor; infeksi serius; efek samping kardiovaskular; toksisitas ginjal; obstruksi dan perforasi usus; vaksin virus hidup tidak dianjurkan sebelum atau selama terapi.
+
+**Farmakokinetik** (label Rituxan)
+
+- Median waktu paruh terminal 22 hari (rentang 6,1–52 hari) pada NHL dan 32 hari (rentang 14–62 hari) pada CLL.
+
+**Farmakodinamik** (label Rituxan)
+
+- Antibodi monoklonal terhadap antigen CD20 pada limfosit pre-B dan B matur; setelah berikatan, memicu lisis sel B melalui sitotoksisitas yang bergantung komplemen (CDC) dan sitotoksisitas seluler yang bergantung antibodi (ADCC).
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. Rituxan (Genentech), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=b172773b-3905-4a1c-ad95-bab4b6126563
+
+### 3.132 Fluorourasil
+
+**Kalkulator** (IDAI hlm. 34, tertulis "5 – Flurouracil"; dosis per luas permukaan tubuh)
+
+| Indikasi | Dosis |
+|---|---|
+| Ca Pancreas/Squamus Carsinoma | 1000 mg/m2, intravenous, hari 1–4, diulangi tiap 3–4 minggu |
+
+**Sediaan** (FORNAS 2025 hlm. 74–75; antikanker)
+
+Restriksi FORNAS: untuk kanker kepala dan leher, saluran cerna, payudara, leher rahim.
+
+| Sediaan | Peresepan maksimal |
+|---|---|
+| Injeksi 50 mg/mL | Untuk nasofaring: 1.000 mg/m²/hari selama seminggu. Untuk kolorektal: 2.800 mg/m²/46 jam diulang tiap 2 minggu |
+
+**Aturan penggunaan**
+
+- Sesuai tabel IDAI dan FORNAS.
+- Lakukan uji varian genetik DPYD sebelum memulai, kecuali terapi segera diperlukan (label fluorourasil).
+
+**Manfaat obat** (label fluorourasil)
+
+- Adenokarsinoma kolon dan rektum, payudara, lambung, dan pankreas.
+
+**Efek samping** (label fluorourasil)
+
+- Diare berat, sindrom tangan-kaki (eritrodisestesia palmar-plantar), mielosupresi (nadir neutrofil hari 9–14), mukositis/stomatitis, kardiotoksisitas, ensefalopati hiperamonemia, dan toksisitas neurologis.
+
+**Peringatan** (label fluorourasil)
+
+- Peringatan berbingkai: peningkatan risiko efek samping serius atau kematian pada defisiensi DPD total.
+- Kontraindikasi: tidak ada.
+- Kardiotoksisitas; ensefalopati hiperamonemia; toksisitas neurologis; peningkatan INR bila digunakan bersama warfarin; toksisitas embrio-janin.
+- Keamanan dan efektivitas pada anak belum ditetapkan.
+
+**Farmakokinetik** (label fluorourasil)
+
+- Terdistribusi ke seluruh tubuh termasuk mukosa usus, sumsum tulang, hati, cairan serebrospinal, dan jaringan otak.
+- Setelah suntikan IV bolus, 5–20% diekskresi utuh melalui urin dalam 6 jam; sisanya dimetabolisme terutama di hati; waktu paruh eliminasi 8–20 menit (meningkat sesuai dosis).
+
+**Farmakodinamik** (label fluorourasil)
+
+- Penghambat metabolik nukleosida yang mengganggu sintesis DNA dan, dalam derajat lebih kecil, pembentukan RNA; metabolit aktifnya menghambat timidilat sintase serta tergabung ke dalam RNA dan DNA.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. Fluorouracil Injection (Alembic Pharmaceuticals), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=6b34cbf2-66f9-48a4-b41f-deb84ba8e8c4
+
+### 3.133 Tenofovir Disoproksil Fumarat + Emtrisitabin
+
+**Kalkulator** (IDAI hlm. 49, tertulis "Emtricitabin 200 mg + tenofovir 300 mg")
+
+| Usia | Dosis |
+|---|---|
+| ≥16 thn | 1 tab/hari, oral |
+
+**Sediaan** (FORNAS 2025 hlm. 54–55; KDT/FDC tenofovir disoproksil fumarat 300 mg + emtrisitabin 200 mg)
+
+Catatan FORNAS: disediakan oleh Program Kemenkes. Restriksi FORNAS: a) sebagai profilaksis pra-pajanan (PrEP) oral untuk orang berisiko tinggi terinfeksi HIV; b) dapat diberikan oleh FPKTP yang memiliki kemampuan pengobatan antiretroviral dengan persyaratan memiliki SK Penunjukan sebagai unit pelayanan yang berhak memberikan obat ARV dari Dinas Kesehatan setempat dan sudah mendapatkan pelatihan PrEP.
+
+| Sediaan | Peresepan maksimal |
+|---|---|
+| Tablet | – |
+
+**Aturan penggunaan**
+
+- Sesuai tabel IDAI.
+- Untuk PrEP, hanya diberikan kepada individu yang terkonfirmasi HIV negatif sesaat sebelum memulai dan minimal setiap 3 bulan selama penggunaan; periksa infeksi hepatitis B sebelum atau saat memulai (label Truvada).
+
+**Manfaat obat** (label Truvada)
+
+- Pengobatan infeksi HIV-1, dikombinasikan dengan antiretroviral lain, pada dewasa dan anak dengan berat badan minimal 17 kg.
+- Profilaksis pra-pajanan (PrEP) pada dewasa dan remaja berisiko dengan berat badan minimal 35 kg.
+
+**Efek samping** (label Truvada)
+
+- Tersering (≥10%, semua derajat) pada uji pengobatan HIV: diare, mual, kelelahan, sakit kepala, pusing, depresi, insomnia, mimpi abnormal, dan ruam; hiperpigmentasi kulit 3%.
+
+**Peringatan** (label Truvada)
+
+- Peringatan berbingkai: eksaserbasi akut hepatitis B berat setelah penghentian pada pasien dengan infeksi HBV; risiko resistansi obat bila digunakan untuk PrEP pada infeksi HIV-1 dini yang tidak terdiagnosis.
+- Kontraindikasi: penggunaan untuk PrEP pada individu dengan status HIV-1 tidak diketahui atau positif.
+- Gangguan ginjal baru atau memburuk (termasuk sindrom Fanconi); penurunan densitas mineral tulang; sindrom rekonstitusi imun; asidosis laktat dan hepatomegali berat dengan steatosis.
+
+**Farmakokinetik** (label Truvada)
+
+- Emtrisitabin: diabsorpsi cepat (puncak 1–2 jam), ikatan protein <4%, sekitar 86% ditemukan di urin, waktu paruh plasma sekitar 10 jam.
+- Tenofovir: kadar puncak serum dalam 1,0 ± 0,4 jam, ikatan protein <0,7%, 70–80% dosis IV diekskresi utuh melalui urin.
+
+**Farmakodinamik** (label Truvada)
+
+- Emtrisitabin (analog sitidin) dan tenofovir (analog adenosin monofosfat) difosforilasi menjadi bentuk aktif yang menghambat reverse transcriptase HIV-1 dengan berkompetisi dengan substrat alami dan menghentikan pemanjangan rantai DNA.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. Truvada (Gilead Sciences), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=54e82b13-a037-49ed-b4b3-030b37c0ecdd

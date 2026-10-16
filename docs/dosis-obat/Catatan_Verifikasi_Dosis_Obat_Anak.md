@@ -1216,3 +1216,29 @@ Obat: desoksimetason, etanercept, imunoglobulin intravena, imunoglobulin hepatit
   - vinblastin: IDAI 6,5 mg/m² setiap 1–4 minggu; FORNAS 6 mg/m² setiap 2 minggu;
   - etanercept: FORNAS untuk pJIA usia 4–17 tahun, label Enbrel untuk pJIA usia ≥2 tahun;
   - imunoglobulin hepatitis B: FORNAS 100–220 IU, IDAI 200 U untuk bayi; label HyperHEP B menyatakan keamanan pada anak belum ditetapkan.
+
+## Batch 14 (draf 0.17, 16 Oktober 2026)
+
+Obat: abakavir, klonidin, karvedilol, natrium diklofenak, oktreotid, rituksimab, fluorourasil, tenofovir disoproksil fumarat + emtrisitabin (8 obat).
+
+- Keputusan pemilik (16 Oktober 2026): klorfeniramin dan loratadin dikeluarkan (label DailyMed hanya OTC tanpa farmakokinetik/farmakodinamik).
+- Penelusuran ulang indeks IDAI: pencocokan nama sebelumnya melewatkan entri berejaan Inggris (C/K, misalnya "Clonidin", "Carvedilol", "Octreotide"). Daftar sisa kini dicocokkan dengan ejaan FORNAS.
+- Kutipan IDAI dan FORNAS: 20 dari 20 cocok dengan teks sumber; halaman IDAI dan FORNAS juga dicek pada gambar halaman.
+- Batal dimasukkan karena teks IDAI tidak jelas:
+  - selekoksib (hlm. 44): "25-50 kg: 200 mg ... (maks 200 mg/hari), per oral, 12 jam" saling bertentangan;
+  - filgrastim (hlm. 51, tertulis "Filgastrim"): "5 mg/kgbb/12 jam" (satuan janggal);
+  - sisplatin (hlm. 44): jadwal "Minggu ke 1, 2,3,4,5,6, tiap minggu" rancu;
+  - sitarabin (hlm. 45): "75 mg/m2, injeksi intravena" tanpa frekuensi;
+  - klobetasol (hlm. 44): IDAI sendiri menyatakan penggunaan pada anak <18 tahun tidak disarankan;
+  - noradrenalin (hlm. 66): pelarut "D50%" janggal untuk pengenceran infus.
+- Batal karena sumber tidak lengkap: kloral hidrat (tidak ada label resep di DailyMed); faktor VIIa, faktor IX, dan faktor von Willebrand (IDAI hanya mencantumkan sediaan atau tidak ada di FORNAS); faktor VIII (IDAI tanpa dosis; rumus FORNAS ditunda karena letaknya pada tabel perlu ditinjau).
+- Bagian yang tidak dimasukkan:
+  - diklofenak (IDAI hlm. 47): baris pertama "0.5-1 mg/kg 8-12 jam oral, PR" tanpa indikasi; gel topikal 1%/3% tidak ada di FORNAS;
+  - abakavir: kombinasi IDAI (abakavir 600 mg + lamivudin 300 mg; abakavir + lamivudin + zidovudin) tidak ada di FORNAS; kombinasi FORNAS abakavir 120 mg + lamivudin 60 mg (hlm. 54) tidak memiliki dosis di IDAI maupun FORNAS;
+  - emtrisitabin tunggal (IDAI hlm. 49) tidak ada di FORNAS;
+  - oktreotid LAR (FORNAS hlm. 110 dan 149) dan oktreotid radiofarmaka (hlm. 129) tidak dimasukkan; dosis LAR akromegali tertulis "150 mg/hari selama 2 minggu" (satuan tidak jelas).
+- Perbedaan sumber yang ditampilkan apa adanya:
+  - rituksimab: IDAI limfoma 375 mg/m² setiap minggu selama 4 minggu; FORNAS 375 mg/m² setiap 3 minggu, maks 6 siklus;
+  - tenofovir + emtrisitabin: FORNAS hanya untuk PrEP, sedangkan IDAI tidak menyebut indikasi;
+  - fluorourasil: IDAI untuk kanker pankreas/karsinoma skuamosa, FORNAS untuk kanker kepala-leher, saluran cerna, payudara, leher rahim;
+  - karvedilol, klonidin, diklofenak, fluorourasil: label menyatakan keamanan/efektivitas pada anak belum ditetapkan.
