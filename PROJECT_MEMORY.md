@@ -782,6 +782,12 @@ File ini adalah sumber kebenaran tunggal untuk status, keputusan, dan serah teri
   - Verifikasi IDAI/FORNAS 32/32 cocok plus cek gambar halaman; catatan batch 7 (termasuk konflik nifedipin sublingual IDAI vs peringatan label) di Catatan_Verifikasi_Dosis_Obat_Anak.md.
   - Sisa sekitar 9 batch (sekitar 87 obat).
 - Pelaksana aktif Claude Code (PC 2) sesi Dosis Obat: dilepas setelah publikasi draf 0.10.
+- Checkpoint draf 0.11 (16 Oktober 2026, batch 8, 78 obat):
+  - Obat baru 3.69–3.78: deferoksamin, deferipron, levotiroksin, propiltiourasil, tiamazol, kalium klorida, lisinopril, metformin, asetilsistein, tiamin. Fenitoin dan karbamazepin ditunda (hanya ada di tabel ginjal IDAI).
+  - Verifikasi IDAI/FORNAS 28/28 cocok plus cek gambar halaman; catatan batch 8 di Catatan_Verifikasi_Dosis_Obat_Anak.md.
+  - Skrip build DOCX (toc.ps1 di scratchpad) kini menyimpan dan memulihkan opsi cek ejaan Word; opsi Word pengguna dipulihkan ke aktif setelah sempat mati akibat build batch 6–7.
+  - Sisa sekitar 8 batch.
+- Pelaksana aktif Claude Code (PC 2) sesi Dosis Obat: dilepas setelah publikasi draf 0.11.
 
 ## Integrasi Scoping Review - Codex, 2026-10-13
 - Pelaksana aktif: Codex sesi Scoping Review. Fokus: 21 PDF, 6 kelompok/kuis dari draf pengguna, lulus80, gratis kelompok1. Berkas: prisma/scoping-chapters.ts, render-scoping-pages.py, tests/scoping-http.mjs, lib/srma-progression.ts, lib/pdf-pages.ts, halaman kelas/materi/quiz, launcher, docs/SCOPING_KURIKULUM.md. HEAD/origin2665c79 identik setelah fetch. Tidak mengubah desain lokal atau dokumen dosis obat Claude aktif. Runtime PC2 terakhir build NLR; build baru akan dibuat terpisah, database diimpor terarah.

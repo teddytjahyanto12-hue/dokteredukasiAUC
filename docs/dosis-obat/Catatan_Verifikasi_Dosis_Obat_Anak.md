@@ -1074,3 +1074,26 @@ Obat: propranolol, nifedipin, amlodipin, hidroklorotiazid, laktulosa, ipratropiu
 - Halaman cetak hidroklorotiazid sempat tertulis hlm. 54 di draf kerja; diperbaiki menjadi hlm. 53 setelah verifikasi otomatis gagal dan gambar halaman dicek.
 - Morfin oral (batch 5), diazepam (batch 6), dan midazolam (batch 7) memakai baris dari kolom dosis normal tabel ginjal IDAI karena tidak ada di daftar dosis utama; mohon pemilik menilai apakah baris tersebut dapat dipakai sebagai dosis kalkulator.
 
+---
+
+## Batch 8 (draf 0.11, 16 Oktober 2026)
+
+Obat: deferoksamin, deferipron, levotiroksin, propiltiourasil, tiamazol (metimazol), kalium klorida, lisinopril, metformin, asetilsistein, tiamin.
+
+- Fenitoin dan karbamazepin semula direncanakan, tetapi di IDAI keduanya hanya ada di tabel ginjal (tidak ada di daftar dosis utama). Sambil menunggu keputusan pemilik tentang baris dari kolom dosis normal tabel ginjal, keduanya ditunda dan diganti deferoksamin serta deferipron.
+- Kutipan IDAI dan FORNAS: 28 dari 28 cocok dengan teks sumber; halaman IDAI dan FORNAS juga dicek pada gambar halaman.
+- Penulisan buku yang disalin apa adanya:
+  - nama entri IDAI hlm. 45 tercetak "Deferioksamin"; tabel ginjal hlm. 81 tercetak "Desferoxamine";
+  - tiroksin (IDAI hlm. 71): "dibulatkan ke perempat tab terdekatk";
+  - asetilsistein (IDAI hlm. 37): ambang ketiga tertulis ">32.5 mg pada 12 jam" (tanpa "/L").
+- Dosis FORNAS dipakai untuk deferoksamin injeksi 500 mg (<3 tahun 20–30 mg/kgBB/hari; >3 tahun 40–60 mg/kgBB/hari; maks 5–7 hari) dan deferipron (50–75 mg/kgBB/hari), dengan label asal FORNAS.
+- **Perlu perhatian pemilik:**
+  - FORNAS mencantumkan dosis deferoksamin untuk anak <3 tahun, sedangkan label Desferal menyatakan keamanan dan efektivitas pada anak <3 tahun belum ditetapkan dan penggunaannya tidak dianjurkan kecuali mobilisasi besi bermakna dapat dibuktikan. Keduanya ditampilkan sesuai sumbernya.
+  - Label Ferriprox: pada talasemia, keamanan dan efektivitas anak ditetapkan untuk usia 8 tahun ke atas.
+  - Label propiltiourasil: tidak dianjurkan pada anak kecuali metimazol tidak dapat ditoleransi (peringatan berbingkai cedera hati).
+  - Levotiroksin, propiltiourasil (>10 tahun), dan tabel ginjal propiltiourasil memakai dosis per m2; menunggu keputusan pemilik tentang cara hitung luas permukaan tubuh.
+  - Kalium: dosis IDAI berupa larutan (tanpa rute tertulis), sedangkan FORNAS hanya mencantumkan tablet lepas lambat 600 mg; label yang dipakai adalah label tablet oral.
+  - Tiamin: FORNAS hanya mencantumkan tablet 50 mg, sedangkan label DailyMed yang tersedia untuk tiamin resep adalah sediaan injeksi; label injeksi dipakai untuk manfaat, efek samping, peringatan, farmakokinetik, dan farmakodinamik.
+- Penomoran FORNAS deferipron hlm. 117 tertulis "2." dua kali (tablet lepas lambat dan sirup); disalin sebagai tiga baris sediaan.
+- Sediaan FORNAS yang tidak dimasukkan: kalium klorida dalam tetes mata kombinasi (hlm. 177); kalium aspartat (zat berbeda).
+

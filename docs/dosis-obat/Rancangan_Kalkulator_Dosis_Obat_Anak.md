@@ -1,6 +1,6 @@
 # Kalkulator Dosis Obat Anak
 
-Draf 0.10, 16 Oktober 2026 (68 obat). Materi untuk ditinjau pemilik; belum diterapkan di website.
+Draf 0.11, 16 Oktober 2026 (78 obat). Materi untuk ditinjau pemilik; belum diterapkan di website.
 
 ---
 
@@ -4735,3 +4735,606 @@ Restriksi FORNAS: dapat digunakan untuk premedikasi sebelum induksi anestesi dan
 1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
 2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
 3. PREVACID (lansoprazole) delayed-release capsules and SoluTab (Takeda Pharmaceuticals America), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=71ba78cb-7e46-43eb-9425-fa130f537f84
+
+---
+
+### 3.69 Deferoksamin
+
+**Kalkulator berat badan**
+
+| Keadaan | Dosis | Sumber |
+|---|---|---|
+| SK | 30–50 mg/kg/hari, 5–7x/minggu, 8–12 jam SK | IDAI hlm. 45 (tertulis "Deferioksamin") |
+| Injeksi 500 mg, anak usia <3 tahun | 20–30 mg/kgBB/hari, maks 5–7 hari | FORNAS hlm. 117–118 |
+| Injeksi 500 mg, usia >3 tahun | 40–60 mg/kgBB/hari, maks 5–7 hari | FORNAS hlm. 118 |
+
+**Penyesuaian dosis pada penyakit ginjal** (IDAI hlm. 81, tertulis "Desferoxamine")
+
+| Dosis normal | Dosis (D)/Interval (I) | LFG >50 | LFG 10–50 | LFG <10 | HD | PD |
+|---|---|---|---|---|---|---|
+| 10–15 mg/kg/jam iv utk 12–24 jam | D | 100% | 75% | 50% | tak ada data | tak ada data |
+
+**Sediaan** (FORNAS 2025 hlm. 117–118; obat untuk kelebihan besi)
+
+| Sediaan | Peresepan maksimal |
+|---|---|
+| Injeksi 500 mg | Dosis anak usia <3 tahun: 20–30 mg/kgBB/hari, maks 5–7 hari. Dosis usia >3 tahun: 40–60 mg/kgBB/hari, maks 5–7 hari |
+
+**Aturan penggunaan**
+
+- Sesuai tabel IDAI dan FORNAS.
+- Diberikan IM, atau infus SK atau IV perlahan; reaksi hipersensitivitas biasanya terjadi pada suntikan IV cepat (label Desferal).
+
+**Manfaat obat** (label Desferal)
+
+- Tambahan pada tata laksana standar keracunan besi akut.
+- Kelebihan besi akibat transfusi pada pasien anemia kronik.
+- Tidak diindikasikan untuk hemokromatosis primer.
+
+**Efek samping** (label Desferal)
+
+- Reaksi di tempat suntikan: iritasi, nyeri, rasa terbakar, bengkak, indurasi, gatal, kemerahan, bintul; dapat disertai reaksi sistemik (artralgia, demam, sakit kepala, mialgia, mual).
+- Reaksi alergi: ruam menyeluruh, urtikaria, anafilaksis dengan atau tanpa syok, angioedema.
+- Gangguan penglihatan dan pendengaran (lihat Peringatan); gangguan ginjal; gangguan pertumbuhan pada anak.
+
+**Peringatan** (label Desferal)
+
+- Kontraindikasi: riwayat hipersensitivitas terhadap deferoksamin; penyakit ginjal berat atau anuria.
+- Keamanan dan efektivitas pada anak di bawah 3 tahun belum ditetapkan; mobilisasi besi relatif buruk pada usia ini dan penggunaannya tidak dianjurkan kecuali mobilisasi besi yang bermakna dapat dibuktikan.
+- Toksisitas mata (penglihatan kabur, katarak, penurunan visus, gangguan lapang pandang dan penglihatan warna) dan telinga (tinitus, gangguan pendengaran frekuensi tinggi); risiko meningkat pada terapi lama, dosis tinggi, atau feritin rendah. Lakukan pemeriksaan mata dan audiometri berkala.
+- Dosis tinggi dengan feritin rendah dikaitkan dengan gangguan pertumbuhan pada anak; pantau berat dan tinggi badan setiap 3 bulan.
+- Sindrom distres napas akut pada dosis IV yang terlalu tinggi; dosis harian anjuran tidak boleh dilampaui.
+- Meningkatkan risiko infeksi *Yersinia* dan mukormikosis.
+- Disfungsi jantung pada kelebihan besi berat bila bersama vitamin C dosis tinggi.
+
+**Farmakokinetik** (label Desferal)
+
+- Dimetabolisme terutama oleh enzim plasma.
+- Kelat besi mudah larut dalam air dan mudah melewati ginjal sehingga urin berwarna kemerahan; sebagian juga dikeluarkan di feses melalui empedu.
+
+**Farmakodinamik** (label Desferal)
+
+- Mengikat besi membentuk kompleks stabil sehingga besi tidak ikut dalam reaksi kimia lebih lanjut.
+- Mudah mengikat besi dari feritin dan hemosiderin, tetapi tidak mudah dari transferin, dan tidak mengikat besi dari sitokrom dan hemoglobin.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. DESFERAL (deferoxamine mesylate) for injection (Novartis), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=a7174843-5965-49fc-b842-f7eff7b48bbc
+
+---
+
+### 3.70 Deferipron
+
+**Kalkulator berat badan**
+
+| Keadaan | Dosis | Sumber |
+|---|---|---|
+| Oral | 25 mg/kg 8 jam (maks 100 mg/kg/hari) | IDAI hlm. 45 |
+| Tablet salut selaput 500 mg, tablet salut enterik pelepasan lambat 1.000 mg, sirup 100 mg/mL | 50–75 mg/kgBB/hari | FORNAS hlm. 116–117 |
+
+**Sediaan** (FORNAS 2025 hlm. 116–117; obat untuk kelebihan besi)
+
+| Sediaan | Peresepan maksimal | Restriksi |
+|---|---|---|
+| Tablet salut selaput 500 mg | 50–75 mg/kgBB/hari | a) Untuk terapi kelasi besi. b) Terapi awal harus ditentukan oleh dokter yang memiliki kompetensi di bidang ilmu hematologi onkologi anak atau hematologi onkologi medik dewasa. |
+| Tablet salut enterik pelepasan lambat 1.000 mg | 50–75 mg/kgBB/hari | a) Untuk terapi kelasi besi. b) Terapi awal harus ditentukan oleh dokter yang memiliki kompetensi di bidang ilmu hematologi onkologi anak atau hematologi onkologi medik dewasa. |
+| Sirup 100 mg/mL | 50–75 mg/kgBB/hari, maks 1 btl/bulan | Terapi awal harus ditentukan oleh dokter yang memiliki kompetensi di bidang ilmu hematologi onkologi anak atau hematologi onkologi medik dewasa. |
+
+**Aturan penggunaan**
+
+- Sesuai tabel IDAI dan FORNAS.
+- Periksa hitung neutrofil absolut sebelum memulai dan pantau secara teratur selama terapi (label Ferriprox).
+
+**Manfaat obat** (label Ferriprox)
+
+- Kelebihan besi akibat transfusi pada pasien dewasa dan anak usia 8 tahun ke atas dengan sindrom talasemia, penyakit sel sabit, atau anemia lain.
+
+**Efek samping** (label Ferriprox)
+
+- Tersering (≥6%): mual, muntah, nyeri perut, artralgia, kenaikan ALT, neutropenia.
+- Kenaikan ALT pada 7,5% pasien talasemia dalam uji klinis.
+- Urin berwarna kemerahan/cokelat akibat ekskresi besi.
+- Penurunan kadar seng plasma.
+
+**Peringatan** (label Ferriprox)
+
+- Peringatan berbingkai: dapat menyebabkan agranulositosis yang berujung infeksi serius dan kematian; neutropenia dapat mendahuluinya. Hentikan sementara bila timbul neutropenia atau infeksi, dan pantau hitung neutrofil lebih sering.
+- Agranulositosis terjadi pada 1% pasien talasemia dalam uji klinis gabungan.
+- Kontraindikasi: hipersensitivitas terhadap deferipron atau eksipien (pernah dilaporkan purpura Henoch-Schönlein, urtikaria, dan edema periorbital dengan ruam).
+- Pantau kadar seng plasma setiap tahun.
+- Toksisitas embrio-janin; diperlukan kontrasepsi efektif.
+- Pada talasemia, keamanan dan efektivitas pada anak telah ditetapkan untuk usia 8 tahun ke atas; pada penyakit sel sabit atau anemia lain telah ditetapkan untuk usia 3–16 tahun.
+
+**Farmakokinetik** (label Ferriprox)
+
+- Kadar puncak serum sekitar 2 jam setelah dosis tunggal (tablet dua kali sehari, kondisi puasa); makanan tinggi lemak tidak mengubah Cmax dan AUC.
+- Waktu paruh eliminasi rata-rata 1,8 jam.
+- Dimetabolisme terutama oleh UGT1A6 menjadi 3-O-glukuronida yang tidak mengikat besi; 75–90% dosis keluar di urin (terutama sebagai metabolit) dalam 24 jam pertama.
+
+**Farmakodinamik** (label Ferriprox)
+
+- Pengkelat dengan afinitas terhadap ion feri (besi III); membentuk kompleks netral 3:1 (deferipron:besi) yang stabil pada pH fisiologis.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. FERRIPROX (deferiprone) tablets (Chiesi USA), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=946718ff-df43-1baa-74d1-e5bcfbe8ad86
+
+---
+
+### 3.71 Levotiroksin
+
+**Kalkulator** (IDAI hlm. 71, tertulis "Tiroksin"; dosis per luas permukaan tubuh)
+
+| Rute | Dosis |
+|---|---|
+| Oral | 500 mcg tab. 100 mcg/m2 dibulatkan ke perempat tab terdekatk, 1x/hari |
+| IV | 50 mcg/m2/hari |
+
+**Sediaan** (FORNAS 2025 hlm. 147–148)
+
+| Sediaan | Peresepan maksimal |
+|---|---|
+| Tablet 25 mcg | – |
+| Tablet 50 mcg | Untuk substitusi 150–200 mcg/hari. 90 tab/bulan |
+| Tablet 100 mcg | 60 tab/bulan |
+| Tablet 150 mcg | 60 tab/bulan |
+
+**Aturan penggunaan**
+
+- Diberikan 1 kali sehari (IDAI).
+- Diminum saat perut kosong, setengah sampai satu jam sebelum sarapan; beri jarak sedikitnya 4 jam dari obat yang mengganggu penyerapannya (label Synthroid).
+- Untuk anak yang tidak dapat menelan tablet utuh: tablet dihancurkan, disuspensikan dalam 5–10 mL air, dan segera diberikan dengan sendok atau pipet; suspensi tidak boleh disimpan (label Synthroid).
+
+**Manfaat obat** (label Synthroid)
+
+- Terapi pengganti pada hipotiroidisme primer, sekunder, dan tersier, kongenital maupun didapat, pada dewasa dan anak termasuk neonatus.
+- Tambahan pada pembedahan dan terapi radioiodin untuk kanker tiroid berdiferensiasi baik yang bergantung TSH.
+- Pada hipotiroidisme kongenital, terapi dimulai segera setelah diagnosis untuk mencegah dampak pada perkembangan kognitif dan pertumbuhan.
+
+**Efek samping** (label Synthroid)
+
+- Terutama gejala hipertiroidisme akibat dosis berlebih: lelah, nafsu makan meningkat, berat badan turun, intoleransi panas, demam, berkeringat; sakit kepala, hiperaktivitas, gelisah, cemas, mudah marah, insomnia; tremor, kelemahan otot; palpitasi, takikardia, aritmia; sesak; diare, muntah; rambut rontok; gangguan haid.
+- Pada anak: pseudotumor serebri dan pergeseran epifisis kaput femoris pernah dilaporkan. Dosis berlebih dapat menyebabkan kraniosinostosis pada bayi dan penutupan epifisis dini.
+
+**Peringatan** (label Synthroid)
+
+- Peringatan berbingkai: tidak untuk mengobati obesitas atau menurunkan berat badan; dosis besar dapat menimbulkan toksisitas serius.
+- Kontraindikasi: insufisiensi adrenal yang belum dikoreksi.
+- Indeks terapi sempit. Pada anak, dosis kurang dapat mengganggu perkembangan kognitif dan pertumbuhan linear, dan dosis berlebih berkaitan dengan kraniosinostosis dan percepatan usia tulang.
+- Pantau bayi dengan ketat pada 2 minggu pertama terapi untuk beban jantung berlebih dan aritmia.
+- Dapat mencetuskan krisis adrenal pada insufisiensi adrenal; dapat memperburuk kendali gula darah pada diabetes.
+
+**Farmakokinetik** (label Synthroid)
+
+- Penyerapan T4 oral 40–80%, terutama di jejunum dan ileum atas; meningkat saat puasa dan menurun oleh makanan tertentu (misalnya kedelai) serta serat.
+- Lebih dari 99% hormon tiroid dalam sirkulasi terikat protein plasma; hanya hormon bebas yang aktif.
+- T4 dieliminasi lambat, terutama melalui deiodinasi bertahap; sekitar 80% T3 dalam sirkulasi berasal dari T4 di jaringan perifer.
+
+**Farmakodinamik** (label Synthroid)
+
+- Hormon tiroid bekerja melalui pengaturan transkripsi DNA dan sintesis protein: T3 dan T4 masuk ke inti sel dan berikatan dengan reseptor tiroid pada DNA, mengaktifkan transkripsi gen.
+- Efek fisiologis terutama diperantarai T3.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. SYNTHROID (levothyroxine sodium) tablets (AbbVie), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=1e11ad30-1041-4520-10b0-8f9d30d30fcc
+
+---
+
+### 3.72 Propiltiourasil
+
+**Kalkulator** (IDAI hlm. 68)
+
+| Usia | Dosis |
+|---|---|
+| Bayi | 5–10 mg/kg |
+| 6–10 thn | 150–300 mg |
+| >10 thn | 150 mg/m2 |
+
+**Penyesuaian dosis pada penyakit ginjal** (IDAI hlm. 88, tertulis "Propythiouracil")
+
+| Dosis normal | Dosis (D)/Interval (I) | LFG >50 | LFG 10–50 | LFG <10 | HD | PD |
+|---|---|---|---|---|---|---|
+| 50 mg/m2/dosis q8 jam po | D | 100% | 100% | 100% | Tak ada data | Tak ada data |
+
+**Sediaan** (FORNAS 2025 hlm. 148)
+
+| Sediaan | Peresepan maksimal |
+|---|---|
+| Tablet 100 mg | Untuk bulan pertama maks 180 tab/bulan |
+
+**Aturan penggunaan**
+
+- Sesuai tabel IDAI.
+- Pasien atau orang tua perlu diberi tahu risiko gagal hati; hentikan segera dan periksa hitung leukosit serta fungsi hati bila timbul lelah, mual, anoreksia, demam, faringitis, atau malaise (label propiltiourasil).
+
+**Manfaat obat** (label propiltiourasil)
+
+- Hipertiroidisme pada penyakit Graves atau struma multinodular toksik pada pasien yang tidak dapat menoleransi metimazol dan tidak sesuai untuk pembedahan atau terapi radioiodin.
+- Meredakan gejala hipertiroidisme sebagai persiapan tiroidektomi atau terapi radioiodin pada pasien yang tidak dapat menoleransi metimazol.
+
+**Efek samping** (label propiltiourasil)
+
+- Berat: cedera hati (hepatitis, gagal hati yang memerlukan transplantasi atau berakibat kematian).
+- Hambatan mielopoiesis (agranulositosis, granulopenia, anemia aplastik, trombositopenia), demam obat, sindrom mirip lupus, periarteritis, hipoprotrombinemia dan perdarahan.
+- Nefritis, glomerulonefritis, pneumonitis interstisial, dermatitis eksfoliatif, eritema nodosum; vaskulitis terkait ANCA.
+
+**Peringatan** (label propiltiourasil)
+
+- Peringatan berbingkai: cedera hati berat dan gagal hati akut, kadang fatal, termasuk kasus yang memerlukan transplantasi hati pada dewasa dan anak. Propiltiourasil disimpan untuk pasien yang tidak dapat menoleransi metimazol dan tidak sesuai untuk radioiodin atau pembedahan.
+- Tidak dianjurkan pada anak kecuali dalam keadaan jarang ketika metimazol tidak dapat ditoleransi dan pembedahan atau radioiodin tidak sesuai; tidak ada laporan gagal hati serupa dengan metimazol pada anak.
+- Agranulositosis pada sekitar 0,2–0,5% pasien, biasanya dalam 3 bulan pertama; minta pasien segera melapor bila demam atau nyeri tenggorok.
+- Vaskulitis dengan komplikasi berat dan kematian; hipotiroidisme.
+- Kontraindikasi: hipersensitivitas terhadap obat atau komponen produk.
+
+**Farmakokinetik** (label propiltiourasil)
+
+- Mudah diserap dan dimetabolisme luas; sekitar 35% dosis dikeluarkan di urin dalam bentuk utuh dan terkonjugasi dalam 24 jam.
+
+**Farmakodinamik** (label propiltiourasil)
+
+- Menghambat sintesis hormon tiroid; tidak menonaktifkan tiroksin dan triiodotironin yang sudah tersimpan atau beredar.
+- Menghambat konversi tiroksin menjadi triiodotironin di jaringan perifer.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. Propylthiouracil Tablets, USP (Par Health), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=b0c23a2c-b250-4c0d-9b2a-c1483faa2ca0
+
+---
+
+### 3.73 Tiamazol (metimazol)
+
+**Kalkulator berat badan** (IDAI hlm. 62, tertulis "Metimazol")
+
+| Rute | Dosis |
+|---|---|
+| Oral | 0,3–1 mg/kg/hari, turunkan menjadi 0,1–0,5 mg/kg/hari |
+
+**Penyesuaian dosis pada penyakit ginjal** (IDAI hlm. 86, tertulis "Methimazole")
+
+| Dosis normal | Dosis (D)/Interval (I) | LFG >50 | LFG 10–50 | LFG <10 | HD | PD |
+|---|---|---|---|---|---|---|
+| 0,3–1 mg/kg/dosis q24 jam po | D | 100% | 100% | 100% | Tak ada data | Tak ada data |
+
+**Sediaan** (FORNAS 2025 hlm. 148)
+
+| Sediaan | Peresepan maksimal |
+|---|---|
+| Tablet 5 mg | 120 tab/bulan |
+| Tablet 10 mg | Untuk bulan pertama maks 90 tab/bulan |
+
+**Aturan penggunaan**
+
+- Sesuai tabel IDAI.
+- Pasien perlu segera melapor bila nyeri tenggorok, ruam kulit, demam, sakit kepala, atau malaise; periksa hitung leukosit dan hitung jenis (label metimazol).
+
+**Manfaat obat** (label metimazol)
+
+- Hipertiroidisme pada penyakit Graves atau struma multinodular toksik yang tidak sesuai untuk pembedahan atau terapi radioiodin.
+- Meredakan gejala hipertiroidisme sebagai persiapan tiroidektomi atau terapi radioiodin.
+- Pilihan utama bila obat antitiroid diperlukan pada anak, karena laporan cedera hati berat pada anak yang menerima propiltiourasil.
+
+**Efek samping** (label metimazol)
+
+- Berat (jauh lebih jarang): hambatan mielopoiesis (agranulositosis, granulositopenia, trombositopenia, anemia aplastik), demam obat, sindrom mirip lupus, sindrom autoimun insulin (dapat menyebabkan koma hipoglikemia), hepatitis, periarteritis, hipoprotrombinemia; nefritis sangat jarang; pankreatitis akut.
+- Ringan: ruam, urtikaria, mual, muntah, nyeri epigastrium, artralgia, parestesia, hilangnya pengecapan, rambut rontok, mialgia, sakit kepala, gatal, mengantuk, edema, vertigo, pigmentasi kulit, ikterus, pembesaran kelenjar ludah dan getah bening.
+- Vaskulitis terkait ANCA dengan komplikasi berat.
+
+**Peringatan** (label metimazol)
+
+- Kontraindikasi: hipersensitivitas terhadap obat atau komponen produk.
+- Agranulositosis berpotensi mengancam jiwa.
+- Hepatotoksisitas termasuk gagal hati akut pernah dilaporkan, tetapi risikonya tampak lebih rendah daripada propiltiourasil, terutama pada anak.
+- Melintasi plasenta dan dapat menyebabkan kelainan bawaan bila diberikan pada trimester pertama kehamilan.
+
+**Farmakokinetik** (label metimazol)
+
+- Mudah diserap dari saluran cerna, dimetabolisme di hati, dan dikeluarkan di urin.
+
+**Farmakodinamik** (label metimazol)
+
+- Menghambat sintesis hormon tiroid; tidak menonaktifkan tiroksin dan triiodotironin yang sudah tersimpan atau beredar, dan tidak mengganggu efektivitas hormon tiroid yang diberikan.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. Methimazole Tablets, USP (Chartwell RX), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=5b25e346-11b6-44ed-89f9-ab927232ac19
+
+---
+
+### 3.74 Kalium klorida
+
+**Kalkulator berat badan** (IDAI hlm. 57, tertulis "Kalium")
+
+| Keadaan | Dosis |
+|---|---|
+| – | 5 mEq/kg/hari, diberikan dalam larutan 20–40 mEq/L, dengan laju maks 0,5 mEq/kg/jam |
+
+**Sediaan** (FORNAS 2025 hlm. 171)
+
+| Sediaan | Peresepan maksimal |
+|---|---|
+| Tablet lepas lambat 600 mg | 180 tab/bulan |
+
+**Aturan penggunaan**
+
+- Sesuai tabel IDAI.
+- Bila kalium serum kurang dari 2,5 mEq/L, gunakan kalium intravena, bukan suplementasi oral (label Klor-Con).
+- Tablet lepas lambat tidak diminum saat perut kosong karena dapat mengiritasi lambung (label Klor-Con).
+
+**Manfaat obat** (label Klor-Con)
+
+- Pengobatan dan pencegahan hipokalemia, dengan atau tanpa alkalosis metabolik, bila pengaturan diet kaya kalium atau pengurangan dosis diuretik tidak mencukupi.
+
+**Efek samping** (label Klor-Con)
+
+- Tersering: mual, muntah, flatulens, nyeri atau rasa tidak nyaman di perut, diare.
+- Hiperkalemia; sumbatan, perdarahan, ulserasi, atau perforasi saluran cerna atas dan bawah; ruam kulit jarang.
+
+**Peringatan** (label Klor-Con)
+
+- Kontraindikasi: pasien yang mendapat triamteren atau amilorid.
+- Sediaan oral padat dapat menimbulkan lesi ulseratif atau stenosis saluran cerna; pertimbangkan sediaan cair pada pasien dengan gangguan menelan atau motilitas berat. Hentikan bila muntah berat, nyeri perut, distensi, atau perdarahan saluran cerna.
+- Gangguan ginjal meningkatkan risiko hiperkalemia, terutama bila bersama penghambat sistem renin-angiotensin-aldosteron atau OAINS; pantau kalium serum sering.
+- Keamanan dan efektivitas pada anak belum ditetapkan.
+
+**Farmakokinetik** (label Klor-Con)
+
+- Diserap sempurna sebelum meninggalkan usus halus; matriks lilin tidak diserap dan keluar bersama feses.
+- Ekskresi kalium urin mulai meningkat 1 jam setelah pemberian, puncak sekitar 4 jam, dan berlangsung hingga 8 jam.
+
+**Farmakodinamik** (label Klor-Con)
+
+- Kalium adalah kation intrasel utama; berperan dalam tonisitas intrasel, transmisi impuls saraf, kontraksi otot jantung, rangka, dan polos, serta fungsi ginjal normal.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. KLOR-CON (potassium chloride) extended-release tablets (Upsher-Smith), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=4340c3f2-ecf8-44cd-9b69-217f543e24e2
+
+---
+
+### 3.75 Lisinopril
+
+**Kalkulator berat badan** (IDAI hlm. 61)
+
+| Rute | Dosis |
+|---|---|
+| Oral | 0,1 mg/kg/hari, dapat ditingkatkan dalam 4–6 mgg menjadi 0,2–1 mg/kg/hari |
+
+**Penyesuaian dosis pada penyakit ginjal** (IDAI hlm. 85)
+
+| Dosis normal | Dosis (D)/Interval (I) | LFG >50 | LFG 10–50 | LFG <10 | HD | PD |
+|---|---|---|---|---|---|---|
+| 0,1–1 mg/kg q24 jam po | D | 100% | 50–75% | 25–50% | Dosis sesudah dialisis | Tak ada |
+
+**Sediaan** (FORNAS 2025 hlm. 153–154)
+
+| Sediaan | Peresepan maksimal |
+|---|---|
+| Tablet 5 mg | 30 tab/bulan |
+| Tablet 10 mg | 30 tab/bulan |
+
+**Aturan penggunaan**
+
+- Sesuai tabel IDAI.
+- Makanan tidak mengubah bioavailabilitas (label Qbrelis).
+
+**Manfaat obat** (label Qbrelis)
+
+- Hipertensi pada dewasa dan anak usia 6 tahun ke atas.
+- Gagal jantung sistolik; menurunkan mortalitas pada infark miokard akut yang hemodinamik stabil (dewasa).
+
+**Efek samping** (label Qbrelis)
+
+- Pada uji hipertensi (lebih sering daripada plasebo): sakit kepala, pusing, batuk.
+- Profil efek samping pada anak usia 6–16 tahun tidak berbeda bermakna dengan dewasa.
+
+**Peringatan** (label Qbrelis)
+
+- Peringatan berbingkai: toksisitas janin; hentikan segera bila hamil.
+- Kontraindikasi: riwayat angioedema atau hipersensitivitas terkait penghambat ACE; angioedema herediter atau idiopatik; kombinasi dengan aliskiren pada diabetes; kombinasi dengan penghambat neprilisin (misalnya sakubitril).
+- Angioedema wajah, lidah, glotis, atau laring, termasuk yang fatal.
+- Gangguan fungsi ginjal termasuk gagal ginjal akut; hipotensi simtomatik; hiperkalemia; sindrom yang diawali ikterus kolestatik hingga nekrosis hati fulminan.
+- Keamanan dan efektivitas belum ditetapkan pada anak di bawah 6 tahun atau anak dengan LFG <30 mL/menit/1,73 m².
+
+**Farmakokinetik** (label Qbrelis; data dewasa)
+
+- Kadar puncak serum sekitar 7 jam setelah pemberian oral; penyerapan rata-rata sekitar 25% (bervariasi 6–60%).
+- Tidak terikat protein serum selain ACE; tidak dimetabolisme dan dikeluarkan utuh seluruhnya di urin.
+- Waktu paruh efektif 12 jam pada pemberian berulang; gangguan ginjal menurunkan eliminasi.
+
+**Farmakodinamik** (label Qbrelis)
+
+- Menghambat enzim pengubah angiotensin (ACE) sehingga angiotensin II plasma menurun, aktivitas vasopresor berkurang, dan sekresi aldosteron menurun (dapat sedikit meningkatkan kalium serum).
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. QBRELIS (lisinopril) oral solution (Azurity Pharmaceuticals), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=9f6e4e57-a489-4b36-b093-b93865d3717c
+
+---
+
+### 3.76 Metformin
+
+**Kalkulator** (IDAI hlm. 62)
+
+| Usia | Dosis |
+|---|---|
+| Anak ≥10 tahun | 500 mg, oral, dua kali sehari, dikonsumsi bersama makanan. Dosis dapat ditingkatkan sesuai kadar gula darah |
+
+Keterangan IDAI: bukan ditujukan untuk mengobati obesitas, melainkan untuk mengatasi resistensi insulin yang merupakan komplikasi obesitas.
+
+**Sediaan** (FORNAS 2025 hlm. 134–135)
+
+| Sediaan | Peresepan maksimal |
+|---|---|
+| Tablet 500 mg | 120 tab/bulan |
+| Tablet 850 mg | 60 tab/bulan |
+
+**Aturan penggunaan**
+
+- Dikonsumsi bersama makanan (IDAI).
+
+**Manfaat obat** (label metformin)
+
+- Tambahan diet dan olahraga untuk memperbaiki kendali glikemik pada dewasa dan anak usia 10 tahun ke atas dengan diabetes melitus tipe 2. Keamanan dan efektivitas pada anak di bawah 10 tahun belum ditetapkan.
+
+**Efek samping** (label metformin)
+
+- Pada uji klinis (lebih sering daripada plasebo): diare (53%), mual/muntah (26%), flatulens (12%), astenia (9%), gangguan pencernaan (7%), rasa tidak nyaman di perut (6%), sakit kepala (6%).
+- Penurunan kadar vitamin B12 serum hingga di bawah normal pada sekitar 7% pasien.
+
+**Peringatan** (label metformin)
+
+- Peringatan berbingkai: asidosis laktat terkait metformin dapat berakibat kematian, hipotermia, hipotensi, dan bradiaritmia resisten; awitannya samar dengan gejala tidak khas (malaise, mialgia, gangguan napas, mengantuk, nyeri perut). Faktor risiko antara lain gangguan ginjal dan obat tertentu.
+- Kontraindikasi: gangguan ginjal berat (eGFR <30 mL/menit/1,73 m²); hipersensitivitas terhadap metformin; asidosis metabolik akut atau kronik termasuk ketoasidosis diabetik.
+- Risiko hipoglikemia meningkat bila dikombinasikan dengan insulin atau sekretagog insulin.
+- Perhatian pada pemeriksaan dengan kontras iodin pada kelompok berisiko.
+
+**Farmakokinetik** (label metformin)
+
+- Bioavailabilitas absolut tablet 500 mg saat puasa sekitar 50–60%; makanan menurunkan dan sedikit memperlambat penyerapan.
+- Hampir tidak terikat protein plasma; tidak dimetabolisme di hati dan dikeluarkan utuh di urin.
+
+**Farmakodinamik** (label metformin)
+
+- Antihiperglikemik yang menurunkan glukosa plasma basal dan setelah makan: menurunkan produksi glukosa hati, menurunkan penyerapan glukosa di usus, dan meningkatkan sensitivitas insulin melalui peningkatan ambilan dan penggunaan glukosa perifer.
+- Sekresi insulin tidak berubah.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. Metformin Hydrochloride Tablets, USP (Zydus Pharmaceuticals USA), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=c82a10fa-1e8e-46b6-890a-737de3f34ee1
+
+---
+
+### 3.77 Asetilsistein
+
+**Kalkulator berat badan** (IDAI hlm. 37)
+
+| Keadaan | Dosis |
+|---|---|
+| Gagal hati, keracunan parasetamol (IV) | 150 mg/kg dalam D5% IV dalam 1 jam, dilanjutkan 10 mg/kg/jam selama 20 jam (bila terlambat <10 jam), selama 32 jam (bila terlambat 10–16 jam), selama 72 jam (bila terlambat >16 jam), dan lebih lama bila os masih ensefalopati |
+| Keracunan parasetamol (oral) | 140 mg/kg oral segera, kemudian 70 mg/kg tiap 4 jam selama 72 jam |
+
+Keterangan IDAI: monitor kadar kalium darah. Berikan jika parasetamol >150 mg/L pada 4 jam, >75 mg/L pada 8 jam, >32,5 mg pada 12 jam.
+
+**Sediaan** (FORNAS 2025)
+
+| Sediaan | Halaman FORNAS | Peresepan maksimal/restriksi |
+|---|---|---|
+| Infus 200 mg/mL (antidot) | hlm. 18–19 | Maks 3 hari. Untuk keracunan parasetamol yang disengaja atau tiba-tiba |
+| Cairan inhalasi 100 mg/mL (ekspektoran) | hlm. 201–202 | 3 amp/hari paling lama 10 hari |
+| Kapsul 200 mg (ekspektoran) | hlm. 202 | Maks 10 kaps/kasus |
+| Granula 200 mg (ekspektoran) | hlm. 202 | 3 x sehari (600 mg/hari) |
+| Sirup 100 mg/5 mL (ekspektoran) | hlm. 202 | 2 btl/kasus, paling lama 10 hari. Hanya untuk pasien anak <12 tahun |
+
+**Aturan penggunaan**
+
+- Sesuai tabel IDAI; pantau kadar kalium darah (IDAI).
+- Volume total infus perlu disesuaikan pada anak <40 kg dan pasien yang memerlukan restriksi cairan untuk mencegah kelebihan cairan (label Acetadote).
+- Bila sekret bronkus menjadi lebih banyak dan cair sementara batuk tidak memadai, jalan napas dijaga dengan pengisapan (label asetilsistein larutan).
+
+**Manfaat obat** (label Acetadote; label asetilsistein larutan)
+
+- Mencegah atau mengurangi cedera hati setelah tertelan parasetamol dalam jumlah yang berpotensi hepatotoksik, pada dewasa dan anak dengan berat badan 5 kg atau lebih.
+- Terapi tambahan pada sekret mukus yang abnormal, kental, atau lengket (inhalasi), misalnya pada penyakit bronkopulmoner akut dan kronik, komplikasi paru fibrosis kistik, perawatan trakeostomi, dan atelektasis akibat sumbatan mukus.
+
+**Efek samping** (label Acetadote; label asetilsistein larutan)
+
+- IV: tersering ruam, urtikaria, dan gatal; frekuensi 0,2–21%, terutama saat dosis muatan. Kemerahan kulit dapat muncul 30–60 menit setelah infus dimulai.
+- Inhalasi: stomatitis, mual, muntah, demam, rinore, mengantuk, kulit lembap, dada terasa sesak, dan bronkokonstriksi.
+
+**Peringatan** (label Acetadote; label asetilsistein larutan)
+
+- Reaksi hipersensitivitas akut serius, termasuk anafilaksis fatal, hipotensi, mengi, dan sesak, biasanya segera setelah infus dimulai; pasien asma dipantau ketat.
+- Kelebihan cairan akibat pemberian IV dapat menyebabkan hiponatremia, kejang, dan kematian.
+- Pada inhalasi, pasien asma diawasi ketat; hentikan bila bronkospasme berlanjut.
+- Kontraindikasi: hipersensitivitas terhadap asetilsistein.
+- Keamanan dan efektivitas Acetadote pada anak belum ditetapkan melalui uji terkontrol; penggunaan pada anak 5 kg atau lebih berdasarkan praktik klinis.
+
+**Farmakokinetik** (label Acetadote)
+
+- Setelah dosis IV tunggal, kadar total asetilsistein plasma turun secara poli-eksponensial dengan waktu paruh terminal rata-rata 5,6 jam.
+- Klirens rata-rata 0,11 L/jam/kg; klirens ginjal sekitar 30% dari klirens total.
+
+**Farmakodinamik** (label Acetadote; label asetilsistein larutan)
+
+- Melindungi hati kemungkinan dengan mempertahankan atau memulihkan kadar glutation, atau sebagai substrat alternatif untuk konjugasi dan detoksifikasi metabolit reaktif parasetamol.
+- Efek mukolitik berasal dari gugus sulfhidril yang kemungkinan membuka ikatan disulfida pada mukus sehingga viskositasnya menurun.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. ACETADOTE (acetylcysteine) injection (Cumberland Pharmaceuticals), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=472f158a-5ab9-4308-8e49-1116e6ea3d39
+4. Acetylcysteine Solution, USP (Hospira), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=5558a5f5-e821-473b-7d8a-5d33d09f0586
+
+---
+
+### 3.78 Tiamin (vitamin B1)
+
+**Kalkulator** (IDAI hlm. 71)
+
+| Sediaan/rute | Dosis |
+|---|---|
+| Oral | 10–15 mg/hari, satu kali sehari |
+| Ampul 50 mg/ml, IV, usia 0–3 tahun | 150 mg/hari, intravena, dibagi 3 dosis |
+| Ampul 50 mg/ml, IV, usia >3 tahun | 300 mg/hari, intravena, dibagi 3 dosis |
+
+**Sediaan** (FORNAS 2025 hlm. 215)
+
+| Sediaan | Peresepan maksimal |
+|---|---|
+| Tablet 50 mg | 30 tab/bulan |
+
+**Aturan penggunaan**
+
+- Sesuai tabel IDAI.
+- Lakukan uji kulit pada pasien yang dicurigai alergi obat atau pernah bereaksi terhadap tiamin; yang positif tidak boleh menerima tiamin suntik (label tiamin injeksi).
+
+**Manfaat obat** (label tiamin injeksi)
+
+- Defisiensi tiamin atau beri-beri, kering (gejala saraf) maupun basah (gejala kardiovaskular).
+- Bila diperlukan pemulihan cepat, misalnya ensefalopati Wernicke, beri-beri infantil dengan kolaps akut, penyakit kardiovaskular akibat defisiensi tiamin, atau neuritis kehamilan dengan muntah berat.
+- Saat memberikan dekstrosa IV pada individu dengan status tiamin marginal, untuk mencegah gagal jantung.
+
+**Efek samping** (label tiamin injeksi)
+
+- Hipersensitivitas atau reaksi anafilaksis yang mengancam jiwa, terutama setelah suntikan berulang; kolaps dan kematian pernah dilaporkan.
+- Rasa hangat, gatal, urtikaria, lemah, berkeringat, mual, gelisah, rasa tercekik, angioedema, sianosis, edema paru, perdarahan saluran cerna; nyeri tekan dan indurasi setelah IM.
+
+**Peringatan** (label tiamin injeksi)
+
+- Kontraindikasi: riwayat sensitivitas terhadap tiamin atau bahan produk.
+- Reaksi hipersensitivitas/anafilaksis serius dapat terjadi; kematian pernah terjadi setelah pemberian IV atau IM.
+- Mengandung aluminium yang dapat toksik pada pemberian parenteral lama bila fungsi ginjal terganggu; bayi prematur sangat berisiko.
+
+**Farmakokinetik** (label tiamin injeksi)
+
+- Penyerapan setelah IM cepat dan sempurna; tersebar ke semua jaringan dengan kadar tertinggi di hati, otak, ginjal, dan jantung.
+- Metabolisme cepat; kelebihan dikeluarkan di urin. Deplesi tubuh dapat terjadi setelah sekitar 3 minggu tanpa asupan tiamin.
+
+**Farmakodinamik** (label tiamin injeksi)
+
+- Bergabung dengan ATP membentuk tiamin pirofosfat (kokarboksilase), koenzim dalam metabolisme karbohidrat untuk dekarboksilasi asam piruvat dan asam alfa-keto.
+- Kebutuhan tiamin meningkat bila kandungan karbohidrat diet bertambah.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. Thiamine Hydrochloride Injection, USP (Meitheal Pharmaceuticals), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=3bfe8ac7-9294-4980-9635-90f8e6f6dd8e
