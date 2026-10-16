@@ -1,6 +1,6 @@
 # Kalkulator Dosis Obat Anak
 
-Draf 0.9, 16 Oktober 2026 (58 obat). Materi untuk ditinjau pemilik; belum diterapkan di website.
+Draf 0.10, 16 Oktober 2026 (68 obat). Materi untuk ditinjau pemilik; belum diterapkan di website.
 
 ---
 
@@ -4078,3 +4078,660 @@ Restriksi FORNAS: tidak boleh digunakan sebagai *single agent* untuk TB.
 1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
 2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
 3. Atropine Sulfate Injection, USP (Hospira), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=ad8916e7-206e-409e-2582-30d072845dd4
+
+---
+
+### 3.59 Propranolol
+
+**Kalkulator berat badan** (IDAI hlm. 67–68)
+
+| Rute | Dosis |
+|---|---|
+| Oral | 0,2–0,5 mg/kg, 6–8 jam, tingkatkan menjadi maks 1,5 mg/kg, 6–8 jam bila perlu |
+| IV | 0,1 g/kg dalam 1 mnt, kemudian 0,1–0,3 mg/kg, 3 jam |
+
+**Penyesuaian dosis pada penyakit ginjal** (IDAI hlm. 88)
+
+| Dosis normal | Dosis (D)/Interval (I) | LFG >50 | LFG 10–50 | LFG <10 | HD | PD |
+|---|---|---|---|---|---|---|
+| 0,2–0,5 mg/kg/dosis q6–12 jam po | D | 100% | 100% | 100% | Tak ada | Tak ada |
+
+**Sediaan** (FORNAS 2025)
+
+| Sediaan | Halaman FORNAS | Peresepan maksimal/restriksi |
+|---|---|---|
+| Tablet 10 mg (antimigren, profilaksis) | hlm. 70 | – |
+| Tablet 40 mg (antimigren, profilaksis) | hlm. 70 | – |
+| Tablet 10 mg (antiaritmia) | hlm. 151 | 90 tab/bulan. a) Untuk kasus-kasus dengan gangguan tiroid. b) Untuk tremor esensial, tremor distonia, dan tremor holmes. |
+
+**Aturan penggunaan**
+
+- Sesuai tabel IDAI.
+- Bila akan dihentikan, dosis diturunkan bertahap selama sedikitnya beberapa minggu; penghentian mendadak dapat memperberat angina dan pernah diikuti infark miokard (label propranolol).
+
+**Manfaat obat** (label propranolol)
+
+- Hipertensi (tidak untuk kedaruratan hipertensi).
+- Angina pektoris akibat aterosklerosis koroner; kendali laju ventrikel pada fibrilasi atrium; menurunkan mortalitas kardiovaskular pascainfark miokard.
+- Profilaksis migren (bukan untuk mengobati serangan yang sudah berlangsung).
+- Tremor esensial familial atau herediter; stenosis subaorta hipertrofik; tambahan pada blokade alfa untuk feokromositoma.
+
+**Efek samping** (label propranolol)
+
+- Kardiovaskular: bradikardia, gagal jantung kongestif, blok AV yang memberat, hipotensi, parestesia tangan, insufisiensi arteri tipe Raynaud.
+- SSP: kepala terasa ringan, depresi (insomnia, lesu, lemah, lelah), gangguan penglihatan, halusinasi, mimpi yang jelas; sindrom disorientasi akut yang pulih.
+- Saluran cerna: mual, muntah, rasa tidak nyaman di epigastrium, kram perut, diare, konstipasi.
+- Alergi dan kulit: reaksi hipersensitivitas termasuk anafilaksis, ruam, laringospasme; sindrom Stevens-Johnson, nekrolisis epidermal toksik, dermatitis eksfoliatif, eritema multiformis, urtikaria.
+- Pernapasan: bronkospasme. Darah: agranulositosis, purpura.
+
+**Peringatan** (label propranolol)
+
+- Kontraindikasi: syok kardiogenik; bradikardia sinus dan blok lebih dari derajat satu; asma bronkial; hipersensitivitas terhadap propranolol.
+- Keamanan dan efektivitas pada anak belum ditetapkan; bronkospasme dan gagal jantung kongestif pernah dilaporkan saat pemberian pada anak.
+- Hipoglikemia: propranolol, terutama pada bayi dan anak (diabetes maupun tidak), dikaitkan dengan hipoglikemia, khususnya saat puasa seperti persiapan operasi. Blokade beta dapat menutupi tanda awal hipoglikemia.
+- Pasien dengan penyakit paru bronkospastik umumnya tidak boleh menerima penyekat beta.
+- Dapat mencetuskan gagal jantung yang lebih berat; dapat menutupi tanda hipertiroidisme, dan penghentian mendadak dapat memicu badai tiroid.
+
+**Farmakokinetik** (label propranolol; data dewasa)
+
+- Hampir seluruhnya diserap setelah pemberian oral, tetapi mengalami metabolisme lintas pertama tinggi di hati sehingga rata-rata hanya sekitar 25% mencapai sirkulasi sistemik. Kadar puncak plasma 1–4 jam setelah dosis oral.
+- Sekitar 90% terikat protein plasma; volume distribusi sekitar 4 L/kg; melintasi sawar darah-otak dan plasenta serta masuk ke ASI.
+- Dimetabolisme luas (terutama CYP2D6 dan CYP1A2, juga CYP2C19); sebagian besar metabolit keluar di urin. Waktu paruh plasma 3–6 jam.
+
+**Farmakodinamik** (label propranolol)
+
+- Penyekat reseptor beta-adrenergik nonselektif tanpa aktivitas otonom lain; menurunkan respons kronotropik, inotropik, dan vasodilator terhadap rangsangan beta.
+- Efek antiaritmia terutama melalui blokade beta; pada dosis lebih tinggi juga memiliki efek membran mirip kuinidin.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. Propranolol Hydrochloride Tablets, USP (Par Health), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=0d74bb04-8227-4afa-b523-ce1556150e07
+
+---
+
+### 3.60 Nifedipin
+
+**Kalkulator berat badan** (IDAI hlm. 65)
+
+| Keadaan | Dosis |
+|---|---|
+| – | Cap 0,25–0,5 mg/kg, 12 jam, tab 0,5 mg/kg, 12 jam |
+| Oral atau sublingual untuk krisis hipertensi | Mulai dosis 0,1 mg/kg, tingkatkan bertahap tiap 5 menit sampai 3x jika diperlukan menjadi maks 10 mg/kali pemberian. Dosis maksimal 0,5 mg/kg; 6–8 jam |
+
+**Penyesuaian dosis pada penyakit ginjal** (IDAI hlm. 87)
+
+| Dosis normal | Dosis (D)/Interval (I) | LFG >50 | LFG 10–50 | LFG <10 | HD | PD |
+|---|---|---|---|---|---|---|
+| 0,25–5 mg/kg/dosis q6–8 jam po | D | 100% | 100% | 100% | Tak ada | Tak ada |
+
+**Sediaan** (FORNAS 2025 hlm. 154)
+
+| Sediaan | Peresepan maksimal |
+|---|---|
+| Tablet 10 mg | 90 tab/bulan |
+| Tablet lepas lambat 20 mg | 30 tab/bulan |
+| Tablet lepas lambat 30 mg | 60 tab/bulan |
+
+**Aturan penggunaan**
+
+- Sesuai tabel IDAI.
+
+**Manfaat obat** (label nifedipin kapsul)
+
+- Angina vasospastik (Prinzmetal atau varian).
+- Angina stabil kronik yang tetap bergejala meskipun sudah mendapat penyekat beta dan/atau nitrat dengan dosis memadai.
+
+**Efek samping** (label nifedipin kapsul)
+
+- Pada uji terkontrol: pusing atau kepala terasa ringan (27%), kemerahan dan rasa panas (25%), sakit kepala (23%), lemah (12%), mual atau nyeri ulu hati (11%), kram otot atau tremor (8%), edema perifer (7%), gugup atau perubahan suasana hati (7%), palpitasi (7%), sesak, batuk, atau mengi (6%).
+- Sebagian besar merupakan akibat efek vasodilatasi; umumnya tidak serius.
+
+**Peringatan** (label nifedipin kapsul)
+
+- Kontraindikasi: hipersensitivitas terhadap nifedipin.
+- Hipotensi berlebihan, terutama saat titrasi awal atau kenaikan dosis, dan lebih sering bila bersama penyekat beta.
+- Nifedipin kapsul pernah digunakan (oral dan sublingual) untuk menurunkan tekanan darah secara akut, meskipun tidak disetujui untuk tujuan ini. Terdapat laporan hipotensi berat, infark miokard, dan kematian pada penggunaan nifedipin lepas cepat dengan cara tersebut. Label menyatakan nifedipin kapsul tidak boleh digunakan untuk penurunan tekanan darah akut.
+- Angina yang meningkat atau infark miokard akut pernah terjadi saat memulai atau menaikkan dosis, terutama pada penyakit koroner obstruktif berat; gagal jantung pernah terjadi, terutama pada pasien yang menerima penyekat beta.
+- Keamanan dan efektivitas pada anak belum ditetapkan; penggunaan pada anak tidak dianjurkan.
+
+**Farmakokinetik** (label nifedipin kapsul; data dewasa)
+
+- Diserap cepat dan sempurna setelah pemberian oral; terdeteksi di serum 10 menit setelah pemberian dan kadar puncak sekitar 30 menit.
+- Terikat kuat pada protein serum; diubah luas menjadi metabolit tidak aktif, dan sekitar 80% nifedipin beserta metabolitnya dikeluarkan lewat ginjal.
+- Waktu paruh eliminasi sekitar 2 jam; farmakokinetik dapat berubah pada penyakit hati kronik.
+
+**Farmakodinamik** (label nifedipin kapsul)
+
+- Penghambat masuknya ion kalsium (penyekat kanal lambat) ke otot jantung dan otot polos pembuluh darah tanpa mengubah kadar kalsium serum.
+- Menurunkan resistensi pembuluh perifer dan tekanan darah sistolik serta diastolik, biasanya disertai sedikit peningkatan denyut jantung akibat refleks vasodilatasi; melebarkan arteri koroner dan menghambat spasme koroner.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. Nifedipine Capsules, USP (Heritage Pharmaceuticals d/b/a Avet Pharmaceuticals), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=b8b8cfee-ea71-44c2-81af-675efecfdf15
+
+---
+
+### 3.61 Amlodipin
+
+**Kalkulator berat badan** (IDAI hlm. 36)
+
+| Rute | Dosis |
+|---|---|
+| Oral | 0,05–0,2 mg/kg, 1x/hari |
+
+**Penyesuaian dosis pada penyakit ginjal** (IDAI hlm. 77)
+
+| Dosis normal | Dosis (D)/Interval (I) | LFG >50 | LFG 10–50 | LFG <10 | HD | PD |
+|---|---|---|---|---|---|---|
+| 0,05–0,2 mg/kg q24 jam po | D | 100% | 100% | 100% | tak ada | tak ada |
+
+**Sediaan** (FORNAS 2025)
+
+| Sediaan | Halaman FORNAS | Peresepan maksimal/restriksi |
+|---|---|---|
+| Tablet 5 mg (antiangina) | hlm. 150 | 30 tab/bulan. Untuk angina dengan bradiaritmia |
+| Tablet 5 mg (antihipertensi) | hlm. 152 | 30 tab/bulan |
+| Tablet 10 mg (antihipertensi) | hlm. 152 | 30 tab/bulan |
+
+**Aturan penggunaan**
+
+- Diberikan 1 kali sehari (IDAI).
+- Bioavailabilitas tidak dipengaruhi makanan (label Norvasc).
+
+**Manfaat obat** (label Norvasc)
+
+- Hipertensi, untuk menurunkan tekanan darah. Pada pasien usia 6–17 tahun, amlodipin efektif menurunkan tekanan darah; efek pada anak di bawah 6 tahun belum diketahui.
+- Angina stabil kronik, angina vasospastik, dan penyakit arteri koroner yang terdokumentasi angiografi (tanpa gagal jantung atau fraksi ejeksi <40%).
+
+**Efek samping** (label Norvasc)
+
+- Bergantung dosis: edema, pusing, kemerahan, palpitasi; edema paling sering pada dosis tertinggi.
+- Lainnya (>1%): lelah, mual, nyeri perut, mengantuk.
+- Pascapemasaran: ginekomastia; ikterus dan kenaikan enzim hati (sebagian berat); kemungkinan gangguan ekstrapiramidal.
+
+**Peringatan** (label Norvasc)
+
+- Kontraindikasi: sensitivitas terhadap amlodipin.
+- Hipotensi bergejala mungkin terjadi, terutama pada stenosis aorta berat; hipotensi akut jarang karena awitan kerja bertahap.
+- Angina yang memburuk dan infark miokard akut dapat terjadi saat memulai atau menaikkan dosis, terutama pada penyakit koroner obstruktif berat.
+- Pada gangguan hati berat, waktu paruh memanjang (56 jam), sehingga titrasi dilakukan perlahan.
+
+**Farmakokinetik** (label Norvasc)
+
+- Kadar puncak plasma 6–12 jam setelah pemberian oral; bioavailabilitas absolut 64–90%.
+- Sekitar 93% terikat protein plasma; sekitar 90% diubah di hati menjadi metabolit tidak aktif; 10% obat asal dan 60% metabolit dikeluarkan di urin.
+- Waktu paruh eliminasi terminal 30–50 jam; kadar tunak tercapai setelah 7–8 hari pemberian harian. Tidak dipengaruhi bermakna oleh gangguan ginjal.
+- Pada pasien hipertensi usia 6–17 tahun, klirens dan volume distribusi setelah disesuaikan berat badan serupa dengan dewasa.
+
+**Farmakodinamik** (label Norvasc)
+
+- Antagonis kalsium golongan dihidropiridin yang menghambat masuknya ion kalsium ke otot polos pembuluh darah dan otot jantung, dengan efek lebih besar pada otot polos pembuluh darah.
+- Ikatan dengan reseptor kanal kalsium terjadi dan lepas secara bertahap, sehingga awitan kerjanya bertahap.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. NORVASC (amlodipine besylate) tablets (Pfizer), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=abd6a2ca-40c2-485c-bc53-db1c652505ed
+
+---
+
+### 3.62 Hidroklorotiazid
+
+**Kalkulator berat badan** (IDAI hlm. 53)
+
+| Keadaan | Dosis |
+|---|---|
+| – | 1–1,5 mg/kg, 12–24 jam |
+
+**Penyesuaian dosis pada penyakit ginjal** (IDAI hlm. 84)
+
+| Dosis normal | Dosis (D)/Interval (I) | LFG >50 | LFG 10–50 | LFG <10 | HD | PD |
+|---|---|---|---|---|---|---|
+| 1–1,5 mg/kg/dosis q12–24 jam po | D | 100% | 100% | hindari | tak ada data | tak ada data |
+
+**Sediaan** (FORNAS 2025)
+
+| Sediaan | Halaman FORNAS | Peresepan maksimal |
+|---|---|---|
+| Tablet 25 mg (diuretik) | hlm. 133 | 30 tab/bulan |
+| Tablet 25 mg (antihipertensi) | hlm. 153 | 30 tab/bulan |
+
+**Aturan penggunaan**
+
+- Sesuai tabel IDAI.
+- Pantau tanda gangguan cairan dan elektrolit (hiponatremia, alkalosis hipokloremik, hipokalemia), terutama bila muntah berlebihan atau mendapat cairan parenteral (label hidroklorotiazid).
+
+**Manfaat obat** (label hidroklorotiazid)
+
+- Terapi tambahan untuk edema akibat gagal jantung kongestif, sirosis hati, dan terapi kortikosteroid atau estrogen; juga edema akibat gangguan ginjal seperti sindrom nefrotik, glomerulonefritis akut, dan gagal ginjal kronik.
+- Hipertensi, sebagai obat tunggal atau untuk meningkatkan efektivitas antihipertensi lain.
+
+**Efek samping** (label hidroklorotiazid)
+
+- Kardiovaskular: hipotensi termasuk hipotensi ortostatik.
+- Saluran cerna: pankreatitis, ikterus kolestatik intrahepatik, diare, muntah, sialadenitis, kram, konstipasi, iritasi lambung, mual, anoreksia.
+- Darah: anemia aplastik, agranulositosis, leukopenia, anemia hemolitik, trombositopenia.
+- Metabolik: gangguan elektrolit, hiperglikemia, glikosuria, hiperurisemia.
+- Hipersensitivitas dan kulit: anafilaksis, vaskulitis, fotosensitivitas, urtikaria, ruam, purpura; eritema multiformis termasuk sindrom Stevens-Johnson, nekrolisis epidermal toksik.
+- Lainnya: lemah, spasme otot, vertigo, parestesia, pusing, sakit kepala, gagal ginjal, nefritis interstisial, penglihatan kabur sementara, xantopsia.
+- Pascapemasaran: peningkatan risiko kanker kulit nonmelanoma, terutama karsinoma sel skuamosa pada dosis kumulatif besar.
+
+**Peringatan** (label hidroklorotiazid)
+
+- Kontraindikasi: anuria; hipersensitivitas terhadap produk ini atau obat turunan sulfonamida lain.
+- Hati-hati pada penyakit ginjal berat (dapat mencetuskan azotemia) dan pada gangguan fungsi hati (perubahan kecil cairan dan elektrolit dapat mencetuskan koma hepatikum).
+- Miopia akut sementara dan glaukoma sudut tertutup akut; hentikan obat secepatnya bila terjadi.
+- Dapat memicu atau memperberat lupus eritematosus sistemik.
+- Tidak ada uji klinis terkontrol yang baik pada anak; informasi dosis anak berasal dari penggunaan empiris dan literatur.
+
+**Farmakokinetik** (label hidroklorotiazid)
+
+- Diuresis mulai dalam 2 jam setelah pemberian oral, puncak sekitar 4 jam, dan berlangsung 6–12 jam.
+- Tidak dimetabolisme dan dieliminasi cepat oleh ginjal; sedikitnya 61% dosis oral dikeluarkan utuh dalam 24 jam. Waktu paruh plasma 5,6–14,8 jam.
+- Melintasi plasenta tetapi tidak melintasi sawar darah-otak; masuk ke ASI.
+
+**Farmakodinamik** (label hidroklorotiazid)
+
+- Memengaruhi mekanisme reabsorpsi elektrolit di tubulus distal ginjal; meningkatkan ekskresi natrium dan klorida dalam jumlah yang kira-kira setara, dapat disertai kehilangan kalium dan bikarbonat.
+- Mekanisme efek antihipertensi tiazid belum diketahui; biasanya tidak memengaruhi tekanan darah normal.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. Hydrochlorothiazide Tablets USP (Teva Pharmaceuticals USA), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=e2270db4-2930-4ec5-ac96-2b4542aed367
+
+---
+
+### 3.63 Laktulosa
+
+**Kalkulator berat badan** (IDAI hlm. 61)
+
+| Keadaan | Dosis |
+|---|---|
+| Laksatif (larutan 3,3 g/5 ml) | 0,5 ml/kg, 12 jam, oral |
+
+**Sediaan** (FORNAS 2025 hlm. 192)
+
+| Sediaan | Peresepan maksimal |
+|---|---|
+| Sirup 3,335 g/5 mL | – |
+
+**Aturan penggunaan**
+
+- Sesuai tabel IDAI.
+- Efek baru muncul setelah obat mencapai kolon; dapat diperlukan 24–48 jam untuk menghasilkan buang air besar (label laktulosa).
+
+**Manfaat obat** (label laktulosa)
+
+- Pengobatan konstipasi; pada konstipasi kronik meningkatkan jumlah buang air besar per hari dan jumlah hari dengan buang air besar.
+
+**Efek samping** (label laktulosa)
+
+- Pada awal pemberian dapat timbul flatulens dan kram usus, biasanya sementara.
+- Dosis berlebihan dapat menyebabkan diare dengan komplikasi kehilangan cairan, hipokalemia, dan hipernatremia.
+- Mual dan muntah pernah dilaporkan.
+
+**Peringatan** (label laktulosa)
+
+- Kontraindikasi: pasien yang memerlukan diet rendah galaktosa (larutan mengandung galaktosa).
+- Hati-hati pada diabetes karena mengandung galaktosa dan laktosa.
+- Secara teoretis, akumulasi gas H2 dapat menimbulkan ledakan pada tindakan elektrokauter saat proktoskopi atau kolonoskopi; lakukan pembersihan usus dengan larutan yang tidak difermentasi.
+- Pasien lanjut usia atau lemah yang menerima laktulosa lebih dari 6 bulan perlu pemeriksaan elektrolit serum berkala.
+- Antasida yang tidak diserap dapat menghambat penurunan pH kolon yang diharapkan.
+- Keamanan dan efektivitas pada anak belum ditetapkan.
+
+**Farmakokinetik** (label laktulosa)
+
+- Sangat sedikit diserap dari saluran cerna dan tidak ada enzim di saluran cerna manusia yang dapat menghidrolisisnya, sehingga mencapai kolon hampir tanpa perubahan.
+- Hanya sedikit yang mencapai darah; ekskresi di urin 3% atau kurang dan selesai dalam 24 jam.
+
+**Farmakodinamik** (label laktulosa)
+
+- Di kolon, bakteri memecah laktulosa terutama menjadi asam laktat dan sedikit asam format dan asetat, sehingga tekanan osmotik meningkat dan isi kolon sedikit lebih asam.
+- Akibatnya kadar air tinja meningkat dan tinja menjadi lebih lunak.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. Lactulose Solution USP (Chartwell RX), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=d6975cd8-80e0-43e2-809a-175ea7e40715
+
+---
+
+### 3.64 Ipratropium bromida
+
+**Kalkulator berat badan** (IDAI hlm. 56–57)
+
+| Sediaan/rute | Dosis |
+|---|---|
+| Larutan pernapasan (250 mcg/ml) | 0,25–1 ml dilarutkan menjadi 4 ml, 4–8 jam |
+| Larutan pernapasan, serangan berat | Tiap 20 menit, 3 dosis, kemudian 4–6 jam |
+| Aerosol 20 mcg/puff | 2–4 semprot, 6–8 jam |
+| Nasal | 84 mcg/lubang hidung, 6–12 jam |
+
+**Penyesuaian dosis pada penyakit ginjal** (IDAI hlm. 84)
+
+| Dosis normal | Dosis (D)/Interval (I) | LFG >50 | LFG 10–50 | LFG <10 | HD | PD |
+|---|---|---|---|---|---|---|
+| 0,25–1 ml/dosis q4–8 jam inhalasi | D | 100% | 100% | 100% | tak ada | tak ada |
+
+**Sediaan** (FORNAS 2025)
+
+Restriksi FORNAS: a) untuk pasien PPOK dengan eksaserbasi akut; b) tidak untuk jangka panjang.
+
+| Sediaan | Halaman FORNAS | Peresepan maksimal |
+|---|---|---|
+| Aerosol 0,02 mg/dosis | hlm. 196, 202 | 1 canister/bulan |
+| Cairan inhalasi 0,025% | hlm. 202 | – |
+
+**Aturan penggunaan**
+
+- Larutan pernapasan dilarutkan menjadi 4 ml sebelum diberikan (IDAI).
+- Hindari menyemprotkan aerosol ke mata (label Atrovent HFA).
+
+**Manfaat obat** (label ipratropium larutan inhalasi; label Atrovent HFA)
+
+- Bronkodilator untuk terapi rumatan bronkospasme pada penyakit paru obstruktif kronik (PPOK), termasuk bronkitis kronik dan emfisema, sendiri atau bersama bronkodilator lain, terutama agonis beta.
+
+**Efek samping** (label ipratropium larutan inhalasi)
+
+- Kurang dari 3%: takikardia, palpitasi, nyeri mata, retensi urin, infeksi saluran kemih, urtikaria.
+- Pencetusan atau perburukan glaukoma sudut sempit, midriasis, dan nyeri mata akut pernah dilaporkan.
+- Efek samping saluran napas bawah (bronkitis, sesak, bronkospasme) paling sering menjadi alasan penghentian obat.
+- Sakit kepala, mulut kering, dan perburukan gejala PPOK lebih sering pada dosis total harian 2.000 mcg atau lebih.
+- Reaksi alergi: ruam, angioedema lidah, bibir, dan wajah, urtikaria, laringospasme, reaksi anafilaksis.
+
+**Peringatan** (label ipratropium larutan inhalasi; label Atrovent HFA)
+
+- Kontraindikasi: hipersensitivitas terhadap ipratropium bromida atau terhadap atropin dan turunannya.
+- Penggunaan tunggal untuk meredakan bronkospasme pada eksaserbasi akut PPOK belum cukup diteliti; obat dengan awitan lebih cepat mungkin lebih baik sebagai terapi awal. Atrovent HFA tidak diindikasikan untuk terapi awal episode bronkospasme akut yang memerlukan pertolongan cepat.
+- Bronkospasme paradoksal yang dapat mengancam jiwa (Atrovent HFA).
+- Hati-hati pada glaukoma sudut sempit, hipertrofi prostat, atau obstruksi leher kandung kemih.
+- Keamanan dan efektivitas larutan inhalasi pada anak di bawah 12 tahun belum ditetapkan; Atrovent HFA belum ditetapkan pada anak.
+
+**Farmakokinetik** (label ipratropium larutan inhalasi)
+
+- Sebagian besar dosis tertelan tetapi tidak diserap; setelah nebulisasi 2 mg, rata-rata 7% dosis masuk ke sirkulasi sistemik.
+- Ikatan dengan albumin dan glikoprotein asam alfa-1 minimal (0–9% in vitro); dimetabolisme sebagian.
+- Waktu paruh eliminasi sekitar 1,6 jam setelah pemberian IV.
+
+**Farmakodinamik** (label ipratropium larutan inhalasi)
+
+- Antikolinergik (parasimpatolitik) yang menghambat refleks yang diperantarai vagus dengan melawan kerja asetilkolin.
+- Mencegah peningkatan siklik GMP intrasel pada otot polos bronkus; bronkodilatasi setelah inhalasi terutama bersifat lokal, bukan sistemik.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. Ipratropium Bromide Inhalation Solution (Ritedose Pharmaceuticals), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=22479633-624a-4251-ad3c-1dcba5d503fb
+4. ATROVENT HFA (ipratropium bromide) inhalation aerosol (Boehringer Ingelheim), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=170e98ef-5560-4068-be7d-e649068eb884
+
+---
+
+### 3.65 Insulin reguler
+
+**Kalkulator berat badan** (IDAI hlm. 56)
+
+| Rute | Dosis |
+|---|---|
+| IV | 0,025–0,1 u/kg ATAU 0,025–0,1 u/kg/jam (2–5 u/kg dalam 50 ml NS, kecepatan 0,5–2 ml/jam) |
+| SK | 0,7–1 u/kg/hari |
+
+Keterangan IDAI (hlm. 56):
+
+- SK (onset/puncak/durasi): glulisin, lispro 10–15 menit/1 jam/2–5 jam; aspartate 15–20 mnt/1 jam/3–5 jam; detemir 1–2 jam/datar/24 jam; glargin 1–2 jam/datar/24 jam; isofan (NPH) 2–4 jam/4–12 jam/18–20 jam; zinc lente 2–3 jam/7–15 jam/24 jam; kristalin zinc (ultralente) 4–6 jam/10–30 jam/24–36 jam; protamine zinc 4–8 jam/15–20 jam/24–36 jam.
+- Bila diberikan 2x/hari: 2/3 dosis sebelum sarapan, 1/3 sebelum makan malam; 2/3 kerja panjang, 1/3 kerja pendek.
+- Bila pemberian multipel: 20% kerja pendek sebelum makan dan 40% kerja panjang dalam 1–2 dosis terbagi.
+
+**Penyesuaian dosis pada penyakit ginjal** (IDAI hlm. 84)
+
+| Dosis normal | Dosis (D)/Interval (I) | LFG >50 | LFG 10–50 | LFG <10 | HD | PD |
+|---|---|---|---|---|---|---|
+| 0,05–0,2 IU/kg/dosis sc prn | D | 100% | 75% | 50% | tak ada | tak ada |
+
+**Sediaan** (FORNAS 2025 hlm. 137)
+
+| Sediaan | Peresepan maksimal |
+|---|---|
+| Insulin regular, injeksi 100 IU/mL (kemasan vial, *disposable cartridge*, *penfill cartridge*) | – |
+
+Catatan FORNAS untuk antidiabetes parenteral (hlm. 136):
+
+- a) Dapat digunakan untuk pasien DM tipe 1 atau DM tipe 2.
+- b) Untuk DM tipe 1 dapat dimulai dengan Human Insulin atau Analog Insulin.
+- c) Wanita hamil yang memerlukan insulin maka diutamakan menggunakan *human* insulin.
+- d) Diperlukan kehati-hatian terhadap risiko terjadinya hipoglikemia yang penanganannya merujuk pada penatalaksanaan hipoglikemia.
+
+**Aturan penggunaan**
+
+- Sesuai tabel IDAI.
+- SK: disuntikkan sekitar 30 menit sebelum makan di paha, lengan atas, perut, atau bokong; lokasi suntikan dirotasi dalam area yang sama untuk mengurangi risiko lipodistrofi dan amiloidosis kutan lokal (label Humulin R).
+- IV hanya di bawah pengawasan medis dengan pemantauan ketat gula darah dan kalium (label Humulin R).
+- Jarum dan spuit tidak boleh dipakai bergantian antarpasien; periksa label insulin sebelum setiap suntikan untuk mencegah tertukar (label Humulin R).
+
+**Manfaat obat** (label Humulin R)
+
+- Memperbaiki kendali glikemik pada pasien dewasa dan anak dengan diabetes melitus. Pada anak, dosis harus disesuaikan secara individual berdasarkan kebutuhan metabolik dan pemantauan gula darah yang sering.
+
+**Efek samping** (label Humulin R)
+
+- Hipoglikemia adalah efek samping tersering semua insulin; hipoglikemia berat dapat menyebabkan kejang, tidak sadar, dan kematian.
+- Hipokalemia akibat perpindahan kalium ke dalam sel.
+- Reaksi alergi generalisata berat termasuk anafilaksis; reaksi di tempat suntikan (hematoma, nyeri, kemerahan, nodul, bengkak, gatal).
+- Lipodistrofi (lipoatrofi atau lipohipertrofi) dan amiloidosis kutan lokal di tempat suntikan; edema perifer dan kenaikan berat badan.
+
+**Peringatan** (label Humulin R)
+
+- Kontraindikasi: saat episode hipoglikemia; hipersensitivitas terhadap Humulin R atau eksipiennya.
+- Perubahan regimen insulin (kekuatan, produsen, jenis, lokasi atau cara suntikan) dapat memengaruhi kendali glikemik; lakukan di bawah pengawasan medis dengan pemantauan gula darah lebih sering.
+- Kesadaran terhadap gejala hipoglikemia dapat berkurang, misalnya pada penggunaan penyekat beta atau hipoglikemia berulang.
+- Hipokalemia yang tidak diobati dapat menyebabkan paralisis napas, aritmia ventrikel, dan kematian; pantau kalium pada pasien berisiko.
+
+**Farmakokinetik** (label Humulin R)
+
+- SK: kadar puncak serum 36–150 menit setelah dosis 0,05–0,4 unit/kg; bioavailabilitas absolut 48–89%.
+- Volume distribusi 0,32–0,67 L/kg setelah pemberian IV.
+- Diambil dan didegradasi terutama di hati, ginjal, otot, dan jaringan lemak; hati merupakan organ utama klirens.
+- Waktu paruh tampak setelah pemberian SK sekitar 1,5 jam (rentang 40 menit–7 jam).
+
+**Farmakodinamik** (label Humulin R)
+
+- Mengatur metabolisme glukosa: menurunkan gula darah dengan merangsang ambilan glukosa perifer (terutama otot rangka dan lemak) dan menghambat produksi glukosa hati; menghambat lipolisis dan proteolisis serta meningkatkan sintesis protein.
+- SK: efek mulai sekitar 30 menit, maksimal sekitar 3 jam, dan berakhir sekitar 8 jam; bervariasi antarindividu. IV: efek mulai sekitar 10–15 menit dan berakhir sekitar 4 jam.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. HUMULIN R (insulin human) injection (Eli Lilly), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=b519bd83-038c-4ec5-a231-a51ec5cc291f
+
+---
+
+### 3.66 Sukralfat
+
+**Kalkulator berat badan** (IDAI hlm. 70)
+
+| Keadaan | Dosis |
+|---|---|
+| – | 40–80 mg/kg/hari terbagi 4 dosis |
+
+**Sediaan** (FORNAS 2025 hlm. 189)
+
+| Sediaan | Peresepan maksimal |
+|---|---|
+| Tablet 500 mg | 60 tab/bulan |
+| Suspensi 500 mg/5 mL | – |
+
+**Aturan penggunaan**
+
+- Dibagi 4 dosis per hari (IDAI).
+- Sukralfat dapat mengurangi penyerapan obat lain (misalnya simetidin, digoksin, fluorokuinolon, ketokonazol, levotiroksin, fenitoin, kuinidin, ranitidin, tetrasiklin, teofilin); pemberian obat tersebut 2 jam sebelum sukralfat menghilangkan interaksi pada kasus yang diteliti (label Carafate).
+
+**Manfaat obat** (label Carafate)
+
+- Pengobatan jangka pendek (sampai 8 minggu) ulkus duodenum aktif.
+- Terapi pemeliharaan setelah ulkus duodenum sembuh.
+
+**Efek samping** (label Carafate)
+
+- Umumnya ringan; dilaporkan pada 4,7% pasien. Tersering konstipasi (2%).
+- Kurang dari 0,5%: diare, mual, muntah, rasa tidak nyaman di lambung, gangguan pencernaan, flatulens, mulut kering; gatal, ruam; pusing, insomnia, mengantuk, vertigo; nyeri punggung, sakit kepala.
+- Pascapemasaran: reaksi hipersensitivitas (sesak, bibir bengkak, gatal, ruam, urtikaria); bezoar, terutama pada pasien dengan pengosongan lambung lambat atau yang menerima makanan lewat selang.
+
+**Peringatan** (label Carafate)
+
+- Kontraindikasi: hipersensitivitas terhadap zat aktif atau eksipien.
+- Aspirasi tablet dengan komplikasi napas pernah dilaporkan; hati-hati pada kondisi yang mengganggu menelan atau refleks muntah dan batuk.
+- Sedikit aluminium diserap; pada gagal ginjal kronik atau dialisis dapat terjadi akumulasi dan toksisitas aluminium (osteodistrofi, osteomalasia, ensefalopati). Gunakan dengan hati-hati pada gagal ginjal kronik.
+- Keamanan dan efektivitas pada anak belum ditetapkan.
+
+**Farmakokinetik** (label Carafate)
+
+- Hanya sedikit diserap dari saluran cerna; bagian kecil yang diserap dikeluarkan terutama di urin.
+- Bekerja secara lokal, bukan sistemik.
+
+**Farmakodinamik** (label Carafate)
+
+- Membentuk kompleks yang melekat pada ulkus dengan eksudat protein di dasar ulkus, sehingga menutupi ulkus dan melindunginya dari asam, pepsin, dan garam empedu.
+- Menghambat aktivitas pepsin dalam cairan lambung dan menyerap garam empedu in vitro.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. CARAFATE (sucralfate) tablets (Allergan), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=c87c6b50-6977-4fa7-ae98-40c0753f7aee
+
+---
+
+### 3.67 Midazolam
+
+**Kalkulator berat badan**
+
+| Rute | Dosis | Sumber |
+|---|---|---|
+| IV, IM | 0,1–0,2 mg/kg/dosis | IDAI hlm. 86 (tabel ginjal, kolom dosis normal) |
+
+**Penyesuaian dosis pada penyakit ginjal** (IDAI hlm. 86)
+
+| Dosis normal | Dosis (D)/Interval (I) | LFG >50 | LFG 10–50 | LFG <10 | HD | PD |
+|---|---|---|---|---|---|---|
+| 0,1–0,2 mg/kg/dosis iv, im | D | 100% | 100% | 50% | Tak ada data | Tak ada data |
+
+**Sediaan** (FORNAS 2025 hlm. 17; obat untuk prosedur pre operatif)
+
+Restriksi FORNAS: dapat digunakan untuk premedikasi sebelum induksi anestesi dan rumatan untuk sedasi di ruang perawatan intensif.
+
+| Sediaan | Peresepan maksimal/restriksi |
+|---|---|
+| Injeksi 1 mg/mL (i.v.) | Dosis rumatan: 1 mg/jam (24 mg/hari). Dosis premedikasi: 8 vial/kasus |
+| Injeksi 5 mg/mL (i.v.) | Dosis rumatan: 1 mg/jam (24 mg/hari). Dosis premedikasi: 8 vial/kasus. Hanya digunakan untuk sedasi pada pasien di ruang perawatan intensif |
+
+**Aturan penggunaan**
+
+- Sebelum pemberian IV dalam dosis berapa pun, pastikan tersedia oksigen, obat resusitasi, alat bantu napas (bag-valve-mask dan intubasi) sesuai usia dan ukuran, serta tenaga terampil; pantau terus tanda hipoventilasi, sumbatan jalan napas, atau apnea (misalnya dengan oksimetri nadi). Flumazenil sebaiknya tersedia (label midazolam).
+- Pada anak, dosis dihitung per kg; pada anak obesitas dihitung berdasarkan berat badan ideal (label midazolam).
+- Tidak boleh diberikan dengan suntikan cepat pada neonatus; hipotensi berat dan kejang pernah dilaporkan, terutama bila bersama fentanil (label midazolam).
+
+**Manfaat obat** (label midazolam)
+
+- Sedasi, ansiolisis, dan amnesia praoperasi (IM atau IV).
+- Sedasi, ansiolisis, dan amnesia sebelum atau selama prosedur diagnostik, terapeutik, atau endoskopi (IV).
+- Induksi anestesi umum (IV) dan komponen anestesi seimbang.
+- Infus IV kontinu untuk sedasi pasien yang diintubasi dan diberi ventilasi mekanik di ruang perawatan kritis.
+- Keamanan dan efikasi untuk sedasi telah ditetapkan pada pasien anak dan neonatus.
+
+**Efek samping** (label midazolam)
+
+- Tersering: fluktuasi tanda vital, termasuk penurunan volume tidal dan/atau laju napas (23,3% setelah IV; 10,8% setelah IM) dan apnea (15,4% setelah IV), serta perubahan tekanan darah dan nadi.
+- Sebagian besar efek samping serius, terutama terkait oksigenasi dan ventilasi, terjadi bila diberikan bersama obat lain yang menekan SSP.
+- IM: sakit kepala; nyeri, indurasi, dan kemerahan di tempat suntikan.
+
+**Peringatan** (label midazolam)
+
+- Penggunaan bersama opioid dapat menyebabkan sedasi berat, depresi napas, koma, dan kematian.
+- Hanya digunakan bila ada tenaga yang terampil mendeteksi hipoventilasi dan menangani jalan napas; titrasi selalu perlahan pada dewasa maupun anak.
+- Kontraindikasi: hipersensitivitas terhadap midazolam; glaukoma sudut sempit akut; glaukoma sudut terbuka kecuali mendapat terapi yang sesuai.
+- Neurotoksisitas pada anak: studi hewan menunjukkan obat anestesi dan sedasi yang diberikan lebih dari 3 jam dapat meningkatkan apoptosis neuron di otak yang sedang berkembang; signifikansi klinisnya belum jelas.
+- Penggunaan pada akhir kehamilan dapat menyebabkan sedasi atau gejala putus obat pada neonatus.
+
+**Farmakokinetik** (label midazolam)
+
+- Dewasa: volume distribusi 1,0–3,1 L/kg; waktu paruh eliminasi 1,8–6,4 jam (rata-rata sekitar 3 jam); sekitar 97% terikat protein plasma, terutama albumin.
+- Dieliminasi melalui metabolisme hati (CYP3A4) menjadi metabolit terhidroksilasi yang dikonjugasi dan dikeluarkan di urin.
+- Anak usia 1 tahun ke atas: klirens per berat badan serupa atau lebih tinggi daripada dewasa, dan waktu paruh terminal 0,78–3,3 jam.
+- Neonatus sakit berat: waktu paruh terminal jauh memanjang (6,5–12,0 jam) dan klirens menurun.
+
+**Farmakodinamik** (label midazolam)
+
+- Benzodiazepin kerja singkat yang menekan SSP; efeknya bergantung dosis, rute, dan obat lain yang diberikan.
+- Pada anak, efek sedasi setelah IM mulai dalam 5 menit dan puncak 15–30 menit; setelah IV, sedasi tercapai dalam 3–5 menit pada dewasa dan anak.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. Midazolam Injection, USP (Hospira), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=1abda8b8-48a8-4995-af86-39220d1aa240
+
+---
+
+### 3.68 Lansoprazol
+
+**Kalkulator berat badan** (IDAI hlm. 61)
+
+| Berat badan | Dosis |
+|---|---|
+| 1 thn–30 kg | 15 mg |
+| >30 kg | 30 mg |
+
+**Sediaan** (FORNAS 2025 hlm. 188)
+
+| Sediaan | Peresepan maksimal | Restriksi |
+|---|---|---|
+| Kapsul 30 mg | 30 kaps/bulan | a) Untuk terapi jangka pendek pada kasus tukak lambung, tukak duodenum dan refluks esofagitis. b) Diberikan 1 jam sebelum makan. |
+
+**Aturan penggunaan**
+
+- Diberikan 1 jam sebelum makan (FORNAS).
+- Kapsul tidak boleh dihancurkan atau dikunyah; diberikan sedikitnya 30 menit sebelum sukralfat; antasida boleh diberikan bersamaan (label Prevacid).
+
+**Manfaat obat** (label Prevacid)
+
+- Pada anak usia 1–17 tahun: terapi jangka pendek GERD simtomatik dan esofagitis erosif. Tidak efektif pada bayi usia 1 bulan sampai kurang dari 1 tahun dengan GERD simtomatik.
+- Pada dewasa: ulkus duodenum dan lambung aktif, eradikasi *H. pylori*, ulkus terkait OAINS, GERD, esofagitis erosif, dan kondisi hipersekresi patologis termasuk sindrom Zollinger-Ellison.
+
+**Efek samping** (label Prevacid)
+
+- Pada uji terkontrol plasebo: diare (3,8%), nyeri perut (2,1%), mual (1,3%), konstipasi (1,0%). Diare lebih sering pada dosis 60 mg.
+
+**Peringatan** (label Prevacid)
+
+- Kontraindikasi: hipersensitivitas terhadap komponen formulasi; pemberian bersama produk yang mengandung rilpivirin.
+- Tidak disetujui pada anak di bawah 1 tahun; studi pada tikus muda menunjukkan penebalan katup jantung. Pada anak 1–11 tahun, lansoprazol tidak diberikan lebih dari 12 minggu dalam uji klinis; jangan melebihi dosis dan lama penggunaan yang dianjurkan.
+- Nefritis tubulointerstisial akut; diare terkait *Clostridium difficile*; fraktur terkait osteoporosis pada dosis tinggi dan terapi lama; reaksi kulit berat (SJS, TEN, DRESS, AGEP); lupus eritematosus kutan dan sistemik.
+- Penggunaan lama: defisiensi vitamin B12, hipomagnesemia, dan polip kelenjar fundus.
+- Dapat meningkatkan kadar kromogranin A sehingga mengganggu pemeriksaan tumor neuroendokrin; interaksi dengan metotreksat dosis tinggi.
+
+**Farmakokinetik** (label Prevacid)
+
+- Granul bersalut enterik; penyerapan dimulai setelah granul keluar dari lambung. Kadar puncak plasma sekitar 1,7 jam; bioavailabilitas absolut lebih dari 80%.
+- Cmax dan AUC turun 50–70% bila diberikan 30 menit setelah makan; tidak ada pengaruh makanan bermakna bila diberikan sebelum makan.
+- 97% terikat protein plasma; dimetabolisme luas di hati. Waktu paruh plasma rata-rata 1,5 jam.
+- Hampir tidak ada obat utuh di urin; sekitar sepertiga dikeluarkan di urin dan dua pertiga di feses sebagai metabolit.
+
+**Farmakodinamik** (label Prevacid)
+
+- Golongan benzimidazol tersubstitusi yang menekan sekresi asam lambung dengan menghambat secara spesifik sistem enzim (H+, K+)-ATPase (pompa proton) di permukaan sekretori sel parietal lambung.
+- Menghambat tahap akhir pembentukan asam.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. PREVACID (lansoprazole) delayed-release capsules and SoluTab (Takeda Pharmaceuticals America), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=71ba78cb-7e46-43eb-9425-fa130f537f84

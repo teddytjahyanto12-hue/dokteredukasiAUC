@@ -1057,3 +1057,20 @@ Obat: amikasin, siprofloksasin, sefadroksil, amoksisilin-asam klavulanat, rifamp
 - Kalimat label yang menyangkut kecepatan atau dosis pemberian (misalnya diazepam IV 1 menit per 5 mg; dosis atropin pada penyakit jantung koroner) tidak dimasukkan.
 - Ranitidin telah ditarik dari peredaran di Amerika Serikat (2020); label DailyMed yang dipakai tetap tersedia dan dipakai hanya untuk manfaat, efek samping, peringatan, farmakokinetik, dan farmakodinamik. **Mohon pemilik mempertimbangkan apakah ranitidin tetap ditampilkan.**
 
+---
+
+## Batch 7 (draf 0.10, 16 Oktober 2026)
+
+Obat: propranolol, nifedipin, amlodipin, hidroklorotiazid, laktulosa, ipratropium bromida, insulin reguler, sukralfat, midazolam, lansoprazol.
+
+- Kutipan IDAI dan FORNAS: 32 dari 32 cocok dengan teks sumber; tabel IDAI dan halaman FORNAS juga dicek pada gambar halaman.
+- Penulisan buku yang disalin apa adanya:
+  - propranolol IV (IDAI hlm. 68): "0.1 g/kg dalam 1 mnt" (satuan tertulis g);
+  - tabel ginjal nifedipin (IDAI hlm. 87): dosis normal tertulis "0,25-5 mg/kg/dosis".
+- **Perlu perhatian pemilik:** IDAI hlm. 65 memuat nifedipin oral atau sublingual untuk krisis hipertensi, sedangkan label nifedipin kapsul (DailyMed) menyatakan nifedipin kapsul tidak boleh digunakan untuk penurunan tekanan darah akut karena laporan hipotensi berat, infark miokard, dan kematian. Keduanya ditampilkan sesuai sumbernya masing-masing (dosis di Kalkulator, peringatan label di bagian Peringatan).
+- Midazolam tidak tercantum di daftar dosis obat IDAI hlm. 34–72; baris kalkulator diambil dari kolom dosis normal tabel ginjal (IDAI hlm. 86).
+- Ipratropium nasal ada dosisnya di IDAI tetapi FORNAS tidak mencantumkan sediaan nasal; baris dosis tetap dimasukkan (sumber IDAI), sediaan hanya yang ada di FORNAS.
+- Sediaan FORNAS yang tidak dimasukkan: ipratropium dalam kombinasi KDT/FDC (dengan fenoterol atau salbutamol); insulin campuran NPH/regular dan insulin analog (produk berbeda dari insulin regular).
+- Halaman cetak hidroklorotiazid sempat tertulis hlm. 54 di draf kerja; diperbaiki menjadi hlm. 53 setelah verifikasi otomatis gagal dan gambar halaman dicek.
+- Morfin oral (batch 5), diazepam (batch 6), dan midazolam (batch 7) memakai baris dari kolom dosis normal tabel ginjal IDAI karena tidak ada di daftar dosis utama; mohon pemilik menilai apakah baris tersebut dapat dipakai sebagai dosis kalkulator.
+

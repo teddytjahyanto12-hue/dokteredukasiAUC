@@ -777,6 +777,11 @@ File ini adalah sumber kebenaran tunggal untuk status, keputusan, dan serah teri
   - Verifikasi IDAI/FORNAS 34/34 cocok plus cek gambar halaman; catatan batch 6 (termasuk pertanyaan ranitidin untuk pemilik) di Catatan_Verifikasi_Dosis_Obat_Anak.md.
   - Build DOCX: matikan cek ejaan Word lewat Options sebelum update TOC; ekspor PDF via Word COM sempat macet >1 jam pada dokumen ini, jadi tidak dipakai lagi.
 - Pelaksana aktif Claude Code (PC 2) sesi Dosis Obat: dilepas setelah publikasi draf 0.9.
+- Checkpoint draf 0.10 (16 Oktober 2026, batch 7, 68 obat):
+  - Obat baru 3.59–3.68: propranolol, nifedipin, amlodipin, hidroklorotiazid, laktulosa, ipratropium bromida, insulin reguler, sukralfat, midazolam, lansoprazol.
+  - Verifikasi IDAI/FORNAS 32/32 cocok plus cek gambar halaman; catatan batch 7 (termasuk konflik nifedipin sublingual IDAI vs peringatan label) di Catatan_Verifikasi_Dosis_Obat_Anak.md.
+  - Sisa sekitar 9 batch (sekitar 87 obat).
+- Pelaksana aktif Claude Code (PC 2) sesi Dosis Obat: dilepas setelah publikasi draf 0.10.
 
 ## Integrasi Scoping Review - Codex, 2026-10-13
 - Pelaksana aktif: Codex sesi Scoping Review. Fokus: 21 PDF, 6 kelompok/kuis dari draf pengguna, lulus80, gratis kelompok1. Berkas: prisma/scoping-chapters.ts, render-scoping-pages.py, tests/scoping-http.mjs, lib/srma-progression.ts, lib/pdf-pages.ts, halaman kelas/materi/quiz, launcher, docs/SCOPING_KURIKULUM.md. HEAD/origin2665c79 identik setelah fetch. Tidak mengubah desain lokal atau dokumen dosis obat Claude aktif. Runtime PC2 terakhir build NLR; build baru akan dibuat terpisah, database diimpor terarah.
