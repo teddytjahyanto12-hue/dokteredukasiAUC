@@ -21,6 +21,7 @@ export async function SiteHeader() {
   const items: NavItem[] = [
     { href: "/kelas", label: "Katalog Kelas", icon: "book", match: ["/kelas", "/materi", "/quiz", "/jalur", "/program"] },
     { href: "/kalkulator", label: "Kalkulator Medis", icon: "calculator", match: ["/kalkulator"] },
+    { href: "/dosis-obat", label: "Dosis Obat", icon: "pill", match: ["/dosis-obat"] },
     {
       href: !user || user.role === "STUDENT" ? (user ? "/belajar" : home) : home,
       label: !user || user.role === "STUDENT" ? "Pembelajaran Saya" : "Dashboard",

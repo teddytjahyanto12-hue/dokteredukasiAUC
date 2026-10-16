@@ -25,6 +25,15 @@
         "3005"
       ],
       "port": 3005
+    },
+    {
+      "name": "web-dosis-obat",
+      "runtimeExecutable": "cmd",
+      "runtimeArgs": [
+        "/c",
+        "set DEA_BUILD_DIR=.next-dev-dosis&& npm --prefix apps/web run dev -- -p 3011"
+      ],
+      "port": 3011
     }
   ]
 }

@@ -18,6 +18,8 @@
     "test:srma": "tsx tests/srma-tools.ts",
     "db:revisi-2026-10-12": "tsx prisma/revisi-2026-10-12.ts",
     "db:kalkulator-medis": "tsx prisma/kalkulator-medis.ts",
+    "data:dosis-obat": "tsx scripts/build-dosis-obat-data.ts",
+    "test:dosis-obat": "tsx src/lib/dosis-obat/dose.test.ts",
     "db:reset": "prisma migrate reset --force",
     "db:studio": "prisma studio",
     "typecheck": "tsc --noEmit",

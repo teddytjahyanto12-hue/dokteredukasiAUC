@@ -1,6 +1,7 @@
 import "server-only";
 import { db } from "@/lib/db";
 import { CALCULATORS } from "@/lib/calculators/registry";
+import { searchDrugs } from "@/lib/dosis-obat/data";
 
 // Pencarian terpadu seluruh fitur situs: kelas/Blok, materi (bab), kalkulator, paket, dan halaman fitur.
 export type SearchItem = { title: string; subtitle?: string; href: string; kind: string };
@@ -9,6 +10,7 @@ export type SearchGroup = { key: string; label: string; items: SearchItem[] };
 const PAGES: { title: string; href: string; subtitle: string; keys: string[] }[] = [
   { title: "Katalog Kelas", href: "/kelas", subtitle: "Semua kelas dan Blok", keys: ["kelas", "katalog", "blok", "materi", "belajar", "course"] },
   { title: "Kalkulator Medis", href: "/kalkulator", subtitle: "Kalkulator dan skor klinis", keys: ["kalkulator", "skor", "score", "calculator", "hitung"] },
+  { title: "Dosis Obat Anak", href: "/dosis-obat/anak", subtitle: "Kalkulator dosis obat anak per berat badan", keys: ["dosis", "obat", "dosis obat", "dosis anak", "pediatri", "mg/kg", "fornas", "idai"] },
   { title: "Layanan & Harga", href: "/paket", subtitle: "Paket belajar, bimbingan, dan langganan", keys: ["paket", "harga", "layanan", "beli", "langganan", "premium"] },
   { title: "Penawaran", href: "/penawaran", subtitle: "Promo dan penawaran", keys: ["penawaran", "promo", "diskon"] },
   { title: "Toolkit SR-MA", href: "/toolkit-srma", subtitle: "Alat bantu systematic review & meta-analisis", keys: ["toolkit", "srma", "sr-ma", "systematic review", "meta analisis", "meta-analisis", "deduplikasi", "screening"] },
@@ -48,6 +50,8 @@ export async function searchSite(qRaw: string, limit = 5): Promise<SearchGroup[]
     .slice(0, limit)
     .map(({ c }) => ({ title: c.title, subtitle: `Kalkulator · ${c.field}`, href: `/kalkulator/${c.slug}`, kind: "kalkulator" }));
 
+  const obat = searchDrugs(q, limit).map((d) => ({ title: d.name, subtitle: "Dosis Obat Anak", href: `/dosis-obat/anak/${d.slug}`, kind: "obat" }));
+
   const pages = PAGES.map((p) => ({ p, s: scoreText(q, [p.title, ...p.keys]) }))
     .filter((x) => x.s > 0)
     .sort((a, b) => b.s - a.s)
@@ -86,6 +90,7 @@ export async function searchSite(qRaw: string, limit = 5): Promise<SearchGroup[]
 
   return [
     { key: "kalkulator", label: "Kalkulator Medis", items: calc },
+    { key: "obat", label: "Dosis Obat Anak", items: obat },
     { key: "kelas", label: "Kelas & Blok", items: kelas },
     { key: "materi", label: "Materi", items: materi },
     { key: "paket", label: "Paket & Layanan", items: paket },

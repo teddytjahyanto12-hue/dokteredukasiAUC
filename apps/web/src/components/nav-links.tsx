@@ -25,7 +25,7 @@ export function NavLinks({ items, compact }: { items: NavItem[]; compact?: boole
             }`}
           >
             <Icon name={it.icon} className={`h-4 w-4 ${it.icon === "sparkles" ? "text-current" : ""}`} />
-            {compact ? <><span className="md:hidden">{it.href === "/kelas" ? "Kelas" : it.href === "/rekomendasi" ? "Rekomendasi" : it.href === "/kalkulator" ? "Kalkulator" : it.label === "Dashboard" ? "Dashboard" : "Belajar"}</span><span className="hidden md:inline">{it.label}</span></> : it.label}
+            {compact ? <><span className="md:hidden">{it.href === "/kelas" ? "Kelas" : it.href === "/rekomendasi" ? "Rekomendasi" : it.href === "/kalkulator" ? "Kalkulator" : it.href === "/dosis-obat" ? "Dosis" : it.label === "Dashboard" ? "Dashboard" : "Belajar"}</span><span className="hidden md:inline">{it.label}</span></> : it.label}
             {it.dot && <span className="absolute right-1 top-1.5 h-1.5 w-1.5 rounded-full bg-mascot" aria-hidden />}
           </Link>
         );
