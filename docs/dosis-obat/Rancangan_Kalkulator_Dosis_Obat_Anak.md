@@ -1,6 +1,6 @@
 # Kalkulator Dosis Obat Anak
 
-Draf 0.13, 16 Oktober 2026 (98 obat). Materi untuk ditinjau pemilik; belum diterapkan di website.
+Draf 0.14, 16 Oktober 2026 (108 obat). Materi untuk ditinjau pemilik; belum diterapkan di website.
 
 ---
 
@@ -6480,3 +6480,591 @@ Keterangan IDAI: bila terdapat tanda klinis defisiensi vitamin A (rabun senja, x
 1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
 2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
 3. Fluticasone Propionate HFA inhalation aerosol (Prasco Laboratories), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=99249b31-bf0a-464f-8335-845279350dbe
+
+---
+
+### 3.99 Amfoterisin B
+
+**Kalkulator berat badan** (IDAI hlm. 28 dan 36, tertulis "Amfoterisin B (konvensional)")
+
+| Keadaan | Dosis |
+|---|---|
+| Dosis inisial | 0,5 mg/kg/dosis sekali sehari, dosis bisa ditingkatkan 0,25 mg/kg sampai dosis maksimal 1,5 mg/kg/hari |
+| Dosis rumatan | 0,25–1 mg/kg/dosis sekali sehari |
+
+**Penyesuaian dosis pada penyakit ginjal** (IDAI hlm. 77, tertulis "Amphotericin B")
+
+| Dosis normal | Dosis (D)/Interval (I) | LFG >50 | LFG 10–50 | LFG <10 | HD | PD |
+|---|---|---|---|---|---|---|
+| 0,5–1,5 mg/kg/hari iv dalam 6–24 jam | I | q24 jam | q24 jam | q24–36 jam | tak ada | dosis untuk LFG <10 |
+
+**Sediaan** (FORNAS 2025 hlm. 49–50; antifungi sistemik)
+
+| Sediaan | Peresepan maksimal/restriksi |
+|---|---|
+| Injeksi 5 mg/mL (i.v.) | – |
+| Injeksi 50 mg (program) | 1 x 1 vial selama 14 hari. a) Disediakan oleh Program Kemenkes. b) Digunakan oleh ODHIV yang mengalami infeksi oportunistik jenis meningitis karena cryptococcus. c) Digunakan untuk kondisi sub akut cryptococcus. |
+
+**Aturan penggunaan**
+
+- Sesuai tabel IDAI.
+- Diberikan IV di bawah pengawasan ketat; infus cepat dikaitkan dengan hipotensi, hipokalemia, aritmia, dan syok sehingga harus dihindari (label amfoterisin B).
+- Verifikasi nama produk dan dosis sebelum pemberian, terutama bila dosis melebihi 1,5 mg/kg (label amfoterisin B).
+
+**Manfaat obat** (label amfoterisin B)
+
+- Infeksi jamur progresif yang berpotensi mengancam jiwa: aspergilosis, kriptokokosis, blastomikosis, kandidiasis sistemik, koksidioidomikosis, histoplasmosis, zigomikosis termasuk mukormikosis, dan sporotrikosis.
+- Tidak digunakan untuk infeksi jamur noninvasif (misalnya kandidiasis oral, vagina, atau esofagus) pada pasien dengan hitung neutrofil normal.
+
+**Efek samping** (label amfoterisin B)
+
+- Reaksi akut 1–3 jam setelah infus dimulai: demam, menggigil, hipotensi, anoreksia, mual, muntah, sakit kepala, takipnea; biasanya lebih berat pada beberapa dosis pertama.
+- Ginjal: penurunan fungsi ginjal, azotemia, hipokalemia, hipostenuria, asidosis tubulus ginjal, nefrokalsinosis; biasanya membaik bila terapi dihentikan, tetapi sebagian dapat menetap.
+- Anemia normokromik normositik; nyeri di tempat suntikan dengan atau tanpa flebitis; nyeri otot dan sendi; penurunan berat badan.
+
+**Peringatan** (label amfoterisin B)
+
+- Peringatan berbingkai: tidak boleh diberikan dalam dosis lebih dari 1,5 mg/kg; overdosis dapat menyebabkan henti jantung atau kardiopulmoner yang fatal.
+- Kontraindikasi: hipersensitivitas terhadap amfoterisin B atau komponen formulasi, kecuali kondisi yang mengancam jiwa hanya dapat diobati dengan amfoterisin B.
+- Hati-hati pada gangguan fungsi ginjal; fungsi ginjal perlu dipantau sering.
+- Keamanan dan efektivitas pada anak belum ditetapkan melalui studi terkontrol; pada anak, gunakan dosis terkecil yang efektif.
+
+**Farmakokinetik** (label amfoterisin B)
+
+- Lebih dari 90% terikat protein plasma dan sulit didialisis.
+- Kadar di cairan pleura, peritoneum, sinovium, dan aqueous humor yang meradang sekitar dua pertiga kadar plasma; kadar di cairan serebrospinal jarang melebihi 2,5% kadar plasma.
+- Waktu paruh plasma awal sekitar 24 jam, diikuti waktu paruh eliminasi sekitar 15 hari; diekskresikan sangat lambat oleh ginjal (berminggu-minggu sampai berbulan-bulan).
+
+**Farmakodinamik** (label amfoterisin B)
+
+- Fungistatik atau fungisidal bergantung kadar obat dan kepekaan jamur.
+- Berikatan dengan sterol pada membran sel jamur sehingga permeabilitas membran berubah dan komponen intrasel bocor.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. Amphotericin B for Injection, USP (X-Gen Pharmaceuticals), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=a0a54943-9ce4-4f3e-b681-a1a9144c16ce
+
+---
+
+### 3.100 Asam asetilsalisilat (aspirin)
+
+**Kalkulator berat badan** (IDAI hlm. 38)
+
+| Keadaan | Dosis |
+|---|---|
+| Antiplatelet | 5 mg/kg (maks 100 mg) per hari |
+| Artritis | 25 mg/kg (maks 2 gram), per oral, 6 jam selama 3 hari, kemudian 15–20 mg/kg, per oral, 6 jam |
+| Demam rematik akut dengan karditis ringan sampai sedang | 90–100 mg/kgBB/hari dibagi dalam 4–6 dosis, diberikan selama 4–8 minggu tergantung respons klinis. Setelah tampak perbaikan gejala klinis, dosis diturunkan secara bertahap selama 4–6 minggu |
+| Demam rematik akut dengan artritis | 90–100 mg/kgBB/hari dibagi dalam 4–6 dosis, diberikan selama 2 minggu dan secara perlahan dosis diturunkan dalam 2–3 minggu |
+| Kawasaki | 80–100 mg/kgBB/hari dibagi dalam 4 dosis, diberikan sampai 48–72 jam bebas demam. Dosis diturunkan menjadi 3–5 mg/kgBB/hari sekali sehari, diberikan selama 6–8 minggu |
+
+**Sediaan** (FORNAS 2025 hlm. 156; tertulis "asam asetilsalisilat (asetosal)")
+
+| Sediaan | Peresepan maksimal |
+|---|---|
+| Tablet 80 mg | 30 tab/bulan |
+| Tablet salut enterik 100 mg | 30 tab/bulan |
+
+**Aturan penggunaan**
+
+- Sesuai tabel IDAI.
+
+**Manfaat obat** (label Durlaza; produk aspirin lepas lambat)
+
+- Pada dewasa: menurunkan risiko kematian dan infark miokard pada penyakit arteri koroner kronik, serta risiko kematian dan stroke berulang setelah stroke iskemik atau serangan iskemik sementara.
+
+**Efek samping** (label Durlaza; efek samping yang dilaporkan pada produk aspirin dosis rendah)
+
+- SSP: agitasi, edema serebral, koma, kebingungan, pusing, sakit kepala, letargi, kejang.
+- Cairan dan elektrolit: hiperkalemia, asidosis metabolik, alkalosis respiratorik.
+- Saluran cerna: dispepsia, kenaikan enzim hati, hepatitis, sindrom Reye.
+- Ginjal: nefritis interstisial, nekrosis papila, proteinuria, insufisiensi dan gagal ginjal.
+
+**Peringatan** (label Durlaza)
+
+- Kontraindikasi: hipersensitivitas terhadap OAINS; sindrom asma, rinitis, dan polip hidung (dapat menyebabkan urtikaria berat, angioedema, atau bronkospasme).
+- Meningkatkan risiko perdarahan; dapat menyebabkan ulkus dan perdarahan lambung; hindari pada tukak peptik aktif.
+- Toksisitas janin pada kehamilan lanjut.
+- Keamanan dan efektivitas pada anak belum ditetapkan.
+
+**Farmakokinetik** (label Durlaza)
+
+- Aspirin cepat dihidrolisis dalam plasma menjadi asam salisilat; volume distribusi dosis lazim rata-rata sekitar 170 mL/kg.
+- Asam salisilat terutama dikonjugasi di hati menjadi asam salisilurat dan glukuronida.
+- Waktu paruh plasma aspirin 20–60 menit.
+
+**Farmakodinamik** (label Durlaza)
+
+- Gugus asetil aspirin berikatan dengan residu serin siklooksigenase-1 (COX-1) sehingga enzim tidak aktif secara ireversibel.
+- Hambatan COX-1 mencegah pembentukan tromboksan A2 sehingga agregasi trombosit terhambat selama masa hidup trombosit (sekitar 7–10 hari).
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. DURLAZA (aspirin) extended-release capsules (New Haven Pharmaceuticals), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=4c2a1403-3862-1efd-0a91-444989222b37
+
+---
+
+### 3.101 Atenolol
+
+**Kalkulator berat badan** (IDAI hlm. 39)
+
+| Rute | Dosis |
+|---|---|
+| Oral | 0,5–1 mg/kg (maks 25–50 mg), 12–24 jam |
+| IV | 0,05 mg/kg (maks 2,5 mg) tiap 5 mnt bila perlu (maks 4 dosis), kemudian 0,1–0,2 mg/kg (maks 5–10 mg) dalam 10 mnt, 12–24 jam |
+
+**Sediaan** (FORNAS 2025)
+
+| Sediaan | Halaman FORNAS | Peresepan maksimal |
+|---|---|---|
+| Tablet 50 mg (antiangina) | hlm. 150 | 30 tab/bulan |
+| Tablet 50 mg (antihipertensi) | hlm. 152 | 30 tab/bulan |
+| Tablet 100 mg (antihipertensi) | hlm. 152 | 30 tab/bulan |
+
+**Aturan penggunaan**
+
+- Sesuai tabel IDAI.
+- Jangan dihentikan mendadak pada penyakit arteri koroner; eksaserbasi angina berat, infark miokard, dan aritmia ventrikel pernah dilaporkan setelah penghentian mendadak penyekat beta (label Tenormin).
+
+**Manfaat obat** (label Tenormin)
+
+- Hipertensi, angina pektoris akibat aterosklerosis koroner, dan infark miokard akut (dewasa).
+
+**Efek samping** (label Tenormin)
+
+- Umumnya ringan dan sementara: bradikardia, ekstremitas dingin, hipotensi postural, nyeri tungkai, pusing, vertigo, lelah, letargi, mengantuk, depresi, mimpi, diare, mual.
+
+**Peringatan** (label Tenormin)
+
+- Kontraindikasi: bradikardia sinus, blok jantung lebih dari derajat satu, syok kardiogenik, gagal jantung nyata; hipersensitivitas terhadap atenolol.
+- Dapat mencetuskan gagal jantung; pasien dengan penyakit bronkospastik umumnya tidak boleh menerima penyekat beta.
+- Penyekat beta dapat menutupi tanda awal hipoglikemia dan meningkatkan risiko hipoglikemia berat, terutama pada pasien diabetes, anak, dan pasien yang berpuasa.
+- Dapat menutupi tanda hipertiroidisme; penghentian mendadak dapat memicu badai tiroid.
+- Keamanan dan efektivitas pada anak belum ditetapkan.
+
+**Farmakokinetik** (label Tenormin)
+
+- Sekitar 50% dosis oral diserap; kadar puncak 2–4 jam setelah pemberian.
+- Hampir tidak dimetabolisme hati; bagian yang diserap dieliminasi terutama melalui ginjal. Ikatan protein plasma kecil (6–16%).
+- Waktu paruh eliminasi oral sekitar 6–7 jam.
+
+**Farmakodinamik** (label Tenormin)
+
+- Penyekat reseptor beta1 yang selektif (kardioselektif) tanpa aktivitas stabilisasi membran atau simpatomimetik intrinsik; pada dosis lebih tinggi juga menghambat reseptor beta2.
+- Menurunkan denyut jantung, curah jantung, dan tekanan darah saat istirahat maupun aktivitas.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. TENORMIN (atenolol) tablets (Upsher-Smith Laboratories), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=6e850b1e-28a4-4ff8-8ed7-bb0b29faa28a
+
+---
+
+### 3.102 Desmopresin
+
+**Kalkulator** (IDAI hlm. 46)
+
+| Keadaan | Dosis |
+|---|---|
+| Enuresis (malam hari), >6 thn | 200–400 mcg oral, 10–40 mcg nasal |
+
+**Sediaan** (FORNAS 2025 hlm. 134)
+
+| Sediaan | Peresepan maksimal |
+|---|---|
+| Tablet 0,1 mg | – |
+| Tablet 0,2 mg | – |
+| Nasal spray 10 mcg/puff | 3 btl spray/bulan |
+
+**Aturan penggunaan**
+
+- Sesuai tabel IDAI.
+- Asupan cairan perlu dibatasi, terutama pada anak, untuk mencegah intoksikasi air dan hiponatremia (label DDAVP).
+
+**Manfaat obat** (label DDAVP)
+
+- Enuresis nokturnal primer, sendiri atau sebagai tambahan terapi perilaku; telah digunakan dengan aman pada anak usia 6 tahun ke atas hingga 6 bulan.
+- Terapi pengganti antidiuretik pada diabetes insipidus sentral dan poliuria-polidipsia sementara setelah trauma kepala atau pembedahan daerah hipofisis; tidak efektif untuk diabetes insipidus nefrogenik.
+
+**Efek samping** (label DDAVP)
+
+- Pada uji enuresis nokturnal, satu-satunya efek samping ≥3% adalah sakit kepala (4% vs plasebo 3%).
+- Dosis tinggi sediaan intranasal dan injeksi kadang menimbulkan sakit kepala, mual, kemerahan, dan kram perut ringan sementara.
+
+**Peringatan** (label DDAVP)
+
+- Kontraindikasi: hipersensitivitas terhadap desmopresin; gangguan ginjal sedang sampai berat (klirens kreatinin <50 mL/menit); hiponatremia atau riwayat hiponatremia.
+- Hiponatremia dan intoksikasi air yang dapat fatal; diperlukan pembatasan cairan dan pengawasan medis ketat.
+- Hati-hati pada insufisiensi koroner, penyakit kardiovaskular hipertensif, dan kondisi dengan gangguan cairan dan elektrolit (misalnya fibrosis kistik, gagal jantung, gangguan ginjal).
+
+**Farmakokinetik** (label DDAVP)
+
+- Bioavailabilitas tablet oral sekitar 5% dibanding intranasal dan sekitar 0,16% dibanding IV.
+- Waktu paruh plasma 1,5–2,5 jam, tidak bergantung dosis.
+
+**Farmakodinamik** (label DDAVP)
+
+- Analog sintetis hormon arginin vasopresin dengan efek antidiuretik; pada diabetes insipidus, dosis oral 0,1–0,2 mg menghasilkan efek antidiuretik hingga 8 jam.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. DDAVP (desmopressin acetate) tablets (Ferring Pharmaceuticals), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=6d55baa9-2b62-469c-93ae-3909ab249332
+
+---
+
+### 3.103 Fludrokortison
+
+**Kalkulator** (IDAI hlm. 52, tertulis "Fludrokortison asetat")
+
+| Rute | Dosis |
+|---|---|
+| Oral | 150 mcg/m2/hari, oral ATAU 0,1–0,2 mg/hari |
+
+**Sediaan** (FORNAS 2025 hlm. 148)
+
+Restriksi FORNAS: sebagai pengobatan pengganti parsial untuk insufisiensi korteks adrenal primer yang terjadi pada penyakit Addison dan kehilangan garam (*salt losing*) pada sindrom adrenogenital.
+
+| Sediaan | Peresepan maksimal |
+|---|---|
+| Tablet 0,102 mg | – |
+
+**Aturan penggunaan**
+
+- Sesuai tabel IDAI.
+- Dosis pendukung mungkin diperlukan saat stres (trauma, pembedahan, penyakit berat) selama terapi dan hingga satu tahun sesudahnya (label fludrokortison).
+
+**Manfaat obat** (label fludrokortison)
+
+- Terapi pengganti parsial untuk insufisiensi adrenokortikal primer dan sekunder pada penyakit Addison, serta sindrom adrenogenital dengan kehilangan garam.
+
+**Efek samping** (label fludrokortison)
+
+- Sebagian besar akibat aktivitas mineralokortikoid (retensi natrium dan air): hipertensi, edema, pembesaran jantung, gagal jantung kongestif, kehilangan kalium, alkalosis hipokalemik.
+- Pada penggunaan lama atau bersama glukokortikoid: kelemahan otot, miopati steroid, osteoporosis, dan efek glukokortikoid lain.
+
+**Peringatan** (label fludrokortison)
+
+- Kontraindikasi: infeksi jamur sistemik; hipersensitivitas terhadap kortikosteroid.
+- Karena efek retensi natrium yang kuat, tidak dianjurkan untuk kondisi di luar indikasi.
+- Dapat menutupi tanda infeksi; penggunaan lama dapat menyebabkan katarak, glaukoma, dan infeksi mata sekunder.
+- Keamanan dan efektivitas pada anak belum ditetapkan; pertumbuhan dan perkembangan anak yang menerima kortikosteroid jangka panjang perlu diamati.
+
+**Farmakokinetik** (label fludrokortison)
+
+- Waktu paruh plasma sekitar 3,5 jam atau lebih; waktu paruh biologis 18–36 jam.
+
+**Farmakodinamik** (label fludrokortison)
+
+- Kerja fisiologis serupa hidrokortison, tetapi efek terhadap keseimbangan elektrolit jauh lebih kuat dan lama.
+- Bekerja pada tubulus distal ginjal meningkatkan reabsorpsi natrium serta meningkatkan ekskresi kalium dan ion hidrogen di urin.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. Fludrocortisone Acetate Tablets, USP (Eywa Pharma), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=eff2eae8-94ce-46ca-a027-6b1d08e7b96b
+
+---
+
+### 3.104 Gansiklovir
+
+**Kalkulator berat badan** (IDAI hlm. 53)
+
+| Keadaan | Dosis |
+|---|---|
+| CMV kongenital | 7,5 mg/kg, 12 jam, IV dalam 2 jam |
+
+**Penyesuaian dosis pada penyakit ginjal** (IDAI hlm. 83, tertulis "Ganciclovir")
+
+| Dosis normal | Dosis (D)/Interval (I) | LFG >50 | LFG 10–50 | LFG <10 | HD | PD |
+|---|---|---|---|---|---|---|
+| 5 mg/kg/dosis q12 jam iv utk 2–3 minggu, kmd 5 mg/kg q24 jam iv | I | q12 jam | q24–48 jam | q48–96 jam | dosis sesudah dialisis | Dosis untuk LFG <10 |
+
+**Sediaan** (FORNAS 2025 hlm. 53; anti sitomegalovirus)
+
+Restriksi FORNAS: untuk pengobatan infeksi CMV yang mengancam jiwa atau penglihatan pada pasien *immunocompromised*, termasuk HIV/AIDS dengan CD4 <100, atau untuk transplantasi organ dari donor yang menderita CMV.
+
+| Sediaan | Peresepan maksimal |
+|---|---|
+| Serbuk injeksi 500 mg | – |
+
+**Aturan penggunaan**
+
+- Sesuai tabel IDAI.
+- Gunakan dengan hati-hati pada gangguan fungsi ginjal karena waktu paruh dan kadar gansiklovir meningkat (label gansiklovir).
+
+**Manfaat obat** (label gansiklovir)
+
+- Pengobatan retinitis CMV pada pasien imunokompromais dewasa, termasuk AIDS.
+- Pencegahan penyakit CMV pada resipien transplantasi dewasa yang berisiko.
+
+**Efek samping** (label gansiklovir)
+
+- Tersering (≥20% dewasa): demam, diare, leukopenia, mual, anemia, astenia, sakit kepala, batuk, nafsu makan menurun, sesak, nyeri perut, sepsis, hiperhidrosis, kenaikan kreatinin.
+- Pada uji klinis anak dengan infeksi CMV berat, efek samping tersering adalah granulositopenia dan trombositopenia.
+
+**Peringatan** (label gansiklovir)
+
+- Peringatan berbingkai: toksisitas hematologi (granulositopenia, anemia, trombositopenia, pansitopenia), gangguan fertilitas, toksisitas janin, serta potensi mutagenik dan karsinogenik.
+- Kontraindikasi: hipersensitivitas bermakna (misalnya anafilaksis) terhadap gansiklovir, valgansiklovir, atau komponen formulasi.
+- Keamanan dan efikasi pada anak belum ditetapkan.
+
+**Farmakokinetik** (label gansiklovir)
+
+- Ikatan protein plasma 1–2%; masuk ke cairan serebrospinal.
+- Eliminasi utama melalui ekskresi ginjal dalam bentuk utuh (filtrasi glomerulus dan sekresi tubulus aktif); waktu paruh sekitar 3,5 jam setelah pemberian IV pada dewasa.
+- Pada neonatus usia 2–49 hari, waktu paruh sekitar 2,4 jam.
+
+**Farmakodinamik** (label gansiklovir)
+
+- Di sel yang terinfeksi CMV, difosforilasi oleh kinase virus pUL97 lalu oleh kinase sel menjadi gansiklovir trifosfat.
+- Gansiklovir trifosfat menghambat DNA polimerase virus (pUL54) sehingga replikasi CMV terhambat.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. Ganciclovir for Injection, USP (Par Health), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=87afd103-6e64-444f-971d-0e732e9ae995
+
+---
+
+### 3.105 Valgansiklovir
+
+**Kalkulator** (IDAI hlm. 71)
+
+| Usia | Dosis |
+|---|---|
+| Neonatus | 15 mg/kg, 12 jam |
+| >4 mgg | 520 mg/m2, 12 jam, oral bersama makanan selama 21 hari |
+
+**Sediaan** (FORNAS 2025 hlm. 53–54; anti sitomegalovirus)
+
+Restriksi FORNAS: a) hanya untuk pasien HIV/AIDS dengan CD4 <100, serta dibuktikan ada kelainan organik (retinitis CMV) atau untuk profilaksis CMV pada pasien CMV negatif yang menerima transplantasi organ dari donor yang CMV positif; b) kadar transaminase serum dalam batas normal.
+
+| Sediaan | Peresepan maksimal |
+|---|---|
+| Tablet salut 450 mg | – |
+
+**Aturan penggunaan**
+
+- Diberikan bersama makanan (IDAI; label Valcyte).
+
+**Manfaat obat** (label Valcyte)
+
+- Pengobatan retinitis CMV pada AIDS (dewasa).
+- Pencegahan penyakit CMV pada transplantasi ginjal, jantung, dan ginjal-pankreas risiko tinggi; pada anak, untuk transplantasi ginjal usia 4 bulan–16 tahun dan transplantasi jantung usia 1 bulan–16 tahun. Tidak diindikasikan untuk profilaksis pada neonatus.
+
+**Efek samping** (label Valcyte)
+
+- Tersering (≥20% dewasa pada sedikitnya satu indikasi): diare, demam, lelah, mual, tremor, neutropenia, anemia, leukopenia, trombositopenia, sakit kepala, insomnia, infeksi saluran kemih, muntah.
+- Efek samping gansiklovir dapat terjadi karena valgansiklovir cepat diubah menjadi gansiklovir.
+
+**Peringatan** (label Valcyte)
+
+- Peringatan berbingkai: toksisitas hematologi (leukopenia, neutropenia, anemia, trombositopenia, pansitopenia, kegagalan sumsum tulang termasuk anemia aplastik), gangguan fertilitas, toksisitas janin, serta potensi mutagenik dan karsinogenik.
+- Kontraindikasi: hipersensitivitas bermakna terhadap valgansiklovir, gansiklovir, atau komponen formulasi.
+- Gagal ginjal akut; dosis perlu dikurangi pada gangguan fungsi ginjal.
+
+**Farmakokinetik** (label Valcyte)
+
+- Prodrug gansiklovir yang cepat diubah menjadi gansiklovir setelah pemberian oral; Cmax dan AUC valgansiklovir hanya sekitar 1% dan 3% dari gansiklovir.
+
+**Farmakodinamik** (label Valcyte)
+
+- Antivirus dengan aktivitas terhadap CMV melalui gansiklovir (lihat gansiklovir).
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. VALCYTE (valganciclovir) tablets and oral solution (H2-Pharma), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=4c517a39-2ded-4c5a-8d56-276853414b31
+
+---
+
+### 3.106 Takrolimus
+
+**Kalkulator berat badan**
+
+| Keadaan | Dosis | Sumber |
+|---|---|---|
+| Transplantasi ginjal dan hati (IV) | 0,03–0,05 mg/kg/hari iv | IDAI hlm. 70 |
+| Transplantasi jantung (IV) | 0,01 mg/kg/hari iv | IDAI hlm. 70 |
+| Oral | 0,15–0,2 mg/kg/hari bagi 2 dosis tiap 12 jam | IDAI hlm. 70 |
+| Kapsul lepas lambat, dosis awal transplantasi ginjal | 0,2–0,3 mg/kg/hari | FORNAS hlm. 107 |
+| Kapsul lepas lambat, dosis awal transplantasi hati | 0,1–0,2 mg/kg/hari | FORNAS hlm. 107 |
+
+Keterangan IDAI (sediaan topikal, hlm. 70): usia 2–15 tahun salep 0,03%, 2 kali sehari; usia >15 tahun salep 0,03% atau 0,1%, 2 kali sehari; dilanjutkan sampai 1 minggu setelah gejala menghilang. FORNAS tidak mencantumkan sediaan salep takrolimus.
+
+**Sediaan** (FORNAS 2025 hlm. 106–107)
+
+Restriksi FORNAS: a) untuk pasien pascatransplantasi hati atau ginjal yang telah mendapat imunosupresan lainnya, tetapi tidak respons; atau b) untuk pencegahan rejeksi pada transplantasi hati atau ginjal.
+
+| Sediaan | Peresepan maksimal |
+|---|---|
+| Kapsul 0,5 mg | – |
+| Kapsul 1 mg | – |
+| Kapsul lepas lambat 0,5 mg | Dosis awal transplantasi ginjal: 0,2–0,3 mg/kg/hari. Dosis awal transplantasi hati: 0,1–0,2 mg/kg/hari. Dosis rumatan disesuaikan dengan kebutuhan pasien berdasarkan pemantauan kadar obat dalam darah |
+| Kapsul lepas lambat 1 mg | sama seperti di atas |
+| Kapsul lepas lambat 3 mg | sama seperti di atas |
+
+**Aturan penggunaan**
+
+- Sesuai tabel IDAI dan FORNAS.
+- Sediaan lepas segera dan lepas lambat tidak dapat saling menggantikan; kesalahan penggantian pernah menyebabkan rejeksi graft (label Prograf).
+- Diminum secara konsisten setiap hari, selalu bersama atau selalu tanpa makanan; hindari grapefruit dan jusnya (label Prograf).
+
+**Manfaat obat** (label Prograf)
+
+- Profilaksis rejeksi organ pada transplantasi ginjal, hati, jantung, atau paru pada dewasa dan anak, dikombinasikan dengan imunosupresan lain.
+
+**Efek samping** (label Prograf)
+
+- Tersering pada transplantasi ginjal (≥30%): infeksi, tremor, hipertensi, gangguan fungsi ginjal, konstipasi, diare, sakit kepala, nyeri perut, insomnia, mual, hipomagnesemia, infeksi saluran kemih, hipofosfatemia, edema perifer.
+- Nefrotoksisitas pada sekitar 52% pasien transplantasi ginjal.
+
+**Peringatan** (label Prograf)
+
+- Peringatan berbingkai: peningkatan risiko infeksi serius dan keganasan.
+- Kontraindikasi: hipersensitivitas terhadap takrolimus; injeksi pada hipersensitivitas terhadap HCO-60 (minyak jarak terhidrogenasi).
+- Diabetes awitan baru pascatransplantasi; nefrotoksisitas; neurotoksisitas (termasuk PRES, kejang); hiperkalemia; hipertensi; pemanjangan QT; hipertrofi miokard (termasuk pada bayi dan anak); interaksi dengan penghambat dan penginduksi CYP3A4; hindari vaksin hidup.
+
+**Farmakokinetik** (label Prograf)
+
+- Bioavailabilitas absolut 17–23% pada dewasa; makanan menurunkan bioavailabilitas.
+- Ikatan protein plasma sekitar 99%.
+- Dimetabolisme luas oleh sistem sitokrom P450 (CYP3A4 dan CYP3A5); kurang dari 1% dosis dikeluarkan utuh di urin.
+- Anak umumnya membutuhkan dosis lebih tinggi untuk mencapai kadar lembah serupa dengan dewasa.
+
+**Farmakodinamik** (label Prograf)
+
+- Berikatan dengan protein intrasel FKBP-12; kompleks ini menghambat aktivitas fosfatase kalsineurin sehingga aktivasi limfosit T dan produksi berbagai sitokin (termasuk IL-2) terhambat.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. PROGRAF (tacrolimus) capsules, injection, and granules (Astellas Pharma US), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=7f667de1-9dfa-4bd6-8ba0-15ee2d78873b
+
+---
+
+### 3.107 Siklofosfamid
+
+**Kalkulator** (IDAI hlm. 69; dosis per luas permukaan tubuh atau per kg)
+
+| Keadaan | Dosis |
+|---|---|
+| Leukemia | Regimen tipikal 600 mg/m2 IV selama 30 menit, 1x/hari, 3 hari. Kemudian 600 mg/m2 IV, 1x/minggu atau 10 mg/kg, 2x seminggu (jika leukosit >3000/mm3) |
+
+**Penyesuaian dosis pada penyakit ginjal** (IDAI hlm. 81, tertulis "Cyclophosphamide")
+
+| Dosis normal | Dosis (D)/Interval (I) | LFG >50 | LFG 10–50 | LFG <10 | HD | PD |
+|---|---|---|---|---|---|---|
+| 600 mg/m2/dosis q24 jam iv | D | 100% | 100% | 75% | ½ dosis | tak ada data |
+
+**Sediaan** (FORNAS 2025 hlm. 73; antikanker)
+
+| Sediaan | Peresepan maksimal |
+|---|---|
+| Injeksi 200 mg (i.v.) | – |
+| Injeksi 500 mg (i.v.) | – |
+| Injeksi 1.000 mg (i.v.) | – |
+
+**Aturan penggunaan**
+
+- Sesuai tabel IDAI.
+
+**Manfaat obat** (label siklofosfamid)
+
+- Pada dewasa dan anak: limfoma maligna, mieloma multipel, leukemia, mikosis fungoides, neuroblastoma, adenokarsinoma ovarium, retinoblastoma, dan kanker payudara.
+- Sindrom nefrotik lesi minimal yang terbukti biopsi pada anak yang tidak respons atau tidak toleran terhadap kortikosteroid.
+
+**Efek samping** (label siklofosfamid)
+
+- Tersering: neutropenia, neutropenia febril, demam, alopesia, mual, muntah, diare.
+- Sistitis hemoragik, toksisitas jantung dan paru, dan keganasan sekunder (lihat Peringatan).
+
+**Peringatan** (label siklofosfamid)
+
+- Kontraindikasi: riwayat hipersensitivitas berat terhadap siklofosfamid atau metabolitnya; obstruksi aliran urin.
+- Mielosupresi, imunosupresi, kegagalan sumsum tulang, dan infeksi berat; toksisitas saluran kemih dan ginjal (sistitis hemoragik); kardiotoksisitas; toksisitas paru; keganasan sekunder; penyakit veno-oklusif hati; toksisitas embrio-janin; infertilitas; hiponatremia.
+- Pada anak praremaja, fibrosis ovarium dan gangguan fungsi gonad dapat terjadi.
+
+**Farmakokinetik** (label siklofosfamid)
+
+- Prodrug; volume distribusi 30–50 L; sekitar 20% terikat protein.
+- Waktu paruh eliminasi 3–12 jam.
+- Dimetabolisme oleh sitokrom P450 (CYP2A6, 2B6, 3A, 2C9, 2C19) menjadi 4-hidroksisiklofosfamid dan metabolit aktif lainnya.
+
+**Farmakodinamik** (label siklofosfamid)
+
+- Metabolit pengalkil aktifnya mengganggu pertumbuhan sel ganas yang berproliferasi cepat; mekanisme kemungkinan melibatkan ikatan silang DNA sel tumor.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. Cyclophosphamide for Injection, USP (Civica), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=8627c83f-c057-495d-9f78-8b67bda97b3e
+
+---
+
+### 3.108 Vinkristin
+
+**Kalkulator** (IDAI hlm. 71; dosis per luas permukaan tubuh)
+
+| Rute | Dosis |
+|---|---|
+| IV | 1,5 mg/m2 IV dalam 1 menit, setiap minggu |
+
+**Penyesuaian dosis pada penyakit ginjal** (IDAI hlm. 91, tertulis "Vincristine")
+
+| Dosis normal | Dosis (D)/Interval (I) | LFG >50 | LFG 10–50 | LFG <10 | HD | PD |
+|---|---|---|---|---|---|---|
+| 1,5 mg/m2/dosis tiap minggu iv | D | 100% | 100% | 100% | tak ada data | tak ada data |
+
+**Sediaan** (FORNAS 2025 hlm. 80; antikanker)
+
+| Sediaan | Peresepan maksimal |
+|---|---|
+| Injeksi 1 mg/mL | 1,5 mg/m2 maks weekly dose 2 mg. Kecuali untuk ALL maks 3 tahun |
+
+**Aturan penggunaan**
+
+- Sesuai tabel IDAI dan FORNAS.
+- Hanya untuk IV; fatal bila diberikan melalui rute lain (pemberian intratekal biasanya berakibat kematian). Pastikan jarum atau kateter terpasang benar sebelum penyuntikan; ekstravasasi dapat menimbulkan iritasi berat (label vinkristin).
+
+**Manfaat obat** (label vinkristin)
+
+- Leukemia akut; dalam kombinasi dengan agen onkolitik lain pada penyakit Hodgkin, limfoma non-Hodgkin, rabdomiosarkoma, neuroblastoma, dan tumor Wilms.
+
+**Efek samping** (label vinkristin)
+
+- Tersering: rambut rontok; yang paling mengganggu berasal dari sistem neuromuskular.
+- Leukopenia, nyeri neuritik, dan konstipasi, biasanya singkat; kehilangan sensorik, parestesia, sulit berjalan, hilangnya refleks tendon dalam, dan atrofi otot dapat menetap selama terapi.
+
+**Peringatan** (label vinkristin)
+
+- Peringatan berbingkai: hanya untuk IV, fatal bila diberikan melalui rute lain; harus diberikan oleh tenaga berpengalaman.
+- Kontraindikasi: bentuk demielinasi sindrom Charcot-Marie-Tooth.
+- Nefropati asam urat akut; mielosupresi bila dikombinasikan dengan kemoterapi lain; tidak cukup menembus sawar darah-otak.
+
+**Farmakokinetik** (label vinkristin)
+
+- Penurunan kadar serum trifasik setelah suntikan IV cepat: waktu paruh awal 5 menit, tengah 2,3 jam, dan terminal 85 jam (rentang 19–155 jam).
+- Hati merupakan organ ekskresi utama.
+
+**Farmakodinamik** (label vinkristin)
+
+- Menghambat pembentukan mikrotubulus pada gelendong mitosis sehingga pembelahan sel berhenti pada tahap metafase.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. Vincristine Sulfate Injection (Hospira), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=b22e4c8e-dbe1-4d4b-a026-e1812974071c

@@ -1160,3 +1160,23 @@ Obat: zidovudin, lamivudin, nevirapin, efavirenz, siklosporin, merkaptopurin, me
 - Sediaan FORNAS yang tidak dimasukkan: kombinasi KDT/FDC ARV; budesonid dan flutikason dalam kombinasi; flutikason furoat (hlm. 213, garam berbeda).
 - Vitamin A: FORNAS hanya kapsul oral, sedangkan label DailyMed yang tersedia adalah injeksi (Aquasol A); dipakai untuk manfaat, efek samping, peringatan, farmakokinetik, dan farmakodinamik.
 
+---
+
+## Batch 11 (draf 0.14, 16 Oktober 2026)
+
+Obat: amfoterisin B, asam asetilsalisilat (aspirin), atenolol, desmopresin, fludrokortison, gansiklovir, valgansiklovir, takrolimus, siklofosfamid, vinkristin.
+
+- Kutipan IDAI dan FORNAS: 27 dari 27 cocok dengan teks sumber; halaman IDAI dan FORNAS juga dicek pada gambar halaman.
+- Batal dimasukkan karena dosis IDAI tanpa indikasi: fenilefrin (hlm. 51, "0.02mg/kg, IV, oral, IM") dan sildenafil (hlm. 69).
+- Bagian yang tidak jelas dan tidak dimasukkan:
+  - aspirin (IDAI hlm. 38) baris pertama "10-15 mg /kg, oral, 4-6 jam" tanpa indikasi; tabel ginjal "Acetylsalycilic acid" (hlm. 76: dosis normal q6 jam tetapi interval LFG >50 q4 jam);
+  - amfoterisin B (IDAI hlm. 36) "Kriptokokosis pada HIV: 0,7-1,5 mg/kg/hari, per oral" (rute oral janggal) dan krim/salep 3% (tidak ada di FORNAS);
+  - desmopresin (IDAI hlm. 46) "1u=1mcg; 0.3u/kg dalam 50-100 ml NS, IV" tanpa indikasi;
+  - gansiklovir (IDAI hlm. 53) regimen pertama tanpa indikasi; baris tabel ginjal oral (hlm. 83, seluruhnya "tak ada data");
+  - siklofosfamid (IDAI hlm. 69) tiga baris pertama tanpa indikasi;
+  - tabel ginjal atenolol (IDAI hlm. 77): dosis normal 1–2 mg/kg berbeda dari entri utama 0,5–1 mg/kg, dan kolom HD "dosis penuh sesudah dialisis".
+- Dosis FORNAS dipakai untuk takrolimus kapsul lepas lambat (dosis awal transplantasi ginjal 0,2–0,3 mg/kg/hari; hati 0,1–0,2 mg/kg/hari).
+- Label aspirin yang dipakai (Durlaza) adalah produk lepas lambat untuk dewasa; hanya pernyataan umum aspirin (efek samping, peringatan, distribusi, metabolisme, waktu paruh, mekanisme) yang dipakai. Label tidak menetapkan keamanan pada anak.
+- Label Valcyte: tidak diindikasikan untuk profilaksis pada neonatus, sedangkan IDAI mencantumkan dosis neonatus; keduanya ditampilkan sesuai sumbernya.
+- Sediaan FORNAS yang tidak dimasukkan: amfoterisin B salep mata 1% (hlm. 172); takrolimus salep (tidak ada di FORNAS).
+
