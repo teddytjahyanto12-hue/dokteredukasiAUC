@@ -1,6 +1,6 @@
 # Kalkulator Dosis Obat Anak
 
-Draf 0.12, 16 Oktober 2026 (88 obat). Materi untuk ditinjau pemilik; belum diterapkan di website.
+Draf 0.13, 16 Oktober 2026 (98 obat). Materi untuk ditinjau pemilik; belum diterapkan di website.
 
 ---
 
@@ -5885,3 +5885,598 @@ Restriksi FORNAS: a) untuk kasus SLE (*Systemic Lupus Erythematosus*) atau b) un
 1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
 2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
 3. Colchicine Tablets, USP (Par Health), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=72984aa2-6df9-4460-9926-399ffed30e36
+
+---
+
+### 3.89 Zidovudin
+
+**Kalkulator** (IDAI hlm. 72–73)
+
+| Keadaan | Dosis |
+|---|---|
+| Aterm | 1,5 mg/kg, 6 jam IV, 2 mg/kg 6 jam oral |
+| Anak | 180 mg/m2, 12 jam, oral |
+
+**Sediaan** (FORNAS 2025 hlm. 57–58)
+
+Restriksi FORNAS: dapat diberikan oleh FPKTP yang memiliki kemampuan pengobatan antiretroviral dengan persyaratan memiliki SK Penunjukan sebagai unit pelayanan yang berhak memberikan obat ARV dari Dinas Kesehatan setempat.
+
+| Sediaan | Peresepan maksimal/restriksi |
+|---|---|
+| Kapsul 100 mg | – |
+| Sirup 50 mg/5 mL | Maks 6 minggu. Dapat digunakan untuk terapi profilaksis pada bayi baru lahir dari ibu ODHIV selama 6 minggu |
+
+**Aturan penggunaan**
+
+- Sesuai tabel IDAI.
+- Diberikan dalam kombinasi dengan antiretroviral lain untuk pengobatan HIV-1 (label Retrovir).
+
+**Manfaat obat** (label Retrovir)
+
+- Pengobatan infeksi HIV-1, dikombinasikan dengan antiretroviral lain.
+- Pencegahan penularan HIV-1 dari ibu ke janin (terapi ibu antepartum dan intrapartum serta terapi bayi pascapersalinan).
+
+**Efek samping** (label Retrovir)
+
+- Pada dewasa: sakit kepala, malaise, mual, anoreksia, muntah, astenia.
+- Pada neonatus yang terpapar perinatal: anemia pada 22% (plasebo 12%); neutropenia dengan frekuensi serupa plasebo.
+- Efek samping pada dewasa juga dapat terjadi pada anak.
+
+**Peringatan** (label Retrovir)
+
+- Peringatan berbingkai: toksisitas hematologi (neutropenia dan anemia berat), miopati simtomatik pada penggunaan lama, serta asidosis laktat dan hepatomegali berat dengan steatosis termasuk yang fatal.
+- Kontraindikasi: riwayat reaksi hipersensitivitas yang mengancam jiwa (misalnya anafilaksis, sindrom Stevens-Johnson) terhadap komponen sediaan.
+- Hati-hati pada gangguan sumsum tulang (granulosit <1.000/mm³ atau hemoglobin <9,5 g/dL).
+- Sindrom rekonstitusi imun; lipoatrofi yang berkaitan dengan paparan kumulatif.
+
+**Farmakokinetik** (label Retrovir; data dewasa)
+
+- Diserap cepat setelah pemberian oral; kadar puncak 0,5–1,5 jam; bioavailabilitas oral sekitar 64%.
+- Volume distribusi sekitar 1,6 L/kg; ikatan protein plasma rendah (<38%).
+- Dieliminasi terutama melalui metabolisme hati menjadi GZDV; di urin ditemukan 14% sebagai zidovudin dan 74% sebagai GZDV setelah pemberian oral. Waktu paruh eliminasi 0,5–3 jam.
+
+**Farmakodinamik** (label Retrovir)
+
+- Analog nukleosida sintetis; di dalam sel difosforilasi menjadi zidovudin trifosfat yang menghambat reverse transcriptase HIV-1 melalui terminasi rantai DNA.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. RETROVIR (zidovudine) capsules, oral solution, and injection (ViiV Healthcare), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=6df09f15-b102-431c-adde-d7aeef6f5d84
+
+---
+
+### 3.90 Lamivudin
+
+**Kalkulator berat badan** (IDAI hlm. 61)
+
+| Usia | Dosis |
+|---|---|
+| Neonatus <30 hari | 2 mg/kg, 12 jam, oral |
+| Anak ≥30 hari | 4 mg/kg/dosis, 12 jam, maximum 150 mg/dosis, oral |
+
+**Penyesuaian dosis pada penyakit ginjal** (IDAI hlm. 85)
+
+| Dosis normal | Dosis (D)/Interval (I) | LFG >50 | LFG 10–50 | LFG <10 | HD | PD |
+|---|---|---|---|---|---|---|
+| 4 mg/kg/dosis q12 jam po (atau 3 mg/kg/dosis q24 jam) | D, I | 100% | 50% q24 jam | 25% q24 jam | Dosis sesudah dialisis | Tak ada data |
+
+**Sediaan** (FORNAS 2025 hlm. 57)
+
+Restriksi FORNAS: dapat diberikan oleh FPKTP yang memiliki kemampuan pengobatan antiretroviral dengan persyaratan memiliki SK Penunjukan sebagai unit pelayanan yang berhak memberikan obat ARV dari Dinas Kesehatan setempat.
+
+| Sediaan | Peresepan maksimal |
+|---|---|
+| Tablet 150 mg | – |
+
+**Aturan penggunaan**
+
+- Sesuai tabel IDAI.
+- Diberikan dalam kombinasi dengan antiretroviral lain (label Epivir).
+
+**Manfaat obat** (label Epivir)
+
+- Pengobatan infeksi HIV-1 dalam kombinasi dengan antiretroviral lain. Dosis produk ini untuk HIV-1, bukan untuk hepatitis B.
+- Keamanan dan efektivitas pada anak telah ditetapkan untuk usia 3 bulan ke atas.
+
+**Efek samping** (label Epivir)
+
+- Tersering pada dewasa: sakit kepala, mual, malaise, lelah, gejala hidung, diare, batuk.
+- Pankreatitis pada 0,3% dewasa dalam uji klinis.
+
+**Peringatan** (label Epivir)
+
+- Peringatan berbingkai: eksaserbasi akut berat hepatitis B setelah penghentian lamivudin pada pasien koinfeksi HIV-1 dan HBV; sediaan lamivudin untuk HIV berbeda kadarnya dengan sediaan untuk HBV.
+- Kontraindikasi: riwayat reaksi hipersensitivitas terhadap lamivudin.
+- Asidosis laktat dan hepatomegali berat dengan steatosis.
+- Pada anak dengan riwayat paparan nukleosida, riwayat pankreatitis, atau faktor risiko lain, gunakan dengan hati-hati; hentikan segera bila ada tanda pankreatitis.
+- Pada uji ARROW, anak yang menerima larutan oral bersama larutan antiretroviral lain memiliki angka supresi virus lebih rendah dan resistansi lebih sering; tablet bergaris lebih disukai untuk anak ≥14 kg.
+
+**Farmakokinetik** (label Epivir)
+
+- Bioavailabilitas absolut sekitar 86–87% pada dewasa; lebih rendah pada anak.
+- Ikatan protein plasma kurang dari 36%.
+- Sebagian besar dieliminasi dalam bentuk utuh di urin melalui sekresi kation organik aktif; waktu paruh eliminasi 5–7 jam.
+
+**Farmakodinamik** (label Epivir)
+
+- Di dalam sel difosforilasi menjadi lamivudin trifosfat yang menghambat reverse transcriptase HIV-1 melalui terminasi rantai DNA.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. EPIVIR (lamivudine) tablets and oral solution (ViiV Healthcare), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=89226149-47fa-4f7d-bb1f-1aa7034486b8
+
+---
+
+### 3.91 Nevirapin
+
+**Kalkulator** (IDAI hlm. 65; dosis per luas permukaan tubuh)
+
+| Usia | Dosis |
+|---|---|
+| <8 thn | 200 mg/m2/dosis, 2 kali/hari (maks 200 mg), oral, 1 kali/hari selama 2 minggu, kemudian 12 jam jika tidak ada ruam |
+| >8 thn | 120–150 mg/m2/dosis, 2 kali/hari (maks 200 mg) selama 2 minggu, kemudian per 12 jam jika tidak ada ruam |
+
+**Sediaan** (FORNAS 2025 hlm. 58–59; disediakan oleh Program Kemenkes)
+
+Restriksi FORNAS: dapat diberikan oleh FPKTP yang memiliki kemampuan pengobatan antiretroviral dengan persyaratan memiliki SK Penunjukan sebagai unit pelayanan yang berhak memberikan obat ARV dari Dinas Kesehatan setempat.
+
+| Sediaan | Restriksi |
+|---|---|
+| Tablet 200 mg | – |
+| Sirup 10 mg/mL | a) Dapat digunakan untuk profilaksis pada bayi baru lahir yang diberikan ASI dari ibu ODHIV yang menjalani terapi ARV kombinasi, selama 6 minggu. b) Diberikan bersama dengan Zidovudin. |
+
+**Aturan penggunaan**
+
+- Dimulai dengan dosis sekali sehari selama 2 minggu, lalu tiap 12 jam bila tidak ada ruam (IDAI).
+- Periode awal 14 hari dengan dosis sekali sehari terbukti menurunkan kejadian ruam dan harus diikuti; jangan menaikkan dosis selama masih ada ruam. Lama periode awal tidak boleh lebih dari 28 hari (label nevirapin).
+
+**Manfaat obat** (label nevirapin)
+
+- Pengobatan infeksi HIV-1 dalam kombinasi dengan antiretroviral lain pada dewasa dan anak usia 15 hari ke atas.
+
+**Efek samping** (label nevirapin)
+
+- Paling serius: hepatitis dan gagal hati, sindrom Stevens-Johnson, nekrolisis epidermal toksik, reaksi hipersensitivitas.
+- Pada anak, efek samping serupa dengan dewasa, kecuali granulositopenia yang lebih sering pada anak yang menerima zidovudin bersama nevirapin.
+
+**Peringatan** (label nevirapin)
+
+- Peringatan berbingkai: hepatotoksisitas yang mengancam jiwa (termasuk fatal), terutama pada 18 minggu pertama, serta reaksi kulit berat dan fatal, terutama pada 6 minggu pertama.
+- Kontraindikasi: gangguan hati sedang atau berat (Child-Pugh B atau C); penggunaan sebagai profilaksis pascapajanan.
+- Tidak boleh digunakan sebagai obat tunggal; resistansi cepat muncul pada monoterapi.
+- Interaksi obat (antara lain St. John's wort); sindrom rekonstitusi imun; redistribusi lemak.
+
+**Farmakokinetik** (label nevirapin)
+
+- Diserap baik (>90%); bioavailabilitas absolut sekitar 91–93%; kadar puncak sekitar 4 jam setelah dosis tunggal 200 mg; makanan dan antasida tidak mengubah penyerapan.
+- Kadar di cairan serebrospinal sekitar 45% kadar plasma.
+- Dimetabolisme luas oleh sitokrom P450 menjadi metabolit terhidroksilasi; metabolit terutama dikeluarkan lewat ginjal sebagai konjugat glukuronida. Autoinduksi menurunkan waktu paruh dari sekitar 45 jam (dosis tunggal) menjadi 25–30 jam pada dosis berulang.
+
+**Farmakodinamik** (label nevirapin)
+
+- Berikatan langsung dengan reverse transcriptase dan menghambat aktivitas DNA polimerase yang bergantung RNA dan DNA dengan mengganggu situs katalitik enzim.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. Nevirapine Tablets USP (Aurobindo Pharma), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=5f6c3eed-2a5d-46ed-9a7c-59715f338a15
+
+---
+
+### 3.92 Efavirenz
+
+**Kalkulator berdasarkan berat badan** (IDAI hlm. 49; oral, per hari)
+
+| Berat badan | Dosis |
+|---|---|
+| 10–<15 kg | 200 mg |
+| 15–<20 kg | 250 mg |
+| 20–<25 kg | 300 mg |
+| 25–<32 kg | 350 mg |
+| 33–<40 kg | 400 mg |
+| ≥40 kg | 600 mg |
+
+**Sediaan** (FORNAS 2025 hlm. 58; disediakan oleh Program Kemenkes)
+
+Restriksi FORNAS: dapat diberikan oleh FPKTP yang memiliki kemampuan pengobatan antiretroviral dengan persyaratan memiliki SK Penunjukan sebagai unit pelayanan yang berhak memberikan obat ARV dari Dinas Kesehatan setempat.
+
+| Sediaan | Peresepan maksimal |
+|---|---|
+| Tablet/kapsul 200 mg | – |
+| Tablet/kapsul 600 mg | – |
+
+**Aturan penggunaan**
+
+- Sesuai tabel IDAI.
+- Dianjurkan diminum saat perut kosong, sebaiknya menjelang tidur; pemberian menjelang tidur dapat memperbaiki toleransi gejala saraf (label efavirenz).
+
+**Manfaat obat** (label efavirenz)
+
+- Pengobatan infeksi HIV-1 dalam kombinasi dengan antiretroviral lain pada dewasa dan anak usia sedikitnya 3 bulan dengan berat badan sedikitnya 3,5 kg.
+
+**Efek samping** (label efavirenz)
+
+- Tersering pada dewasa: ruam, pusing, mual, sakit kepala, lelah, insomnia, muntah.
+- Gejala sistem saraf pusat pada 53% pasien dalam uji terkontrol; ruam baru pada 26% dewasa.
+- Pada anak, ruam (termasuk ruam derajat 3–4) lebih sering daripada dewasa.
+
+**Peringatan** (label efavirenz)
+
+- Kontraindikasi: hipersensitivitas bermakna (misalnya sindrom Stevens-Johnson, eritema multiformis, erupsi kulit toksik) terhadap komponen produk; pemberian bersama elbasvir dan grazoprevir.
+- Interaksi obat (penginduksi CYP3A dan CYP2B6); pemanjangan QTc; tidak boleh digunakan sebagai obat tunggal.
+- Gejala psikiatri serius; gejala sistem saraf; kejang, terutama pada riwayat kejang; hepatotoksisitas; kenaikan kolesterol dan trigliserida.
+- Toksisitas embrio-janin pada trimester pertama; sindrom rekonstitusi imun; redistribusi lemak.
+
+**Farmakokinetik** (label efavirenz)
+
+- Kadar puncak plasma dicapai dalam 5 jam setelah dosis oral tunggal.
+- Sangat terikat protein plasma (sekitar 99%).
+- Dimetabolisme terutama oleh sitokrom P450 (CYP3A dan CYP2B6) menjadi metabolit terhidroksilasi yang kemudian diglukuronidasi; menginduksi enzim metabolismenya sendiri. Waktu paruh terminal 40–55 jam pada dosis berulang (52–76 jam pada dosis tunggal).
+
+**Farmakodinamik** (label efavirenz)
+
+- Penghambat reverse transcriptase non-nukleosida (NNRTI) HIV-1; aktivitasnya terutama melalui hambatan nonkompetitif reverse transcriptase HIV-1.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. Efavirenz Tablets USP (Aurobindo Pharma), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=c5eedb5d-4cab-4056-a14a-ffdf67701355
+
+---
+
+### 3.93 Siklosporin
+
+**Kalkulator berat badan** (IDAI hlm. 70)
+
+| Keadaan | Dosis |
+|---|---|
+| Anemia aplastik (imunosupresif), kapsul 100 mg per oral | 3–5 mg/kg, per oral, 12–24 jam |
+
+**Penyesuaian dosis pada penyakit ginjal** (IDAI hlm. 81, tertulis "Cyclosporine A")
+
+| Dosis normal | Dosis (D)/Interval (I) | LFG >50 | LFG 10–50 | LFG <10 | HD | PD |
+|---|---|---|---|---|---|---|
+| 1,5–2,5 mg/kg/dosis q12 jam po | D | 100% | 100% | 50% | tak ada | tak ada |
+
+**Sediaan** (FORNAS 2025 hlm. 106)
+
+| Sediaan | Peresepan maksimal |
+|---|---|
+| Kapsul lunak 25 mg | 90 kaps per bulan |
+
+**Aturan penggunaan**
+
+- Sesuai tabel IDAI.
+- Neoral dan Sandimmune tidak bioekuivalen dan tidak dapat saling menggantikan tanpa pengawasan dokter; hindari grapefruit dan jusnya (label Neoral).
+- Fungsi ginjal (kreatinin serum) perlu dipantau sering (label Neoral).
+
+**Manfaat obat** (label Neoral)
+
+- Profilaksis penolakan organ pada transplantasi ginjal, hati, dan jantung.
+- Artritis reumatoid aktif berat dan psoriasis plak berat yang tidak responsif (dewasa).
+- Resipien transplantasi semuda 1 tahun pernah menerima Neoral tanpa efek samping yang tidak biasa; keamanan pada artritis reumatoid juvenil dan psoriasis di bawah 18 tahun belum ditetapkan.
+
+**Efek samping** (label Neoral)
+
+- Efek samping utama pada transplantasi: gangguan fungsi ginjal, tremor, hirsutisme, hipertensi, hiperplasia gusi.
+- Hipertensi ringan–sedang pada sekitar 50% pasien setelah transplantasi ginjal.
+
+**Peringatan** (label Neoral)
+
+- Peringatan berbingkai: hanya diresepkan oleh dokter yang berpengalaman dengan terapi imunosupresif sistemik; dapat meningkatkan kerentanan terhadap infeksi dan neoplasia termasuk limfoma.
+- Nefrotoksisitas dan hepatotoksisitas yang meningkat dengan dosis.
+- Kontraindikasi: hipersensitivitas terhadap siklosporin atau bahan formulasi; pada artritis reumatoid atau psoriasis dengan gangguan fungsi ginjal, hipertensi tidak terkontrol, atau keganasan.
+
+**Farmakokinetik** (label Neoral)
+
+- Bioavailabilitas Neoral lebih tinggi daripada Sandimmune, juga pada anak.
+- Volume distribusi 3–5 L/kg pada resipien transplantasi; dalam plasma sekitar 90% terikat protein, terutama lipoprotein; masuk ke ASI.
+- Dimetabolisme luas oleh sistem sitokrom P450 3A di hati; eliminasi terutama melalui empedu, hanya 6% dosis (obat dan metabolit) di urin. Dialisis dan gagal ginjal tidak mengubah klirens secara bermakna.
+
+**Farmakodinamik** (label Neoral)
+
+- Menghambat secara spesifik dan reversibel limfosit imunokompeten pada fase G0 dan G1, terutama limfosit T (sel T-helper sebagai target utama).
+- Menghambat produksi dan pelepasan limfokin, termasuk interleukin-2.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. NEORAL (cyclosporine) soft gelatin capsules and oral solution (Novartis), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=94461af3-11f1-4670-95d4-2965b9538ae3
+
+---
+
+### 3.94 Merkaptopurin
+
+**Kalkulator** (IDAI hlm. 62; dosis per luas permukaan tubuh)
+
+| Rute | Dosis |
+|---|---|
+| Oral | 75–100 mg/m2/hari |
+
+**Sediaan** (FORNAS 2025 hlm. 76; antikanker)
+
+| Sediaan | Peresepan maksimal |
+|---|---|
+| Tablet 50 mg | – |
+
+**Aturan penggunaan**
+
+- Sesuai tabel IDAI.
+- Makanan menurunkan paparan merkaptopurin (label merkaptopurin).
+- Pada defisiensi homozigot TPMT atau NUDT15, dosis awal perlu dikurangi; umumnya hanya membutuhkan 10% atau kurang dari dosis anjuran (label merkaptopurin).
+
+**Manfaat obat** (label merkaptopurin)
+
+- Leukemia limfoblastik akut (LLA) pada dewasa dan anak sebagai bagian dari regimen kemoterapi kombinasi fase pemeliharaan.
+
+**Efek samping** (label merkaptopurin)
+
+- Tersering (>20%): mielosupresi (anemia, neutropenia, limfopenia, trombositopenia).
+- 5–20%: anoreksia, mual, muntah, diare, malaise, ruam.
+- <5%: urtikaria, hiperurisemia, lesi mulut, kenaikan transaminase, hiperbilirubinemia, hiperpigmentasi, infeksi, pankreatitis.
+- Hipoglikemia simtomatik pernah dilaporkan pada anak dengan LLA, terutama usia <6 tahun atau indeks massa tubuh rendah.
+
+**Peringatan** (label merkaptopurin)
+
+- Kontraindikasi: tidak ada.
+- Mielosupresi yang bergantung dosis; pantau darah lengkap.
+- Hepatotoksisitas, termasuk kematian akibat nekrosis hati.
+- Imunosupresi (respons vaksin dapat menurun); keganasan terkait terapi; sindrom aktivasi makrofag; toksisitas embrio-janin.
+
+**Farmakokinetik** (label merkaptopurin)
+
+- Volume distribusi melebihi volume air tubuh total; masuk ke cairan serebrospinal sangat sedikit; ikatan protein plasma rata-rata 19%.
+- Waktu paruh eliminasi kurang dari 2 jam setelah dosis oral tunggal.
+- Diinaktivasi melalui metilasi tiol oleh TPMT dan oksidasi oleh xantin oksidase.
+
+**Farmakodinamik** (label merkaptopurin)
+
+- Analog purin yang diaktifkan di dalam sel menjadi nukleotida tioguanin; penggabungannya ke DNA atau RNA menghentikan siklus sel dan menyebabkan kematian sel.
+- Metabolitnya juga menghambat sintesis purin de novo.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. Mercaptopurine Tablets USP (Hikma Pharmaceuticals USA), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=c3b5b8b0-bc5c-4ce9-bbdc-febba60c2658
+
+---
+
+### 3.95 Metotreksat
+
+**Kalkulator** (IDAI hlm. 63; sebagian dosis per luas permukaan tubuh)
+
+| Keadaan | Dosis |
+|---|---|
+| Artritis, psoriasis, penyakit Crohn | 10–15 mg/m2/mgg (maks 25 mg), oral, IV, IM, atau SK sampai respon; kemudian turunkan dosis |
+| Leukemia | 3,3 mg/m2/hari IV selama 4–6 minggu; kemudian 2,5 mg/kg IV setiap 2 minggu atau 30 mg/m2 oral atau IM, 2x/minggu |
+| Intratekal | 12 mg/m2/minggu selama 2 minggu, kemudian setiap bulan |
+
+**Sediaan** (FORNAS 2025)
+
+| Sediaan | Halaman FORNAS | Peresepan maksimal/restriksi |
+|---|---|---|
+| Tablet 2,5 mg (imunosupresan) | hlm. 104 | a) Untuk imunosupresi. b) Untuk pasien dengan luas psoriasis di atas 10% |
+| Injeksi 2,5 mg/mL (i.t.) (imunosupresan) | hlm. 104–105 | a) Untuk penggunaan intratekal, hanya boleh digunakan sediaan *preservative free*. b) Diresepkan oleh dokter yang memiliki kompetensi di bidang ilmu hematologi onkologi medik dewasa, atau hematologi onkologi anak, atau neurologi |
+| Tablet 2,5 mg (antikanker) | hlm. 76 | Untuk trofoblastik ganas: 30 mg/hari selama 5 hari |
+| Injeksi 2,5 mg/mL (antikanker) | hlm. 76 | a) Untuk penggunaan intratekal, hanya boleh digunakan sediaan *preservative free*. b) Jika diperlukan dapat diberikan bersama kalsium folinat (leukovorin, Ca) sebagai *rescue medication* |
+| Injeksi 5 mg (i.v./i.m./i.t.) (antikanker) | hlm. 76–77 | 15 mg/minggu. Untuk penggunaan intratekal, hanya boleh digunakan sediaan *preservative free* |
+| Injeksi 10 mg/mL (antikanker) | hlm. 77 | a) Untuk penggunaan intratekal, hanya boleh digunakan sediaan *preservative free*. b) Jika diperlukan dapat diberikan bersama kalsium folinat (leukovorin, Ca) sebagai *rescue medication* |
+| Injeksi 25 mg/mL (antikanker) | hlm. 77 | a) Untuk penggunaan intratekal, hanya boleh digunakan sediaan *preservative free*. b) Jika diperlukan dapat diberikan bersama kalsium folinat (leukovorin, Ca) sebagai *rescue medication* |
+
+**Aturan penggunaan**
+
+- Sesuai tabel IDAI; perhatikan regimen mingguan dan harian.
+- Kematian pernah terjadi akibat kesalahan pengobatan, terutama ketika obat diminum setiap hari padahal diresepkan mingguan; pastikan pasien memahami jadwal mingguan (label metotreksat).
+- Pada penyakit neoplastik, produk yang mengandung asam folat atau turunannya dapat menurunkan efektivitas metotreksat (label metotreksat).
+
+**Manfaat obat** (label metotreksat)
+
+- Pada anak: leukemia limfoblastik akut sebagai bagian dari regimen kemoterapi kombinasi fase pemeliharaan; artritis idiopatik juvenil poliartikular.
+- Pada dewasa juga: mikosis fungoides, limfoma non-Hodgkin relaps/refrakter, artritis reumatoid, psoriasis berat.
+
+**Efek samping** (label metotreksat)
+
+- Sering: stomatitis ulseratif, leukopenia, mual, rasa tidak nyaman di perut.
+- Lainnya: infeksi, malaise, lelah, menggigil, demam, pusing.
+
+**Peringatan** (label metotreksat)
+
+- Peringatan berbingkai: toksisitas embrio-janin; reaksi hipersensitivitas; kematian akibat pemberian sekali sehari yang tidak disengaja; efek samping serius pada sumsum tulang, saluran cerna, hati, paru, kulit, dan ginjal.
+- Kontraindikasi: kehamilan pada penyakit non-neoplastik; riwayat hipersensitivitas berat terhadap metotreksat.
+- Mielosupresi berat; toksisitas saluran cerna; hepatotoksisitas; toksisitas paru; reaksi kulit berat; toksisitas ginjal; infeksi serius; neurotoksisitas; keganasan sekunder; sindrom lisis tumor; vaksin hidup tidak dianjurkan.
+
+**Farmakokinetik** (label metotreksat)
+
+- Pada dosis ≤30 mg/m², bioavailabilitas rata-rata sekitar 60%; kadar puncak 0,75–6 jam; makanan memperlambat penyerapan.
+- Sekitar 50% terikat protein serum; pada dosis anjuran tidak menembus sawar darah–cairan serebrospinal.
+- Waktu paruh eliminasi sekitar 3–10 jam; poliglutamat metotreksat dapat tertahan lama di jaringan.
+
+**Farmakodinamik** (label metotreksat)
+
+- Menghambat dihidrofolat reduktase sehingga mengganggu sintesis, perbaikan, dan replikasi DNA; jaringan yang berproliferasi aktif lebih sensitif.
+- Mekanisme pada artritis reumatoid dan psoriasis belum diketahui.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. Methotrexate Tablets, USP (Alembic Pharmaceuticals), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=04a95db9-a124-4b97-bd71-1c37a6b3b0c8
+
+---
+
+### 3.96 Vitamin A
+
+**Kalkulator berdasarkan usia** (IDAI hlm. 71–72)
+
+| Usia | Dosis |
+|---|---|
+| <6 bulan | 50.000 IU |
+| 6–12 bulan | 100.000 IU |
+
+Keterangan IDAI: bila terdapat tanda klinis defisiensi vitamin A (rabun senja, xerosis konjungtiva dengan bercak Bitot, xerosis kornea atau ulserasi kornea, keratomalasia), maka dosis di atas harus diulang lagi pada hari ke-2 dan sekurangnya 2 minggu setelahnya.
+
+**Sediaan** (FORNAS 2025 hlm. 215; tertulis "retinol (vitamin A)")
+
+| Sediaan | Peresepan maksimal |
+|---|---|
+| Kapsul lunak 100.000 IU | – |
+| Kapsul lunak 200.000 IU | – |
+
+**Aturan penggunaan**
+
+- Sesuai tabel IDAI; diulang pada hari ke-2 dan sekurangnya 2 minggu kemudian bila ada tanda klinis defisiensi (IDAI).
+- Hindari dosis berlebih dan simpan jauh dari jangkauan anak (label Aquasol A).
+
+**Manfaat obat** (label Aquasol A)
+
+- Pengobatan defisiensi vitamin A; terapi vitamin A untuk keadaan defisiensi diakui sangat efektif dan penting pada anak.
+
+**Efek samping** (label Aquasol A)
+
+- Hipervitaminosis A: lelah, malaise, letargi, rasa tidak nyaman di perut, anoreksia, muntah.
+- Reaksi alergi jarang.
+
+**Peringatan** (label Aquasol A)
+
+- Kontraindikasi (sediaan injeksi): pemberian intravena; hipervitaminosis A; sensitivitas terhadap bahan sediaan.
+- Toksisitas oral akut dosis tunggal pada bayi tercatat pada 350.000 unit (25.000 unit/kg berat badan); toksisitas kronik pada bayi usia 3–6 bulan pada 18.500 unit/hari selama 1–3 bulan.
+- Vitamin A melebihi kecukupan harian yang dianjurkan dikontraindikasikan pada wanita yang hamil atau mungkin hamil.
+
+**Farmakokinetik** (label Aquasol A)
+
+- Mudah diserap dari saluran cerna; penyerapan memerlukan garam empedu, lipase pankreas, dan lemak makanan.
+- Diangkut ke hati melalui kilomikron dan disimpan di sel Kupffer hati, terutama sebagai palmitat.
+
+**Farmakodinamik** (label Aquasol A)
+
+- Retinal bergabung dengan opsin di retina membentuk rodopsin yang diperlukan untuk adaptasi gelap.
+- Mencegah hambatan pertumbuhan dan menjaga integritas sel epitel.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. AQUASOL A Parenteral (retinyl palmitate) injection (Rising Pharma Holdings), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=1abd66eb-6ac8-4a9e-a609-251e46ea1a27
+
+---
+
+### 3.97 Budesonid
+
+**Kalkulator** (IDAI hlm. 42–43)
+
+| Sediaan/keadaan | Dosis |
+|---|---|
+| MDI, <12 thn | 50–200 mcg 6–12 jam |
+| MDI, >12 thn | 100–600 mcg, 6–12 jam, turunkan menjadi 100–400 mcg, 12 jam |
+| Nebulisasi, <12 thn | 0,5–1 mg, 12 jam, turunkan menjadi 0,25–0,5 mg, 12 jam |
+| Nebulisasi, >12 thn | 1–2 mg, 12 jam, turunkan menjadi 0,5–1 mg, 12 jam |
+| Croup | 2 mg, 12 jam, nebulisasi |
+
+**Sediaan** (FORNAS 2025)
+
+| Sediaan | Halaman FORNAS | Peresepan maksimal/restriksi |
+|---|---|---|
+| Serbuk inhalasi 200 mcg/dosis | hlm. 195 | Asma persisten berat: 2 tbg/bulan. Untuk rumatan asma (tidak untuk serangan asma akut) |
+| Cairan inhalasi 0,5 mg/mL | hlm. 202 | Maks selama 10 hari. Hanya untuk eksaserbasi akut PPOK |
+
+**Aturan penggunaan**
+
+- Sesuai tabel IDAI.
+- Bilas mulut setelah inhalasi (label Pulmicort Respules).
+
+**Manfaat obat** (label Pulmicort Respules; label Pulmicort Flexhaler)
+
+- Terapi rumatan dan profilaksis asma pada anak usia 12 bulan–8 tahun (suspensi nebulisasi) dan pasien usia 6 tahun ke atas (serbuk inhalasi).
+- Tidak diindikasikan untuk meredakan bronkospasme akut.
+
+**Efek samping** (label Pulmicort Respules)
+
+- Pada uji anak usia 12 bulan–8 tahun, insidens efek samping sebanding dengan plasebo; yang dilaporkan antara lain infeksi saluran napas, rinitis, batuk, otitis media, infeksi virus, kandidiasis, gastroenteritis, dan muntah.
+- Infeksi *Candida albicans* lokal di mulut dan faring.
+
+**Peringatan** (label Pulmicort Respules; label Pulmicort Flexhaler)
+
+- Kontraindikasi: terapi utama status asmatikus atau episode asma akut yang memerlukan tindakan intensif; hipersensitivitas terhadap budesonid atau bahan sediaan (serbuk inhalasi: hipersensitivitas berat terhadap protein susu).
+- Bukan bronkodilator; tidak untuk meredakan serangan asma akut.
+- Imunosupresi (cacar air dan campak dapat lebih berat); kematian akibat insufisiensi adrenal saat peralihan dari kortikosteroid sistemik; hiperkortisisme dan supresi adrenal.
+- Penurunan kecepatan pertumbuhan pada anak, pantau pertumbuhan secara rutin; penurunan densitas mineral tulang; glaukoma dan katarak; bronkospasme paradoksal; interaksi dengan penghambat kuat CYP3A4.
+
+**Farmakokinetik** (label Pulmicort Respules)
+
+- Pada anak usia 4–6 tahun, bioavailabilitas absolut total (paru dan oral) setelah nebulisasi sekitar 6% dari dosis label; kadar puncak sekitar 20 menit setelah nebulisasi.
+- 85–90% terikat protein plasma; volume distribusi pada anak sekitar 3 L/kg.
+- Dimetabolisme cepat dan luas oleh CYP3A4 menjadi metabolit dengan aktivitas kortikosteroid rendah; waktu paruh terminal pada anak 4–6 tahun sekitar 2,3 jam.
+
+**Farmakodinamik** (label Pulmicort Respules)
+
+- Kortikosteroid antiinflamasi dengan aktivitas glukokortikoid kuat dan mineralokortikoid lemah; afinitas terhadap reseptor glukokortikoid sekitar 200 kali kortisol.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. PULMICORT RESPULES (budesonide) inhalation suspension (AstraZeneca), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=33cd9834-76df-4f26-3fa2-aab6b9eee8f2
+4. PULMICORT FLEXHALER (budesonide) inhalation powder (H2-Pharma), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=10f2ae5b-a6fb-4804-9111-0cd067c2b1b2
+
+---
+
+### 3.98 Flutikason
+
+**Kalkulator** (IDAI hlm. 52)
+
+| Sediaan/rute | Dosis |
+|---|---|
+| Inhalasi | 50–100 mcg, 12 jam |
+| Larutan 0,05% (hidung) | 1–4 spray/lubang hidung |
+
+**Sediaan** (FORNAS 2025 hlm. 196; tertulis "flutikason propionat")
+
+| Sediaan | Peresepan maksimal/restriksi |
+|---|---|
+| Cairan inhalasi 0,5 mg/dosis | Hari pertama maks 5 vial/hari, selanjutnya 2 vial/hari paling lama 5 hari. Hanya untuk serangan asma akut |
+| MDI/aerosol 50 mcg/dosis | 2 canister/bulan. Untuk rumatan asma (tidak untuk serangan asma akut) |
+
+**Aturan penggunaan**
+
+- Sesuai tabel IDAI.
+
+**Manfaat obat** (label fluticasone propionate HFA)
+
+- Terapi rumatan asma sebagai profilaksis pada dewasa dan anak usia 4 tahun ke atas.
+- Tidak diindikasikan untuk meredakan bronkospasme akut.
+
+**Efek samping** (label fluticasone propionate HFA)
+
+- Pada uji keamanan 12 minggu pada anak usia 1 sampai kurang dari 4 tahun, yang lebih sering daripada plasebo: demam, nasofaringitis, infeksi saluran napas atas, muntah, otitis media, diare, bronkitis, faringitis, dan infeksi virus.
+- Kandidiasis orofaring.
+
+**Peringatan** (label fluticasone propionate HFA)
+
+- Kontraindikasi: terapi utama status asmatikus atau episode asma akut yang memerlukan tindakan intensif; hipersensitivitas terhadap bahan sediaan.
+- Bukan bronkodilator; tidak untuk meredakan serangan akut.
+- Imunosupresi dan risiko infeksi; supresi adrenal saat peralihan dari kortikosteroid sistemik; hiperkortisisme.
+- Penurunan kecepatan pertumbuhan pada anak, pantau pertumbuhan secara rutin; penurunan densitas mineral tulang; glaukoma dan katarak; bronkospasme paradoksal; tidak dianjurkan bersama penghambat kuat CYP3A4 (misalnya ritonavir).
+
+**Farmakokinetik** (label fluticasone propionate HFA)
+
+- Bekerja lokal di paru; bioavailabilitas sistemik oral dapat diabaikan (<1%), tetapi sebagian besar dosis yang mencapai paru diserap secara sistemik.
+- Volume distribusi rata-rata 4,2 L/kg; rata-rata 99% terikat protein plasma.
+- Dimetabolisme melalui CYP3A4 menjadi turunan asam 17β-karboksilat yang hampir tidak aktif; waktu paruh eliminasi terminal sekitar 7,8 jam setelah pemberian IV.
+
+**Farmakodinamik** (label fluticasone propionate HFA)
+
+- Kortikosteroid trifluorinasi sintetis dengan aktivitas antiinflamasi; afinitas terhadap reseptor glukokortikoid manusia sekitar 18 kali deksametason.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. Fluticasone Propionate HFA inhalation aerosol (Prasco Laboratories), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=99249b31-bf0a-464f-8335-845279350dbe

@@ -1138,3 +1138,25 @@ Obat: deferasiroks, kalsitriol, metilfenidat, irbesartan, hidroksiklorokuin, asa
 - Label yang menyatakan keamanan pada anak belum ditetapkan atau terbatas: irbesartan (tidak efektif menurunkan tekanan darah pada studi anak 6–16 tahun), asam mefenamat (nyeri: usia 14 tahun ke atas), ursodiol, azatioprin, deferasiroks (<2 tahun); dicantumkan di bagian Manfaat atau Peringatan.
 - Sediaan FORNAS yang tidak dimasukkan: dapson dalam paket kusta (kombinasi).
 
+---
+
+## Batch 10 (draf 0.13, 16 Oktober 2026)
+
+Obat: zidovudin, lamivudin, nevirapin, efavirenz, siklosporin, merkaptopurin, metotreksat, vitamin A, budesonid, flutikason.
+
+- Kutipan IDAI dan FORNAS: 28 dari 28 cocok dengan teks sumber; halaman IDAI dan FORNAS juga dicek pada gambar halaman.
+- Batal dimasukkan karena tidak jelas atau tanpa sumber label:
+  - kalsium folinat: IDAI hlm. 36 "Asam folinat 10-20 mg/kg/hari, oral, dibagi 4 dosis" tanpa indikasi, dan entri Leukovorin hlm. 61 tanpa dosis;
+  - kolekalsiferol: dosis terapi IDAI hlm. 58–59 tanpa indikasi dan disertai "mcg/kg" yang terputus; tidak ada label DailyMed resep untuk kolekalsiferol tunggal;
+  - mikofenolat mofetil: IDAI hlm. 63 untuk LPB >1,5 m2 tertulis "1 gram/hari, 2 kali sehari" (tidak jelas per hari atau per kali).
+- Bagian yang tidak jelas dan tidak dimasukkan:
+  - zidovudin (IDAI hlm. 72–73): baris prematur ("IV arays 2 mg/kg"), dosis IV anak ("120mg/mg2 6 jam IV, atau 20mg/m2/jam IV, 6-8 jam") dan "maximum 300 mg/dosis" yang tidak jelas melekat pada bagian mana;
+  - budesonid MDI <12 tahun (IDAI hlm. 42): bagian "turunkan menjadi 100 200 mcg, 12 jam";
+  - vitamin A (IDAI hlm. 71): baris "Usia 12 bulan : 200.000 IU" (tidak jelas tepat 12 bulan atau lebih);
+  - tabel ginjal "Budesonide" (IDAI hlm. 78, satuan mcg/kg berbeda dari entri utama) dan "Methotrexate" (IDAI hlm. 86, mg/kg/dosis q6–24 jam berbeda dari entri utama);
+  - FORNAS metotreksat (hlm. 76–77): peresepan "7,5 mg/hari setiap minggu" dan "12.000 mg/m²/hari";
+  - lamivudin tablet 100 mg untuk hepatitis B (FORNAS hlm. 66–67; produk dan dosis berbeda dari lamivudin HIV).
+- Efavirenz (IDAI hlm. 49): pita berat badan melompat dari "25-<32 kg" ke "33-<40 kg"; disalin apa adanya, sehingga berat 32–<33 kg tidak memiliki dosis di tabel.
+- Sediaan FORNAS yang tidak dimasukkan: kombinasi KDT/FDC ARV; budesonid dan flutikason dalam kombinasi; flutikason furoat (hlm. 213, garam berbeda).
+- Vitamin A: FORNAS hanya kapsul oral, sedangkan label DailyMed yang tersedia adalah injeksi (Aquasol A); dipakai untuk manfaat, efek samping, peringatan, farmakokinetik, dan farmakodinamik.
+
