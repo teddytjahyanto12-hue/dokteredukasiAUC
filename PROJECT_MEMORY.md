@@ -788,6 +788,12 @@ File ini adalah sumber kebenaran tunggal untuk status, keputusan, dan serah teri
   - Skrip build DOCX (toc.ps1 di scratchpad) kini menyimpan dan memulihkan opsi cek ejaan Word; opsi Word pengguna dipulihkan ke aktif setelah sempat mati akibat build batch 6–7.
   - Sisa sekitar 8 batch.
 - Pelaksana aktif Claude Code (PC 2) sesi Dosis Obat: dilepas setelah publikasi draf 0.11.
+- Keputusan pemilik 16 Okt 2026: semua informasi yang tidak jelas disingkirkan (typo angka/satuan, baris dari kolom dosis normal tabel ginjal, tabel/sel ginjal yang janggal, catatan FORNAS yang letaknya tidak jelas). Daftar yang dihapus ada di Catatan_Verifikasi bagian "Pembersihan informasi yang tidak jelas".
+- Checkpoint draf 0.12 (16 Oktober 2026, batch 9 + pembersihan, 88 obat):
+  - Pembersihan: baris kalkulator dari kolom dosis normal tabel ginjal (morfin oral, diazepam, midazolam), dosis dengan satuan/angka janggal, tabel ginjal janggal (vankomisin, asam traneksamat, spironolakton, nifedipin), sel ginjal janggal, dan catatan FORNAS yang tidak jelas dihapus.
+  - Obat baru 3.79–3.88: deferasiroks, kalsitriol, metilfenidat, irbesartan, hidroksiklorokuin, asam ursodeoksikolat, asam mefenamat, azatioprin, dapson, kolkisin (piridoksin batal karena indikasi IDAI tidak jelas).
+  - Verifikasi IDAI/FORNAS 21/21 cocok plus cek gambar halaman. Sisa sekitar 7 batch.
+- Pelaksana aktif Claude Code (PC 2) sesi Dosis Obat: dilepas setelah publikasi draf 0.12.
 
 ## Integrasi Scoping Review - Codex, 2026-10-13
 - Pelaksana aktif: Codex sesi Scoping Review. Fokus: 21 PDF, 6 kelompok/kuis dari draf pengguna, lulus80, gratis kelompok1. Berkas: prisma/scoping-chapters.ts, render-scoping-pages.py, tests/scoping-http.mjs, lib/srma-progression.ts, lib/pdf-pages.ts, halaman kelas/materi/quiz, launcher, docs/SCOPING_KURIKULUM.md. HEAD/origin2665c79 identik setelah fetch. Tidak mengubah desain lokal atau dokumen dosis obat Claude aktif. Runtime PC2 terakhir build NLR; build baru akan dibuat terpisah, database diimpor terarah.

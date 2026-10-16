@@ -1097,3 +1097,44 @@ Obat: deferoksamin, deferipron, levotiroksin, propiltiourasil, tiamazol (metimaz
 - Penomoran FORNAS deferipron hlm. 117 tertulis "2." dua kali (tablet lepas lambat dan sirup); disalin sebagai tiga baris sediaan.
 - Sediaan FORNAS yang tidak dimasukkan: kalium klorida dalam tetes mata kombinasi (hlm. 177); kalium aspartat (zat berbeda).
 
+---
+
+## Pembersihan informasi yang tidak jelas (16 Oktober 2026, arahan pemilik)
+
+Arahan pemilik: "untuk semua yang tidak jelas informasinya tolong disingkirkan saja". Butir berikut dihapus dari dokumen utama (isi aslinya tetap tercatat di bagian batch masing-masing di berkas ini):
+
+- Baris kalkulator yang diturunkan dari kolom dosis normal tabel ginjal (bukan dari daftar dosis IDAI): morfin oral; seluruh tabel kalkulator diazepam dan midazolam (tabel penyesuaian ginjal tetap ditampilkan).
+- Dosis dengan satuan atau angka yang tidak jelas:
+  - propranolol IV "0,1 g/kg dalam 1 mnt, kemudian 0,1–0,3 mg/kg, 3 jam" (baris dihapus);
+  - siprofloksasin IV, keterangan "(maksimal 1,2cg)";
+  - vankomisin IV infeksi berat, keterangan "(dosis harian dewasa, 2–4g)I";
+  - asetilsistein, ambang ">32,5 mg pada 12 jam";
+  - kotrimoksazol, keterangan IDAI "Kontraindikasi untuk usia < 2 tahun" (berbeda dengan label: kurang dari 2 bulan).
+- Tabel penyesuaian ginjal yang isinya tidak jelas, dihapus seluruhnya: vankomisin (dosis normal po dan kolom LFG berisi dosis dewasa "1,0 gm"), asam traneksamat (50% pada LFG >50 tetapi 100% pada LFG lebih rendah), spironolakton (dosis normal "6,25–25 mg/dosis"), nifedipin (dosis normal "0,25–5 mg/kg/dosis").
+- Sel tabel ginjal yang tidak jelas, diganti "–": amikasin kolom HD ("dosis penuh sesudah dialisis"), alopurinol kolom HD ("dosis"), etambutol kolom PD ("dosis untuk dialisis LFG<10").
+- Keterangan FORNAS yang tidak jelas: peresepan morfin injeksi "infus per 24 jam" (diganti "–"); catatan rekonstitusi amoksisilin-asam klavulanat yang letaknya tidak jelas melekat pada butir sediaan mana.
+
+Butir yang **tidak** dihapus karena isinya jelas atau sudah diputuskan pemilik:
+
+- Ejaan nama yang salah tetapi maksudnya jelas (Amplicillin, Frusemide, Raniditidine, Spironolactione, Deferioksamin, Desferoxamine, "terdekatk", "uff").
+- Tabel ginjal asiklovir (pemilik sebelumnya memutuskan ditampilkan apa adanya).
+- Dosis per m2 (angkanya jelas; cara menghitung luas permukaan tubuh akan ditentukan saat implementasi kalkulator).
+- Perbedaan antara dosis sumber dan peringatan label (nifedipin krisis hipertensi, deferoksamin <3 tahun, ranitidin): isi masing-masing jelas dan ditampilkan sesuai sumbernya.
+
+Mulai batch 9, butir yang tidak jelas langsung tidak dimasukkan dan hanya dicatat di berkas ini.
+
+---
+
+## Batch 9 (draf 0.12, 16 Oktober 2026)
+
+Obat: deferasiroks, kalsitriol, metilfenidat, irbesartan, hidroksiklorokuin, asam ursodeoksikolat, asam mefenamat, azatioprin, dapson, kolkisin.
+
+- Kutipan IDAI dan FORNAS: 21 dari 21 cocok dengan teks sumber; halaman IDAI dan FORNAS juga dicek pada gambar halaman.
+- Tidak dimasukkan karena tidak jelas (sesuai arahan pemilik):
+  - piridoksin (semula direncanakan): IDAI hlm. 67 hanya menulis "Ampul 50mg/ml, 100-500 mg, intravena, dosis tunggal" tanpa indikasi; diganti kolkisin;
+  - hidroksiklorokuin IDAI hlm. 58 ("SLE: 6,5 mg/kg/hari (maks 400 mg/hari)"): tercetak di bawah judul entri "Klorokuin", sehingga tidak jelas milik entri mana; yang dipakai hanya entri hlm. 54;
+  - tabel ginjal "Azatriophine" (IDAI hlm. 77): nama tidak pasti merujuk azatioprin, dan kolom HD berisi "suplemen 0,25 mg/kg".
+- Dosis FORNAS dipakai untuk deferasiroks (maks 40 mg/kgBB/hari; sel peresepan tergabung untuk keempat sediaan pada gambar halaman).
+- Label yang menyatakan keamanan pada anak belum ditetapkan atau terbatas: irbesartan (tidak efektif menurunkan tekanan darah pada studi anak 6–16 tahun), asam mefenamat (nyeri: usia 14 tahun ke atas), ursodiol, azatioprin, deferasiroks (<2 tahun); dicantumkan di bagian Manfaat atau Peringatan.
+- Sediaan FORNAS yang tidak dimasukkan: dapson dalam paket kusta (kombinasi).
+

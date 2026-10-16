@@ -1,6 +1,6 @@
 # Kalkulator Dosis Obat Anak
 
-Draf 0.11, 16 Oktober 2026 (78 obat). Materi untuk ditinjau pemilik; belum diterapkan di website.
+Draf 0.12, 16 Oktober 2026 (88 obat). Materi untuk ditinjau pemilik; belum diterapkan di website.
 
 ---
 
@@ -878,7 +878,7 @@ IDAI hlm. 26, tabel antimikroba (dosis per kg per hari):
 
 | Rute | Infeksi ringan–sedang | Keterangan |
 |---|---|---|
-| PO, IV | 8–10 mg/kg/hari komponen TMP dalam 2 dosis (dosis harian dewasa, 320 mg TMP) | 2 mg komponen TMP sehari sekali untuk profilaksis ISK. Kontraindikasi untuk usia < 2 tahun |
+| PO, IV | 8–10 mg/kg/hari komponen TMP dalam 2 dosis (dosis harian dewasa, 320 mg TMP) | 2 mg komponen TMP sehari sekali untuk profilaksis ISK |
 
 IDAI hlm. 59, daftar dosis obat (Trimethoprim 1 mg : sulfametoksazol 5 mg):
 
@@ -1488,13 +1488,7 @@ Restriksi FORNAS: a) diberikan atas persetujuan KFT/KPRA/pimpinan RS untuk antib
 
 | Rute | Infeksi ringan–sedang | Infeksi berat | Keterangan |
 |---|---|---|---|
-| IV | 30–40 mg dalam 3–4 dosis (dosis harian dewasa, 1–2 g) | 60–70 mg dalam 3–4 dosis (dosis harian dewasa, 2–4g)I | Dosis dan frekuensi individual berdasarkan analisis konsentrasi serum |
-
-**Penyesuaian dosis pada penyakit ginjal** (IDAI hlm. 91)
-
-| Dosis normal | Dosis (D)/Interval (I) | LFG >50 | LFG 10–50 | LFG <10 | HD | PD |
-|---|---|---|---|---|---|---|
-| 10 mg/kg/dosis q6 jam po | D, I | 1,0 gm q12–24 jam | 1,0 gm q24–96 jam | 1,0 gm q4–7 hari | dosis untuk LFG <10 | dosis untuk LFG <10 |
+| IV | 30–40 mg dalam 3–4 dosis (dosis harian dewasa, 1–2 g) | 60–70 mg dalam 3–4 dosis | Dosis dan frekuensi individual berdasarkan analisis konsentrasi serum |
 
 **Sediaan** (FORNAS 2025 hlm. 35)
 
@@ -2322,12 +2316,6 @@ IDAI hlm. 36, daftar dosis obat (100 mg = 80 mg teofilin):
 | Oral | 15–25 mg/kg, 8 jam, selama <5 hari |
 | IV | 10–15 mg/kg, 8 jam |
 
-**Penyesuaian dosis pada penyakit ginjal** (IDAI hlm. 90)
-
-| Dosis normal | Dosis (D)/Interval (I) | LFG >50 | LFG 10–50 | LFG <10 | HD | PD |
-|---|---|---|---|---|---|---|
-| 15–25 mg/kg/dosis q8 jam po | D | 50% | 100% | 100% | tak ada data | tak ada data |
-
 **Sediaan** (FORNAS 2025 hlm. 113)
 
 | Sediaan | Peresepan maksimal |
@@ -2693,12 +2681,6 @@ Restriksi FORNAS: untuk perdarahan masif atau berpotensi perdarahan >600 cc.
 |---|---|
 | IV, oral | 1–2 mg/kg, 12–24 jam |
 
-**Penyesuaian dosis pada penyakit ginjal** (IDAI hlm. 90; tertulis "Spironolactione")
-
-| Dosis normal | Dosis (D)/Interval (I) | LFG >50 | LFG 10–50 | LFG <10 | HD | PD |
-|---|---|---|---|---|---|---|
-| 6,25–25 mg/dosis q12 jam po | I | q6–12 jam | q6–12 jam | q8–24 jam | Tak ada data | Tak ada data |
-
 **Sediaan** (FORNAS 2025 hlm. 133, 162)
 
 | Sediaan | Peresepan maksimal |
@@ -2759,7 +2741,6 @@ Restriksi FORNAS: untuk perdarahan masif atau berpotensi perdarahan >600 cc.
 |---|---|---|
 | IM | Neonatus 0,1 mg/kg, anak 0,1–0,2 mg/kg | IDAI hlm. 64 |
 | IV | 0,1–0,2 mg/kg/dosis | IDAI hlm. 64 |
-| PO | 0,1–0,2 mg/kg/dosis q4 jam po | IDAI hlm. 86 (tabel ginjal, kolom dosis normal) |
 
 **Penyesuaian dosis pada penyakit ginjal** (IDAI hlm. 86)
 
@@ -2776,7 +2757,7 @@ Restriksi FORNAS: untuk perdarahan masif atau berpotensi perdarahan >600 cc.
 | Tablet lepas lambat 15 mg | 60 tab/bulan |
 | Tablet lepas lambat 30 mg | 60 tab/bulan |
 | Sirup 10 mg/5 mL | 15 botol/bulan. Untuk pasien yang tidak dapat mengkonsumsi sediaan tablet |
-| Injeksi 10 mg/mL (i.m./s.k./i.v.) | Infus per 24 jam |
+| Injeksi 10 mg/mL (i.m./s.k./i.v.) | – |
 
 Restriksi FORNAS: diberikan pada salah satu atau lebih kondisi berikut: a) untuk pemakaian pada tindakan anestesi atau perawatan di rumah sakit; b) untuk mengatasi nyeri kanker yang tidak respons terhadap analgesik non narkotik; c) untuk nyeri pada sindrom koroner akut.
 
@@ -3280,7 +3261,7 @@ Restriksi FORNAS: a) digunakan untuk kandidiasis sistemik/pada pasien *immunocom
 
 | Dosis normal | Dosis (D)/Interval (I) | LFG >50 | LFG 10–50 | LFG <10 | HD | PD |
 |---|---|---|---|---|---|---|
-| 10 mg/kg/dosis q12–24 jam po | D | 75% | 50% | 25% | dosis | tak ada data |
+| 10 mg/kg/dosis q12–24 jam po | D | 75% | 50% | 25% | – | tak ada data |
 
 **Sediaan** (FORNAS 2025 hlm. 14)
 
@@ -3416,7 +3397,7 @@ Keterangan golongan aminoglikosida (IDAI hlm. 11): dosis dan frekuensi individua
 
 | Dosis normal | Dosis (D)/Interval (I) | LFG >50 | LFG 10–50 | LFG <10 | HD | PD |
 |---|---|---|---|---|---|---|
-| 5–7,5 mg/kg/dosis q8 jam iv | D, I | 60–90% | 30–70% | 20–30% | dosis penuh sesudah dialisis | 15–20 mg/L/hari |
+| 5–7,5 mg/kg/dosis q8 jam iv | D, I | 60–90% | 30–70% | 20–30% | – | 15–20 mg/L/hari |
 
 **Sediaan** (FORNAS 2025)
 
@@ -3482,7 +3463,7 @@ Keterangan golongan aminoglikosida (IDAI hlm. 11): dosis dan frekuensi individua
 | Rute | Infeksi ringan–sedang | Infeksi berat |
 |---|---|---|
 | PO | 20–40 mg dalam 2 dosis (maksimal 1,5 g) | 30–40 mg dalam 2 dosis (dosis harian dewasa, 1–1,5 g) |
-| IV | Tidak cocok | 20–30 mg dalam 2 dosis (maksimal 1,2cg) |
+| IV | Tidak cocok | 20–30 mg dalam 2 dosis |
 
 **Penyesuaian dosis pada penyakit ginjal** (IDAI hlm. 80)
 
@@ -3623,11 +3604,6 @@ Restriksi FORNAS: tidak digunakan untuk pasien usia <18 tahun, ibu hamil, atau i
 | Amoksisilin 1.000 mg + asam klavulanat 200 mg | Injeksi 1.200 mg | hlm. 25 |
 
 Restriksi FORNAS untuk tablet 625 mg dan kedua sirup kering: hanya untuk terapi lanjutan untuk pasien yang sebelumnya mendapatkan antibiotik parenteral amoksisilin-asam klavulanat atau sesuai hasil uji resistensi.
-
-Catatan FORNAS:
-
-- Direkonstitusi sesaat sebelum digunakan untuk mencegah hilangnya efikasi asam klavulanat, disimpan dalam lemari pendingin, dan digunakan tidak lebih dari 7 hari setelah direkonstitusi (hlm. 24).
-- Direkonstitusi sesaat sebelum disuntikkan untuk mencegah hilangnya efikasi asam klavulanat (hlm. 25).
 
 **Aturan penggunaan**
 
@@ -3822,7 +3798,7 @@ Catatan FORNAS:
 
 | Dosis normal | Dosis (D)/Interval (I) | LFG >50 | LFG 10–50 | LFG <10 | HD | PD |
 |---|---|---|---|---|---|---|
-| 25 mg/kg/dosis q24 jam po | I | q24 jam | q24–36 jam | q48 jam | dosis sesudah dialisis | dosis untuk dialisis LFG <10 |
+| 25 mg/kg/dosis q24 jam po | I | q24 jam | q24–36 jam | q48 jam | dosis sesudah dialisis | – |
 
 **Sediaan** (FORNAS 2025 hlm. 43; disediakan oleh Program Kemenkes)
 
@@ -3947,12 +3923,6 @@ Restriksi FORNAS: tidak boleh digunakan sebagai *single agent* untuk TB.
 ---
 
 ### 3.57 Diazepam
-
-**Kalkulator berat badan**
-
-| Rute | Dosis | Sumber |
-|---|---|---|
-| IV, PR | 0,1–0,4 mg/kg/dosis | IDAI hlm. 81 (tabel ginjal, kolom dosis normal) |
 
 **Penyesuaian dosis pada penyakit ginjal** (IDAI hlm. 81)
 
@@ -4088,7 +4058,6 @@ Restriksi FORNAS: tidak boleh digunakan sebagai *single agent* untuk TB.
 | Rute | Dosis |
 |---|---|
 | Oral | 0,2–0,5 mg/kg, 6–8 jam, tingkatkan menjadi maks 1,5 mg/kg, 6–8 jam bila perlu |
-| IV | 0,1 g/kg dalam 1 mnt, kemudian 0,1–0,3 mg/kg, 3 jam |
 
 **Penyesuaian dosis pada penyakit ginjal** (IDAI hlm. 88)
 
@@ -4159,12 +4128,6 @@ Restriksi FORNAS: tidak boleh digunakan sebagai *single agent* untuk TB.
 |---|---|
 | – | Cap 0,25–0,5 mg/kg, 12 jam, tab 0,5 mg/kg, 12 jam |
 | Oral atau sublingual untuk krisis hipertensi | Mulai dosis 0,1 mg/kg, tingkatkan bertahap tiap 5 menit sampai 3x jika diperlukan menjadi maks 10 mg/kali pemberian. Dosis maksimal 0,5 mg/kg; 6–8 jam |
-
-**Penyesuaian dosis pada penyakit ginjal** (IDAI hlm. 87)
-
-| Dosis normal | Dosis (D)/Interval (I) | LFG >50 | LFG 10–50 | LFG <10 | HD | PD |
-|---|---|---|---|---|---|---|
-| 0,25–5 mg/kg/dosis q6–8 jam po | D | 100% | 100% | 100% | Tak ada | Tak ada |
 
 **Sediaan** (FORNAS 2025 hlm. 154)
 
@@ -4611,12 +4574,6 @@ Catatan FORNAS untuk antidiabetes parenteral (hlm. 136):
 ---
 
 ### 3.67 Midazolam
-
-**Kalkulator berat badan**
-
-| Rute | Dosis | Sumber |
-|---|---|---|
-| IV, IM | 0,1–0,2 mg/kg/dosis | IDAI hlm. 86 (tabel ginjal, kolom dosis normal) |
 
 **Penyesuaian dosis pada penyakit ginjal** (IDAI hlm. 86)
 
@@ -5230,7 +5187,7 @@ Keterangan IDAI: bukan ditujukan untuk mengobati obesitas, melainkan untuk menga
 | Gagal hati, keracunan parasetamol (IV) | 150 mg/kg dalam D5% IV dalam 1 jam, dilanjutkan 10 mg/kg/jam selama 20 jam (bila terlambat <10 jam), selama 32 jam (bila terlambat 10–16 jam), selama 72 jam (bila terlambat >16 jam), dan lebih lama bila os masih ensefalopati |
 | Keracunan parasetamol (oral) | 140 mg/kg oral segera, kemudian 70 mg/kg tiap 4 jam selama 72 jam |
 
-Keterangan IDAI: monitor kadar kalium darah. Berikan jika parasetamol >150 mg/L pada 4 jam, >75 mg/L pada 8 jam, >32,5 mg pada 12 jam.
+Keterangan IDAI: monitor kadar kalium darah. Berikan jika parasetamol >150 mg/L pada 4 jam, >75 mg/L pada 8 jam.
 
 **Sediaan** (FORNAS 2025)
 
@@ -5338,3 +5295,593 @@ Keterangan IDAI: monitor kadar kalium darah. Berikan jika parasetamol >150 mg/L 
 1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
 2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
 3. Thiamine Hydrochloride Injection, USP (Meitheal Pharmaceuticals), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=3bfe8ac7-9294-4980-9635-90f8e6f6dd8e
+
+---
+
+### 3.79 Deferasiroks
+
+**Kalkulator berat badan**
+
+| Keadaan | Dosis | Sumber |
+|---|---|---|
+| Oral | 20 mg/kg (10–40 mg/kg), 1x/hari | IDAI hlm. 45 |
+| Batas FORNAS (tablet dispersible dan tablet salut selaput) | Maks 40 mg/kgBB/hari | FORNAS hlm. 116 |
+
+Keterangan IDAI: monitor ferritin serum.
+
+**Sediaan** (FORNAS 2025 hlm. 116; obat untuk kelebihan besi)
+
+Restriksi FORNAS: a) untuk terapi kelasi besi; b) tidak diberikan untuk anak usia <2 tahun; c) terapi awal harus ditentukan oleh dokter yang memiliki kompetensi di bidang ilmu hematologi onkologi anak atau hematologi onkologi medik dewasa.
+
+| Sediaan | Peresepan maksimal |
+|---|---|
+| Tablet dispersible 250 mg | Maks 40 mg/kgBB/hari |
+| Tablet dispersible 500 mg | Maks 40 mg/kgBB/hari |
+| Tablet salut selaput 180 mg | Maks 40 mg/kgBB/hari |
+| Tablet salut selaput 360 mg | Maks 40 mg/kgBB/hari |
+
+**Aturan penggunaan**
+
+- Diberikan 1 kali sehari; monitor ferritin serum (IDAI).
+- Tablet dispersible diminum saat perut kosong, sedikitnya 30 menit sebelum makan, sebaiknya pada jam yang sama setiap hari; tablet didispersikan sempurna dalam air, jus jeruk, atau jus apel (label Exjade).
+
+**Manfaat obat** (label Exjade)
+
+- Kelebihan besi kronik akibat transfusi darah (hemosiderosis transfusional) pada pasien usia 2 tahun ke atas.
+- Kelebihan besi kronik pada sindrom talasemia yang tidak bergantung transfusi pada pasien usia 10 tahun ke atas (dengan kriteria kadar besi hati dan ferritin tertentu).
+
+**Efek samping** (label Exjade)
+
+- Efek samping yang paling sering menyebabkan penghentian obat: kenaikan kreatinin serum, diare, mual, ruam, muntah.
+- Iritasi, ulserasi, dan perdarahan saluran cerna atas (termasuk pada anak dan remaja); ruam; gangguan pendengaran dan penglihatan (kurang dari 1%).
+
+**Peringatan** (label Exjade)
+
+- Peringatan berbingkai: dapat menyebabkan gagal ginjal akut, gagal hati, dan perdarahan saluran cerna, termasuk yang fatal. Periksa fungsi ginjal sebelum memulai dan sedikitnya setiap bulan.
+- Kontraindikasi: eGFR <40 mL/menit/1,73 m²; status performa buruk; sindrom mielodisplastik risiko tinggi; keganasan lanjut; trombosit <50 x 10⁹/L; hipersensitivitas terhadap deferasiroks.
+- Pada anak, efek samping serius dan fatal sering berkaitan dengan deplesi volume atau dosis 20–40 mg/kg/hari yang dilanjutkan saat beban besi mendekati normal. Hentikan sementara saat deplesi volume.
+- Kelasi berlebihan: ukur ferritin serum setiap bulan; pada anak, efek samping ginjal lebih sering bila dosis >25 mg/kg/hari saat ferritin <1.000 mcg/L.
+- Supresi sumsum tulang; hipersensitivitas berat; reaksi kulit berat (SJS, TEN, DRESS). Lakukan pemeriksaan pendengaran dan mata sebelum terapi dan setiap 12 bulan.
+
+**Farmakokinetik** (label Exjade)
+
+- Kadar puncak plasma 1,5–4 jam setelah pemberian oral; bioavailabilitas absolut tablet untuk suspensi 70%; bioavailabilitas meningkat bervariasi bila diminum bersama makanan.
+- Sekitar 99% terikat protein, hampir seluruhnya albumin.
+- Dimetabolisme terutama melalui glukuronidasi (UGT1A1, sebagian UGT1A3); 84% dosis dikeluarkan di feses dan 8% di urin. Waktu paruh eliminasi 8–16 jam.
+
+**Farmakodinamik** (label Exjade)
+
+- Pengkelat oral yang selektif untuk besi (Fe³⁺); ligan tridentat yang mengikat besi dengan afinitas tinggi dalam rasio 2:1.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. EXJADE (deferasirox) tablets for oral suspension (Novartis), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=3495a70c-870c-4968-940e-8baea152cf85
+
+---
+
+### 3.80 Kalsitriol
+
+**Kalkulator berat badan** (IDAI hlm. 57)
+
+| Rute | Dosis |
+|---|---|
+| Oral, IV | 0,02 mcg/kg (maks 0,25 mcg/kg) per hari, sesuaikan tiap 2–4 mgg berdasarkan hasil Ca, P, PTH, alkalin fosfatase |
+
+**Sediaan** (FORNAS 2025 hlm. 214)
+
+Restriksi FORNAS: hanya untuk penyakit ginjal kronis *grade* 5 atau pasien hipoparatiroid, pemeriksaan kadar kalsium ion 1,1–2,5 mmol.
+
+| Sediaan | Peresepan maksimal |
+|---|---|
+| Kapsul lunak 0,25 mcg | 90 kaps/bulan |
+| Kapsul lunak 0,5 mcg | 90 kaps/bulan |
+
+**Aturan penggunaan**
+
+- Dosis disesuaikan tiap 2–4 minggu berdasarkan hasil Ca, P, PTH, dan alkalin fosfatase (IDAI).
+- Selama terapi, vitamin D dosis farmakologis dan turunannya tidak diberikan untuk mencegah efek aditif dan hiperkalsemia (label kalsitriol).
+
+**Manfaat obat** (label kalsitriol)
+
+- Hiperparatiroidisme sekunder dan penyakit tulang metabolik pada gagal ginjal kronik sedang–berat yang belum dialisis.
+- Hipokalsemia dan penyakit tulang metabolik pada pasien dialisis kronik.
+- Hipokalsemia pada hipoparatiroidisme pascabedah, idiopatik, dan pseudohipoparatiroidisme.
+
+**Efek samping** (label kalsitriol)
+
+- Umumnya serupa dengan kelebihan vitamin D, yaitu sindrom hiperkalsemia.
+- Gejala awal: lemah, sakit kepala, mengantuk, mual, muntah, mulut kering, konstipasi, nyeri otot dan tulang, rasa logam, anoreksia, nyeri perut.
+- Gejala lanjut antara lain poliuria, polidipsia, anoreksia, penurunan berat badan, nokturia.
+
+**Peringatan** (label kalsitriol)
+
+- Kontraindikasi: hiperkalsemia atau tanda toksisitas vitamin D; hipersensitivitas terhadap kalsitriol atau obat segolongan.
+- Kelebihan dosis vitamin D berbahaya; hiperkalsemia kronik dapat menyebabkan kalsifikasi pembuluh darah, nefrokalsinosis, dan kalsifikasi jaringan lunak. Hasil kali Ca x P tidak boleh melebihi 70 mg²/dL².
+- Kalsitriol adalah metabolit vitamin D yang paling poten; pemberian melebihi kebutuhan dapat menyebabkan hiperkalsemia, hiperkalsiuria, dan hiperfosfatemia.
+- Keamanan dan efektivitas pada anak yang menjalani dialisis belum ditetapkan.
+
+**Farmakokinetik** (label kalsitriol)
+
+- Diserap cepat dari usus; kadar puncak serum 3–6 jam setelah dosis oral; kadar tunak tercapai dalam 7 hari pada pemberian berulang.
+- Sekitar 99,9% terikat dalam darah (protein pengikat vitamin D); dapat masuk ke sirkulasi janin dan ASI.
+- Waktu paruh serum sekitar 5–8 jam setelah dosis oral tunggal pada orang sehat.
+
+**Farmakodinamik** (label kalsitriol)
+
+- Bentuk aktif vitamin D3; tempat kerja utama di usus dan tulang, dan kemungkinan juga di ginjal dan kelenjar paratiroid.
+- Bentuk vitamin D3 yang paling aktif dalam merangsang transpor kalsium usus.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. Calcitriol Capsules (Hikma Pharmaceuticals USA), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=cdcaffc6-e14e-4607-b77b-fc78a8382f60
+
+---
+
+### 3.81 Metilfenidat
+
+**Kalkulator** (IDAI hlm. 62)
+
+| Usia/sediaan | Dosis |
+|---|---|
+| <12 thn | 5 mg, pagi dan siang hari serta pada jam 4 sore; tingkatkan per minggu jika perlu menjadi maks 0,4 mg/kg/dosis |
+| >12 thn | 10 mg, pagi dan siang hari serta pada jam 4 sore; tingkatkan per minggu jika perlu menjadi maks 0,4 mg/kg/dosis |
+| Kerja panjang | 10–60 mg, pagi hari |
+
+**Sediaan** (FORNAS 2025 hlm. 185; obat untuk ADHD)
+
+| Sediaan | Peresepan maksimal |
+|---|---|
+| Tablet 10 mg | 90 tab/bulan |
+| Tablet lepas lambat 18 mg | 30 tab/bulan |
+| Tablet lepas lambat 36 mg | 30 tab/bulan |
+
+**Aturan penggunaan**
+
+- Sesuai tabel IDAI.
+- Makanan tidak berpengaruh bermakna pada penyerapan (label Ritalin).
+- Pantau pertumbuhan (berat dan tinggi badan) selama terapi (label Ritalin).
+
+**Manfaat obat** (label Ritalin)
+
+- Gangguan pemusatan perhatian dan hiperaktivitas (ADHD) pada anak usia 6 tahun ke atas dan dewasa.
+- Narkolepsi.
+
+**Efek samping** (label Ritalin)
+
+- Metabolisme: nafsu makan menurun, kenaikan berat badan berkurang, dan hambatan pertumbuhan pada penggunaan lama pada anak.
+- Psikiatri: insomnia, cemas, gelisah, agitasi, psikosis, suasana hati depresif.
+- Saraf: sakit kepala, pusing, tremor, diskinesia, mengantuk, kejang.
+- Jantung: takikardia, palpitasi, peningkatan tekanan darah, aritmia.
+- Saluran cerna: mulut kering, mual, muntah, nyeri perut, dispepsia.
+- Lainnya: leukopenia, trombositopenia, anemia; reaksi hipersensitivitas; hiperhidrosis, rambut rontok; fenomena Raynaud.
+
+**Peringatan** (label Ritalin)
+
+- Peringatan berbingkai: potensi tinggi penyalahgunaan dan adiksi; nilai risiko sebelum dan selama terapi.
+- Kontraindikasi: hipersensitivitas terhadap metilfenidat; pemberian bersama atau dalam 14 hari setelah penghambat MAO.
+- Kematian mendadak pernah dilaporkan pada pasien dengan kelainan struktural jantung atau penyakit jantung serius.
+- Peningkatan tekanan darah dan denyut jantung; reaksi psikiatri (perburukan psikosis, episode manik); priapismus; vaskulopati perifer termasuk fenomena Raynaud; glaukoma sudut tertutup dan peningkatan tekanan intraokular; tik motorik dan verbal.
+- Hambatan pertumbuhan jangka panjang pada anak: rata-rata sekitar 2 cm lebih pendek dan 2,7 kg lebih ringan dalam 3 tahun pada penggunaan terus-menerus.
+- Keamanan dan efektivitas pada anak di bawah 6 tahun belum ditetapkan.
+
+**Farmakokinetik** (label Ritalin)
+
+- Bioavailabilitas absolut 22% (enansiomer d) dan 5% (enansiomer l); kadar puncak sekitar 2 jam setelah tablet 10 mg (pada anak 1,9 jam).
+- Ikatan protein plasma rendah (10–33%).
+- Dimetabolisme terutama melalui de-esterifikasi menjadi asam ritalinat yang hampir tidak aktif; 78–97% dosis keluar di urin sebagai metabolit dalam 48–96 jam.
+
+**Farmakodinamik** (label Ritalin)
+
+- Stimulan sistem saraf pusat; mekanisme terapeutik pada ADHD dan narkolepsi belum diketahui.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. RITALIN (methylphenidate hydrochloride) tablets (Sandoz), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=d6fb2750-cdab-4749-ba0d-7534840a5892
+
+---
+
+### 3.82 Irbesartan
+
+**Kalkulator berat badan** (IDAI hlm. 57)
+
+| Rute | Dosis |
+|---|---|
+| Oral | 3 mg/kg/hari, ditingkakan hingga 6 mg/kg/hari bila perlu |
+
+**Sediaan** (FORNAS 2025 hlm. 153)
+
+Restriksi FORNAS: untuk pasien yang telah mendapat ACE inhibitor sebelumnya sekurang-kurangnya 1 bulan dan mengalami intoleransi terhadap ACE inhibitor yang dibuktikan dengan melampirkan resep sebelumnya.
+
+| Sediaan | Peresepan maksimal |
+|---|---|
+| Tablet 150 mg | 30 tab/bulan |
+| Tablet 300 mg | 30 tab/bulan |
+
+**Aturan penggunaan**
+
+- Sesuai tabel IDAI.
+- Makanan tidak memengaruhi bioavailabilitas (label Avapro).
+
+**Manfaat obat** (label Avapro)
+
+- Hipertensi (dewasa).
+- Nefropati diabetik pada pasien diabetes tipe 2 dengan hipertensi.
+- Pada studi anak usia 6–16 tahun dengan dosis hingga 4,5 mg/kg/hari, irbesartan tampak tidak menurunkan tekanan darah secara efektif; belum diteliti pada anak di bawah 6 tahun.
+
+**Efek samping** (label Avapro)
+
+- Pada uji terkontrol plasebo: diare (3%), dispepsia/nyeri ulu hati (2%), lelah (4%).
+- Pada nefropati diabetik: pusing, pusing ortostatik, dan hipotensi ortostatik lebih sering daripada plasebo.
+
+**Peringatan** (label Avapro)
+
+- Peringatan berbingkai: toksisitas janin; hentikan segera bila hamil.
+- Kontraindikasi: hipersensitivitas terhadap komponen produk; pemberian bersama aliskiren pada pasien diabetes.
+- Hipotensi pada pasien dengan deplesi volume atau garam; gangguan fungsi ginjal termasuk gagal ginjal akut.
+
+**Farmakokinetik** (label Avapro)
+
+- Penyerapan oral cepat dan lengkap; bioavailabilitas absolut 60–80%; kadar puncak 1,5–2 jam.
+- 90% terikat protein serum.
+- Dimetabolisme melalui konjugasi glukuronida dan oksidasi; waktu paruh eliminasi terminal 11–15 jam; kadar tunak tercapai dalam 3 hari.
+
+**Farmakodinamik** (label Avapro)
+
+- Menghambat efek vasokonstriksi dan sekresi aldosteron dari angiotensin II dengan berikatan secara selektif pada reseptor AT1.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. AVAPRO (irbesartan) tablets (Sanofi-Aventis U.S.), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=7885b2a8-be4e-48ab-8113-4e6ab791eb98
+
+---
+
+### 3.83 Hidroksiklorokuin
+
+**Kalkulator berat badan** (IDAI hlm. 54)
+
+| Keadaan | Dosis |
+|---|---|
+| Malaria | 10 mg/kg/hari selama 3 hari |
+| Profilaksis | 5 mg/kg, 1x/minggu, oral |
+| Artritis, SLE | 3–6,5 mg/kg/hari, oral |
+
+**Sediaan** (FORNAS 2025 hlm. 103–104)
+
+Restriksi FORNAS: a) untuk kasus SLE (*Systemic Lupus Erythematosus*) atau b) untuk kasus RA (*Rheumatoid Arthritis*).
+
+| Sediaan | Peresepan maksimal |
+|---|---|
+| Tablet 200 mg | 60 tab/bulan |
+
+**Aturan penggunaan**
+
+- Sesuai tabel IDAI.
+- Pemeriksaan mata awal dianjurkan pada tahun pertama terapi (label Plaquenil).
+
+**Manfaat obat** (label Plaquenil)
+
+- Pada dewasa dan anak: pengobatan malaria tanpa komplikasi akibat *P. falciparum*, *P. malariae*, *P. vivax*, dan *P. ovale*, serta profilaksis malaria di daerah tanpa resistansi klorokuin.
+- Pada dewasa: artritis reumatoid, lupus eritematosus sistemik, dan lupus eritematosus diskoid kronik.
+
+**Efek samping** (label Plaquenil)
+
+- Saluran cerna: mual, muntah, diare, nyeri perut; lelah.
+- Hati: kelainan uji fungsi hati, gagal hati fulminan.
+- Alergi: urtikaria, angioedema, bronkospasme.
+- Kardiomiopati, toksisitas retina, reaksi kulit berat, gangguan darah, miopati, reaksi neuropsikiatri, hipoglikemia (lihat Peringatan).
+
+**Peringatan** (label Plaquenil)
+
+- Kontraindikasi: hipersensitivitas terhadap senyawa 4-aminokuinolin.
+- Kardiomiopati dan aritmia ventrikel yang fatal; dapat memperpanjang interval QT.
+- Kerusakan retina yang menetap, berkaitan dengan dosis kumulatif dan lama terapi; risiko meningkat pada dosis harian ≥5 mg/kg berat badan aktual dan penggunaan lebih dari 5 tahun.
+- Reaksi kulit berat (SJS, TEN, DRESS, AGEP); perburukan psoriasis dan porfiria; supresi sumsum tulang; hemolisis pada defisiensi G6PD; miopati atau neuropati; reaksi neuropsikiatri termasuk perilaku bunuh diri; hipoglikemia berat; toksisitas ginjal.
+- Tablet salut selaput tidak dapat dihancurkan atau dibagi sehingga tidak dapat langsung diberikan pada anak dengan berat badan <31 kg.
+
+**Farmakokinetik** (label Plaquenil)
+
+- Bioavailabilitas oral absolut rata-rata 79% saat puasa; kadar puncak darah sekitar 3,3 jam setelah dosis 200 mg.
+- Waktu paruh absorpsi 3–4 jam dan waktu paruh terminal 40–50 hari dalam darah utuh.
+- Diekskresikan terutama melalui ginjal; risiko toksisitas dapat lebih besar pada gangguan fungsi ginjal.
+
+**Farmakodinamik** (label Plaquenil)
+
+- Antimalaria golongan 4-aminokuinolin dan antireumatik.
+- Mekanisme efek antiinflamasi dan imunomodulator pada artritis reumatoid dan lupus belum sepenuhnya diketahui.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. PLAQUENIL (hydroxychloroquine sulfate) tablets (Advanz Pharma), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=34496b43-05a2-45fb-a769-52b12e099341
+
+---
+
+### 3.84 Asam ursodeoksikolat
+
+**Kalkulator berat badan** (IDAI hlm. 37)
+
+| Rute | Dosis |
+|---|---|
+| Oral | 5–10 mg/kg, 12 jam |
+
+**Sediaan** (FORNAS 2025 hlm. 194)
+
+| Sediaan | Peresepan maksimal |
+|---|---|
+| Kapsul 250 mg | 90 kaps/bulan |
+
+**Aturan penggunaan**
+
+- Sesuai tabel IDAI.
+- Obat pengikat asam empedu (kolestiramin, kolestipol) dan antasida berbasis aluminium dapat mengurangi penyerapan ursodiol (label ursodiol).
+
+**Manfaat obat** (label ursodiol)
+
+- Batu kandung empedu radiolusen dan tidak berkalsifikasi berukuran <20 mm pada pasien yang tidak dapat atau tidak mau menjalani kolesistektomi.
+- Pencegahan pembentukan batu empedu pada pasien obesitas yang mengalami penurunan berat badan cepat.
+
+**Efek samping** (label ursodiol)
+
+- Pada uji klinis disolusi batu empedu, jenis dan frekuensi efek samping serupa dengan plasebo; yang dilaporkan antara lain nyeri perut, diare, dispepsia, mual, muntah, konstipasi, flatulens, dan artralgia.
+
+**Peringatan** (label ursodiol)
+
+- Kontraindikasi: alergi terhadap asam empedu; tidak dapat melarutkan batu kolesterol berkalsifikasi, batu radiopak, atau batu pigmen empedu radiolusen; pasien yang memerlukan kolesistektomi (misalnya kolesistitis akut, kolangitis, obstruksi bilier, pankreatitis akibat batu empedu).
+- Enterolit (bezoar) yang menyebabkan obstruksi pernah dilaporkan pada pasien dengan stenosis atau stasis usus.
+- Keamanan dan efektivitas pada anak belum ditetapkan.
+
+**Farmakokinetik** (label ursodiol)
+
+- Sekitar 90% dosis diserap di usus halus; mengalami ekstraksi lintas pertama yang besar di hati, dikonjugasi dengan glisin atau taurin, lalu disekresikan ke empedu.
+- Hanya sedikit yang masuk sirkulasi sistemik dan sangat sedikit yang dikeluarkan di urin; sebagian kecil didegradasi bakteri pada setiap siklus enterohepatik.
+
+**Farmakodinamik** (label ursodiol)
+
+- Menekan sintesis dan sekresi kolesterol oleh hati serta menghambat penyerapan kolesterol di usus.
+- Kadar asam ursodeoksikolat empedu mencapai kondisi tunak dalam sekitar 3 minggu pada pemberian berulang.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. Ursodiol Capsules, USP (Actavis Pharma), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=a061bb07-a85d-4b08-877f-ce02156f0de7
+
+---
+
+### 3.85 Asam mefenamat
+
+**Kalkulator berat badan** (IDAI hlm. 37)
+
+| Keadaan | Dosis |
+|---|---|
+| Penghilang nyeri pada keganasan (skala 3–7) | 10 mg/kg, per oral |
+
+**Penyesuaian dosis pada penyakit ginjal** (IDAI hlm. 85, tertulis "Mefenamic acid")
+
+| Dosis normal | Dosis (D)/Interval (I) | LFG >50 | LFG 10–50 | LFG <10 | HD | PD |
+|---|---|---|---|---|---|---|
+| 10 mg/kg/dosis q8 jam po | D | 100% | 100% | 100% | Tak ada | Tak ada |
+
+**Sediaan** (FORNAS 2025 hlm. 12; analgesik non narkotik)
+
+| Sediaan | Peresepan maksimal |
+|---|---|
+| Kapsul 250 mg | 30 kaps/bulan |
+| Tablet 500 mg | 30 tab/bulan |
+
+**Aturan penggunaan**
+
+- Sesuai tabel IDAI.
+
+**Manfaat obat** (label asam mefenamat)
+
+- Nyeri ringan sampai sedang pada dewasa dan anak usia 14 tahun ke atas, bila terapi tidak lebih dari 7 hari.
+- Dismenore primer.
+- Keamanan dan efektivitas untuk nyeri ringan–sedang pada anak di bawah 14 tahun belum ditetapkan.
+
+**Efek samping** (label asam mefenamat)
+
+- Sekitar 1–10%: nyeri perut, konstipasi, diare, dispepsia, flatulens, perdarahan/perforasi, nyeri ulu hati, mual, tukak lambung/duodenum, muntah; tinitus; gangguan fungsi ginjal; kenaikan enzim hati; gatal, ruam; anemia, edema; pusing, sakit kepala; pemanjangan waktu perdarahan.
+
+**Peringatan** (label asam mefenamat)
+
+- Peringatan berbingkai: risiko kejadian trombotik kardiovaskular serius (infark miokard, stroke) dan perdarahan, ulserasi, serta perforasi saluran cerna yang dapat fatal.
+- Kontraindikasi: hipersensitivitas terhadap asam mefenamat; riwayat asma, urtikaria, atau reaksi alergi setelah aspirin atau OAINS lain; pada operasi CABG.
+- Hepatotoksisitas: kenaikan ALT/AST tiga kali atau lebih batas atas normal pada sekitar 1% pasien yang menerima OAINS dalam uji klinis.
+
+**Farmakokinetik** (label asam mefenamat)
+
+- Diserap cepat setelah pemberian oral; kadar puncak plasma 2–4 jam.
+- Lebih dari 90% terikat albumin; volume distribusi sekitar 1,06 L/kg.
+- Dimetabolisme oleh CYP2C9 menjadi metabolit 3-hidroksimetil, lalu dapat dioksidasi lebih lanjut dan mengalami glukuronidasi.
+
+**Farmakodinamik** (label asam mefenamat)
+
+- OAINS dengan sifat analgesik, antiinflamasi, dan antipiretik; menghambat siklooksigenase (COX-1 dan COX-2) dan sintesis prostaglandin.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. Mefenamic Acid Capsules (Lupin Pharmaceuticals), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=d15733a9-d5fd-4d5f-86ce-e7ed8c706c7f
+
+---
+
+### 3.86 Azatioprin
+
+**Kalkulator berat badan** (IDAI hlm. 40)
+
+| Rute | Dosis |
+|---|---|
+| Oral | 1–1,5 mg/kg, per oral, 24 jam; bila toleransi baik dapat ditingkatkan 2–2,5 mg/kg, per oral, 24 jam (maks 150 mg/dosis) |
+
+**Sediaan** (FORNAS 2025 hlm. 102; imunosupresan)
+
+| Sediaan | Peresepan maksimal |
+|---|---|
+| Tablet 50 mg | 120 tab/bulan |
+
+**Aturan penggunaan**
+
+- Sesuai tabel IDAI.
+- Periksa darah lengkap termasuk trombosit setiap minggu pada bulan pertama, dua kali sebulan pada bulan kedua dan ketiga, kemudian setiap bulan atau lebih sering bila dosis atau terapi lain berubah (label Imuran).
+
+**Manfaat obat** (label Imuran)
+
+- Tambahan untuk mencegah penolakan pada transplantasi ginjal.
+- Artritis reumatoid aktif.
+
+**Efek samping** (label Imuran)
+
+- Efek toksik utama bersifat hematologik dan gastrointestinal; risiko infeksi sekunder dan keganasan juga bermakna.
+- Leukopenia dan/atau trombositopenia yang bergantung dosis dan dapat muncul lambat.
+- Mual dan muntah, kadang disertai diare, ruam, demam, malaise, mialgia, kenaikan enzim hati, dan hipotensi; biasanya dalam beberapa minggu pertama dan pulih bila obat dihentikan. Pankreatitis hipersensitivitas jarang.
+
+**Peringatan** (label Imuran)
+
+- Peringatan berbingkai: imunosupresi kronik meningkatkan risiko keganasan, termasuk limfoma pascatransplantasi dan limfoma sel T hepatosplenik pada penyakit radang usus.
+- Kontraindikasi: hipersensitivitas terhadap azatioprin; artritis reumatoid pada wanita hamil; artritis reumatoid yang sebelumnya diobati agen alkilasi.
+- Sitopenia berat dan supresi sumsum tulang; risiko mielotoksisitas berat pada defisiensi TPMT atau NUDT15.
+- Infeksi serius termasuk infeksi oportunistik.
+- Keamanan dan efektivitas pada anak belum ditetapkan.
+
+**Farmakokinetik** (label Imuran)
+
+- Diserap baik setelah pemberian oral; dimetabolisme menjadi 6-merkaptopurin.
+- Azatioprin dan merkaptopurin terikat protein serum sekitar 30% dan sebagian dapat didialisis; keduanya cepat dieliminasi dari darah dan tidak terdeteksi di urin setelah 8 jam.
+- Efek klinis berkorelasi dengan kadar nukleotida tiopurin di jaringan, bukan kadar plasma.
+
+**Farmakodinamik** (label Imuran)
+
+- Antimetabolit purin; sitotoksisitas sebagian berasal dari penggabungan nukleotida 6-tioguanin ke dalam DNA.
+- Mekanisme pada penyakit autoimun belum diketahui.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. IMURAN (azathioprine) tablets (Sebela Pharmaceuticals), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=606101a0-6244-7eff-e053-2a91aa0acadd
+
+---
+
+### 3.87 Dapson
+
+**Kalkulator berat badan** (IDAI hlm. 45)
+
+| Keadaan | Dosis |
+|---|---|
+| Profilaksis *P. jiroveci* | 2 mg/kg, per oral, 24 jam atau 4 mg/kg/minggu, per oral |
+
+**Sediaan** (FORNAS 2025 hlm. 36; antilepra)
+
+| Sediaan | Peresepan maksimal |
+|---|---|
+| Tablet 100 mg | – |
+
+**Aturan penggunaan**
+
+- Sesuai tabel IDAI.
+- Periksa darah lengkap secara berkala: bila memungkinkan setiap minggu pada bulan pertama, setiap bulan selama 6 bulan, lalu setiap 6 bulan (label dapson).
+
+**Manfaat obat** (label dapson)
+
+- Dermatitis herpetiformis.
+- Semua bentuk kusta, kecuali kasus resistan dapson yang terbukti.
+
+**Efek samping** (label dapson)
+
+- Hemolisis yang bergantung dosis adalah efek samping tersering, dengan atau tanpa defisiensi G6PD; hampir semua pasien mengalami penurunan hemoglobin 1–2 g, kenaikan retikulosit, dan kenaikan methemoglobin.
+- Neuropati perifer (terutama motorik).
+- Lainnya: mual, muntah, nyeri perut, pankreatitis, vertigo, penglihatan kabur, tinitus, insomnia, demam, sakit kepala, psikosis, fototoksisitas, eosinofilia paru, takikardia, sindrom nefrotik, lupus akibat obat, sindrom mirip mononukleosis infeksiosa.
+
+**Peringatan** (label dapson)
+
+- Kontraindikasi: hipersensitivitas terhadap dapson atau turunannya.
+- Kematian akibat agranulositosis, anemia aplastik, dan diskrasia darah lain pernah dilaporkan; pasien perlu segera melapor bila nyeri tenggorok, demam, pucat, purpura, atau ikterus.
+- Hemolisis lebih berat pada defisiensi G6PD, defisiensi methemoglobin reduktase, atau hemoglobin M.
+- Hepatitis toksik dan ikterus kolestatik pernah dilaporkan pada awal terapi.
+- Anak diobati dengan jadwal yang sama seperti dewasa, dengan dosis yang lebih kecil.
+
+**Farmakokinetik** (label dapson)
+
+- Diserap cepat dan hampir sempurna setelah pemberian oral; kadar puncak 4–8 jam.
+- Sekitar 85% dosis harian ditemukan di urin, terutama sebagai metabolit larut air; ekskresi lambat.
+- Waktu paruh plasma 10–50 jam (rata-rata 28 jam).
+
+**Farmakodinamik** (label dapson)
+
+- Bersifat bakterisidal dan bakteriostatik terhadap *Mycobacterium leprae* (pada model tikus).
+- Mekanisme pada dermatitis herpetiformis belum diketahui.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. Dapsone Tablets, USP (Sun Pharmaceutical Industries), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=cb312185-b9f1-4fa4-9481-bcf5d9bb3edf
+
+---
+
+### 3.88 Kolkisin
+
+**Kalkulator berat badan** (IDAI hlm. 59)
+
+| Keadaan | Dosis |
+|---|---|
+| Gout akut | 0,02 mg/kg, per oral, 2 jam |
+| Penggunaan kronik | 0,01–0,04 mg/kg/hari, per oral |
+| Familial mediteranean fever | 0,5–2 mg/hari, per oral |
+
+**Sediaan** (FORNAS 2025 hlm. 15)
+
+| Sediaan | Peresepan maksimal |
+|---|---|
+| Tablet 500 mcg | 30 tab/bulan |
+
+**Aturan penggunaan**
+
+- Sesuai tabel IDAI.
+- Simpan jauh dari jangkauan anak; overdosis fatal pernah dilaporkan pada anak (label kolkisin).
+
+**Manfaat obat** (label kolkisin)
+
+- Profilaksis dan pengobatan serangan gout akut (dewasa).
+- Familial Mediterranean fever (FMF) pada dewasa dan anak usia 4 tahun ke atas. Keamanan dan efektivitas pada anak dengan gout belum ditetapkan.
+
+**Efek samping** (label kolkisin)
+
+- Gangguan saluran cerna paling sering; pada FMF muncul dalam 24 jam pada hingga 20% pasien dengan dosis terapeutik. Diare adalah efek samping saluran cerna tersering.
+- Mielosupresi, leukopenia, granulositopenia, trombositopenia, pansitopenia, dan anemia aplastik.
+- Toksisitas neuromuskular dan rabdomiolisis pada penggunaan kronik.
+
+**Peringatan** (label kolkisin)
+
+- Kontraindikasi: pada gangguan ginjal atau hati, kolkisin tidak boleh diberikan bersama penghambat P-gp atau penghambat kuat CYP3A4 (termasuk semua penghambat protease kecuali fosamprenavir); toksisitas fatal pernah dilaporkan.
+- Overdosis fatal, baik tidak disengaja maupun disengaja, pernah dilaporkan pada dewasa dan anak.
+- Interaksi obat yang mengancam jiwa dengan penghambat P-gp dan CYP3A4 kuat; risiko miopati meningkat bila bersama statin, fibrat, atau siklosporin.
+- Pada anak dengan FMF yang diobati jangka panjang, tampaknya tidak ada efek buruk pada pertumbuhan.
+
+**Farmakokinetik** (label kolkisin)
+
+- Diserap setelah pemberian oral; kadar puncak 1–2 jam setelah dosis tunggal saat puasa.
+- Volume distribusi 5–8 L/kg; ikatan protein serum rendah (sekitar 39%); melintasi plasenta dan masuk ke ASI.
+- Substrat P-gp dan CYP3A4; diekskresikan bermakna di urin.
+
+**Farmakodinamik** (label kolkisin)
+
+- Diduga mengganggu perakitan kompleks inflamasom di neutrofil dan monosit yang mengaktifkan interleukin-1β.
+- Menghambat polimerisasi β-tubulin menjadi mikrotubulus sehingga mencegah aktivasi, degranulasi, dan migrasi neutrofil.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. Colchicine Tablets, USP (Par Health), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=72984aa2-6df9-4460-9926-399ffed30e36
