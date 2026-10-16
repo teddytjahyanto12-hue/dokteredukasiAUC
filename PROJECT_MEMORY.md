@@ -772,6 +772,11 @@ File ini adalah sumber kebenaran tunggal untuk status, keputusan, dan serah teri
   - Verifikasi IDAI/FORNAS 27/27 cocok; catatan batch 5 ada di Catatan_Verifikasi_Dosis_Obat_Anak.md.
   - Perkiraan total sekitar 15–16 batch (sekitar 155 obat IDAI yang juga ada di FORNAS); sisa sekitar 107 obat.
 - Pelaksana aktif Claude Code (PC 2) sesi Dosis Obat: dilepas setelah publikasi draf 0.8.
+- Checkpoint draf 0.9 (16 Oktober 2026, batch 6, 58 obat):
+  - Obat baru 3.49–3.58: amikasin, siprofloksasin, sefadroksil, amoksisilin-asam klavulanat, rifampisin, pirazinamid, etambutol, ranitidin, diazepam, atropin (domperidon diganti atropin karena tidak ada label DailyMed manusia).
+  - Verifikasi IDAI/FORNAS 34/34 cocok plus cek gambar halaman; catatan batch 6 (termasuk pertanyaan ranitidin untuk pemilik) di Catatan_Verifikasi_Dosis_Obat_Anak.md.
+  - Build DOCX: matikan cek ejaan Word lewat Options sebelum update TOC; ekspor PDF via Word COM sempat macet >1 jam pada dokumen ini, jadi tidak dipakai lagi.
+- Pelaksana aktif Claude Code (PC 2) sesi Dosis Obat: dilepas setelah publikasi draf 0.9.
 
 ## Integrasi Scoping Review - Codex, 2026-10-13
 - Pelaksana aktif: Codex sesi Scoping Review. Fokus: 21 PDF, 6 kelompok/kuis dari draf pengguna, lulus80, gratis kelompok1. Berkas: prisma/scoping-chapters.ts, render-scoping-pages.py, tests/scoping-http.mjs, lib/srma-progression.ts, lib/pdf-pages.ts, halaman kelas/materi/quiz, launcher, docs/SCOPING_KURIKULUM.md. HEAD/origin2665c79 identik setelah fetch. Tidak mengubah desain lokal atau dokumen dosis obat Claude aktif. Runtime PC2 terakhir build NLR; build baru akan dibuat terpisah, database diimpor terarah.

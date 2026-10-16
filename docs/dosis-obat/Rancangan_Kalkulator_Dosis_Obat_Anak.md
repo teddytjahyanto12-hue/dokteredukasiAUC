@@ -1,6 +1,6 @@
 # Kalkulator Dosis Obat Anak
 
-Draf 0.8, 15 Oktober 2026 (48 obat). Materi untuk ditinjau pemilik; belum diterapkan di website.
+Draf 0.9, 16 Oktober 2026 (58 obat). Materi untuk ditinjau pemilik; belum diterapkan di website.
 
 ---
 
@@ -3386,3 +3386,695 @@ Restriksi FORNAS: tidak diberikan pada saat nyeri akut.
 1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
 2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
 3. Folic Acid Tablets, USP (Rising Pharma), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=0baa10dd-6d1d-4946-8236-566451132da3
+
+---
+
+### 3.49 Amikasin
+
+**Kalkulator berat badan**
+
+| Rute | Dosis | Sumber |
+|---|---|---|
+| IV, IM: infeksi ringan–sedang | Tidak cocok | IDAI hlm. 11 |
+| IV, IM: infeksi berat | 15–22,5 mg/kg/hari dalam 3 dosis | IDAI hlm. 11 |
+| IV: neonatus | IV drip dalam 30 menit; dosis dan interval menurut tabel neonatus | IDAI hlm. 28 |
+
+Keterangan golongan aminoglikosida (IDAI hlm. 11): dosis dan frekuensi individual berdasarkan analisis konsentrasi serum.
+
+**Tabel neonatus** (IDAI hlm. 28)
+
+| Umur kehamilan (pascakonsepsi), minggu | Umur pascanatal, hari | Dosis (mg/kg) | Interval (jam) |
+|---|---|---|---|
+| ≤29 | 0–7 | 18 | 48 |
+| ≤29 | 8–28 | 15 | 36 |
+| ≤29 | ≥29 | 15 | 24 |
+| 30–34 | 0–7 | 18 | 36 |
+| 30–34 | ≥8 | 15 | 24 |
+| ≥35 | Semua | 15 | 24 |
+
+**Penyesuaian dosis pada penyakit ginjal** (IDAI hlm. 76)
+
+| Dosis normal | Dosis (D)/Interval (I) | LFG >50 | LFG 10–50 | LFG <10 | HD | PD |
+|---|---|---|---|---|---|---|
+| 5–7,5 mg/kg/dosis q8 jam iv | D, I | 60–90% | 30–70% | 20–30% | dosis penuh sesudah dialisis | 15–20 mg/L/hari |
+
+**Sediaan** (FORNAS 2025)
+
+| Sediaan | Halaman FORNAS | Restriksi |
+|---|---|---|
+| Injeksi 250 mg/mL | hlm. 32 | Hanya digunakan untuk infeksi oleh bakteri gram negatif yang resistan terhadap gentamisin |
+| Injeksi 500 mg (program) | hlm. 42 | Digunakan untuk paduan pengobatan pasien TB resistan obat (TB-RO); disediakan oleh Program Kemenkes |
+
+**Aturan penggunaan**
+
+- Neonatus: IV drip dalam 30 menit (IDAI).
+- Dosis dan frekuensi disesuaikan dengan kadar obat dalam serum (IDAI).
+- Fungsi ginjal perlu dipantau ketat dan dosis disesuaikan (label amikasin).
+
+**Manfaat obat** (label amikasin)
+
+- Pengobatan jangka pendek infeksi berat oleh bakteri gram negatif yang peka, termasuk *Pseudomonas*, *E. coli*, *Proteus*, *Providencia*, *Klebsiella-Enterobacter-Serratia*, dan *Acinetobacter*.
+- Efektif pada septikemia bakteri (termasuk sepsis neonatus), infeksi berat saluran napas, tulang dan sendi, sistem saraf pusat (termasuk meningitis), kulit dan jaringan lunak, intra-abdomen (termasuk peritonitis), luka bakar, infeksi pascaoperasi, serta infeksi saluran kemih berat, berkomplikasi, dan berulang.
+- Tidak diindikasikan untuk episode awal infeksi saluran kemih tanpa komplikasi, kecuali kuman tidak peka terhadap antibiotik yang kurang toksik.
+
+**Efek samping** (label amikasin)
+
+- Ototoksisitas: kehilangan pendengaran, gangguan keseimbangan, atau keduanya; amikasin terutama mengenai fungsi pendengaran. Tuli frekuensi tinggi biasanya muncul lebih dulu sebelum gangguan pendengaran klinis terdeteksi.
+- Nefrotoksisitas: kenaikan kreatinin serum, albuminuria, sel darah merah dan putih serta silinder di urin, azotemia, oliguria; biasanya pulih bila obat dihentikan.
+- Blokade neuromuskular: paralisis otot akut dan apnea.
+- Jarang: ruam kulit, demam obat, sakit kepala, parestesia, tremor, mual, muntah, eosinofilia, artralgia, anemia, hipotensi, hipomagnesemia.
+
+**Peringatan** (label amikasin)
+
+- Peringatan berbingkai: pasien yang menerima aminoglikosida parenteral harus diawasi ketat karena potensi ototoksisitas dan nefrotoksisitas. Keamanan pemberian lebih dari 14 hari belum diketahui. Ototoksisitas akibat aminoglikosida biasanya menetap.
+- Risiko ototoksisitas dan nefrotoksisitas lebih besar pada gangguan fungsi ginjal, dosis tinggi, atau terapi lama.
+- Blokade neuromuskular dan paralisis napas dapat terjadi, terutama pada pasien yang menerima anestesi, obat penghambat neuromuskular, atau transfusi masif darah bersitrat.
+- Ototoksisitas pernah terjadi pada pasien dengan varian DNA mitokondria tertentu (gen MT-RNR1, terutama m.1555A>G), meskipun kadar serum dalam rentang anjuran.
+- Kontraindikasi: riwayat hipersensitivitas terhadap amikasin; riwayat hipersensitivitas atau reaksi toksik berat terhadap aminoglikosida lain dapat menjadi kontraindikasi karena sensitivitas silang.
+- Mengandung natrium metabisulfit, suatu sulfit yang dapat menyebabkan reaksi tipe alergi termasuk gejala anafilaksis dan serangan asma pada orang yang rentan.
+- Gunakan dengan hati-hati pada bayi prematur dan neonatus karena ginjal belum matang sehingga waktu paruh serum memanjang.
+
+**Farmakokinetik** (label amikasin; data dewasa kecuali disebutkan lain)
+
+- Diserap cepat setelah pemberian IM; kadar puncak serum sekitar 1 jam setelah suntikan.
+- Waktu paruh serum rata-rata sedikit di atas 2 jam; ikatan protein serum 0–11%.
+- Diekskresikan terutama melalui filtrasi glomerulus; sekitar 94–98% dosis keluar di urin dalam 24 jam. Pada gangguan fungsi ginjal, ekskresi jauh lebih lambat sehingga waktu paruh memanjang.
+- Kadar terapeutik tercapai di tulang, jantung, kandung empedu, dan paru, serta di urin, empedu, sputum, sekret bronkus, cairan interstisial, pleura, dan sinovial.
+- Kadar di cairan serebrospinal bayi normal sekitar 10–20% kadar serum dan dapat mencapai 50% bila meninges meradang. Melintasi sawar plasenta.
+
+**Farmakodinamik** (label amikasin)
+
+- Aminoglikosida yang berikatan dengan ribosom prokariot sehingga menghambat sintesis protein bakteri yang peka.
+- Bersifat bakterisidal in vitro terhadap bakteri gram positif dan gram negatif.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. Amikacin Sulfate Injection, USP (Sagent Pharmaceuticals), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=f260ff2a-76a0-4672-9516-91c344b67890
+
+---
+
+### 3.50 Siprofloksasin
+
+**Kalkulator berat badan** (IDAI hlm. 18, tabel antimikroba, dosis per kg per hari)
+
+| Rute | Infeksi ringan–sedang | Infeksi berat |
+|---|---|---|
+| PO | 20–40 mg dalam 2 dosis (maksimal 1,5 g) | 30–40 mg dalam 2 dosis (dosis harian dewasa, 1–1,5 g) |
+| IV | Tidak cocok | 20–30 mg dalam 2 dosis (maksimal 1,2cg) |
+
+**Penyesuaian dosis pada penyakit ginjal** (IDAI hlm. 80)
+
+| Dosis normal | Dosis (D)/Interval (I) | LFG >50 | LFG 10–50 | LFG <10 | HD | PD |
+|---|---|---|---|---|---|---|
+| 4–7 mg/kg/dosis q12 jam iv | D, I | 100% | 75% | 50% | tak ada | tak ada |
+
+**Sediaan** (FORNAS 2025 hlm. 33)
+
+Restriksi FORNAS: tidak digunakan untuk pasien usia <18 tahun, ibu hamil, atau ibu menyusui.
+
+| Sediaan | Peresepan maksimal |
+|---|---|
+| Tablet 500 mg | – |
+| Infus 2 mg/mL | 4 btl/hari |
+
+**Aturan penggunaan**
+
+- Berikan sedikitnya 2 jam sebelum atau 6 jam sesudah antasida magnesium/aluminium, sukralfat, pengikat fosfat polimer, atau produk yang mengandung kalsium, besi, atau seng (label Cipro).
+- Hindari pemberian bersama produk susu (susu, yoghurt) atau jus yang diperkaya kalsium saja; boleh diminum bersama makanan yang mengandung produk tersebut (label Cipro).
+- Pastikan hidrasi cukup untuk mencegah urin yang sangat pekat (label Cipro).
+
+**Manfaat obat** (label Cipro)
+
+- Pada anak usia 1–17 tahun: infeksi saluran kemih berkomplikasi dan pielonefritis akibat *Escherichia coli*. Bukan obat pilihan pertama pada anak karena insidens efek samping, termasuk reaksi pada sendi dan jaringan sekitarnya, lebih tinggi dibanding pembanding.
+- Pada anak sejak lahir sampai 17 tahun: antraks inhalasi pascapajanan dan pengobatan serta profilaksis plague (pes).
+- Pada dewasa: infeksi kulit, tulang dan sendi, intra-abdomen berkomplikasi, diare infeksius, demam tifoid, gonore tanpa komplikasi, saluran napas bawah, saluran kemih, prostatitis bakteri kronik, dan sinusitis akut.
+
+**Efek samping** (label Cipro)
+
+- Tersering pada uji klinis semua formulasi: mual (2,5%), diare (1,6%), kelainan uji fungsi hati (1,3%), muntah (1%), ruam (1%).
+- Pada uji klinis anak usia 1–17 tahun dengan infeksi saluran kemih berkomplikasi, efek samping muskuloskeletal dalam 6 minggu terjadi pada 9,3% kelompok siprofloksasin dibanding 6% kelompok sefalosporin; semuanya pulih, biasanya dalam 30 hari setelah terapi selesai.
+
+**Peringatan** (label Cipro)
+
+- Peringatan berbingkai: fluorokuinolon berkaitan dengan efek samping serius yang dapat menetap dan melumpuhkan, yaitu tendinitis dan ruptur tendon, neuropati perifer, dan efek pada sistem saraf pusat. Hentikan segera bila terjadi. Fluorokuinolon dapat memperberat kelemahan otot pada miastenia gravis.
+- Kontraindikasi: riwayat hipersensitivitas terhadap siprofloksasin, golongan kuinolon, atau komponen produk; pemberian bersama tizanidin.
+- Gangguan muskuloskeletal pada anak: pada anak (<18 tahun) hanya diindikasikan untuk infeksi saluran kemih berkomplikasi, antraks inhalasi pascapajanan, dan plague. Pada hewan muda, kuinolon menyebabkan artropati pada sendi penopang berat badan.
+- Peringatan lain: reaksi hipersensitivitas, hepatotoksisitas, aneurisma dan diseksi aorta, diare terkait *Clostridioides difficile*, pemanjangan interval QT, fotosensitivitas, kristaluria, gangguan gula darah, serta interaksi dengan teofilin dan obat yang dimetabolisme CYP1A2.
+
+**Farmakokinetik** (label Cipro; data dewasa)
+
+- Bioavailabilitas absolut tablet oral sekitar 70%; kadar puncak serum 1–2 jam setelah pemberian oral.
+- Ikatan protein serum 20–40%; tersebar luas ke jaringan dan cairan tubuh. Kadar di cairan serebrospinal umumnya kurang dari 10% kadar puncak serum.
+- Empat metabolit di urin mencakup sekitar 15% dosis oral; siprofloksasin menghambat metabolisme yang diperantarai CYP1A2.
+- Waktu paruh eliminasi sekitar 4 jam pada fungsi ginjal normal; 40–50% dosis oral dikeluarkan di urin dalam bentuk tidak berubah.
+
+**Farmakodinamik** (label Cipro)
+
+- Golongan fluorokuinolon. Efek bakterisidal berasal dari hambatan enzim topoisomerase II (DNA girase) dan topoisomerase IV, yang diperlukan untuk replikasi, transkripsi, perbaikan, dan rekombinasi DNA bakteri.
+- Mekanisme kerjanya berbeda dari penisilin, sefalosporin, aminoglikosida, makrolida, dan tetrasiklin, sehingga kuman yang resisten terhadap golongan tersebut dapat masih peka.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. CIPRO (ciprofloxacin hydrochloride) tablets and oral suspension (Bayer HealthCare Pharmaceuticals), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=888dc7f9-ad9c-4c00-8d50-8ddfd9bd27c0
+
+---
+
+### 3.51 Sefadroksil
+
+**Kalkulator berat badan** (IDAI hlm. 13, tabel antimikroba, dosis per kg per hari)
+
+| Rute | Infeksi ringan–sedang | Infeksi berat | Keterangan |
+|---|---|---|---|
+| PO | 30 mg dalam 2 dosis (dosis harian dewasa, 1–2 g) | Tidak cocok | Generasi pertama |
+
+**Sediaan** (FORNAS 2025 hlm. 26)
+
+| Sediaan | Peresepan maksimal |
+|---|---|
+| Kapsul 250 mg | 5 hari |
+| Kapsul 500 mg | 5 hari |
+| Drops 150 mg/mL | 1 btl/kasus |
+| Sirup kering 125 mg/5 mL | 1 btl/kasus |
+| Sirup kering 250 mg/5 mL | 1 btl/kasus |
+
+**Aturan penggunaan**
+
+- Diberikan dalam 2 dosis per hari (IDAI).
+- Pemberian bersama makanan dapat membantu mengurangi keluhan saluran cerna (label sefadroksil).
+
+**Manfaat obat** (label sefadroksil)
+
+- Infeksi saluran kemih oleh *E. coli*, *P. mirabilis*, dan *Klebsiella*.
+- Infeksi kulit dan struktur kulit oleh stafilokokus dan/atau streptokokus.
+- Faringitis dan/atau tonsilitis oleh *Streptococcus pyogenes* (streptokokus beta-hemolitik grup A). Data efektivitas untuk profilaksis demam rematik berikutnya belum tersedia.
+
+**Efek samping** (label sefadroksil)
+
+- Saluran cerna: kolitis pseudomembran (dapat muncul selama atau sesudah terapi); dispepsia, mual, dan muntah (jarang); diare.
+- Hipersensitivitas: ruam, urtikaria, angioedema, pruritus; anafilaksis pernah dilaporkan.
+- Lainnya: gangguan fungsi hati termasuk kolestasis dan kenaikan transaminase, pruritus genital, moniliasis genital, vaginitis, neutropenia sementara, demam. Jarang: agranulositosis, trombositopenia, gagal hati idiosinkratik, eritema multiformis, sindrom Stevens-Johnson, serum sickness, artralgia.
+- Beberapa sefalosporin dapat memicu kejang, terutama pada gangguan ginjal bila dosis tidak dikurangi.
+
+**Peringatan** (label sefadroksil)
+
+- Kontraindikasi: alergi terhadap golongan sefalosporin.
+- Tanyakan riwayat hipersensitivitas terhadap sefadroksil, sefalosporin, penisilin, atau obat lain sebelum terapi. Sensitivitas silang antarbeta-laktam dapat terjadi pada hingga 10% pasien dengan riwayat alergi penisilin.
+- Diare terkait *Clostridium difficile* dapat terjadi, dari diare ringan sampai kolitis fatal.
+
+**Farmakokinetik** (label sefadroksil; data dewasa)
+
+- Diserap cepat setelah pemberian oral; kadar terukur masih ada 12 jam setelah pemberian.
+- Lebih dari 90% obat dikeluarkan di urin dalam bentuk tidak berubah dalam 24 jam.
+
+**Farmakodinamik** (label sefadroksil)
+
+- Sefalosporin semisintetik oral; bersifat bakterisidal dengan menghambat sintesis dinding sel bakteri.
+- Aktif terhadap streptokokus beta-hemolitik, stafilokokus (termasuk galur penghasil penisilinase), *Streptococcus pneumoniae*, *E. coli*, *P. mirabilis*, *Klebsiella*, dan *Moraxella catarrhalis*.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. Cefadroxil Capsules USP (Lupin Pharmaceuticals), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=5fe066ce-2f97-49d7-81bd-a672be1ebecd
+
+---
+
+### 3.52 Amoksisilin–asam klavulanat
+
+**Kalkulator berat badan** (IDAI hlm. 22, tabel antimikroba, dosis per kg per hari)
+
+| Rute | Infeksi ringan–sedang | Infeksi berat |
+|---|---|---|
+| PO | Formulasi 14:1: 90 mg komponen amoksisilin dalam 2 dosis (<40 kg) untuk OMA berulang, kegagalan terapi | Tidak cocok |
+| PO | Formulasi 7:1: 25–45 mg komponen amoksisilin dalam 2 dosis (dosis harian dewasa, 1750 mg) | Tidak cocok |
+| PO | Formulasi 4:1: 20–40 mg komponen amoksisilin dalam 3 dosis (dosis harian dewasa, 1500 mg) | Tidak cocok |
+
+**Sediaan** (FORNAS 2025 hlm. 24–25; kombinasi KDT/FDC)
+
+| Kandungan | Sediaan | Halaman FORNAS |
+|---|---|---|
+| Amoksisilin 500 mg + asam klavulanat 125 mg | Tablet 625 mg | hlm. 24 |
+| Amoksisilin 125 mg + asam klavulanat 31,25 mg | Sirup kering | hlm. 24 |
+| Amoksisilin 250 mg + asam klavulanat 62,50 mg | Sirup kering | hlm. 25 |
+| Amoksisilin 1.000 mg + asam klavulanat 200 mg | Injeksi 1.200 mg | hlm. 25 |
+
+Restriksi FORNAS untuk tablet 625 mg dan kedua sirup kering: hanya untuk terapi lanjutan untuk pasien yang sebelumnya mendapatkan antibiotik parenteral amoksisilin-asam klavulanat atau sesuai hasil uji resistensi.
+
+Catatan FORNAS:
+
+- Direkonstitusi sesaat sebelum digunakan untuk mencegah hilangnya efikasi asam klavulanat, disimpan dalam lemari pendingin, dan digunakan tidak lebih dari 7 hari setelah direkonstitusi (hlm. 24).
+- Direkonstitusi sesaat sebelum disuntikkan untuk mencegah hilangnya efikasi asam klavulanat (hlm. 25).
+
+**Aturan penggunaan**
+
+- Dosis dihitung dari komponen amoksisilin (IDAI).
+- Sebaiknya diminum pada awal makan untuk mengurangi gangguan saluran cerna; penyerapan klavulanat lebih baik bila diberikan pada awal makan (label Augmentin).
+
+**Manfaat obat** (label Augmentin)
+
+- Infeksi oleh isolat penghasil beta-laktamase yang peka: infeksi saluran napas bawah, otitis media akut, dan sinusitis (*H. influenzae*, *M. catarrhalis*); infeksi kulit dan struktur kulit (*S. aureus*, *E. coli*, *Klebsiella*); infeksi saluran kemih (*E. coli*, *Klebsiella*, *Enterobacter*).
+- Bila uji kepekaan menunjukkan kuman peka terhadap amoksisilin (tidak menghasilkan beta-laktamase), kombinasi ini tidak perlu digunakan.
+
+**Efek samping** (label Augmentin)
+
+- Tersering: diare/tinja lembek (9%), mual (3%), ruam kulit dan urtikaria (3%), muntah (1%), vaginitis (1%).
+- Kurang dari 1%: rasa tidak nyaman di perut, flatulens, sakit kepala.
+- Insidens efek samping, terutama diare, meningkat pada dosis anjuran yang lebih tinggi.
+
+**Peringatan** (label Augmentin)
+
+- Kontraindikasi: riwayat reaksi hipersensitivitas serius (misalnya anafilaksis atau sindrom Stevens-Johnson) terhadap amoksisilin, klavulanat, atau beta-laktam lain; riwayat ikterus kolestatik/gangguan fungsi hati akibat amoksisilin-klavulanat.
+- Reaksi hipersensitivitas (anafilaksis) serius dan kadang fatal dapat terjadi.
+- Gangguan fungsi hati termasuk hepatitis dan ikterus kolestatik; biasanya pulih, tetapi kematian pernah dilaporkan.
+- Diare terkait *Clostridium difficile*.
+- Pasien mononukleosis sering mengalami ruam eritematosa dengan amoksisilin; jangan diberikan pada mononukleosis.
+- Tablet kunyah dan suspensi 200 mg/5 mL dan 400 mg/5 mL mengandung aspartam (fenilalanin); tidak untuk penderita fenilketonuria.
+- Pada neonatus dan bayi muda, eliminasi amoksisilin dapat lebih lambat karena fungsi ginjal belum matang.
+
+**Farmakokinetik** (label Augmentin; data dewasa kecuali disebutkan lain)
+
+- Kadar puncak sekitar 1,5 jam setelah pemberian.
+- Ikatan protein: klavulanat sekitar 25%, amoksisilin sekitar 18%. Amoksisilin mudah berdifusi ke sebagian besar jaringan dan cairan tubuh, kecuali otak dan cairan spinal.
+- Pada anak, 2 jam setelah dosis tunggal suspensi 35 mg/kg, amoksisilin dan klavulanat terdeteksi di cairan efusi telinga tengah.
+- Waktu paruh amoksisilin 1,3 jam dan asam klavulanat 1 jam; 50–70% amoksisilin dan 25–40% klavulanat dikeluarkan di urin dalam bentuk tidak berubah dalam 6 jam pertama.
+
+**Farmakodinamik** (label Augmentin)
+
+- Amoksisilin: antibiotik semisintetik yang bersifat bakterisidal terhadap bakteri gram positif dan gram negatif, tetapi dapat dirusak oleh beta-laktamase.
+- Asam klavulanat: beta-laktam yang dapat menonaktifkan sebagian enzim beta-laktamase, sehingga melindungi amoksisilin dan memperluas spektrumnya ke banyak bakteri yang biasanya resisten terhadap amoksisilin.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. AUGMENTIN (amoxicillin/clavulanate potassium) tablets, powder for oral suspension, and chewable tablets (Dr. Reddy's Laboratories), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=174cc098-fe49-4f1a-87e2-601c7573f0db
+
+---
+
+### 3.53 Rifampisin
+
+**Kalkulator berat badan** (IDAI hlm. 25, tabel antimikroba, dosis per kg per hari)
+
+| Rute | Infeksi ringan–sedang | Infeksi berat | Keterangan |
+|---|---|---|---|
+| IV, PO | 10–20 mg dalam 1–2 dosis (dosis harian dewasa, 600 mg) | 20 mg dalam 2 dosis (dosis harian dewasa, 600 mg) | Seharusnya tidak digunakan secara rutin sebagai monoterapi karena cepatnya muncul resisten |
+
+**Penyesuaian dosis pada penyakit ginjal** (IDAI hlm. 89)
+
+| Dosis normal | Dosis (D)/Interval (I) | LFG >50 | LFG 10–50 | LFG <10 | HD | PD |
+|---|---|---|---|---|---|---|
+| 10–15 mg/kg/dosis q24 jam iv, po | D | 100% | 50–100% | 50–100% | Tak ada | Dosis untuk LFG <10 |
+
+**Sediaan** (FORNAS 2025 hlm. 41; disediakan oleh Program Kemenkes)
+
+| Sediaan | Peresepan maksimal |
+|---|---|
+| Kapsul 300 mg | – |
+| Tablet 450 mg | – |
+| Tablet 600 mg | – |
+
+**Aturan penggunaan**
+
+- Tidak digunakan rutin sebagai monoterapi (IDAI).
+- Diminum 1 jam sebelum atau 2 jam sesudah makan dengan segelas penuh air (label rifampin).
+
+**Manfaat obat** (label rifampin)
+
+- Semua bentuk tuberkulosis, sebagai bagian dari paduan obat anti-TB.
+- Pengobatan karier *Neisseria meningitidis* tanpa gejala untuk mengeradikasi meningokokus dari nasofaring. Tidak diindikasikan untuk mengobati infeksi meningokokus karena resistansi dapat muncul cepat.
+
+**Efek samping** (label rifampin)
+
+- Saluran cerna: nyeri ulu hati, rasa tidak nyaman di epigastrium, anoreksia, mual, muntah, ikterus, flatulens, kram, diare; kolitis pseudomembran; perubahan warna gigi (dapat menetap).
+- Hati: kelainan uji fungsi hati sementara, hepatitis, sindrom mirip syok dengan keterlibatan hati, kolestasis.
+- Darah: mikroangiopati trombotik, trombositopenia (terutama pada terapi intermiten dosis tinggi), leukopenia, anemia hemolitik, gangguan koagulasi yang bergantung vitamin K.
+- SSP: sakit kepala, demam, mengantuk, lelah, ataksia, pusing, sulit berkonsentrasi, kebingungan.
+- Kulit dan hipersensitivitas: kemerahan dan gatal; pruritus, urtikaria, ruam, sindrom Stevens-Johnson, nekrolisis epidermal toksik, DRESS, vaskulitis; anafilaksis jarang.
+
+**Peringatan** (label rifampin)
+
+- Hepatotoksisitas, dari kenaikan enzim hati tanpa gejala sampai gagal hati fulminan dan kematian. Pantau tanda cedera hati, terutama pada terapi lama atau bersama obat hepatotoksik lain (misalnya isoniazid).
+- Kontraindikasi: hipersensitivitas terhadap rifampin atau golongan rifamisin; pemberian bersama saquinavir yang di-boost ritonavir; bersama atazanavir, darunavir, fosamprenavir, saquinavir, tipranavir, cabotegravir, fostemsavir, atau lenacapavir; bersama praziquantel.
+- Reaksi kulit berat (termasuk DRESS): hentikan segera bila muncul tanda atau gejala.
+- Gangguan koagulasi yang bergantung vitamin K dan perdarahan; pantau uji koagulasi pada pasien berisiko.
+- Rifampin dapat menyebabkan perubahan warna (kuning, oranye, merah, cokelat) pada gigi, urin, keringat, sputum, dan air mata; lensa kontak lunak dapat ternoda permanen.
+- Penginduksi kuat enzim metabolisme obat dan transporter, sehingga banyak berinteraksi dengan obat lain; efektivitas kontrasepsi hormonal dapat berkurang.
+
+**Farmakokinetik** (label rifampin)
+
+- Diserap baik dari saluran cerna; penyerapan berkurang sekitar 30% bila diminum bersama makanan.
+- Tersebar luas ke berbagai organ dan cairan tubuh, termasuk cairan serebrospinal; ikatan protein sekitar 80%.
+- Waktu paruh rata-rata 3,35 jam setelah dosis 600 mg pada dewasa dan turun menjadi sekitar 2–3 jam pada pemberian berulang. Pada anak usia 6–58 bulan dengan dosis 10 mg/kg, waktu paruh rata-rata 2,9 jam.
+- Dieliminasi cepat ke empedu dan mengalami sirkulasi enterohepatik; mengalami deasetilasi menjadi metabolit aktif. Hingga 30% dosis dikeluarkan di urin.
+
+**Farmakodinamik** (label rifampin)
+
+- Menghambat aktivitas RNA polimerase yang bergantung DNA pada *Mycobacterium tuberculosis*; berinteraksi dengan RNA polimerase bakteri tanpa menghambat enzim mamalia.
+- Kuman yang resisten terhadap rifampin kemungkinan juga resisten terhadap rifamisin lain.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. Rifampin Capsules USP (Lupin Pharmaceuticals), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=b56004f0-f23d-47f6-80c7-39884fccbccc
+
+---
+
+### 3.54 Pirazinamid
+
+**Kalkulator berat badan** (IDAI hlm. 67)
+
+| Keadaan | Dosis |
+|---|---|
+| – | 30–40 mg/kg/hari (maksimal 2 gr/hari) |
+
+**Penyesuaian dosis pada penyakit ginjal** (IDAI hlm. 89)
+
+| Dosis normal | Dosis (D)/Interval (I) | LFG >50 | LFG 10–50 | LFG <10 | HD | PD |
+|---|---|---|---|---|---|---|
+| 20–35 mg/kg/dosis q24 jam po | D | 100% | 100% | 50–100% | 40 mg/kg 24 jam sblmnya tiap 3x/minggu dialisis | 100% |
+
+**Sediaan** (FORNAS 2025 hlm. 48; disediakan oleh Program Kemenkes)
+
+| Sediaan | Restriksi |
+|---|---|
+| Tablet 500 mg | a) Hanya dapat diberikan di FPKTL, sesuai dengan SK Penetapan Rumah Sakit dan Balai Kesehatan Pelaksana Layanan Tuberkulosis Resistan Obat (Kepmenkes No. HK.01.07/MENKES/350/2017). b) Hanya digunakan untuk paduan pada TB Resistan Obat. |
+
+**Aturan penggunaan**
+
+- Hanya digunakan bersama obat anti-TB lain yang efektif (label pirazinamid).
+- Periksa asam urat serum dan fungsi hati sebelum memulai terapi (label pirazinamid).
+
+**Manfaat obat** (label pirazinamid)
+
+- Terapi awal tuberkulosis aktif pada dewasa dan anak, dikombinasikan dengan obat anti-TB lain.
+- Tuberkulosis aktif setelah kegagalan terapi dengan obat primer lain.
+
+**Efek samping** (label pirazinamid)
+
+- Efek samping utama adalah reaksi hati; hepatotoksisitas tampak bergantung dosis dan dapat muncul kapan saja selama terapi.
+- Saluran cerna: mual, muntah, anoreksia.
+- Artralgia dan mialgia ringan sering dilaporkan; gout.
+- Hipersensitivitas: ruam, urtikaria, pruritus.
+- Jarang: demam, akne, fotosensitivitas, porfiria, disuria, nefritis interstisial, trombositopenia, anemia sideroblastik, gangguan pembekuan darah.
+
+**Peringatan** (label pirazinamid)
+
+- Kontraindikasi: kerusakan hati berat; hipersensitivitas terhadap pirazinamid; gout akut.
+- Hentikan dan jangan diberikan lagi bila muncul tanda kerusakan hepatoseluler atau hiperurisemia disertai artritis gout akut.
+- Menghambat ekskresi urat di ginjal sehingga sering menimbulkan hiperurisemia, biasanya tanpa gejala.
+- Hati-hati pada riwayat diabetes melitus karena pengelolaannya dapat menjadi lebih sulit.
+- Pasien dengan penyakit hati atau berisiko tinggi hepatitis akibat obat perlu dipantau ketat.
+
+**Farmakokinetik** (label pirazinamid)
+
+- Diserap baik dari saluran cerna; kadar puncak plasma dalam 2 jam.
+- Tersebar luas ke jaringan dan cairan tubuh termasuk hati, paru, dan cairan serebrospinal; kadar di cairan serebrospinal kira-kira sama dengan kadar plasma pada meninges yang meradang. Ikatan protein sekitar 10%.
+- Waktu paruh 9–10 jam pada fungsi ginjal dan hati normal; dapat memanjang pada gangguan ginjal atau hati.
+- Dihidrolisis di hati menjadi metabolit aktif asam pirazinoat; sekitar 70% dosis oral dikeluarkan di urin dalam 24 jam, terutama melalui filtrasi glomerulus.
+
+**Farmakodinamik** (label pirazinamid)
+
+- Dapat bersifat bakteriostatik atau bakterisidal terhadap *Mycobacterium tuberculosis*, bergantung kadar obat di tempat infeksi.
+- Mekanisme kerjanya belum diketahui; in vitro dan in vivo hanya aktif pada pH sedikit asam.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. Pyrazinamide Tablets USP (ANI Pharmaceuticals), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=262d8829-728c-48db-b89b-88d13b87e684
+
+---
+
+### 3.55 Etambutol
+
+**Kalkulator berat badan** (IDAI hlm. 50)
+
+| Keadaan | Dosis |
+|---|---|
+| – | 15–25 mg/kg/hari (maksimal 2,5 gr/hari) |
+
+**Penyesuaian dosis pada penyakit ginjal** (IDAI hlm. 82)
+
+| Dosis normal | Dosis (D)/Interval (I) | LFG >50 | LFG 10–50 | LFG <10 | HD | PD |
+|---|---|---|---|---|---|---|
+| 25 mg/kg/dosis q24 jam po | I | q24 jam | q24–36 jam | q48 jam | dosis sesudah dialisis | dosis untuk dialisis LFG <10 |
+
+**Sediaan** (FORNAS 2025 hlm. 43; disediakan oleh Program Kemenkes)
+
+Restriksi FORNAS: tidak boleh digunakan sebagai *single agent* untuk TB.
+
+| Sediaan | Peresepan maksimal |
+|---|---|
+| Tablet 250 mg | – |
+| Tablet 400 mg | – |
+| Tablet 500 mg | – |
+
+**Aturan penggunaan**
+
+- Tidak digunakan sebagai obat anti-TB tunggal (FORNAS; label etambutol).
+- Periksa ketajaman penglihatan sebelum terapi dan secara berkala selama terapi; tiap mata diperiksa terpisah dan bersama. Pemeriksaan dilakukan setiap bulan bila dosis lebih dari 15 mg/kg/hari (label etambutol).
+
+**Manfaat obat** (label etambutol)
+
+- Tuberkulosis paru, bersama sedikitnya satu obat anti-TB lain.
+
+**Efek samping** (label etambutol)
+
+- Penurunan ketajaman penglihatan, termasuk kebutaan yang menetap, akibat neuritis optik: penurunan visus, skotoma, buta warna, dan/atau defek lapang pandang.
+- Lainnya: hipersensitivitas, reaksi anafilaksis/anafilaktoid, dermatitis, eritema multiformis, pruritus, nyeri sendi; anoreksia, mual, muntah, gangguan saluran cerna, nyeri perut; demam, malaise, sakit kepala, pusing; kebingungan, disorientasi, kemungkinan halusinasi; trombositopenia, leukopenia, neutropenia.
+- Kesemutan dan baal di ekstremitas akibat neuritis perifer; kenaikan asam urat serum dan serangan gout akut; infiltrat paru; toksisitas hati termasuk kematian.
+
+**Peringatan** (label etambutol)
+
+- Kontraindikasi: hipersensitivitas terhadap etambutol; neuritis optik yang diketahui, kecuali pertimbangan klinis memungkinkan; pasien yang tidak mampu menilai dan melaporkan efek samping penglihatan atau perubahan penglihatan (misalnya anak kecil dan pasien tidak sadar).
+- Tidak dianjurkan pada anak di bawah 13 tahun karena kondisi penggunaan yang aman belum ditetapkan.
+- Penurunan visus akibat neuritis optik dapat berkaitan dengan dosis dan lama terapi; biasanya pulih bila obat segera dihentikan, tetapi kebutaan menetap pernah dilaporkan.
+- Pada penurunan fungsi ginjal, dosis perlu dikurangi berdasarkan kadar serum karena ekskresi utamanya melalui ginjal.
+- Toksisitas hati termasuk kematian pernah dilaporkan; lakukan penilaian fungsi hati awal dan berkala.
+
+**Farmakokinetik** (label etambutol)
+
+- Setelah dosis oral tunggal 25 mg/kg, kadar puncak serum 2–5 mcg/mL tercapai 2–4 jam setelah pemberian; tidak terdeteksi lagi 24 jam setelah dosis terakhir, kecuali pada sebagian pasien dengan gangguan ginjal.
+- Dalam 24 jam, sekitar 50% dosis dikeluarkan di urin dalam bentuk tidak berubah dan 8–15% sebagai metabolit; 20–22% dikeluarkan di feses dalam bentuk tidak berubah.
+- Tidak terjadi akumulasi pada fungsi ginjal normal, tetapi akumulasi nyata terjadi pada insufisiensi ginjal.
+
+**Farmakodinamik** (label etambutol)
+
+- Berdifusi ke dalam sel mikobakteri yang sedang tumbuh aktif dan tampaknya menghambat sintesis satu atau lebih metabolit, sehingga metabolisme sel terganggu, multiplikasi berhenti, dan sel mati.
+- Tidak menunjukkan resistansi silang dengan obat antimikobakteri lain; resistansi dapat muncul bila digunakan sebagai obat tunggal.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. Ethambutol Hydrochloride Tablets USP (Lupin Pharmaceuticals), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=c732b415-e1f9-478f-896d-1dc8b6362da4
+
+---
+
+### 3.56 Ranitidin
+
+**Kalkulator berat badan** (IDAI hlm. 68)
+
+| Rute | Dosis |
+|---|---|
+| IV | 1 mg/kg, 6–8 jam |
+| Oral | 2–5 mg/kg, 8–12 jam |
+
+**Penyesuaian dosis pada penyakit ginjal** (IDAI hlm. 89, tertulis "Raniditidine")
+
+| Dosis normal | Dosis (D)/Interval (I) | LFG >50 | LFG 10–50 | LFG <10 | HD | PD |
+|---|---|---|---|---|---|---|
+| 2–4 mg/kg/dosis q8–12 jam po | D | 75% | 50% | 25% | ½ dosis | Tak ada |
+
+**Sediaan** (FORNAS 2025 hlm. 189)
+
+| Sediaan | Peresepan maksimal |
+|---|---|
+| Tablet 150 mg | 30 tab/bulan |
+| Injeksi 25 mg/mL | 2 amp/hari |
+
+**Aturan penggunaan**
+
+- Sesuai tabel IDAI.
+- Penyerapan tidak terganggu secara bermakna oleh makanan atau antasida (label ranitidin).
+
+**Manfaat obat** (label ranitidin)
+
+- Pada anak usia 1 bulan–16 tahun, keamanan dan efektivitas telah ditetapkan untuk ulkus duodenum dan lambung, penyakit refluks gastroesofagus (GERD), esofagitis erosif, serta pemeliharaan ulkus duodenum dan lambung yang sudah sembuh.
+- Pada dewasa juga: kondisi hipersekresi patologis (misalnya sindrom Zollinger-Ellison dan mastositosis sistemik).
+
+**Efek samping** (label ranitidin)
+
+- Sakit kepala, kadang berat.
+- SSP (jarang): malaise, pusing, mengantuk, insomnia, vertigo; kebingungan, agitasi, depresi, dan halusinasi yang pulih, terutama pada pasien lanjut usia yang sakit berat.
+- Kardiovaskular (jarang): aritmia seperti takikardia, bradikardia, blok atrioventrikular.
+- Saluran cerna: konstipasi, diare, mual/muntah, nyeri perut; pankreatitis jarang.
+- Hati: hepatitis hepatoseluler, kolestatik, atau campuran; hentikan segera bila terjadi.
+- Darah: leukopenia, granulositopenia, trombositopenia (biasanya pulih); jarang agranulositosis, pansitopenia, anemia aplastik.
+- Kulit: ruam termasuk eritema multiformis (jarang); alopesia dan vaskulitis jarang.
+
+**Peringatan** (label ranitidin)
+
+- Kontraindikasi: hipersensitivitas terhadap ranitidin atau bahan produk.
+- Respons gejala tidak menyingkirkan keganasan lambung.
+- Dosis perlu disesuaikan pada gangguan fungsi ginjal karena ranitidin terutama dikeluarkan lewat ginjal; hati-hati pada gangguan fungsi hati.
+- Hindari pada riwayat porfiria akut karena dapat memicu serangan porfiria.
+- Dapat memberi hasil positif palsu pada uji protein urin dengan Multistix.
+
+**Farmakokinetik** (label ranitidin)
+
+- Bioavailabilitas oral sekitar 50%; kadar puncak 2–3 jam setelah dosis 150 mg. Pada anak, bioavailabilitas oral rata-rata 48%, sebanding dengan dewasa.
+- Volume distribusi sekitar 1,4 L/kg; ikatan protein serum rata-rata 15%.
+- Ekskresi utama melalui urin: sekitar 30% dosis oral dikeluarkan dalam bentuk tidak berubah dalam 24 jam, dengan sekresi tubulus aktif. Waktu paruh eliminasi 2,5–3 jam.
+- Pada anak usia 1 bulan–16 tahun, parameter farmakokinetik tidak berbeda bermakna dengan dewasa setelah dikoreksi berat badan.
+
+**Farmakodinamik** (label ranitidin)
+
+- Penghambat kompetitif dan reversibel kerja histamin pada reseptor H2, termasuk reseptor di sel lambung.
+- Menghambat sekresi asam lambung basal siang dan malam hari serta sekresi asam yang dirangsang. Bukan obat antikolinergik.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. Ranitidine Tablets, USP (Amneal Pharmaceuticals of New York), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=b38a3332-5c54-453f-aeb7-070f830955c2
+
+---
+
+### 3.57 Diazepam
+
+**Kalkulator berat badan**
+
+| Rute | Dosis | Sumber |
+|---|---|---|
+| IV, PR | 0,1–0,4 mg/kg/dosis | IDAI hlm. 81 (tabel ginjal, kolom dosis normal) |
+
+**Penyesuaian dosis pada penyakit ginjal** (IDAI hlm. 81)
+
+| Dosis normal | Dosis (D)/Interval (I) | LFG >50 | LFG 10–50 | LFG <10 | HD | PD |
+|---|---|---|---|---|---|---|
+| 0,1–0,4 mg/kg/dosis iv, pr | D | 100% | 100% | 100% | tak ada | tak ada |
+
+**Sediaan** (FORNAS 2025)
+
+| Sediaan | Halaman FORNAS | Peresepan maksimal/restriksi |
+|---|---|---|
+| Injeksi 5 mg/mL (prosedur pre operatif) | hlm. 17 | – |
+| Injeksi 5 mg/mL (antiepilepsi–antikonvulsi) | hlm. 19 | 10 amp/kasus, kecuali untuk kasus di ICU dan pada pasien kejang pada tetanus. Tidak untuk i.m. |
+| Enema 5 mg/2,5 mL | hlm. 19 | 2 tube/hari, bila kejang |
+| Enema 10 mg/2,5 mL | hlm. 19–20 | 2 tube/hari, bila kejang |
+| Tablet 2 mg (antiansietas) | hlm. 179 | 30 tab/bulan |
+| Tablet 5 mg (antiansietas) | hlm. 179 | 30 tab/bulan |
+| Injeksi 5 mg/mL (antiansietas) | hlm. 179 | – |
+
+**Aturan penggunaan**
+
+- Injeksi antikonvulsi tidak untuk i.m. (FORNAS).
+- Injeksi: jangan dicampur atau diencerkan dengan larutan atau obat lain dalam spuit atau wadah infus; jangan memakai vena kecil (punggung tangan atau pergelangan); hindari pemberian intra-arteri dan ekstravasasi (label diazepam injeksi).
+
+**Manfaat obat** (label diazepam injeksi; label Valium)
+
+- Tambahan pada status epileptikus dan kejang berulang berat (injeksi).
+- Tambahan untuk spasme otot rangka, spastisitas akibat gangguan neuron motorik atas (misalnya palsi serebral), atetosis, sindrom stiff-man, dan tetanus.
+- Ansietas, premedikasi sebelum tindakan bedah, sebelum tindakan endoskopi atau kardioversi, dan putus alkohol akut.
+- Oral dapat digunakan sebagai tambahan pada gangguan kejang, tetapi tidak terbukti efektif sebagai terapi tunggal.
+
+**Efek samping** (label diazepam injeksi; label Valium)
+
+- Tersering: mengantuk, lelah, ataksia, kelemahan otot; trombosis vena dan flebitis di tempat suntikan.
+- SSP: kebingungan, depresi termasuk depresi napas, disartria, sakit kepala, bicara pelo, tremor, vertigo.
+- Kardiovaskular: bradikardia, hipotensi, kolaps kardiovaskular.
+- Lainnya: penglihatan kabur, diplopia, nistagmus; konstipasi, mual; inkontinensia, retensi urin; urtikaria, ruam; cegukan; neutropenia; ikterus.
+- Reaksi paradoksal (hipereksitasi, ansietas, halusinasi, peningkatan spastisitas otot, insomnia, amarah); lebih mungkin terjadi pada anak dan lanjut usia. Hentikan obat bila terjadi.
+
+**Peringatan** (label diazepam injeksi; label Valium)
+
+- Peringatan berbingkai: penggunaan bersama opioid dapat menyebabkan sedasi berat, depresi napas, koma, dan kematian. Benzodiazepin berisiko penyalahgunaan, adiksi, dan ketergantungan fisik; penghentian mendadak atau penurunan dosis cepat dapat memicu reaksi putus obat.
+- Pada uji acak 162 anak usia 3 bulan–17 tahun yang menerima diazepam IV untuk status epileptikus, 16% mengalami depresi napas berat atau mengancam jiwa.
+- Efikasi dan keamanan diazepam parenteral belum ditetapkan pada neonatus (≤30 hari); depresi SSP berkepanjangan pernah terjadi pada neonatus. Benzil alkohol (pengawet dalam injeksi) dikaitkan dengan sindrom *gasping* fatal pada bayi prematur.
+- Kontraindikasi injeksi: hipersensitivitas terhadap diazepam; glaukoma sudut sempit akut; glaukoma sudut terbuka kecuali mendapat terapi yang sesuai.
+- Kontraindikasi oral (Valium): hipersensitivitas; anak di bawah 6 bulan; miastenia gravis; insufisiensi napas berat; insufisiensi hati berat; sindrom apnea tidur; glaukoma sudut sempit akut.
+
+**Farmakokinetik** (label Valium; label diazepam injeksi)
+
+- Oral: lebih dari 90% diserap; kadar puncak plasma rata-rata 1–1,5 jam. Makanan memperlambat dan mengurangi penyerapan.
+- Ikatan protein plasma tinggi (98%); melintasi sawar darah-otak dan plasenta, serta masuk ke ASI.
+- Dimetabolisme oleh CYP3A4 dan CYP2C19 menjadi metabolit aktif N-desmetildiazepam dan temazepam, lalu oksazepam; dikeluarkan terutama di urin sebagai konjugat glukuronida.
+- Waktu paruh eliminasi terminal hingga 48 jam; metabolit aktif N-desmetildiazepam hingga 100 jam. Pada anak usia 3–8 tahun, waktu paruh rata-rata 18 jam; pada bayi cukup bulan sekitar 30 jam dan bayi prematur rata-rata 54 jam.
+
+**Farmakodinamik** (label Valium)
+
+- Benzodiazepin dengan efek ansiolitik, sedatif, relaksan otot, antikonvulsan, dan amnestik.
+- Sebagian besar efeknya diduga berasal dari fasilitasi kerja GABA, neurotransmiter penghambat di sistem saraf pusat.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. Diazepam Injection, USP (Hospira), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=7e7dd743-a87b-4ab3-b6ae-f116cd0c8b0f
+4. VALIUM (diazepam) tablets (Roche), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=554baee5-b171-4452-a50a-41a0946f956c
+
+---
+
+### 3.58 Atropin
+
+**Kalkulator berat badan** (IDAI hlm. 40)
+
+| Rute | Dosis |
+|---|---|
+| IV atau IM | 0,02 mg/kg (maks 0,6 mg), kemudian 0,01 mg/kg, 4–6 jam |
+
+**Sediaan** (FORNAS 2025)
+
+| Sediaan | Halaman FORNAS | Kelas terapi |
+|---|---|---|
+| Injeksi 0,25 mg/mL (i.v./s.k.) | hlm. 17 | Obat untuk prosedur pre operatif |
+| Tablet 0,5 mg | hlm. 18 | Antidot dan obat lain untuk keracunan (khusus) |
+| Injeksi 0,25 mg/mL (i.v.) | hlm. 18 | Antidot dan obat lain untuk keracunan (khusus) |
+| Tablet 0,5 mg | hlm. 191 | Antispasmodik |
+| Injeksi 0,25 mg/mL (i.v./s.k.) | hlm. 191 | Antispasmodik |
+
+**Aturan penggunaan**
+
+- Titrasi berdasarkan denyut jantung, interval PR, tekanan darah, dan gejala (label atropin).
+
+**Manfaat obat** (label atropin)
+
+- Blokade sementara efek muskarinik yang berat atau mengancam jiwa, misalnya sebagai antisialagog, antivagal, antidot keracunan organofosfat atau jamur muskarinik, dan untuk henti jantung bradiasistol.
+
+**Efek samping** (label atropin)
+
+- Sebagian besar berkaitan langsung dengan efek antimuskarinik: mulut kering, penglihatan kabur, fotofobia, dan takikardia sering terjadi.
+- Anhidrosis dapat menyebabkan intoleransi panas.
+- Kadang reaksi hipersensitivitas, terutama ruam kulit yang pada sebagian kasus berlanjut menjadi eksfoliasi.
+
+**Peringatan** (label atropin)
+
+- Kontraindikasi: tidak ada.
+- Takikardia: hati-hati pada penyakit jantung koroner karena takikardia meningkatkan kebutuhan oksigen miokard.
+- Dapat mencetuskan glaukoma akut; mengubah stenosis pilorus parsial menjadi obstruksi total; menyebabkan retensi urin total pada hipertrofi prostat; mengentalkan sekret bronkus dan membentuk sumbatan pada penyakit paru kronik.
+- Rekomendasi penggunaan pada anak tidak berdasarkan uji klinis.
+
+**Farmakokinetik** (label atropin)
+
+- Cepat menghilang dari darah setelah suntikan dan tersebar ke seluruh tubuh; farmakokinetik nonlinier setelah pemberian IV.
+- Ikatan protein plasma sekitar 44%; melintasi sawar plasenta.
+- Sebagian besar dirusak melalui hidrolisis enzimatik, terutama di hati; 13–50% dikeluarkan di urin dalam bentuk tidak berubah. Metabolismenya dihambat oleh pestisida organofosfat.
+- Waktu paruh eliminasi lebih dari dua kali lipat pada anak di bawah 2 tahun dan lansia dibanding kelompok usia lain.
+
+**Farmakodinamik** (label atropin)
+
+- Antimuskarinik: melawan secara kompetitif kerja asetilkolin dan ester kolin lain pada reseptor muskarinik di kelenjar eksokrin serta otot polos dan otot jantung.
+- Menghilangkan berbagai bentuk perlambatan jantung atau asistol akibat refleks vagal; dapat didahului fase perlambatan denyut jantung sesaat sebelum takikardia.
+- Pada dosis klinis tidak menekan SSP tetapi dapat merangsang medula dan pusat otak yang lebih tinggi. Bukan stimulan napas yang andal; dosis besar atau berulang dapat menekan napas.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. Atropine Sulfate Injection, USP (Hospira), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=ad8916e7-206e-409e-2582-30d072845dd4

@@ -1034,3 +1034,26 @@ Obat: morfin, ketamin, nalokson, digoksin, dobutamin, dopamin, natrium bikarbona
 - FORNAS morfin injeksi 10 mg/mL: kolom peresepan maksimal tertulis "infus per 24 jam", disalin apa adanya.
 - Sediaan FORNAS yang tidak dimasukkan: asam folat dalam kombinasi dengan zat besi (produk berbeda).
 - Label DailyMed: dobutamin mengandung natrium metabisulfit (bukan bisulfit); kontraindikasi flukonazol mencantumkan eritromisin, pimozid, dan kuinidin.
+
+---
+
+## Batch 6 (draf 0.9, 16 Oktober 2026)
+
+Obat: amikasin, siprofloksasin, sefadroksil, amoksisilin-asam klavulanat, rifampisin, pirazinamid, etambutol, ranitidin, diazepam, atropin.
+
+- Domperidon semula direncanakan, tetapi tidak ada label DailyMed untuk manusia (hanya produk veteriner dan bahan baku), sehingga diganti atropin.
+- Kutipan IDAI dan FORNAS: 34 dari 34 cocok dengan teks sumber; seluruh tabel IDAI dan halaman FORNAS juga dicek pada gambar halaman.
+- Penulisan buku yang disalin apa adanya:
+  - siprofloksasin IV (IDAI hlm. 18): "maksimal 1.2cg";
+  - tabel ginjal amikasin (IDAI hlm. 76): kolom HD tertulis "dosis penuh sesudah dialisis" tanpa "½" (berbeda dengan gentamisin hlm. 83 yang tertulis "½ dosis penuh sesudah dialisis"; dicek pada gambar halaman resolusi tinggi);
+  - tabel ginjal ranitidin (IDAI hlm. 89): nama tercetak "Raniditidine";
+  - tabel ginjal etambutol (IDAI hlm. 82): kolom PD tertulis "dosis untuk dialisis LFG<10";
+  - tabel ginjal pirazinamid (IDAI hlm. 89): kolom HD tertulis "40 mg/kg 24 jam sblmnya tiap 3x/minggu dialisis".
+- Diazepam tidak tercantum di daftar dosis obat IDAI hlm. 34–72; baris kalkulator diambil dari kolom dosis normal tabel ginjal (IDAI hlm. 81).
+- Etambutol 15 mg/kg di IDAI hlm. 41 (dalam entri azitromisin, profilaksis sekunder MAC) tidak dimasukkan ke monografi etambutol karena merupakan bagian paduan entri lain.
+- Ekstraksi teks FORNAS hlm. 43 melewatkan etambutol tablet 500 mg; ditambahkan setelah dicek pada gambar halaman.
+- Sediaan FORNAS yang tidak dimasukkan: rifampisin, pirazinamid, dan etambutol dalam kombinasi KDT/FDC dan paket kusta (produk berbeda); atropin tetes mata 0,5% dan 1% (midriatik, tanpa dosis).
+- Catatan rekonstitusi amoksisilin-asam klavulanat di FORNAS hlm. 24–25 letaknya di antara butir sediaan sehingga tidak jelas melekat pada butir yang mana; dicantumkan sebagai catatan umum per halaman.
+- Kalimat label yang menyangkut kecepatan atau dosis pemberian (misalnya diazepam IV 1 menit per 5 mg; dosis atropin pada penyakit jantung koroner) tidak dimasukkan.
+- Ranitidin telah ditarik dari peredaran di Amerika Serikat (2020); label DailyMed yang dipakai tetap tersedia dan dipakai hanya untuk manfaat, efek samping, peringatan, farmakokinetik, dan farmakodinamik. **Mohon pemilik mempertimbangkan apakah ranitidin tetap ditampilkan.**
+
