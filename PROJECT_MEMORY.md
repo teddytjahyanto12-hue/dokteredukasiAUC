@@ -802,6 +802,10 @@ File ini adalah sumber kebenaran tunggal untuk status, keputusan, dan serah teri
   - Obat baru 3.99–3.108: amfoterisin B, aspirin, atenolol, desmopresin, fludrokortison, gansiklovir, valgansiklovir, takrolimus, siklofosfamid, vinkristin. Fenilefrin dan sildenafil batal (dosis IDAI tanpa indikasi).
   - Verifikasi IDAI/FORNAS 27/27 cocok plus cek gambar halaman. Sisa kandidat yang realistis sekitar 4–5 batch (banyak sisa berupa produk darah/imunoglobulin, onkologi, atau entri tidak jelas).
 - Pelaksana aktif Claude Code (PC 2) sesi Dosis Obat: dilepas setelah publikasi draf 0.14.
+- Checkpoint draf 0.15 (16 Oktober 2026, batch 12, 118 obat):
+  - Obat baru 3.109–3.118: dolutegravir, lopinavir+ritonavir, milrinon, doksorubisin, daunorubisin, karboplatin, etoposid, daktinomisin, kolestiramin, mometason furoat. Betametason, hormon pertumbuhan, mesna, melfalan, testosteron, PEG batal (dosis tidak jelas).
+  - Verifikasi IDAI/FORNAS 24/24 cocok plus cek gambar halaman. DOCX 229 halaman. Sisa kandidat realistis sekitar 3 batch.
+- Pelaksana aktif Claude Code (PC 2) sesi Dosis Obat: dilepas setelah publikasi draf 0.15.
 
 ## Integrasi Scoping Review - Codex, 2026-10-13
 - Pelaksana aktif: Codex sesi Scoping Review. Fokus: 21 PDF, 6 kelompok/kuis dari draf pengguna, lulus80, gratis kelompok1. Berkas: prisma/scoping-chapters.ts, render-scoping-pages.py, tests/scoping-http.mjs, lib/srma-progression.ts, lib/pdf-pages.ts, halaman kelas/materi/quiz, launcher, docs/SCOPING_KURIKULUM.md. HEAD/origin2665c79 identik setelah fetch. Tidak mengubah desain lokal atau dokumen dosis obat Claude aktif. Runtime PC2 terakhir build NLR; build baru akan dibuat terpisah, database diimpor terarah.

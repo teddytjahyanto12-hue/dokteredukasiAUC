@@ -1,6 +1,6 @@
 # Kalkulator Dosis Obat Anak
 
-Draf 0.14, 16 Oktober 2026 (108 obat). Materi untuk ditinjau pemilik; belum diterapkan di website.
+Draf 0.15, 16 Oktober 2026 (118 obat). Materi untuk ditinjau pemilik; belum diterapkan di website.
 
 ---
 
@@ -7068,3 +7068,562 @@ Restriksi FORNAS: a) untuk pasien pascatransplantasi hati atau ginjal yang telah
 1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
 2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
 3. Vincristine Sulfate Injection (Hospira), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=b22e4c8e-dbe1-4d4b-a026-e1812974071c
+
+### 3.109 Dolutegravir
+
+**Kalkulator** (IDAI hlm. 48, tertulis "Dolutegravir (Tivicay/DTG)")
+
+| Keadaan | Dosis |
+|---|---|
+| Anak > 12 tahun, >40 kg | 50 mg, 1x/hari, oral |
+
+**Sediaan** (FORNAS 2025 hlm. 62; *integrase inhibitor*)
+
+Catatan FORNAS: disediakan oleh Program Kemenkes. Restriksi FORNAS: dapat diberikan oleh FPKTP yang memiliki kemampuan pengobatan antiretroviral dengan persyaratan memiliki SK Penunjukan sebagai unit pelayanan yang berhak memberikan obat ARV dari Dinas Kesehatan setempat.
+
+| Sediaan | Peresepan maksimal/restriksi |
+|---|---|
+| Tablet 10 mg | Dapat digunakan untuk pengobatan HIV pada anak |
+| Tablet 50 mg | – |
+
+**Aturan penggunaan**
+
+- Sesuai tabel IDAI.
+- Diberikan dalam kombinasi dengan antiretroviral lain (label Tivicay).
+- Tivicay (tablet salut selaput) dan Tivicay PD (tablet untuk suspensi oral) tidak dapat saling menggantikan berdasarkan miligram per miligram (label Tivicay).
+
+**Manfaat obat** (label Tivicay)
+
+- Pengobatan infeksi HIV-1, dikombinasikan dengan antiretroviral lain, pada dewasa dan pasien anak dengan berat badan minimal 2 kg yang belum pernah mendapat penghambat integrase.
+
+**Efek samping** (label Tivicay)
+
+- Tersering: sulit tidur (insomnia), kelelahan, dan sakit kepala.
+
+**Peringatan** (label Tivicay)
+
+- Kontraindikasi: riwayat hipersensitivitas terhadap dolutegravir; penggunaan bersama dofetilid.
+- Reaksi hipersensitivitas (<1%) dengan ruam, gejala konstitusional, dan kadang disfungsi organ termasuk cedera hati; hentikan segera bila timbul.
+- Hepatotoksisitas; pasien dengan hepatitis B atau C mungkin berisiko lebih tinggi mengalami peningkatan transaminase.
+- Risiko efek samping atau hilangnya respons virologis akibat interaksi obat; sindrom rekonstitusi imun.
+
+**Farmakokinetik** (label Tivicay)
+
+- Ikatan protein plasma ≥98,9%; waktu paruh terminal sekitar 14 jam.
+- Dimetabolisme terutama melalui UGT1A1 dengan kontribusi CYP3A.
+
+**Farmakodinamik** (label Tivicay)
+
+- Menghambat integrase HIV dengan berikatan pada situs aktif integrase dan menghambat langkah transfer untai (*strand transfer*) integrasi DNA retrovirus.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. Tivicay (ViiV Healthcare), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=63df5af3-b8ac-4e76-9830-2dbb340af922
+
+### 3.110 Lopinavir + Ritonavir
+
+**Kalkulator** (IDAI hlm. 61)
+
+| Keadaan | Dosis |
+|---|---|
+| >6 bln – 13 tahun | 230 mg/m2 LPV, 57,5 mg/m2 RTV, 2x/hari |
+| 7–15 kg | 12 mg/kg LPV, 3 mg/kg RTV/dosis, 2 kali/hari |
+| 15–40 kg | 10 mg/kg LPV, 5 mg/kg RTV, 2 kali/hari |
+| >40 kg | 400 mg LPV, 100 mg RTV, 2 kali/hari |
+
+**Sediaan** (FORNAS 2025 hlm. 60–62; *protease inhibitor*, KDT/FDC LPV/r)
+
+Catatan FORNAS: disediakan oleh Program Kemenkes. Setiap sediaan dapat diberikan oleh FPKTP yang memiliki kemampuan pengobatan antiretroviral dengan persyaratan memiliki SK Penunjukan sebagai unit pelayanan yang berhak memberikan obat ARV dari Dinas Kesehatan setempat.
+
+| Sediaan | Peresepan maksimal/restriksi |
+|---|---|
+| Tablet lopinavir 100 mg + ritonavir 25 mg | a) Dapat digunakan untuk pengobatan HIV pada usia ≥10 tahun; b) dapat digunakan sebagai terapi lini kedua pada anak yang gagal terapi dengan NNRTI |
+| Granul lopinavir 40 mg + ritonavir 10 mg | Dapat digunakan untuk pengobatan HIV pada anak |
+| Tablet lopinavir 200 mg + ritonavir 50 mg | Hanya digunakan sebagai lini kedua terapi antiretroviral |
+
+**Aturan penggunaan**
+
+- Sesuai tabel IDAI.
+- Diberikan dalam kombinasi dengan antiretroviral lain (label Kaletra).
+- Larutan oral Kaletra mengandung etanol (sekitar 42% v/v) dan propilen glikol; tidak dianjurkan sebelum usia pascamenstruasi 42 minggu dan usia pascanatal 14 hari (label Kaletra).
+
+**Manfaat obat** (label Kaletra)
+
+- Pengobatan infeksi HIV-1, dikombinasikan dengan antiretroviral lain, pada dewasa dan pasien anak usia 14 hari ke atas.
+
+**Efek samping** (label Kaletra)
+
+- Pada anak: gangguan pengecapan (disgeusia) 22%, muntah 21%, dan diare 12%.
+
+**Peringatan** (label Kaletra)
+
+- Kontraindikasi: hipersensitivitas bermakna klinis terhadap komponen sediaan; penggunaan bersama obat yang klirensnya sangat bergantung pada CYP3A, atau dengan penginduksi kuat CYP3A.
+- Toksisitas pada neonatus prematur akibat larutan oral (etanol dan propilen glikol).
+- Pankreatitis; hepatotoksisitas; pemanjangan interval QT dan PR.
+- Diabetes melitus/hiperglikemia; peningkatan kolesterol total dan trigliserida; sindrom rekonstitusi imun; peningkatan perdarahan pada pasien hemofilia.
+
+**Farmakokinetik** (label Kaletra)
+
+- Lopinavir terikat protein plasma >98%.
+- Ritonavir menghambat metabolisme lopinavir oleh CYP3A sehingga kadar lopinavir dalam plasma meningkat.
+
+**Farmakodinamik** (label Kaletra)
+
+- Lopinavir menghambat protease HIV-1 sehingga mencegah pembelahan poliprotein Gag-Pol dan menghasilkan partikel virus yang imatur dan tidak infeksius.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. Kaletra (AbbVie), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=8290add3-4449-4e58-6c97-8fe1eec972e3
+
+### 3.111 Milrinon
+
+**Kalkulator** (IDAI hlm. 64)
+
+| Keadaan | Dosis |
+|---|---|
+| <30 kg | 1.5 mg/kg dalam 50 ml, 2.5 ml dalam 1 jam (75 mcg/kg); kemudian 1–1.5 ml/jam (0.5–0.75 mcg/kg/mnt) |
+| >30 kg | 1.5 mg/kg dalam 100 ml, 5 ml dalam 1 jam (75 mcg/kg), kemudian 2–3 ml/jam (0.5–0.75 mcg/kg/mnt) |
+
+**Sediaan** (FORNAS 2025 hlm. 162)
+
+Restriksi FORNAS: hanya diberikan di ruang intensif.
+
+| Sediaan | Peresepan maksimal |
+|---|---|
+| Injeksi 1 mg/mL | Maks 2 hari |
+
+**Aturan penggunaan**
+
+- Sesuai tabel IDAI dan FORNAS.
+- Belum ada pengalaman uji terkontrol untuk infus lebih dari 48 jam (label milrinon).
+
+**Manfaat obat** (label milrinon)
+
+- Terapi IV jangka pendek pada pasien gagal jantung dekompensasi akut.
+
+**Efek samping** (label milrinon)
+
+- Aritmia ventrikel 12,1% (termasuk ektopi ventrikel, takikardia ventrikel tidak menetap dan menetap, serta fibrilasi ventrikel); aritmia supraventrikel.
+- Sakit kepala 2,9%; hipokalemia 0,6%; tremor 0,4%; trombositopenia 0,4%.
+
+**Peringatan** (label milrinon)
+
+- Kontraindikasi: hipersensitivitas terhadap milrinon.
+- Penggunaan oral jangka panjang berkaitan dengan peningkatan risiko rawat inap dan kematian (termasuk kematian mendadak).
+- Aritmia; tidak boleh digunakan pada penyakit katup aorta atau pulmonal obstruktif berat sebagai pengganti tindakan bedah, dan dapat memperberat obstruksi saluran keluar pada stenosis subaorta hipertrofik.
+- Keamanan dan efektivitas pada anak belum ditetapkan.
+
+**Farmakokinetik** (label milrinon)
+
+- Volume distribusi sekitar 0,38–0,45 L/kg; waktu paruh eliminasi sekitar 2,3–2,4 jam; terikat protein plasma sekitar 70%.
+- Ekskresi terutama melalui urin: 83% dalam bentuk utuh dan 12% sebagai metabolit glukuronida.
+
+**Farmakodinamik** (label milrinon)
+
+- Penghambat fosfodiesterase III di otot jantung dan otot polos pembuluh darah, menghasilkan efek inotropik positif dan vasodilatasi.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. Milrinone Lactate Injection (Mullan Pharmaceutical), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=07dddead-22ed-004c-e063-6294a90a76fc
+
+### 3.112 Doksorubisin
+
+**Kalkulator** (IDAI hlm. 48; dosis per luas permukaan tubuh)
+
+| Rute | Dosis |
+|---|---|
+| IV | 30 mg/m2 IV dalam 15 mnt, 1x/minggu ATAU 30 mg/m2 IV, 1x/hari selama 2–3 hari, setiap 3–4 minggu |
+
+**Penyesuaian dosis pada penyakit ginjal** (IDAI hlm. 82, tertulis "Doxorubicin")
+
+| Dosis normal | Dosis (D)/Interval (I) | LFG >50 | LFG 10–50 | LFG <10 | HD | PD |
+|---|---|---|---|---|---|---|
+| 30 mg/m2/dosis tiap minggu iv | D | 100% | 75% | 50% | tak ada data | tak ada data |
+
+**Sediaan** (FORNAS 2025 hlm. 81–82; antikanker)
+
+Restriksi FORNAS: pemeriksaan echocardiogram dilakukan sebelum pemberian siklus pertama dan setiap kali setelah mencapai dosis kumulatif 200 mg/m2, kecuali bila terjadi perubahan klinis (gangguan kardiologis) atau komorbiditas yang menyebabkan komplikasi kardiologis.
+
+| Sediaan | Peresepan maksimal |
+|---|---|
+| Injeksi 10 mg (i.v.) | Dosis kumulatif maks (seumur hidup): 500 mg/m² |
+| Injeksi 50 mg (i.v.) | – |
+
+**Aturan penggunaan**
+
+- Sesuai tabel IDAI dan FORNAS.
+- Hanya IV; ekstravasasi dapat menyebabkan cedera jaringan berat dan nekrosis (label doksorubisin).
+
+**Manfaat obat** (label doksorubisin)
+
+- Leukemia limfoblastik akut, leukemia mieloblastik akut, limfoma Hodgkin dan non-Hodgkin, tumor Wilms, neuroblastoma, sarkoma jaringan lunak dan tulang, serta keganasan lain.
+
+**Efek samping** (label doksorubisin)
+
+- Tersering: kerontokan rambut total (alopesia).
+- Mual, muntah, diare, serta nyeri atau luka di mulut.
+
+**Peringatan** (label doksorubisin)
+
+- Peringatan berbingkai: kardiomiopati (1–20% pada dosis kumulatif 300–500 mg/m²), keganasan sekunder (AML dan MDS), ekstravasasi dan nekrosis jaringan, serta mielosupresi berat.
+- Kontraindikasi: insufisiensi miokard berat, infark miokard baru, mielosupresi berat yang menetap, gangguan hati berat, dan hipersensitivitas berat terhadap doksorubisin.
+- Sindrom lisis tumor; *radiation recall*; toksisitas embrio-janin.
+- Pantau fungsi jantung sebelum, selama, dan setelah terapi untuk mendeteksi kardiotoksisitas tertunda.
+
+**Farmakokinetik** (label doksorubisin)
+
+- Terikat protein plasma sekitar 75%.
+- Waktu paruh terminal 20–48 jam.
+
+**Farmakodinamik** (label doksorubisin)
+
+- Efek sitotoksik diduga berkaitan dengan interkalasi basa nukleotida dan pengikatan lipid membran sel; interkalasi menghambat replikasi nukleotida serta kerja DNA polimerase dan RNA polimerase.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. Doxorubicin Hydrochloride (Pfizer), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=1fd148fb-0fbc-4b6f-b790-23546fb46a71
+
+### 3.113 Daunorubisin
+
+**Kalkulator** (IDAI hlm. 45; dosis per luas permukaan tubuh)
+
+| Keadaan | Dosis |
+|---|---|
+| Leukemia akut | 30 mg/m2/mgg IV perlahan atau 60–90 mg/m2/3 mgg |
+| Dosis total maks | 500 mg/m2 |
+
+**Penyesuaian dosis pada penyakit ginjal** (IDAI hlm. 81, tertulis "Daunorubicin")
+
+| Dosis normal | Dosis (D)/Interval (I) | LFG >50 | LFG 10–50 | LFG <10 | HD | PD |
+|---|---|---|---|---|---|---|
+| 30 mg/m2/dosis tiap minggu iv | D | 100% | 100% | 100% | tak ada data | tak ada data |
+
+**Sediaan** (FORNAS 2025 hlm. 81; antikanker)
+
+Restriksi FORNAS: untuk leukemia akut.
+
+| Sediaan | Peresepan maksimal |
+|---|---|
+| Injeksi 20 mg | – |
+
+**Aturan penggunaan**
+
+- Sesuai tabel IDAI.
+- Harus diberikan ke dalam infus IV yang mengalir cepat; tidak boleh diberikan IM atau SC (label daunorubisin).
+
+**Manfaat obat** (label daunorubisin)
+
+- Induksi remisi leukemia nonlimfositik akut (mielogenik, monositik, eritroid) pada dewasa dan leukemia limfositik akut pada anak dan dewasa, dalam kombinasi dengan kemoterapi lain.
+
+**Efek samping** (label daunorubisin)
+
+- Toksisitas pembatas dosis: mielosupresi dan kardiotoksisitas.
+- Alopesia reversibel pada sebagian besar pasien; mual dan muntah akut, biasanya ringan; mukositis 3–7 hari setelah pemberian; kadang diare dan nyeri perut.
+- Ekstravasasi dapat menimbulkan nekrosis jaringan lokal berat, selulitis berat, tromboflebitis, atau indurasi yang nyeri.
+
+**Peringatan** (label daunorubisin)
+
+- Peringatan berbingkai: nekrosis jaringan lokal berat bila terjadi ekstravasasi; toksisitas miokard (gagal jantung kongestif) yang lebih sering bila dosis kumulatif melebihi 400–550 mg/m² pada dewasa, 300 mg/m² pada anak di atas 2 tahun, atau 10 mg/kg pada anak di bawah 2 tahun; mielosupresi berat.
+- Kontraindikasi: hipersensitivitas terhadap daunorubisin.
+- Pada anak, kardiotoksisitas dapat terjadi lebih sering dan pada dosis kumulatif lebih rendah.
+
+**Farmakokinetik** (label daunorubisin)
+
+- Terdistribusi cepat dan luas ke jaringan; kadar tertinggi di limpa, ginjal, hati, paru, dan jantung; menembus plasenta.
+- Waktu paruh fase awal 45 menit dan fase terminal 18,5 jam; metabolit aktif daunorubisinol mempunyai waktu paruh 26,7 jam.
+- Dimetabolisme luas di hati dan jaringan lain; 25% dosis diekskresi dalam bentuk aktif melalui urin dan sekitar 40% melalui empedu.
+
+**Farmakodinamik** (label daunorubisin)
+
+- Berinterkalasi di antara pasangan basa DNA dan menghambat topoisomerase II dengan menstabilkan kompleks DNA-topoisomerase II, sehingga terjadi pemutusan untai tunggal dan ganda DNA.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. Daunorubicin Hydrochloride Injection (Hikma), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=227784a8-ce68-4dd4-8ac5-a65265969677
+
+### 3.114 Karboplatin
+
+**Kalkulator** (IDAI hlm. 57; dosis per luas permukaan tubuh)
+
+| Rute | Dosis |
+|---|---|
+| IV | 300–600 mg/m2, setiap 4 minggu |
+
+**Sediaan** (FORNAS 2025 hlm. 94; antikanker)
+
+| Sediaan | Peresepan maksimal |
+|---|---|
+| Injeksi 10 mg/mL | AUC (*Area Under the Curve*) 5–6 setiap 3 minggu |
+
+**Aturan penggunaan**
+
+- Sesuai tabel IDAI dan FORNAS.
+- Siklus berikutnya umumnya tidak diulang sebelum hitung leukosit, neutrofil, dan trombosit pulih (label karboplatin).
+
+**Manfaat obat** (label karboplatin)
+
+- Terapi awal karsinoma ovarium lanjut dalam kombinasi dengan kemoterapi lain, dan terapi paliatif karsinoma ovarium rekuren.
+
+**Efek samping** (label karboplatin)
+
+- Supresi sumsum tulang (trombositopenia, neutropenia, leukopenia, anemia), mual dan muntah, neuropati perifer, ototoksisitas, gangguan elektrolit (terutama magnesium), peningkatan enzim hati, nyeri, astenia, dan alopesia.
+
+**Peringatan** (label karboplatin)
+
+- Peringatan berbingkai: diberikan di bawah pengawasan dokter berpengalaman; supresi sumsum tulang terkait dosis yang dapat berat; muntah; reaksi menyerupai anafilaksis dapat terjadi dalam beberapa menit setelah pemberian.
+- Kontraindikasi: riwayat alergi berat terhadap sisplatin atau senyawa platinum lain; depresi sumsum tulang berat atau perdarahan bermakna.
+- Supresi sumsum tulang meningkat pada gangguan fungsi ginjal; gangguan pendengaran bermakna klinis pernah dilaporkan pada anak yang menerima dosis lebih tinggi dari anjuran bersama obat ototoksik lain.
+- Keamanan dan efektivitas pada anak belum ditetapkan.
+
+**Farmakokinetik** (label karboplatin)
+
+- Waktu paruh plasma awal 1,1–2 jam dan pascadistribusi 2,6–5,9 jam; tidak terikat protein plasma.
+- Platinum dari karboplatin terikat ireversibel pada protein plasma dan dieliminasi lambat (waktu paruh minimal 5 hari); jalur eliminasi utama adalah ekskresi ginjal.
+
+**Farmakodinamik** (label karboplatin)
+
+- Membentuk ikatan silang (*cross-link*) antaruntai DNA; efeknya tidak spesifik terhadap siklus sel.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. Carboplatin Injection (Natco Pharma), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=4c89cedc-e48b-445c-ad05-54dbe60e4fb0
+
+### 3.115 Etoposid
+
+**Kalkulator** (IDAI hlm. 50; dosis per luas permukaan tubuh)
+
+| Rute | Dosis |
+|---|---|
+| IV | 50–60 mg/m2 IV dalam 1 jam, 1x/hari selama 5 hari, ulangi setelah 2–4 minggu |
+| Oral | Dosis oral 2–3 kali dosis IV |
+
+**Penyesuaian dosis pada penyakit ginjal** (IDAI hlm. 82, tertulis "Etoposide")
+
+| Dosis normal | Dosis (D)/Interval (I) | LFG >50 | LFG 10–50 | LFG <10 | HD | PD |
+|---|---|---|---|---|---|---|
+| 50–60 mg/m2/dosis q24 jam iv | D | 100% | 75% | 50% | tak ada | tak ada data |
+
+**Sediaan** (FORNAS 2025 hlm. 78–79; antikanker)
+
+Restriksi FORNAS: untuk kanker testis, *Small Cell Lung Cancer*, limfoma maligna, retinoblastoma.
+
+| Sediaan | Peresepan maksimal |
+|---|---|
+| Injeksi 20 mg/mL | 100 mg/m²/hari, selama 3–5 hari |
+
+**Aturan penggunaan**
+
+- Sesuai tabel IDAI dan FORNAS.
+- Berikan sebagai infus IV lambat selama 30–60 menit untuk mencegah hipotensi; harus diencerkan sebelum infus (label etoposid).
+
+**Manfaat obat** (label etoposid)
+
+- Tumor testis refrakter (kombinasi) dan terapi lini pertama kanker paru sel kecil (kombinasi).
+
+**Efek samping** (label etoposid)
+
+- Mielosupresi terkait dosis dan pembatas dosis (nadir granulosit hari 7–14, trombosit hari 9–16).
+- Mual dan muntah (umumnya ringan sampai sedang), mukositis/esofagitis; alopesia reversibel hingga 66% pasien.
+- Hipotensi sementara pada pemberian IV cepat (1–2%); reaksi menyerupai anafilaksis 0,7–2% pada pemberian IV.
+
+**Peringatan** (label etoposid)
+
+- Peringatan berbingkai: diberikan di bawah pengawasan dokter berpengalaman; mielosupresi berat dengan infeksi atau perdarahan dapat terjadi.
+- Kontraindikasi: hipersensitivitas terhadap etoposid atau komponen sediaan.
+- Tunda terapi bila trombosit <50.000/mm³ atau hitung neutrofil absolut <500/mm³.
+- Angka reaksi menyerupai anafilaksis lebih tinggi pada anak yang menerima infus dengan konsentrasi lebih tinggi dari anjuran.
+- Mengandung polisorbat 80; keamanan dan efektivitas pada anak belum ditetapkan.
+
+**Farmakokinetik** (label etoposid)
+
+- Waktu paruh distribusi sekitar 1,5 jam dan waktu paruh eliminasi terminal 4–11 jam; tidak terakumulasi pada pemberian harian 100 mg/m² selama 4–5 hari.
+- Terikat protein plasma 97%; masuk ke cairan serebrospinal dalam jumlah kecil.
+- Pada anak terdapat hubungan terbalik antara kadar albumin plasma dan klirens ginjal etoposid.
+
+**Farmakodinamik** (label etoposid)
+
+- Bekerja terutama pada fase G2 siklus sel; menimbulkan pemutusan untai DNA melalui interaksi dengan DNA topoisomerase II atau pembentukan radikal bebas.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. Etoposide Injection, USP (Fresenius Kabi), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=fe870629-104d-4d67-a7c6-f53bc588121e
+
+### 3.116 Daktinomisin
+
+**Kalkulator** (IDAI hlm. 45)
+
+| Keadaan | Dosis |
+|---|---|
+| <1 thn | 25 mcg/kg, setiap 3 minggu, IV |
+| >1 thn | 45 mcg/kg, setiap 3 minggu, IV |
+
+**Sediaan** (FORNAS 2025 hlm. 81; antikanker)
+
+Restriksi FORNAS: dapat diberikan pada salah satu kondisi berikut: a) untuk tumor Wilms, rabdomiosarkoma pada anak, sarkoma Ewings, kanker testis non seminoma metastatik; b) untuk neoplasia trofoblastik gestasional; c) untuk *soft tissue sarcoma*, kecuali leiomyosarcoma dan angiosarcoma.
+
+| Sediaan | Peresepan maksimal |
+|---|---|
+| Injeksi 0,5 mg (i.v.) | 12x pemberian |
+
+**Aturan penggunaan**
+
+- Sesuai tabel IDAI dan FORNAS.
+- Ekstravasasi dapat menimbulkan cedera jaringan lokal berat; bila terjadi, hentikan injeksi atau infus segera (label daktinomisin).
+- Turunkan dosis 50% selama radiasi bersamaan (label daktinomisin).
+
+**Manfaat obat** (label daktinomisin)
+
+- Pada dewasa dan anak, sebagai bagian regimen kemoterapi kombinasi multifase: tumor Wilms, rabdomiosarkoma, sarkoma Ewing, dan kanker testis nonseminoma metastatik.
+- Neoplasia trofoblastik gestasional pada pasien pascamenarke.
+
+**Efek samping** (label daktinomisin)
+
+- Tersering: infeksi, alopesia, ruam, disfagia, kelelahan, demam, mual, muntah, anemia, neutropenia, trombositopenia, mukositis, dan hepatotoksisitas.
+
+**Peringatan** (label daktinomisin)
+
+- Kontraindikasi: tidak ada.
+- Keganasan sekunder termasuk leukemia.
+- Penyakit veno-oklusif hati berat dan fatal; faktor risiko meliputi usia di bawah 4 tahun atau radioterapi bersamaan.
+- Mielosupresi berat dan fatal (nadir neutrofil hari 14–21); reaksi mukokutan berat (SJS/TEN); toksisitas ginjal; hepatotoksisitas.
+- Vaksin virus hidup tidak dianjurkan sebelum atau selama terapi; potensiasi toksisitas radiasi dan *radiation recall*; toksisitas embrio-janin.
+
+**Farmakokinetik** (label daktinomisin)
+
+- Terkonsentrasi di sel berinti dan tidak menembus sawar darah-otak.
+- Sekitar 30% dosis ditemukan dalam urin dan feses dalam satu minggu.
+- Pada pasien usia ≤21 tahun, klirens sistemik cenderung meningkat seiring bertambahnya berat badan.
+
+**Farmakodinamik** (label daktinomisin)
+
+- Aktinomisin sitotoksik yang berikatan dengan DNA dan menghambat sintesis RNA.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. Dactinomycin for Injection (XGen Pharmaceuticals DJB), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=efe03d73-eb11-45ff-a3cb-09a540ed352f
+
+### 3.117 Kolestiramin
+
+**Kalkulator** (IDAI hlm. 58; 1x/hari, oral)
+
+| Usia | Dosis |
+|---|---|
+| <6 thn | 1 gram |
+| 6–12 thn | 2–4 gram |
+| >12 thn | 4 gram |
+
+**Sediaan** (FORNAS 2025 hlm. 165)
+
+| Sediaan | Peresepan maksimal |
+|---|---|
+| Serbuk 4 g | – |
+
+**Aturan penggunaan**
+
+- Sesuai tabel IDAI.
+- Pada pasien dengan konstipasi, dosis dinaikkan bertahap untuk mengurangi risiko impaksi feses (label Questran).
+
+**Manfaat obat** (label Questran)
+
+- Terapi tambahan diet untuk menurunkan kolesterol serum yang tinggi pada hiperkolesterolemia primer (kolesterol LDL tinggi).
+- Meredakan pruritus akibat obstruksi bilier parsial.
+
+**Efek samping** (label Questran)
+
+- Tersering: konstipasi.
+- Lebih jarang: nyeri/rasa tidak nyaman perut, flatulensi, mual, muntah, diare, sendawa, anoreksia, steatorea, kecenderungan perdarahan akibat defisiensi vitamin K, defisiensi vitamin A dan D, asidosis hiperkloremik pada anak, osteoporosis, ruam, serta iritasi kulit, lidah, dan perianal.
+- Laporan jarang obstruksi usus, termasuk dua kematian, pada pasien anak.
+
+**Peringatan** (label Questran)
+
+- Kontraindikasi: obstruksi bilier total ketika empedu tidak disekresi ke usus; hipersensitivitas terhadap komponennya.
+- Penggunaan kronik dapat meningkatkan kecenderungan perdarahan akibat hipoprotrombinemia (defisiensi vitamin K) serta menurunkan kadar folat serum/sel darah merah.
+- Dapat menimbulkan asidosis hiperkloremik, terutama pada pasien yang lebih muda dan lebih kecil.
+- Dapat menimbulkan atau memperburuk konstipasi.
+
+**Farmakokinetik** (label Questran)
+
+- Resin tidak diserap; kompleks resin-asam empedu yang tidak larut diekskresi melalui feses.
+
+**Farmakodinamik** (label Questran)
+
+- Mengikat asam empedu di usus sehingga sirkulasi enterohepatik terputus; oksidasi kolesterol menjadi asam empedu meningkat dan kadar kolesterol LDL serta kolesterol serum menurun.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. Questran Powder for Oral Suspension (Par Health), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=362ddd91-a63f-4ec6-841a-75785dd208c8
+
+### 3.118 Mometason Furoat
+
+**Kalkulator** (IDAI hlm. 64)
+
+| Sediaan | Dosis |
+|---|---|
+| Spray 50 mcg (2–12 thn) | 1 semprot/lubang hidung |
+| Spray 50 mcg (>12 thn) | 2 semprot/lubang hidung |
+| Krim atau salep 0.1% | oles/hari |
+
+**Sediaan** (FORNAS 2025 hlm. 169 dan 213–214)
+
+Restriksi FORNAS (semprot hidung): untuk pasien dengan salah satu indikasi berikut: a) rhinitis alergi (*seasonal* dan *perennial*); b) polip nasal; c) rhinosinusitis.
+
+| Sediaan | Peresepan maksimal |
+|---|---|
+| Krim 0,1% | – |
+| Salep 0,1% | – |
+| Semprot hidung 50 mcg | – |
+
+**Aturan penggunaan**
+
+- Sesuai tabel IDAI.
+- Titrasi ke dosis terendah yang efektif mengendalikan gejala untuk mengurangi efek sistemik; pantau pertumbuhan anak secara rutin (label mometason semprot hidung).
+
+**Manfaat obat** (label mometason semprot hidung)
+
+- Profilaksis gejala hidung rinitis alergi musiman pada dewasa dan anak usia 12 tahun ke atas.
+- Rinosinusitis kronik dengan polip hidung pada dewasa usia 18 tahun ke atas.
+
+**Efek samping** (label mometason semprot hidung)
+
+- Pada uji rinitis alergi (usia ≥12 tahun): sakit kepala 26%, infeksi virus 14%, faringitis 12%, epistaksis/lendir bercampur darah 11%, batuk 7%.
+
+**Peringatan** (label mometason semprot hidung)
+
+- Kontraindikasi: hipersensitivitas terhadap mometason furoat atau bahan lain dalam sediaan.
+- Efek lokal hidung: epistaksis, infeksi *Candida*, perforasi septum; jangan digunakan sebelum ulkus septum, bedah, atau trauma hidung sembuh.
+- Glaukoma dan katarak; reaksi hipersensitivitas termasuk mengi.
+- Imunosupresi dan risiko infeksi (cacar air, campak); hiperkortisisme dan supresi adrenal pada dosis di atas anjuran.
+- Dapat menurunkan kecepatan pertumbuhan pada anak.
+
+**Farmakokinetik** (label mometason semprot hidung)
+
+- Bioavailabilitas sistemik semprot hidung sangat rendah (<1%); ikatan protein in vitro 98–99%.
+- Waktu paruh eliminasi efektif setelah pemberian IV 5,8 jam; obat yang terserap diekskresi sebagai metabolit terutama melalui empedu dan sebagian kecil melalui urin.
+
+**Farmakodinamik** (label mometason semprot hidung)
+
+- Kortikosteroid dengan efek antiinflamasi kuat; bekerja pada berbagai sel (sel mast, eosinofil, neutrofil, makrofag, limfosit) dan mediator inflamasi (histamin, eikosanoid, leukotrien, sitokin).
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. Mometasone Furoate Nasal Spray (Amneal), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=ff41e901-5a6f-4ad5-be8a-a68eae787e5e

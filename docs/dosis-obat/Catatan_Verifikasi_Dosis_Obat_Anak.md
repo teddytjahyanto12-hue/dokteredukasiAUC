@@ -1180,3 +1180,20 @@ Obat: amfoterisin B, asam asetilsalisilat (aspirin), atenolol, desmopresin, flud
 - Label Valcyte: tidak diindikasikan untuk profilaksis pada neonatus, sedangkan IDAI mencantumkan dosis neonatus; keduanya ditampilkan sesuai sumbernya.
 - Sediaan FORNAS yang tidak dimasukkan: amfoterisin B salep mata 1% (hlm. 172); takrolimus salep (tidak ada di FORNAS).
 
+## Batch 12 (draf 0.15, 16 Oktober 2026)
+
+Obat: dolutegravir, lopinavir + ritonavir, milrinon, doksorubisin, daunorubisin, karboplatin, etoposid, daktinomisin, kolestiramin, mometason furoat.
+
+- Kutipan IDAI dan FORNAS: 24 dari 24 cocok dengan teks sumber; halaman IDAI dan FORNAS juga dicek pada gambar halaman.
+- Batal dimasukkan karena dosis tidak jelas: betametason, hormon pertumbuhan, mesna, melfalan, testosteron, polietilen glikol.
+- Bagian yang tidak jelas dan tidak dimasukkan:
+  - doksorubisin (IDAI hlm. 48) "maks 480 mg" (satuan dan cakupan batas tidak jelas; FORNAS memuat dosis kumulatif maks 500 mg/m²);
+  - kolestiramin (IDAI hlm. 58) "tingkatkan dalam 4 mgg menjadi maks 1-2x dosis inisial, 8 jam" (bertentangan dengan "1x/hari"); tabel ginjal kolestiramin (hlm. 80) berbeda dari entri utama; FORNAS "4 sachet." tanpa satuan waktu;
+  - tabel ginjal karboplatin (IDAI hlm. 78): dosis normal 300–400 mg/m² berbeda dari entri utama 300–600 mg/m²;
+  - daunorubisin (IDAI hlm. 45) baris "Sediaan serbuk Injeksi, 20 mg/vial" tidak ditulis di kalkulator karena sediaan sudah tercantum dari FORNAS (injeksi 20 mg).
+- Perbedaan sumber yang ditampilkan apa adanya:
+  - karboplatin: IDAI 300–600 mg/m² setiap 4 minggu, FORNAS AUC 5–6 setiap 3 minggu; label hanya untuk karsinoma ovarium dan keamanan pada anak belum ditetapkan;
+  - mometason semprot hidung: IDAI mencantumkan usia 2–12 tahun, label Amneal hanya untuk usia ≥12 tahun;
+  - milrinon: batas "<30 kg" dan ">30 kg" sesuai IDAI (berat tepat 30 kg tidak disebut); label menyatakan keamanan pada anak belum ditetapkan;
+  - etoposid: IDAI mencantumkan dosis oral, tetapi FORNAS hanya memuat injeksi;
+  - lopinavir + ritonavir: IDAI mulai ">6 bln", label Kaletra mulai usia 14 hari.
