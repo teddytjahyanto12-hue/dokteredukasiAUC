@@ -1197,3 +1197,22 @@ Obat: dolutegravir, lopinavir + ritonavir, milrinon, doksorubisin, daunorubisin,
   - milrinon: batas "<30 kg" dan ">30 kg" sesuai IDAI (berat tepat 30 kg tidak disebut); label menyatakan keamanan pada anak belum ditetapkan;
   - etoposid: IDAI mencantumkan dosis oral, tetapi FORNAS hanya memuat injeksi;
   - lopinavir + ritonavir: IDAI mulai ">6 bln", label Kaletra mulai usia 14 hari.
+
+## Batch 13 (draf 0.16, 16 Oktober 2026)
+
+Obat: desoksimetason, etanercept, imunoglobulin intravena, imunoglobulin hepatitis B, imunoglobulin tetanus, triamsinolon asetonid, vinblastin (7 obat).
+
+- Kutipan IDAI dan FORNAS: 17 dari 17 cocok dengan teks sumber; halaman IDAI dan FORNAS juga dicek pada gambar halaman.
+- Batal dimasukkan karena teks IDAI tidak jelas: asparaginase (hlm. 37, jadwal "Induksi minggu, ke 4 – 5 : 6 x" rancu), bleomisin (hlm. 42, "selama 1-2 minggu" tanpa frekuensi), cisapride (hlm. 44, angka dosis hilang), imatinib (hlm. 54, indikasi dan dosis bercampur).
+- Batal dimasukkan karena tidak cocok dengan FORNAS: imunoglobulin rabies (IDAI 20 iu/kg untuk imunoglobulin manusia; FORNAS hanya memuat "serum antirabies" 150–400 IU/mL tanpa keterangan asal), imunoglobulin difteri (FORNAS hanya serum antidifteri), imunoglobulin antilimfosit dan imunoglobulin CMV (tidak ada di FORNAS), formoterol tunggal dan formoterol + mometason (FORNAS hanya kombinasi dengan budesonid), magnesium hidroksida (FORNAS hanya kombinasi antasida), etinilestradiol (FORNAS hanya kombinasi kontrasepsi).
+- Ditunda: klorfeniramin dan loratadin. Dosis IDAI dan sediaan FORNAS jelas, tetapi label DailyMed yang tersedia hanya label OTC (*Drug Facts*) tanpa farmakokinetik dan farmakodinamik. Perlu keputusan pemilik: dimasukkan dengan label OTC (bagian farmakokinetik/farmakodinamik kosong) atau tetap dikeluarkan.
+- Bagian yang tidak jelas dan tidak dimasukkan:
+  - imunoglobulin (IDAI hlm. 55): dua baris "Sepsis" saling berbeda ("500 mg/kg IV dalam 4 jam" dan "500-1000 mg/kg/dosis sekali sehari selama 1-3 hari");
+  - imunoglobulin tetanus (IDAI hlm. 56) baris "Terapi: 4000 iu (100 ml) ... IV": sediaan FORNAS hanya i.m. dan label HyperTET melarang pemberian IV;
+  - triamsinolon: sediaan FORNAS mata (hlm. 174, injeksi intravitreal 40 mg/mL) dan pasta gigi kombinasi (hlm. 132) tidak dimasukkan karena bukan rute pada IDAI.
+- Peresepan maksimal FORNAS imunoglobulin intravena tertulis pada baris injeksi 50 mg/mL dan berlanjut ke baris injeksi 100 mg/mL di halaman berikutnya; di dokumen ditulis sebagai satu daftar untuk kedua sediaan.
+- Koreksi pembacaan FORNAS hlm. 80: "Catatan: Hanya diberikan secara intravena." adalah catatan milik vinkristin (terletak di atas nama vinkristin), bukan vinblastin.
+- Perbedaan sumber yang ditampilkan apa adanya:
+  - vinblastin: IDAI 6,5 mg/m² setiap 1–4 minggu; FORNAS 6 mg/m² setiap 2 minggu;
+  - etanercept: FORNAS untuk pJIA usia 4–17 tahun, label Enbrel untuk pJIA usia ≥2 tahun;
+  - imunoglobulin hepatitis B: FORNAS 100–220 IU, IDAI 200 U untuk bayi; label HyperHEP B menyatakan keamanan pada anak belum ditetapkan.

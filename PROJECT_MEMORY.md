@@ -806,6 +806,11 @@ File ini adalah sumber kebenaran tunggal untuk status, keputusan, dan serah teri
   - Obat baru 3.109–3.118: dolutegravir, lopinavir+ritonavir, milrinon, doksorubisin, daunorubisin, karboplatin, etoposid, daktinomisin, kolestiramin, mometason furoat. Betametason, hormon pertumbuhan, mesna, melfalan, testosteron, PEG batal (dosis tidak jelas).
   - Verifikasi IDAI/FORNAS 24/24 cocok plus cek gambar halaman. DOCX 229 halaman. Sisa kandidat realistis sekitar 3 batch.
 - Pelaksana aktif Claude Code (PC 2) sesi Dosis Obat: dilepas setelah publikasi draf 0.15.
+- Checkpoint draf 0.16 (16 Oktober 2026, batch 13, 125 obat):
+  - Obat baru 3.119–3.125: desoksimetason, etanercept, imunoglobulin IV, imunoglobulin hepatitis B, imunoglobulin tetanus, triamsinolon asetonid, vinblastin. Banyak kandidat batal (teks IDAI rusak atau tidak cocok dengan FORNAS); rincian di Catatan Batch 13.
+  - Verifikasi IDAI/FORNAS 17/17 cocok plus cek gambar halaman. DOCX 240 halaman.
+  - Keputusan pemilik tertunda: klorfeniramin dan loratadin hanya punya label OTC (tanpa PK/PD). Sisa kandidat lain hampir habis (estrogen terkonjugasi + MPA, faktor pembekuan, dll. belum jelas).
+- Pelaksana aktif Claude Code (PC 2) sesi Dosis Obat: dilepas setelah publikasi draf 0.16.
 
 ## Integrasi Scoping Review - Codex, 2026-10-13
 - Pelaksana aktif: Codex sesi Scoping Review. Fokus: 21 PDF, 6 kelompok/kuis dari draf pengguna, lulus80, gratis kelompok1. Berkas: prisma/scoping-chapters.ts, render-scoping-pages.py, tests/scoping-http.mjs, lib/srma-progression.ts, lib/pdf-pages.ts, halaman kelas/materi/quiz, launcher, docs/SCOPING_KURIKULUM.md. HEAD/origin2665c79 identik setelah fetch. Tidak mengubah desain lokal atau dokumen dosis obat Claude aktif. Runtime PC2 terakhir build NLR; build baru akan dibuat terpisah, database diimpor terarah.

@@ -1,6 +1,6 @@
 # Kalkulator Dosis Obat Anak
 
-Draf 0.15, 16 Oktober 2026 (118 obat). Materi untuk ditinjau pemilik; belum diterapkan di website.
+Draf 0.16, 16 Oktober 2026 (125 obat). Materi untuk ditinjau pemilik; belum diterapkan di website.
 
 ---
 
@@ -7627,3 +7627,381 @@ Restriksi FORNAS (semprot hidung): untuk pasien dengan salah satu indikasi berik
 1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
 2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
 3. Mometasone Furoate Nasal Spray (Amneal), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=ff41e901-5a6f-4ad5-be8a-a68eae787e5e
+
+### 3.119 Desoksimetason
+
+**Kalkulator** (IDAI hlm. 47; topikal)
+
+| Sediaan | Dosis |
+|---|---|
+| Krim, salep, gel 0.25% dan 0.05% | oles 12 jam |
+
+**Sediaan** (FORNAS 2025 hlm. 168)
+
+| Sediaan | Peresepan maksimal |
+|---|---|
+| Krim 0,25% | – |
+| Salep 0,25% | – |
+
+**Aturan penggunaan**
+
+- Sesuai tabel IDAI.
+- Pada anak, gunakan jumlah sekecil mungkin yang masih efektif (label desoksimetason).
+
+**Manfaat obat** (label desoksimetason)
+
+- Meredakan manifestasi inflamasi dan gatal pada dermatosis yang responsif terhadap kortikosteroid.
+
+**Efek samping** (label desoksimetason)
+
+- Reaksi lokal yang jarang, lebih sering dengan pembalut oklusif: rasa terbakar, gatal, iritasi, kulit kering, folikulitis, hipertrikosis, erupsi akneiformis, hipopigmentasi, dermatitis perioral, dermatitis kontak alergi, maserasi kulit, infeksi sekunder, atrofi kulit, striae, dan miliaria.
+- Pada uji klinis krim 0,25%, insidens efek samping 0,8% (rasa terbakar, folikulitis, lesi folikulopustular).
+
+**Peringatan** (label desoksimetason)
+
+- Kontraindikasi: riwayat hipersensitivitas terhadap komponen sediaan.
+- Absorpsi sistemik dapat menimbulkan supresi aksis hipotalamus-hipofisis-adrenal (HPA) yang reversibel; risiko meningkat pada steroid yang lebih poten, area luas, penggunaan lama, oklusi, dan sawar kulit yang rusak.
+- Anak lebih rentan terhadap supresi aksis HPA dan sindrom Cushing karena rasio luas permukaan kulit terhadap berat badan lebih besar; hipertensi intrakranial juga pernah dilaporkan pada anak.
+
+**Farmakokinetik** (label desoksimetason)
+
+- Absorpsi perkutan ditentukan oleh vehikulum, integritas sawar epidermis, dan penggunaan pembalut oklusif; inflamasi kulit meningkatkan absorpsi.
+- Setelah terabsorpsi, dimetabolisme terutama di hati lalu diekskresi melalui ginjal.
+
+**Farmakodinamik** (label desoksimetason)
+
+- Kortikosteroid topikal dengan efek antiinflamasi, antipruritus, dan vasokonstriksi; mekanisme antiinflamasinya belum jelas.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. Desoximetasone Cream/Gel (Sun Pharmaceutical), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=37eb1205-1743-4480-8631-b0bbcaeb8359
+
+### 3.120 Etanercept
+
+**Kalkulator** (IDAI hlm. 50; SK)
+
+| Regimen | Dosis |
+|---|---|
+| 2x/minggu | 0,4 mg/kg, 2x/mgg, SK |
+| 1x/minggu | 0,8 mg/kg, 1x/mgg, SK |
+| Maksimum | 50 mg/minggu |
+
+**Sediaan** (FORNAS 2025 hlm. 102–103; imunosupresan)
+
+Restriksi FORNAS: a) untuk pasien *Rheumatoid Arthritis* (RA) yang telah gagal minimal dengan dua DMARDs konvensional pada dosis maksimal; b) untuk pasien *Ankylosing Spondylitis* (AS) yang tidak respons dengan NSAID; c) untuk kasus (a) dan (b) hanya boleh diresepkan oleh dokter yang memiliki kompetensi di bidang ilmu reumatologi atau penyakit dalam; d) untuk artritis idiopatik juvenil poliartikular, sebagai subgrup dari *juvenile idiopathic arthritis*, pada pasien anak usia 4–17 tahun, yang refrakter dengan terapi DMARDs; e) untuk artritis idiopatik juvenil poliartikular, diresepkan oleh dokter yang memiliki kompetensi di bidang ilmu alergi-imunologi anak atau penyakit anak.
+
+| Sediaan | Peresepan maksimal |
+|---|---|
+| Serbuk injeksi 25 mg/mL | 8 vial/bulan |
+| Injeksi 50 mg/mL | 4 vial/bulan |
+
+**Aturan penggunaan**
+
+- Sesuai tabel IDAI dan FORNAS.
+- Lakukan tes tuberkulosis laten sebelum dan selama terapi; hindari vaksin hidup selama terapi (label Enbrel).
+
+**Manfaat obat** (label Enbrel)
+
+- Artritis idiopatik juvenil poliartikular (pJIA) sedang–berat pada usia 2 tahun ke atas; artritis psoriatik juvenil pada usia 2 tahun ke atas; psoriasis plak kronik sedang–berat pada usia 4 tahun ke atas.
+- Pada dewasa: artritis reumatoid, artritis psoriatik, dan spondilitis ankilosa.
+
+**Efek samping** (label Enbrel)
+
+- Tersering: infeksi (terutama infeksi saluran napas atas, sinusitis, influenza) dan reaksi di tempat suntikan.
+- Pada anak, efek samping umumnya serupa jenis dan frekuensinya dengan dewasa.
+
+**Peringatan** (label Enbrel)
+
+- Peringatan berbingkai: infeksi serius (termasuk tuberkulosis aktif dan infeksi jamur invasif) yang dapat menyebabkan rawat inap atau kematian; limfoma dan keganasan lain, sebagian fatal, pernah dilaporkan pada anak dan remaja yang mendapat penghambat TNF.
+- Kontraindikasi: sepsis.
+- Kelainan demielinasi sistem saraf pusat; gagal jantung baru atau memburuk; pansitopenia termasuk anemia aplastik; reaktivasi hepatitis B; reaksi alergi; autoimunitas (sindrom mirip lupus); imunosupresi.
+
+**Farmakokinetik** (label Enbrel)
+
+- Setelah dosis tunggal 25 mg SK pada pasien RA: waktu paruh 102 ± 30 jam, klirens 160 ± 80 mL/jam, dan waktu mencapai kadar puncak 69 ± 34 jam.
+
+**Farmakodinamik** (label Enbrel)
+
+- Bentuk dimer larut reseptor TNF p75 yang mengikat TNF; menghambat ikatan TNF-α dan TNF-β pada reseptor permukaan sel sehingga TNF tidak aktif secara biologis.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. Enbrel (Immunex), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=a002b40c-097d-47a5-957f-7a7b1807af7f
+
+### 3.121 Imunoglobulin Intravena
+
+**Kalkulator** (IDAI hlm. 55, tertulis "Imunoglobulin")
+
+| Indikasi | Dosis |
+|---|---|
+| Hipogamaglobulinemia | 400–500 mg/kg setiap 3–4 minggu SK atau IV |
+| Kawasaki | 2 g/kg IV dosis tunggal |
+| Guillain-Barre | 400 mg/kg/hari, IV selama 5 hari berturut-turut |
+| Miastenia gravis (krisis) | 1 g/kg IV, dosis tunggal |
+| ITP | 400–1000 mg/kg/hari selama 2–5 hari (dosis total 2000 mg/kg), dosis rumatan 400–1000 mg/kg/hari tiap 3–6 minggu berdasarkan respons klinis dan hasil trombosit |
+| *Isoimmune hemolytic disease* (Rh incompatibility), usia gestasi ≥ 35 minggu | 500–1000 mg/kg/dosis selama 2 jam, bila diperlukan pemberian bisa diulangi dalam 12 jam |
+
+**Sediaan** (FORNAS 2025 hlm. 207–209; serum dan imunoglobulin)
+
+Restriksi FORNAS: a) hanya digunakan apabila syarat untuk plasmaferesis tidak terpenuhi pada terapi *Guillain–Barré syndrome* (GBS); b) digunakan untuk *Chronic Inflammatory Demyelinating Polyneuropathy* (CIDP) yang resistan atau kontraindikasi terhadap kortikosteroid, pemberian berikutnya harus disertai pemeriksaan elektrofisiologi yang membuktikan adanya perbaikan; c) digunakan untuk *Immune Thrombocytopenic Purpura* (ITP) akut dengan risiko tinggi perdarahan atau sebelum intervensi bedah, setelah refrakter terhadap kortikosteroid; d) digunakan untuk imunodefisiensi primer dengan defek produksi antibodi, diresepkan oleh dokter yang memiliki kompetensi di bidang ilmu kesehatan anak - alergi imunologi dan penyakit dalam - alergi imunologi.
+
+| Sediaan |
+|---|
+| Injeksi 50 mg/mL |
+| Injeksi 100 mg/mL |
+
+Peresepan maksimal FORNAS:
+
+- GBS: 0,4 g/kg BB per hari selama 5 hari.
+- CIDP: 2 g/kg BB per episode.
+- ITP: 0,8–1 g/kg BB pada hari pertama, diulangi sekali lagi dalam waktu 3 hari; atau 0,4 g/kg BB per hari selama 2–5 hari.
+- Imunodefisiensi primer: 0,4 g/kg BB setiap 4 minggu.
+
+**Aturan penggunaan**
+
+- Sesuai tabel IDAI dan FORNAS.
+- Pastikan hidrasi cukup sebelum pemberian; pada pasien berisiko trombosis atau gagal ginjal, berikan dengan dosis dan kecepatan infus minimum yang memungkinkan (label GAMUNEX-C).
+
+**Manfaat obat** (label GAMUNEX-C)
+
+- Imunodefisiensi humoral primer pada usia 2 tahun ke atas.
+- *Idiopathic thrombocytopenic purpura* (ITP) pada dewasa dan anak, untuk menaikkan trombosit guna mencegah perdarahan atau sebelum pembedahan.
+- CIDP pada dewasa.
+
+**Efek samping** (label GAMUNEX-C)
+
+- Tersering pada uji CIDP: sakit kepala dan demam (pireksia).
+- Pada anak: muntah lebih sering pada imunodefisiensi primer, dan demam lebih sering pada ITP akut.
+
+**Peringatan** (label GAMUNEX-C)
+
+- Peringatan berbingkai: trombosis, disfungsi ginjal, dan gagal ginjal akut.
+- Kontraindikasi: riwayat reaksi hipersensitivitas berat terhadap imunoglobulin manusia; defisiensi IgA dengan antibodi terhadap IgA dan riwayat hipersensitivitas.
+- Reaksi hipersensitivitas berat; hiperproteinemia, peningkatan viskositas serum, dan hiponatremia; sindrom meningitis aseptik; hemolisis; TRALI; kelebihan volume pada regimen dosis tinggi; risiko penularan agen infeksius karena berasal dari darah manusia.
+
+**Farmakokinetik** (label GAMUNEX-C)
+
+- Pada anak dengan imunodefisiensi primer dan ITP, farmakokinetik serupa dengan dewasa; tidak diperlukan penyesuaian dosis khusus anak untuk mencapai kadar IgG serum.
+
+**Farmakodinamik** (label GAMUNEX-C)
+
+- Menyediakan spektrum luas antibodi IgG opsonik dan penetral terhadap bakteri, virus, parasit, mikoplasma, dan toksinnya; mekanisme pada imunodefisiensi primer, ITP, dan CIDP belum sepenuhnya dipahami.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. GAMUNEX-C (Grifols), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=4fe97dac-d952-40f5-9c6a-67cda048ad8f
+
+### 3.122 Imunoglobulin Hepatitis B
+
+**Kalkulator** (IDAI hlm. 55; IM)
+
+| Keadaan | Dosis |
+|---|---|
+| Setelah tertusuk jarum | 400 U dalam 5 hari setelah tertusuk jarum, ulangi dalam 30 hari |
+| Bayi dengan ibu HBsAg positif | Dosis tunggal dalam 12 jam pertama setelah lahir, bersamaan dengan pemberian vaksin hepatitis B, 200 U (0,5 mL) secara intramuskular pada paha kontralateral dengan pemberian vaksin hepatitis B |
+
+**Sediaan** (FORNAS 2025 hlm. 207; serum dan imunoglobulin)
+
+Restriksi FORNAS: untuk bayi baru lahir dengan ibu HBsAg positif.
+
+| Sediaan | Peresepan maksimal |
+|---|---|
+| Injeksi 100–220 IU | – |
+
+**Aturan penggunaan**
+
+- Sesuai tabel IDAI.
+- Hanya IM, jangan IV; tarik plunger sebelum menyuntik untuk memastikan jarum tidak masuk pembuluh darah; hindari daerah gluteal (label HyperHEP B).
+
+**Manfaat obat** (label HyperHEP B)
+
+- Profilaksis pascapajanan hepatitis B: pajanan akut terhadap darah yang mengandung HBsAg, pajanan perinatal pada bayi dari ibu HBsAg positif, pajanan seksual, dan pajanan rumah tangga dengan penderita HBV akut.
+- Pada bayi dari ibu HBsAg dan HBeAg positif, kombinasi satu dosis saat lahir dengan seri vaksin hepatitis B efektif 85–95% mencegah status karier.
+
+**Efek samping** (label HyperHEP B)
+
+- Nyeri lokal dan nyeri tekan di tempat suntikan, urtikaria, dan angioedema; reaksi anafilaksis jarang.
+
+**Peringatan** (label HyperHEP B)
+
+- Kontraindikasi: tidak diketahui.
+- Dibuat dari plasma manusia sehingga berpotensi menularkan agen infeksius.
+- Pada trombositopenia berat atau gangguan koagulasi yang merupakan kontraindikasi suntikan IM, berikan hanya bila manfaat melebihi risiko.
+- Keamanan dan efektivitas pada anak belum ditetapkan.
+
+**Farmakokinetik** (label HyperHEP B)
+
+- Kadar anti-HBs yang terdeteksi bertahan sekitar 2 bulan atau lebih; rerata waktu paruh 17,5–25 hari (rentang 5,9–35 hari).
+
+**Farmakodinamik** (label HyperHEP B)
+
+- Memberikan imunisasi pasif terhadap virus hepatitis B.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. HyperHEP B (Grifols), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=cda35690-672f-46cd-8520-e37f4d66a8d7
+
+### 3.123 Imunoglobulin Tetanus
+
+**Kalkulator** (IDAI hlm. 56, tertulis "Imunoglobulin, tetanus")
+
+| Keadaan | Dosis |
+|---|---|
+| Profilaksis | 250–500 iu (1–2 ampul) |
+
+**Sediaan** (FORNAS 2025 hlm. 207, tertulis "human tetanus imunoglobulin"; serum dan imunoglobulin)
+
+Restriksi FORNAS: untuk a) luka baru terkontaminasi pada pasien dengan riwayat vaksinasi tetanus yang tidak diketahui/tidak lengkap; b) manifestasi tetanus secara klinis.
+
+| Sediaan | Peresepan maksimal |
+|---|---|
+| Injeksi 250 IU (i.m.) | – |
+| Injeksi 500 IU (i.m.) | – |
+
+**Aturan penggunaan**
+
+- Sesuai tabel IDAI.
+- Hanya IM, jangan IV; suntikan IV imunoglobulin untuk IM dapat menurunkan tekanan darah secara tajam dengan gambaran menyerupai anafilaksis (label HyperTET).
+- Pembersihan luka, debridemen bila perlu, dan imunisasi yang tepat tetap penting (label HyperTET).
+
+**Manfaat obat** (label HyperTET)
+
+- Profilaksis tetanus setelah cedera pada pasien dengan imunisasi tidak lengkap atau tidak pasti.
+- Bagian dari regimen pengobatan tetanus aktif, walaupun bukti efektivitasnya terbatas.
+
+**Efek samping** (label HyperTET)
+
+- Kadang nyeri ringan di tempat suntikan dan sedikit kenaikan suhu.
+- Sangat jarang: angioedema, sindrom nefrotik, dan syok anafilaksis.
+
+**Peringatan** (label HyperTET)
+
+- Kontraindikasi: tidak diketahui.
+- Dibuat dari plasma manusia sehingga berpotensi menularkan agen infeksius.
+- Pada trombositopenia berat atau gangguan koagulasi yang merupakan kontraindikasi suntikan IM, berikan hanya bila manfaat melebihi risiko.
+- Keamanan dan efektivitas pada anak belum ditetapkan.
+
+**Farmakokinetik** (label HyperTET)
+
+- Waktu paruh IgG dalam sirkulasi pada individu dengan kadar IgG normal sekitar 23 hari.
+
+**Farmakodinamik** (label HyperTET)
+
+- Memberikan imunitas pasif; antibodi menetralkan eksotoksin bebas yang dihasilkan *Clostridium tetani*.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. HyperTET (Grifols), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=393fa198-7e07-4162-bd0a-9d873f1544a9
+
+### 3.124 Triamsinolon Asetonid
+
+**Kalkulator** (IDAI hlm. 71, tertulis "Triamsinolon")
+
+| Rute | Dosis |
+|---|---|
+| Sendi, tendon | 0.5–20 mg, intraartikular |
+| IM | 0.05–0.2 mg/kg setiap 1–7 hari |
+
+**Sediaan** (FORNAS 2025 hlm. 149 dan 170)
+
+| Sediaan | Peresepan maksimal/restriksi |
+|---|---|
+| Injeksi 10 mg/mL (hormon, hlm. 149) | – |
+| Injeksi 10 mg/mL dan 40 mg/mL (dermatologi, hlm. 170) | Hanya untuk keloid |
+
+**Aturan penggunaan**
+
+- Sesuai tabel IDAI.
+- Kenalog-40 hanya untuk IM atau intraartikular; tidak untuk IV, intradermal, intraokular, epidural, atau intratekal; tidak untuk neonatus karena mengandung benzil alkohol (label Kenalog-40).
+
+**Manfaat obat** (label Kenalog-40)
+
+- IM bila terapi oral tidak memungkinkan: kondisi alergi berat, penyakit kulit, gangguan endokrin, dan berbagai kondisi responsif kortikosteroid lainnya.
+- Intraartikular atau jaringan lunak sebagai terapi tambahan jangka pendek pada artritis gout akut, bursitis, tenosinovitis, epikondilitis, artritis reumatoid, dan sinovitis osteoartritis.
+
+**Efek samping** (label Kenalog-40)
+
+- Efek samping kortikosteroid, antara lain anafilaksis, gangguan kardiovaskular (termasuk hipertensi dan aritmia), atrofi kulit dan subkutan, gangguan penyembuhan luka, serta perubahan pigmentasi kulit.
+- Kortikosteroid dapat menghambat pertumbuhan tulang pada anak.
+
+**Peringatan** (label Kenalog-40)
+
+- Kontraindikasi: hipersensitivitas terhadap komponen sediaan; sediaan kortikosteroid IM dikontraindikasikan pada ITP.
+- Kejadian neurologis serius pada pemberian epidural.
+- Imunosupresi dan peningkatan risiko infeksi (tuberkulosis, varisela, campak, reaktivasi hepatitis B, jamur); jangan menyuntik ke sendi yang terinfeksi.
+- Benzil alkohol dikaitkan dengan *gasping syndrome* dan kematian, terutama pada neonatus.
+
+**Farmakokinetik** (label Kenalog-40)
+
+- Efek bertahan beberapa minggu; setelah dosis tunggal IM 60–100 mg, supresi adrenal terjadi dalam 24–48 jam lalu kembali normal bertahap, biasanya dalam 30–40 hari.
+- Kortikosteroid intraartikular dapat terabsorpsi secara sistemik.
+
+**Farmakodinamik** (label Kenalog-40)
+
+- Glukokortikoid sintetik dengan efek antiinflamasi.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. Kenalog-40 (E.R. Squibb & Sons), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=cf970688-cd77-b95c-4bd9-c541590e9722
+
+### 3.125 Vinblastin
+
+**Kalkulator** (IDAI hlm. 71; dosis per luas permukaan tubuh)
+
+| Rute | Dosis |
+|---|---|
+| IV | 6.5 mg/m2 IV dalam 1 menit setiap 1–4 minggu |
+
+**Sediaan** (FORNAS 2025 hlm. 79–80; antikanker)
+
+| Sediaan | Peresepan maksimal |
+|---|---|
+| Injeksi 1 mg/mL | 6 mg/m2 setiap 2 minggu |
+
+**Aturan penggunaan**
+
+- Sesuai tabel IDAI dan FORNAS.
+- Hanya untuk IV; fatal bila diberikan melalui rute lain (pemberian intratekal biasanya berakibat kematian). Pastikan jarum atau kateter terpasang benar; bila terjadi ekstravasasi, hentikan suntikan segera dan lanjutkan sisa dosis di vena lain (label vinblastin).
+
+**Manfaat obat** (label vinblastin)
+
+- Terapi paliatif penyakit Hodgkin stadium lanjut, limfoma limfositik dan histiositik, mikosis fungoides lanjut, karsinoma testis lanjut, sarkoma Kaposi, penyakit Letterer-Siwe (histiositosis X), koriokarsinoma resisten, dan karsinoma payudara tertentu.
+
+**Efek samping** (label vinblastin)
+
+- Tersering: leukopenia, biasanya menjadi faktor pembatas dosis; alopesia sering terjadi.
+- Gastrointestinal: konstipasi, anoreksia, mual, muntah, nyeri perut, ileus, diare.
+- Neurologis (tidak sering): parestesia, hilangnya refleks tendon dalam, neuritis perifer, sakit kepala, kejang.
+
+**Peringatan** (label vinblastin)
+
+- Peringatan berbingkai: hanya untuk IV, fatal bila diberikan melalui rute lain; harus diberikan oleh tenaga berpengalaman.
+- Kontraindikasi: granulositopenia bermakna (kecuali akibat penyakit yang diobati); infeksi bakteri yang belum terkendali.
+- Toksisitas dapat meningkat pada insufisiensi ekskresi hati.
+
+**Farmakokinetik** (label vinblastin)
+
+- Penurunan kadar serum trifasik setelah suntikan IV cepat: waktu paruh awal 3,7 menit, tengah 1,6 jam, dan terminal 24,8 jam.
+- Ikatan jaringan reversibel yang luas; metabolisme dan ekskresi terutama melalui hati (jalur bilier).
+
+**Farmakodinamik** (label vinblastin)
+
+- Menghambat pembentukan mikrotubulus pada gelendong mitosis sehingga pembelahan sel berhenti pada tahap metafase.
+
+**Daftar pustaka**
+
+1. Satuan Tugas Farmasi Pediatri IDAI. *Buku Saku Dosis Obat Pediatri.* Jakarta: Ikatan Dokter Anak Indonesia; 2016. https://www.idai.or.id
+2. Kementerian Kesehatan RI. *KMK Nomor HK.01.07/MENKES/1199/2025 tentang Formularium Nasional.* 2025. https://farmalkes.kemkes.go.id/en/unduh/keputusan-menteri-kesehatan-republik-indonesia-nomor-hk-01-07-menkes-1199-2025-tentang-formularium-nasional/
+3. Vinblastine Sulfate Injection (Fresenius Kabi), label DailyMed. https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=f073b58e-56d6-4c8d-a2ce-b37719402d77
