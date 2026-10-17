@@ -141,7 +141,7 @@ export function DoseCalculator({ blocks, usesBsa, special, strengths }: Props) {
           {b.note && <p className="mt-1 text-sm text-slate-500"><RichText text={b.note} /></p>}
           <div className="mt-4 space-y-4">
             {b.items.map((it, j) => (
-              <CalcItem key={j} item={it} implicit={/per kg per hari/i.test(b.note ?? "")} weight={weight} bsa={bsa} strength={strength} usesBsa={usesBsa} />
+              <CalcItem key={j} item={it} implicit={implicitAt(b, j)} weight={weight} bsa={bsa} strength={strength} usesBsa={usesBsa} />
             ))}
           </div>
         </section>
@@ -150,18 +150,49 @@ export function DoseCalculator({ blocks, usesBsa, special, strengths }: Props) {
   );
 }
 
+/**
+ * Tabel antimikroba IDAI "dosis per kg per hari": keterangan bisa ada di judul blok atau di paragraf
+ * kutipan tepat sebelum tabel (misalnya "IDAI hlm. 20, tabel antimikroba (dosis per kg per hari):").
+ * Paragraf kutipan berikutnya menggantikan konteks sebelumnya.
+ */
+function implicitAt(b: DoseBlock, index: number): boolean {
+  let ctx = b.note ?? "";
+  for (let k = 0; k < index; k++) {
+    const it = b.items[k];
+    if (it.type === "p" && /hlm/i.test(it.text)) ctx = it.text;
+  }
+  return /per kg per hari/i.test(ctx);
+}
+
+const FIRST_LABEL = /\bloading\b/i;
+
 function CalcItem({ item, implicit, weight, bsa, strength, usesBsa }: { item: DoseItem; implicit: boolean; weight: number | null; bsa: number | null; strength: Strength | null; usesBsa: boolean }) {
   if (item.type === "p") return <p className="text-sm text-slate-700"><RichText text={item.text} /></p>;
   if (item.type === "list")
     return (
       <ul className="list-disc space-y-1.5 pl-5 text-sm text-slate-700">
-        {item.items.map((x, k) => (
-          <li key={k}><RichText text={x} /></li>
-        ))}
+        {item.items.map((x, k) => {
+          // Poin dosis di blok kalkulator ikut dihitung (dosis eksplisit per kg/m² saja).
+          const ms = findDoses(x);
+          return (
+            <li key={k}>
+              <RichText text={x} />
+              {ms.length > 0 && (
+                <ul className="mt-1.5 list-none space-y-1" aria-live="polite">
+                  {ms.map((m, j) => (
+                    <ResultLine key={j} m={m} weight={weight} bsa={bsa} strength={strength && compatible(rowRoute(x), strength) ? strength : null} usesBsa={usesBsa} />
+                  ))}
+                </ul>
+              )}
+            </li>
+          );
+        })}
       </ul>
     );
   const { header, rows } = item;
-  const ivCol = header.findIndex((h) => /^interval \(jam\)/i.test(h));
+  // Kolom interval digabung ke hasil dosis hanya bila tabel punya kolom "Dosis (mg/kg)"; bila tidak, tampil biasa.
+  const hasDoseCol = header.some((h) => /\((mg|mcg|U|IU)\/kg\)/i.test(h));
+  const ivCol = hasDoseCol ? header.findIndex((h) => /^interval \(jam\)/i.test(h)) : -1;
   return (
     <div className="space-y-3">
       {rows.map((r, k) => (
@@ -175,6 +206,8 @@ function CalcItem({ item, implicit, weight, bsa, strength, usesBsa }: { item: Do
               const isSource = /^sumber$/i.test(h);
               const neo = neonatalMatch(h, cell, ivCol >= 0 ? r[ivCol] : undefined);
               const matches = isSource ? [] : neo ? [neo] : implicit && !/keterangan/i.test(h) ? findImplicitPerKgDay(cell) : findDoses(cell);
+              // Baris berlabel "Dosis loading": dosis pertama di sel adalah dosis awal (sekali).
+              if (matches.length && FIRST_LABEL.test(r[0]) && matches[0].per !== "hari" && matches[0].per !== "jam" && matches[0].per !== "menit") matches[0] = { ...matches[0], first: true };
               return (
                 <div key={c}>
                   <dt className="text-xs font-semibold uppercase tracking-wide text-slate-500">{h}</dt>
@@ -211,7 +244,7 @@ function ResultLine({ m, weight, bsa, strength, usesBsa }: { m: DoseMatch; weigh
   const head = (
     <span className="num font-medium text-slate-700">
       {m.raw}
-      {m.implicit ? " (mg/kg/hari, sesuai judul tabel)" : ""}
+      {m.implicit ? " (mg/kg/hari, sesuai keterangan tabel IDAI)" : ""}
     </span>
   );
   if (!weight) return null;
@@ -249,6 +282,7 @@ function describe(r: DoseResult, s: Strength | null) {
   };
   const out: { value: string; label: string; ml?: string; capped?: boolean }[] = [];
   if (r.rate) out.push({ value: fmtRange(r.rate.value, r.unit), label: PER_LABEL[r.rate.per] ?? "", ml: ml(r.rate.value) });
+  if (r.first) out.push({ value: fmtRange(r.first, r.unit), label: "dosis awal (sekali)", ml: ml(r.first), capped: r.cappedDose });
   if (r.plain) out.push({ value: fmtRange(r.plain, r.unit), label: "per pemberian (sesuai teks)", ml: ml(r.plain), capped: r.cappedDose });
   if (r.perDose) out.push({ value: fmtRange(r.perDose, r.unit), label: "per kali", ml: ml(r.perDose), capped: r.cappedDose });
   if (r.perDay) out.push({ value: fmtRange(r.perDay, r.unit), label: "per hari", capped: r.cappedDay });

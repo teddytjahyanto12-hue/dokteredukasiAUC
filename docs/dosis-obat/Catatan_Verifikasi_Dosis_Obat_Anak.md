@@ -1255,3 +1255,14 @@ Obat: faktor VIII (konsentrat).
   - garam ferrous/fero sulfat: dosis IDAI hlm. 53 jelas dan FORNAS memuat tablet 300 mg serta sirup 150 mg/5 mL, tetapi label DailyMed hanya OTC/suplemen (sesuai keputusan pemilik untuk klorfeniramin dan loratadin);
   - faktor VIIa dan faktor IX: tanpa dosis di IDAI maupun FORNAS.
 - Dengan ini kandidat dari indeks IDAI yang memiliki sediaan FORNAS dan sumber jelas telah selesai diproses. Entri IDAI lainnya tidak ada di FORNAS 2025 atau sudah dibatalkan dengan alasan yang tercatat pada bagian batch masing-masing.
+
+## Verifikasi sumber menyeluruh (17 Oktober 2026)
+
+Pemeriksaan ulang seluruh 134 obat sekaligus terhadap teks sumber pada halaman yang dikutip (bukan per batch).
+
+- Sel dosis tabel kalkulator dan tabel ginjal: 828 dari 837 cocok kata per kata (urutan sama) dengan IDAI/FORNAS. Sembilan sisanya angka dosisnya sama; perbedaan hanya perbaikan ejaan ("s.pneumonia" → *S. pneumoniae*, "endocarditis" → endokarditis, "Maintenenca" → maintenance, "deficit" → defisit, "premature" → prematur, "immuno- compromised" → immunocompromised), urutan kata, atau kalimat penghubung tambahan "dosis dan interval menurut tabel neonatus" (gentamisin, amikasin).
+- Baris sediaan FORNAS: 285 dari 311 cocok persis. Sisanya hanya singkatan FORNAS yang ditulis lengkap (btl → botol, amp → ampul, tbg → tabung), catatan nomor halaman, atau "sama seperti di atas".
+- Poin dosis berbentuk daftar/paragraf di blok kalkulator: 13 dari 20 cocok persis; sisanya label "Keterangan IDAI:" atau kata "per dosis" tambahan. Satu poin tanpa nomor halaman diperbaiki: deferasiroks "Keterangan IDAI (hlm. 45): monitor ferritin serum".
+- Label DailyMed: 151 tautan, seluruhnya aktif; generik, nama produk, dan produsen pada label cocok dengan obat dan kutipan.
+- Tautan IDAI (133 obat; faktor VIII hanya bersumber FORNAS) dan KMK FORNAS 2025 (134 obat) aktif dan mengarah ke dokumen yang benar.
+- Contoh bukti gambar: parasetamol IDAI hlm. 35 "20 mg/kg, kemudian 15 mg/kg/kali, po, tiap 4 jam (maks 90 mg/kg/hari)"; 20 mg/kg adalah dosis awal sekali.

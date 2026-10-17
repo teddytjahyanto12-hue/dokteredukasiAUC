@@ -18,7 +18,10 @@ assert.equal(parseNum("7,5"), 7.5);
   const ms = findDoses("20 mg/kg, kemudian 15 mg/kg/kali, po, tiap 4 jam (maks 90 mg/kg/hari)");
   assert.equal(ms.length, 3);
   const loading = computeDose(ms[0], 10)!;
-  assert.deepEqual(loading.plain, [200, 200]);
+  assert.equal(ms[0].first, true, "20 mg/kg adalah dosis awal");
+  assert.deepEqual(loading.first, [200, 200]);
+  assert.equal(loading.perDay, undefined);
+  assert.equal(ms[1].first, undefined);
   const main = computeDose(ms[1], 10)!;
   assert.deepEqual(main.perDose, [150, 150]);
   assert.deepEqual(main.perDay, [900, 900]);
@@ -87,6 +90,25 @@ assert.equal(findDoses("0,02 mg/kg, per oral, 2 jam")[0].intervalH, undefined);
   assert.deepEqual(r.perDose, [12.5, 12.5]);
   assert.equal(r.perDay, undefined);
 }
+
+// Dosis awal dari kata "loading"; dosis setelahnya bukan dosis awal
+{
+  const ms = findDoses("*Loading dose* 6–8 mg/kg (maksimal 500 mg) IV diencerkan dalam 20 ml NaCl 0,9% diberikan selama 30 menit; rumatan: 0,5 mg/kg/jam");
+  assert.equal(ms[0].first, true);
+  assert.deepEqual(computeDose(ms[0], 100)!.first, [500, 500]);
+  assert.equal(ms[1].first, undefined);
+  const dg = findDoses("15 mcg/kg, 5 mcg/kg setelah 6 jam, kemudian 3–5 mcg/kg (maks dosis 200 mcg IV atau 250 mcg oral), 12 jam");
+  assert.equal(dg[0].first, undefined, "tanpa 'kemudian' langsung setelahnya bukan dosis awal");
+  assert.equal(dg[1].first, undefined, "hanya dosis pertama yang bisa menjadi dosis awal");
+}
+
+// "kemudian" setelah dosis yang diulang bukan dosis awal; "dosis inisial" bukan dosis awal
+assert.equal(findDoses("25 mg/kg (maks 2 gram), per oral, 6 jam selama 3 hari, kemudian 15–20 mg/kg, per oral, 6 jam")[0].first, undefined);
+assert.equal(findDoses("0,05 mg/kg (maks 2,5 mg) tiap 5 mnt bila perlu (maks 4 dosis), kemudian 0,1–0,2 mg/kg")[0].first, undefined);
+assert.equal(findDoses("0,5–1 mg/kg, 6 jam, oral, IV, atau IM hari pertama, 12 jam hari kedua, kemudian 1 mg/kg/hari")[0].first, undefined);
+assert.equal(findDoses("0,5 mg/kg/dosis sekali sehari, dosis bisa ditingkatkan 0,25 mg/kg")[0].first, undefined);
+assert.equal(findDoses("150 mg/kg dalam D5% IV dalam 1 jam, dilanjutkan 10 mg/kg/jam selama 20 jam")[0].first, true);
+assert.equal(findDoses("0,02 mg/kg (maks 0,6 mg), kemudian 0,01 mg/kg, 4–6 jam")[0].first, true);
 
 // Laju infus
 {

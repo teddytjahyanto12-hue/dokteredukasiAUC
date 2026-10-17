@@ -5307,7 +5307,7 @@ Keterangan IDAI: monitor kadar kalium darah. Berikan jika parasetamol >150 mg/L 
 | Oral | 20 mg/kg (10–40 mg/kg), 1x/hari | IDAI hlm. 45 |
 | Batas FORNAS (tablet dispersible dan tablet salut selaput) | Maks 40 mg/kgBB/hari | FORNAS hlm. 116 |
 
-Keterangan IDAI: monitor ferritin serum.
+Keterangan IDAI (hlm. 45): monitor ferritin serum.
 
 **Sediaan** (FORNAS 2025 hlm. 116; obat untuk kelebihan besi)
 

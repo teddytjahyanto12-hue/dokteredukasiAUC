@@ -24,6 +24,8 @@ export type DoseMatch = {
   max?: { value: number; unit: string; per?: Per | "dosis"; raw: string };
   /** Dosis tersirat dari judul tabel "dosis per kg per hari". */
   implicit?: boolean;
+  /** Dosis awal sekali, misalnya "20 mg/kg, kemudian 15 mg/kg/kali" atau "Loading dose 6–8 mg/kg". */
+  first?: boolean;
 };
 
 export type DoseResult = {
@@ -35,6 +37,8 @@ export type DoseResult = {
   rate?: { value: Range; per: Per };
   /** Dosis per pemberian tanpa keterangan per kali/per hari ("sesuai teks"). */
   plain?: Range;
+  /** Dosis awal (sekali). */
+  first?: Range;
   unit: string;
   cappedDose: boolean;
   cappedDay: boolean;
@@ -124,6 +128,11 @@ function readContext(m: DoseMatch, ctx0: string) {
     m.max = { value: parseNum(mx[1]), unit: normUnit(mx[2]), per: perOf(mx[3]), raw: mx[0] };
 }
 
+/** Lama pemberian satu dosis ("dalam 1 jam", "dalam 10–15 menit") tidak berarti dosis diulang. */
+const DURATION_SHORT_RE = new RegExp(String.raw`dalam\s*${NUM}(?:${DASH}${NUM})?\s*(?:jam|menit|mnt)\b`, "gi");
+/** Tanda dosis diulang sebelum "kemudian". */
+const REPEAT_RE = /tiap|setiap|ulang|\bq\s*\d|\d\s*(?:jam|mnt|menit)\b|x\s*\/\s*hari|kali\s*\/\s*hari|sehari|per hari|hari pertama|selama/i;
+
 /** Kenali semua dosis per kg / per m² yang eksplisit di dalam teks. */
 export function findDoses(text: string): DoseMatch[] {
   const out: DoseMatch[] = [];
@@ -137,9 +146,17 @@ export function findDoses(text: string): DoseMatch[] {
       basis: /m/i.test(x[4]) && !/kg/i.test(x[4]) ? "m2" : "kg",
       per: per === "dosis" ? "kali" : per,
     };
-    const end = (x.index ?? 0) + x[0].length;
+    const start = x.index ?? 0;
+    const end = start + x[0].length;
     const next = i + 1 < all.length ? all[i + 1].index ?? text.length : text.length;
     readContext(m, clauseAfter(text, end, next));
+    // Dosis awal (sekali): dosis pertama yang langsung diikuti "kemudian/lalu/dilanjutkan" tanpa keterangan
+    // pengulangan (interval, frekuensi, "ulangi", "selama"), atau dosis yang didahului kata "loading".
+    // "Dosis inisial" TIDAK dianggap dosis awal karena di IDAI berarti dosis mulai yang diulang.
+    const between = text.slice(end, next).replace(DURATION_SHORT_RE, " ");
+    const before = text.slice(i > 0 ? (all[i - 1].index ?? 0) + all[i - 1][0].length : 0, start);
+    const followedByNext = i + 1 < all.length && /\b(kemudian|lalu|dilanjutkan)\b/i.test(between) && !REPEAT_RE.test(between);
+    if ((i === 0 && followedByNext && m.per !== "hari" && m.per !== "jam" && m.per !== "menit") || /\bloading\b/i.test(before)) m.first = true;
     out.push(m);
   });
   return out;
@@ -199,6 +216,11 @@ export function computeDose(m: DoseMatch, weightKg: number, bsaM2?: number): Dos
   // per kali / per dosis, atau tanpa keterangan
   let dose = base;
   if (m.max && maxPer !== "hari") ({ r: dose, capped: res.cappedDose } = cap(dose, m.max, m.unit));
+  if (m.first) {
+    // Dosis awal diberikan sekali; tidak dikonversi ke dosis per hari.
+    res.first = dose;
+    return res;
+  }
   if (m.per === "kali") res.perDose = dose;
   else res.plain = dose;
   // Interval >24 jam (misalnya tiap 36/48 jam pada neonatus) tidak dikonversi ke dosis per hari.
