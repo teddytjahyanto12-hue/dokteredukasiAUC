@@ -1,0 +1,21 @@
+# Container Manager > Project, path: DE/Dokter Edukasi Academy/deploy/nas
+# Data live (database + storage) dan rahasia (.env) ada di folder _server (tidak masuk Git).
+name: dokter-edukasi
+
+services:
+  web:
+    image: ghcr.io/teddytjahyanto12-hue/dokteredukasi-web:latest
+    container_name: dokter-edukasi-web
+    restart: unless-stopped
+    env_file:
+      - ../../_server/web.env
+    environment:
+      # Dipaksa di sini supaya tidak tertimpa nilai lama dari web.env
+      DATABASE_URL: file:/data/dev.db
+      DEA_STORAGE_DIR: /data/storage
+      TZ: Asia/Jakarta
+    ports:
+      - "3100:3000"   # uji coba di LAN: http://192.168.88.10:3100
+    volumes:
+      - ../../_server/data:/data
+    mem_limit: 1g

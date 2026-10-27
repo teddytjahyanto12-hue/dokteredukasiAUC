@@ -1,5 +1,17 @@
 # Panduan kerja agen
 
+## Folder kerja tunggal (arahan pengguna 27 Oktober 2026)
+
+Semua pekerjaan, pembaruan, dan file baru proyek Dokter Edukasi Academy dibuat di SATU folder ini saja:
+`\\192.168.88.10\DE\Dokter Edukasi Academy` (NAS Synology; di PC pengguna biasanya drive `W:\Dokter Edukasi Academy`).
+
+- Folder `Project  Framework Auc` di mini PC (`\\desktop-ch10vns\data bersama pc 1 pc 2\...`) hanya salinan runtime website. Folder itu disamakan otomatis dari NAS setiap 15 menit, jadi perubahan yang ditulis langsung di sana akan tertimpa. Ubah file di NAS (termasuk `.bat` dan konfigurasi server), lalu biarkan sinkron membawanya ke mini PC.
+- Folder `Desktop\Project  Framework Auc` di PC Teddy adalah salinan lama (tertinggal). Jangan dipakai untuk bekerja.
+- Konfigurasi server/hosting, dokumen, materi, dan desain baru juga disimpan di folder NAS ini, bukan di folder lain.
+- Database live (`apps\web\prisma\dev.db`), `apps\web\storage` dan `.env` milik runtime di mini PC tidak ikut disinkron; backup hariannya ada di `_arsip\backup-data-live` di NAS.
+
+## Aturan umum
+
 1. Sebelum bekerja, baca PROJECT_MEMORY.md di akar proyek. Itulah sumber status dan keputusan bersama dengan Claude Code.
 2. Baca dokumen detail yang dirujuk memori sesuai tugas. Periksa kondisi berkas aktual sebelum mengedit; jangan menimpa pekerjaan pengguna atau alat lain.
 3. Komunikasikan pekerjaan dalam Bahasa Indonesia. Ikuti permintaan terbaru pengguna, dan catat perubahan arah penting dalam memori.
