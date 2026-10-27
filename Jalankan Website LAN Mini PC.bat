@@ -9,4 +9,20 @@ if /I not "%COMPUTERNAME%"=="DESKTOP-CH10VNS" (
   pause
   exit /b 1
 )
+rem Sejak 27 Okt 2026 server utama ada di NAS Synology. Mini PC hanya cadangan darurat.
+echo.
+echo ================================================================
+echo  PERHATIAN: server utama website sekarang di NAS Synology
+echo    http://192.168.88.10:3100
+echo  Mini PC hanya CADANGAN DARURAT (dipakai bila NAS rusak).
+echo  Database di mini PC bisa sudah lama. Sebelum menyalakan,
+echo  salin backup terbaru dari folder "Backup Server NAS".
+echo ================================================================
+set "KONFIRMASI="
+set /p "KONFIRMASI=Ketik CADANGAN untuk tetap menyalakan website di mini PC: "
+if /I not "%KONFIRMASI%"=="CADANGAN" (
+  echo Dibatalkan. Website mini PC tidak dijalankan.
+  pause
+  exit /b 1
+)
 call "%~dp0Jalankan Website Stabil.bat" %*

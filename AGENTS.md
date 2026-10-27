@@ -5,10 +5,11 @@
 Semua pekerjaan, pembaruan, dan file baru proyek Dokter Edukasi Academy dibuat di SATU folder ini saja:
 `\\192.168.88.10\DE\Dokter Edukasi Academy` (NAS Synology; di PC pengguna biasanya drive `W:\Dokter Edukasi Academy`).
 
-- Folder `Project  Framework Auc` di mini PC (`\\desktop-ch10vns\data bersama pc 1 pc 2\...`) hanya salinan runtime website. Folder itu disamakan otomatis dari NAS setiap 15 menit, jadi perubahan yang ditulis langsung di sana akan tertimpa. Ubah file di NAS (termasuk `.bat` dan konfigurasi server), lalu biarkan sinkron membawanya ke mini PC.
+- SERVER UTAMA website (sejak 27 Okt 2026): NAS Synology, Container Manager Project `dokter-edukasi` dari `deploy/nas/docker-compose.yml`, alamat LAN `http://192.168.88.10:3100`. Data live: `_server/data/dev.db` + `_server/data/storage`; rahasia: `_server/web.env` (`_server/` tidak masuk Git). Jangan mengedit/menyalin-timpa database live; jangan menjalankan server lain terhadap file itu.
+- Cara rilis: commit + push perubahan `apps/web` ke `main` -> GitHub Actions membangun image `ghcr.io/teddytjahyanto12-hue/dokteredukasi-web:latest` -> di DSM Container Manager > Project `dokter-edukasi` > Action > Build (menarik image terbaru dan restart; migrasi Prisma otomatis saat start, salinan `dev.db.sebelum-start` dibuat). Jangan membangun image di NAS.
+- Mini PC = CADANGAN. Folder `Project  Framework Auc` di mini PC disamakan otomatis dari NAS setiap 15 menit (perubahan di sana akan tertimpa). Website mini PC dimatikan; peluncurnya meminta konfirmasi CADANGAN. Backup harian data server NAS ada di mini PC: `data bersama pc 1 pc 2\Backup Server NAS\<tanggal>` (14 terakhir).
 - Folder `Desktop\Project  Framework Auc` di PC Teddy adalah salinan lama (tertinggal). Jangan dipakai untuk bekerja.
 - Konfigurasi server/hosting, dokumen, materi, dan desain baru juga disimpan di folder NAS ini, bukan di folder lain.
-- Database live (`apps\web\prisma\dev.db`), `apps\web\storage` dan `.env` milik runtime di mini PC tidak ikut disinkron; backup hariannya ada di `_arsip\backup-data-live` di NAS.
 
 ## Aturan umum
 
