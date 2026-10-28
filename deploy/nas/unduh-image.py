@@ -2,8 +2,10 @@
 # Dipakai karena Container Manager tidak bisa menarik image ghcr.io lewat "Add From URL".
 # Cara: python deploy/nas/unduh-image.py "_server/images/dokteredukasi-web-<commit>.tar"
 # lalu Container Manager > Image > Action > Import > Add From File > From this DSM,
-# kemudian Project dokter-edukasi > Stop > Action > Build.
-import hashlib, json, sys, tarfile, io, urllib.request
+# kemudian Project dokter-edukasi > Stop > Action > Build, lalu Image > Remove Unused Images.
+# Arsip ditulis ke berkas .part dulu; hanya setelah semua layer lolos cek SHA256 berkas
+# diganti nama ke tujuan dan arsip dokteredukasi-web-*.tar lama di folder yang sama dihapus.
+import glob, hashlib, json, os, sys, tarfile, io, urllib.request
 
 REPO = "teddytjahyanto12-hue/dokteredukasi-web"
 TAG = "latest"
@@ -32,7 +34,8 @@ cfg = get(f"https://ghcr.io/v2/{REPO}/blobs/{cfg_digest}", token).read()
 assert "sha256:" + hashlib.sha256(cfg).hexdigest() == cfg_digest
 print("config", cfg_digest, "created", json.loads(cfg).get("created"), flush=True)
 
-with tarfile.open(OUT, "w") as tar:
+PART = OUT + ".part"
+with tarfile.open(PART, "w") as tar:
     def add_bytes(name, data):
         ti = tarfile.TarInfo(name); ti.size = len(data); tar.addfile(ti, io.BytesIO(data))
     cfg_name = cfg_digest.split(":")[1] + ".json"
@@ -49,4 +52,11 @@ with tarfile.open(OUT, "w") as tar:
         layers.append(name)
         print(f"layer {i + 1}/{len(m['layers'])} {layer['size'] / 1e6:.1f} MB ok", flush=True)
     add_bytes("manifest.json", json.dumps([{"Config": cfg_name, "RepoTags": [f"ghcr.io/{REPO}:{TAG}"], "Layers": layers}]).encode())
+os.replace(PART, OUT)
 print("selesai", OUT)
+
+# Arsip lama tidak dipakai lagi: image yang berjalan ada di Docker NAS, bukan di berkas tar.
+for old in glob.glob(os.path.join(os.path.dirname(os.path.abspath(OUT)), "dokteredukasi-web-*.tar")):
+    if os.path.abspath(old) != os.path.abspath(OUT):
+        os.remove(old)
+        print("hapus arsip lama", old)
