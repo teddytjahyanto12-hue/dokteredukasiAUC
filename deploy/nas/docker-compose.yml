@@ -15,7 +15,21 @@ services:
       DEA_STORAGE_DIR: /data/storage
       TZ: Asia/Jakarta
     ports:
-      - "3100:3000"   # uji coba di LAN: http://192.168.88.10:3100
+      - "3100:3000"   # akses LAN: http://192.168.88.10:3100
     volumes:
       - ../../_server/data:/data
     mem_limit: 1g
+
+  # Cloudflare Tunnel: membuka website ke internet (https://dokteredukasi.com) tanpa port forwarding.
+  # Token ada di _server/tunnel.env (TUNNEL_TOKEN=...), tidak masuk Git.
+  # Di Cloudflare, Public Hostname tunnel diarahkan ke: HTTP web:3000
+  tunnel:
+    image: cloudflare/cloudflared:latest
+    container_name: dokter-edukasi-tunnel
+    restart: unless-stopped
+    command: tunnel --no-autoupdate run
+    env_file:
+      - ../../_server/tunnel.env
+    depends_on:
+      - web
+    mem_limit: 256m
