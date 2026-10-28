@@ -7,7 +7,7 @@ import { Icon, type IconName } from "@/components/icons";
 export type NavItem = { href: string; label: string; icon: IconName; match: string[]; dot?: boolean };
 
 // Tautan navigasi atas dengan ikon; tautan halaman aktif diberi latar biru muda.
-export function NavLinks({ items, compact }: { items: NavItem[]; compact?: boolean }) {
+export function NavLinks({ items, compact, labelClass }: { items: NavItem[]; compact?: boolean; labelClass?: string }) {
   const pathname = usePathname();
   return (
     <>
@@ -18,6 +18,7 @@ export function NavLinks({ items, compact }: { items: NavItem[]; compact?: boole
             key={it.href}
             href={it.href}
             aria-current={active ? "page" : undefined}
+            title={labelClass ? it.label : undefined}
             className={`relative inline-flex items-center whitespace-nowrap rounded-lg font-medium transition ${
               compact ? "min-w-0 flex-1 flex-col gap-0.5 px-1 py-1.5 text-[11px] md:flex-none md:flex-row md:gap-2 md:px-2.5 md:text-sm" : "gap-1.5 px-2.5 py-2 text-sm"
             } ${
@@ -25,7 +26,7 @@ export function NavLinks({ items, compact }: { items: NavItem[]; compact?: boole
             }`}
           >
             <Icon name={it.icon} className={`h-4 w-4 ${it.icon === "sparkles" ? "text-current" : ""}`} />
-            {compact ? <><span className="md:hidden">{it.href === "/kelas" ? "Kelas" : it.href === "/rekomendasi" ? "Rekomendasi" : it.href === "/kalkulator" ? "Kalkulator" : it.href === "/dosis-obat" ? "Dosis" : it.label === "Dashboard" ? "Dashboard" : "Belajar"}</span><span className="hidden md:inline">{it.label}</span></> : it.label}
+            {compact ? <><span className="md:hidden">{it.href === "/kelas" ? "Kelas" : it.href === "/rekomendasi" ? "Rekomendasi" : it.href === "/kalkulator" ? "Kalkulator" : it.href === "/dosis-obat" ? "Dosis" : it.href === "/tinjauan-medis" ? "Tinjauan" : it.label}</span><span className="hidden md:inline">{it.label}</span></> : labelClass ? <span className={labelClass}>{it.label}</span> : it.label}
             {it.dot && <span className="absolute right-1 top-1.5 h-1.5 w-1.5 rounded-full bg-mascot" aria-hidden />}
           </Link>
         );

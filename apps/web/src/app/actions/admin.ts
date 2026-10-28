@@ -275,6 +275,24 @@ export async function resetPasswordAction(form: FormData) {
   back(backTo, "Kata sandi diganti. Sampaikan ke pengguna melalui kanal pribadi.");
 }
 
+// Hapus akun murid secara permanen (progres, kuis, catatan ikut terhapus). Murid yang punya
+// order lunas/cicilan tidak bisa dihapus agar riwayat keuangan utuh: nonaktifkan saja akunnya.
+export async function deleteStudentAction(form: FormData) {
+  const me = await requirePermission("admin.students");
+  const id = str(form, "userId");
+  const target = await db.user.findUnique({ where: { id }, include: { orders: { select: { code: true, status: true } } } });
+  if (!target || target.role !== "STUDENT") back("/admin/pengguna", "Akun murid tidak ditemukan.", "error");
+  const paid = target.orders.filter((o) => o.status === "PAID" || o.status === "PARTIAL");
+  if (paid.length > 0) {
+    back(`/admin/pengguna/${id}`, `Akun punya ${paid.length} order lunas/cicilan (${paid.map((o) => o.code).join(", ")}), jadi tidak dihapus agar riwayat keuangan tetap ada. Nonaktifkan akun bila perlu.`, "error");
+  }
+  await db.user.delete({ where: { id } });
+  await logAudit(actor(me), "ACCOUNT_DELETED", "User", id, `Akun murid dihapus: ${target.name} (${target.email})`, {
+    before: { name: target.name, email: target.email, phone: target.phone, institution: target.institution, orders: target.orders.length },
+  });
+  back("/admin/pengguna", `Akun ${target.name} dihapus.`);
+}
+
 export async function saveTutorProfileAction(form: FormData) {
   const me = await requirePermission("admin.tutors");
   const userId = str(form, "userId");

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { registerAction } from "@/app/actions/auth";
 import { Field, Flash } from "@/components/ui";
+import { PasswordInput } from "@/components/password-input";
 import { getCurrentUser, homeFor } from "@/lib/auth";
 import { readFlash, safeNext, type SearchParams } from "@/lib/flash";
 
@@ -34,10 +35,10 @@ export default async function RegisterPage({ searchParams }: { searchParams: Sea
             <input className="input" type="email" name="email" required autoComplete="email" />
           </Field>
           <Field label="Kata sandi" hint="Minimal 6 karakter.">
-            <input className="input" type="password" name="password" required minLength={6} autoComplete="new-password" />
+            <PasswordInput className="input" name="password" required minLength={6} autoComplete="new-password" />
           </Field>
           <Field label="Ulangi kata sandi">
-            <input className="input" type="password" name="confirm" required minLength={6} autoComplete="new-password" />
+            <PasswordInput className="input" name="confirm" required minLength={6} autoComplete="new-password" />
           </Field>
           <button className="btn w-full" type="submit">
             Daftar

@@ -10,7 +10,7 @@ import { Icon } from "@/components/icons";
 import { NavLinks, type NavItem } from "@/components/nav-links";
 import { SiteSearch } from "@/components/site-search";
 
-// Top bar: (1) logo & wordmark + pencarian, (2) tiga tautan berikon, (3) streak & profil.
+// Top bar: (1) logo & wordmark + pencarian, (2) tautan berikon, (3) Pembelajaran Saya/Dashboard, streak & profil.
 export async function SiteHeader() {
   const [user, settings] = await Promise.all([getCurrentUser(), getSettings()]);
   const [unread, streak] = await Promise.all([
@@ -22,14 +22,15 @@ export async function SiteHeader() {
     { href: "/kelas", label: "Katalog Kelas", icon: "book", match: ["/kelas", "/materi", "/quiz", "/jalur", "/program"] },
     { href: "/kalkulator", label: "Kalkulator Medis", icon: "calculator", match: ["/kalkulator"] },
     { href: "/dosis-obat", label: "Dosis Obat", icon: "pill", match: ["/dosis-obat"] },
-    {
-      href: !user || user.role === "STUDENT" ? (user ? "/belajar" : home) : home,
-      label: !user || user.role === "STUDENT" ? "Pembelajaran Saya" : "Dashboard",
-      icon: "award",
-      match: ["/belajar", "/admin", "/tutor-panel", "/pembelian", "/bimbingan"],
-      dot: !!streak && !streak.activeToday,
-    },
+    { href: "/tinjauan-medis", label: "Tinjauan Medis", icon: "file", match: ["/tinjauan-medis"] },
   ];
+  // Dashboard / Pembelajaran Saya ditempatkan di kanan, dekat profil.
+  const learning = {
+    href: !user || user.role === "STUDENT" ? (user ? "/belajar" : home) : home,
+    label: !user || user.role === "STUDENT" ? "Pembelajaran Saya" : "Dashboard",
+    match: ["/belajar", "/admin", "/tutor-panel", "/pembelian", "/bimbingan"],
+    dot: !!streak && !streak.activeToday,
+  };
   const initials = user
     ? user.name
         .replace(/^(dr\.?|drg\.?)\s+/i, "")
@@ -62,6 +63,7 @@ export async function SiteHeader() {
         </nav>
 
         <div className="ml-auto flex shrink-0 items-center gap-2 sm:gap-3">
+          <NavLinks items={[{ ...learning, icon: "award" }]} labelClass="hidden lg:inline" />
           {user ? (
             <>
               {streak && (

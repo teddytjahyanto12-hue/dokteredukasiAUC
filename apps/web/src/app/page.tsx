@@ -12,6 +12,7 @@ export default async function HomePage({ searchParams }: { searchParams: SearchP
   const { pick } = await readFlash(searchParams);
   const [s, user, tracks] = await Promise.all([getSettings(), getCurrentUser(), db.track.findMany({ where: { published: true }, orderBy: { order: "asc" }, select: { slug: true, title: true } })]);
   const notes = new Map(s.homeProgramNotes.split("\n").map((line) => line.split("|").map((x) => x.trim())).filter((x) => x.length >= 2).map(([slug, note]) => [slug, note]));
+  const groups = s.communityGroups.split("\n").map((line) => line.split("|").map((x) => x.trim())).filter(([name]) => name).map(([name, url]) => ({ name, url: url && /^https?:\/\//.test(url) ? url : "" }));
   const steps = s.homeSteps.split("\n").map((line) => line.split("|").map((x) => x.trim())).filter((x) => x.length >= 2).slice(0, 4);
   const programs: { label: string; note: string; slug: string; icon: IconName; color: string }[] = [
     { label: tracks.find((t) => t.slug === "pre-clinical")?.title ?? "Pre-Clinical", note: notes.get("pre-clinical") ?? "", slug: "pre-clinical", icon: "book", color: "bg-mascot text-ink" },
@@ -30,6 +31,20 @@ export default async function HomePage({ searchParams }: { searchParams: SearchP
             <p className="mt-5 max-w-xl whitespace-pre-line text-base leading-relaxed text-slate-600">{s.heroSubtitle}</p>
             <div className="mt-7 flex flex-col gap-3 sm:flex-row">
               <Link href="#katalog" className="btn px-5">Jelajahi kelas <Icon name="arrow" /></Link>
+              {groups.length > 0 && (
+                <details className="group relative">
+                  <summary className="btn-secondary cursor-pointer list-none px-5 [&::-webkit-details-marker]:hidden"><Icon name="users" /> Gabung ke Grup <span className="text-xs transition group-open:rotate-180" aria-hidden>▾</span></summary>
+                  <div className="absolute left-0 z-20 mt-2 w-72 rounded-xl border border-slate-200 bg-white p-2 shadow-xl">
+                    {groups.map((g) =>
+                      g.url ? (
+                        <a key={g.name} href={g.url} target="_blank" rel="noopener noreferrer" className="flex items-center justify-between gap-3 rounded-lg px-3 py-2.5 text-sm font-semibold text-slate-800 hover:bg-mascot/30">Gabung ke Grup {g.name} <Icon name="arrow" className="h-4 w-4" /></a>
+                      ) : (
+                        <span key={g.name} className="flex items-center justify-between gap-3 rounded-lg px-3 py-2.5 text-sm text-slate-400">Grup {g.name} <span className="text-xs">tautan segera tersedia</span></span>
+                      ),
+                    )}
+                  </div>
+                </details>
+              )}
             </div>
             <p className="mt-5 flex items-center gap-2 text-xs leading-relaxed text-slate-500"><Icon name="checkCircle" className="h-4 w-4 text-brand" />Belajar bertahap, pantau progres dari akun.</p>
           </div>

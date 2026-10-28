@@ -10,7 +10,13 @@ const manrope = Manrope({ subsets: ["latin"], variable: "--font-manrope" });
 
 export async function generateMetadata(): Promise<Metadata> {
   const s = await getSettings();
-  return { title: { default: s.siteName, template: `%s · ${s.siteName}` }, description: s.heroSubtitle };
+  // Ikon tab & gambar pratinjau tautan berasal dari src/app/icon.png, apple-icon.png, opengraph-image.png (logo DEA).
+  return {
+    metadataBase: new URL(process.env.APP_URL || "http://localhost:3000"),
+    title: { default: s.siteName, template: `%s · ${s.siteName}` },
+    description: s.heroSubtitle,
+    openGraph: { siteName: s.siteName, locale: "id_ID", type: "website" },
+  };
 }
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

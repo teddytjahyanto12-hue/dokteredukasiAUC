@@ -7,6 +7,7 @@ import { rupiah, tanggal } from "@/lib/format";
 import { FIELD_LABEL, MENTORING_FIELDS, MENTORING_STATUS_LABEL, ORDER_STATUS_LABEL, ROLE_LABEL, type MentoringField } from "@/lib/constants";
 import {
   createMentoringAction,
+  deleteStudentAction,
   grantEntitlementAction,
   resetPasswordAction,
   revokeEntitlementAction,
@@ -195,6 +196,15 @@ export default async function AdminUserDetail({ params, searchParams }: { params
           </>
         )}
       </div>
+
+      <form action={deleteStudentAction} className="card mt-6 space-y-3 border-red-200">
+        <input type="hidden" name="userId" value={user.id} />
+        <h2 className="h2 text-red-700">Hapus akun murid</h2>
+        <p className="text-sm text-slate-600">
+          Menghapus akun secara permanen beserta progres belajar, hasil kuis, catatan, dan order yang belum dibayar. Tidak bisa dibatalkan. Akun dengan order lunas/cicilan tidak bisa dihapus; nonaktifkan saja lewat Data akun.
+        </p>
+        <ConfirmButton message={`Hapus akun ${user.name} (${user.email}) secara permanen? Tindakan ini tidak bisa dibatalkan.`}>Hapus akun ini</ConfirmButton>
+      </form>
     </>
   );
 }

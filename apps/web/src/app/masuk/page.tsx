@@ -2,6 +2,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { loginAction } from "@/app/actions/auth";
 import { Field, Flash } from "@/components/ui";
+import { PasswordInput } from "@/components/password-input";
 import { getCurrentUser, homeFor } from "@/lib/auth";
 import { readFlash, safeNext, type SearchParams } from "@/lib/flash";
 
@@ -25,7 +26,7 @@ export default async function LoginPage({ searchParams }: { searchParams: Search
             <input className="input" type="email" name="email" required autoComplete="email" />
           </Field>
           <Field label="Kata sandi">
-            <input className="input" type="password" name="password" required autoComplete="current-password" />
+            <PasswordInput className="input" name="password" required autoComplete="current-password" />
           </Field>
           <button className="btn w-full" type="submit">
             Masuk

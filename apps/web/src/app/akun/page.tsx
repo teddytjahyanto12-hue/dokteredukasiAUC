@@ -1,6 +1,7 @@
 import { requireUser } from "@/lib/auth";
 import { changePasswordAction, updateProfileAction } from "@/app/actions/auth";
 import { Field, Flash, PageHeader } from "@/components/ui";
+import { PasswordInput } from "@/components/password-input";
 import { readFlash, type SearchParams } from "@/lib/flash";
 import { ROLE_LABEL } from "@/lib/constants";
 
@@ -31,13 +32,13 @@ export default async function AccountPage({ searchParams }: { searchParams: Sear
       <form action={changePasswordAction} className="card mt-6 space-y-4">
         <h2 className="h2">Ganti kata sandi</h2>
         <Field label="Kata sandi saat ini">
-          <input className="input" type="password" name="current" required autoComplete="current-password" />
+          <PasswordInput className="input" name="current" required autoComplete="current-password" />
         </Field>
         <Field label="Kata sandi baru">
-          <input className="input" type="password" name="password" required minLength={6} autoComplete="new-password" />
+          <PasswordInput className="input" name="password" required minLength={6} autoComplete="new-password" />
         </Field>
         <Field label="Ulangi kata sandi baru">
-          <input className="input" type="password" name="confirm" required minLength={6} autoComplete="new-password" />
+          <PasswordInput className="input" name="confirm" required minLength={6} autoComplete="new-password" />
         </Field>
         <button className="btn" type="submit">
           Ganti kata sandi

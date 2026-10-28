@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { db } from "@/lib/db";
+import { getCurrentUser } from "@/lib/auth";
 
 type Live = { active: boolean; startsAt: Date | null; endsAt: Date | null };
 
@@ -11,11 +12,13 @@ export function announcementLive(a: Live, now = new Date()) {
 // Banner pengumuman di beranda untuk semua pengunjung. Dikelola di Owner/Admin → Pengumuman.
 export async function AnnouncementBanner() {
   const now = new Date();
-  const rows = await db.announcement.findMany({
+  const [user, all] = await Promise.all([getCurrentUser(), db.announcement.findMany({
     where: { active: true, AND: [{ OR: [{ startsAt: null }, { startsAt: { lte: now } }] }, { OR: [{ endsAt: null }, { endsAt: { gt: now } }] }] },
     orderBy: [{ tone: "desc" }, { createdAt: "desc" }],
     take: 3,
-  });
+  })]);
+  // Ajakan daftar tidak perlu tampil untuk pengunjung yang sudah login.
+  const rows = user ? all.filter((a) => a.linkUrl !== "/daftar") : all;
   if (rows.length === 0) return null;
   return (
     <section aria-label="Pengumuman" className="border-b border-slate-200">
@@ -32,11 +35,11 @@ export async function AnnouncementBanner() {
               </p>
               {a.linkUrl &&
                 (external ? (
-                  <a href={a.linkUrl} target="_blank" rel="noopener noreferrer" className={`shrink-0 text-sm font-semibold underline underline-offset-2 ${important ? "text-mascot" : "text-ink"}`}>
+                  <a href={a.linkUrl} target="_blank" rel="noopener noreferrer" className="btn btn-sm shrink-0">
                     {a.linkLabel || "Lihat detail"} →
                   </a>
                 ) : (
-                  <Link href={a.linkUrl} className={`shrink-0 text-sm font-semibold underline underline-offset-2 ${important ? "text-mascot" : "text-ink"}`}>
+                  <Link href={a.linkUrl} className="btn btn-sm shrink-0">
                     {a.linkLabel || "Lihat detail"} →
                   </Link>
                 ))}
