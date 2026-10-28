@@ -2,7 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { db } from "@/lib/db";
-import { REVIEW_SECTIONS } from "@/lib/medical-review";
+import { parseSections } from "@/lib/medical-review";
 import { ArticleText } from "@/components/article-text";
 
 type Props = { params: Promise<{ slug: string }> };
@@ -10,30 +10,34 @@ type Props = { params: Promise<{ slug: string }> };
 const fullDate = (d: Date | null) => (d ? new Intl.DateTimeFormat("id-ID", { dateStyle: "long", timeZone: "Asia/Jakarta" }).format(d) : "-");
 
 async function load(slug: string) {
-  const r = await db.medicalReview.findUnique({ where: { slug } });
+  const r = await db.medicalReview.findUnique({ where: { slug }, include: { category: { select: { name: true, slug: true } } } });
   return r?.published ? r : null;
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const r = await load((await params).slug);
   if (!r) return { title: "Tinjauan Medis" };
-  return { title: r.title, description: r.abstract?.replace(/^[-•]\s+/gm, "").slice(0, 160) ?? undefined };
+  return {
+    title: r.title,
+    description: r.abstract?.replace(/^[-•]\s+/gm, "").slice(0, 160) ?? undefined,
+    openGraph: r.coverFileId ? { images: [`/api/berkas/${r.coverFileId}`] } : undefined,
+  };
 }
 
-// Artikel gaya jurnal: header di tengah, kotak abstrak, batang tubuh bertahap, pustaka kecil di bawah.
+// Artikel gaya jurnal: header di tengah, gambar ilustrasi, kotak abstrak, bagian bebas, pustaka kecil di bawah.
 export default async function MedicalReviewArticle({ params }: Props) {
   const r = await load((await params).slug);
   if (!r) notFound();
-  const sections = REVIEW_SECTIONS.filter((s) => r[s.key]);
+  const sections = parseSections(r.sections);
   return (
     <article className="container-page py-10 sm:py-14">
       <div className="mx-auto max-w-3xl">
-        <Link href="/tinjauan-medis" className="text-sm text-slate-500 hover:text-slate-900">
+        <Link href={r.category ? `/tinjauan-medis?kategori=${r.category.slug}` : "/tinjauan-medis"} className="text-sm text-slate-500 hover:text-slate-900">
           ← Semua Tinjauan Medis
         </Link>
         <header className="mt-6 border-b border-slate-200 pb-8 text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.14em] text-brand">
-            {r.category ? `${r.category} | ` : ""}Tinjauan Medis
+            {r.category ? `${r.category.name} | ` : ""}Tinjauan Medis
           </p>
           <h1 className="mt-4 font-serif text-3xl font-bold leading-tight tracking-tight text-slate-900 sm:text-4xl">{r.title}</h1>
           <p className="mt-4 text-sm text-slate-600">
@@ -46,6 +50,11 @@ export default async function MedicalReviewArticle({ params }: Props) {
           </p>
         </header>
 
+        {r.coverFileId && (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img src={`/api/berkas/${r.coverFileId}`} alt="" className="mt-8 aspect-[16/9] w-full rounded-2xl border border-slate-200 object-cover" />
+        )}
+
         {r.abstract && (
           <section aria-labelledby="abstrak" className="mt-8 rounded-2xl border border-sky-100 bg-sky-50/70 p-5 sm:p-6">
             <h2 id="abstrak" className="text-sm font-bold uppercase tracking-wide text-sky-900">Abstract</h2>
@@ -54,10 +63,10 @@ export default async function MedicalReviewArticle({ params }: Props) {
         )}
 
         <div className="mt-10 space-y-10 font-serif text-[17px] leading-[1.8] text-slate-800">
-          {sections.map((s) => (
-            <section key={s.key} aria-labelledby={`bag-${s.key}`}>
-              <h2 id={`bag-${s.key}`} className="mb-3 font-sans text-xl font-bold text-slate-900">{s.label}</h2>
-              <ArticleText text={r[s.key]!} />
+          {sections.map((s, i) => (
+            <section key={i} aria-labelledby={s.title ? `bag-${i}` : undefined}>
+              {s.title && <h2 id={`bag-${i}`} className="mb-3 font-sans text-xl font-bold text-slate-900 sm:text-2xl">{s.title}</h2>}
+              {s.body && <ArticleText text={s.body} />}
             </section>
           ))}
         </div>

@@ -106,7 +106,7 @@ export const CALCULATORS: CalcMeta[] = [
     field: "Neurologi",
     summary: "Menilai tingkat kesadaran dari respons mata, verbal, dan motorik.",
     keywords: ["gcs", "glasgow", "kesadaran", "koma", "cedera kepala", "penurunan kesadaran", "trauma"],
-    status: "draft",
+    status: "validated",
     access: "free",
     version: "0.1",
   },
@@ -117,11 +117,11 @@ export const CALCULATORS: CalcMeta[] = [
     field: "Obstetri & Ginekologi",
     summary: "Menghitung hari perkiraan lahir dan usia kehamilan dari HPHT, USG, atau transfer embrio.",
     keywords: ["hpl", "hpht", "naegele", "usia kehamilan", "uk", "hamil", "edd", "taksiran persalinan", "due date"],
-    status: "draft",
+    status: "validated",
     access: "free",
     version: "0.1",
   },
-  ...ACTIVE.map(toMeta("draft")),
+  ...ACTIVE.map(toMeta("validated")),
   ...SOON.map(toMeta("soon")),
 ];
 

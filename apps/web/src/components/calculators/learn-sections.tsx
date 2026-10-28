@@ -76,7 +76,9 @@ export function SourcesAndDisclaimer({ meta, sources }: { meta: CalcMeta; source
         <p className="font-semibold">
           {meta.validation
             ? `Tervalidasi oleh ${meta.validation.doctor} pada ${meta.validation.date} (dokumen validasi versi ${meta.validation.docVersion}).`
-            : `Status: draf versi ${meta.version ?? "0"}, belum divalidasi dokter.`}
+            : meta.status === "validated"
+              ? `Status: tervalidasi, versi ${meta.version ?? "0"}.`
+              : `Status: draf versi ${meta.version ?? "0"}, belum divalidasi dokter.`}
         </p>
         <p className="mt-2">{DISCLAIMER}</p>
       </section>

@@ -1,8 +1,23 @@
-// Urutan bagian batang tubuh artikel Tinjauan Medis (struktur penulisan ilmiah).
-export const REVIEW_SECTIONS = [
-  { key: "introduction", label: "Pendahuluan", hint: "Latar belakang epidemiologi atau signifikansi klinis topik." },
-  { key: "pathophysiology", label: "Patofisiologi / Etiologi", hint: "Ringkasan mekanisme medis terkait." },
-  { key: "diagnosis", label: "Diagnosis & Manifestasi Klinis", hint: "Kriteria diagnosis, laboratorium, atau pencitraan." },
-  { key: "management", label: "Tata Laksana / Algoritma", hint: "Dosis, first-line treatment, dan penanganan komplikasi." },
-  { key: "conclusion", label: "Kesimpulan / Pesan Klinis (Clinical Pearls)", hint: "Takeaway message untuk praktisi/pembaca." },
-] as const;
+// Bagian isi artikel Tinjauan Medis disimpan sebagai JSON [{ title, body }] dan bebas diatur admin.
+export type ReviewSection = { title: string; body: string };
+
+// Usulan judul bagian untuk artikel baru (struktur penulisan ilmiah); admin boleh mengubah, menghapus, atau menambah.
+export const DEFAULT_SECTION_TITLES = [
+  "Pendahuluan",
+  "Patofisiologi / Etiologi",
+  "Diagnosis & Manifestasi Klinis",
+  "Tata Laksana / Algoritma",
+  "Kesimpulan / Pesan Klinis (Clinical Pearls)",
+];
+
+export function parseSections(raw: string | null | undefined): ReviewSection[] {
+  try {
+    const value = JSON.parse(raw || "[]");
+    if (!Array.isArray(value)) return [];
+    return value
+      .map((s) => ({ title: String(s?.title ?? "").trim(), body: String(s?.body ?? "").trim() }))
+      .filter((s) => s.title || s.body);
+  } catch {
+    return [];
+  }
+}
