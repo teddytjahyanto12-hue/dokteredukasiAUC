@@ -6,6 +6,10 @@ Langkah:
   2. Tiap halaman dirender ke <storage>/srma-pages/<sha256>/page-NNN.png (tampilan tanpa unduh PDF asli).
   3. SQL migrasi ditulis: 4 kelompok bahasan @5 PDF, kelompok 1 (bahasan 1-5) gratis untuk akun terdaftar,
      sisanya untuk pemilik paket; topik lama yang masih terbit di BKV-12 disembunyikan (tidak dihapus).
+     Bila ada Modul_Fisiologi_Kardiovaskular_Lengkap.pdf, PDF utuh itu dipasang di kelompok 5 (paket).
+  4. Item yang sudah ada diarahkan ke berkas PDF terbaru (UPDATE fileId), sehingga progres murid tetap.
+
+Setiap pembaruan materi menulis migrasi BARU (migrasi yang sudah diterapkan tidak boleh diubah).
 
 Database tidak disentuh skrip ini; perubahan data berjalan lewat `prisma migrate deploy` saat server start.
 Pemakaian: python -I prisma/bkv12-materi.py <folder Materi WEBSITE> <folder storage> <berkas migration.sql>
@@ -26,7 +30,9 @@ GROUPS = [
     "Mekanika Jantung dan Dasar Aliran Darah",
     "Pembuluh Darah dan Regulasi Sirkulasi",
     "Korelasi Penyakit dan Penerapan Dasar",
+    "Modul Lengkap",
 ]
+FULL = "Modul_Fisiologi_Kardiovaskular_Lengkap.pdf"
 NOTE = "Modul Fisiologi Kardiovaskular Dokter Edukasi Academy (rujukan utama Sherwood & CaKes)."
 
 files = sorted(source.glob("Bahasan_[0-9][0-9]_*.pdf"))
@@ -41,7 +47,7 @@ def q(text: str) -> str:
 now = int(time.time() * 1000)
 cat = "(SELECT id FROM Category WHERE code = 'BKV-12')"
 sql = [
-    "-- Materi BKV-12 (Blok 12 Sistem Kardiovaskuler): 20 bahasan PDF dalam 4 kelompok.",
+    "-- Materi BKV-12 (Blok 12 Sistem Kardiovaskuler): 20 bahasan PDF dalam 4 kelompok (+ PDF modul lengkap).",
     "-- Dibuat oleh prisma/bkv12-materi.py; berkas PDF & gambar halaman sudah ada di storage server.",
     "-- Aman dijalankan pada database kosong (semua INSERT bergantung pada Blok BKV-12 yang ada).",
     "",
@@ -52,9 +58,15 @@ sql = [
     "WHERE code = 'BKV-12' AND description LIKE 'Blok 12 tahap akademik (preklinik). Materi dibagi per Bab%';",
     "",
 ]
+full = source / FULL
 for g, title in enumerate(GROUPS, 1):
     first, last = (g - 1) * 5 + 1, g * 5
-    desc = f"Bahasan {first}–{last}. " + ("Gratis untuk semua akun terdaftar." if g == 1 else "Tersedia untuk pemilik paket Blok Kardiovaskuler atau Basic Medical Science.")
+    if g == 5:
+        if not full.exists():
+            continue
+        desc = "Seluruh 20 bahasan dalam satu PDF: sampul, daftar isi, isi lengkap, dan daftar pustaka. Tersedia untuk pemilik paket Blok Kardiovaskuler atau Basic Medical Science."
+    else:
+        desc = f"Bahasan {first}–{last}. " + ("Gratis untuk semua akun terdaftar." if g == 1 else "Tersedia untuk pemilik paket Blok Kardiovaskuler atau Basic Medical Science.")
     sql.append(
         f'INSERT OR IGNORE INTO Topic (id, categoryId, title, description, "order", published) '
         f"SELECT 'dea-bkv12-group-{g}', id, {q(title)}, {q(desc)}, {g}, true FROM Category WHERE code = 'BKV-12';"
@@ -62,7 +74,7 @@ for g, title in enumerate(GROUPS, 1):
 sql.append("")
 
 total_pages = 0
-for no, pdf in enumerate(files, 1):
+for no, pdf in enumerate(files + ([full] if full.exists() else []), 1):
     data = pdf.read_bytes()
     if not data.startswith(b"%PDF-"):
         raise SystemExit(f"PDF tidak valid: {pdf.name}")
@@ -82,15 +94,19 @@ for no, pdf in enumerate(files, 1):
                 page.get_pixmap(matrix=fitz.Matrix(2, 2), alpha=False).save(str(target))
             pages.append(f"srma-pages/{digest}/{target.name}")
     total_pages += len(pages)
-    title = re.sub(r"\s+", " ", heading) if heading else f"Bahasan {no}. " + pdf.stem[11:].replace("_", " ")
+    if pdf == full:
+        title, item_id, group = "Modul Fisiologi Kardiovaskular (PDF lengkap)", "dea-bkv12-item-modul", 5
+    else:
+        title = re.sub(r"\s+", " ", heading) if heading else f"Bahasan {no}. " + pdf.stem[11:].replace("_", " ")
+        item_id, group = f"dea-bkv12-item-{no:02d}", (no - 1) // 5 + 1
     file_id = f"dea-bkv12-pdf-{digest[:24]}"
-    group = (no - 1) // 5 + 1
     sql += [
         f"INSERT OR IGNORE INTO FileAsset (id, storagePath, originalName, mimeType, size, isPublic, createdAt) "
         f"VALUES ({q(file_id)}, {q(rel)}, {q(pdf.name)}, 'application/pdf', {len(data)}, false, {now});",
         f'INSERT OR IGNORE INTO Item (id, topicId, type, title, fileId, sourceNote, isFree, "order", published, createdAt) '
-        f"SELECT 'dea-bkv12-item-{no:02d}', id, 'PDF', {q(title)}, {q(file_id)}, {q(NOTE)}, {'true' if group == 1 else 'false'}, {no}, true, {now} "
+        f"SELECT {q(item_id)}, id, 'PDF', {q(title)}, {q(file_id)}, {q(NOTE)}, {'true' if group == 1 else 'false'}, {no}, true, {now} "
         f"FROM Topic WHERE id = 'dea-bkv12-group-{group}';",
+        f"UPDATE Item SET fileId = {q(file_id)}, title = {q(title)} WHERE id = {q(item_id)} AND (fileId IS NULL OR fileId <> {q(file_id)});",
         f"INSERT OR IGNORE INTO Setting (key, value) VALUES ({q('material.pdf-pages.' + file_id)}, {q(json.dumps({'pages': pages}))});",
         "",
     ]
@@ -98,4 +114,4 @@ for no, pdf in enumerate(files, 1):
 
 out.parent.mkdir(parents=True, exist_ok=True)
 out.write_text("\n".join(sql), encoding="utf-8")
-print(f"Selesai: 20 PDF / {total_pages} halaman; SQL -> {out}")
+print(f"Selesai: {len(files) + full.exists()} PDF / {total_pages} halaman; SQL -> {out}")
