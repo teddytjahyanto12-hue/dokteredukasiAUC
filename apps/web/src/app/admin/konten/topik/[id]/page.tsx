@@ -320,7 +320,7 @@ function ItemForm({
           <textarea className="input" name="body" rows={type === "TEXT" ? 6 : 2} defaultValue={item?.body ?? ""} required={type === "TEXT"} />
         </Field>
       </div>
-      <Field label="Sumber & izin penggunaan" hint="Mis. milik sendiri / izin penerbit / tautan resmi.">
+      <Field label="Sumber & izin penggunaan (internal)" hint="Catatan pengelolaan internal; tidak ditampilkan kepada murid.">
         <input className="input" name="sourceNote" defaultValue={item?.sourceNote ?? ""} />
       </Field>
       <Field label="Durasi (menit)" hint="Lama video/bacaan. Dijumlahkan menjadi total menit di kartu kelas.">

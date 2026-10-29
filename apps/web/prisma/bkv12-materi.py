@@ -33,7 +33,7 @@ GROUPS = [
     "Modul Lengkap",
 ]
 FULL = "Modul_Fisiologi_Kardiovaskular_Lengkap.pdf"
-NOTE = "Modul Fisiologi Kardiovaskular Dokter Edukasi Academy (rujukan utama Sherwood & CaKes)."
+NOTE = ""  # Catatan sumber tambahan tidak ditampilkan pada materi website.
 
 files = sorted(source.glob("Bahasan_[0-9][0-9]_*.pdf"))
 if [int(f.name[8:10]) for f in files] != list(range(1, 21)):

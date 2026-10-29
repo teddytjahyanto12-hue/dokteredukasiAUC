@@ -1,4 +1,4 @@
-import { resolveEmbed, PROVIDER_LABEL } from "@/lib/embed";
+import { resolveEmbed } from "@/lib/embed";
 import { Empty } from "@/components/ui";
 import { PdfViewer } from "@/components/pdf-viewer";
 import { PdfPagesViewer } from "@/components/pdf-pages-viewer";
@@ -74,7 +74,6 @@ export async function MaterialViewer({ item, showOriginalDownload = false }: { i
               referrerPolicy="strict-origin-when-cross-origin"
             />
           </div>
-          <p className="mt-2 text-xs text-slate-400">Sumber: {PROVIDER_LABEL[embed.provider]}</p>
         </div>,
       );
     } else {

@@ -28,7 +28,7 @@ GROUPS = [
     "Asma dan Infeksi Sistem Respirasi",
     "Penyakit Respirasi dan Integrasi Preklinik",
 ]
-NOTE = "Modul Sistem Respirasi Dokter Edukasi Academy (rujukan utama Sherwood & CaKes)."
+NOTE = ""  # Catatan sumber tambahan tidak ditampilkan pada materi website.
 
 files = sorted(source.glob("BAB_[0-9][0-9]_*.pdf"))
 if [int(f.name[4:6]) for f in files] != list(range(1, 27)):

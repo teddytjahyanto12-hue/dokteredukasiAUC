@@ -208,7 +208,6 @@ export default async function TopicPage({ params, searchParams }: { params: Prom
               </div>
               {selected.description && <p className="mb-4 text-sm text-slate-600">{selected.description}</p>}
               <MaterialViewer item={selected} />
-              {selected.sourceNote && <p className="mt-3 text-xs text-slate-500">Sumber: {selected.sourceNote}</p>}
               {(isSrma || isCaseReport || isNlr || isScoping) && (topic.id.startsWith("dea-srma-chapter-group-") || topic.id.startsWith("dea-case-report-group-") || topic.id.startsWith("dea-nlr-chapter-group-") || topic.id.startsWith("dea-scoping-chapter-group-")) && <div className="mt-5 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-mascot bg-brand-soft p-4"><p className="text-sm">Selesai membaca bab dalam kelompok ini? Uji pemahaman melalui 10 soal dengan pembahasan.</p><Link href={`/quiz/${topic.id}`} className="btn-secondary btn-sm">Kuis kelompok {babNo} →</Link></div>}
             </article>
           )}
@@ -242,7 +241,6 @@ export default async function TopicPage({ params, searchParams }: { params: Prom
                       {l.title} ↗
                     </a>
                     {l.description && <p className="mt-0.5 text-sm text-slate-600">{l.description}</p>}
-                    {l.sourceNote && <p className="text-xs text-slate-500">{l.sourceNote}</p>}
                   </li>
                 ))}
               </ul>
