@@ -23,6 +23,8 @@ SPEK = {
     "bab02_curah_jantung": ("A", 70, (40, 490, 380, 736)),
     "bab03_survei_primer": ("A", 13, 194),
     "bab03_imobilisasi_segaris": ("A", 14, 201),
+    "bab04_radiologi_resusitasi": ("A", 18, 224),
+    "bab04_usg_syok": ("A", 72, 572),
     "bab05_kompresi_dada": ("E", 172, (207, 388, 532, 520)),
     "bab05_buka_jalan_napas": ("E", 174, (204, 73, 533, 150)),
     "bab05_posisi_pulih": ("E", 174, (276, 477, 525, 560)),
