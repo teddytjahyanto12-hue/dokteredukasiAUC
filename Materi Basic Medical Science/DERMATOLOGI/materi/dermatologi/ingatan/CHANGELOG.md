@@ -9,3 +9,5 @@
 - Kegagalan yang diperbaiki: encoding ekstraksi, PMID–DOI pedoman yang tidak sesuai, parsing daftar Markdown, gambar terlalu tinggi, pemenggalan kunci soal serta TOC hampir kosong pada halaman kedua.
 - Batas: belum memetakan RPS/CPL. Sherwood khusus kulit belum tersedia dan tidak diklaim dipakai. Tidak ada resep/dosis atau statistik epidemiologi yang ditambahkan.
 - Sinkronisasi: hanya naskah, diagram orisinal, RIS, catatan dan skrip. Ekstraksi buku, gambar potongan dan hasil yang memuatnya dikecualikan sesuai aturan repositori.
+
+- Sinkronisasi 2026-10-31 09:40 WIB: commit materi 08e237988929 berhasil dipush ke codex/dermatologi-preklinik. SHA remote cocok. Checkout dan staged changes sesi lain tidak diganti.

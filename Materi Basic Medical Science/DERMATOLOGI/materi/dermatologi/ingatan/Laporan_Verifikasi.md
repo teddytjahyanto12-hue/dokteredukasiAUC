@@ -35,6 +35,6 @@ Pemeriksaan diselesaikan 31 Oktober 2026 WIB.
 
 ## Penyimpanan dan sinkronisasi
 
-- Naskah, peta bahasan, pustaka RIS, diagram orisinal dan skrip direncanakan untuk branch codex/dermatologi-preklinik.
+- Naskah, peta bahasan, pustaka RIS, diagram orisinal dan skrip telah disinkronkan ke branch codex/dermatologi-preklinik.
 - PDF sumber tidak disalin. Ekstraksi teks, potongan gambar buku dan keluaran yang memuatnya tetap berada di folder proyek lokal serta dikecualikan dari Git.
 - Tidak ada unggahan modul ke layanan cloud atau perubahan pada website.

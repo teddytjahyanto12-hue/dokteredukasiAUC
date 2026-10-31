@@ -33,3 +33,5 @@ Sherwood khusus kulit belum tersedia. Fisiologi pada semua BAB yang relevan didu
 - ZIP 32 PDF diuji CRC dan SHA256 setiap entri cocok dengan hasil final.
 - Ekspor menggunakan Microsoft Word COM. Tidak memakai LibreOffice desktop atau menyalin PDF sumber.
 - Sisa pekerjaan: tidak ada BAB tertunda. Pemetaan RPS dan penambahan sumber Sherwood memerlukan berkas yang belum tersedia.
+
+- Sinkronisasi 2026-10-31 09:40 WIB: commit materi 08e237988929 berhasil dipush ke codex/dermatologi-preklinik. SHA remote cocok. Checkout dan staged changes sesi lain tidak diganti.
