@@ -2,7 +2,10 @@
 
 ## Status (2026-10-31)
 - Modul Tulang dan Sendi SELESAI: T01-T10 ditulis, gambar dipotong dan dicek visual, dirakit `python build.py tulang` + `python isi_daftar_isi.py Modul_Anatomi_Tulang_dan_Sendi` → keluaran/Modul_Anatomi_Tulang_dan_Sendi/ (DOCX+PDF gabungan 96 hlm, TOC terisi; DOCX/PDF per BAB). Lembar kontak seluruh halaman dicek visual.
-- Berikutnya: modul Otot (O01-O06, Bab 13), lalu Saraf (S01-S09, Bab 1/14-17), lalu Pembuluh darah (P01-P08, Bab 1/4-10). Susunan di `build.py` MODUL.
+- Modul Otot O01-O06 SELESAI (65 hlm, PDF per BAB, dicek visual).
+- Modul Saraf: naskah S01, S02, S03, S05 selesai (gambar dipotong); BELUM dirakit/PDF. Sisa: S04 (Bab 16 medulla spinalis, meningen spinal; anatomi permukaan B16 hlm 18-24 sudah dibaca), S06 (VII-XII: teks Bab 15 hlm 12-18 sudah dibaca, gambar s06_* sudah dipotong), S07-S09 (Bab 17). Blok nervus trigeminus: teksnya tidak ada di PDF Bab 15 (hanya judul), jadi tidak ditulis.
+- Modul Pembuluh darah P01-P08 belum dimulai (Bab 1 hlm 12-16, Bab 4-10).
+- Tabel otot Bab 13 sudah ditranskripsi ke naskah O02-O06 (dibaca dari gambar). Catatan kesalahan buku: Tabel 13-14 menulis 'flexor carpi radialis longus' (ditulis extensor), Tabel 13-20 'adductor longus (bagian hamstring)' (ditulis adductor magnus), Tabel 13-23 tibialis posterior 'L4, S5' (kolom segmen tidak dipakai di O06), Tabel 13-3 otot leher tidak ada di PDF.
 - Catatan Bab 13: tabel otot (Tabel 13-1 s.d. 13-24: origo, insersi, persarafan, kerja) TIDAK ter-OCR (halaman tabel kosong di _ekstrak/B13.txt). Harus dibaca dari gambar halaman (render lalu baca visual) sebelum ditulis.
 
 ## Arahan pengguna
