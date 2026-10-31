@@ -78,10 +78,9 @@ MODUL = {
             "S05_Nervus_Cranialis_I_sampai_VI",
             "S06_Nervus_Cranialis_VII_sampai_XII",
         ]),
-        ("BAGIAN III", "SARAF SPINAL DAN OTONOM", [
+        ("BAGIAN III", "SARAF SPINAL PERIFER", [
             "S07_Nervus_Spinalis_Plexus_Cervicalis_dan_Brachialis",
-            "S08_Plexus_Lumbalis_dan_Sacralis",
-            "S09_Sistem_Saraf_Otonom_dan_Dermatom",
+            "S08_Nervi_Intercostales_Plexus_Lumbalis_dan_Sacralis",
         ]),
     ]),
     "pembuluh": ("MODUL ANATOMI PEMBULUH DARAH", "Arteri, Vena, dan Pembuluh Limfe Klinis", "Modul_Anatomi_Pembuluh_Darah", [

@@ -154,6 +154,23 @@ SPEK = {
     "s06_viii_ix": ("B15", 15, (40, 76, 560, 623)),
     "s06_vagus": ("B15", 16, (40, 218, 560, 702)),
     "s06_xi_xii": ("B15", 18, (40, 76, 560, 596)),
+    # S04 Medulla spinalis
+    "s04_ujung_medulla": ("B16", 8, (40, 76, 560, 570)),
+    "s04_cauda_meningen": ("B16", 9, (40, 76, 560, 612)),
+    "s04_radix": ("B16", 10, (40, 76, 560, 532)),
+    "s04_potongan_vertebra": ("B16", 11, (40, 76, 560, 504)),
+    "s04_mri_hernia": ("B16", 23, (40, 76, 560, 432)),
+    # S07-S09 Saraf spinal
+    "s07_plexus_brachialis": ("B17", 8, (40, 360, 560, 703)),
+    "s07_kulit_ekstremitas_superior": ("B17", 10, (40, 76, 560, 567)),
+    "s07_ringkasan_cabang": ("B17", 11, (40, 76, 560, 505)),
+    "s07_radialis": ("B17", 23, (40, 76, 560, 487)),
+    "s07_intercostal": ("B17", 24, (40, 76, 560, 398)),
+    "s08_plexus_lumbalis": ("B17", 26, (40, 76, 298, 378)),
+    "s08_kulit_anterior": ("B17", 28, (40, 76, 560, 587)),
+    "s08_kulit_posterior": ("B17", 29, (40, 76, 560, 609)),
+    "s08_ischiadicus_tibialis": ("B17", 41, (40, 76, 560, 577)),
+    "s08_peroneus": ("B17", 45, (40, 76, 560, 516)),
     "t03_mandibula_hyoid": ("B11", 17, (40, 205, 560, 703)),
 }
 
