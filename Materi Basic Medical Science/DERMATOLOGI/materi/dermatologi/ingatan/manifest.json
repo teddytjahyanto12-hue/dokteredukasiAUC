@@ -1,0 +1,346 @@
+[
+  {
+    "bab": 1,
+    "judul": "Pengantar Sistem Integumen dan Dermatologi",
+    "nama": "BAB_01_Pengantar_Sistem_Integumen_dan_Dermatologi",
+    "gambar": {
+      "jenis": "ilustrasi orisinal berbasis rantai tersitasi",
+      "berkas": "gambar/diagram_01.png"
+    }
+  },
+  {
+    "bab": 2,
+    "judul": "Embriologi dan Anatomi Kulit",
+    "nama": "BAB_02_Embriologi_dan_Anatomi_Kulit",
+    "gambar": {
+      "jenis": "potongan gambar buku",
+      "pdf": 95,
+      "rect": [
+        38.3,
+        441.7,
+        253.6,
+        626.5
+      ],
+      "berkas": "gambar/buku/kulit_02.png"
+    }
+  },
+  {
+    "bab": 3,
+    "judul": "Histologi Epidermis dan Perlekatan Dermal Epidermal",
+    "nama": "BAB_03_Histologi_Epidermis_dan_Perlekatan_Dermal_Epidermal",
+    "gambar": {
+      "jenis": "potongan gambar buku",
+      "pdf": 96,
+      "rect": [
+        89.4,
+        377,
+        304.4,
+        668.1
+      ],
+      "berkas": "gambar/buku/kulit_03.png"
+    }
+  },
+  {
+    "bab": 4,
+    "judul": "Dermis Hipodermis dan Matriks Ekstraseluler",
+    "nama": "BAB_04_Dermis_Hipodermis_dan_Matriks_Ekstraseluler",
+    "gambar": {
+      "jenis": "ilustrasi orisinal berbasis rantai tersitasi",
+      "berkas": "gambar/diagram_04.png"
+    }
+  },
+  {
+    "bab": 5,
+    "judul": "Rambut Kuku dan Kelenjar Kulit",
+    "nama": "BAB_05_Rambut_Kuku_dan_Kelenjar_Kulit",
+    "gambar": {
+      "jenis": "potongan gambar buku",
+      "pdf": 1000,
+      "rect": [
+        85,
+        301,
+        542,
+        667
+      ],
+      "berkas": "gambar/buku/kulit_05.png"
+    }
+  },
+  {
+    "bab": 6,
+    "judul": "Fisiologi Sawar Kulit dan Homeostasis",
+    "nama": "BAB_06_Fisiologi_Sawar_Kulit_dan_Homeostasis",
+    "gambar": {
+      "jenis": "potongan gambar buku",
+      "pdf": 524,
+      "rect": [
+        137.3,
+        377.2,
+        490.5,
+        685.4
+      ],
+      "berkas": "gambar/buku/kulit_06.png"
+    }
+  },
+  {
+    "bab": 7,
+    "judul": "Sensasi Kulit Pruritus dan Termoregulasi",
+    "nama": "BAB_07_Sensasi_Kulit_Pruritus_dan_Termoregulasi",
+    "gambar": {
+      "jenis": "ilustrasi orisinal berbasis rantai tersitasi",
+      "berkas": "gambar/diagram_07.png"
+    }
+  },
+  {
+    "bab": 8,
+    "judul": "Imunitas Mikrobioma dan Inflamasi Kulit",
+    "nama": "BAB_08_Imunitas_Mikrobioma_dan_Inflamasi_Kulit",
+    "gambar": {
+      "jenis": "ilustrasi orisinal berbasis rantai tersitasi",
+      "berkas": "gambar/diagram_08.png"
+    }
+  },
+  {
+    "bab": 9,
+    "judul": "Cedera Kulit dan Penyembuhan Luka",
+    "nama": "BAB_09_Cedera_Kulit_dan_Penyembuhan_Luka",
+    "gambar": {
+      "jenis": "potongan gambar buku",
+      "pdf": 3022,
+      "rect": [
+        89,
+        13,
+        539,
+        322
+      ],
+      "berkas": "gambar/buku/kulit_09.png"
+    }
+  },
+  {
+    "bab": 10,
+    "judul": "Morfologi Lesi dan Prinsip Pemeriksaan Kulit",
+    "nama": "BAB_10_Morfologi_Lesi_dan_Prinsip_Pemeriksaan_Kulit",
+    "gambar": {
+      "jenis": "ilustrasi orisinal berbasis rantai tersitasi",
+      "berkas": "gambar/diagram_10.png"
+    }
+  },
+  {
+    "bab": 11,
+    "judul": "Pola Dasar Histopatologi Kulit",
+    "nama": "BAB_11_Pola_Dasar_Histopatologi_Kulit",
+    "gambar": {
+      "jenis": "potongan gambar buku",
+      "pdf": 81,
+      "rect": [
+        37.5,
+        477.5,
+        487,
+        699
+      ],
+      "berkas": "gambar/buku/kulit_11.png"
+    }
+  },
+  {
+    "bab": 12,
+    "judul": "Dermatitis dan Eksim",
+    "nama": "BAB_12_Dermatitis_dan_Eksim",
+    "gambar": {
+      "jenis": "ilustrasi orisinal berbasis rantai tersitasi",
+      "berkas": "gambar/diagram_12.png"
+    }
+  },
+  {
+    "bab": 13,
+    "judul": "Penyakit Papuloskuamosa",
+    "nama": "BAB_13_Penyakit_Papuloskuamosa",
+    "gambar": {
+      "jenis": "potongan gambar buku",
+      "pdf": 247,
+      "rect": [
+        37.6,
+        44.9,
+        252.6,
+        488.7
+      ],
+      "berkas": "gambar/buku/kulit_13.png"
+    }
+  },
+  {
+    "bab": 14,
+    "judul": "Urtikaria Angioedema dan Erupsi Obat",
+    "nama": "BAB_14_Urtikaria_Angioedema_dan_Erupsi_Obat",
+    "gambar": {
+      "jenis": "ilustrasi orisinal berbasis rantai tersitasi",
+      "berkas": "gambar/diagram_14.png"
+    }
+  },
+  {
+    "bab": 15,
+    "judul": "Eritema Multiforme dan Penyakit Vesikulobulosa",
+    "nama": "BAB_15_Eritema_Multiforme_dan_Penyakit_Vesikulobulosa",
+    "gambar": {
+      "jenis": "potongan gambar buku",
+      "pdf": 626,
+      "rect": [
+        90,
+        270.5,
+        505.9,
+        479.8
+      ],
+      "berkas": "gambar/buku/kulit_15.png"
+    }
+  },
+  {
+    "bab": 16,
+    "judul": "Akne dan Rosasea",
+    "nama": "BAB_16_Akne_dan_Rosasea",
+    "gambar": {
+      "jenis": "ilustrasi orisinal berbasis rantai tersitasi",
+      "berkas": "gambar/diagram_16.png"
+    }
+  },
+  {
+    "bab": 17,
+    "judul": "Kelainan Pigmentasi dan Genodermatosis Pilihan",
+    "nama": "BAB_17_Kelainan_Pigmentasi_dan_Genodermatosis_Pilihan",
+    "gambar": {
+      "jenis": "ilustrasi orisinal berbasis rantai tersitasi",
+      "berkas": "gambar/diagram_17.png"
+    }
+  },
+  {
+    "bab": 18,
+    "judul": "Infeksi Bakteri Kulit",
+    "nama": "BAB_18_Infeksi_Bakteri_Kulit",
+    "gambar": {
+      "jenis": "ilustrasi orisinal berbasis rantai tersitasi",
+      "berkas": "gambar/diagram_18.png"
+    }
+  },
+  {
+    "bab": 19,
+    "judul": "Infeksi Jamur Superfisial",
+    "nama": "BAB_19_Infeksi_Jamur_Superfisial",
+    "gambar": {
+      "jenis": "ilustrasi orisinal berbasis rantai tersitasi",
+      "berkas": "gambar/diagram_19.png"
+    }
+  },
+  {
+    "bab": 20,
+    "judul": "Infestasi Parasit Kulit",
+    "nama": "BAB_20_Infestasi_Parasit_Kulit",
+    "gambar": {
+      "jenis": "ilustrasi orisinal berbasis rantai tersitasi",
+      "berkas": "gambar/diagram_20.png"
+    }
+  },
+  {
+    "bab": 21,
+    "judul": "Infeksi Virus Kulit",
+    "nama": "BAB_21_Infeksi_Virus_Kulit",
+    "gambar": {
+      "jenis": "ilustrasi orisinal berbasis rantai tersitasi",
+      "berkas": "gambar/diagram_21.png"
+    }
+  },
+  {
+    "bab": 22,
+    "judul": "Eksantema Anak dan Penyakit Kulit Akibat Toksin",
+    "nama": "BAB_22_Eksantema_Anak_dan_Penyakit_Kulit_Akibat_Toksin",
+    "gambar": {
+      "jenis": "ilustrasi orisinal berbasis rantai tersitasi",
+      "berkas": "gambar/diagram_22.png"
+    }
+  },
+  {
+    "bab": 23,
+    "judul": "Kusta dan Infeksi Kronis Kulit Pilihan",
+    "nama": "BAB_23_Kusta_dan_Infeksi_Kronis_Kulit_Pilihan",
+    "gambar": {
+      "jenis": "ilustrasi orisinal berbasis rantai tersitasi",
+      "berkas": "gambar/diagram_23.png"
+    }
+  },
+  {
+    "bab": 24,
+    "judul": "Kista dan Lesi Fibrosa Jinak",
+    "nama": "BAB_24_Kista_dan_Lesi_Fibrosa_Jinak",
+    "gambar": {
+      "jenis": "ilustrasi orisinal berbasis rantai tersitasi",
+      "berkas": "gambar/diagram_24.png"
+    }
+  },
+  {
+    "bab": 25,
+    "judul": "Lesi Hiperkeratotik Jinak",
+    "nama": "BAB_25_Lesi_Hiperkeratotik_Jinak",
+    "gambar": {
+      "jenis": "ilustrasi orisinal berbasis rantai tersitasi",
+      "berkas": "gambar/diagram_25.png"
+    }
+  },
+  {
+    "bab": 26,
+    "judul": "Lesi Melanositik dan Vaskular Jinak",
+    "nama": "BAB_26_Lesi_Melanositik_dan_Vaskular_Jinak",
+    "gambar": {
+      "jenis": "ilustrasi orisinal berbasis rantai tersitasi",
+      "berkas": "gambar/diagram_26.png"
+    }
+  },
+  {
+    "bab": 27,
+    "judul": "Fotobiologi Fotodermatosis dan Porfiria",
+    "nama": "BAB_27_Fotobiologi_Fotodermatosis_dan_Porfiria",
+    "gambar": {
+      "jenis": "ilustrasi orisinal berbasis rantai tersitasi",
+      "berkas": "gambar/diagram_27.png"
+    }
+  },
+  {
+    "bab": 28,
+    "judul": "Lesi Pramaligna dan Keganasan Kulit",
+    "nama": "BAB_28_Lesi_Pramaligna_dan_Keganasan_Kulit",
+    "gambar": {
+      "jenis": "ilustrasi orisinal berbasis rantai tersitasi",
+      "berkas": "gambar/diagram_28.png"
+    }
+  },
+  {
+    "bab": 29,
+    "judul": "Kulit sebagai Petunjuk Penyakit Sistemik",
+    "nama": "BAB_29_Kulit_sebagai_Petunjuk_Penyakit_Sistemik",
+    "gambar": {
+      "jenis": "ilustrasi orisinal berbasis rantai tersitasi",
+      "berkas": "gambar/diagram_29.png"
+    }
+  },
+  {
+    "bab": 30,
+    "judul": "Dasar Farmakologi Dermatologi",
+    "nama": "BAB_30_Dasar_Farmakologi_Dermatologi",
+    "gambar": {
+      "jenis": "ilustrasi orisinal berbasis rantai tersitasi",
+      "berkas": "gambar/diagram_30.png"
+    }
+  },
+  {
+    "bab": 31,
+    "judul": "Prinsip Prosedur Dermatologi dan Perawatan Luka",
+    "nama": "BAB_31_Prinsip_Prosedur_Dermatologi_dan_Perawatan_Luka",
+    "gambar": {
+      "jenis": "ilustrasi orisinal berbasis rantai tersitasi",
+      "berkas": "gambar/diagram_31.png"
+    }
+  },
+  {
+    "bab": 32,
+    "judul": "Integrasi Ilmu Dasar dan Latihan Soal",
+    "nama": "BAB_32_Integrasi_Ilmu_Dasar_dan_Latihan_Soal",
+    "gambar": {
+      "jenis": "ilustrasi orisinal berbasis rantai tersitasi",
+      "berkas": "gambar/diagram_32.png"
+    }
+  }
+]
