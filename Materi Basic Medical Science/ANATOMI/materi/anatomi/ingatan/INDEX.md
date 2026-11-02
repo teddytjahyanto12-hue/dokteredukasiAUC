@@ -1,13 +1,15 @@
 # INDEX Modul Anatomi Preklinik
 
 ## Status (2026-11-02)
-- Empat modul SELESAI, dirakit, TOC terisi, PDF per BAB, lembar kontak dicek visual:
+- Lima modul SELESAI, dirakit, TOC terisi, PDF per BAB, lembar kontak dicek visual:
   - Tulang dan Sendi T01-T10 (96 hlm, commit 0c8f95b).
   - Otot O01-O06 (65 hlm, commit 87f912f).
   - Saraf S01-S08 (63 hlm, commit c6b52a3). Rencana S09 digabung ke S07-S08.
   - Pembuluh Darah P01-P08 (Bab 1, 4-10).
-- Perakitan: `python build.py tulang|otot|saraf|pembuluh` lalu `python isi_daftar_isi.py <Nama_Modul>` (Word COM, >2 menit, jalankan di latar belakang). Keluaran di `keluaran/<Nama_Modul>/`.
-- Bab organ (2, 3, 18-24) di luar empat modul yang diminta; bisa menjadi modul kelima bila pengguna meminta.
+  - Organ V01-V11 (Bab 2, 3, 4 non-koroner, 18-24); diminta pengguna sebagai modul kelima.
+- Perakitan: `python build.py tulang|otot|saraf|pembuluh|organ` lalu `python isi_daftar_isi.py <Nama_Modul>` (Word COM, >2 menit, jalankan di latar belakang). Keluaran di `keluaran/<Nama_Modul>/`.
+- Modul organ tidak mengulang isi yang sudah ada di modul lain: diaphragma dan otot dinding (Otot), pendarahan koroner (Pembuluh), limfe regional (P08).
+- `teks.py KODE a b` membaca teks isi halaman tanpa label gambar; `lembar_gambar.py awalan` lembar kontak hasil potong.
 
 ## Arahan pengguna
 - Pisah empat modul: Tulang (dan sendi), Otot, Saraf, Pembuluh darah. Bahas lengkap. PDF per BAB untuk diunduh, tidak diunggah ke cloud. Outline_Anatomi_Preklinik.md (pengguna, regional 32 BAB) dipakai sebagai inspirasi cakupan; susunan tetap per sistem sesuai arahan.
@@ -33,3 +35,7 @@
 - Bab 9 hlm buku 237-238 (cabang arteria femoralis rinci, termasuk profunda femoris; hanya daftar cabang yang ditulis).
 - Bab 13 Tabel 13-3 (otot leher).
 - Bab 15 teks teknik blok nervus trigeminus dan Bab 17 teknik blok nervus spinalis (hanya judul).
+- Bab 3: kalimat lanjutan mekanisme diaphragma setelah hepar menjadi penyangga tidak ada (halaman terpotong); tidak ditulis.
+- Bab 19: anulus inguinalis profundus "0.5 inci (3 cm)" tidak konsisten, angka tidak dipakai; ligamentum lacunare disebut lantai canalis inguinalis di teks tetapi kunci jawaban menyatakan bukan, jadi tidak ditulis.
+- Tabel otot Bab 2 (lidah, palatum, pharynx, larynx), Tabel 18-1 (otot mata), dan tabel otot ossicula tidak ter-OCR; isi ditulis dari teks naratif saja.
+- Gambar dibuang karena rusak oleh pemutihan teks atau dobel: kelenjar liur (B02), potongan sagital pelvis laki-laki (B21), testis (B22, sama dengan v05_testis), suprarenalis (B24, sama dengan v07_pancreas_posterior).

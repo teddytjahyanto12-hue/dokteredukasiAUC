@@ -1,7 +1,7 @@
 """Perakit modul Anatomi (Markdown -> DOCX).
 
 Pemakaian:
-    python build.py tulang|otot|saraf|pembuluh   # modul lengkap + DOCX per BAB
+    python build.py tulang|otot|saraf|pembuluh|organ   # modul lengkap + DOCX per BAB
 Lalu jalankan isi_daftar_isi.py untuk mengisi daftar isi dan membuat PDF.
 
 Konvensi naskah (naskah/*.md):
@@ -97,6 +97,29 @@ MODUL = {
         ]),
         ("BAGIAN III", "SISTEM LIMFE", [
             "P08_Pembuluh_Limfe_dan_Jaringan_Limfe",
+        ]),
+    ]),
+    "organ": ("MODUL ANATOMI ORGAN", "Anatomi Viscera dan Indra Klinis", "Modul_Anatomi_Organ", [
+        ("BAGIAN I", "SISTEM RESPIRASI DAN JANTUNG", [
+            "V01_Saluran_Pernapasan_Atas_dan_Bawah",
+            "V02_Rongga_Dada_Pleura_dan_Paru",
+            "V03_Jantung_dan_Pericardium",
+        ]),
+        ("BAGIAN II", "INDRA KHUSUS", [
+            "V04_Mata_dan_Telinga",
+        ]),
+        ("BAGIAN III", "SISTEM PENCERNAAN", [
+            "V05_Dinding_Abdomen_dan_Cavitas_Peritonealis",
+            "V06_Tractus_Digestivus",
+            "V07_Hepar_Pancreas_dan_Lien",
+        ]),
+        ("BAGIAN IV", "SISTEM UROGENITAL", [
+            "V08_Ren_Ureter_Vesica_Urinaria_dan_Urethra",
+            "V09_Organ_Genitalia_Masculina",
+            "V10_Perineum_Organ_Genitalia_Feminina_dan_Persalinan",
+        ]),
+        ("BAGIAN V", "SISTEM ENDOKRIN", [
+            "V11_Glandulae_Endocrinae",
         ]),
     ]),
 }

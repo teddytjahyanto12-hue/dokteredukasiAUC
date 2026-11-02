@@ -23,3 +23,15 @@
 - P06 Abdomen, pelvis, perineum: B08 | p06_* (B08 4, 7, 9, 11, 12, 19)
 - P07 Ekstremitas inferior: B09 (hlm buku 237-238 tidak ada) | p07_* (B09 3, 7, 9, 11, 13, 18)
 - P08 Limfe: B10 2-13 | p08_* (B10 3, 5, 6, 7, 8, 9, 12, 13)
+## Modul Organ
+- V01 Saluran napas: B02 | v01_*
+- V02 Mamma, rongga dada, pleura, paru: B03 13-56 | v02_*
+- V03 Jantung dan pericardium: B04 (kecuali koroner) | v03_*
+- V04 Mata dan telinga: B18 | v04_*
+- V05 Dinding abdomen dan peritoneum: B19 3-29 | v05_*
+- V06 Tractus digestivus: B19 29-82 | v06_*
+- V07 Hepar, pancreas, lien: B20 | v07_*
+- V08 Ren, ureter, vesica, urethra: B21 | v08_*
+- V09 Genitalia masculina: B22 | v09_*
+- V10 Perineum dan genitalia feminina: B23 | v10_*
+- V11 Glandulae endocrinae: B24 | v11_*
