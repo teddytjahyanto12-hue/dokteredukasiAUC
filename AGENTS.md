@@ -39,3 +39,4 @@ Arahan pengguna 12 Oktober 2026: setiap pekerjaan harus memakai pembaruan terbar
 ## Tampilan keterangan sumber materi (arahan pengguna 29 Oktober 2026)
 
 Jangan menambahkan atau menampilkan keterangan sumber tambahan di luar isi materi, seperti "Sumber: Modul ... Dokter Edukasi Academy (rujukan utama Sherwood & CaKes)", catatan penyusun/pengajar, atau label penyedia pemutar. Berlaku untuk seluruh kelas dan unggahan berikutnya. Catatan sumber/izin internal tidak ditampilkan kepada murid. Sitasi akademik dan daftar pustaka di dalam materi tetap dipertahankan.
+- Arahan pengguna 31 Oktober 2026: jangan mencantumkan Catatan Siswa (catatansiswa.com, termasuk seri "CaKes") di daftar pustaka, sitasi, sampul, keterangan gambar, atau kalimat apa pun dalam materi. Bahan itu hanya boleh dipakai sebagai daftar periksa cakupan bahasan; setiap pernyataan harus bersandar pada sumber lain yang dapat dirujuk.
