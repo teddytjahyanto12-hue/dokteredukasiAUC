@@ -18,3 +18,9 @@
 
 ## Part 10 Special circumstances [aha_special2025] PMID 41122889 doi 10.1161/CIR.0000000000001380
 - Abstrak: anafilaksis, asma, tenggelam, listrik, hiperkalemia, hiper/hipotermia, kehamilan, PE, keracunan (opioid, organofosfat, dll.) memerlukan modifikasi BLS/ALS.
+
+## Sepsis-3 [sepsis3] PMID 26903338 (abstrak dibaca)
+Sepsis = disfungsi organ mengancam nyawa akibat respons pejamu yang tidak teregulasi terhadap infeksi; SOFA naik ≥2 (mortalitas RS >10%). Syok septik = subset dengan kelainan sirkulasi, seluler, metabolik berat; vasopresor untuk MAP ≥65 dan laktat >2 mmol/L tanpa hipovolemia (mortalitas >40%). qSOFA ≥2: RR ≥22, perubahan mental, TDS ≤100. SIRS kurang sensitif/spesifik; istilah sepsis berat dihapus.
+## WAO 2020 [wao2020] PMID 33204386 (teks PMC dibaca sebagian lewat agen)
+Terverifikasi kata per kata: definisi (reaksi hipersensitivitas sistemik serius, cepat, dapat fatal; berat = gangguan jalan napas/napas/sirkulasi, dapat tanpa kelainan kulit atau syok); IgE-FcεRI pada sel mast dan basofil → pelepasan mediator; non-IgE imunologis (komplemen C3a C5a, IgG) dan nonimunologis (opioid), MRGPRX2 (pelumpuh otot, fluorokuinolon); idiopatik 6,5-35%; kriteria Tabel 2 (dua kriteria; hipotensi: turun >30% TDS dari basal, anak <10 th <70+2×usia, ≥10 th <90); pemicu utama makanan, venom, obat; epinefrin IM lini pertama; 0,5 mg untuk anak besar dan dewasa >50 kg. TIDAK terverifikasi: lokasi suntik, mg/kg, interval ulang, posisi, cairan, antihistamin/steroid, bifasik.
+AHA Part 10: henti jantung karena anafilaksis → cairan isotonik IV wajar; glukagon bila pengguna penyekat beta refrakter; efektivitas dosis epinefrin IM standar saat henti jantung tidak pasti.

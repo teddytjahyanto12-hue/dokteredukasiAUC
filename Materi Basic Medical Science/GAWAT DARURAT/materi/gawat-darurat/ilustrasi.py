@@ -110,8 +110,94 @@ def bab05_alur_bhd():
     simpan(fig, "bab05_alur_bhd")
 
 
+def bab08_distribusi():
+    fig, ax = plt.subplots(figsize=(9, 4.2))
+    ax.set_xlim(0, 10); ax.set_ylim(0, 4.4); ax.axis("off")
+    for x0, judul, intra in ((0.3, "1.000 mL kristaloid", 25), (5.3, "1.000 mL koloid", 75)):
+        ax.text(x0 + 2.2, 4.1, judul, ha="center", fontsize=12, fontweight="bold")
+        lebar = 4.4
+        wi = lebar * intra / 100
+        ax.add_patch(FancyBboxPatch((x0, 1.6), wi, 1.6, boxstyle="square,pad=0", fc=KUNING, ec="black"))
+        ax.add_patch(FancyBboxPatch((x0 + wi, 1.6), lebar - wi, 1.6, boxstyle="square,pad=0", fc=ABU, ec="black"))
+        label = f"{intra}%\nintra-\nvaskular" if intra < 50 else f"{intra}%\nintravaskular"
+        ax.text(x0 + wi / 2, 2.4, label, ha="center", va="center", fontsize=10.5)
+        ax.text(x0 + wi + (lebar - wi) / 2, 2.4, f"{100 - intra}%\nruang lain", ha="center", va="center", fontsize=10.5)
+    ax.text(5, 0.8, "Kristaloid terutama tersebar di cairan ekstraseluler; koloid terutama tetap di pembuluh darah.",
+            ha="center", fontsize=10.5)
+    simpan(fig, "bab08_distribusi_cairan")
+
+
+def bab09_alur_agd():
+    fig, ax = plt.subplots(figsize=(9.5, 7.6))
+    ax.set_xlim(0, 10); ax.set_ylim(0, 9.2); ax.axis("off")
+    kotak(ax, 3.0, 8.1, 4.0, 0.85, "1. pH: kurang dari 7,35 asidemia,\nlebih dari 7,45 alkalemia", KUNING_MUDA, 10.5)
+    kotak(ax, 0.2, 6.3, 4.4, 1.1, "2a. HCO3 turun (kurang dari 24):\nasidosis metabolik", ABU, 10.5)
+    kotak(ax, 5.4, 6.3, 4.4, 1.1, "2b. PaCO2 naik (lebih dari 45):\nasidosis respiratorik", ABU, 10.5)
+    kotak(ax, 0.2, 4.2, 4.4, 1.4, "3. Kompensasi: HCO3 turun 1 →\nPaCO2 turun 1,2 mmHg.\nLebih sedikit: + asidosis respiratorik\nLebih banyak: + alkalosis respiratorik", ABU, 10)
+    kotak(ax, 5.4, 4.2, 4.4, 1.4, "3. Akut: HCO3 naik sekitar 1 mEq/L\nper kenaikan PaCO2 10 mmHg.\nKronik: kompensasi ginjal,\npH mendekati normal", ABU, 10)
+    kotak(ax, 0.2, 2.1, 4.4, 1.4, "4. Anion gap = Na − (HCO3 + Cl)\nnormal 7 sampai 13 mEq/L", KUNING, 10.5, True)
+    kotak(ax, 0.0, 0.1, 2.25, 1.55, "Meningkat:\nlaktat, ketoasidosis,\nmetanol, etilen glikol,\nsalisilat, penyakit\nginjal kronik", ABU, 9.5)
+    kotak(ax, 2.45, 0.1, 2.25, 1.55, "Normal:\nenteritis (diare),\nRTA, penghambat\nkarbonik anhidrase", ABU, 9.5)
+    panah(ax, 4.2, 8.1, 2.6, 7.4); panah(ax, 5.8, 8.1, 7.4, 7.4)
+    panah(ax, 2.4, 6.3, 2.4, 5.6); panah(ax, 7.6, 6.3, 7.6, 5.6)
+    panah(ax, 2.4, 4.2, 2.4, 3.5); panah(ax, 1.6, 2.1, 1.1, 1.65); panah(ax, 3.2, 2.1, 3.6, 1.65)
+    simpan(fig, "bab09_alur_agd")
+
+
+def bab10_jaras_nyeri():
+    langkah = [("Nosiseptor", "ujung bebas serabut A-delta (bermielin tipis)\ndan serabut C (tanpa mielin)"),
+               ("Ganglion radiks dorsalis", "ganglion spinalis; impuls masuk melalui\nradiks dorsalis"),
+               ("Kornu dorsalis\nmedula spinalis", "substansia gelatinosa; neuron kedua\nmenyilang garis tengah"),
+               ("Traktus spinotalamikus\nlateralis", "naik melalui medula oblongata, pons,\ndan mesensefalon"),
+               ("Talamus", "nukleus ventroposterolateral; neuron ketiga"),
+               ("Korteks somatosensorik", "susunan somatotopik: tungkai di atas,\nlengan di tengah, kepala di bawah")]
+    fig, ax = plt.subplots(figsize=(8.4, 8.2))
+    ax.set_xlim(0, 10); ax.set_ylim(0, 12.3); ax.axis("off")
+    for i, (judul, isi) in enumerate(langkah):
+        y = 10.6 - i * 2.05
+        kotak(ax, 0.3, y, 3.6, 1.25, judul, KUNING if i in (0, 5) else KUNING_MUDA, 10.5, True)
+        ax.text(4.2, y + 0.62, isi, va="center", fontsize=10.5)
+        if i:
+            panah(ax, 2.1, y + 2.05, 2.1, y + 1.25)
+    simpan(fig, "bab10_jaras_nyeri")
+
+
+def bab11_ekg():
+    import numpy as np
+    t = np.linspace(0, 1.0, 2000)
+
+    def g(c, w, a):
+        return a * np.exp(-((t - c) / w) ** 2)
+    v = (g(0.12, 0.025, 0.15) - g(0.255, 0.008, 0.12) + g(0.275, 0.010, 1.1)
+         - g(0.295, 0.009, 0.28) + g(0.52, 0.045, 0.32))
+    fig, ax = plt.subplots(figsize=(10, 4.6))
+    for x in np.arange(0, 1.0001, 0.04):
+        ax.axvline(x, color="#F3C9C9", lw=0.4 if round(x / 0.04) % 5 else 1.0, zorder=0)
+    for y in np.arange(-0.6, 1.61, 0.1):
+        ax.axhline(y, color="#F3C9C9", lw=0.4 if round(y / 0.1) % 5 else 1.0, zorder=0)
+    ax.plot(t, v, color="black", lw=1.8)
+    for x, y, s in ((0.12, 0.26, "P"), (0.245, -0.22, "Q"), (0.245, 1.0, "R"), (0.305, -0.4, "S"), (0.52, 0.42, "T")):
+        ax.text(x, y, s, ha="center", fontsize=12, fontweight="bold")
+
+    def rentang(x0, x1, y, teks, dy=-0.08, va="top"):
+        ax.annotate("", xy=(x0, y), xytext=(x1, y), arrowprops=dict(arrowstyle="<->", color="#B07D00", lw=1.3))
+        ax.text((x0 + x1) / 2, y + dy, teks, ha="center", va=va, fontsize=10.5,
+                bbox=dict(boxstyle="square,pad=0.1", fc="white", ec="none"))
+    rentang(0.095, 0.25, -0.6, "Interval PR\n0,12 sampai 0,20 detik")
+    rentang(0.25, 0.31, 1.32, "QRS kurang dari 0,12 detik", dy=0.06, va="bottom")
+    rentang(0.25, 0.585, -0.95, "Interval QT")
+    ax.text(0.73, 1.2, "Kecepatan kertas 25 mm/detik\n1 kotak kecil = 0,04 detik\n1 kotak sedang = 0,20 detik\n10 mm = 1 mV",
+            fontsize=10.5, va="top", bbox=dict(boxstyle="round,pad=0.4", fc="white", ec=KUNING, lw=1.5))
+    ax.set_xlim(0, 1.0); ax.set_ylim(-1.25, 1.65); ax.axis("off")
+    simpan(fig, "bab11_ekg_normal")
+
+
 if __name__ == "__main__":
     os.makedirs(OUT, exist_ok=True)
     bab01_alur()
     bab02_lingkaran()
     bab05_alur_bhd()
+    bab08_distribusi()
+    bab09_alur_agd()
+    bab10_jaras_nyeri()
+    bab11_ekg()

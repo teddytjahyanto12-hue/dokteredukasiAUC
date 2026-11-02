@@ -90,3 +90,42 @@ EP  - S672
 DO  - 10.1161/CIR.0000000000001380
 AN  - 41122889
 ER  -
+
+TY  - JOUR
+ID  - sepsis3
+AU  - Singer, M
+AU  - Deutschman, CS
+AU  - Seymour, CW
+AU  - Shankar-Hari, M
+AU  - Annane, D
+AU  - Bauer, M
+AU  - Bellomo, R
+TI  - The third international consensus definitions for sepsis and septic shock (Sepsis-3)
+JO  - JAMA
+PY  - 2016
+VL  - 315
+IS  - 8
+SP  - 801
+EP  - 810
+DO  - 10.1001/jama.2016.0287
+AN  - 26903338
+ER  -
+
+TY  - JOUR
+ID  - wao2020
+AU  - Cardona, V
+AU  - Ansotegui, IJ
+AU  - Ebisawa, M
+AU  - El-Gamal, Y
+AU  - Fernandez Rivas, M
+AU  - Fineman, S
+AU  - Geller, M
+TI  - World Allergy Organization anaphylaxis guidance 2020
+JO  - World Allergy Organ J
+PY  - 2020
+VL  - 13
+IS  - 10
+SP  - 100472
+DO  - 10.1016/j.waojou.2020.100472
+AN  - 33204386
+ER  -

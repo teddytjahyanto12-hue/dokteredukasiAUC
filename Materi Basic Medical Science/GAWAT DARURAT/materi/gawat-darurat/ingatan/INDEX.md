@@ -1,9 +1,10 @@
 # INDEX Modul Gawat Darurat Preklinik
 
-## Status (2026-10-29)
-- Selesai dan dirakit: BAB 01, 02, 03, 04, 05 (BAB 04 belum diperiksa visual PDF-nya) (naskah + gambar + DOCX/PDF per BAB + modul gabungan). PDF BAB 01, 02, 03, 05 diperiksa visual.
-- Belum ditulis: BAB 06-36. BAB 06 sedang disiapkan: bahan sudah dibaca (EIMED 184-188 jalan napas, 199-206 oksigen + Tabel FiO2 hlm 206, 371-375 gagal napas; ATLS 37-40). Gambar kandidat ATLS hlm 45 xref 384 (chin-lift), 385 (jaw-thrust), 386 (pemasangan OPA) (susunan lengkap di `build.py` SUSUNAN; isi per BAB di `../../MATERI MENTAH/Outline_Gawat_Darurat_Preklinik.md`).
-- Urutan kerja berikutnya: BAB 04 (EIMED VI lab 72-101 + ATLS adjunct), 06 (EIMED XIII 184, XIV 199, XV 208, XXVI 371 + ATLS Bab 2 PDF 36-67), 07 (EIMED XXIV + Sepsis-3 + WAO anafilaksis, verifikasi PubMed), 08 (EIMED X 156, XI 166 + ATLS Bab 3), 09 (EIMED XVII-XXIII 268-351), 10 (EIMED VII 102 + `dosis obat emergency.pdf` + Pocket Guide 83-125), 11 (EIMED VIII 119, XXX 405 + AHA ALS), lalu sistem.
+## Status (2026-11-02)
+- Selesai, dirakit, dan PDF diperiksa visual: BAB 01-11 (modul gabungan 11 BAB + DOCX/PDF per BAB).
+- Belum ditulis: BAB 12-36. Berikutnya BAB 12 (EIMED XXIX nyeri dada 394, VIII EKG SKA 138; ATLS; pedoman ACS/hipertensi perlu diverifikasi), 13 (EIMED XLIII trombosis 528, XXXI dispnea 410; ATLS Bab 4 tamponade), 14 (EIMED XXXI; ATLS Bab 4 pneumotoraks; GINA/GOLD perlu verifikasi), 15 (EIMED XXXVIII demam 476, XXVI ARDS; ARDS global definition PMID 37487152 perlu dicek).
+- Belum dapat ditulis di BAB 01-11 (butuh sumber): aspek hukum nasional (BAB 1), homeostasis/respons hormonal stres rinci (BAB 2, Sherwood tidak dilampirkan), henti jantung vs sinkop (BAB 5, tunggu EIMED XXVII di BAB 16), NIV/ventilasi mekanik rinci (BAB 6), lokasi suntik/interval epinefrin IM, antihistamin/steroid, reaksi bifasik anafilaksis (BAB 7, teks WAO tidak terbaca utuh), fosfat (BAB 9), tabel pengenceran obat (BAB 10; berkas dosis tidak berpengarang dan sediaan norepinefrin tidak konsisten, hanya dipakai sebagai latihan hitung di soal).
+- Koreksi sumber yang sengaja tidak dipakai: EIMED dobutamin disebut agonis beta-2 (ditulis netral "reseptor beta"); EIMED hipermagnesemia definisi <2,5 (OCR/typo, tidak dipakai); rekomendasi lama EGDT, SIRS, vasopresin.
 
 ## Struktur folder
 - `naskah/BAB_xx_*.md` (H2 = BAB, H3 = 7 subjudul wajib). `gambar/` potongan sumber + ilustrasi.

@@ -25,11 +25,30 @@ SPEK = {
     "bab03_imobilisasi_segaris": ("A", 14, 201),
     "bab04_radiologi_resusitasi": ("A", 18, 224),
     "bab04_usg_syok": ("A", 72, 572),
+    "bab06_angkat_dagu": ("A", 45, 384),
+    "bab06_dorong_rahang": ("A", 45, 385),
+    "bab06_pasang_opa": ("A", 45, 386),
+    "bab07_lokasi_perdarahan": ("A", 73, (66, 66, 563, 588)),
     "bab05_kompresi_dada": ("E", 172, (207, 388, 532, 520)),
     "bab05_buka_jalan_napas": ("E", 174, (204, 73, 533, 150)),
     "bab05_posisi_pulih": ("E", 174, (276, 477, 525, 560)),
     "bab05_tanda_tersedak": ("E", 175, (200, 186, 297, 322)),
 }
+
+# Area keterangan asli buku yang ikut terpotong, ditutup putih (pt, koordinat halaman).
+TUTUP = {
+    "bab07_lokasi_perdarahan": [(66, 519, 306, 588)],
+}
+
+
+def tutup(path, kotak_potong, daftar):
+    im = Image.open(path).convert("RGB")
+    k = 200 / 72
+    for x0, y0, x1, y1 in daftar:
+        kotak = [int((x0 - kotak_potong[0]) * k), int((y0 - kotak_potong[1]) * k),
+                 int((x1 - kotak_potong[0]) * k), int((y1 - kotak_potong[1]) * k)]
+        im.paste((255, 255, 255), kotak)
+    im.save(path)
 
 
 def bersihkan(path):
@@ -63,6 +82,8 @@ def main():
             pix.save(tujuan)
         else:
             doc[hlm - 1].get_pixmap(dpi=200, clip=pymupdf.Rect(*isi)).save(tujuan)
+            if nama in TUTUP:
+                tutup(tujuan, isi, TUTUP[nama])
             if kode == "E":
                 bersihkan(tujuan)
         print(nama)
