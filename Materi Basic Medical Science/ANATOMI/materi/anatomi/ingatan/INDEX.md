@@ -1,17 +1,18 @@
 # INDEX Modul Anatomi Preklinik
 
-## Status (2026-10-31)
-- Modul Tulang dan Sendi SELESAI: T01-T10 ditulis, gambar dipotong dan dicek visual, dirakit `python build.py tulang` + `python isi_daftar_isi.py Modul_Anatomi_Tulang_dan_Sendi` → keluaran/Modul_Anatomi_Tulang_dan_Sendi/ (DOCX+PDF gabungan 96 hlm, TOC terisi; DOCX/PDF per BAB). Lembar kontak seluruh halaman dicek visual.
-- Modul Otot O01-O06 SELESAI (65 hlm, PDF per BAB, dicek visual).
-- Modul Saraf: naskah S01, S02, S03, S05 selesai (gambar dipotong); BELUM dirakit/PDF. Sisa: S04 (Bab 16 medulla spinalis, meningen spinal; anatomi permukaan B16 hlm 18-24 sudah dibaca), S06 (VII-XII: teks Bab 15 hlm 12-18 sudah dibaca, gambar s06_* sudah dipotong), S07-S09 (Bab 17). Blok nervus trigeminus: teksnya tidak ada di PDF Bab 15 (hanya judul), jadi tidak ditulis.
-- Modul Pembuluh darah P01-P08 belum dimulai (Bab 1 hlm 12-16, Bab 4-10).
-- Tabel otot Bab 13 sudah ditranskripsi ke naskah O02-O06 (dibaca dari gambar). Catatan kesalahan buku: Tabel 13-14 menulis 'flexor carpi radialis longus' (ditulis extensor), Tabel 13-20 'adductor longus (bagian hamstring)' (ditulis adductor magnus), Tabel 13-23 tibialis posterior 'L4, S5' (kolom segmen tidak dipakai di O06), Tabel 13-3 otot leher tidak ada di PDF.
-- Catatan Bab 13: tabel otot (Tabel 13-1 s.d. 13-24: origo, insersi, persarafan, kerja) TIDAK ter-OCR (halaman tabel kosong di _ekstrak/B13.txt). Harus dibaca dari gambar halaman (render lalu baca visual) sebelum ditulis.
+## Status (2026-11-02)
+- Empat modul SELESAI, dirakit, TOC terisi, PDF per BAB, lembar kontak dicek visual:
+  - Tulang dan Sendi T01-T10 (96 hlm, commit 0c8f95b).
+  - Otot O01-O06 (65 hlm, commit 87f912f).
+  - Saraf S01-S08 (63 hlm, commit c6b52a3). Rencana S09 digabung ke S07-S08.
+  - Pembuluh Darah P01-P08 (Bab 1, 4-10).
+- Perakitan: `python build.py tulang|otot|saraf|pembuluh` lalu `python isi_daftar_isi.py <Nama_Modul>` (Word COM, >2 menit, jalankan di latar belakang). Keluaran di `keluaran/<Nama_Modul>/`.
+- Bab organ (2, 3, 18-24) di luar empat modul yang diminta; bisa menjadi modul kelima bila pengguna meminta.
 
 ## Arahan pengguna
-- Pisah empat modul: Tulang (dan sendi), Otot, Saraf, Pembuluh darah. Bahas lengkap. PDF per BAB untuk diunduh. Outline_Anatomi_Preklinik.md (pengguna, regional 32 BAB) dipakai sebagai inspirasi cakupan; susunan tetap per sistem sesuai arahan.
-- Aturan: tujuan, konsep dasar, gambar, sebab-akibat (→), korelasi klinis, rangkuman, soal + kunci; sitasi Vancouver [@kunci]; tanpa nama sumber/halaman di naskah (keterangan gambar tanpa "Sumber: ..."), tanpa "--"/em dash, tanpa keterangan AI; CaKes/catatansiswa tidak disebut.
-- Outline pengguna meminta caption memuat nama buku dan halaman; ini BERTENTANGAN dengan aturan prompt utama (tanpa nama sumber dan halaman di naskah) sehingga caption hanya memakai superskrip sitasi.
+- Pisah empat modul: Tulang (dan sendi), Otot, Saraf, Pembuluh darah. Bahas lengkap. PDF per BAB untuk diunduh, tidak diunggah ke cloud. Outline_Anatomi_Preklinik.md (pengguna, regional 32 BAB) dipakai sebagai inspirasi cakupan; susunan tetap per sistem sesuai arahan.
+- Aturan: tujuan, konsep dasar, gambar, sebab-akibat (→), korelasi klinis, rangkuman, soal + kunci; sitasi Vancouver [@kunci]; tanpa nama sumber/halaman di naskah (keterangan gambar tanpa "Sumber: ..."), tanpa "--"/em dash, tanpa keterangan AI. Hanya sumber yang tercantum di sumber.ris yang boleh disebut.
+- Outline pengguna meminta caption memuat nama buku dan halaman; ini BERTENTANGAN dengan aturan prompt utama sehingga caption hanya memakai superskrip sitasi.
 
 ## Alat
 - `ekstrak_teks.py` → _ekstrak/B01..B24.txt, S1.txt, S2.txt. `hlm.py KODE a b` cetak halaman.
@@ -19,12 +20,16 @@
 - `potong_gambar.py [awalan]` SPEK nama → (kode, hlm, kotak[, kotak diputihkan]); paragraf buku (>80 karakter) dalam kotak otomatis diputihkan; hasil dipangkas.
 - `cek_angka.py KODE "frasa"...` render blok teks untuk mencocokkan angka OCR dengan gambar halaman (_lihat/angka.png).
 - `lembar.py berkas.pdf awal jumlah kolom` lembar kontak PDF (_lihat/lembar.png).
+- Halaman dua kolom yang tercampur saat ekstraksi (mis. B10 hlm 10) dibaca dari render gambar halaman.
 
 ## Verifikasi
-- Angka yang dicocokkan ke gambar halaman: fonticulus 18 bulan, antrum 3 mm/15 mm, angulus sterni T IV-V, sumsum 7 tahun, pterion 4 cm, mastoid 2 tahun, coccyx 2,5 cm, hiatus sacralis 5 cm, tuberculum Chassaignac C6 (OCR salah "C5"), carrying angle 170°/167°, ROM bahu (90/45/40-45/55/45), rasio abduksi 3:2:1.
-- Tabel 11-2 buku menulis "Fissura occipitalis superior" (salah terjemah); naskah memakai "fissura orbitalis superior" sesuai label Gambar 11-3.
+- Angka yang dicocokkan ke gambar halaman: fonticulus 18 bulan, antrum 3 mm/15 mm, angulus sterni T IV-V, sumsum 7 tahun, pterion 4 cm, mastoid 2 tahun, coccyx 2,5 cm, hiatus sacralis 5 cm, tuberculum Chassaignac C6 (OCR salah "C5"), carrying angle 170°/167°, ROM bahu (90/45/40-45/55/45), rasio abduksi 3:2:1, vena saphena magna 4 cm di bawah-lateral tuberculum pubicum, costa IX-XI di belakang lien.
+- Kesalahan buku yang dikoreksi: Tabel 11-2 "fissura occipitalis superior" → orbitalis; Tabel 13-14 "flexor carpi radialis longus" → extensor; Tabel 13-20 "adductor longus (bagian hamstring)" → adductor magnus; Tabel 13-23 tibialis posterior "L4, S5" tidak dipakai; usia fusi sacrum tidak konsisten (18 vs 13 tahun) → hanya "mulai sekitar 18 tahun".
 - Pustaka penunjang (PubMed, metadata+abstrak dibaca): nih_osteoporosis2001 PMID 11176917; shao2005 PMID 16326879.
 - Terjemahan Snell ini hampir tanpa kotak "catatan klinis"; korelasi klinis diambil dari teks, anatomi permukaan, dan soal-jawaban buku, plus pustaka PubMed terverifikasi.
 
-## Belum dapat ditulis / di luar cakupan
-- Bab organ (2, 3, 18-24) tidak masuk empat modul yang diminta; bisa menjadi modul kelima bila pengguna meminta.
+## Halaman sumber yang tidak ada di PDF (bagian terkait tidak ditulis)
+- Bab 7 hlm buku 194 (perjalanan arteria ulnaris).
+- Bab 9 hlm buku 237-238 (cabang arteria femoralis rinci, termasuk profunda femoris; hanya daftar cabang yang ditulis).
+- Bab 13 Tabel 13-3 (otot leher).
+- Bab 15 teks teknik blok nervus trigeminus dan Bab 17 teknik blok nervus spinalis (hanya judul).

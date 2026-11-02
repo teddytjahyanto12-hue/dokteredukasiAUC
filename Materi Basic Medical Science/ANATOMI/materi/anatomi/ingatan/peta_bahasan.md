@@ -12,6 +12,14 @@
 - T09 Sendi ekstremitas superior: B12 18-31 | t09_* (B12 19-30)
 - T10 Sendi pelvis dan ekstremitas inferior: B12 31-51 | t10_* (B12 31-51)
 
-## Modul Otot (rencana): B13 2-7 dasar; kepala-leher 7-15; punggung/thorax 15-17; abdomen/pelvis/perineum 17-25; ekstremitas superior 26-44; inferior 44-71 (tabel otot harus dibaca dari gambar)
-## Modul Saraf (rencana): B01 16-22; B14; B15; B16; B17
-## Modul Pembuluh darah (rencana): B01 12-16; B04 (koroner); B05-B10
+## Modul Otot: O01 dasar B13 2-7; O02 kepala-leher B13 7-15; O03 punggung/thorax B13 15-17; O04 abdomen/pelvis/perineum B13 17-25; O05 ekstremitas superior B13 26-44; O06 inferior B13 44-71 (tabel dibaca dari gambar) | gambar o0n_*
+## Modul Saraf: S01 B01 16-22; S02-S03 B14; S04 B16; S05-S06 B15; S07-S08 B17 | gambar s0n_*
+## Modul Pembuluh darah
+- P01 Dasar: B01 12-16 | p01_*
+- P02 Koroner: B04 | p02_*
+- P03 Thorax: B05 | p03_*
+- P04 Kepala, leher, otak: B06, B14 | p04_*
+- P05 Ekstremitas superior: B07 (hlm buku 194 tidak ada) | p05_*
+- P06 Abdomen, pelvis, perineum: B08 | p06_* (B08 4, 7, 9, 11, 12, 19)
+- P07 Ekstremitas inferior: B09 (hlm buku 237-238 tidak ada) | p07_* (B09 3, 7, 9, 11, 13, 18)
+- P08 Limfe: B10 2-13 | p08_* (B10 3, 5, 6, 7, 8, 9, 12, 13)
