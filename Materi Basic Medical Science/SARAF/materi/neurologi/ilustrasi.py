@@ -98,7 +98,60 @@ def bab26_iskemia():
     simpan(fig, "bab26_iskemia")
 
 
-SEMUA = {"bab26_iskemia": bab26_iskemia, "bab02_vesikel": bab02_vesikel, "bab25_lokalisasi": bab25_lokalisasi}
+def bab29_klasifikasi():
+    fig, ax = plt.subplots(figsize=(11, 5.6))
+    ax.set_xlim(0, 11); ax.set_ylim(0, 5.8); ax.axis("off")
+    kotak(ax, 3.5, 4.8, 4.0, 0.8, "Bangkitan epileptik", KUNING, 12, True)
+    kelas = [(0.1, "Fokal", BIRU), (2.85, "Generalisata", HIJAU), (5.6, "Tidak diketahui", ABU), (8.35, "Tidak terklasifikasi", ABU)]
+    for x, t, w in kelas:
+        kotak(ax, x, 3.4, 2.55, 0.75, t, w, 11, True)
+        panah(ax, 5.5, 4.8, x + 1.27, 4.15)
+    kotak(ax, 0.1, 0.6, 2.55, 2.4, "Kesadaran:\n- terjaga\n- terganggu\n\nDapat berlanjut menjadi\ntonik-klonik bilateral", "white", 9.5)
+    kotak(ax, 2.85, 0.6, 2.55, 2.4, "- Absans\n- Tonik-klonik\n  generalisata\n- Bangkitan generalisata\n  lain (mis. mioklonik,\n  atonik)", "white", 9.5)
+    kotak(ax, 5.6, 0.6, 2.55, 2.4, "Awitan fokal atau\ngeneralisata belum\ndapat ditentukan;\ndinilai juga menurut\nkesadaran", "white", 9.5)
+    kotak(ax, 8.35, 0.6, 2.55, 2.4, "Informasi tidak\ncukup untuk\nmenggolongkan", "white", 9.5)
+    for x, _, _ in kelas:
+        panah(ax, x + 1.27, 3.4, x + 1.27, 3.0)
+    simpan(fig, "bab29_klasifikasi")
+
+
+def bab29_target_obat():
+    fig, ax = plt.subplots(figsize=(11, 5.2))
+    ax.set_xlim(0, 11); ax.set_ylim(0, 5.4); ax.axis("off")
+    kotak(ax, 3.6, 4.4, 3.8, 0.8, "Hipereksitabilitas neuron\n(eksitasi > inhibisi)", MERAH, 11, True)
+    kelompok = [
+        ("Kanal ion\nberpintu listrik", "Na+: fenitoin, karbamazepin,\nlamotrigin\nCa2+: etosuksimid\nK+: retigabin", BIRU),
+        ("Inhibisi GABA", "Benzodiazepin, tiagabin,\nvigabatrin", HIJAU),
+        ("Eksitasi glutamat", "Perampanel", KUNING),
+        ("Pelepasan\nneurotransmiter", "Levetirasetam, brivarasetam,\ngabapentin,\npregabalin", ABU),
+    ]
+    x = 0.1
+    for judul, isi, w in kelompok:
+        kotak(ax, x, 2.75, 2.55, 0.9, judul, w, 10, True)
+        kotak(ax, x, 0.5, 2.55, 2.0, isi, "white", 9.5)
+        panah(ax, 5.5, 4.4, x + 1.27, 3.65)
+        x += 2.75
+    simpan(fig, "bab29_target_obat")
+
+
+def bab30_gbs():
+    fig, ax = plt.subplots(figsize=(11, 4.6))
+    ax.set_xlim(0, 11); ax.set_ylim(0, 4.8); ax.axis("off")
+    langkah = [("Infeksi pendahulu:\nsaluran napas atas,\ndiare; C. jejuni,\nvirus Zika,\nSARS-CoV-2", KUNING),
+               ("Mimikri\nmolekular antara\nmikroorganisme\ndan saraf tepi", BIRU),
+               ("Proses imun\ndiperantarai\nautoantibodi", BIRU),
+               ("Akar saraf\ndan saraf tepi\nrusak", MERAH),
+               ("Kelemahan\nprogresif,\ngangguan sensorik,\notonom, dan\nnapas", MERAH)]
+    x = 0.1
+    for i, (t, w) in enumerate(langkah):
+        kotak(ax, x, 1.6, 1.95, 2.1, t, w, 9)
+        if i < 4:
+            panah(ax, x + 1.95, 2.65, x + 2.2, 2.65)
+        x += 2.2
+    kotak(ax, 0.6, 0.1, 9.8, 1.0, "CSS: disosiasi albuminositologik; pemeriksaan elektrodiagnostik mendukung diagnosis.\nTerapi: IVIg atau plasmaferesis bila tidak dapat berjalan tanpa bantuan", "white", 9)
+    simpan(fig, "bab30_gbs")
+
+SEMUA = {"bab30_gbs": bab30_gbs, "bab29_klasifikasi": bab29_klasifikasi, "bab29_target_obat": bab29_target_obat, "bab26_iskemia": bab26_iskemia, "bab02_vesikel": bab02_vesikel, "bab25_lokalisasi": bab25_lokalisasi}
 
 if __name__ == "__main__":
     os.makedirs(OUT, exist_ok=True)
