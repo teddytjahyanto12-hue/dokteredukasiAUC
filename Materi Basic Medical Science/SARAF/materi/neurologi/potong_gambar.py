@@ -108,6 +108,16 @@ SPEK = {
     "bab22_kuncup_kecap": ("S", 151, (20, 516, 405, 708)),
     "bab22_olfaktorius": ("S", 153, (28, 25, 600, 330)),
     "bab22_bulbus": ("S", 154, (110, 30, 343, 320)),
+    "bab23_taut_nm": ("S", 173, (15, 25, 630, 458)),
+    "bab23_organisasi_otot": ("S", 183, (25, 25, 630, 668)),
+    "bab23_eksitasi_kontraksi": ("S", 191, (25, 25, 630, 716)),
+    "bab23_tetanus": ("S", 199, (40, 25, 620, 316)),
+    "bab23_panjang_tegangan": ("S", 200, (262, 25, 612, 308)),
+    "bab24_jalur_atp": ("S", 202, (15, 25, 640, 722)),
+    "bab24_tipe_serat": ("S", 206, (15, 15, 640, 212)),
+    "bab24_kalsium_polos": ("S", 219, (15, 270, 290, 715)),
+    "bab24_listrik_polos": ("S", 221, (15, 20, 320, 362)),
+    "bab24_persarafan_polos": ("S", 222, (15, 20, 468, 250)),
 }
 
 

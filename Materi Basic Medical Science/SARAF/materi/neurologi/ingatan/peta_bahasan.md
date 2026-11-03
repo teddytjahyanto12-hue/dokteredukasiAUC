@@ -23,3 +23,6 @@
 | 20 Penglihatan | S116-136; D144-151 | bab20_mata (S117), bab20_retina (S124), bab20_jalur_visual (D145) | naskah selesai; otot ekstraokular rinci di BAB 6 |
 | 21 Pendengaran, vestibular | S136-150; D266 | bab21_koklea (S141), bab21_sel_rambut (S143), bab21_vestibular (S147) | naskah selesai; VOR dan nistagmus rinci di BAB 15/39 |
 | 22 Pengecapan, penciuman | S150-155; D142-143, D138 | bab22_kuncup_kecap (S151), bab22_olfaktorius (S153), bab22_bulbus (S154) | naskah selesai |
+| 23 NMJ, otot rangka | S171-177, S182-201 | bab23_taut_nm (S173), bab23_organisasi_otot (S183), bab23_eksitasi_kontraksi (S191), bab23_tetanus (S199), bab23_panjang_tegangan (S200) | naskah selesai |
+| 24 Energetika, otot polos, jantung | S201-208, S216-227 | bab24_jalur_atp (S202), bab24_tipe_serat (S206), bab24_kalsium_polos (S219), bab24_listrik_polos (S221), bab24_persarafan_polos (S222) | naskah selesai |
+| 25 Pemeriksaan, lokalisasi | J33-37, J53-54, J425-426, J751-753, J781-790 | bab25_lokalisasi (ilustrasi) | naskah selesai; prinsip CT/MRI, EEG, EMG/NCS belum ditulis karena tidak dibahas rinci di sumber lokal |

@@ -54,7 +54,32 @@ def bab02_vesikel():
     simpan(fig, "bab02_vesikel")
 
 
-SEMUA = {"bab02_vesikel": bab02_vesikel}
+def bab25_lokalisasi():
+    fig, ax = plt.subplots(figsize=(11, 8.2))
+    ax.set_xlim(0, 11); ax.set_ylim(0, 8.4); ax.axis("off")
+    tingkat = [
+        ("Hemisfer serebri", "Defisit sesisi (hemi), hiperrefleksia, refleks patologis.\nKorteks: afasia, apraksia, kejang, gangguan kognitif", KUNING),
+        ("Ganglia basalis", "Gangguan gerak hipokinetik (bradikinesia, rigiditas)\natau hiperkinetik (korea), tremor", KUNING),
+        ("Serebelum", "Tremor, inkoordinasi, gangguan jalan, disartria, nistagmus.\nTanpa kelemahan dan tanpa gangguan sensorik", BIRU),
+        ("Batang otak", "Defisit menyilang: saraf kranial satu sisi,\nmotorik atau sensorik sisi berlawanan", BIRU),
+        ("Medula spinalis", "Kelemahan di bawah tingkat lesi, batas sensorik,\ngangguan kandung kemih dan usus", HIJAU),
+        ("Akar saraf", "Nyeri radikular, defisit motorik-sensorik dan\nrefleks menurun sesuai akar", MERAH),
+        ("Saraf tepi", "Polineuropati: distal simetris, pola kaus kaki-sarung tangan,\nrefleks menurun. Mononeuropati: sesuai satu saraf", MERAH),
+        ("Taut neuromuskular", "Kelemahan proksimal yang mudah lelah dan berfluktuasi,\nptosis, diplopia, gangguan bulbar, tanpa gangguan sensorik", ABU),
+        ("Otot", "Kelemahan proksimal simetris, refleks umumnya normal,\ntanpa gangguan sensorik, jalan bergoyang", ABU),
+    ]
+    y = 7.55
+    for nama, ciri, w in tingkat:
+        kotak(ax, 0.2, y, 2.6, 0.72, nama, w, 10, True)
+        kotak(ax, 3.1, y, 7.7, 0.72, ciri, "white", 9)
+        panah(ax, 2.8, y + 0.36, 3.1, y + 0.36)
+        y -= 0.86
+    ax.text(0.02, 6.19, "SSP", rotation=90, ha="center", va="center", fontsize=11, fontweight="bold")
+    ax.text(0.02, 2.32, "SST", rotation=90, ha="center", va="center", fontsize=11, fontweight="bold")
+    simpan(fig, "bab25_lokalisasi")
+
+
+SEMUA = {"bab02_vesikel": bab02_vesikel, "bab25_lokalisasi": bab25_lokalisasi}
 
 if __name__ == "__main__":
     os.makedirs(OUT, exist_ok=True)
