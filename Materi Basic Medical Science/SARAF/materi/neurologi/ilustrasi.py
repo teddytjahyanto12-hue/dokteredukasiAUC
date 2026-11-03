@@ -79,7 +79,26 @@ def bab25_lokalisasi():
     simpan(fig, "bab25_lokalisasi")
 
 
-SEMUA = {"bab02_vesikel": bab02_vesikel, "bab25_lokalisasi": bab25_lokalisasi}
+def bab26_iskemia():
+    fig, ax = plt.subplots(figsize=(11, 6.6))
+    ax.set_xlim(0, 11); ax.set_ylim(0, 6.8); ax.axis("off")
+    ax.text(2.6, 6.6, "Ambang aliran darah otak", ha="center", va="top", fontsize=11, fontweight="bold")
+    kotak(ax, 0.2, 4.6, 4.8, 1.3, "Di atas 20 ml/100 g/menit\nfungsi dan struktur normal", HIJAU, 10)
+    kotak(ax, 0.2, 2.9, 4.8, 1.3, "Antara 5-8 dan 20 ml/100 g/menit\nfungsi hilang, struktur masih utuh\n(penumbra, dapat diselamatkan)", KUNING, 10)
+    kotak(ax, 0.2, 1.2, 4.8, 1.3, "Di bawah 5-8 ml/100 g/menit\nstruktur rusak (inti infark)", MERAH, 10)
+    ax.text(8.2, 6.6, "Eksitotoksisitas di sekitar infark", ha="center", va="top", fontsize=11, fontweight="bold")
+    langkah = ["Sel kekurangan O2 melepaskan\nglutamat berlebihan", "Reseptor NMDA tetap terbuka", "Ca2+ masuk berlebihan\nke neuron sekitar",
+               "Radikal bebas dan sinyal apoptosis\n(menyebar lewat taut celah)", "Kematian neuron meluas\nmelebihi daerah iskemia"]
+    y = 5.4
+    for i, t in enumerate(langkah):
+        kotak(ax, 5.9, y, 4.6, 0.75, t, BIRU if i < 4 else MERAH, 9.5)
+        if i < 4:
+            panah(ax, 8.2, y, 8.2, y - 0.35)
+        y -= 1.1
+    simpan(fig, "bab26_iskemia")
+
+
+SEMUA = {"bab26_iskemia": bab26_iskemia, "bab02_vesikel": bab02_vesikel, "bab25_lokalisasi": bab25_lokalisasi}
 
 if __name__ == "__main__":
     os.makedirs(OUT, exist_ok=True)

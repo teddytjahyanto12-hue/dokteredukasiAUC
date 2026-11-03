@@ -26,3 +26,6 @@
 | 23 NMJ, otot rangka | S171-177, S182-201 | bab23_taut_nm (S173), bab23_organisasi_otot (S183), bab23_eksitasi_kontraksi (S191), bab23_tetanus (S199), bab23_panjang_tegangan (S200) | naskah selesai |
 | 24 Energetika, otot polos, jantung | S201-208, S216-227 | bab24_jalur_atp (S202), bab24_tipe_serat (S206), bab24_kalsium_polos (S219), bab24_listrik_polos (S221), bab24_persarafan_polos (S222) | naskah selesai |
 | 25 Pemeriksaan, lokalisasi | J33-37, J53-54, J425-426, J751-753, J781-790 | bab25_lokalisasi (ilustrasi) | naskah selesai; prinsip CT/MRI, EEG, EMG/NCS belum ditulis karena tidak dibahas rinci di sumber lokal |
+| 26 Stroke, HIE | D457-470; J779-780, J744, J791-793; S? eksitotoksisitas (S.txt 6600-6660); easton2009, berge2021 | bab26_iskemia (ilustrasi), bab26_hemodinamik (D461), bab26_lakunar (D463), bab26_oklusi_mca (D470) | naskah selesai |
+| 27 Perdarahan, edema, hidrosefalus, herniasi | D425-428, D491-503; J751-754, J766-767, J793-795 | bab27_perdarahan_ganglia (D492), bab27_aneurisma (D495), bab27_hsa (D498), bab27_subdural (D501), bab27_epidural (D503), bab27_nph (D427), bab27_herniasi (J766) | naskah selesai |
+| 28 Trauma, sindrom medula spinalis | D84-101; J393-398, J761-762, J794-795, J754 | bab28_brown_sequard (D93), bab28_degenerasi_kombinasi (D89), bab28_transeksi (D95), bab28_konus_kauda (D100) | naskah selesai |
