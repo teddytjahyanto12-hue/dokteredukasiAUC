@@ -16,3 +16,10 @@
 | 13 Motorik | S66-68, S169-171, S197-198; D70-83 | bab13_area_motorik (D72), bab13_piramidal (D74), bab13_jalur_motorik (D76), bab13_lokasi_lesi (D79) | naskah selesai |
 | 14 Refleks, gait | S96-99, S209-215; D44-48, D78; J647-653 | bab14_reseptor_otot (S212), bab14_sirkuit_panjang (D48), bab14_refleks_lucut (S98), bab14_ekstensor_silang (D46) | naskah selesai; inhibisi Ib (inverse stretch) dinyatakan Sherwood bukan refleks |
 | 15 Ganglia basalis, serebelum | S72-73, S85-87; D254-270, D347-356 | bab15_ganglia_basalis (D348), bab15_jalur_langsung (D353), bab15_korteks_serebelum (D258), bab15_hubungan_serebelum (D261) | naskah selesai |
+| 16 Otonom, hipotalamus | S160-168, S74-75; D289-310 | bab16_otonom (S162), bab16_inervasi_organ (S164), bab16_simpatis_parasimpatis (D304), bab16_trunkus (D307) | naskah selesai; disautonomia rinci belum ada sumber |
+| 17 Kesadaran, tidur | S70-71, S87-91; D287 | bab17_ras (S88), bab17_eeg_alfa (S70), bab17_eeg_tidur (S90), bab17_hipnogram (S90) | naskah selesai; GCS/pemeriksaan koma di BAB 25 |
+| 18 Fungsi luhur, memori | S64-71, S77-85; D380, D364 | bab18_area_fungsional (S65), bab18_jalur_bahasa (S69), bab18_habituasi (S79), bab18_ltp (S80) | naskah selesai; Kandel 2001 (PMID 11691980) abstrak tidak memuat klaim spesifik sehingga tidak dipakai |
+| 19 Limbik, emosi | S74-76; D326-334 | bab19_sistem_limbik (S74), bab19_korteks_limbik (D327), bab19_papez (D328) | naskah selesai; stres dan adiksi hanya sebatas Sherwood |
+| 20 Penglihatan | S116-136; D144-151 | bab20_mata (S117), bab20_retina (S124), bab20_jalur_visual (D145) | naskah selesai; otot ekstraokular rinci di BAB 6 |
+| 21 Pendengaran, vestibular | S136-150; D266 | bab21_koklea (S141), bab21_sel_rambut (S143), bab21_vestibular (S147) | naskah selesai; VOR dan nistagmus rinci di BAB 15/39 |
+| 22 Pengecapan, penciuman | S150-155; D142-143, D138 | bab22_kuncup_kecap (S151), bab22_olfaktorius (S153), bab22_bulbus (S154) | naskah selesai |
