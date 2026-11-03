@@ -29,6 +29,18 @@
 
 ## Sumber penunjang terverifikasi (PubMed)
 - woolf2011 (sensitisasi sentral: definisi, alodinia, hiperalgesia sekunder, sumasi temporal, sindrom klinis) PMID 20961685, abstrak dibaca 2026-11-03.
+- Semua dibaca abstraknya lewat PubMed 2026-11-03; hanya isi abstrak yang dipakai. Rincian DOI di sumber.ris.
+  - BAB 26: easton2009 (TIA berbasis jaringan, PMID 19423857), berge2021 (IVT alteplase 4,5 jam, PMID 33817340).
+  - BAB 29: fisher2014 (definisi praktis epilepsi, 24730690), fisher2017 (klasifikasi 2017, 28276060), beniczky2025 (klasifikasi 2025, 40264351), trinka2015 (status epileptikus t1/t2, 26336950), sills2020 (mekanisme obat antikejang, 32120063).
+  - BAB 30: vandoorn2023 (pedoman EAN/PNS SGB, 37814551), shahrizaila2021 (SGB, mimikri molekular, 33647239).
+  - BAB 31: feldman2022 (ALS, 36116464), gonzalez2006 (pascapolio IVIg, 16713921), thompson2007 (eradikasi polio, 17448822).
+  - BAB 32: thompson2018 (McDonald 2017, 29275977), montalban2025 (McDonald 2024, 40975101), wingerchuk2015 (NMOSD, 26092914), banwell2023 (MOGAD, 36706773).
+  - BAB 33: gilhus2019 (MG, 31048702), narayanaswami2021 (konsensus MG 2020, 33144515).
+  - BAB 34: bloem2021 (PP, 33848468), postuma2015 (kriteria MDS, 26474316), bates2015 (Huntington, 27188817), bhatia2018 (klasifikasi tremor, 29193359).
+  - BAB 35: jack2024 (kriteria biologis PA, 38934362), mckeith2017 (DBL, 28592453), mckee2016 (ETK, 26667418).
+  - BAB 36: louis2021 (WHO CNS5, 34185076).
+  - BAB 38: ashina2021 (migren, 33773612), edvinsson2018 (CGRP, 29691490), fraser2019 (aura, depresi korteks menyebar, 31847045).
+- Dicek tetapi TIDAK dipakai: kandel2001 (11691980, tanpa klaim spesifik), powers2019 AHA (31662037, abstrak tanpa angka), ESCMID meningitis (27062097) dan ICHD-3 (29368949) tanpa abstrak, Ashina NEJM 2020 (33211930) tanpa abstrak.
 
 ## Bagian yang tidak ditulis (butuh sumber yang belum diberikan)
-- (diisi saat ditemukan)
+- Rinciannya per BAB ada di kolom Status `peta_bahasan.md`. Ringkasan: Nernst/Goldman; unit neurovaskular; teori gerbang/wind-up; prinsip CT/MRI/EEG/EMG rinci; efek samping spesifik obat antikejang; varian SGB; tropisme poliovirus; jenis leukodistrofi; mekanisme antibodi LEMS; antisipasi Huntington dan farmakologi antiparkinson rinci; kriteria demensia vaskular dan antiamiloid; glioblastoma dan penanda molekuler; neurosistiserkosis, toksoplasmosis, regimen antimikroba; kriteria ICHD-3; mata merah, uveitis, hordeolum, otitis, tata laksana THT-mata; dosis dan farmakokinetik obat.

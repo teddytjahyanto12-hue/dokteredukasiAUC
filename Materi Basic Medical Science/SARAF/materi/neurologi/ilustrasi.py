@@ -190,7 +190,58 @@ def bab35_alzheimer():
     simpan(fig, "bab35_alzheimer")
 
 
-SEMUA = {"bab35_alzheimer": bab35_alzheimer, "bab34_pd_hd": bab34_pd_hd, "bab30_gbs": bab30_gbs, "bab29_klasifikasi": bab29_klasifikasi, "bab29_target_obat": bab29_target_obat, "bab26_iskemia": bab26_iskemia, "bab02_vesikel": bab02_vesikel, "bab25_lokalisasi": bab25_lokalisasi}
+def bab38_migren():
+    fig, ax = plt.subplots(figsize=(11, 4.4))
+    ax.set_xlim(0, 11); ax.set_ylim(0, 4.6); ax.axis("off")
+    langkah = [("Depresi korteks menyebar:\nefluks K+ dan glutamat\ndari sel", BIRU), ("Aura (umumnya visual)\ndan perubahan vaskular\nsekunder", BIRU),
+               ("Sistem trigeminovaskular\naktif; CGRP dilepaskan\ndari serabut trigeminal", MERAH), ("Nyeri kepala migren\nberdenyut, mual, muntah,\nfotofobia, fonofobia", MERAH)]
+    x = 0.1
+    for i, (t, w) in enumerate(langkah):
+        kotak(ax, x, 2.2, 2.5, 1.6, t, w, 9.5)
+        if i < 3:
+            panah(ax, x + 2.5, 3.0, x + 2.75, 3.0)
+        x += 2.75
+    kotak(ax, 5.6, 0.2, 5.25, 1.5, "Sasaran terapi: antagonis reseptor CGRP\n(akut); antibodi monoklonal terhadap\nCGRP atau reseptornya (pencegahan)", "white", 9.5)
+    panah(ax, 6.85, 2.2, 6.85, 1.7)
+    simpan(fig, "bab38_migren")
+
+
+def bab38_pusing():
+    fig, ax = plt.subplots(figsize=(11, 4.8))
+    ax.set_xlim(0, 11); ax.set_ylim(0, 5.0); ax.axis("off")
+    kotak(ax, 3.5, 4.0, 4.0, 0.8, "Keluhan pusing: minta pasien\nmenjelaskan apa yang dirasakan", KUNING, 10, True)
+    jenis = [("Vertigo", "Ilusi gerak diri atau\nlingkungan; gangguan\nvestibular perifer\natau sentral", BIRU),
+             ("Disekuilibrium", "Keseimbangan buruk;\nvestibular bilateral,\nneuropati, kolumna\nposterior, serebelum", HIJAU),
+             ("Presinkop", "Melayang, hampir\npingsan; hipoperfusi\notak global", MERAH),
+             ("Tidak khas", "Defisit sensorik\nmultipel pada lansia\natau psikogenik", ABU)]
+    x = 0.1
+    for judul, isi, w in jenis:
+        kotak(ax, x, 2.6, 2.55, 0.8, judul, w, 10, True)
+        kotak(ax, x, 0.2, 2.55, 2.2, isi, "white", 9.5)
+        panah(ax, 5.5, 4.0, x + 1.27, 3.4)
+        x += 2.75
+    simpan(fig, "bab38_pusing")
+
+
+def bab40_peta_obat():
+    fig, ax = plt.subplots(figsize=(11, 6.4))
+    ax.set_xlim(0, 11); ax.set_ylim(0, 6.6); ax.axis("off")
+    tahap = [("Akson:\nkonduksi potensial aksi", "Anestetik lokal\n(menyekat kanal Na+)", BIRU),
+             ("Terminal prasinaps:\npelepasan transmiter", "Toksin botulinum;\nlevetirasetam, gabapentin", BIRU),
+             ("Celah sinaps:\npembersihan transmiter", "SSRI; neostigmin;\norganofosfat", HIJAU),
+             ("Reseptor pascasinaps", "Atropin, salbutamol, metoprolol;\nkurare; benzodiazepin; opioid", KUNING),
+             ("Prekursor dan sintesis", "Levodopa (prekursor dopamin)", MERAH),
+             ("Neuropeptida nyeri\ntrigeminal", "Antagonis reseptor dan\nantibodi CGRP", MERAH)]
+    y = 5.6
+    for judul, contoh, w in tahap:
+        kotak(ax, 0.2, y, 4.2, 0.8, judul, w, 10, True)
+        kotak(ax, 4.9, y, 5.9, 0.8, contoh, "white", 9.5)
+        panah(ax, 4.4, y + 0.4, 4.9, y + 0.4)
+        y -= 1.05
+    simpan(fig, "bab40_peta_obat")
+
+
+SEMUA = {"bab40_peta_obat": bab40_peta_obat, "bab38_migren": bab38_migren, "bab38_pusing": bab38_pusing, "bab35_alzheimer": bab35_alzheimer, "bab34_pd_hd": bab34_pd_hd, "bab30_gbs": bab30_gbs, "bab29_klasifikasi": bab29_klasifikasi, "bab29_target_obat": bab29_target_obat, "bab26_iskemia": bab26_iskemia, "bab02_vesikel": bab02_vesikel, "bab25_lokalisasi": bab25_lokalisasi}
 
 if __name__ == "__main__":
     os.makedirs(OUT, exist_ok=True)

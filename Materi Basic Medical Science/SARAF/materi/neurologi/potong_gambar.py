@@ -149,6 +149,8 @@ SPEK = {
     "bab36_schwannoma": ("D", 272, (32, 43, 163, 228)),
     "bab37_kernig": ("J", 776, (258, 66, 466, 293)),
     "bab37_brudzinski": ("J", 777, (53, 32, 312, 205)),
+    "bab39_papiledema_dini": ("J", 182, (36, 66, 241, 270)),
+    "bab39_papiledema_berat": ("J", 182, (257, 66, 464, 236)),
 }
 
 
