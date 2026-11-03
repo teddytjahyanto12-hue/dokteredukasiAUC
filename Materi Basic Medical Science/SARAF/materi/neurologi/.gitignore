@@ -1,0 +1,5 @@
+_ekstrak/
+gambar/
+keluaran/
+*.md.tmp
+__pycache__/
