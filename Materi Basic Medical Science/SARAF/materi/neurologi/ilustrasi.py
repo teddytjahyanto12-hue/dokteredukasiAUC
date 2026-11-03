@@ -151,7 +151,46 @@ def bab30_gbs():
     kotak(ax, 0.6, 0.1, 9.8, 1.0, "CSS: disosiasi albuminositologik; pemeriksaan elektrodiagnostik mendukung diagnosis.\nTerapi: IVIg atau plasmaferesis bila tidak dapat berjalan tanpa bantuan", "white", 9)
     simpan(fig, "bab30_gbs")
 
-SEMUA = {"bab30_gbs": bab30_gbs, "bab29_klasifikasi": bab29_klasifikasi, "bab29_target_obat": bab29_target_obat, "bab26_iskemia": bab26_iskemia, "bab02_vesikel": bab02_vesikel, "bab25_lokalisasi": bab25_lokalisasi}
+def bab34_pd_hd():
+    fig, ax = plt.subplots(figsize=(11, 5.6))
+    ax.set_xlim(0, 11); ax.set_ylim(0, 5.8); ax.axis("off")
+    kolom = [(0.3, "Penyakit Parkinson", ["Degenerasi proyeksi\ndopaminergik nigrostriatal", "Aktivitas jalur tidak\nlangsung berlebihan;\nnukleus subtalamikus aktif", "Inhibisi talamus\nmeningkat", "Aktivasi korteks motorik\nberkurang: hipokinesia,\nrigiditas, tremor istirahat"], BIRU),
+             (5.8, "Penyakit Huntington", ["Ekspansi CAG gen huntingtin;\nneuron striatum GABA/\nenkefalin berdegenerasi", "Jalur tidak langsung\nterhambat; nukleus\nsubtalamikus lebih dihambat", "Inhibisi talamus\nberkurang", "Aktivasi korteks motorik\nmeningkat: korea,\nlalu demensia"], MERAH)]
+    for x, judul, langkah, w in kolom:
+        ax.text(x + 2.45, 5.65, judul, ha="center", va="top", fontsize=12, fontweight="bold")
+        y = 4.3
+        for i, t in enumerate(langkah):
+            kotak(ax, x, y, 4.9, 0.95, t, w if i in (0, 3) else "white", 9.5)
+            if i < 3:
+                panah(ax, x + 2.45, y, x + 2.45, y - 0.3)
+            y -= 1.25
+    simpan(fig, "bab34_pd_hd")
+
+
+def bab35_alzheimer():
+    fig, ax = plt.subplots(figsize=(11, 5.2))
+    ax.set_xlim(0, 11); ax.set_ylim(0, 5.4); ax.axis("off")
+    atas = [("Protein prekursor amiloid\n(APP) diputus di\ntempat alternatif", KUNING), ("Amiloid beta (Aβ)\npembentuk plak\nmeningkat", KUNING),
+            ("Plak neuritik ekstrasel;\nmikroglia menyerang plak\ndan melepas zat toksik", MERAH), ("Tau hiperfosforilasi\nlepas dari tubulin", MERAH)]
+    x = 0.1
+    for i, (t, w) in enumerate(atas):
+        kotak(ax, x, 3.3, 2.5, 1.5, t, w, 9.5)
+        if i < 3:
+            panah(ax, x + 2.5, 4.05, x + 2.75, 4.05)
+        x += 2.75
+    bawah = [("Neurofibrillary tangles;\nmikrotubulus rusak,\ntranspor akson terganggu", MERAH), ("Neuron basal otak depan\nkolinergik berdegenerasi\n(defisiensi asetilkolin)", BIRU),
+             ("Kematian neuron dan\nhilangnya komunikasi sinaps\nterutama di hipokampus", BIRU), ("Demensia: memori\nanterograd terganggu lebih\ndulu, lalu ranah lain", ABU)]
+    panah(ax, 9.6, 3.3, 9.6, 2.85)
+    x = 8.35
+    for i, (t, w) in enumerate(bawah):
+        kotak(ax, x, 1.2, 2.5, 1.6, t, w, 9.5)
+        if i < 3:
+            panah(ax, x, 2.0, x - 0.25, 2.0)
+        x -= 2.75
+    simpan(fig, "bab35_alzheimer")
+
+
+SEMUA = {"bab35_alzheimer": bab35_alzheimer, "bab34_pd_hd": bab34_pd_hd, "bab30_gbs": bab30_gbs, "bab29_klasifikasi": bab29_klasifikasi, "bab29_target_obat": bab29_target_obat, "bab26_iskemia": bab26_iskemia, "bab02_vesikel": bab02_vesikel, "bab25_lokalisasi": bab25_lokalisasi}
 
 if __name__ == "__main__":
     os.makedirs(OUT, exist_ok=True)

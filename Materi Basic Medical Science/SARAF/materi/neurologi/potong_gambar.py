@@ -141,6 +141,14 @@ SPEK = {
     "bab33_ptosis_mg": ("J", 203, (275, 66, 482, 366)),
     "bab33_taut_mg_lems": ("J", 382, (128, 316, 370, 610)),
     "bab33_pseudohipertrofi": ("J", 493, (295, 66, 463, 420)),
+    "bab34_huntington": ("D", 359, (29, 43, 298, 205)),
+    "bab34_hemibalismus": ("D", 360, (32, 296, 313, 440)),
+    "bab36_tumor_spinal": ("D", 104, (32, 43, 330, 221)),
+    "bab36_medulloblastoma": ("D", 271, (29, 43, 298, 201)),
+    "bab36_hipofisis": ("D", 302, (32, 43, 301, 186)),
+    "bab36_schwannoma": ("D", 272, (32, 43, 163, 228)),
+    "bab37_kernig": ("J", 776, (258, 66, 466, 293)),
+    "bab37_brudzinski": ("J", 777, (53, 32, 312, 205)),
 }
 
 
