@@ -13,4 +13,8 @@
 | 09 Asam basa dan elektrolit | E 268-275, 279-286, 292-307, 316-320 | ilustrasi `bab09_alur_agd` |
 | 10 Farmakologi dan analgesia | E 102-112, 480-492 | ilustrasi `bab10_jaras_nyeri` |
 | 11 EKG dan aritmia | E 119-138; AHA Part 9 | ilustrasi `bab11_ekg_normal` |
-| 12-36 | lihat Outline bagian 3 dan 4 serta peta bab EIMED di `catatan_eimed.md` | belum |
+| 12 Nyeri dada, SKA, hipertensi | E 394-404, 107-111, 138; P 23-24; ESC 2019 | ilustrasi `bab12_sandapan_infark` |
+| 13 Gagal jantung, tromboemboli, aorta | E 371-375, 410-413, 528-533; A 107-108 | A107 kotak `bab13_tamponade` |
+| 14 Obstruktif dan pleura | GINA 2021, GOLD 2023; E 281, 411; P 81-82; A 102-110 | A103 `bab14_tension_pneumotoraks` (tutup judul), A110 `bab14_pneumotoraks_sederhana` |
+| 15 Infeksi, pneumonia, ARDS | E 66-67, 355, 372-374, 413, 476-479; ARDS 2024; Sepsis-3 | ilustrasi `bab15_ards` |
+| 16-36 | lihat Outline bagian 3 dan 4 serta peta bab EIMED di `catatan_eimed.md` | belum |

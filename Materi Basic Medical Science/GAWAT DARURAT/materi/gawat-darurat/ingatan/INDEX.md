@@ -1,8 +1,9 @@
 # INDEX Modul Gawat Darurat Preklinik
 
-## Status (2026-11-02)
-- Selesai, dirakit, dan PDF diperiksa visual: BAB 01-11 (modul gabungan 11 BAB + DOCX/PDF per BAB).
-- Belum ditulis: BAB 12-36. Berikutnya BAB 12 (EIMED XXIX nyeri dada 394, VIII EKG SKA 138; ATLS; pedoman ACS/hipertensi perlu diverifikasi), 13 (EIMED XLIII trombosis 528, XXXI dispnea 410; ATLS Bab 4 tamponade), 14 (EIMED XXXI; ATLS Bab 4 pneumotoraks; GINA/GOLD perlu verifikasi), 15 (EIMED XXXVIII demam 476, XXVI ARDS; ARDS global definition PMID 37487152 perlu dicek).
+## Status (2026-11-04)
+- Selesai, dirakit, dan PDF diperiksa visual: BAB 01-15 (modul gabungan 15 BAB + DOCX/PDF per BAB).
+- Belum ditulis: BAB 16-36. Berikutnya BAB 16 (EIMED XXV kesadaran 366, XXVII sinkop 380, XLIX lemah otot 572, XLI nyeri pinggang 510; ATLS Bab 6-7), 17 (ATLS Bab 6; pedoman stroke perlu verifikasi), 18 (EIMED XLVII kejang 556; pedoman meningitis), 19 (mata merah: belum ada sumber bersitasi selain CaKes, perlu buku/pedoman mata).
+- Tertunda dari BAB 12-15: rincian terapi SKA terkini (hanya prinsip; algoritme MONA/EIMED lama tidak dipakai), definisi universal infark (abstrak tidak tersedia), eksaserbasi asma/PPOK rinci dan target SpO2 (teks GINA/GOLD tidak terbaca utuh), COVID-19/SARS dan bronkiolitis (belum ada sumber bersitasi), detail pneumonia (EIMED Buku I tidak punya bab pneumonia).
 - Belum dapat ditulis di BAB 01-11 (butuh sumber): aspek hukum nasional (BAB 1), homeostasis/respons hormonal stres rinci (BAB 2, Sherwood tidak dilampirkan), henti jantung vs sinkop (BAB 5, tunggu EIMED XXVII di BAB 16), NIV/ventilasi mekanik rinci (BAB 6), lokasi suntik/interval epinefrin IM, antihistamin/steroid, reaksi bifasik anafilaksis (BAB 7, teks WAO tidak terbaca utuh), fosfat (BAB 9), tabel pengenceran obat (BAB 10; berkas dosis tidak berpengarang dan sediaan norepinefrin tidak konsisten, hanya dipakai sebagai latihan hitung di soal).
 - Koreksi sumber yang sengaja tidak dipakai: EIMED dobutamin disebut agonis beta-2 (ditulis netral "reseptor beta"); EIMED hipermagnesemia definisi <2,5 (OCR/typo, tidak dipakai); rekomendasi lama EGDT, SIRS, vasopresin.
 

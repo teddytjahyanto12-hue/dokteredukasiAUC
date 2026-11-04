@@ -63,7 +63,7 @@
 | Derajat 2 risiko tinggi (2:1, 3:1) | Dua atau tiga P untuk satu QRS | Berbahaya dan cenderung menjadi blok total |
 | Derajat 3 (blok total) | P dan QRS tidak berhubungan; irama lolos dari bawah nodus AV | Sering tidak stabil dan membutuhkan pacu jantung sementara |
 
-**Lokasi infark pada EKG.** Elevasi ST di V1 sampai V2 menunjukkan daerah septal, V3 sampai V4 anterior, V5 sampai V6 serta I dan aVL lateral, dan II, III, aVF inferior. Pada infark inferior dibuat sandapan kanan (V3R dan V4R) untuk mencari infark ventrikel kanan serta sandapan posterior (V7 sampai V9).[@eimed]
+**Lokasi infark pada EKG.** Elevasi ST di V1 sampai V2 menunjukkan daerah septal, V3 sampai V4 anterior, V5 sampai V6 serta I dan aVL lateral, dan II serta III inferior. Pada infark inferior dibuat sandapan kanan (V3R dan V4R) untuk mencari infark ventrikel kanan serta sandapan posterior (V7 sampai V9).[@eimed]
 
 **Stabilitas klinis.** Penilaian cepat stabilitas klinis menentukan penanganan, karena perfusi organ yang buruk merupakan tanda ketidakstabilan. Aritmia dapat menjadi penyebab sekaligus akibat ketidakstabilan, sehingga penyebab dasarnya perlu dicari.[@aha_als2025]
 

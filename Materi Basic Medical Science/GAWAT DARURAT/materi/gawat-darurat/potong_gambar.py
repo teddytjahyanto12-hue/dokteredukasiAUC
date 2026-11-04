@@ -29,6 +29,9 @@ SPEK = {
     "bab06_dorong_rahang": ("A", 45, 385),
     "bab06_pasang_opa": ("A", 45, 386),
     "bab07_lokasi_perdarahan": ("A", 73, (66, 66, 563, 588)),
+    "bab13_tamponade": ("A", 107, (322, 60, 562, 482)),
+    "bab14_tension_pneumotoraks": ("A", 103, (0, 44, 330, 300)),
+    "bab14_pneumotoraks_sederhana": ("A", 110, (0, 50, 562, 322)),
     "bab05_kompresi_dada": ("E", 172, (207, 388, 532, 520)),
     "bab05_buka_jalan_napas": ("E", 174, (204, 73, 533, 150)),
     "bab05_posisi_pulih": ("E", 174, (276, 477, 525, 560)),
@@ -38,6 +41,7 @@ SPEK = {
 # Area keterangan asli buku yang ikut terpotong, ditutup putih (pt, koordinat halaman).
 TUTUP = {
     "bab07_lokasi_perdarahan": [(66, 519, 306, 588)],
+    "bab14_tension_pneumotoraks": [(250, 44, 330, 60)],
 }
 
 

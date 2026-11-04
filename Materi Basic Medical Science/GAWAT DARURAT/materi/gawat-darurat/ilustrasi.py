@@ -192,6 +192,41 @@ def bab11_ekg():
     simpan(fig, "bab11_ekg_normal")
 
 
+def bab12_sandapan():
+    data = [("V1, V2", "Septal", "Arteri desendens anterior kiri"),
+            ("V3, V4", "Anterior", "Arteri desendens anterior kiri"),
+            ("V1 sampai V6", "Anterior luas", "Arteri desendens anterior kiri"),
+            ("V5, V6, I, aVL", "Lateral", "Arteri sirkumfleksa kiri"),
+            ("II, III", "Inferior", "Diperiksa juga V3R, V4R, V7 sampai V9"),
+            ("V3R, V4R", "Ventrikel kanan", "Arteri koroner kanan"),
+            ("V7 sampai V9", "Posterior", "Arteri sirkumfleksa kiri")]
+    fig, ax = plt.subplots(figsize=(9.5, 5.2))
+    ax.set_xlim(0, 10); ax.set_ylim(0, len(data) + 1.2); ax.axis("off")
+    for j, h in enumerate(("Sandapan elevasi ST", "Daerah miokard", "Pembuluh yang diwakili")):
+        kotak(ax, [0.1, 3.0, 5.6][j], len(data) + 0.15, [2.8, 2.5, 4.3][j], 0.8, h, KUNING, 11, True)
+    for i, (a, b, c) in enumerate(data):
+        y = len(data) - 1 - i + 0.1
+        for j, t in enumerate((a, b, c)):
+            kotak(ax, [0.1, 3.0, 5.6][j], y, [2.8, 2.5, 4.3][j], 0.8, t, KUNING_MUDA if j == 1 else ABU, 10.5)
+    simpan(fig, "bab12_sandapan_infark")
+
+
+def bab15_ards():
+    langkah = ["Pemicu paru (pneumonia, aspirasi, trauma toraks)\natau ekstraparu (sepsis, pankreatitis, transfusi multipel)",
+               "Respons inflamasi paru difus;\nneutrofil tertahan di kapiler paru",
+               "Permeabilitas kapiler meningkat\ndan pneumosit tipe 2 rusak",
+               "Edema paru nonkardiogenik\ndan kolaps alveolus",
+               "Komplians paru turun dan hipoksemia\n(gagal napas akut)"]
+    fig, ax = plt.subplots(figsize=(7.6, 7.4))
+    ax.set_xlim(0, 10); ax.set_ylim(0, 10.6); ax.axis("off")
+    for i, t in enumerate(langkah):
+        y = 9.0 - i * 2.05
+        kotak(ax, 0.6, y, 8.8, 1.3, t, KUNING if i == 4 else (KUNING_MUDA if i == 0 else ABU), 11, i == 4)
+        if i:
+            panah(ax, 5, y + 2.05, 5, y + 1.3)
+    simpan(fig, "bab15_ards")
+
+
 if __name__ == "__main__":
     os.makedirs(OUT, exist_ok=True)
     bab01_alur()
@@ -201,3 +236,5 @@ if __name__ == "__main__":
     bab09_alur_agd()
     bab10_jaras_nyeri()
     bab11_ekg()
+    bab12_sandapan()
+    bab15_ards()
