@@ -6,19 +6,73 @@
 - Menjelaskan dasar iktiosis vulgaris dan neurofibromatosis tipe 1.
 
 ### Konsep dasar
+<!-- foto-per-entri -->
 **Pigmentasi kulit** dipengaruhi sintesis melanin, pembentukan melanosom serta distribusinya ke keratinosit. Penurunan warna disebut hipopigmentasi. Hilangnya pigmen secara lebih lengkap disebut depigmentasi. Pemeriksaan membedakan perubahan pigmen dari perubahan warna akibat vaskular atau bahan lain.^1^
 
-**Vitiligo** merupakan kelainan depigmentasi didapat yang berkaitan dengan hilangnya melanosit. Mekanisme autoimun dan predisposisi genetik berperan. Makula atau patch putih berbatas jelas dapat meluas dengan pola yang berbeda. Vitiligo bukan penyakit menular dan tidak dapat dijelaskan sebagai pewarisan Mendelian sederhana pada semua pasien.^1^
+**Vitiligo**
 
-**Albinisme** merupakan kelompok kelainan genetik pembentukan pigmen. Melanosit dapat tetap ada tetapi sintesis atau pengolahan melanin terganggu. Pada bentuk okulokutan terdapat keterlibatan kulit, rambut dan mata. Gangguan penglihatan merupakan pembeda penting dari sejumlah kelainan hipopigmentasi lain.^1^
+- **Definisi:** Depigmentasi didapat.^1^
+- **Etiologi:** Predisposisi genetik dan autoimunitas. Vitiligo berkaitan dengan penyakit autoimun lain seperti hipotiroidisme autoimun.^1^
+- **Patofisiologi:** Hilangnya melanosit mengurangi produksi melanin.^1^
+- **Karakteristik lesi:** Makula atau bercak putih susu berbatas tegas akibat hilangnya melanosit. Lesi lebih mencolok pada kulit gelap.^1,3^
+- **Pengobatan:** Kortikosteroid topikal atau inhibitor kalsineurin pada lesi terpilih. UVB pita sempit dapat dipertimbangkan pada lesi lebih luas.^1^
 
-**Melasma** menimbulkan hiperpigmentasi didapat terutama pada wajah dengan hubungan terhadap pajanan cahaya dan faktor hormonal. **Hiperpigmentasi pascainflamasi** timbul setelah proses inflamasi. Kedalaman perubahan pigmen memengaruhi warna serta ketahanannya. Perubahan warna tersebut tidak selalu menunjukkan penyakit awal yang masih aktif.^1^
+![Gambar #. Depigmentasi pada vitiligo vulgaris.^1^](gambar/buku/fig_74-1.png){width=8cm}
 
-**Iktiosis vulgaris** merupakan gangguan keratinisasi yang menimbulkan skuama dan kekeringan. Hubungannya dengan filaggrin membantu menjelaskan gangguan diferensiasi epidermis dan sawar. Hiperlinearitas telapak serta kaitan dengan kecenderungan atopik dapat dijumpai.^1^
+**Albinisme okulokutan**
 
-**Neurofibromatosis tipe 1** merupakan kelainan genetik dengan pewarisan autosomal dominan. Gen NF1 menghasilkan neurofibromin yang berperan dalam pengaturan jalur pertumbuhan sel. Makula café au lait, freckling aksila atau inguinal serta neurofibroma merupakan temuan penting. Ekspresi klinis bervariasi sehingga tidak semua manifestasi hadir pada usia yang sama.^1^
+- **Definisi:** Gangguan genetik pigmentasi kulit, rambut dan mata.^1^
+- **Etiologi:** Varian gen yang memengaruhi pembentukan melanin atau fungsi melanosom.^1^
+- **Patofisiologi:** Sintesis atau pengolahan melanin terganggu meski melanosit dapat tetap ada.^1^
+- **Karakteristik lesi:** Hipopigmentasi kulit dan rambut disertai kelainan mata.^1^
+- **Pengobatan:** Fotoproteksi, pemeriksaan mata dan dukungan penglihatan.^1^
+
+![Gambar #. Hipopigmentasi kulit dan rambut pada albinisme okulokutan.^1^](gambar/buku/fig_73-2.png){width=8cm}
+
+**Melasma**
+
+- **Definisi:** Hiperpigmentasi didapat yang terutama mengenai wajah.^1^
+- **Etiologi:** Pajanan cahaya dan faktor hormonal berperan.^1^
+- **Patofisiologi:** Peningkatan produksi dan deposisi melanin.^1^
+- **Karakteristik lesi:** Bercak cokelat yang sering simetris pada wajah.^1^
+- **Pengobatan:** Fotoproteksi dan agen depigmentasi topikal pada pasien terpilih.^1^
+
+![Gambar #. Bercak hiperpigmentasi wajah pada melasma.^1^](gambar/buku/fig_75-17.png){width=8cm}
+
+**Hiperpigmentasi pascainflamasi**
+
+- **Definisi:** Penggelapan kulit setelah inflamasi atau cedera.^1^
+- **Etiologi:** Peradangan kulit yang mendahului perubahan warna.^1^
+- **Patofisiologi:** Produksi melanin dapat meningkat. Cedera epidermis basal juga dapat menyebabkan pigmen masuk ke dermis.^1^
+- **Karakteristik lesi:** Makula atau bercak lebih gelap pada lokasi lesi sebelumnya.^1^
+- **Pengobatan:** Kendalikan peradangan aktif dan kurangi pajanan ultraviolet.^1^
+
+![Gambar #. Hiperpigmentasi pascainflamasi pada akne.^1^](gambar/buku/fig_9-4.png){width=8cm}
+
+**Iktiosis vulgaris**
+
+- **Definisi:** Gangguan keratinisasi herediter dengan kekeringan dan skuama.^1^
+- **Etiologi:** Varian yang menurunkan fungsi filaggrin. Iktiosis vulgaris merupakan iktiosis tersering dan penyakit kulit monogenik yang paling umum.^1^
+- **Patofisiologi:** Gangguan diferensiasi epidermis dan sawar menurunkan hidrasi stratum korneum.^1^
+- **Karakteristik lesi:** Skuama halus dan kulit kering. Hiperlinearitas telapak dapat menyertai.^1^
+- **Pengobatan:** Emolien dan keratolitik seperti urea untuk melunakkan skuama.^1^
+
+![Gambar #. Hiperlinearitas telapak pada iktiosis vulgaris.^1^](gambar/buku/fig_49-1.png){width=8cm}
+
+**Neurofibromatosis tipe 1**
+
+- **Definisi:** Kelainan genetik multisistem dengan manifestasi kulit dan saraf.^1^
+- **Etiologi:** Varian patogen gen NF1 dengan pola autosomal dominan.^1^
+- **Patofisiologi:** Gangguan neurofibromin mengubah pengaturan jalur pertumbuhan sel.^1^
+- **Karakteristik lesi:** Enam atau lebih makula café au lait berdiameter lebih dari 5 mm sebelum pubertas atau lebih dari 15 mm setelah pubertas, freckling aksila atau inguinal, neurofibroma kutan yang umumnya muncul setelah pubertas dan nodul Lisch di iris. Insidensnya sekitar 1 per 3.000 kelahiran hidup.^1^
+- **Pengobatan:** Pemantauan berkala untuk komplikasi. Penanganan tumor disesuaikan dengan lokasi dan gejala.^1^
+
+![Gambar #. Bercak kafe au lait.^1^](gambar/buku/fig_141-1.png){width=5cm}
+
+![Gambar #. Neurofibroma kutan dengan hiperpigmentasi di atasnya.^1^](gambar/buku/fig_141-3.png){width=5cm}
 
 ### Gambar
+
 ![Gambar #. Hilangnya melanosit → melanin setempat berkurang → depigmentasi vitiligo. Ilustrasi Dokter Edukasi Academy.^1^](gambar/diagram_17.png){width=13cm}
 
 ### Hubungan sebab-akibat

@@ -26,7 +26,53 @@
 
 **Dermoskopi** memperlihatkan struktur yang tidak mudah terlihat dengan mata telanjang. **Biopsi** menilai pola jaringan. **Imunofluoresensi langsung** menilai deposisi imun pada kulit. Ketiganya menjawab pertanyaan yang berbeda dan tidak saling menggantikan secara otomatis.^1^
 
+**Tabel #. Lesi primer**^1^
+
+| Lesi | Definisi | Contoh |
+|---|---|---|
+| Makula | Datar, setinggi kulit sekitar, hanya berbeda warna | Lentigo |
+| Bercak (patch) | Seperti makula tetapi lebih luas | Vitiligo |
+| Papul | Lesi padat meninggi berdiameter kurang dari 0,5 cm | Liken planus |
+| Plak | Peninggian padat seperti dataran, lebar lebih dari 0,5 cm dan relatif datar | Psoriasis |
+| Nodul | Lesi padat bulat atau lonjong yang teraba, diameter lebih dari 0,5 cm | Karsinoma sel basal nodular |
+| Vesikel | Rongga atau peninggian berisi cairan berdiameter sampai 0,5 cm | Varisela |
+| Bula | Rongga berisi cairan lebih dari 0,5 cm | Pemfigoid bulosa |
+| Pustul | Rongga terbatas di epidermis atau infundibulum berisi pus | Pioderma superfisial |
+| Urtika | Pembengkakan kulit sementara yang hilang dalam hitungan jam | Urtikaria |
+| Kista | Rongga berdinding berisi cairan atau bahan semipadat | Kista epidermoid |
+| Komedo | Infundibulum folikel yang melebar dan tersumbat keratin serta lipid | Akne |
+| Terowongan (burrow) | Terowongan berkelok seperti benang di epidermis luar yang digali parasit | Skabies |
+| Petekie | Makula purpura kecil seujung jarum | Trombositopenia |
+| Purpura teraba | Papul dan plak merah yang tidak memucat | Vaskulitis leukositoklastik |
+| Telangiektasia | Pembuluh darah kecil yang melebar dan menetap | Kerusakan akibat sinar |
+
+**Tabel #. Lesi sekunder**^1^
+
+| Lesi | Definisi | Contoh |
+|---|---|---|
+| Skuama | Lempeng atau serpihan dari lapisan terluar stratum korneum | Psoriasis |
+| Krusta | Endapan keras dari serum, darah atau eksudat purulen yang mengering | Impetigo |
+| Erosi | Lesi lembap cekung akibat hilangnya sebagian atau seluruh epidermis | Nekrolisis epidermal toksik |
+| Ulkus | Defek yang merusak epidermis dan sekurang-kurangnya dermis papiler | Pioderma gangrenosum |
+| Ekskoriasi | Kerusakan linear akibat garukan | Pruritus |
+| Fisura | Retakan linear akibat tegangan berlebihan atau elastisitas berkurang | Eksim tangan |
+| Likenifikasi | Penebalan epidermis reaktif akibat garukan berulang dengan garis kulit yang makin nyata | Liken simpleks kronikus |
+| Atrofi | Pengurangan ukuran jaringan kulit | Pemakaian steroid kuat jangka panjang |
+| Parut | Proliferasi jaringan fibrosa yang menggantikan kolagen normal setelah luka mencapai dermis retikuler | Keloid |
+
+**Istilah tambahan**
+
+- **Eritema:** kemerahan akibat pelebaran pembuluh darah. **Eritroderma:** kemerahan menyeluruh lebih dari 90% permukaan tubuh yang terjadi dalam hari hingga minggu.^1^
+- **Konfigurasi:** anular (seperti cincin), numular (seperti koin), serpiginosa (berkelok seperti ular), retikular (seperti jala), berkelompok dan linear. Lesi linear dapat mengikuti garis Blaschko atau garis tegangan kulit.^1^
+- **Distribusi:** lokalisata atau generalisata, simetris atau asimetris. Dermatitis cenderung simetris, sedangkan infeksi lokal seperti abses umumnya unilateral. Herpes zoster mengikuti dermatom.^1^
+- **Keluhan penyerta:** gatal, nyeri, rasa terbakar, kesemutan atau keluarnya cairan dari permukaan lesi.^1^
+
 ### Gambar
+
+![Gambar #. Lesi primer. A. Makula pada lentigo di bibir. B. Bercak depigmentasi pada vitiligo. C. Papul pada liken planus. D. Plak berskuama pada psoriasis. E. Nodul pada karsinoma sel basal. F. Kista. G. Urtika setelah kulit digores. H. Bula tegang subepidermal. I. Pustul pioderma superfisial. J. Purpura teraba pada vaskulitis. K. Komedo pada akne.^1^](gambar/montase_lesi_primer.png){width=15cm}
+
+![Gambar #. Lesi sekunder. A. Skuama perak pada psoriasis. B. Krusta kuning madu pada impetigo. C. Likenifikasi pada liken simpleks kronikus. D. Erosi luas pada nekrolisis epidermal toksik. E. Ulkus pada pioderma gangrenosum.^1^](gambar/montase_lesi_sekunder.png){width=15cm}
+
 ![Gambar #. Edema dermis sementara → peninggian kulit → urtika. Ilustrasi Dokter Edukasi Academy.^1^](gambar/diagram_10.png){width=13cm}
 
 ### Hubungan sebab-akibat

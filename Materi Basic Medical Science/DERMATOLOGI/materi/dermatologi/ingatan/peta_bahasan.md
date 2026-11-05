@@ -47,3 +47,9 @@ Lokasi halaman hanya untuk audit internal. Tidak dimasukkan ke naskah siswa. Sem
 - Angka epidemiologi dan regimen/dosis tidak dimasukkan. Modul dibatasi pada konsep preklinik.
 - Sherwood khusus kulit tidak digunakan karena berkas relevan tidak tersedia. Topik fisiologi pada outline ditulis dari bab buku utama yang mendukungnya. Tidak ada BAB yang ditunda karena topiknya tersedia pada buku utama dan sumber penunjang terverifikasi.
 - Pembaruan guideline seluruh penyakit dan pencocokan RPS/CPL fakultas bukan verifikasi yang telah dilakukan.
+
+## Provenance gambar tambahan 6 November 2026
+- Potongan buku utama: nomor gambar sama dengan nama berkas gambar/buku/fig_N-M.png. Keterangan aslinya tersimpan di ingatan/ekstraksi/keterangan_gambar_baru.md dan indeks lengkap di ingatan/ekstraksi/indeks_gambar_fitz.tsv (tidak disinkronkan Git).
+- gambar/openstax/os_5xx.jpg: OpenStax Anatomy and Physiology 2013 melalui Wikimedia Commons, CC BY 3.0, metadata di gambar/openstax/info.json.
+- gambar/terbuka: cdc_body_louse (CDC PHIL, domain publik), ganglion_heilman (CC BY-SA 3.0), tinea_incognito_pmc12366883 (Gambar 1, CC BY 4.0), fotoalergi_pmc10825262 (Fig 1, CC BY 4.0, diagnosis kasus diperiksa di teks lengkap), efelid_pmc6364722 (panel A sebelum terapi, CC BY-NC 4.0).
+- Montase: lesi primer (5-1 sampai 5-16), lesi sekunder (5-7, 5-8, 5-11 sampai 5-13), histopatologi (6-2, 6-5, 6-6, 6-8, 6-12, 6-20).

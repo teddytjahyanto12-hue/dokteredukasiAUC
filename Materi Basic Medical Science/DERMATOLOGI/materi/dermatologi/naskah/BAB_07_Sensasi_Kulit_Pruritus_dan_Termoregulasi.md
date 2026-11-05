@@ -16,7 +16,38 @@
 
 **Respons terhadap panas** meliputi peningkatan aliran darah kulit dan produksi keringat. **Respons terhadap dingin** meliputi vasokonstriksi kulit dan peningkatan produksi panas seperti menggigil. Integrasi informasi suhu berlangsung melalui sistem saraf pusat termasuk area preoptik hipotalamus.^1^
 
+**Tabel #. Reseptor sensorik kulit**^1,3^
+
+| Reseptor | Lokasi | Rangsang utama |
+|---|---|---|
+| Ujung saraf bebas | Dermis dan epidermis superfisial | Nyeri, suhu, gatal |
+| Kompleks sel Merkel | Stratum basale | Raba dan tekanan menetap |
+| Reseptor folikel rambut | Sekitar folikel | Gerakan rambut |
+| Korpuskulus Meissner | Papila dermis kulit tanpa rambut | Raba halus dinamis |
+| Korpuskulus Pacini | Dermis dalam dan subkutis | Getaran, beradaptasi cepat |
+| Ujung Ruffini | Dermis dan sekitar folikel | Regangan jaringan |
+
+**Jalur sensorik.** Rangsang dari ujung saraf diteruskan serabut C tanpa mielin dan serabut Aδ kecil menuju badan neuron di ganglion radiks dorsalis. Akson proksimal bersinaps dengan neuron orde kedua di kornu dorsalis medula spinalis. Serabut aferen gatal dan nyeri naik melalui traktus spinotalamikus lateral.^1^
+
+**Jalur gatal histaminergik dan nonhistaminergik.** Serabut C polimodal yang dirangsang bahan kimia atau panas menghantarkan sinyal gatal. Selain jalur histamin, terdapat jalur nonhistaminergik yang dapat diaktifkan, misalnya, oleh cowhage (*Mucuna pruriens*). Keberadaan jalur ini menjelaskan mengapa antihistamin tidak meredakan semua jenis gatal.^1^
+
+**Kendali saraf termoregulasi**
+
+- Masukan suhu internal dan suhu kulit diintegrasikan di hipotalamus preoptik anterior.^1^
+- Kulit tanpa rambut (telapak, bibir, telinga) diatur terutama oleh saraf vasokonstriktor noradrenergik yang mengendalikan arteriol dan anastomosis arteriovena.^1^
+- Kulit berambut memiliki saraf vasokonstriktor noradrenergik dan sistem vasodilator aktif kolinergik. Sistem vasodilator aktif menyumbang 80 sampai 95% peningkatan aliran darah kulit saat stres panas.^1^
+- Kelenjar keringat dipersarafi serabut sudomotor kolinergik. Sekitar 500 mL keringat tak kasatmata dikeluarkan setiap hari. Saat aktivitas berat sekresi dapat mencapai 0,7 sampai 1,5 L per jam.^1,3^
+- Pada suhu rendah arteriol menyempit terutama di ujung jari dan hidung sehingga kulit pucat. Pendinginan berlebihan dapat menyebabkan radang dingin (frostbite).^3^
+
 ### Gambar
+
+![Gambar #. Ringkasan kendali saraf efektor termoregulasi. Kulit berambut memiliki saraf vasokonstriktor noradrenergik dan vasodilator kolinergik. Kulit tanpa rambut terutama diatur saraf vasokonstriktor. Kelenjar keringat dipersarafi saraf sudomotor kolinergik.^1^](gambar/buku/fig_93-1.png){width=14cm}
+
+![Gambar #. Siklus gatal dan garuk. Garukan merusak sawar epidermis, lalu neuropeptida, triptase dan mediator inflamasi merangsang serabut C sehingga gatal berlanjut.^1^](gambar/buku/fig_103-1.png){width=9cm}
+
+![Gambar #. Korpuskulus Pacini.^1^](gambar/buku/fig_7-9.png){width=8cm}
+
+![Gambar #. Korpuskulus Meissner.^1^](gambar/buku/fig_7-8.png){width=8cm}
 ![Gambar #. Suhu internal meningkat → aktivasi respons pelepasan panas → aliran darah kulit dan keringat meningkat. Ilustrasi Dokter Edukasi Academy.^1^](gambar/diagram_07.png){width=13cm}
 
 ### Hubungan sebab-akibat

@@ -24,7 +24,29 @@
 
 **Atipia** menunjukkan perubahan sel yang perlu ditafsirkan menurut arsitektur dan konteks. Invasi melewati batas jaringan yang semestinya mempunyai arti berbeda dari kelainan yang masih terbatas pada epidermis. Pemeriksaan histologi membantu menilai perbedaan tersebut pada neoplasia.^1^
 
+**Unit reaktif kulit**
+
+- **Unit reaktif superfisial** terdiri atas epidermis, zona pertemuan, badan papiler dan pleksus mikrovaskular superfisial.^1^
+- **Unit reaktif dermal** terdiri atas dermis retikuler dan pleksus vaskular dalam.^1^
+- **Unit reaktif subkutan** terdiri atas lobulus lemak dan septa.^1^
+- Unit keempat adalah adneksa, yaitu folikel rambut dan kelenjar. Pembagian ini membantu menghubungkan letak kelainan jaringan dengan gambaran klinis.^1^
+
+**Tabel #. Pola histopatologi dan contoh penyakitnya**^1^
+
+| Pola | Ciri jaringan | Contoh |
+|---|---|---|
+| Akantosis dan parakeratosis | Epidermis menebal dan inti tertahan di stratum korneum | Psoriasis |
+| Spongiosis | Edema antarkeratinosit hingga vesikel intraepidermal | Dermatitis kontak |
+| Akantolisis suprabasal | Keratinosit membulat karena kehilangan hubungan antarsel, celah di atas lapisan basal | Pemfigus vulgaris |
+| Celah subepidermal | Celah di lamina lusida dengan infiltrat limfosit dan eosinofil | Pemfigoid bulosa |
+| Dermatitis interface | Hiperkeratosis, hipergranulosis berbentuk baji, vakuolisasi sel basal dan infiltrat limfosit seperti pita | Liken planus |
+| Granuloma | Kumpulan sel epiteloid di dermis | Sarkoidosis, kusta, tuberkulosis kutis |
+| Vaskulitis nekrotikans | Infiltrat neutrofil dan debris inti pada dinding pembuluh | Vaskulitis leukositoklastik |
+
 ### Gambar
+
+![Gambar #. Pola histopatologi dasar. A. Akantosis dan parakeratosis pada psoriasis. B. Sel akantolitik pada sediaan apus pemfigus vulgaris. C. Celah suprabasal intraepidermal pada pemfigus vulgaris. D. Celah subepidermal dengan infiltrat limfosit dan eosinofil pada pemfigoid bulosa. E. Dermatitis interface pada liken planus. F. Granuloma sarkoidal di dermis.^1^](gambar/montase_histopatologi.png){width=15cm}
+
 ![Gambar #. Spongiosis memperlihatkan pelebaran ruang antarkeratinosit dan dapat membentuk vesikel.^1^](gambar/buku/kulit_11.png){width=13cm}
 
 ### Hubungan sebab-akibat

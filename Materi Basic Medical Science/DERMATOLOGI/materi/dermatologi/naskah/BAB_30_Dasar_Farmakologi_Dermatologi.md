@@ -27,6 +27,11 @@
 Pedoman terapi atopik mendukung pelembap dan beberapa antiinflamasi topikal. Pedoman akne menekankan kombinasi mekanisme serta pembatasan antibiotik. Prinsip tersebut berbeda dari memberikan obat yang sama untuk seluruh ruam.^4,8^
 
 ### Gambar
+
+![Gambar #. Struktur dasar molekul steroid dengan penomoran atom karbon.^1^](gambar/buku/fig_216-1.png){width=7cm}
+
+![Gambar #. Struktur kimia retinoid sintetis adapalen, tazaroten dan beksaroten.^1^](gambar/buku/fig_217-1.png){width=5cm}
+
 ![Gambar #. Oklusi dan hidrasi meningkat → penetrasi bahan tertentu meningkat → efek lokal atau sistemik dapat bertambah. Ilustrasi Dokter Edukasi Academy.^1^](gambar/diagram_30.png){width=13cm}
 
 ### Hubungan sebab-akibat

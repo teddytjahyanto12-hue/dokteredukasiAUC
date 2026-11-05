@@ -73,13 +73,15 @@ def vancouver(r):
             names.append(sur+" "+initials)
         else: names.append(a)
     author=", ".join(names)+( ", et al" if len(aus)>6 else "")
+    lis = (" " + f("N1") + ".") if f("N1").startswith(("Lisensi", "Domain")) else ""
     if f("TY")=="ELEC":
-        return author+". "+f("TI")+" [Internet]. Diakses 31 Oktober 2026. "+f("UR")+"."
+        tgl = f("Y2") if f("Y2") and not f("Y2")[0:4].isdigit() else "31 Oktober 2026"
+        return author+". "+f("TI")+" [Internet]. Diakses "+tgl+". "+f("UR")+"."+lis
     if f("TY")=="BOOK":
         return author+", editors. "+f("TI")+". "+f("ET")+". "+f("PB")+"; "+f("PY")+". ISBN: "+f("SN")+"."
     pages=f("SP")+("-"+f("EP") if f("EP") else "")
     doi=" https://doi.org/"+f("DO") if f("DO") else ""
-    return author+". "+f("TI")+". "+f("JO")+". "+f("PY")+";"+f("VL")+("("+f("IS")+")" if f("IS") else "")+(":"+pages if pages else "")+"."+doi+". "+f("AN")+"."
+    return author+". "+f("TI")+". "+f("JO")+". "+f("PY")+";"+f("VL")+("("+f("IS")+")" if f("IS") else "")+(":"+pages if pages else "")+"."+doi+(". PMID: "+f("AN") if f("AN") else "")+"."+lis
 
 
 # ---------------------------------------------------------------- naskah

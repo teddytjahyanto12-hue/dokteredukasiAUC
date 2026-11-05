@@ -6,19 +6,65 @@
 - Menghubungkan lesi kulit, gangguan sensasi dan inflamasi saraf.
 
 ### Konsep dasar
-**Kusta** merupakan infeksi kronis yang terutama disebabkan Mycobacterium leprae. Kulit dan saraf perifer merupakan sasaran penting. Organisme mempunyai pertumbuhan yang lambat. Kemampuan pejamu membentuk respons imun seluler memengaruhi beban organisme serta pola penyakit.^1^
+<!-- foto-per-entri -->
+**Kusta**
+
+- **Definisi:** Infeksi kronis yang terutama mengenai kulit dan saraf perifer.^1^
+- **Etiologi:** Terutama Mycobacterium leprae.^1^
+- **Patofisiologi:** Respons imun seluler memengaruhi beban basil, pola lesi dan kerusakan saraf.^1^
+- **Karakteristik lesi:** Makula, plak atau nodul sesuai spektrum. Gangguan sensasi merupakan petunjuk penting.^1^
+- **Pengobatan:** Terapi kombinasi antimikobakteri dan penilaian fungsi saraf. Reaksi kusta memerlukan penanganan tersendiri.^1^
+
+![Gambar #. Bercak hipopigmentasi pada kusta.^1^](gambar/buku/fig_75-8.png){width=8cm}
 
 **Spektrum tuberkuloid** berkaitan dengan respons imun seluler yang lebih kuat dan jumlah organisme yang lebih sedikit. Lesi cenderung lebih terbatas dengan gangguan sensasi yang nyata. **Spektrum lepromatosa** berkaitan dengan pengendalian seluler yang kurang efektif dan beban organisme yang lebih tinggi. Lesi dapat lebih banyak dan simetris. Bentuk borderline berada di antara kedua kutub tersebut.^1^
 
 **Gangguan saraf** merupakan pembeda penting. Kerusakan saraf sensorik dapat mengurangi rasa nyeri dan suhu. Gangguan motorik serta otonom dapat menyertai. Hilangnya sensasi protektif meningkatkan risiko cedera yang tidak disadari, ulkus dan disabilitas sekunder.^1^
 
-**Reaksi kusta** adalah episode inflamasi yang berbeda dari pertumbuhan organisme semata. Reaksi tipe 1 berkaitan dengan perubahan respons imun seluler dan dapat mengenai lesi serta saraf. Reaksi tipe 2 atau eritema nodosum leprosum mempunyai proses inflamasi sistemik pada konteks penyakit tertentu. Kerusakan saraf dapat memburuk selama reaksi.^1^
+**Reaksi kusta tipe 1**
+
+- **Definisi:** Episode inflamasi akut yang mengenai lesi kusta atau saraf perifer.^1^
+- **Etiologi:** Respons imun terhadap antigen Mycobacterium leprae. Reaksi terutama ditemukan pada spektrum borderline.^1^
+- **Patofisiologi:** Peningkatan respons imun seluler menimbulkan edema dan inflamasi pada kulit serta saraf. Neuritis dapat mengurangi fungsi sensorik atau motorik.^1^
+- **Karakteristik lesi:** Lesi lama dapat menjadi lebih merah, bengkak atau nyeri. Nyeri saraf dan penurunan fungsi saraf perlu dinilai.^1^
+- **Pengobatan:** Penilaian fungsi saraf dilakukan segera. Kortikosteroid sistemik dapat digunakan pada reaksi berat atau neuritis dengan pengawasan klinis.^1^
+
+![Gambar #. Lesi pada reaksi kusta tipe 1.^1^](gambar/buku/fig_186-7.png){width=8cm}
+
+**Reaksi kusta tipe 2 atau eritema nodosum leprosum**
+
+- **Definisi:** Episode inflamasi yang dapat mengenai kulit, saraf dan organ lain pada kusta multibasiler.^1^
+- **Etiologi:** Reaksi imun terhadap antigen Mycobacterium leprae terutama pada pasien dengan beban basil tinggi.^1^
+- **Patofisiologi:** Respons inflamasi sistemik dengan keterlibatan neutrofil dapat menyebabkan lesi kulit dan gejala di luar kulit.^1^
+- **Karakteristik lesi:** Nodul eritematosa nyeri dapat muncul berkelompok atau berulang. Demam dan manifestasi sistemik dapat menyertai.^1^
+- **Pengobatan:** Kendalikan inflamasi sesuai berat penyakit. Kortikosteroid sistemik dapat dipertimbangkan pada reaksi berat, terutama bila saraf atau organ lain terlibat.^1^
+
+![Gambar #. Lesi eritema nodosum leprosum papular pada wajah pasien kusta lepromatosa.^1^](gambar/buku/fig_186-8.png){width=8cm}
 
 **Prinsip diagnosis** menghubungkan lesi yang sesuai dengan gangguan sensasi, penilaian saraf dan bukti bakteriologis atau histologis bila diperlukan. Pemeriksaan basil tahan asam tidak memiliki hasil positif pada semua bentuk. Hasil negatif tidak otomatis meniadakan kusta pada spektrum dengan jumlah basil rendah.^1^
 
-**Tuberkulosis kutis** dan infeksi mikobakteria lain dapat menimbulkan pola kronis dengan nodul, plak atau ulserasi. **Mikosis dalam** juga dapat menimbulkan nodul, granuloma dan lesi yang mengeluarkan bahan. Granuloma sendiri bukan bukti organisme tertentu. Diagnosis memerlukan konteks serta pemeriksaan yang sesuai.^1^
+**Tuberkulosis kutis**
+
+- **Definisi:** Infeksi tuberkulosis pada kulit.^1^
+- **Etiologi:** Mycobacterium tuberculosis complex.^1^
+- **Patofisiologi:** Kuman mencapai kulit melalui inokulasi, perluasan dari fokus berdekatan atau penyebaran dari tempat lain.^1^
+- **Karakteristik lesi:** Plak, nodul atau ulkus dengan gambaran berbeda menurut bentuk penyakit.^1^
+- **Pengobatan:** Kombinasi obat antituberkulosis sesuai evaluasi klinis.^1^
+
+![Gambar #. Plak cokelat kemerahan yang sedikit meninggi pada lupus vulgaris.^1^](gambar/buku/fig_184-5A.png){width=6cm}
+
+**Mikosis dalam pada kulit**
+
+- **Definisi:** Kelompok infeksi jamur yang mengenai dermis atau jaringan lebih dalam.^1^
+- **Etiologi:** Berbagai jamur sesuai bentuk klinis dan pajanan.^1^
+- **Patofisiologi:** Inokulasi atau penyebaran jamur dapat mencetuskan inflamasi granulomatosa atau supuratif.^1^
+- **Karakteristik lesi:** Nodul, plak, ulkus atau saluran drainase bergantung pada organisme.^1^
+- **Pengobatan:** Identifikasi penyebab untuk memilih antijamur. Pendekatan bergantung pada organisme dan luas penyakit.^1^
+
+![Gambar #. Sporotrikosis berupa nodul berulkus di ibu jari dengan nodul subkutan yang menyebar mengikuti aliran limfe.^1^](gambar/buku/fig_190-1.png){width=8cm}
 
 ### Gambar
+
 ![Gambar #. Infeksi dan interaksi imun pada saraf → gangguan fungsi sensorik → cedera berulang tanpa disadari. Ilustrasi Dokter Edukasi Academy.^1^](gambar/diagram_23.png){width=13cm}
 
 ### Hubungan sebab-akibat

@@ -35,3 +35,12 @@ Sherwood khusus kulit belum tersedia. Fisiologi pada semua BAB yang relevan didu
 - Sisa pekerjaan: tidak ada BAB tertunda. Pemetaan RPS dan penambahan sumber Sherwood memerlukan berkas yang belum tersedia.
 
 - Sinkronisasi 2026-10-31 09:40 WIB: commit materi 08e237988929 berhasil dipush ke codex/dermatologi-preklinik. SHA remote cocok. Checkout dan staged changes sesi lain tidak diganti.
+
+## Revisi 6 November 2026 WIB (Claude Code)
+- 106 entri penyakit BAB 12–29 kini masing-masing memiliki foto tepat di bawah bloknya dan lima unsur lengkap (audit skrip). Urtikaria akibat obat digabung ke blok Urtikaria.
+- Foto baru: 26 potongan buku utama (dicek visual dan dicocokkan dengan keterangan aslinya) serta 6 foto terbuka di gambar/terbuka (CDC domain publik, Wikimedia CC BY-SA 3.0, PMC CC BY 4.0 dan CC BY-NC 4.0).
+- BAB 1–11 diperluas: biokimia vitamin D, keratin, selubung korneosit, filaggrin, melanin, desmosom dan membran basal, biosintesis kolagen, proteoglikan, lipid sawar, gradien kalsium, kelenjar, kuku, jalur sensorik, termoregulasi, imunitas innate, luka bakar, tabel lesi primer/sekunder dan pola histopatologi. Gambar OpenStax CC BY 3.0 di gambar/openstax. Montase berlabel di gambar/montase_*.png.
+- Pengayaan isi penyakit dari daftar cakupan, setiap tambahan dicocokkan ke ekstraksi buku utama dengan skrip/cek.py.
+- Keluaran: 32 PDF per BAB (189 gambar), modul PDF 179 halaman, ZIP keluaran/PDF_Dermatologi_Revisi.zip. Nomor gambar mengikuti urutan seluruh modul.
+- Skrip baru: skrip/potong_fitz.py, skrip/potong_otomatis.py, skrip/pasang_foto.py (sekali jalan, berpenanda), skrip/cek.py. Cadangan naskah sebelum revisi: qa/cadangan_naskah_20261106.
+- Belum: pengayaan penuh BAB 23 dan 29, nama spesies belum dicetak miring, Sherwood khusus kulit tetap belum tersedia.

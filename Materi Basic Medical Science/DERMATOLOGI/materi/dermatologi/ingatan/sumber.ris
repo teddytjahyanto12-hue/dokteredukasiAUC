@@ -208,8 +208,143 @@ ER  -
 
 TY  - ELEC
 ID  - openstax
-AU  - OpenStax
-TI  - Anatomy and Physiology 2e. Layers of the Skin
-UR  - https://openstax.org/books/anatomy-and-physiology-2e/pages/5-1-layers-of-the-skin
-Y2  - 2026/10/31
+AU  - Betts, J Gordon
+AU  - Young, Kelly A
+AU  - Wise, James A
+AU  - Johnson, Eddie
+AU  - Poe, Brandon
+AU  - Kruse, Dean H
+AU  - Korol, Oksana
+AU  - Johnson, Jody E
+TI  - Anatomy and Physiology 2e. Bab 5: The Integumentary System. Houston: OpenStax
+UR  - https://openstax.org/books/anatomy-and-physiology-2e/pages/5-introduction
+Y2  - 5 November 2026
+N1  - Lisensi CC BY 4.0
+ER  -
+
+TY  - JOUR
+ID  - eadv_bp
+AU  - Borradori, L
+AU  - Van Beek, N
+AU  - Feliciani, C
+TI  - Updated S2 K guidelines for the management of bullous pemphigoid initiated by the European Academy of Dermatology and Venereology (EADV)
+JO  - J Eur Acad Dermatol Venereol
+PY  - 2022
+VL  - 36
+IS  - 10
+SP  - 1689
+EP  - 1704
+DO  - 10.1111/jdv.18220
+AN  - 35766904
+UR  - https://pubmed.ncbi.nlm.nih.gov/35766904/
+ER  -
+
+TY  - JOUR
+ID  - sidev_dh
+AU  - Caproni, M
+AU  - Antiga, E
+AU  - Melani, L
+AU  - Fabbri, P
+TI  - Guidelines for the diagnosis and treatment of dermatitis herpetiformis
+JO  - J Eur Acad Dermatol Venereol
+PY  - 2009
+DO  - 10.1111/j.1468-3083.2009.03188.x
+AN  - 19470076
+UR  - https://pubmed.ncbi.nlm.nih.gov/19470076/
+ER  -
+
+TY  - JOUR
+ID  - aap_hemangioma
+AU  - Krowchuk, DP
+AU  - Frieden, IJ
+AU  - Mancini, AJ
+TI  - Clinical Practice Guideline for the Management of Infantile Hemangiomas
+JO  - Pediatrics
+PY  - 2019
+VL  - 143
+IS  - 1
+SP  - e20183475
+DO  - 10.1542/peds.2018-3475
+AN  - 30584062
+UR  - https://pubmed.ncbi.nlm.nih.gov/30584062/
+ER  -
+
+TY  - ELEC
+ID  - openstax_gbr
+AU  - Betts, J Gordon
+AU  - Desaix, Peter
+AU  - Johnson, Eddie
+TI  - Anatomy and Physiology. Gambar 5.1 sampai 5.23. Houston: OpenStax College; 2013. Melalui Wikimedia Commons
+UR  - https://commons.wikimedia.org/wiki/File:501_Structure_of_the_skin.jpg
+Y2  - 5 November 2026
+N1  - Lisensi CC BY 3.0
+ER  -
+
+TY  - ELEC
+ID  - cdc_louse
+AU  - Carr, Janice Haney
+TI  - Body louse, Pediculus humanus var. corporis. Public Health Image Library. Atlanta: Centers for Disease Control and Prevention; 2006
+UR  - https://commons.wikimedia.org/wiki/File:Body_lice.jpg
+Y2  - 5 November 2026
+N1  - Domain publik
+ER  -
+
+TY  - ELEC
+ID  - heilman_ganglion
+AU  - Heilman, James
+TI  - A ganglion of the wrist. Wikimedia Commons
+UR  - https://commons.wikimedia.org/wiki/File:Ganglion.jpg
+Y2  - 5 November 2026
+N1  - Lisensi CC BY-SA 3.0
+ER  -
+
+TY  - JOUR
+ID  - ti_zhang
+AU  - Zhang, Nenghan
+AU  - Zhang, Ruifeng
+TI  - Tinea incognito skin lesions worsen after antifungal treatment: atypical tinea appearing twice in a case: a case report
+JO  - Medicine (Baltimore)
+PY  - 2025
+VL  - 104
+IS  - 33
+SP  - e43875
+DO  - 10.1097/MD.0000000000043875
+AN  - 40826792
+N1  - Lisensi CC BY 4.0
+ER  -
+
+TY  - JOUR
+ID  - pacd_afvari
+AU  - Afvari, Shawn
+AU  - Zippin, Jonathan H
+TI  - Type I hypersensitivity in photoallergic contact dermatitis
+JO  - JAAD Case Rep
+PY  - 2023
+VL  - 44
+SP  - 47
+EP  - 49
+DO  - 10.1016/j.jdcr.2023.11.032
+AN  - 38292568
+N1  - Lisensi CC BY 4.0
+ER  -
+
+TY  - JOUR
+ID  - efelid_huu
+AU  - Huu, Sau Nguyen
+AU  - Van, Cap Lam
+AU  - Van, Thuong Nguyen
+AU  - Manh, Tan Nguyen
+AU  - Minh, Phuong Pham Thi
+AU  - Hong, Son Nguyen
+AU  - Huu, Nghi Dinh
+TI  - Successful treatment of freckles by Alex Trivantage laser wavelight 755 nm in Vietnamese patients
+JO  - Open Access Maced J Med Sci
+PY  - 2019
+VL  - 7
+IS  - 2
+SP  - 287
+EP  - 290
+DO  - 10.3889/oamjms.2019.096
+AN  - 30745982
+N1  - Lisensi CC BY-NC 4.0
 ER  -

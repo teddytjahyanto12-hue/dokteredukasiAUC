@@ -6,20 +6,54 @@
 - Menghubungkan antigen sasaran dengan letak lepuh dan pola imunofluoresensi.
 
 ### Konsep dasar
-**Eritema multiforme** merupakan erupsi dengan lesi target yang khas dan sering berkaitan dengan infeksi herpes simpleks. Kelainan dapat mengenai kulit maupun mukosa. Eritema multiforme dibedakan dari SJS/TEN dan tidak diletakkan sebagai fase ringan yang selalu akan berkembang menjadi TEN.^1^
-
+<!-- foto-per-entri -->
 **Lepuh intraepidermal** terbentuk ketika pemisahan terjadi di dalam epidermis. **Lepuh subepidermal** terbentuk pada pertemuan epidermis dengan jaringan di bawahnya. Atap epidermis yang lebih utuh membantu menjelaskan mengapa sebagian lepuh subepidermal tampak lebih tegang.^1^
 
-**Pemfigus vulgaris** berkaitan dengan autoantibodi terhadap desmoglein. Gangguan adhesi menyebabkan akantolisis dengan celah suprabasal. Lesi dapat mengenai mukosa dan kulit. Bula cenderung mudah pecah sehingga erosi sering lebih menonjol daripada lepuh utuh. Imunofluoresensi langsung menunjukkan deposisi imun di antara keratinosit.^1^
+**Eritema multiforme**
 
-**Pemfigoid bulosa** berkaitan dengan antigen kompleks hemidesmosom termasuk BP180 dan BP230. Pemisahan bersifat subepidermal. Bula tegang dan pruritus merupakan gambaran penting. Imunofluoresensi langsung memperlihatkan pola linear pada zona membran basal.^1^
+- **Definisi:** Erupsi akut dengan lesi target pada kulit yang dapat disertai keterlibatan mukosa.^1^
+- **Etiologi:** Infeksi herpes simpleks merupakan pemicu yang sering ditemukan. Infeksi Mycoplasma pneumoniae dan obat juga dapat menjadi pemicu.^1^
+- **Patofisiologi:** Respons imun terhadap pemicu mencederai keratinosit dan menyebabkan inflamasi pada pertemuan dermis dan epidermis.^1^
+- **Karakteristik lesi:** Lesi target klasik memiliki zona konsentris dan sering tampak pada ekstremitas. Bentuk mayor dapat menimbulkan erosi mukosa.^1^
+- **Pengobatan:** Kasus ringan ditangani secara simptomatik. Antivirus supresif dapat dipertimbangkan pada kasus berulang yang berkaitan dengan herpes simpleks.^1^
 
-**Dermatitis herpetiformis** menimbulkan papulovesikel yang sangat gatal dan sering mengenai permukaan ekstensor. Ekskoriasi dapat mengaburkan vesikel. Penyakit berkaitan dengan enteropati sensitif gluten. Deposisi IgA granular pada papila dermis merupakan temuan imunopatologi khas. Namanya tidak berarti penyakit ini disebabkan oleh virus herpes.^1^
+![Gambar #. Lesi pada eritema multiforme mayor.^1^](gambar/buku/fig_39-9.png){width=8cm}
+
+**Pemfigus vulgaris**
+
+- **Definisi:** Penyakit bula autoimun dengan pemisahan di dalam epidermis.^1^
+- **Etiologi:** Autoantibodi terhadap desmoglein.^1^
+- **Patofisiologi:** Gangguan adhesi antarkeratinosit menyebabkan akantolisis dan celah suprabasal. Imunofluoresensi langsung menunjukkan deposisi imun antarsel.^1^
+- **Karakteristik lesi:** Bula kendur mudah pecah sehingga erosi nyeri pada kulit dan mukosa, terutama mulut, sering lebih menonjol. Tekanan lateral pada kulit yang belum melepuh dapat menggeser epidermis (tanda Nikolsky).^1^
+- **Pengobatan:** Terapi sistemik seperti kortikosteroid memerlukan pengawasan spesialis. Erosi kulit dan mukosa juga memerlukan perawatan.^1^
+
+![Gambar #. Erosi pada pemfigus vulgaris.^1^](gambar/buku/fig_54-3.png){width=8cm}
+
+![Gambar #. Skema distribusi desmoglein membantu menjelaskan perbedaan kerentanan kulit dan mukosa pada pemfigus vulgaris.^1^](gambar/buku/kulit_15.png){width=13cm}
+
+**Pemfigoid bulosa**
+
+- **Definisi:** Penyakit bula autoimun dengan pemisahan di bawah epidermis yang biasanya terjadi pada usia lanjut.^1^
+- **Etiologi:** Autoantibodi terhadap protein hemidesmosom seperti BP180 dan BP230.^1^
+- **Patofisiologi:** Respons imun mencederai zona membran basal dan menghasilkan celah subepidermal. Imunofluoresensi langsung memperlihatkan pola linear.^1^
+- **Karakteristik lesi:** Bula tegang dengan pruritus. Sebelum bula muncul dapat ditemukan plak urtikaria atau eksematosa. Bula dapat berisi cairan jernih atau hemoragik dan meninggalkan erosi.^1^
+- **Pengobatan:** Kortikosteroid topikal potensi tinggi merupakan pilihan utama bila memungkinkan. Kortikosteroid sistemik dapat menjadi alternatif.^11^
+
+![Gambar #. Bula tegang pada pemfigoid bulosa.^1^](gambar/buku/fig_56-3.png){width=8cm}
+
+**Dermatitis herpetiformis**
+
+- **Definisi:** Penyakit kulit pruritik yang berkaitan dengan enteropati sensitif gluten.^1^
+- **Etiologi:** Respons imun terhadap gluten pada individu yang rentan.^1^
+- **Patofisiologi:** Deposisi IgA granular pada papila dermis disertai inflamasi yang dapat menghasilkan vesikel subepidermal.^1^
+- **Karakteristik lesi:** Papulovesikel berkelompok yang sangat gatal, kronis dan tersebar simetris terutama pada permukaan ekstensor. Ekskoriasi akibat garukan dapat menutupi vesikel. Histologi memperlihatkan mikroabses neutrofil di papila dermis.^1^
+- **Pengobatan:** Diet bebas gluten merupakan terapi dasar. Dapson dapat mengendalikan gejala kulit sambil menunggu efek diet dan memerlukan pemantauan efek samping.^12^
+
+![Gambar #. Papul dan vesikel pada dermatitis herpetiformis.^1^](gambar/buku/fig_61-2.png){width=8cm}
 
 **Pemeriksaan pembanding** meliputi histologi untuk melihat kedalaman celah dan jenis infiltrat. Imunofluoresensi menjawab pertanyaan tentang lokasi serta pola deposisi imun. Lesi klinis, lokasi biopsi dan hasil laboratorium harus ditafsirkan bersama.^1^
 
 ### Gambar
-![Gambar #. Skema distribusi desmoglein membantu menjelaskan perbedaan kerentanan kulit dan mukosa pada pemfigus vulgaris.^1^](gambar/buku/kulit_15.png){width=13cm}
 
 ### Hubungan sebab-akibat
 

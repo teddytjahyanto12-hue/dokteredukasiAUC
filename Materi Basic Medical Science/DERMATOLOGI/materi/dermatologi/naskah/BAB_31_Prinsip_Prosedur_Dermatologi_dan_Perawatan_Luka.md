@@ -21,6 +21,17 @@
 **Perawatan luka** mendukung lingkungan yang memungkinkan reepitelisasi dan perbaikan. Pengendalian eksudat, perlindungan jaringan dan penilaian infeksi disesuaikan dengan luka. Dressing tidak dipilih hanya dari nama produk tetapi dari kebutuhan biologis luka.^1^
 
 ### Gambar
+
+![Gambar #. Krioterapi nitrogen cair pada veruka di tangan.^1^](gambar/buku/fig_246-1.png){width=8cm}
+
+![Gambar #. Kuretase tumor kulit sebagai bagian prosedur kuretase dan elektrodesikasi.^1^](gambar/buku/fig_246-6.png){width=7cm}
+
+![Gambar #. Flap rotasi. A. Defek setelah pengangkatan tumor. B. Penutupan dengan flap yang diputar ke dalam defek sehingga vektor tegangan tersebar ke beberapa arah.^1^](gambar/buku/fig_243-16.png){width=10cm}
+
+![Gambar #. Skema flap transposisi rombik. Flap mengubah arah vektor tegangan penutupan sebesar 90° dan tegangan ditanggung oleh penutupan defek sekunder.^1^](gambar/buku/fig_243-19.png){width=5cm}
+
+![Gambar #. Keloid di daun telinga dan sulkus retroaurikular setelah prosedur bedah telinga.^1^](gambar/buku/fig_247-5.png){width=5cm}
+
 ![Gambar #. Sampel mewakili kompartemen penyakit → pola jaringan dapat dinilai → dukungan diagnosis lebih memadai. Ilustrasi Dokter Edukasi Academy.^1^](gambar/diagram_31.png){width=13cm}
 
 ### Hubungan sebab-akibat

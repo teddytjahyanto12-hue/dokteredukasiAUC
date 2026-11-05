@@ -6,19 +6,81 @@
 - Membedakan tumor vaskular dari malformasi vaskular.
 
 ### Konsep dasar
-**Nevus melanositik** merupakan proliferasi sel melanositik yang membentuk kelompok. Letak sel membantu membedakan nevus junctional, compound dan intradermal. Perubahan lokasi dominan sel berkaitan dengan gambaran lesi yang datar atau menonjol.^1^
+<!-- foto-per-entri -->
+**Nevus melanositik didapat**
 
-**Nevus kongenital** tampak sejak lahir atau segera sesudahnya. Lesi dapat mempunyai komponen yang meluas ke dermis dalam dan struktur sekitarnya. **Nevus didapat** berkembang setelah lahir dengan jumlah serta bentuk yang dipengaruhi faktor genetik dan lingkungan.^1^
+- **Definisi:** Proliferasi jinak melanosit yang timbul setelah lahir.^1^
+- **Etiologi:** Faktor genetik dan lingkungan memengaruhi jumlah nevus.^1^
+- **Patofisiologi:** Sel melanositik berkelompok pada pertemuan dermis dan epidermis, di dermis atau keduanya.^1^
+- **Karakteristik lesi:** Makula atau papul dengan warna dan elevasi yang bervariasi.^1^
+- **Pengobatan:** Observasi lesi khas. Perubahan mencurigakan memerlukan evaluasi.^1^
 
-**Nevus displastik** dapat mempunyai asimetri, variasi warna atau batas yang tidak teratur. Konsep klinis dan histologinya harus dibedakan. Tidak setiap nevus atipikal akan berubah menjadi melanoma. Adanya lesi atipikal membantu penilaian konteks risiko dan kebutuhan evaluasi.^1^
+![Gambar #. Nevus melanositik didapat. A. Nevus junctional berupa makula cokelat tua yang bulat dan berbatas teratur. B. Nevus compound berupa papul berpigmen merata.^1^](gambar/buku/fig_122-9.png){width=11cm}
 
-**Ephelides** merupakan makula kecil berpigmen yang menjadi lebih nyata dengan pajanan matahari. **Solar lentigo** berhubungan dengan pajanan cahaya kronis dan cenderung menetap. Keduanya dibedakan dari nevus yang membentuk kelompok sel nevomelanositik. Peningkatan pigmen tidak selalu berarti suatu tumor melanositik.^1^
+**Nevus melanositik kongenital**
 
-**Hemangioma infantil** merupakan tumor vaskular dengan fase pertumbuhan dan kemudian involusi. Lesi dapat tampak superfisial, dalam atau campuran. **Malformasi kapiler** merupakan kelainan pembentukan pembuluh dan tidak mempunyai pola proliferasi serta involusi yang sama. Port-wine stain adalah salah satu bentuk malformasi kapiler.^1^
+- **Definisi:** Nevus melanositik yang tampak sejak lahir atau segera sesudahnya.^1^
+- **Etiologi:** Kelainan perkembangan sel melanositik.^1^
+- **Patofisiologi:** Sel nevus dapat meluas ke dermis dalam dan sekitar adneksa.^1^
+- **Karakteristik lesi:** Bercak atau plak berpigmen yang tampak sejak lahir dengan ukuran bervariasi, dapat ditumbuhi rambut. Nevus raksasa dapat tersebar seperti celana renang dan disertai nevus satelit.^1^
+- **Pengobatan:** Pemantauan dan penanganan disesuaikan dengan ukuran, lokasi dan perubahan lesi.^1^
+
+![Gambar #. Nevus pigmentosus kongenital raksasa dengan distribusi seperti celana renang dan nevus satelit.^1^](gambar/buku/fig_122-4.png){width=7cm}
+
+**Nevus displastik**
+
+- **Definisi:** Nevus melanositik dengan ciri atipikal klinis atau histologis.^1^
+- **Etiologi:** Predisposisi individual atau familial dapat berperan.^1^
+- **Patofisiologi:** Proliferasi melanositik memperlihatkan kelainan arsitektur dan dapat disertai atipia.^1^
+- **Karakteristik lesi:** Batas tidak teratur, asimetri atau variasi warna.^1^
+- **Pengobatan:** Pemantauan sesuai risiko dan evaluasi lesi yang berubah atau mencurigakan.^1^
+
+![Gambar #. Variasi bentuk nevus displastik.^1^](gambar/buku/fig_123-1.png){width=8cm}
+
+**Efelid**
+
+- **Definisi:** Makula pigmen kecil yang lebih nyata setelah pajanan matahari.^1^
+- **Etiologi:** Predisposisi genetik dan ultraviolet.^1^
+- **Patofisiologi:** Peningkatan melanin tanpa pembentukan kelompok sel nevus.^1^
+- **Karakteristik lesi:** Makula cokelat kecil berbatas tegas di area yang berulang terpajan matahari.^1^
+- **Pengobatan:** Fotoproteksi. Terapi medis tidak diperlukan pada lesi khas.^1^
+
+![Gambar #. Efelid berupa makula cokelat kecil multipel di wajah.^19^](gambar/terbuka/efelid_pmc6364722.jpg){width=5cm}
+
+**Lentigo solar**
+
+- **Definisi:** Makula berpigmen menetap akibat pajanan cahaya kronis.^1^
+- **Etiologi:** Akumulasi pajanan ultraviolet.^1^
+- **Patofisiologi:** Perubahan epidermis disertai peningkatan pigmentasi basal.^1^
+- **Karakteristik lesi:** Makula cokelat berbatas tegas di area terpajan seperti punggung tangan, sering disertai tanda kerusakan aktinik lain seperti kerutan dan telangiektasia pada orang usia lanjut.^1^
+- **Pengobatan:** Fotoproteksi. Lesi atipikal dinilai sebelum terapi kosmetik.^1^
+
+![Gambar #. Lentigo solar.^1^](gambar/buku/fig_122-27.png){width=8cm}
+
+**Hemangioma infantil**
+
+- **Definisi:** Tumor vaskular jinak pada bayi.^1^
+- **Etiologi:** Penyebab awal belum sepenuhnya dipahami.^1^
+- **Patofisiologi:** Proliferasi vaskular diikuti fase involusi.^1^
+- **Karakteristik lesi:** Lesi superfisial merah atau pembengkakan kebiruan bila komponen lebih dalam.^1^
+- **Pengobatan:** Observasi pada banyak kasus. Propranolol merupakan pilihan utama bila terapi sistemik diperlukan.^13^
+
+![Gambar #. Hemangioma infantil terlokalisasi pada pipi.^1^](gambar/buku/fig_126-2.png){width=8cm}
+
+**Malformasi kapiler**
+
+- **Definisi:** Kelainan perkembangan pembuluh kapiler.^1^
+- **Etiologi:** Kelainan pembuluh yang terbentuk selama perkembangan.^1^
+- **Patofisiologi:** Pembuluh dermal melebar dan menetap tanpa pola involusi hemangioma infantil.^1^
+- **Karakteristik lesi:** Bercak datar merah atau keunguan (port-wine stain) yang tampak sejak lahir. Malformasi kapiler dapat menjadi bagian sindrom seperti Sturge–Weber atau Klippel–Trenaunay.^1^
+- **Pengobatan:** Laser pewarna berdenyut dapat dipertimbangkan pada lesi terpilih.^1^
+
+![Gambar #. Malformasi kapiler.^1^](gambar/buku/fig_172-2.png){width=8cm}
 
 **Pemeriksaan lesi** memperhatikan perubahan ukuran, bentuk, warna, perdarahan dan perbedaan dari lesi lain pada orang yang sama. Temuan yang berbeda dari pola umum pasien dapat bermakna meskipun tidak memenuhi seluruh ciri klasik.^1^
 
 ### Gambar
+
 ![Gambar #. Proliferasi kelompok sel melanositik → nevus dengan pola sesuai lokasi sel. Ilustrasi Dokter Edukasi Academy.^1^](gambar/diagram_26.png){width=13cm}
 
 ### Hubungan sebab-akibat

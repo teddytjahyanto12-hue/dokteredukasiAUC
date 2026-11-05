@@ -18,7 +18,19 @@ Keberadaan mikroorganisme tidak selalu berarti penyakit. **Kolonisasi** menunjuk
 
 **Contoh pola imun penyakit** meliputi hipersensitivitas kontak yang diperantarai sel T, inflamasi tipe 2 pada dermatitis atopik dan jalur IL-23/IL-17 pada psoriasis. Pola tersebut membantu memahami target terapi tanpa menyamakan seluruh penyakit kulit sebagai alergi.^1^
 
+**Komponen respons innate kulit**
+
+- Patogen, radiasi ultraviolet dan bahan iritan memicu sel innate seperti granulosit, fagosit mononuklear dan sel NK.^1^
+- Respons yang timbul berupa respons antimikroba melalui defensin, katelisidin (LL-37) dan zat oksigen reaktif, respons inflamasi melalui sitokin, kemokin, neuropeptida dan eikosanoid, serta pengarahan respons adaptif melalui aktivasi sel T.^1^
+- Reseptor mirip Toll (Toll-like receptor) mengenali pola molekul mikroba dan mengaktifkan respons pertahanan pejamu.^1^
+- Dalam keadaan normal kulit hanya menampung sedikit leukosit, terutama sel Langerhans di epidermis dan sel dendritik dermis. Sel T epidermis yang sebagian besar CD8+, sel T dermis yang sebagian besar CD4+, sedikit fagosit mononuklear dan sel mast juga dijumpai. Granulosit, sel NK dan sel B praktis tidak ada.^1^
+
 ### Gambar
+
+![Gambar #. Respons imun innate di kulit terhadap patogen, ultraviolet dan iritan. Keluarannya berupa respons antimikroba, respons inflamasi dan pengaruh pada respons imun adaptif.^1^](gambar/buku/fig_10-2.png){width=8cm}
+
+![Gambar #. Leukosit residen dan pendatang di kulit. Kulit normal hanya mengandung sedikit leukosit, sedangkan kulit yang terganggu menarik banyak sel imun.^1^](gambar/buku/fig_10-6.png){width=13cm}
+
 ![Gambar #. Gangguan sawar → pajanan mikroba atau antigen meningkat → aktivasi respons imun. Ilustrasi Dokter Edukasi Academy.^1^](gambar/diagram_08.png){width=13cm}
 
 ### Hubungan sebab-akibat

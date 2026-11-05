@@ -6,21 +6,71 @@
 - Mengenali dasar morfologi dermatofibroma serta akrokordon.
 
 ### Konsep dasar
+<!-- foto-per-entri -->
 **Kista kulit** adalah rongga dengan isi dan dinding tertentu. Identitas epitel pelapis serta proses keratinisasi membantu klasifikasi. Istilah kista sebasea tidak tepat untuk semua benjolan berisi keratin karena isinya bukan selalu sebum.^1^
 
-**Kista epidermoid** mempunyai lapisan epitel menyerupai epidermis dengan lapisan granular dan isi keratin. Lesi dapat mempunyai punctum. Bila dinding pecah keratin masuk ke jaringan dan memicu inflamasi. Kista yang merah serta nyeri tidak selalu menunjukkan infeksi bakteri sebagai proses awal.^1^
+**Kista epidermoid**
 
-**Kista pilar atau trikilemal** berhubungan dengan selubung akar luar folikel dan sering ditemukan pada kulit kepala. Keratinisasi dindingnya berbeda dari kista epidermoid dengan tidak adanya lapisan granular yang jelas. Lesi sering teraba padat, mobile dan berbatas tegas.^1^
+- **Definisi:** Kista berisi keratin dengan dinding menyerupai epidermis.^1^
+- **Etiologi:** Berasal dari infundibulum folikel atau implantasi epidermis.^1^
+- **Patofisiologi:** Keratin menumpuk di rongga. Ruptur melepaskan keratin ke dermis dan memicu inflamasi.^1^
+- **Karakteristik lesi:** Nodul dermal atau subkutan yang mobile dan berbatas tegas dengan punctum sentral. Isinya keratin. Kista dapat pecah dan menimbulkan inflamasi serta nyeri. Kista ini paling sering dijumpai pada orang dewasa.^1^
+- **Pengobatan:** Observasi bila asimtomatik. Eksisi dinding kista dapat dipertimbangkan pada lesi yang mengganggu.^1^
 
-**Milium** merupakan kista keratin kecil yang tampak sebagai papul putih. Lesi dapat timbul primer atau setelah cedera dan proses penyembuhan. Ukurannya yang kecil tidak mengubah sifat dasarnya sebagai rongga berisi keratin.^1^
+![Gambar #. Nodul berbentuk kubah pada kista epidermoid.^1^](gambar/buku/fig_118-18.png){width=8cm}
 
-**Ganglion** berkaitan dengan struktur periartikular atau selubung tendon dan berisi bahan gelatinosa. Ganglion bukan kista epidermal berisi keratin. Hubungan anatominya membantu membedakan benjolan dekat sendi dari lesi yang berasal dari unit folikel.^10^
+**Kista pilar**
 
-**Dermatofibroma** merupakan lesi fibrohistiositik jinak dengan komponen dermal. Papul atau nodul sering teraba lebih padat daripada permukaan sekitarnya. Penekanan dari samping dapat menimbulkan cekungan. Temuan tersebut membantu tetapi bukan pengganti penilaian lesi yang atipikal.^1^
+- **Definisi:** Kista keratin yang sering ditemukan di kulit kepala.^1^
+- **Etiologi:** Kista berisi keratin dengan dinding epitel yang berasal dari selubung akar luar folikel rambut.^1^
+- **Patofisiologi:** Keratinisasi trikilemal menghasilkan isi keratin tanpa lapisan granular yang jelas.^1^
+- **Karakteristik lesi:** Nodul padat, halus, mobile dan berbatas tegas, biasanya di kulit kepala dan tanpa punctum sentral.^1^
+- **Pengobatan:** Observasi atau eksisi bila bergejala.^1^
 
-**Akrokordon** merupakan papul lunak yang sering bertangkai. Lokasi lipatan seperti leher dan aksila umum dijumpai. Intinya mengandung jaringan fibrovaskular yang dilapisi epidermis. Akrokordon berbeda dari veruka yang mempunyai proses infeksi epitel.^1^
+![Gambar #. Kista trikilemal (pilar) pada kulit kepala.^1^](gambar/buku/fig_118-20.png){width=5cm}
+
+**Milium**
+
+- **Definisi:** Kista keratin superfisial berukuran kecil.^1^
+- **Etiologi:** Dapat timbul primer atau setelah cedera kulit.^1^
+- **Patofisiologi:** Keratin terperangkap dalam rongga kecil.^1^
+- **Karakteristik lesi:** Papul putih berbentuk kubah berukuran 1 sampai 2 mm, sering di pipi dan kelopak mata dewasa. Pada bayi milium sering dijumpai di wajah dan mukosa.^1^
+- **Pengobatan:** Observasi atau ekstraksi pada lesi yang mengganggu.^1^
+
+![Gambar #. Milium primer.^1^](gambar/buku/fig_118-22.png){width=8cm}
+
+**Ganglion**
+
+- **Definisi:** Benjolan periartikular berisi bahan gelatinosa.^10^
+- **Etiologi:** Berkaitan dengan sendi atau selubung tendon.^10^
+- **Patofisiologi:** Terbentuk rongga berisi bahan mukoid. Mekanisme awal belum sepenuhnya dipahami.^10^
+- **Karakteristik lesi:** Massa berbatas jelas yang sering ditemukan di pergelangan tangan.^10^
+- **Pengobatan:** Observasi bila asimtomatik. Aspirasi atau eksisi dipertimbangkan sesuai keluhan.^10^
+
+![Gambar #. Ganglion berupa benjolan di pergelangan tangan (tanda panah).^16^](gambar/terbuka/ganglion_heilman.jpg){width=8cm}
+
+**Dermatofibroma**
+
+- **Definisi:** Lesi fibrohistiositik jinak pada dermis.^1^
+- **Etiologi:** Penyebab sering tidak diketahui. Dermatofibroma merupakan tumor jinak yang sering dan cenderung mengenai tungkai bawah perempuan.^1^
+- **Patofisiologi:** Proliferasi sel dermal menghasilkan nodul fibrosa.^1^
+- **Karakteristik lesi:** Papul atau nodul padat yang dapat mencekung saat ditekan dari samping.^1^
+- **Pengobatan:** Observasi bila khas. Lesi atipikal dapat memerlukan biopsi.^1^
+
+![Gambar #. Dermatofibroma pada paha.^1^](gambar/buku/fig_66-2.png){width=8cm}
+
+**Akrokordon**
+
+- **Definisi:** Lesi jinak kulit dengan inti fibrovaskular.^1^
+- **Etiologi:** Sering muncul di lipatan. Etiologi belum pasti.^1^
+- **Patofisiologi:** Inti jaringan fibrovaskular dilapisi epidermis.^1^
+- **Karakteristik lesi:** Papul lunak bertangkai berwarna kulit, paling sering di kelopak mata, leher, aksila dan lipat paha.^1^
+- **Pengobatan:** Observasi atau pengangkatan bila teriritasi.^1^
+
+![Gambar #. Fibroma lunak atau akrokordon di leher di atas akantosis nigrikans.^1^](gambar/buku/fig_66-3.png){width=7cm}
 
 ### Gambar
+
 ![Gambar #. Penumpukan keratin dalam rongga berlapis epitel → pembesaran kista keratin. Ilustrasi Dokter Edukasi Academy.^1^](gambar/diagram_24.png){width=13cm}
 
 ### Hubungan sebab-akibat

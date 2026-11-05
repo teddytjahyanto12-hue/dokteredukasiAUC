@@ -6,13 +6,26 @@
 - Membedakan akne dari rosasea dan menghubungkan terapi dengan sasarannya.
 
 ### Konsep dasar
-**Akne vulgaris** merupakan penyakit unit pilosebasea. Empat proses penting adalah perubahan keratinisasi folikel, peningkatan produksi sebum, aktivitas mikroba folikel dan inflamasi. Cutibacterium acnes merupakan nama yang digunakan untuk organisme yang pada literatur lama disebut Propionibacterium acnes.^1,8^
+<!-- foto-per-entri -->
+**Akne vulgaris**
 
-**Mikrokomedo** berkembang dari gangguan pengeluaran bahan keratin di folikel. Komedo terbuka mempunyai muara yang tampak terbuka sedangkan komedo tertutup tertutup lapisan permukaan. Papul, pustul dan nodul menunjukkan komponen inflamasi dengan kedalaman yang berbeda. Wajah, dada dan punggung merupakan lokasi penting.^1^
+- **Definisi:** Penyakit unit pilosebasea dengan lesi komedonal atau inflamasi.^1,8^
+- **Etiologi:** Androgen dan aktivitas Cutibacterium acnes berperan bersama faktor folikel. Penyakit ini sering mulai pada masa remaja ketika produksi sebum meningkat, tetapi dapat berlanjut hingga dewasa.^1,3,8^
+- **Patofisiologi:** Peningkatan sebum dan gangguan keratinisasi membentuk mikrokomedo. Inflamasi menimbulkan papul, pustul atau nodul.^1,8^
+- **Karakteristik lesi:** Komedo terbuka (komedo hitam) atau tertutup (komedo putih), papul, pustul dan nodul pada wajah, dada atas atau punggung. Komedo merupakan penanda akne sehingga ketiadaannya mengarahkan pada diagnosis banding seperti rosasea. Lesi dalam dapat meninggalkan parut atrofik atau hipertrofik.^1,3,8^
+- **Pengobatan:** Retinoid topikal membantu mengurangi pembentukan komedo. Benzoil peroksida bersifat antimikroba dan bila dikombinasikan dengan antibiotik mengurangi timbulnya resistansi. Asam salisilat tersedia dalam sediaan bebas untuk akne. Antibiotik oral dipakai pada lesi inflamasi sedang hingga berat. Isotretinoin oral dipakai pada akne berat atau refrakter. Obat ini teratogenik sehingga penggunaannya pada perempuan usia subur diawasi ketat. Pemilihan terapi mengikuti berat penyakit.^1,8^
 
-**Faktor hormonal** terutama pengaruh androgen pada kelenjar sebasea berperan dalam perkembangan akne. Akne tidak dapat dijelaskan sebagai akibat kurang mencuci wajah semata. Lesi inflamasi yang dalam dapat meninggalkan parut atrofi atau parut meninggi. Hiperpigmentasi pascainflamasi merupakan perubahan warna yang berbeda dari jaringan parut.^1^
+![Gambar #. Akne vulgaris ringan dengan komedo dan lesi inflamasi.^1^](gambar/buku/fig_80-4.png){width=7cm}
 
-**Rosasea** merupakan penyakit wajah dengan komponen inflamasi dan vaskular. Eritema sentrofasial, flushing, telangiektasia serta papulopustul dapat ditemukan. Sebagian pasien mempunyai keterlibatan mata atau perubahan jaringan hidung. Komedo bukan ciri utama rosasea sehingga keberadaannya membantu membedakan dari akne.^1^
+**Rosasea**
+
+- **Definisi:** Penyakit inflamasi dan vaskular yang terutama mengenai wajah.^1^
+- **Etiologi:** Penyebab multifaktorial. Rosasea muncul atau memburuk akibat pajanan pemicu berulang, misalnya suhu panas atau dingin, sinar matahari, angin, minuman panas, olahraga, makanan pedas, alkohol, emosi, kosmetik, iritan topikal, semburat panas menopause dan obat yang memicu flushing.^1^
+- **Patofisiologi:** Respons pembuluh kulit dan inflamasi berkontribusi pada eritema serta papulopustul.^1^
+- **Karakteristik lesi:** Eritema sentrofasial, flushing, telangiektasia dan papulopustul tanpa komedo. Sebagian pasien mengalami keterlibatan mata. Fima paling sering terjadi di hidung (rinofima) dan dapat juga mengenai dagu, dahi, kelopak mata atau telinga. Kondisi yang menyerupai rosasea meliputi erupsi akneiformis akibat steroid topikal, akne vulgaris, dermatitis perioral dan fotodamage kronik.^1^
+- **Pengobatan:** Fotoproteksi dan pengurangan pemicu. Metronidazol atau asam azelat topikal dapat digunakan untuk lesi papulopustular. Kortikosteroid topikal jangka panjang harus dihindari karena dapat menimbulkan erupsi akneiformis akibat steroid, dermatitis perioral dan fenomena rebound.^1^
+
+![Gambar #. Rosasea papulopustular dengan eritema menetap.^1^](gambar/buku/fig_81-2.png){width=7cm}
 
 **Prinsip terapi akne** menghubungkan bahan aktif dengan proses penyakit.^1,8^
 
@@ -24,6 +37,7 @@
 Pedoman akne mendukung penggabungan terapi dengan mekanisme berbeda dan pembatasan antibiotik sistemik. Retinoid sistemik mempunyai risiko penting pada kehamilan dan memerlukan pengawasan khusus.^8,1^
 
 ### Gambar
+
 ![Gambar #. Retensi keratin folikel dan perubahan sebum → mikrokomedo → komedo yang tampak. Ilustrasi Dokter Edukasi Academy.^1^](gambar/diagram_16.png){width=13cm}
 
 ### Hubungan sebab-akibat
