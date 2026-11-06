@@ -1,0 +1,482 @@
+[
+  {
+    "n": 1,
+    "title": "Pengantar farmakologi dan cara mempelajari obat",
+    "points": "Definisi, nama generik, klasifikasi, obat prototipe, manfaat dan risiko, tujuan belajar preklinik.",
+    "k": "1",
+    "f": "1",
+    "refs": "B1,B2,B3,C1"
+  },
+  {
+    "n": 2,
+    "title": "Dasar seluler dan fisiologi untuk kerja obat",
+    "points": "Homeostasis; membran, transport, potensial aksi; komunikasi saraf dan hormon; reseptor, enzim, kanal dan transporter.",
+    "k": "2",
+    "f": "1",
+    "refs": "B1,B3,B4,R1"
+  },
+  {
+    "n": 3,
+    "title": "Farmakodinamik dan hubungan dosis respons",
+    "points": "Afinitas, efikasi, potensi, agonis penuh/parsial/invers, antagonisme; EC50, Emax, indeks terapi, desensitisasi dan toleransi.",
+    "k": "2",
+    "f": "1",
+    "refs": "B1,B2,R1"
+  },
+  {
+    "n": 4,
+    "title": "Farmakokinetik absorpsi dan distribusi",
+    "points": "Rute pemberian, bioavailabilitas, lintas pertama, pH-pKa, ikatan protein, volume distribusi, sawar dan redistribusi.",
+    "k": "3",
+    "f": "1,55",
+    "refs": "B1,B2,B4"
+  },
+  {
+    "n": 5,
+    "title": "Metabolisme dan eliminasi obat",
+    "points": "Fase I/II, CYP, prodrug, induksi/inhibisi; ekskresi ginjal/empedu, klirens, waktu paruh dan kinetika jenuh.",
+    "k": "3,4",
+    "f": "1,55",
+    "refs": "B1,B2,B4"
+  },
+  {
+    "n": 6,
+    "title": "Perhitungan dosis dan pemantauan kadar obat",
+    "points": "Dosis muatan/pemeliharaan, keadaan tunak, interval, infus, AUC, satuan; interpretasi sederhana TDM dan penyesuaian fungsi ginjal.",
+    "k": "3",
+    "f": "55",
+    "refs": "B1,B2,G4"
+  },
+  {
+    "n": 7,
+    "title": "Variasi respons dan farmakogenetik",
+    "points": "Usia, penyakit, kepatuhan, genetika; CYP2D6/CYP2C19, TPMT/NUDT15, HLA dan G6PD; bedakan variasi PK dan PD.",
+    "k": "4",
+    "f": "56",
+    "refs": "B1,B2,R2"
+  },
+  {
+    "n": 8,
+    "title": "Efek samping dan keselamatan obat",
+    "points": "ADR, alergi, idiosinkrasi, teratogenisitas, toksisitas organ; farmakovigilans, kesalahan obat dan rekonsiliasi.",
+    "k": "1,66",
+    "f": "52,56",
+    "refs": "B1,B2,G10,G11"
+  },
+  {
+    "n": 9,
+    "title": "Pengembangan obat dan penilaian bukti",
+    "points": "Praklinik, fase I-IV, placebo, randomisasi, luaran klinis/surrogat, ARR/RRR/NNT/NNH; bioekuivalensi dan dasar regulasi.",
+    "k": "5",
+    "f": "1",
+    "refs": "B1,B2,C1"
+  },
+  {
+    "n": 10,
+    "title": "Fisiologi transmisi otonom dan somatik",
+    "points": "Susunan simpatis/parasimpatis, sintesis-penyimpanan-pelepasan-degradasi transmiter, reseptor muskarinik/nikotinik/alfa/beta.",
+    "k": "6",
+    "f": "2",
+    "refs": "B1,B2,B4"
+  },
+  {
+    "n": 11,
+    "title": "Agonis kolinergik dan penghambat kolinesterase",
+    "points": "Agonis langsung, AChE reversibel/irreversibel, efek per organ, contoh indikasi; dasar organofosfat dan antidot.",
+    "k": "7",
+    "f": "3",
+    "refs": "B1,B2,G12"
+  },
+  {
+    "n": 12,
+    "title": "Antimuskarinik dan penghambat ganglion",
+    "points": "Atropin, skopolamin, antimuskarinik saluran napas/kandung kemih; efek antikolinergik, kontraindikasi; ganglion sebagai konsep.",
+    "k": "8",
+    "f": "4,8",
+    "refs": "B1,B2"
+  },
+  {
+    "n": 13,
+    "title": "Agonis adrenergik dan simpatomimetik",
+    "points": "Agonis alfa/beta langsung dan tidak langsung; epinefrin, norepinefrin, dobutamin, salbutamol; efek hemodinamik dan risiko.",
+    "k": "9",
+    "f": "5",
+    "refs": "B1,B2,R1"
+  },
+  {
+    "n": 14,
+    "title": "Antagonis adrenergik dan simpatolitik",
+    "points": "Alfa blocker, beta blocker selektif/nonselektif, agonis alfa2 sentral dan penghambatan pelepasan katekolamin; selektivitas dan rebound.",
+    "k": "10",
+    "f": "6",
+    "refs": "B1,B2"
+  },
+  {
+    "n": 15,
+    "title": "Diuretik antidiuretik dan transporter nefron",
+    "points": "Inhibitor karbonat anhidrase, loop, tiazid, hemat kalium, osmotik; ADH/desmopresin/vaptan; lokasi kerja dan efek elektrolit.",
+    "k": "15",
+    "f": "25",
+    "refs": "B1,B2,B4,G4"
+  },
+  {
+    "n": 16,
+    "title": "Cairan elektrolit dan asam basa",
+    "points": "Kristaloid/koloid, tonisitas, distribusi cairan; prinsip Na/K/Ca/Mg, bikarbonat dan pH urin; dasar perubahan dosis pada gangguan ginjal.",
+    "k": "15,58",
+    "f": "25,55",
+    "refs": "B1,B2,B4,G4"
+  },
+  {
+    "n": 17,
+    "title": "Antihipertensi dan sistem renin angiotensin",
+    "points": "ACE inhibitor, ARB, CCB, diuretik, simpatolitik, vasodilator; RAAS, interaksi, kehamilan dan parameter pemantauan.",
+    "k": "11,17",
+    "f": "22",
+    "refs": "B1,B2,B4,G3"
+  },
+  {
+    "n": 18,
+    "title": "Antiangina dan vasodilator",
+    "points": "Kebutuhan/pasokan O2, nitrat, beta blocker, CCB, nicorandil dan ranolazin; toleransi nitrat dan interaksi PDE5.",
+    "k": "12",
+    "f": "23",
+    "refs": "B1,B2,B4"
+  },
+  {
+    "n": 19,
+    "title": "Obat gagal jantung dan inotropik",
+    "points": "Preload/afterload, ACEi/ARB/ARNI, beta blocker, MRA, SGLT2i; diuretik, digoksin, dobutamin dan inhibitor PDE; manfaat versus gejala.",
+    "k": "13",
+    "f": "20",
+    "refs": "B1,B2,B4,R3"
+  },
+  {
+    "n": 20,
+    "title": "Antiaritmia dan dasar elektrofisiologi jantung",
+    "points": "Potensial aksi nodal/miokard, kelas I-IV, adenosin, digoksin, magnesium; proaritmia, QT dan penggunaan bergantung substrat.",
+    "k": "14",
+    "f": "21",
+    "refs": "B1,B2,B4"
+  },
+  {
+    "n": 21,
+    "title": "Obat dislipidemia",
+    "points": "Statin, ezetimibe, resin, fibrat, niasin; PCSK9, inclisiran dan bempedoat sebagai pengayaan mekanisme; interaksi dan toksisitas.",
+    "k": "35",
+    "f": "24",
+    "refs": "B1,B2,B4"
+  },
+  {
+    "n": 22,
+    "title": "Histamin serotonin dan obat migren",
+    "points": "Reseptor H1/H2/5HT, antihistamin generasi 1/2, triptan, ergot; pengenalan CGRP/gepant, sedasi dan sindrom serotonin.",
+    "k": "16",
+    "f": "18,19",
+    "refs": "B1,B2,R1"
+  },
+  {
+    "n": 23,
+    "title": "Eikosanoid peptida vasoaktif dan nitric oxide",
+    "points": "COX/LOX, prostaglandin/tromboksan/leukotrien; angiotensin, bradikinin, endotelin, natriuretik, NO-cGMP dan penghambat PDE5.",
+    "k": "17,18,19",
+    "f": "15,19,22",
+    "refs": "B1,B2,B4"
+  },
+  {
+    "n": 24,
+    "title": "Analgesik nonopioid antiinflamasi dan obat gout",
+    "points": "Parasetamol, NSAID/COX2, risiko GI-ginjal-kardiovaskular; kolkisin, allopurinol, febuxostat, urikosurik; nyeri akut versus kontrol urat.",
+    "k": "36",
+    "f": "15",
+    "refs": "B1,B2,G8"
+  },
+  {
+    "n": 25,
+    "title": "Farmakologi respirasi",
+    "points": "SABA/LABA, SAMA/LAMA, ICS, antileukotrien, metilxantin, biologik asma; antitusif, mukolitik dan gas terapeutik sebagai pengayaan.",
+    "k": "20",
+    "f": "18",
+    "refs": "B1,B2,B4,G2"
+  },
+  {
+    "n": 26,
+    "title": "Dasar neurofarmakologi dan sedatif hipnotik",
+    "points": "GABA/glutamat/monoamin, sawar darah otak; benzodiazepin, barbiturat, Z-drug, melatonin, buspiron; depresi napas dan ketergantungan.",
+    "k": "21,22",
+    "f": "10,11",
+    "refs": "B1,B2,B4"
+  },
+  {
+    "n": 27,
+    "title": "Obat antikejang",
+    "points": "Target kanal Na/Ca, GABA, SV2A dan glutamat; karbamazepin, fenitoin, valproat, lamotrigin, levetirasetam, etosuksimid, topiramat; teratogenisitas.",
+    "k": "24",
+    "f": "12",
+    "refs": "B1,B2,G10"
+  },
+  {
+    "n": 28,
+    "title": "Analgesik opioid dan adjuvan nyeri",
+    "points": "Reseptor mu/kappa/delta, morfin dan prototipe lain, nalokson; toleransi, ketergantungan, hiperalgesia; antidepresan/gabapentinoid untuk nyeri.",
+    "k": "31",
+    "f": "14",
+    "refs": "B1,B2,G12"
+  },
+  {
+    "n": 29,
+    "title": "Anestetik lokal",
+    "points": "Blok kanal Na, ester/amida, lidokain/bupivakain; pKa, kelarutan lemak, ikatan protein, pengaruh vasokonstriktor dan toksisitas sistemik.",
+    "k": "26",
+    "f": "17",
+    "refs": "B1,B2,G12"
+  },
+  {
+    "n": 30,
+    "title": "Anestetik umum dan gas terapeutik",
+    "points": "Obat inhalasi/IV, MAC, koefisien partisi dan uptake; propofol, etomidat, ketamin, anestesi seimbang; O2/NO, hipertermia maligna.",
+    "k": "25",
+    "f": "9",
+    "refs": "B1,B2"
+  },
+  {
+    "n": 31,
+    "title": "Pelumpuh otot dan antispastisitas",
+    "points": "Depolarisasi/nondepolarisasi, suksinilkolin/rokuronium; neostigmin/sugammadeks; baklofen, tizanidin, dantrolen dan toksin botulinum.",
+    "k": "27",
+    "f": "7,13",
+    "refs": "B1,B2,B4"
+  },
+  {
+    "n": 32,
+    "title": "Antipsikotik",
+    "points": "Jalur dopamin, antagonis D2 dan agonis parsial, atipikal; EPS, prolaktin, metabolik, QT, agranulositosis dan sindrom neuroleptik maligna.",
+    "k": "29",
+    "f": "11",
+    "refs": "B1,B2"
+  },
+  {
+    "n": 33,
+    "title": "Antidepresan dan penstabil suasana hati",
+    "points": "SSRI/SNRI/TCA/MAOI dan atipikal; litium, valproat, karbamazepin/lamotrigin; latensi efek, switch mania, TDM dan interaksi.",
+    "k": "29,30",
+    "f": "11",
+    "refs": "B1,B2"
+  },
+  {
+    "n": 34,
+    "title": "Obat neurodegeneratif dan stimulan saraf pusat",
+    "points": "Levodopa/carbidopa, agonis dopamin, MAOB/COMT inhibitor, amantadin/antikolinergik; AChEi/memantin; metilfenidat/amfetamin/kafein.",
+    "k": "28,32",
+    "f": "13,16",
+    "refs": "B1,B2,B4"
+  },
+  {
+    "n": 35,
+    "title": "Alkohol zat adiktif dan dasar terapi ketergantungan",
+    "points": "Etanol/metanol/etilen glikol, opioid, stimulan, kanabinoid, nikotin; reward, toleransi, putus zat; naltrekson, buprenorfin, metadon dan vareniklin.",
+    "k": "23,32",
+    "f": "10,16,52",
+    "refs": "B1,B2,G12"
+  },
+  {
+    "n": 36,
+    "title": "Antiplatelet antikoagulan dan fibrinolitik",
+    "points": "Hemostasis primer/sekunder/fibrinolisis; aspirin/P2Y12, heparin/LMWH, warfarin, DOAC, alteplase; pemantauan, perdarahan dan reversal.",
+    "k": "34",
+    "f": "51",
+    "refs": "B1,B2,B4,R2"
+  },
+  {
+    "n": 37,
+    "title": "Antianemia faktor pertumbuhan dan hemostatik",
+    "points": "Besi, folat, B12, eritropoietin, GCSF; vitamin K, asam traneksamat, desmopresin dan faktor koagulasi; dasar indikasi dan risiko.",
+    "k": "33,34",
+    "f": "50,51",
+    "refs": "B1,B2,B4"
+  },
+  {
+    "n": 38,
+    "title": "Vitamin mineral dan farmakologi nutrisi",
+    "points": "Vitamin larut air/lemak, suplementasi versus koreksi defisiensi, toksisitas, interaksi Fe/Ca/Zn; vitamin D/kalsium dirujuk silang BAB 44.",
+    "k": "33,42,64",
+    "f": "49",
+    "refs": "B1,B2,B4"
+  },
+  {
+    "n": 39,
+    "title": "Hipotalamus hipofisis dan hormon peptida",
+    "points": "Sumbu umpan balik; GH, somatostatin, prolaktin, agonis dopamin, ACTH/GnRH/gonadotropin, ADH dan analog/antagonis.",
+    "k": "37",
+    "f": "27,33",
+    "refs": "B1,B2,B4"
+  },
+  {
+    "n": 40,
+    "title": "Tiroid dan antitiroid",
+    "points": "Sintesis/konversi/aksi hormon, levotiroksin, tionamid, iodida dan radioiodin; agranulositosis/hepatotoksisitas, interaksi dan kehamilan.",
+    "k": "38",
+    "f": "28",
+    "refs": "B1,B2,B4,G10"
+  },
+  {
+    "n": 41,
+    "title": "Kortikosteroid dan antagonis adrenal",
+    "points": "Gluko/mineralokortikoid, fisiologi HPA, preparat dan durasi; antiinflamasi versus substitusi, supresi adrenal, infeksi dan prinsip tapering.",
+    "k": "39",
+    "f": "33",
+    "refs": "B1,B2,B4"
+  },
+  {
+    "n": 42,
+    "title": "Insulin glukagon dan obat antidiabetes",
+    "points": "Sediaan insulin, metformin, sulfonilurea/glinid, TZD, alfa-glukosidase, DPP4, GLP1/GIP, SGLT2; hipoglikemia dan manfaat organ.",
+    "k": "41",
+    "f": "32",
+    "refs": "B1,B2,B4,G5"
+  },
+  {
+    "n": 43,
+    "title": "Hormon reproduksi kontrasepsi dan uterotonik",
+    "points": "Estrogen/progestin/androgen, antagonis, aromatase/5alfa-reduktase; kontrasepsi, oksitosin/prostaglandin dan prinsip tokolitik.",
+    "k": "40,37,18",
+    "f": "26,30,31",
+    "refs": "B1,B2,B4"
+  },
+  {
+    "n": 44,
+    "title": "Homeostasis mineral tulang dan obat osteoporosis",
+    "points": "PTH, vitamin D, kalsitonin, kalsium/fosfat; bisfosfonat, denosumab, teriparatid dan SERM; efek ginjal, hipokalsemia dan risiko spesifik.",
+    "k": "42",
+    "f": "29,49",
+    "refs": "B1,B2,B4,G4"
+  },
+  {
+    "n": 45,
+    "title": "Obat asam lambung dan perlindungan mukosa",
+    "points": "Antasida/alginat, H2 blocker, PPI, PCAB, sukralfat, bismut, misoprostol; H pylori sebagai contoh terapi kombinasi dan resistensi.",
+    "k": "62",
+    "f": "34,46",
+    "refs": "B1,B2,B4,G9"
+  },
+  {
+    "n": 46,
+    "title": "Antiemetik motilitas diare konstipasi dan inflamasi usus",
+    "points": "Reseptor emesis, 5HT3/D2/NK1/H1; prokinetik, laksatif, antidiare, oralit; 5ASA, steroid/biologik IBD; enzim pankreas dan asam empedu.",
+    "k": "62",
+    "f": "34",
+    "refs": "B1,B2,B4"
+  },
+  {
+    "n": 47,
+    "title": "Prinsip antimikroba dan resistensi",
+    "points": "Toksisitas selektif, struktur mikroba, MIC/MBC, PKPD, time/concentration dependent killing, biofilm, kombinasi, kultur dan stewardship AWaRe.",
+    "k": "43,51",
+    "f": "39",
+    "refs": "B1,B2,G6,R4"
+  },
+  {
+    "n": 48,
+    "title": "Antibiotik dinding dan membran sel",
+    "points": "Penisilin, sefalosporin, karbapenem, monobaktam, inhibitor beta-laktamase; glikopeptida, daptomisin, polimiksin; resistensi dan toksisitas.",
+    "k": "43",
+    "f": "43",
+    "refs": "B1,B2,G6"
+  },
+  {
+    "n": 49,
+    "title": "Antibiotik penghambat sintesis protein",
+    "points": "Aminoglikosida, tetrasiklin, makrolida, linkosamida, kloramfenikol, oksazolidinon, streptogramin; spektrum dasar dan efek samping pembeda.",
+    "k": "44,45",
+    "f": "44,45,46",
+    "refs": "B1,B2,G6"
+  },
+  {
+    "n": 50,
+    "title": "Antibakteri asam nukleat folat dan obat lain",
+    "points": "Fluorokuinolon, sulfonamid/TMP, nitroimidazol, nitrofurantoin, fosfomisin dan obat saluran kemih; interaksi, QT, G6PD dan resistensi.",
+    "k": "46,50",
+    "f": "40,46",
+    "refs": "B1,B2,G6"
+  },
+  {
+    "n": 51,
+    "title": "Antimikobakteri",
+    "points": "Isoniazid, rifamisin, pirazinamid, etambutol; pengenalan bedaquiline/linezolid; dapson/klofazimin untuk kusta; kombinasi, resistensi, monitoring.",
+    "k": "47",
+    "f": "41",
+    "refs": "B1,B2,G7"
+  },
+  {
+    "n": 52,
+    "title": "Antijamur",
+    "points": "Polien, azol, echinocandin, flusitosin, terbinafin/griseofulvin; ergosterol/dinding sel, sistemik versus topikal, toksisitas dan interaksi CYP.",
+    "k": "48",
+    "f": "38",
+    "refs": "B1,B2"
+  },
+  {
+    "n": 53,
+    "title": "Antivirus dan antiretroviral",
+    "points": "Replikasi virus, HSV/VZV, influenza, hepatitis; NRTI/NNRTI/PI/INSTI dan penghambat masuk; dasar kombinasi, resistensi dan interaksi.",
+    "k": "49",
+    "f": "42",
+    "refs": "B1,B2"
+  },
+  {
+    "n": 54,
+    "title": "Antiparasit antiseptik dan disinfektan",
+    "points": "Antimalaria, antiamoeba/antiprotozoa, antelmintik; siklus parasit dan toksisitas selektif; alkohol/klorheksidin/iodofor/oksidator dan sterilan.",
+    "k": "52,53,50",
+    "f": "35,36,37,34",
+    "refs": "B1,B2,G13"
+  },
+  {
+    "n": 55,
+    "title": "Antineoplastik dan terapi target",
+    "points": "Siklus sel, alkilator/platinum, antimetabolit, antibiotik sitotoksik, mikrotubulus/topoisomerase; hormon, TKI, antibodi dan checkpoint; toksisitas khas.",
+    "k": "54",
+    "f": "47",
+    "refs": "B1,B2"
+  },
+  {
+    "n": 56,
+    "title": "Imunofarmakologi dan DMARD",
+    "points": "Kalsineurin/mTOR inhibitor, antimetabolit, metotreksat, biologik/JAK inhibitor; infeksi dan vaksinasi; imunoglobulin, vaksin dan prinsip imunostimulasi.",
+    "k": "55,36,Appendix",
+    "f": "48,15",
+    "refs": "B1,B2,B4"
+  },
+  {
+    "n": 57,
+    "title": "Obat dermatologi dan mata",
+    "points": "Vehikulum, potensi steroid topikal, retinoid, antimikroba, skabisida, keratolitik, emolien dan tabir surya; glaukoma, midriatik dan absorpsi okular.",
+    "k": "61,7,8",
+    "f": "34",
+    "refs": "B1,B2"
+  },
+  {
+    "n": 58,
+    "title": "Toksikologi dan antidot",
+    "points": "Dosis-pajanan, toksidrom; parasetamol/salisilat/digoksin/TCA, opioid/organofosfat/alkohol toksik, korosif, logam berat/kelator, toksin tumbuhan; dasar dekontaminasi.",
+    "k": "56,57,58",
+    "f": "52,53",
+    "refs": "B1,B2,G12"
+  },
+  {
+    "n": 59,
+    "title": "Farmakologi pada populasi khusus",
+    "points": "Kehamilan/laktasi, transfer plasenta/ASI, neonatus/anak, lansia; obesitas, gangguan ginjal/hati, polifarmasi; risiko berdasarkan narasi bukan huruf kehamilan lama.",
+    "k": "59,60,3,4",
+    "f": "55,56",
+    "refs": "B1,B2,G4,G10,G11"
+  },
+  {
+    "n": 60,
+    "title": "Peresepan rasional obat bebas herbal dan integrasi",
+    "points": "Pemilihan obat berbasis efikasi-keamanan-kesesuaian-biaya, resep dasar, rute/satuan, interaksi PKPD, edukasi/kepatuhan, deprescribing, OTC/suplemen/herbal.",
+    "k": "63,64,65,66",
+    "f": "54,56",
+    "refs": "B1,B2,C1"
+  }
+]

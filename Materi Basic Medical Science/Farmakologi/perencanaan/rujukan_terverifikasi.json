@@ -1,0 +1,156 @@
+[
+  {
+    "code": "B1",
+    "title": "Katzung edisi 12 lampiran dan pembaruan edisi 16 (2024)",
+    "url": "https://accessmedicine.mhmedical.com/Book.aspx?bookid=3382",
+    "use": "Kerangka utama dan klasifikasi obat seluruh sistem. Edisi 12 lokal telah dipetakan; edisi 16 terverifikasi katalog/daftar isi, bukan seluruh teks.",
+    "status": "Halaman penerbit terbuka"
+  },
+  {
+    "code": "B2",
+    "title": "Goodman & Gilman Manual (2008) lampiran dan The Pharmacological Basis of Therapeutics edisi 14 (2023)",
+    "url": "https://accessmedicine.mhmedical.com/content.aspx?bookid=3191&sectionid=265824603",
+    "use": "Pendalaman mekanisme, PK dan toksisitas. Manual lokal dan buku edisi 14 adalah publikasi berbeda; jangan menukar nomor BAB atau tahun keduanya.",
+    "status": "Identitas edisi 14 di penerbit; manual lokal diperiksa"
+  },
+  {
+    "code": "B3",
+    "title": "Rang & Dale Pharmacology edisi 10 (2023)",
+    "url": "https://www.uk.elsevierhealth.com/rang-dales-pharmacology-9780323873956.html",
+    "use": "Tambahan untuk reseptor, transduksi sinyal dan diagram konsep; identitas buku terverifikasi, belum telaah seluruh teks.",
+    "status": "Halaman penerbit terbuka"
+  },
+  {
+    "code": "B4",
+    "title": "Sherwood Human Physiology From Cells to Systems",
+    "url": "https://www.cengage.com/c/human-physiology-from-cells-to-systems-9e-sherwood/9781285866932",
+    "use": "Landasan fisiologi. Potongan PDF lokal tersedia per sistem; beberapa berlabel edisi 8. Tautan ini mengidentifikasi edisi 9, bukan mengesahkan label edisi setiap potongan lokal.",
+    "status": "Katalog dan daftar isi penerbit terbuka"
+  },
+  {
+    "code": "C1",
+    "title": "BPS Clinical Pharmacology Therapeutics and Prescribing Curriculum for Medical Degrees (2025)",
+    "url": "https://www.bps.ac.uk/careers-education/teaching-pharmacology/clinical-pharmacology-therapeutics-prescribing-curriculum-for-medical-degrees/",
+    "use": "Pembanding kompetensi mahasiswa kedokteran; ambil fondasi preklinik, bukan seluruh keterampilan lulusan klinik.",
+    "status": "Halaman kurikulum terbuka"
+  },
+  {
+    "code": "C2",
+    "title": "KKI Standar Kompetensi Dokter Indonesia Perkonsil 11 Tahun 2012",
+    "url": "https://jdih.kemkes.go.id/common/dokumen/Salinan%20Perkonsil%20Nomor%2011%20Tahun%202012%20Tentang%20Standar%20Kompetensi%20Dokter%20Indonesia.pdf",
+    "use": "Pembanding konteks kompetensi Indonesia; bukan daftar BAB farmakologi preklinik atau klaim sebagai satu-satunya standar terkini.",
+    "status": "Dokumen resmi ditemukan dan teks terindeks"
+  },
+  {
+    "code": "R1",
+    "title": "Harding dkk The IUPHAR/BPS Guide to PHARMACOLOGY in 2024 Nucleic Acids Res 52 D1438-D1449 DOI 10.1093/nar/gkad944",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/37897341/",
+    "use": "BAB 2-3, 10-14, 22-23: nomenklatur target dan ligan. Basis data hidup pendamping https://www.guidetopharmacology.org/ terbuka; cek entri obat saat menulis.",
+    "status": "Metadata/abstrak terindeks; pembukaan ulang PubMed terhalang captcha"
+  },
+  {
+    "code": "R2",
+    "title": "Lee dkk CPIC Guideline CYP2C19 Genotype and Clopidogrel Therapy 2022 Update Clin Pharmacol Ther 112 959-967 DOI 10.1002/cpt.2526",
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9287492/",
+    "use": "BAB 7 dan 36: contoh hubungan prodrug, genotipe, paparan dan efek. Bukan anjuran pemeriksaan genetik universal.",
+    "status": "Teks artikel terindeks diperiksa; pembukaan ulang PMC terhalang captcha"
+  },
+  {
+    "code": "R3",
+    "title": "McMurray dkk Dapagliflozin in Patients with Heart Failure and Reduced Ejection Fraction N Engl J Med 2019 DOI 10.1056/NEJMoa1911303",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/31535829/",
+    "use": "BAB 19 dan 42: contoh uji klinis yang memperluas penggunaan kelompok obat. Jangan mengekstrapolasi hasil satu uji untuk semua populasi.",
+    "status": "Metadata dan abstrak terindeks; pembukaan ulang tidak memuat isi"
+  },
+  {
+    "code": "R4",
+    "title": "Sharland dkk The WHO AWaRe Antibiotic Book providing guidance on optimal use and informing policy Lancet Infect Dis 2022 DOI 10.1016/S1473-3099(22)00683-1",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/36309019/",
+    "use": "BAB 47: latar stewardship dan penggunaan AWaRe; artikel pendamping, bukan uji klinis.",
+    "status": "Metadata terindeks diperiksa"
+  },
+  {
+    "code": "G2",
+    "title": "GINA Strategy Report dan Summary Guide 2026",
+    "url": "https://ginasthma.org/reports/",
+    "use": "BAB 25 dan 41: reliever/controller, ICS dan kombinasi inhaler; mekanisme lebih utama daripada algoritme spesialis.",
+    "status": "Halaman resmi dan PDF laporan ditemukan"
+  },
+  {
+    "code": "G3",
+    "title": "ESC Guidelines elevated blood pressure and hypertension 2024 Eur Heart J 45 3912-4018",
+    "url": "https://academic.oup.com/eurheartj/article/45/38/3912/7741010",
+    "use": "BAB 17: alasan pemilihan kelompok antihipertensi; perlu kontekstualisasi terhadap pedoman Indonesia saat penulisan.",
+    "status": "Judul/isi terindeks; pembukaan teks penerbit gagal redirect"
+  },
+  {
+    "code": "G4",
+    "title": "KDIGO CKD Guideline 2024",
+    "url": "https://kdigo.org/guidelines/ckd-evaluation-and-management/",
+    "use": "BAB 6,15-17,44,59: prinsip pengelolaan obat dan gangguan fungsi ginjal. Draf pembaruan 2027 masih revisi setelah public review pada tanggal audit; jangan diperlakukan final.",
+    "status": "Halaman resmi terbuka"
+  },
+  {
+    "code": "G5",
+    "title": "ADA Pharmacologic Approaches to Glycemic Treatment Standards of Care in Diabetes 2026 DOI 10.2337/dc26-S009",
+    "url": "https://doi.org/10.2337/dc26-S009",
+    "use": "BAB 42: insulin, GLP1, SGLT2 dan kelompok lain; tambahan konteks luaran organ dan keamanan.",
+    "status": "Judul dan isi terindeks; pembukaan DOI 403, bukan klaim telaah full text"
+  },
+  {
+    "code": "G6",
+    "title": "WHO AWaRe Antibiotic Book 2022",
+    "url": "https://www.who.int/publications/b/61917",
+    "use": "BAB 47-50: pemilihan antimikroba rasional, Access/Watch/Reserve; tidak perlu mengubah modul menjadi buku regimen infeksi.",
+    "status": "Halaman resmi terbuka"
+  },
+  {
+    "code": "G7",
+    "title": "WHO Consolidated Guidelines on Tuberculosis Module 4 Treatment and Care 2025",
+    "url": "https://www.who.int/publications/i/item/9789240107243",
+    "use": "BAB 51: kombinasi antituberkulosis dan resistensi; panduan ini bukan sumber tata laksana kusta.",
+    "status": "Halaman resmi terbuka"
+  },
+  {
+    "code": "G8",
+    "title": "FitzGerald dkk ACR Guideline Management of Gout 2020 Arthritis Care Res DOI 10.1002/acr.24180",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/32391934/",
+    "use": "BAB 24: bedakan obat flare dan obat penurun urat. PubMed mencantumkan errata 2020/2021; cek koreksi sebelum memindahkan angka atau rekomendasi.",
+    "status": "Metadata dan abstrak terindeks; pembukaan ulang tidak memuat isi"
+  },
+  {
+    "code": "G9",
+    "title": "Chey dkk ACG Clinical Guideline Treatment of Helicobacter pylori Infection 2024 DOI 10.14309/ajg.0000000000002968",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/39626064/",
+    "use": "BAB 45 dan 47: prinsip terapi kombinasi berbasis resistensi; konteks Amerika Utara harus dijelaskan, bukan langsung diadopsi untuk Indonesia.",
+    "status": "Metadata dan abstrak terbuka"
+  },
+  {
+    "code": "G10",
+    "title": "FDA Pregnancy and Lactation Labeling Resources PLLR",
+    "url": "https://www.fda.gov/drugs/labeling-information-drug-products/pregnancy-and-lactation-labeling-resources",
+    "use": "BAB 8,27,40,59: risiko naratif kehamilan/laktasi; kategori huruf A/B/C/D/X telah dihapus dari pelabelan FDA yang terkait aturan ini.",
+    "status": "Halaman resmi terbuka melalui pengalihan URL lama"
+  },
+  {
+    "code": "G11",
+    "title": "AGS Beers Criteria 2023 J Am Geriatr Soc 71 2052-2081 DOI 10.1111/jgs.18372",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/37139824/",
+    "use": "BAB 8,12,26,59-60: contoh antikolinergik, sedatif dan risiko polifarmasi pada lansia; bukan daftar larangan absolut.",
+    "status": "Metadata dan abstrak terindeks; pembukaan ulang tidak memuat isi"
+  },
+  {
+    "code": "G12",
+    "title": "Lavonas dkk AHA Focused Update Life Threatening Toxicity Due to Poisoning 2023 Circulation DOI 10.1161/CIR.0000000000001161",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/37721023/",
+    "use": "BAB 11,28-29,35,58: alasan mekanistik antidot dan pengenalan keracunan berat; tidak memuat semua toksin dan bukan panduan prosedur preklinik.",
+    "status": "Metadata dan abstrak terbuka"
+  },
+  {
+    "code": "G13",
+    "title": "WHO Guidelines for Malaria pembaruan 10 September 2026",
+    "url": "https://www.who.int/publications/i/item/guidelines-for-malaria/",
+    "use": "BAB 54: siklus parasit, dasar pemilihan kelompok antimalaria dan keamanan; bukan sumber semua antiparasit.",
+    "status": "Halaman resmi terbuka"
+  }
+]
